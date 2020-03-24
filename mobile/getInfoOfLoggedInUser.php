@@ -34,4 +34,5 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     echo json_encode(array('userInfo' => $userInfo))."\n";
 // echo "hello world!"
 //echo sample
+//echo connect 
 ?>
