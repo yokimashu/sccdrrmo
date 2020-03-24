@@ -8,3 +8,5 @@ sir allan majin buus
 try and try
 
 changes ni fritz
+
+from julius
