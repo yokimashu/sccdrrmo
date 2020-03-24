@@ -7,4 +7,4 @@ sir allan majin buus
 
 try and try
 
-try and try and take 2
+changes ni fritz
