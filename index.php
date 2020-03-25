@@ -103,6 +103,8 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
    <!-- DataTables -->
    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap4.css">
+
+   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -129,12 +131,14 @@
 
       <div class="row">
         <div class="col-md-6">
-          <a href="register.php" class="btn btn-primary pull-left">Sign Up</a>
+          <button onclick = "showmodal()" id = "add" class="btn btn-primary pull-left">Sign Up</button>
         </div>
+        
         <div class="col-md-6">
           <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
         </div>
       </div>
+    
     </form>
   </div>
   <!-- /.login-box-body -->
@@ -142,9 +146,17 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 
+<?php include('adduser_modal.php'); ?>
 </body>
+<script>
+function showModal(){
+    $('#addnew').modal('show');
+   alert("hello");
+  });
+
+</script>
 </html>
