@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost:8888";
+$host = "127.0.0.1:8888";
 $db_name = "sccdrrmo";
 $username = "root";
 $password = "h4G2a3qc0tRc";
