@@ -2,105 +2,90 @@
 
 ?>
 
+<style>
+    .size{
+      width:100%;
+    }
 
+</style>
 <div class="modal fade" id="addnew" role="dialog">
      <div class="modal-dialog">
          
         <div class="modal-content">
-            	<div class="modal-header">
+            	<div class="modal-header" >
                
-                    <h4 class="modal-title"><b>Add Employee</b></h4>
+                    <h4 class="modal-title"><b>Sign up</b></h4>
                     
           	</div>
-               	<div class="modal-body">
+               	<div class="modal-body" style =align:center; width:80%;>
                     
                     	<form class="form-horizontal" method="POST" action="<?php htmlspecialchars("PHP_SELF");?>" enctype="multipart/form-data">
-                              <div class="form-group">
-                  	<label for="empno" class="col-sm-9 control-label">Employee Number</label>
-
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="emp_no" name="emp_no" placeholder ="Employee Number "required>
-                  	</div>
-                </div>
-                        <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Last Name</label>
-
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="lastname" name="lastname" placeholder ="Last Name "required>
-                  	</div>
-                </div>      
-                       <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">First Name</label>
-
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="firstname" name="firstname" placeholder ="First Name "required>
-                  	</div>
-                </div>           
+                           
+                  <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" >Username:</span>
+                        </div>
+                <input type="text" class="form-control" id = "username" name ="username" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            
+                            
+                            
+                       <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" >Password:</span>
+                        </div>
+                <input type="text" class="form-control"  id = "password" name ="password" aria-label="Password" aria-describedby="basic-addon1">
+                                </div>
+                            
+                            
+                            
+                            
+                       <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">First Name:</span>
+                        </div>
+                <input type="text" class="form-control" id = "fname"  name = "fname" aria-label="First Name" aria-describedby="basic-addon1">
+                        </div>    
                      
-                    <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Middle Name</label>
-
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="middlename" name="middlename" placeholder ="Middle Name "required>
-                  	</div>
-                </div> 
-                      <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Biometric I.D.</label>
-
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="bpin" name="bpin" placeholder ="Biometric I.D. "required>
-                  	</div>
-                </div>    
                             
-                     <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Department</label>
-
-                  	<div class="col-sm-9">
-                    	
-                        <select class="form-control" name="department" placeholder="Select" value="<?php echo $department; ?>">
-                                            <?php
-                   
-                     $get_user_sql = "SELECT * FROM department";
-                     $user_data = $con->prepare($get_user_sql);
-                     $user_data->execute();
-                        while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
-                        $deptId = $result['deptId'];
-                        $deptdesc = $result['departmentDescription'];
-                        echo "<option value='".$deptId."'>".$deptdesc."</option>";
-                    }
-                   ?>
-                     </select>
-                  	</div>
-                         
-                         
-                </div>  
                             
-                    <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Employment Type</label>
-
-                  	<div class="col-sm-9">
-                    	<select class="form-control" name="emp_type" placeholder="Select" value="<?php echo $emp_type; ?>">
-                                            <option selected="Regular">Regular</option>
-                                            <option selected="Job Order">Job Order</option>
-                                        </select>
-                  	</div>
-                </div>    
-                    
+                                    
+                     <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Middle Name:</span>
+                        </div>
+                <input type="text" class="form-control" id = "mname"  name = "mname"aria-label= "Last Name" aria-describedby="basic-addon1">
+                                </div>
                             
-                             <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Status</label>
-
-                  	<div class="col-sm-9">
-                        <select class="form-control" name="status" placeholder="Select" value="<?php echo $status; ?>">
-                                            <option selected="Active">Active</option>
-                                            <option selected="Not Active">Not Active</option>
-                                        </select>
-                  	</div>
-                </div>    
-                  
-                <button type="submit" class="btn btn-primary btn-flat" name="new" href = "frm_addemployee.php"><i class="fa fa-save"></i> New</button>   
-                <button type="submit" class="btn btn-primary btn-flat" name="add" href = "frm_addemployee.php"><i class="fa fa-save"></i> Save</button>         
-                   
+                            
+                     <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Last Name:</span>
+                        </div>
+                <input type="text" class="form-control"  id = "lname"  name = "lname"aria-label="Last Name" aria-describedby="basic-addon1">
+                                </div>
+                            
+                            
+                   <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Address:</span>
+                        </div>
+                <input type="text" class="form-control"  id = "address" name = "address" aria-label="Address" aria-describedby="basic-addon1">
+                                </div>
+                            
+                  <div class="input-group mb-3 size">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Contact Number:</span>
+                        </div>
+                <input type="text" class="form-control"  id = "cnumber" name = "cnumber" aria-label="Contact Number " aria-describedby="basic-addon1">
+                                </div>
+                            
+                
+                            
+                          
+              
+                <button type="submit" id = "save" class="btn btn-primary btn-flat" name="add"> Register</button>         
+                          
                                    
                         </div>
                     </form>
@@ -114,7 +99,5 @@
          
          
     </div>
-    
-    
     
 </div>

@@ -131,7 +131,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <button onclick = "showmodal()" id = "add" class="btn btn-primary pull-left">Sign Up</button>
+          <a data-toggle="modal" style ="color:white;"data-target="#addnew" class="btn btn-primary pull-left">Sign Up</a>
         </div>
         
         <div class="col-md-6">
