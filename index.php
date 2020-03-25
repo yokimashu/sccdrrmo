@@ -189,11 +189,11 @@ if (type == 'success') {
 
   $.ajax({
 
-url : '',
+url : 'admin/insert_user.php',
 method: 'POST',
 data: {uname:uname,upass:upass,fname:fname,mname:mname,lname:lname,address:address,cnumber:cnumber},
 dataType: 'json',
-})
+}
 .done(function(result){
 
 console.log(result);
@@ -203,7 +203,8 @@ post_notify(result.message, result.error_code);
 .fail(function(jqXHR, textStatus, errorThrown){
 console.log(errorThrown);
 
-});
+})
+  )
   
   });
   $( "form" ).submit(function( event ) {
