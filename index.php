@@ -185,15 +185,21 @@ if (type == 'success') {
   var lname = $("#lname").val();
   var address = $("#address").val();
   var cnumber = $("#cnumber").val();
-  alert(uname);
+
 
   $.ajax({
 
 url : 'admin/insert_user.php',
 method: 'POST',
-data: {uname:uname,upass:upass,fname:fname,mname:mname,lname:lname,address:address,cnumber:cnumber},
+data: {uname:uname,
+      upass:upass,
+      fname:fname,
+      mname:mname,
+      lname:lname,
+      address:address,
+      cnumber:cnumber},
 dataType: 'json',
-}
+})
 .done(function(result){
 
 console.log(result);
@@ -203,8 +209,8 @@ post_notify(result.message, result.error_code);
 .fail(function(jqXHR, textStatus, errorThrown){
 console.log(errorThrown);
 
-})
-  )
+});
+  
   
   });
   $( "form" ).submit(function( event ) {
@@ -213,7 +219,7 @@ console.log(errorThrown);
   $("#close").click(function(){
     $('#addnew').modal('toggle');
 
-  });
+  })
 });
  })(jQuery);
 </script>
