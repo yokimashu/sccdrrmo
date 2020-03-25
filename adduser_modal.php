@@ -84,8 +84,8 @@
                             
                           
               
-                <button type="submit" id = "save" class="btn btn-primary btn-flat" name="add"> Register</button>         
-                          
+                <button id = "save"   class="btn btn-primary btn-flat" name="add"> Submit</button>         
+                <button id = "close"   class="btn btn-primary btn-flat" name="add"> Close</button>          
                                    
                         </div>
                     </form>

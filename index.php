@@ -131,7 +131,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <a data-toggle="modal" style ="color:white;"data-target="#addnew" class="btn btn-primary pull-left">Sign Up</a>
+          <a data-toggle="modal" style ="color:white;"data-target="#addnew"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
         </div>
         
         <div class="col-md-6">
@@ -153,10 +153,67 @@
 <?php include('adduser_modal.php'); ?>
 </body>
 <script>
-function showModal(){
-    $('#addnew').modal('show');
-   alert("hello");
+ (function($){
+  function post_notify(message, type){
+
+if (type == 'success') {
+
+  $.notify({
+    message: message
+  },{
+    type: 'success',
+    delay: 2000
   });
 
+} else{
+
+  $.notify({
+    message: message
+  },{
+    type: 'danger',
+    delay: 2000
+  }); 
+
+}
+
+}
+  $("#save").click(function(){
+  var uname = $("#username").val();
+  var upass = $("#password").val();
+  var fname = $("#fname").val();
+  var mname = $("#mname").val();
+  var lname = $("#lname").val();
+  var address = $("#address").val();
+  var cnumber = $("#cnumber").val();
+  alert(uname);
+
+  $.ajax({
+
+url : '',
+method: 'POST',
+data: {uname:uname,upass:upass,fname:fname,mname:mname,lname:lname,address:address,cnumber:cnumber},
+dataType: 'json',
+})
+.done(function(result){
+
+console.log(result);
+post_notify(result.message, result.error_code);
+
+})
+.fail(function(jqXHR, textStatus, errorThrown){
+console.log(errorThrown);
+
+});
+  
+  });
+  $( "form" ).submit(function( event ) {
+  event.preventDefault();
+
+  $("#close").click(function(){
+    $('#addnew').modal('toggle');
+
+  });
+});
+ })(jQuery);
 </script>
 </html>
