@@ -1,22 +1,42 @@
 <?php
 
-$host = "127.0.0.1:8888";
-$db_name = "sccdrrmo";
+// $host = "localhost:8888";
+// $db_name = "sccdrrmo";
+// $username = "root";
+// $password = "";
+
+
+
+$servername = "127.0.0.1:3307";
 $username = "root";
-$password = "h4G2a3qc0tRc";
+$password = "5zAhx4Et37Wr";
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+//
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
 
-try {
-    //database connection
-    $con = new PDO("mysql:host=$host; dbname=$db_name", $username, $password);
-    //initialize and error exception
-    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "connected";
-}
-catch (PDOEXCEPTION $error) {
+// // $conn = new mysqli($host, $username, $password, $db_name);
+// // // Check connection
+// // if ($conn->connect_error) {
+// //     die("Connection failed: " . $conn->connect_error);
+// // }
 
-    echo "Connection Error: " . $error->getMessage();
+// try {
+//     //database connection
+//     $con = new PDO("mysql:host=$host; dbname=$db_name", $username, $password);
+//     //initialize and error exception
+//     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     echo "connected";
+// }
+// catch (PDOEXCEPTION $error) {
 
-}
+//     echo "Connection Error: " . $error->getMessage();
+
+// }
 
 
 ?>

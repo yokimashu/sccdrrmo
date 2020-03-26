@@ -34,3 +34,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     echo json_encode($userInfo)."\n";
 
 ?>
+
+
+
