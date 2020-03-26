@@ -22,11 +22,25 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $mobileno = $result['mobileno'];
 }
 
-    $userInfo = [
-        'userInfo' => array(
+//     $userInfo = [
+//         'userInfo' => array(
+//                 'UserID' => $userID
+//         )
+//   ];
+
+    $userInfo = array(
+        'userInfo' => array (
+            array(
                 'UserID' => $userID
+            ),
+            array(
+                'Fullname' => $fullName
+            )
         )
-  ];
+
+
+            );
+            
     echo json_encode($userInfo);
 
 ?>
