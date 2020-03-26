@@ -111,7 +111,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>SCCDRRMO</b> Emergency Response Portal</a>
+    
+    <img src="dist/img/scdrrmo_logo.png" class="ArotateHover img-circle" width="150px">
+    
+    <br>
+    <a><b>SCCDRRMO</b> Emergency Response Portal</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -134,7 +138,7 @@
                      }
                      if(isset($_SESSION['success'])){
                       echo "
-                       <div class='Ashake'>
+                       <div class='Ashake elevation-2'>
                        <div class='alert alert-success alert-dismissible'>
                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                            ".$_SESSION['success']."

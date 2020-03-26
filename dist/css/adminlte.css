@@ -13065,4 +13065,20 @@ a.text-muted:hover {
   100%, 5% {left:0px; top:0px;}
 }
 
+.ArotateHover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.ArotateHover:hover {
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0), 0 0px 0px rgba(0, 0, 0, 0);
+  position: relative;
+  animation: Arotate 0.5s infinite;
+}
+
+@keyframes Arotate {
+  0%    {transform: rotate(0deg);}
+  50%    {transform: rotate(180deg);}
+  100%  {transform: rotate(360deg);}
+}
+
 /*# sourceMappingURL=adminlte.css.map */
