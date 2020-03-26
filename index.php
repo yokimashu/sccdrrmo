@@ -149,7 +149,7 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <?php include('adduser_modal.php'); ?>
 </body>
 <script>
@@ -178,41 +178,41 @@ if (type == 'success') {
 
 }
   $("#save").click(function(){
-  var uname = $("#username").val();
-  var upass = $("#password").val();
-  var fname = $("#fname").val();
-  var mname = $("#mname").val();
-  var lname = $("#lname").val();
-  var address = $("#address").val();
-  var cnumber = $("#cnumber").val();
+//   var uname = $("#username").val();
+//   var upass = $("#password").val();
+//   var fname = $("#fname").val();
+//   var mname = $("#mname").val();
+//   var lname = $("#lname").val();
+//   var address = $("#address").val();
+//   var cnumber = $("#cnumber").val();
 
 
-  $.ajax({
+//   $.ajax({
 
-url : 'admin/insert_user.php',
-method: 'POST',
-data: {uname:uname,
-      upass:upass,
-      fname:fname,
-      mname:mname,
-      lname:lname,
-      address:address,
-      cnumber:cnumber},
-dataType: 'json',
-})
-.done(function(result){
+// url : 'admin/insert_user.php',
+// method: 'POST',
+// data: {uname:uname,
+//       upass:upass,
+//       fname:fname,
+//       mname:mname,
+//       lname:lname,
+//       address:address,
+//       cnumber:cnumber},
+// dataType: 'json',
+// })
+// .done(function(result){
 
-console.log(result);
-post_notify(result.message, result.error_code);
+// console.log(result);
+// post_notify(result.message, result.error_code);
 
-})
-.fail(function(jqXHR, textStatus, errorThrown){
-console.log(errorThrown);
+// })
+// .fail(function(jqXHR, textStatus, errorThrown){
+// console.log(errorThrown);
 
-});
+// });
   
   
-  });
+//   });
   $( "form" ).submit(function( event ) {
   event.preventDefault();
 
