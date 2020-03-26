@@ -13052,4 +13052,17 @@ a.text-muted:hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
+/* animation */
+
+.Ashake {
+  opacity: 0.75;
+  position: relative;
+  animation: shake 0.10s 25;
+}
+
+@keyframes shake {
+  0%, 65%  {left:5px; top:0px;}
+  100%, 5% {left:0px; top:0px;}
+}
+
 /*# sourceMappingURL=adminlte.css.map */
