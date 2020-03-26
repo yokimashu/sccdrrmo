@@ -30,12 +30,12 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
     $userInfo = array(
         'userInfo' => array (
-            array(
+           
              array('Fullname' => $fullName),
              array('UserID' => $userID)
             ),
            
-        )
+        
 
 
             );
