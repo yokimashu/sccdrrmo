@@ -31,11 +31,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $userInfo = array(
         'userInfo' => array (
             array(
-                'UserID' => $userID
+             array('Fullname' => $fullName),
+             array('UserID' => $userID)
             ),
-            array(
-                'Fullname' => $fullName
-            )
            
         )
 
