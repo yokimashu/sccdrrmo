@@ -22,7 +22,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $mobileno = $result['mobileno'];
 }
 
-    $userinfo = [
+    $userInfo = [
         'userInfo' => array(
                 'UserID' => $userID
         )
