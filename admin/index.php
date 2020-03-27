@@ -19,10 +19,7 @@ $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-    $db_first_name = $result['first_name'];
-    $db_middle_name = $result['middle_name'];
-    $db_last_name = $result['last_name'];
-
+    $db_fullname = $result['fullname'];
 
 }
 ?>

@@ -17,18 +17,16 @@ if (!isset($_SESSION['id'])) {
 }
 
 
-$db_first_name = $db_middle_name = $db_last_name = '';
+$db_fullname = '';
+
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where user_id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
-
-    $db_first_name = $result['first_name'];
-    $db_middle_name = $result['middle_name'];
-    $db_last_name = $result['last_name'];
-
+    $db_fullname = $result['fullname'];
+  
 }
 
 
@@ -60,9 +58,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-   
-      <span class="brand-text font-weight-light">SCCDRRMO | SYSTEM</span>
+    <a href="#" class="brand-link">
+      <img src="../dist/img/scdrrmo_logo.png" class="img-circle elevation-2" width="40px">   
+      <span class="brand-text font-weight-light"><b>SCCDRRMO</b> | SYSTEM</span>
     </a>
 
     <!-- Sidebar -->
@@ -73,7 +71,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="profile.php" class="d-block"><?php echo $db_first_name . " " . $db_middle_name . " " . $db_last_name ?>  </a>
+          <a href="profile.php" class="d-block"><?php echo $db_fullname ?>  </a>
         </div>
       </div>
 

@@ -1,43 +1,36 @@
-<?php
-include ('admin/insert_user.php');
-?>
 
-
-
-</style>
-<div  class="modal fade"   id="addnew" role="dialog">
+<div  class="modal fade"   id="addnew">
      <div class="modal-dialog">
          
         <div style ="width:500px;" class="modal-content">
-            	<div class="modal-header" >
-               
+            	 <div class="modal-header card-outline card-primary" >
                     <h4 class="modal-title"><b>Sign up</b></h4>
-                    
-          	</div>
+               </div>  
+
+                <form class="form-horizontal" method="POST" action="insert_user.php" enctype="multipart/form-data">
                	<div class="modal-body" style =align:center; width:80%;>
                     
-                    	<form class="form-horizontal" method="POST" action="<?php htmlspecialchars("PHP_SELF");?>" enctype="multipart/form-data">
-                            <div class="form-group row">
+                    <div class="form-group row">
                     <label for="username" class="col-sm-2 col-form-label ">Username </label>
                     <div class="col-sm-10">
-                      <input type="text" name ="username" class="form-control" id="username">
+                      <input type="text" name ="username" class="form-control" id="username" required>
                     </div>  
-            
                     </div>
+
                     <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label ">Password </label>
                     <div class="col-sm-10">
-                      <input type="text" name ="password" class="form-control" id="password">
+                      <input type="password" name ="userpass" class="form-control" id="userpass" required>
                     </div>  
-            
                     </div>
+
                     <div class="form-group row">
                     <label for="fullname" style = "font-size:13px;"class="col-md-2 col-form-label ">Full Name</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="fullname" class="form-control" id="fullname">
+                      <input type="text" name ="fullname" class="form-control" id="fullname" required>
                     </div>  
-            
                     </div>
+
                     <div class="form-group row">
                     <label for="gender" class="col-sm-2 col-form-label ">Gender </label>
                     <div class="col-sm-6">
@@ -46,45 +39,39 @@ include ('admin/insert_user.php');
                       <option value = "Female">Female </option> 
                       </select>
                     </div>  
-            
                     </div>
-                    <div class="form-group row " >
+
+                    <div class="form-group row ">
                     <label for="birthdate" class="col-md-2 col-form-label " style = "font-size:13px;">Birth Date</label>
-                    <div class="col-sm-6">
-                      <input type="text" name ="bday" class="form-control date" data-provide="datepicker" id="datepicker">
+                    <div class="col-sm-10">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      <input type="text" name ="birthdate" class="form-control date" data-provide="datepicker" id="datepicker" required>
+                    </div>
                     </div>  
-            
                     </div>
                     
                     <div class="form-group row">
                     <label for="email" class="col-md-2 col-form-label ">Email</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="email" class="form-control" id="email">
+                      <input type="email" name ="email" class="form-control" id="email" required>
                     </div>  
-            
                     </div>
 
                     <div class="form-group row">
-                    <label for="email" class="col-md-2 col-form-label ">Contact No.</label>
+                    <label for="contactno" class="col-md-2 col-form-label ">Contact No.</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="contactno" class="form-control" id="contactno">
+                      <input type="number" name ="contactno" class="form-control" id="contactno" required>
                     </div>  
-            
                     </div>
-                <button id = "save"   class="btn btn-primary btn-flat" name="add"> Submit</button>         
-                <button id = "close"   class="btn btn-primary btn-flat" name="close"> Close</button>          
-                                   
-                        </div>
-                    </form>
-                            
-                    
-                    
-                    
-        
-               
-         </div>
-         
-         
-    </div>
-    
-</div>
+
+                    </div> <!-- modal body -->
+                     
+                    <div class="modal-footer">
+                       <button type="submit" class="btn btn-primary btn-sm" name="add"><i class="fa fa-save"></i> Save</button>
+                       <button class="btn btn-default btn-sm pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>              
+                    </div> <!-- modal footer -->
+                 </form>      
+         </div> <!-- modal content -->
+    </div> <!-- modal dialog -->
+</div> <!-- modal -->

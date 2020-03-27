@@ -1,4 +1,5 @@
 <?php
+  session_start();
    include('config/db_config.php');
 //variable declaration
    $alert_msg = '';
@@ -78,15 +79,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>LGUSCC DTS | Login</title>
+  <title>SCCDRRMO ERP | Login</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="../dist/css/ionicons.min.css"> -->
+  <link rel="stylesheet" href="../dist/css/ionicons.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
   <!-- Morris chart
@@ -103,124 +104,90 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
    <!-- DataTables -->
    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap4.css">
-
    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
 </head>
+
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>SCCDRRMO</b> Emergency Response Portal</a>
+    
+    <img src="dist/img/scdrrmo_logo.png" class="ArotateHover img-circle" width="150px">
+    
+    <br>
+    <a><b>SCCDRRMO</b> Emergency Response Portal</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
+    <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
       <div class="form-group has-feedback">
         <!-- alert here -->
-        <?php echo $alert_msg;?>
+                  <?php echo $alert_msg;?>
+                                <!-- ALERT BOX -->
+                                <?php
+                     if(isset($_SESSION['error'])){
+                     echo "
+                       <div class='alert alert-danger alert-dismissible'>
+                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                           ".$_SESSION['error']."
+                       </div>
+                       ";
+                     unset($_SESSION['error']);
+                     }
+                     if(isset($_SESSION['success'])){
+                      echo "
+                       <div class='Ashake elevation-2'>
+                       <div class='alert alert-success alert-dismissible'>
+                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                           ".$_SESSION['success']."
+                       </div>
+                       </div>
+                       ";
+                      unset($_SESSION['success']);
+                   }
+                 ?>
       </div>
-      <div class="form-group has-feedback">
+
+      <div class="form-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
         <input type="text" class="form-control" name="username" placeholder="Username">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
+      </div>
+
+      <div class="form-group">
+      <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-lock"></i></span>
         <input type="password" class="form-control" name="password" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      </div>
+
+      <br>
 
       <div class="row">
         <div class="col-md-6">
-          <a data-toggle="modal" style ="color:white;"data-target="#addnew"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
+          <a href="#addnew" data-toggle="modal" style ="color:white;"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
         </div>
-        
         <div class="col-md-6">
           <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
         </div>
       </div>
     
     </form>
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+  </div><!-- /.login-box-body -->
+ 
+</div><!-- /.login-box -->
+</body> 
 
+<?php include('adduser_modal.php'); ?>
 <!-- jQuery 3 -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<?php include('adduser_modal.php'); ?>
+
 </body>
-<script>
- (function($){
-  function post_notify(message, type){
 
-if (type == 'success') {
-
-  $.notify({
-    message: message
-  },{
-    type: 'success',
-    delay: 2000
-  });
-
-} else{
-
-  $.notify({
-    message: message
-  },{
-    type: 'danger',
-    delay: 2000
-  }); 
-
-}
-
-}
-  $("#save").click(function(){
-//   var uname = $("#username").val();
-//   var upass = $("#password").val();
-//   var fname = $("#fname").val();
-//   var mname = $("#mname").val();
-//   var lname = $("#lname").val();
-//   var address = $("#address").val();
-//   var cnumber = $("#cnumber").val();
-
-
-//   $.ajax({
-
-// url : 'admin/insert_user.php',
-// method: 'POST',
-// data: {uname:uname,
-//       upass:upass,
-//       fname:fname,
-//       mname:mname,
-//       lname:lname,
-//       address:address,
-//       cnumber:cnumber},
-// dataType: 'json',
-// })
-// .done(function(result){
-
-// console.log(result);
-// post_notify(result.message, result.error_code);
-
-// })
-// .fail(function(jqXHR, textStatus, errorThrown){
-// console.log(errorThrown);
-
-// });
-  
-  
-//   });
-  $( "form" ).submit(function( event ) {
-  event.preventDefault();
-
-  $("#close").click(function(){
-    $('#addnew').modal('toggle');
-
-  })
-});
- })(jQuery);
-</script>
 </html>
