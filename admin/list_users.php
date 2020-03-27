@@ -20,9 +20,14 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
   $department  = $result['department'];
 }
 
+
 $get_all_users_sql = "SELECT * FROM tbl_users ";
 $get_all_users_data = $con->prepare($get_all_users_sql);
 $get_all_users_data->execute(); 
+while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
+  $status   = $result['status'];
+}
+
 
 
 ?>
@@ -108,6 +113,7 @@ $get_all_users_data->execute();
                             <th> MIDDLE NAME</th>                                      
                             <th> CONTACT No. </th>
                             <th> STATUS</th>
+                            <th> OPTION</th>
                           </tr>
                           
                       </thead>
@@ -123,7 +129,7 @@ $get_all_users_data->execute();
                             <td><?php echo $users_data['status'];?> </td>
                             <td>
                             <a class="btn btn-outline-success btn-xs" 
-                            href="update_users.php?objid=<?php echo $users_data['user_id'];?>&id=<?php echo $users_data['user_id'];?>">
+                            href="objids=<?php echo $users_data['user_id'];?>&status=<?php echo $users_data['status'];?>&id=<?php echo $users_data['user_id'];?> ">
                             <i class="fa fa-check"></i>
                              </a>
                             &nbsp;                           
