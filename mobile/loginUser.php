@@ -32,9 +32,7 @@
     
               //hash the $u_pass and compared to $hashed_password
               if (password_verify($password, $hash_password)) {
-               session_start();
-               $_SESSION['id'] = $result['id'];
-
+             
                     if ($result['status'] == "INACTIVE") {
                        echo "inactive";
                    }

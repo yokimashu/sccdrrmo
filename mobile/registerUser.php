@@ -1,7 +1,7 @@
 <?php
 
 include ('db-config.php');
-//include('import_pdf.php');
+
 // echo "<pre>";
 // print_r($_POST);
 // echo "</pre>";
