@@ -1,9 +1,14 @@
 <?php
 
-$host = "localhost";
-$db_name = "android";
+// $host = "localhost";
+// $db_name = "android";
+// $username = "root";
+// $password = "1234";
+
+$host = "127.0.0.1";
+$db_name = "sccdrrmo";
 $username = "root";
-$password = "1234";
+$password = "5zAhx4Et37Wr";
 
 try {
     //database connection

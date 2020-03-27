@@ -17,7 +17,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $check_username_sql = "SELECT * FROM users where email = :email";
+        $check_username_sql = "SELECT * FROM tbl_users where email = :email";
         
         $username_data = $con->prepare($check_username_sql);
         $username_data ->execute([

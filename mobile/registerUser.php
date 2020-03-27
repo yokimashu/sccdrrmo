@@ -19,7 +19,7 @@ $alert_msg1 = '';
 
     $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
    
-    $insert_users_sql = "INSERT INTO users SET
+    $insert_users_sql = "INSERT INTO tbl_users SET
         fullname            = :fullname,
         email               = :email,
         password            = :password,
