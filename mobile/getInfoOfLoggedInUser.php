@@ -11,7 +11,7 @@ include ('db-config.php');
 $email = $_GET['emailAddress'];
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM users where email = :email";
+$get_user_sql = "SELECT * FROM tbl_users where email = :email";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':email' => $email]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
@@ -22,16 +22,24 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $mobileno = $result['mobileno'];
 }
 
-    $userInfo = [
-       
-                        'UserID'        => $userID,
-                        'Fullname'      => $fullName,
-                        'Email'         => $email,
-                        'MobileNumber'  => $mobileno
-      
-    ];
+//     $userInfo = [
+//         'userInfo' => array(
+//                 'UserID' => $userID
+//         )
+//   ];
 
-    echo json_encode($userInfo)."\n";
+    $userInfo = array(
+        'userInfo' => array (
+             array(
+                 'Fullname'         => $fullName,
+                 'Email'            => $email,
+                 'MobileNumber'     => $mobileno
+
+                   )
+                            )
+            );
+            
+    echo json_encode($userInfo);
 
 ?>
 

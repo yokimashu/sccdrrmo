@@ -17,7 +17,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $check_username_sql = "SELECT * FROM users where email = :email";
+        $check_username_sql = "SELECT * FROM tbl_users where email = :email";
         
         $username_data = $con->prepare($check_username_sql);
         $username_data ->execute([
@@ -32,14 +32,14 @@
     
               //hash the $u_pass and compared to $hashed_password
               if (password_verify($password, $hash_password)) {
-               session_start();
-               $_SESSION['id'] = $result['id'];
-
+             
                     if ($result['status'] == "INACTIVE") {
                        echo "inactive";
                    }
                    
-              }
+              }else{
+                echo "invalid";
+              } 
             }
             }else{
               echo "invalid";

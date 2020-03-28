@@ -20,9 +20,14 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
+
 $get_all_users_sql = "SELECT * FROM tbl_users ";
 $get_all_users_data = $con->prepare($get_all_users_sql);
 $get_all_users_data->execute(); 
+while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
+  $status   = $result['status'];
+}
+
 
 
 ?>
