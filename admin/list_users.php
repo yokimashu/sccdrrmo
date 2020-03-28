@@ -17,7 +17,7 @@ $get_user_data = $con->prepare($get_user_sql);
 $get_user_data->execute([':id'=>$user_id]);
 while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
   $user_name   = $result['username'];
-  $department  = $result['department'];
+
 }
 
 $get_all_users_sql = "SELECT * FROM tbl_users ";
@@ -61,11 +61,11 @@ $get_all_users_data->execute();
    <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
      <!-- Select2 -->
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 
-  <link href="../plugin/bootstrap-dialog.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="../plugins/bootstrap-dialog.css" rel="stylesheet" type="text/css" /> -->
 
-  <script src="js/bootstrap-dialog.js"></script>
+  <!-- <script src="js/bootstrap-dialog.js"></script> -->
 
 </head>
 
@@ -98,35 +98,56 @@ $get_all_users_data->execute();
 
                   <div class="box-body">
                   
-                    <table id="users" class="table table-bordered table-striped">
+                    <table style = "overflow-x: auto;"id="users" class="table table-bordered table-striped">
                       <thead>
                       
                         <tr style="font-size: 1.10rem">
                             <th> ID </th>
-                            <th> LAST NAME </th>
-                            <th> FIRST NAME </th>
-                            <th> MIDDLE NAME</th>                                      
-                            <th> CONTACT No. </th>
-                            <th> STATUS</th>
+                            <th> Full Name </th>
+                            <th> username </th>
+                            <th> Email</th>                                                                 
+                            <th> Gender</th>
+                            <th> Contact No. </th>
+                            <th> Birth Date</th>
+                            <th> Account Type</th>
+                            <th> Status </th>
+                            <th> Options </th>
                           </tr>
                           
                       </thead>
 
                       <tbody>
-                        <?php while($users_data = $get_all_users_data->fetch(PDO::FETCH_ASSOC)){  ?>
+                        <?php while($users_data = $get_all_users_data->fetch(PDO::FETCH_ASSOC)){  
+                          $account_type ='';
+                          if($users_data['account_type']=='1'){
+                            $account_type ='Administrator';
+                          }  
+                          else{
+                            $account_type ='User';
+                          }
+                          ?>
                           <tr style="font-size: 1rem">
                             <td><?php echo $users_data['user_id'];?> </td>
-                            <td><?php echo $users_data['last_name'];?> </td>
-                            <td><?php echo $users_data['first_name'];?> </td>
-                            <td><?php echo $users_data['middle_name'];?> </td>
+                            <td><?php echo $users_data['fullname'];?> </td>
+                            <td><?php echo $users_data['username'];?> </td>
+                            <td><?php echo $users_data['email'];?> </td>
+                            <td><?php echo $users_data['gender'];?> </td>
                             <td><?php echo $users_data['contact_no'];?> </td>
+                            <td><?php echo $users_data['birthdate'];?> </td>
+                            <td><?php echo $account_type?> </td>
                             <td><?php echo $users_data['status'];?> </td>
-                            <td>
-                            <a class="btn btn-outline-success btn-xs" 
-                            href="update_users.php?objid=<?php echo $users_data['user_id'];?>&id=<?php echo $users_data['user_id'];?>">
+                          <td>
+                            <a class="btn btn-success btn-sm btn-flat approved" 
+                            data-id=<?php echo $users_data['user_id'];?> data-name=<?php echo $users_data['fullname'];?>>
                             <i class="fa fa-check"></i>
                              </a>
-                            &nbsp;                           
+                           
+                             <a class="btn btn-danger btn-sm delete btn-flat" 
+                            href="update_users.php?objid=<?php echo $users_data['user_id'];?>&id=<?php echo $users_data['user_id'];?>">
+                            <i class="fa fa-trash"></i>
+                             </a>
+
+                                                 
                             
                           </td>
 
@@ -142,9 +163,33 @@ $get_all_users_data->execute();
           </div>
       </section>
       
-      
-      
-     
+      <div class = "modal fade " id="approved">
+    <div class ="modal-dialog ">
+    <div class ="modal-content ">
+    <div class="modal-header card-outline card-primary" >
+    <h4 class ="modal-title">Do you want to approve this user?</h4>
+    </div>
+    <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
+         <div class = "modal-body ">
+
+         <label class = col-sm-2 col-form-label"> User ID:</label>
+         <input type = "text" name = "userId" readonly class="form-control" id="userId">
+         <label class = col-sm-3 col-form-label"> Full Name:</label>
+         <input type = "text" name = "fullname" readonly class="form-control" id="fullname">
+         <div class="modal-footer">            
+        
+        
+         <button type="submit" class="btn btn-primary btn-sm " name = "approved" ><i class="fa fa-save"></i> YES</button>
+
+         <button type="button" class="btn  btn-primary btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>CLOSE</button>
+         </div>
+       
+         </div>                 
+
+    </form>
+    </div>
+    </div>
+     </div>
 
 
 
@@ -155,31 +200,46 @@ $get_all_users_data->execute();
 </div>
 <!-- ./wrapper -->
 <!-- jQuery 3 -->
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- PACE -->
-<script src="../bower_components/pace/pace.min.js"></script>
+<script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
-<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <script>
-     $('#pr').DataTable({
+     $('#users').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+      "scrollX"     : true
     })
-    $(document).on('click', 'button[data-role=confirm_delete]', function(event){
-      event.preventDefault();
-      var user_id = ($(this).data('id'));
-      $('#user_id').val(user_id);
-      $('#deleteuser_Modal').modal('toggle');
-    })
+    $('.approved').click(function(e){
+    e.preventDefault();
+    $('#approved').modal('show');
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+      $('#userId').val(id);
+      $('#fullname').val(name);
+
+    // alert(id);
+    // alert(name);
+    $.ajax({
+    type: 'POST',
+    url: 'updatecredentials.php',
+    data: {id:id},
+    dataType: 'json'
+   
+  });
+
+
+  });
 </script> 
 </body>
 </html>
