@@ -13,18 +13,22 @@ if(isset($_POST['add'])){
     $contactno = $_POST['contactno'];
     $datenow = date("m/d/Y");
  
+    // echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
+
 $hashed_password  = password_hash($userpass, PASSWORD_DEFAULT);
 
 $sql = "INSERT INTO tbl_users (
     username,
-    userpass,
+    password,
     fullname,
     email,
     gender,
     mobileno,
     birthdate,
     account_type,
-    createdat,
+    created_at,
     status
     
     ) VALUES (
@@ -43,7 +47,7 @@ $sql = "INSERT INTO tbl_users (
     )";
 
 if($con->query($sql)){
-    $_SESSION['success'] = "<i class='icon fa fa-check'></i>New User added successfully";
+    $_SESSION['success'] = "<i class='icon fa fa-check'></i>Registered Successfully";
 }
 else{
     $_SESSION['error'] = $con->error;
