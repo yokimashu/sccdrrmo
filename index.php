@@ -13,11 +13,12 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $check_username_sql = "SELECT * FROM tbl_users where username = :uname";
+        $check_username_sql = "SELECT * FROM tbl_users where username = :uname and status =:status";
         
         $username_data = $con->prepare($check_username_sql);
         $username_data ->execute([
-          ':uname' => $username
+          ':uname' => $username,
+          ':status' => 'Active',
         ]);
           if ($username_data->rowCount() > 0){
             while ($result = $username_data->fetch(PDO::FETCH_ASSOC)) {
@@ -136,14 +137,23 @@
                        ";
                      unset($_SESSION['error']);
                      }
+                     if(isset($_SESSION['check'])){
+                      echo "
+                        <div class='alert alert-danger alert-dismissible'>
+                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                            ".$_SESSION['check']."
+                        </div>
+                        ";
+                      unset($_SESSION['check']);
+                      }
                      if(isset($_SESSION['success'])){
                       echo "
-                       <div class='Ashake elevation-2'>
+                      
                        <div class='alert alert-success alert-dismissible'>
                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                            ".$_SESSION['success']."
                        </div>
-                       </div>
+                   
                        ";
                       unset($_SESSION['success']);
                    }
