@@ -21,10 +21,10 @@ $sql = "INSERT INTO tbl_users (
     fullname,
     email,
     gender,
-    contact_no,
+    mobileno,
     birthdate,
     account_type,
-    create_date,
+    createdat,
     status
     
     ) VALUES (
@@ -36,7 +36,7 @@ $sql = "INSERT INTO tbl_users (
     '$gender',
     '$contactno',
     '$birthdate',
-    '1',
+    '2',
     '$datenow',
     'PENDING'
     
