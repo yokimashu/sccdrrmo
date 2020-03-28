@@ -1,10 +1,10 @@
 <?php
 
 //local
-// $host = "localhost";
-// $db_name = "sccdrrmo";
-// $username = "root";
-// $password = "1234";
+$host = "localhost";
+$db_name = "sccdrrmo";
+$username = "root";
+$password = "1234";
 
 //server local port
 // $host = "127.0.0.1:3307";
@@ -13,10 +13,10 @@
 // $password = "5zAhx4Et37Wr";
 
 //server
-$host = "127.0.0.1";
-$db_name = "sccdrrmo";
-$username = "root";
-$password = "5zAhx4Et37Wr";
+// $host = "127.0.0.1";
+// $db_name = "sccdrrmo";
+// $username = "root";
+// $password = "5zAhx4Et37Wr";
 
 try {
     //database connection

@@ -37,7 +37,9 @@
                        echo "inactive";
                    }
                    
-              }
+              }else{
+                echo "invalid";
+              } 
             }
             }else{
               echo "invalid";
