@@ -23,12 +23,12 @@
             while ($result = $username_data->fetch(PDO::FETCH_ASSOC)) {
           
               //from database already hash
-              $hash_password = $result['userpass'];
+              $hash_password = $result['password'];
     
               //hash the $u_pass and compared to $hashed_password
               if (password_verify($password, $hash_password)) {
                session_start();
-               $_SESSION['id'] = $result['user_id'];
+               $_SESSION['id'] = $result['id'];
 
                 if ($result['account_type'] == 1) {
                   
