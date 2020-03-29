@@ -33,7 +33,7 @@
               //hash the $u_pass and compared to $hashed_password
               if (password_verify($password, $hash_password)) {
              
-                    if ($result['status'] == "INACTIVE") {
+                    if ($result['status'] == "INACTIVE" || $result['status'] == "INACTIVE" ) {
                        echo "inactive";
                    }
                    

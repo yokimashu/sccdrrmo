@@ -1,5 +1,4 @@
 <?php
-  session_start();
    include('config/db_config.php');
 //variable declaration
    $alert_msg = '';
@@ -67,11 +66,9 @@
         
 
     }
-
   
 
 ?>
-
 
 
 
@@ -125,79 +122,35 @@
     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
       <div class="form-group has-feedback">
         <!-- alert here -->
-                  <?php echo $alert_msg;?>
-                                <!-- ALERT BOX -->
-                                <?php
-                     if(isset($_SESSION['error'])){
-                     echo "
-                       <div class='alert alert-danger alert-dismissible'>
-                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                           ".$_SESSION['error']."
-                       </div>
-                       ";
-                     unset($_SESSION['error']);
-                     }
-                     if(isset($_SESSION['check'])){
-                      echo "
-                        <div class='alert alert-danger alert-dismissible'>
-                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            ".$_SESSION['check']."
-                        </div>
-                        ";
-                      unset($_SESSION['check']);
-                      }
-                     if(isset($_SESSION['success'])){
-                      echo "
-                      
-                       <div class='alert alert-success alert-dismissible'>
-                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                           ".$_SESSION['success']."
-                       </div>
-                   
-                       ";
-                      unset($_SESSION['success']);
-                   }
-                 ?>
+        <?php echo $alert_msg;?>
       </div>
-
-      <div class="form-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-user"></i></span>
+      <div class="form-group has-feedback">
         <input type="text" class="form-control" name="username" placeholder="Username">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-      </div>
-
-      <div class="form-group">
-      <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-lock"></i></span>
+      <div class="form-group has-feedback">
         <input type="password" class="form-control" name="password" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      </div>
-
-      <br>
 
       <div class="row">
         <div class="col-md-6">
-          <a href="#addnew" data-toggle="modal" style ="color:white;"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
+          <a href="register.php" class="btn btn-primary pull-left">Sign Up</a>
         </div>
         <div class="col-md-6">
           <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
         </div>
       </div>
-    
     </form>
-  </div><!-- /.login-box-body -->
- 
-</div><!-- /.login-box -->
-</body> 
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
-<?php include('adduser_modal.php'); ?>
 <!-- jQuery 3 -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
-
 </html>
