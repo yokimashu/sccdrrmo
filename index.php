@@ -156,7 +156,7 @@
                        ";
                       unset($_SESSION['success']);
                    }
-                 ?> -->
+                 ?> 
       </div>
 
       <div class="form-group">
