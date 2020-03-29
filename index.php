@@ -18,7 +18,7 @@
         $username_data = $con->prepare($check_username_sql);
         $username_data ->execute([
           ':uname' => $username,
-          ':status' => 'Active',
+          ':status' => 'ACTIVE',
         ]);
           if ($username_data->rowCount() > 0){
             while ($result = $username_data->fetch(PDO::FETCH_ASSOC)) {
@@ -86,7 +86,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../dist/css/ionicons.css">
+  <!-- <link rel="stylesheet" href="../dist/css/ionicons.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.css">
   <!-- iCheck -->
