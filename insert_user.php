@@ -1,20 +1,21 @@
 
 <?php
 
-include('config/db_config.php');
+
 
 if(isset($_POST['add'])){
+    
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
     $fullname = $_POST['fullname'];
     $gender = $_POST['gender'];
-    $birthdate = date_format($_POST['birthdate'] ,"Y-m-d");
+    // $birthdate = date_format($_POST['birthdate'] ,"Y-m-d");
+    $birthdate =$_POST['birthdate'] ;
     $email = $_POST['email'];
     $mobileNumber = $_POST['contactno'];
     $registered = date("m/d/Y");
    
     
-
 
 $hashed_password  = password_hash($userpass, PASSWORD_DEFAULT);
 
@@ -44,7 +45,15 @@ created_at          = :created";
 $check_username = "SELECT * from tbl_users where username = '$username'";
 $sql =$con->query($check_username);
 if($sql ->rowCount() > 0){
-$_SESSION['check'] = "<i class='icon'></i>The username is already taken."; 
+
+// $_SESSION['check'] = "<i class='icon'></i>The username is already taken."; 
+
+$alert_msg .= ' 
+<div class="alert alert-danger alert-dismissible>
+    <i class="icon fa fa-warning"></i>
+    Username already exist!
+</div>   
+';  
 }else{
 $users_data = $con->prepare($insert_users_sql);
 // if ($con->query($sql2))
@@ -62,19 +71,29 @@ if($users_data->execute([
     {
        
 
-
-    $_SESSION['success'] = "<i class='icon fa fa-check'></i>Registered Successfully.";
+        $alert_msg .= ' 
+        <div class="alert alert-success alert-dismissible">
+        <i class="icon fa fa-check"></i>Registered Successfully.
+        </div>     
+    ';
+    // $_SESSION['success'] = "<i class='icon fa fa-check'></i>Registered Successfully.";
    
 
 
 }
 else {
-    $_SESSION['error'] = $con->error;
+    $alert_msg .= ' 
+    <div class="alert alert-danger alert-dismissible>
+        <i class="icon fa fa-warning"></i>
+      
+        Registration is unsuccessful!
+    </div>     
+';
 }
 
 
 }
-header('location: index.php');
+// header('location: index.php');
 }
 
 

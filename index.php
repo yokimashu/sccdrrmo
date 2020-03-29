@@ -1,7 +1,10 @@
 <?php
+    
     include('config/db_config.php');
+   
     //variable declaration
        $alert_msg = '';
+       include('insert_user.php');
        //sign in button
         if (isset($_POST['signin'])){
             //to check if data are passed
@@ -43,18 +46,20 @@
                   else{
                     //echo "Password does not match!";
                     $alert_msg .= ' 
-                    <div class="new-alert new-alert-warning alert-dismissible">
+                    <div class="alert alert-danger alert-dismissible">
                         <i class="icon fa fa-warning"></i>
                         Incomplete Details!
                     </div>     
+                    
                 ';
+             
                   }
         
                     
                 }
             }else{
               $alert_msg .= ' 
-              <div class="new-alert new-alert-warning alert-dismissible">
+              <div class="alert alert-danger alert-dismissible">
                   <i class="icon fa fa-warning"></i>
                   Username does not exist!
               </div>     
@@ -123,40 +128,10 @@
 
     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
       <div class="form-group has-feedback">
-        <!-- alert here
-                  <?php echo $alert_msg;?>
-                                <!-- ALERT BOX -->
-                                <?php
-                     if(isset($_SESSION['error'])){
-                     echo "
-                       <div class='alert alert-danger alert-dismissible'>
-                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                           ".$_SESSION['error']."
-                       </div>
-                       ";
-                     unset($_SESSION['error']);
-                     }
-                     if(isset($_SESSION['check'])){
-                      echo "
-                        <div class='alert alert-danger alert-dismissible'>
-                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            ".$_SESSION['check']."
-                        </div>
-                        ";
-                      unset($_SESSION['check']);
-                      }
-                     if(isset($_SESSION['success'])){
-                      echo "
-                      
-                       <div class='alert alert-success alert-dismissible'>
-                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                           ".$_SESSION['success']."
-                       </div>
-                   
-                       ";
-                      unset($_SESSION['success']);
-                   }
-                 ?> 
+        
+                  <?php echo $alert_msg; ?>
+                
+                             
       </div>
 
       <div class="form-group">
@@ -191,6 +166,7 @@
 </body> 
 
 <?php include('adduser_modal.php'); ?>
+<?php include('insert_user.php');?>
 <!-- jQuery 3 -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
