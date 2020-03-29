@@ -4,9 +4,9 @@ include ('db-config.php');
 // session_start();
 // $user_id = $_SESSION['id'];
 
-     echo "<pre>";
-     print_r($_POST);
-     echo "</pre>";
+     // echo "<pre>";
+     // print_r($_POST);
+     // echo "</pre>";
 
 // $content = $_POST['Content_Type'];
 $type = $_POST['Type'];
