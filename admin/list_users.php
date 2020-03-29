@@ -12,7 +12,7 @@ $department =  '';
 $user_id = $_SESSION['id'];
 
 //querry to select current user's information
-$get_user_sql = "SELECT * FROM tbl_users WHERE user_id = :id";
+$get_user_sql = "SELECT * FROM tbl_users WHERE id = :id";
 $get_user_data = $con->prepare($get_user_sql);
 $get_user_data->execute([':id'=>$user_id]);
 while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
@@ -132,23 +132,23 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                           }
                           ?>
                           <tr style="font-size: 1rem">
-                            <td><?php echo $users_data['user_id'];?> </td>
+                            <td><?php echo $users_data['id'];?> </td>
                             <td><?php echo $users_data['fullname'];?> </td>
                             <td><?php echo $users_data['username'];?> </td>
                             <td><?php echo $users_data['email'];?> </td>
                             <td><?php echo $users_data['gender'];?> </td>
-                            <td><?php echo $users_data['contact_no'];?> </td>
+                            <td><?php echo $users_data['mobileno'];?> </td>
                             <td><?php echo $users_data['birthdate'];?> </td>
                             <td><?php echo $account_type?> </td>
                             <td><?php echo $users_data['status'];?> </td>
                           <td>
                             <a class="btn btn-success btn-sm btn-flat approved" 
-                            data-id=<?php echo $users_data['user_id'];?> data-name=<?php echo $users_data['fullname'];?>>
+                            data-id=<?php echo $users_data['id'];?> data-name=<?php echo $users_data['fullname'];?>>
                             <i class="fa fa-check"></i>
                              </a>
                            
                              <a class="btn btn-danger btn-sm delete btn-flat" 
-                            href="update_users.php?objid=<?php echo $users_data['user_id'];?>&id=<?php echo $users_data['user_id'];?>">
+                            href="update_users.php?objid=<?php echo $users_data['id'];?>&id=<?php echo $users_data['user_id'];?>">
                             <i class="fa fa-trash"></i>
                              </a>
 
@@ -231,20 +231,39 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     var id = $(this).data('id');
     var name = $(this).data('name');
       $('#userId').val(id);
+      
       $('#fullname').val(name);
-
+  //  getDetails(id);
     // alert(id);
     // alert(name);
+  //   $.ajax({
+  //   type: 'POST',
+  //   url: 'updatecredentials.php',
+  //   data: {id:id},
+  //   dataType: 'json'
+   
+  // });
+
+
+  });
+
+  function getDetails(id){
+    alert(id);
     $.ajax({
     type: 'POST',
-    url: 'updatecredentials.php',
-    data: {id:id},
-    dataType: 'json'
-   
-  });
+    url: 'getUserdetail.php',
+    data: {id2:id},
+    dataType: 'json',
+    success:   function(response){
+      $('#fullname').val(response.fullname);
+      console.log(response.fullname);
+    }
+    
+    });
+ 
+  }
 
-
-  });
+  
 </script> 
 </body>
 </html>

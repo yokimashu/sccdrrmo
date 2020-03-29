@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+
 include('config/db_config.php');
 
 if(isset($_POST['add'])){
@@ -74,13 +74,11 @@ else {
 
 
 }
-}
-elseif( $_SESSION['error']){
-    $_SESSION['error'] = 'Fill up the form first';
-}
-
-
 header('location: index.php');
+}
+
+
+
 
 
 
