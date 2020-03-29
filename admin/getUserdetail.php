@@ -2,12 +2,15 @@
 
 
 
-if(isset($_POST['id2'])){
-    $id = $_POST['id2'];
-    $sql = "SELECT * from tbl_users where id = '$id'";
-    $query = $con->query($sql);
-    $row = $query->fetch_assoc();
+if($_REQUEST["id"]){
+    $id = $_REQUEST["id"];
+    $sql = "SELECT * from tbl_users where id = :id";
+    user_data = $con->prepare($sql);
+    user_data  ->execute([':id' => $id])
+    while ($result =  user_data ->fetch(PDO::FETCH_ASSOC)) {
+        $fullname = result['fullname'];
 
-    echo json_encode($row);
+    }
+    echo $fullname;
 }
 ?>
