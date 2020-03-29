@@ -3,7 +3,7 @@
 $host = "localhost";
 $db_name = "sccdrrmo";
 $username = "root";
-$password = "1234";
+$password = "";
 
 try {
     //database connection
