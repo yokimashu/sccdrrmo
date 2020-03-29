@@ -2,12 +2,10 @@
 
 session_start();
 include ('../config/db_config.php');
-
-$btnNew = 'disabled';
+include('header.php');
 if (!isset($_SESSION['id'])) {
     header('location:../index');
 }
-$department =  '';
 
 $user_id = $_SESSION['id'];
 
@@ -34,45 +32,8 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
 <!DOCTYPE html> 
 <html >
-<head>
 
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO |USER'S LIST</title>
-
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="../dist/css/ionicons.min.css"> -->
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
-  <!-- Morris chart
-  <link rel="stylesheet" href="../plugins/morris/morris.css">
-  jvectormap -->
-  <!-- <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css"> -->
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-  <!-- Daterange picker
-  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css"> -->
-  <!-- bootstrap wysihtml5 - text editor -->
-  <!-- <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> -->
-  <!-- Google Font: Source Sans Pro -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
-   <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
-     <!-- Select2 -->
-  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
-
-  <!-- <link href="../plugins/bootstrap-dialog.css" rel="stylesheet" type="text/css" /> -->
-
-  <!-- <script src="js/bootstrap-dialog.js"></script> -->
-
-</head>
 
 <body class="hold-transition sidebar-mini">
 
@@ -206,6 +167,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 <!-- ./wrapper -->
 <!-- jQuery 3 -->
 <script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- PACE -->
@@ -231,8 +193,13 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     var id = $(this).data('id');
     var name = $(this).data('name');
       $('#userId').val(id);
-      
-      $('#fullname').val(name);
+      $.post("getUserdetail.php",
+      {id:id},
+      function(response){
+        $("#fullname").html(response);
+      }
+      );
+    
   //  getDetails(id);
     // alert(id);
     // alert(name);
