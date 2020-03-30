@@ -11,7 +11,9 @@ if (!isset($_SESSION['id'])) {
 } else {
 
 }
+$result = $date->format('Y-m-d H:i:s');
 
+date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');
 
 $date= $symptoms= $patient='';
@@ -154,7 +156,7 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
                 <?php echo $alert_msg;?>
                 <div class="form-group">
-                    <input type="text" class="form-control"  name="report_date" placeholder="Date of Report" value="<?php echo $date;?>" >
+                    <input type="text" class="form-control" name="prdate" placeholder="Date" style="width: 27%; text-transform:uppercase" value="<?php echo $prdate; ?>" required>
                 </div>
 
                 <div class="form-group">
