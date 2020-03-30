@@ -92,7 +92,7 @@ $get_all_symptoms_data->execute();
                                     <table style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
-                                                <th> Date </th>
+                                                <th> Date & Time </th>
                                                 <th> ID No </th>
                                                 <th> Full Name </th>
                                               
@@ -103,7 +103,7 @@ $get_all_symptoms_data->execute();
                                             <tbody >
                                              <?php while($list_pum = $get_all_pum_data->fetch(PDO::FETCH_ASSOC)){ ?>
                                                     <tr align="center">  
-                                                        <td><?php echo $list_pum['date_report'];?> </td>
+                                                        <td><?php echo $list_pum['date_report']; echo " "; echo $list_pum['time_report']; ?> </td>
                                                         <td><?php echo $list_pum['idno'];?> </td>
                                                         <td><?php echo $list_pum['fullname'];?> </td>
                                                         <td><?php echo $list_pum['symptoms'];?> </td>
