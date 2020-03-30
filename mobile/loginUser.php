@@ -14,14 +14,14 @@
         //     print_r($_POST);
         // echo "</pre>";
 
-        $email = $_POST['email'];
+        $username = $_POST['email'];
         $password = $_POST['password'];
 
-        $check_username_sql = "SELECT * FROM tbl_users where email = :email";
+        $check_username_sql = "SELECT * FROM tbl_users where username = :username";
         
         $username_data = $con->prepare($check_username_sql);
         $username_data ->execute([
-          ':email' => $email
+          ':username' => $username
         ]);
 
           if ($username_data->rowCount() > 0){
@@ -33,7 +33,7 @@
               //hash the $u_pass and compared to $hashed_password
               if (password_verify($password, $hash_password)) {
              
-                    if ($result['status'] == "INACTIVE" || $result['status'] == "INACTIVE" ) {
+                    if ($result['status'] == "INACTIVE" || $result['status'] == "PENDING" ) {
                        echo "inactive";
                    }
                    

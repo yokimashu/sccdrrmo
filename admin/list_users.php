@@ -138,9 +138,9 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
          <div class = "modal-body ">
 
-         <label class = col-sm-2 col-form-label"> User ID:</label>
+         <label class = "col-sm-2 col-form-label"> User ID:</label>
          <input type = "text" name = "userId" readonly class="form-control" id="userId">
-         <label class = col-sm-3 col-form-label"> Full Name:</label>
+         <label class = "col-sm-3 col-form-label"> Full Name:</label>
          <input type = "text" name = "fullname" readonly class="form-control" id="fullname">
          <div class="modal-footer">            
         
