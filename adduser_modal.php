@@ -1,4 +1,4 @@
-<?php include('insert_user.php')?>
+<!-- <?php include('insert_user.php')?> -->
 <div  class="modal fade"   id="addnew">
      <div class="modal-dialog">
          
@@ -27,7 +27,7 @@
                     <div class="form-group row">
                     <label for="fullname" style = "font-size:13px;"class="col-md-2 col-form-label ">Full Name</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="fullname" class="form-control" id="fullname" required>
+                      <input type="text" name ="fullname" class="form-control" id="fullname1" required>
                     </div>  
                     </div>
 
