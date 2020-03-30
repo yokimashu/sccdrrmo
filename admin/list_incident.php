@@ -19,11 +19,11 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$get_all_users_sql = "SELECT * FROM tbl_users ";
-$get_all_users_data = $con->prepare($get_all_users_sql);
-$get_all_users_data->execute(); 
+$get_all_incident_sql = "SELECT * FROM tbl_incident ";
+$get_all_incident_data = $con->prepare($get_all_incident_sql);
+$get_all_incident_data->execute(); 
 while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
-  $status   = $result['status'];
+  $remarks   = $result['remarks'];
 }
 
 
@@ -52,8 +52,10 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     
           <div class="card card-info">
             <div class="card-header">
-              <h4 style="float:left;" >USERS LIST</h4>
-         
+              <h4 style="float:left;" >INCIDENT LIST</h4>
+              <a href="add_incident" style="text-decoration:none;">
+                <button  style="float:right; "type="button" class="btn btn-success" >Add Incident</button>
+              </a>
               
             </div>
           
@@ -64,26 +66,60 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
                   <div class="box-body">
                   
-                    <table id="users" class="table table-bordered table-striped ">
+                    <table style = "overflow-x: auto;"id="users" class="table table-bordered table-striped">
                       <thead>
                       
-                       
+                        <tr style="font-size: 1.10rem">
                             <th> ID </th>
-                            <th> Full Name </th>
-                            <th> username </th>
-                            <th> Email</th>                                                                 
-                            <th> Gender</th>
-                            <th> Contact No. </th>
-                            <th> Birth Date</th>
-                            <th> Account Type</th>
-                            <th> Status </th>
-                            <th> Options </th>
-                         
+                            <th> Date</th>
+                            <th> Time</th>      
+                            <th> Type</th>                                                                 
+                            <th> Severity</th>
+                            <th> Topic </th>
+                            <th> Reported_by </th>
+                            <th> Remarks</th>
+                           
+                    
+                          </tr>
                           
                       </thead>
 
                       <tbody>
+                        <?php while($incident_data = $get_all_incident_data->fetch(PDO::FETCH_ASSOC)){  
+                          $account_type ='';
+                          if($users_data['account_type']=='1'){
+                            $account_type ='Administrator';
+                          }  
+                          else{
+                            $account_type ='User';
+                          }
+                          ?>
+                          <tr style="font-size: 1rem">
+                            <td><?php echo $incident_data['objid'];?> </td>
+                            <td><?php echo $incident_data['date'];?> </td>
+                            <td><?php echo $incident_data['time'];?> </td>
+                            <td><?php echo $incident_data['type'];?> </td>
+                            <td><?php echo $incident_data['severity'];?> </td>
+                            <td><?php echo $incident_data['topic'];?> </td>
+                            <td><?php echo $incident_data['reported_by'];?> </td>
+                            <td><?php echo $incident_data['remarks'];?> </td>
+                            
+                          
+                          <td>
+                            <a class="btn btn-success btn-sm btn-flat approved" 
+                            data-id=<?php echo $incident['id'];?> data-name=<?php echo $incident_data['reported_by'];?>>
+                            <i class="fa fa-check"></i>
+                             </a>
                            
+                      
+
+                                                 
+                            
+                          </td>
+
+
+                          </tr>
+                        <?php   } ?>
                       </tbody>
                     </table>
                   </div>
@@ -97,14 +133,14 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     <div class ="modal-dialog ">
     <div class ="modal-content ">
     <div class="modal-header card-outline card-primary" >
-    <h4 class ="modal-title">Do you want to approve this user?</h4>
+    <h4 class ="modal-title">Do you want to approve this data?</h4>
     </div>
-    <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
+    <form class =form-horizontal method ="POST" action = "update_incident.php"  enctype="multipart/form-data">
          <div class = "modal-body ">
 
-         <label class = "col-sm-2 col-form-label"> User ID:</label>
+         <label class = col-sm-2 col-form-label"> User ID:</label>
          <input type = "text" name = "userId" readonly class="form-control" id="userId">
-         <label class = "col-sm-3 col-form-label"> Full Name:</label>
+         <label class = col-sm-3 col-form-label"> Full Name:</label>
          <input type = "text" name = "fullname" readonly class="form-control" id="fullname">
          <div class="modal-footer">            
         
@@ -142,26 +178,15 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <script>
-    //  $('#users').DataTable({
-    //   'paging'      : true,
-    //   'lengthChange': true,
-    //   'searching'   : true,
-    //   'ordering'    : true,
-    //   'info'        : true,
-    //   'autoWidth'   : true,
-    //   'scrollX'     : true
-   
-    // });
-
-             $(document).ready(function() {
-                $(document).ajaxStart(function() {
-                    Pace.restart()
-                })
-
-
-       
-
-            });
+     $('#users').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true,
+      "scrollX"     : true
+    })
     $('.approved').click(function(e){
     e.preventDefault();
     $('#approved').modal('show');
@@ -204,49 +229,6 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     });
  
   }
-  $(document).ready(function() {  
-        // var office = $('#department').val();
-      
-				var dataTable = $('#users').DataTable( {
-          "paging": true,
-					"processing": true,
-					"serverSide": true,
-          'scrollX'   : true,
-					"ajax":{
-						url :"search_user.php", // json datasource
-						type: "post",  // method  , by default get
-						error: function(){  // error handling
-							$("#users-error").html("");
-							$("#users").append('<tbody class="users-error"><tr>< th colspan="3">No data found in the server</th></tr></tbody>');
-							$("#users_processing").css("display","none");
-             
-						}
-					},
-          "columnDefs": [{
-                "targets" : -1,
-                "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved">  <i class="fa fa-check"></i></button>'
-          
-         
-              }],
-          
-				} );
-
-        $('#users tbody').on( 'click', 'button', function() {
-      
-         var table = $('#users').DataTable();
-         var data = table.row( $(this).parents('tr') ).data();
-    
-          var id = data[0];
-          $.ajax({
-       type: 'POST',
-      url: 'updatecredentials.php',
-      data: {id:id},
-       dataType: 'json'
-       
-  });
-        });
-			} );
 
   
 </script> 
