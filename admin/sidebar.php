@@ -91,7 +91,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                 </a>
               </li>
               <li class="nav-item has-treeview" style="font-size:16px">
-
               <a href="" class="nav-link ">
                 <i class="nav-icon fa fa-thermometer-full"></i>
                 <p>
@@ -107,8 +106,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                   </a>
                 </li>          
               </ul>
-
-
 
               <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">

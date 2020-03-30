@@ -12,6 +12,7 @@ if (!isset($_SESSION['id'])) {
 
 }
 
+$date = date('Y-m-d');
 
 $date= $symptoms= $patient='';
 
@@ -153,7 +154,7 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
                 <?php echo $alert_msg;?>
                 <div class="form-group">
-                    <input type="text" class="form-control" data-toggle="datepicker" name="report_date" placeholder="Date of Report" value="<?php echo $date;?>" >
+                    <input type="text" class="form-control"  name="report_date" placeholder="Date of Report" value="<?php echo $date;?>" >
                 </div>
 
                 <div class="form-group">
