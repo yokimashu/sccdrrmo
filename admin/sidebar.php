@@ -91,6 +91,26 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                 </a>
               </li>
               <li class="nav-item has-treeview" style="font-size:16px">
+
+              <a href="" class="nav-link ">
+                <i class="nav-icon fa fa-thermometer-full"></i>
+                <p>
+                  COVID-19
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="list_pum" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>PUM</p>
+                  </a>
+                </li>          
+              </ul>
+
+
+
+              <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
               <i class="nav-icon fa fa-exchange"></i>
               <p>
@@ -116,50 +136,19 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
               <i class="nav-icon fa fa-list"></i>
               <p>
                 PROPERTIES
-                <!-- <i class="right fa fa-angle-left"></i> -->
+                <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-            <!-- <ul class="nav nav-treeview">
-               -->
-
-               <!-- <li class="nav-item">
-                <a href="list_position" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Position</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="list_section" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Section</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="list_employee" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Employee</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="list_approvedby" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Approved by</p> 
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="list_preparedby" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Prepared by</p> 
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="list_requestedby" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Requested by</p> 
-                </a>
-              </li> -->
+            <ul class="nav nav-treeview">
               
-            <!-- </ul> -->
+            <li class="nav-item">
+                <a href="list_symptoms" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Add Symptom</p>
+                </a>
+              </li>
+              
+            </ul>
               
             
             <li class="nav-item has-treeview" style="font-size:16px">
