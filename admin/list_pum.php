@@ -156,7 +156,7 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
                 <?php echo $alert_msg;?>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="prdate" placeholder="Date" style="width: 27%; text-transform:uppercase" value="<?php echo $prdate; ?>" required>
+                    <input type="text" class="form-control" name="prdate" style="width: 27%; text-transform:uppercase" value="<?php echo $prdate; ?>" required>
                 </div>
 
                 <div class="form-group">
