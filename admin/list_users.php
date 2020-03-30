@@ -71,7 +71,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                             <th> ID </th>
                             <th> Full Name </th>
                             <th> username </th>
-                            <th> Email</th>                                                                 
+                            <th > Email</th>                                                                 
                             <th> Gender</th>
                             <th> Contact No. </th>
                             <th> Birth Date</th>
@@ -210,7 +210,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 				var dataTable = $('#users').DataTable( {
           "paging": true,
 					"processing": true,
-					"serverSide": true,
+          "serverSide": true,
           'scrollX'   : true,
 					"ajax":{
 						url :"search_user.php", // json datasource
@@ -245,6 +245,8 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
        dataType: 'json'
        
   });
+  var myTable = document.getElementById('users');
+  myTable.cells[8].innerHTML = 'Hello';
         });
 			} );
 
