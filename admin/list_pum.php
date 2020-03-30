@@ -157,8 +157,8 @@ $get_all_symptoms_data->execute();
                 <?php echo $alert_msg;?>
 
 
-                <div class="form-group">
-                    <input type="text" class="form-control" name="report_time" value="<?php echo $time; ?>" required>
+                <div class="form-group" hidden>
+                    <input type="hidden" class="form-control" name="report_time" value="<?php echo $time; ?>" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="report_date" value="<?php echo $date; ?>" required>
