@@ -14,7 +14,7 @@ if (!isset($_SESSION['id'])) {
 
 date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');
-$time = date('H:i');
+$time = date('H:i:s');
 
 $symptoms= $patient='';
 
