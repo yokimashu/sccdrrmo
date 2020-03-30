@@ -29,7 +29,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active'";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
@@ -230,7 +230,7 @@ $get_all_symptoms_data->execute();
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,
-      'autoHeight'  : true,
+      'autoHeight'  : true
      
     });
 
