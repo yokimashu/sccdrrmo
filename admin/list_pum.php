@@ -111,7 +111,7 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_pum['symptoms'];?> </td>
                                                         <td><?php echo $list_pum['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-xs" href=" ">
+                                                            <a class="btn btn-danger btn-xs" href="view_pum.php?objid=<?php echo $list_pum['objid'];?> ">
                                                             <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
                                                             &nbsp;                           
