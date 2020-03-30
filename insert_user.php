@@ -29,7 +29,8 @@ birthdate           = :bday,
 mobileno            = :mobileno,
 gender              = :gender,
 account_type        = '2',
-created_at          = :created";
+created_at          = :created,
+status              = 'PENDING'";
 
 
 // $sql2 = "INSERT INTO tbl_users SET
@@ -50,8 +51,9 @@ if($sql ->rowCount() > 0){
 
 $alert_msg .= ' 
 <div class="alert alert-danger alert-dismissible>
-    <i class="icon fa fa-warning"></i>
-    Username already exist!
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<i class="icon fa fa-warning"></i>
+Username already exist!
 </div>   
 ';  
 }else{
@@ -73,6 +75,7 @@ if($users_data->execute([
 
         $alert_msg .= ' 
         <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <i class="icon fa fa-check"></i>Registered Successfully.
         </div>     
     ';
@@ -84,8 +87,8 @@ if($users_data->execute([
 else {
     $alert_msg .= ' 
     <div class="alert alert-danger alert-dismissible>
-        <i class="icon fa fa-warning"></i>
-      
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <i class="icon fa fa-warning"></i>
         Registration is unsuccessful!
     </div>     
 ';

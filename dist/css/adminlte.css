@@ -13055,9 +13055,9 @@ a.text-muted:hover {
 /* animation */
 
 .Ashake {
-  opacity: 0.75;
+  opacity: 0.9;
   position: relative;
-  animation: shake 0.10s 25;
+  animation: shake 0.10s 15;
 }
 
 @keyframes shake {
