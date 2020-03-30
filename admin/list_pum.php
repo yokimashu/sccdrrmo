@@ -155,11 +155,11 @@ $get_all_symptoms_data->execute();
           <div class="modal-body">
             <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
                 <?php echo $alert_msg;?>
+
+
+
                 <div class="form-group">
-                    <input type="text" class="form-control" name="report_date" value="<?php echo $time; ?>" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="report_date" value="<?php echo $date; ?>" required>
+                    <input type="text" class="form-control" name="report_date" value="<?php echo $time; echo " "; echo $date; ?>" required>
                 </div>
 
                 <div class="form-group">
