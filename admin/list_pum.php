@@ -11,7 +11,7 @@ if (!isset($_SESSION['id'])) {
 } else {
 
 }
-$result = $date->format('Y-m-d H:i:s');
+// $result = $date->format('Y-m-d H:i:s');
 
 date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');
