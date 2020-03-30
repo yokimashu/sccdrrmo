@@ -16,7 +16,7 @@ $result = $date->format('Y-m-d H:i:s');
 date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');
 
-$date= $symptoms= $patient='';
+$symptoms= $patient='';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
