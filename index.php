@@ -166,7 +166,7 @@
 </body> 
 
 <?php include('adduser_modal.php'); ?>
-<?php include('insert_user.php');?>
+
 <!-- jQuery 3 -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
