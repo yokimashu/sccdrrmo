@@ -3,7 +3,7 @@ session_start();
 /* Database connection start */
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "1234";
 $dbname = "sccdrrmo";
 // $office = $_POST['office'];
 
@@ -28,7 +28,7 @@ $requestData= $_REQUEST;
 	5 => 'mobileno',
     6 => 'bithdate',
     7 => 'account_type',
-    8 => 'status',
+    8 => 'status'
 	
 
 
