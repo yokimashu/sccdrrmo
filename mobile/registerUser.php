@@ -14,6 +14,7 @@ include ('db-config.php');
     $birthdate = date('Y-m-d', strtotime($_POST['birthdate']));
     $mobileNumber = $_POST['mobileNumber'];
     $gender = $_POST['gender'];
+    $address = $_POST['address'];
     $registered = $_POST['dateAndTimeRegistered'];
 
     $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
@@ -26,6 +27,7 @@ include ('db-config.php');
         birthdate           = :bday,
         mobileno            = :mobileno,
         gender              = :gender,
+        address             = :address,
         account_type        = '3',
         created_at          = :created";
 
@@ -38,6 +40,7 @@ include ('db-config.php');
         ':bday'             => $birthdate,
         ':mobileno'         => $mobileNumber,
         ':gender'           => $gender,
+        ':address'          => $address,
         ':created'          => $registered
         
         ]);
