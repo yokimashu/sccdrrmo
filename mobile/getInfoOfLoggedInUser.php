@@ -8,12 +8,12 @@ include ('db-config.php');
     //  print_r($_GET);
     //  echo "</pre>";
 
-$email = $_GET['emailAddress'];
+$username = $_GET['username'];
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where email = :email";
+$get_user_sql = "SELECT * FROM tbl_users where username = :username";
 $user_data = $con->prepare($get_user_sql);
-$user_data->execute([':email' => $email]);
+$user_data->execute([':username' => $username]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
     $userID = $result['id'];

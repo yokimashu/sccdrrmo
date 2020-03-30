@@ -71,12 +71,14 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                       
                         <tr style="font-size: 1.10rem">
                             <th> ID </th>
-                            <th> Date Created </th>
-                            <th> Report Person </th>
+                            <th> Date</th>
+                            <th> Time</th>      
                             <th> Type</th>                                                                 
                             <th> Severity</th>
                             <th> Topic </th>
+                            <th> Reported_by </th>
                             <th> Remarks</th>
+                           
                     
                           </tr>
                           
@@ -95,11 +97,13 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                           <tr style="font-size: 1rem">
                             <td><?php echo $incident_data['objid'];?> </td>
                             <td><?php echo $incident_data['date'];?> </td>
-                            <td><?php echo $incident_data['reported_by'];?> </td>
+                            <td><?php echo $incident_data['time'];?> </td>
                             <td><?php echo $incident_data['type'];?> </td>
                             <td><?php echo $incident_data['severity'];?> </td>
                             <td><?php echo $incident_data['topic'];?> </td>
+                            <td><?php echo $incident_data['reported_by'];?> </td>
                             <td><?php echo $incident_data['remarks'];?> </td>
+                            
                           
                           <td>
                             <a class="btn btn-success btn-sm btn-flat approved" 
@@ -107,10 +111,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                             <i class="fa fa-check"></i>
                              </a>
                            
-                             <a class="btn btn-danger btn-sm delete btn-flat" 
-                            href="update_users.php?objid=<?php echo $users_data['id'];?>&id=<?php echo $users_data['user_id'];?>">
-                            <i class="fa fa-trash"></i>
-                             </a>
+                      
 
                                                  
                             
@@ -132,9 +133,9 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     <div class ="modal-dialog ">
     <div class ="modal-content ">
     <div class="modal-header card-outline card-primary" >
-    <h4 class ="modal-title">Do you want to approve this user?</h4>
+    <h4 class ="modal-title">Do you want to approve this data?</h4>
     </div>
-    <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
+    <form class =form-horizontal method ="POST" action = "update_incident.php"  enctype="multipart/form-data">
          <div class = "modal-body ">
 
          <label class = col-sm-2 col-form-label"> User ID:</label>
