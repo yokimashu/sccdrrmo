@@ -77,7 +77,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                             <th> Birth Date</th>
                             <th> Account Type</th>
                             <th> Status </th>
-                            <th> Options </th>
+                            <th> Options1 </th>
                           </tr>
                           
                       </thead>
