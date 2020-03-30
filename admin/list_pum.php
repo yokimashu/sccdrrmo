@@ -228,7 +228,8 @@ $get_all_symptoms_data->execute();
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,
-      'autoHeight'  : true
+      'autoHeight'  : true,
+      "order:":[[0, desc]]  
     });
 
     $('#addPUM').on('hidden.bs.modal', function () {
