@@ -1,6 +1,7 @@
 <?php
 
 include ('db-config.php');
+date_default_timezone_set('Asia/Manila');
 // session_start();
 // $user_id = $_SESSION['id'];
 
@@ -9,6 +10,7 @@ include ('db-config.php');
      // echo "</pre>";
 
 // $content = $_POST['Content_Type'];
+
 $type = $_POST['Type'];
 $severity = $_POST['topicSeverity'];
 $title = $_POST['topicTitle'];
@@ -19,12 +21,16 @@ $locationAddress = $_POST['topicLocationAddress'];
 $postedBy = $_POST['topicPostedBy'];
 $mobileno = $_POST['mobileNo'];
 $created = $_POST['topicDateAndTimePosted'];
+$date = date('Y-m-d');
+$time = date('h:i:s');
 
 $insert_users_sql = "INSERT INTO tbl_incident SET
 type                = :type,
 severity            = :severity,
 topic               = :topic,
 image               = :image,
+date                = :date,
+time                = :time,
 latitude            = :latitude,
 longitude           = :longitude,
 location_address    = :locationAddress,
@@ -39,6 +45,8 @@ $users_data->execute([
 ':severity'         => $severity,
 ':topic'            => $title,
 ':image'            => $image,
+':date'             => $date,
+':time'             => $time,
 ':latitude'         => $latitude,
 ':longitude'        => $longitude,
 ':locationAddress'  => $locationAddress,
