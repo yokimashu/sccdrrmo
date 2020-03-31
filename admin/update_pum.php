@@ -17,7 +17,7 @@ if (isset($_POST['update_pum'])) {
         fullname            = :namesss,
         time_report         = :timesss,
         symptoms            = :symp,
-        status              = :stat, 
+        status              = :stat 
         where idno      = :id";
             
     $pum_data = $con->prepare($update_pum_sql);
