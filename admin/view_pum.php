@@ -103,23 +103,29 @@ $get_fullname = $get_symptoms = $get_status= '';
             
               <div class="box-body" >
 
-                    <div class="row"  > 
-                      <div class="col-md-3"  style="text-align: right;padding-top: 5px;">
-                        <label hidden>ID No:</label>
+                    <div class="row"> 
+                      <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                        <label>ID No:</label>
                       </div>
                       <div class="col-md-7" >
-                        <input type="text" readonly onkeyup="this.value = this.value.toUpperCase();" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
+                        <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
                       </div>
                     </div><br>
 
-                    <div class="row"  > 
-                      <div class="col-md-3"  style="text-align: right;padding-top: 5px;">
-                        <label hidden>ID No:</label>
+                    <div class="row"> 
+                      <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                        <label>Date & Time :</label>
                       </div>
-                      <div class="col-md-7" >
-                        <input type="text" readonly onkeyup="this.value = this.value.toUpperCase();" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
-                      </div>
+                      <div class="col-md-3" >
+                        <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
+                       </div>
+                       <div class="col-md-3">
+                       <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
+                       </div>
                     </div><br>
+
+
+                 
    
                 
 
