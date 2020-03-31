@@ -143,8 +143,8 @@ $get_all_symptoms_data->execute();
                             <div class="col-md-4" style="text-align:right;padding-top: 5px;">
                                   <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-5" readonly style="text-align:left;" >
-                              <select class="form-control select2" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
+                            <div class="col-md-5" style="text-align:left;" >
+                              <select class="form-control select2" readonly  id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
                                 <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option><?php } ?>
@@ -261,7 +261,6 @@ $get_all_symptoms_data->execute();
 
     $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='idno']").removeAttr("readonly");
           $("input[name='report_date']").removeAttr("readonly");
           $("input[name='report_time']").removeAttr("readonly");
           $("input[name='fullname']").removeAttr("readonly");
