@@ -7,7 +7,7 @@ if (isset($_POST['update_pum'])) {
     $get_fullname = $_POST['fullname'];
     $get_date = $_POST['report_date'];
     $get_time = $_POST['report_time'];
-    $get_symptoms = $_POST['symptoms'];
+    $get_symptoms = $_POST['name_symptoms'];
     $get_id = $_POST['idno'];
     $get_status = $_POST['status'];
 
