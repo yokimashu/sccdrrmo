@@ -72,13 +72,10 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                             <th> Full Name </th>
                             <th> username </th>
                             <th > Email</th>                                                                 
-                            <th> Gender</th>
-                            <th> Contact No. </th>
-                            <th> Birth Date</th>
-                            <th> Account Type</th>
+                           <th> Contact No. </th>
                             <th> Status </th>
-                            <th> Options </th>
-                         
+                            <th> Approved </th>
+                            
                           
                       </thead>
 
@@ -126,6 +123,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     </div>
 
   <!-- footer here -->
+  <?php include('../adduser_modal.php');?>
     <?php include('footer.php');?>
 </div>
 <!-- ./wrapper -->
@@ -162,48 +160,34 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
        
 
             });
-    $('.approved').click(function(e){
-    e.preventDefault();
-    $('#approved').modal('show');
-    var id = $(this).data('id');
-    var name = $(this).data('name');
-      $('#userId').val(id);
-      $.post("getUserdetail.php",
-      {id:id},
-      function(response){
-        $("#fullname").html(response);
-      }
-      );
+  //   $('.approved').click(function(e){
+  //   e.preventDefault();
+  //   $('#approved').modal('show');
+  //   var id = $(this).data('id');
+  //   var name = $(this).data('name');
+  //     $('#userId').val(id);
+  //     $.post("getUserdetail.php",
+  //     {id:id},
+  //     function(response){
+  //       $("#fullname").html(response);
+  //     }
+  //     );
     
-  //  getDetails(id);
-    // alert(id);
-    // alert(name);
-  //   $.ajax({
-  //   type: 'POST',
-  //   url: 'updatecredentials.php',
-  //   data: {id:id},
-  //   dataType: 'json'
-   
-  // });
-
-
-  });
-
-  function getDetails(id){
+   function getDetails(id){
     alert(id);
+    alert(name);
     $.ajax({
     type: 'POST',
-    url: 'getUserdetail.php',
-    data: {id2:id},
-    dataType: 'json',
-    success:   function(response){
-      $('#fullname').val(response.fullname);
-      console.log(response.fullname);
-    }
-    
-    });
- 
-  }
+    url: 'updatecredentials.php',
+    data: {id:id},
+    dataType: 'json'
+   
+  };
+
+
+
+
+
   $(document).ready(function() {  
         // var office = $('#department').val();
       
@@ -225,14 +209,15 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
           "columnDefs": [{
                 "targets" : -1,
                 "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved">  <i class="fa fa-check"></i></button>'
+                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-success btn-sm btn-flat " id = "view">  <button class="fa fa-check"></i></button>'
           
          
               }],
           
 				} );
-
-        $('#users tbody').on( 'click', 'button', function() {
+       $('#users tbody').on( 'click', '#btn', function(){
+        // $("#users").on("click","button.btn",function(){
+        // $('.approved').on( 'click',function() {
       
          var table = $('#users').DataTable();
          var data = table.row( $(this).parents('tr') ).data();
@@ -245,8 +230,18 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
        dataType: 'json'
        
   });
-  var myTable = document.getElementById('users');
-  myTable.cells[8].innerHTML = 'Hello';
+ 
+        });
+        $('#users tbody').on( 'click', '#view', function(){
+        // $("#users").on("click","button.btn",function(){
+        // $('.approved').on( 'click',function() {
+      
+         var table = $('#users').DataTable();
+         var data = table.row( $(this).parents('tr') ).data();
+    
+          var id = data[0];
+        
+ 
         });
 			} );
 

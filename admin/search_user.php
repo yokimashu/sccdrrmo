@@ -3,7 +3,7 @@ session_start();
 /* Database connection start */
 $servername = "localhost";
 $username = "root";
-$password = "1234";
+$password = "";
 $dbname = "sccdrrmo";
 // $office = $_POST['office'];
 
@@ -24,11 +24,8 @@ $requestData= $_REQUEST;
 	1 => 'fullname',
 	2 => 'username',
 	3 => 'email',
-	4 => 'gender',
-	5 => 'mobileno',
-    6 => 'bithdate',
-    7 => 'account_type',
-    8 => 'status'
+	4 => 'mobileno',
+  	 5 => 'status'
 	
 
 
@@ -38,14 +35,14 @@ $requestData= $_REQUEST;
 
 // getting total number records without any search
 
-$sql = "SELECT id, fullname, username, email, gender, mobileno, birthdate,account_type,status  FROM tbl_users";
+$sql = "SELECT id, fullname, username, email,  mobileno, status  FROM tbl_users";
 
 $query=mysqli_query($conn, $sql) or die("search_user.php");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT id, fullname, username, email, gender, mobileno, birthdate,account_type,status  FROM tbl_users where";
+$sql = "SELECT id, fullname, username, email, mobileno, status  FROM tbl_users where";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.="  (id LIKE '%".$requestData['search']['value']."%' ";    
@@ -73,10 +70,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["fullname"];
 	$nestedData[] = $row["username"];
 	$nestedData[] = $row["email"];
-	$nestedData[] = $row["gender"];
 	$nestedData[] = $row["mobileno"];
-    $nestedData[] = $row["birthdate"];
-    $nestedData[] = $row["account_type"];
+
+  
     $nestedData[] = $row["status"];
 
 	$data[] = $nestedData;

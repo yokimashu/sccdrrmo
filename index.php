@@ -1,10 +1,10 @@
 <?php
     
     include('config/db_config.php');
-   
+    session_start();
     //variable declaration
        $alert_msg = '';
-       include('insert_user.php');
+
        //sign in button
         if (isset($_POST['signin'])){
             //to check if data are passed
@@ -34,8 +34,6 @@
                    $_SESSION['id'] = $result['id'];
     
                     if ($result['account_type'] == 1) {
-                      
-    
     
                       header('location: admin'); //location is folder
                     }
@@ -47,8 +45,9 @@
                     //echo "Password does not match!";
                     $alert_msg .= ' 
                     <div class="alert alert-danger alert-dismissible">
-                        <i class="icon fa fa-warning"></i>
-                        Incomplete Details!
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <i class="icon fa fa-warning"></i>
+                    Incomplete Details!
                     </div>     
                     
                 ';
@@ -60,16 +59,12 @@
             }else{
               $alert_msg .= ' 
               <div class="alert alert-danger alert-dismissible">
-                  <i class="icon fa fa-warning"></i>
-                  Username does not exist!
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <i class="icon fa fa-warning"></i>
+              Username does not exist!
               </div>     
           ';
             }
-    
-            
-          
-            
-    
         }
 
   
@@ -127,11 +122,37 @@
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
-      <div class="form-group has-feedback">
-        
-                  <?php echo $alert_msg; ?>
-                
-                             
+      <div class="Ashake form-group has-feedback">
+                  <?php echo $alert_msg; ?>      
+                  <?php
+                     if(isset($_SESSION['error'])){
+                     echo "
+                       <div class='alert alert-danger alert-dismissible'>
+                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                           ".$_SESSION['error']."
+                       </div>
+                       ";
+                     unset($_SESSION['error']);
+                     }
+                     if(isset($_SESSION['check'])){
+                      echo "
+                        <div class='alert alert-warning alert-dismissible'>
+                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                            ".$_SESSION['check']."
+                        </div>
+                        ";
+                      unset($_SESSION['check']);
+                      }
+                     if(isset($_SESSION['success'])){
+                      echo "
+                       <div class='alert alert-success alert-dismissible'>
+                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                           ".$_SESSION['success']."
+                       </div>
+                       ";
+                      unset($_SESSION['success']);
+                   }
+                 ?>      
       </div>
 
       <div class="form-group">

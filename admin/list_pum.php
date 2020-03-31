@@ -11,10 +11,10 @@ if (!isset($_SESSION['id'])) {
 } else {
 
 }
-$result = $date->format('Y-m-d H:i:s');
 
 date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');
+$time = date('H:i:s');
 
 $symptoms= $patient='';
 
@@ -29,7 +29,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active'";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
@@ -93,6 +93,7 @@ $get_all_symptoms_data->execute();
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
                                                 <th> Date </th>
+                                                <th> Time </th>
                                                 <th> ID No </th>
                                                 <th> Full Name </th>
                                               
@@ -103,13 +104,14 @@ $get_all_symptoms_data->execute();
                                             <tbody >
                                              <?php while($list_pum = $get_all_pum_data->fetch(PDO::FETCH_ASSOC)){ ?>
                                                     <tr align="center">  
-                                                        <td><?php echo $list_pum['date_report'];?> </td>
+                                                        <td><?php echo $list_pum['date_report'];  ?></td>
+                                                        <td><?php echo $list_pum['time_report']; ?></td>
                                                         <td><?php echo $list_pum['idno'];?> </td>
                                                         <td><?php echo $list_pum['fullname'];?> </td>
                                                         <td><?php echo $list_pum['symptoms'];?> </td>
                                                         <td><?php echo $list_pum['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-xs" href=" ">
+                                                            <a class="btn btn-danger btn-xs" href="view_pum.php?objid=<?php echo $list_pum['objid'];?> ">
                                                             <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
                                                             &nbsp;                           
@@ -155,8 +157,13 @@ $get_all_symptoms_data->execute();
           <div class="modal-body">
             <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
                 <?php echo $alert_msg;?>
+
+
+                <div class="form-group" hidden>
+                    <input type="hidden" class="form-control" name="report_time" value="<?php echo $time; ?>" required>
+                </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="prdate" style="width: 27%; text-transform:uppercase" value="<?php echo $prdate; ?>" required>
+                    <input type="text" class="form-control" name="report_date" value="<?php echo $date; ?>" required>
                 </div>
 
                 <div class="form-group">
@@ -224,6 +231,7 @@ $get_all_symptoms_data->execute();
       'info'        : true,
       'autoWidth'   : true,
       'autoHeight'  : true
+     
     });
 
     $('#addPUM').on('hidden.bs.modal', function () {
