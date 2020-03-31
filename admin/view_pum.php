@@ -119,7 +119,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                       <div class="col-md-2" >
                         <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
                       </div>
-                      <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
                         <label>Time:</label>
                       </div>
                       <div class="col-md-2">
