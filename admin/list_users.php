@@ -1,7 +1,11 @@
 <?php
 
+$alert_msg='';
+$state ="edit";
+$button ="update";
 session_start();
 include ('../config/db_config.php');
+
 include('header.php');
 if (!isset($_SESSION['id'])) {
     header('location:../index');
@@ -10,22 +14,6 @@ if (!isset($_SESSION['id'])) {
 $user_id = $_SESSION['id'];
 
 //querry to select current user's information
-$get_user_sql = "SELECT * FROM tbl_users WHERE id = :id";
-$get_user_data = $con->prepare($get_user_sql);
-$get_user_data->execute([':id'=>$user_id]);
-while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
-  $user_name   = $result['username'];
-
-}
-
-
-$get_all_users_sql = "SELECT * FROM tbl_users ";
-$get_all_users_data = $con->prepare($get_all_users_sql);
-$get_all_users_data->execute(); 
-while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
-  $status   = $result['status'];
-}
-
 
 
 ?>
@@ -56,7 +44,10 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
          
               
             </div>
-          
+            <div class="Ashake form-group has-feedback">
+         <?php echo $alert_msg; ?>      
+                   
+        </div>
             <div class="card-body">
 
               <div class="box box-primary">
@@ -96,7 +87,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     <div class="modal-header card-outline card-primary" >
     <h4 class ="modal-title">Do you want to approve this user?</h4>
     </div>
-    <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
+    <!-- <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
          <div class = "modal-body ">
 
          <label class = "col-sm-2 col-form-label"> User ID:</label>
@@ -113,7 +104,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
        
          </div>                 
 
-    </form>
+    </form> -->
     </div>
     </div>
      </div>
@@ -124,6 +115,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
   <!-- footer here -->
   <?php include('../adduser_modal.php');?>
+  <?include('../insert_user.php'); ?>
     <?php include('footer.php');?>
 </div>
 <!-- ./wrapper -->
@@ -151,16 +143,16 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
    
     // });
 
-             $(document).ready(function() {
-                $(document).ajaxStart(function() {
-                    Pace.restart()
-                })
+  //            $(document).ready(function() {
+  //               $(document).ajaxStart(function() {
+  //                   Pace.restart()
+  //               })
 
 
        
 
-            });
-  //   $('.approved').click(function(e){
+  //           });
+  // //   $('.approved').click(function(e){
   //   e.preventDefault();
   //   $('#approved').modal('show');
   //   var id = $(this).data('id');
@@ -173,16 +165,16 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
   //     }
   //     );
     
-   function getDetails(id){
-    alert(id);
-    alert(name);
-    $.ajax({
-    type: 'POST',
-    url: 'updatecredentials.php',
-    data: {id:id},
-    dataType: 'json'
+  //  function getDetails(id){
+  //   alert(id);
+  //   alert(name);
+  //   $.ajax({
+  //   type: 'POST',
+  //   url: 'updatecredentials.php',
+  //   data: {id:id},
+  //   dataType: 'json'
    
-  };
+  // };
 
 
 
@@ -190,9 +182,12 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
   $(document).ready(function() {  
         // var office = $('#department').val();
-      
+        
 				var dataTable = $('#users').DataTable( {
-          "paging": true,
+          'paging'      : true,
+          'lengthChange': true,
+          'autoWidth'   : true,
+          'autoHeight'  : true,
 					"processing": true,
           "serverSide": true,
           'scrollX'   : true,
@@ -209,11 +204,11 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
           "columnDefs": [{
                 "targets" : -1,
                 "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-success btn-sm btn-flat " id = "view">  <button class="fa fa-check"></i></button>'
+                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-success btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-check"></i></button>'
           
          
               }],
-          
+   
 				} );
        $('#users tbody').on( 'click', '#btn', function(){
         // $("#users").on("click","button.btn",function(){
@@ -227,25 +222,59 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
        type: 'POST',
       url: 'updatecredentials.php',
       data: {id:id},
-       dataType: 'json'
+       dataType: 'json',
        
+       })
+      //  table.ajax.reload();
   });
  
-        });
-        $('#users tbody').on( 'click', '#view', function(){
+     
+        $('#users tbody').on( 'click', '#edituser', function(){
         // $("#users").on("click","button.btn",function(){
         // $('.approved').on( 'click',function() {
-      
+          event.preventDefault();
          var table = $('#users').DataTable();
          var data = table.row( $(this).parents('tr') ).data();
     
           var id = data[0];
-        
- 
+          $('#edit').modal('toggle');
+          getRow(id);
+          // console.log(id);
         });
-			} );
+       
+       
+       
+       
+   function getRow(id){
+    $.ajax({
+           type:"POST",
+            url:'getUserdetail.php',
+            data:{userId:id},
+         
+            success:function(response){
+        console.log("hello");
+        var result = jQuery.parseJSON(response);
+         $('#user_id').val(id);
+        $('#username').val(result.username);
+        $('#fullname').val(result.fullname);
+        $('#gender').val(result.gender);
+        $('#address').val(result.address);
+        $('#datepicker').val(result.birthdate);
+        $('#email').val(result.email);
+        $('#contactno').val(result.mobileno);
+        $('#usertype').val(result.account_type);
+        $('#user_id').val(result.id);
+              console.log(result.account_type);
+        
+       },
+       error: function (xhr, b, c) {
+                console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+            }
+     });
+ 
+} 
+  });
 
-  
 </script> 
 </body>
 </html>

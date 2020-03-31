@@ -18,7 +18,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $email_ad       = $result['email'];
   $contact_number = $result['contact_number'];
   $user_name      = $result['username'];
-  $department        = $result['department'];
+  $department     = $result['department'];
   $userfullname   = $result['first_name']." ".$result['middle_name']." ".$result['last_name'];
   $dateregister   = $result['date_started'];
 }
