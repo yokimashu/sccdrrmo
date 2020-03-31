@@ -93,118 +93,104 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
     <section class="content" >
     
-    <div class="card card-info" >
-            <div class="card-header">
-              <h3>Update PUM </h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-          
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" method="post" action="">
-              <div class="col-md-8">
-                <div class="box-body">
-                  
-                      <div class="row"> 
-                        <div class="col-md-3" style="text-align: right;padding-top: 5px;">
-                          <label>ID No:</label>
-                        </div>
-                        <div class="col-md-3" >
-                          <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
-                        </div>
-                      </div><br>
-
-                      <div class="row"> 
-                        <div class="col-md-2" style="text-align: right;padding-top: 5px;">
-                          <label>Date:</label>
-                        </div>
-                        <div class="col-md-2" align="center" >
-                          <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
-                        </div>
-                        <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                          <label>Time:</label>
-                        </div>
-                        <div class="col-md-2" align="center">
-                        <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
-                        </div>
-                      </div><br>
-
-                      <div class="row"> 
-                        <div class="col-md-3" style="text-align: right;padding-top: 5px;">
-                          <label>Name of the Patient:</label>
-                        </div>
-                        <div class="col-md-3" >
-                          <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
-                        </div>
-                      </div><br>
-
-    
-
-                      <div class="row">
-                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
-                                <!-- <div class="form-group"> -->
-                              <label>Symptoms:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <select class="form-control select2" readonly style="width: 30%;" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
-                                    <!-- <option>Please select...</option> -->
-                                <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                            <?php
-                                //if $get_author naa value, check nato if equals sa $get_author1['fullname']
-                                //if equals, put 'selected' sa option
-                                $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';
-                            ?>
-                            <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option> 
-                              <?php } ?>
-                            </select>
-                            </div>
-                      </div><br>
-
-                      
-                      <div class="row"> 
-                        <div class="col-md-3" style="text-align: right;padding-top: 5px;">
-                          <label>Status:</label>
-                        </div>
-                        <div class="col-md-3" >
-                          <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
-                        </div>
-                      </div><br>
-
-                  
-                  
-    
-                  
-
-              
-                      <!-- /.box-body -->
-                      <div class="box-footer" align="center">
-                      
-                          <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
-                          <i class="fa fa-edit fa-fw"> </i>  </button>
-
-                          <button type="submit"  <?php echo $btnSave; ?> name="update_category" id="btnSubmit" class="btn btn-success" >
-                          <i class="fa fa-check fa-fw"> </i> </button>
-
-                          <a href="properties.php">
-                            <button type="button" name="cancel" class="btn btn-danger" value="Cancel">       
-                            <i class="fa fa-close fa-fw"> </i> </button>
-                        </a>
-
+        <div class="card card-info" >
+          <div class="col-md-8">
+                <div class="card-header">
+                  <h3>Update PUM </h3>
                 </div>
-              </div>
-            </form>
+                <div class="card-body">
+                  <form role="form" method="post" action="">
+                    
+                    <div class="box-body">
+                      
+                          <div class="row"> 
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                              <label>ID No:</label>
+                            </div>
+                            <div class="col-md-3" >
+                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
+                            </div>
+                          </div><br>
+
+                          <div class="row"> 
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                              <label>Date:</label>
+                            </div>
+                            <div class="col-md-2" align="center" >
+                              <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
+                            </div>
+                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
+                              <label>Time:</label>
+                            </div>
+                            <div class="col-md-2" align="center">
+                            <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
+                            </div>
+                          </div><br>
+
+                          <div class="row"> 
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                              <label>Name of the Patient:</label>
+                            </div>
+                            <div class="col-md-3" >
+                              <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                            </div>
+                          </div><br>
+
+                          <div class="row">
+                                <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                                    <!-- <div class="form-group"> -->
+                                  <label>Symptoms:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control select2" readonly style="width: 30%;" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
+                                        <!-- <option>Please select...</option> -->
+                                    <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <?php
+                                    //if $get_author naa value, check nato if equals sa $get_author1['fullname']
+                                    //if equals, put 'selected' sa option
+                                    $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';
+                                ?>
+                                <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option> 
+                                  <?php } ?>
+                                </select>
+                                </div>
+                          </div><br>
+                          
+                          <div class="row"> 
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                              <label>Status:</label>
+                            </div>
+                            <div class="col-md-3" >
+                              <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
+                            </div>
+                          </div><br>                
+        
+                               
+                          <!-- /.box-body -->
+                          <div class="box-footer" align="center">
+                          
+                              <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
+                              <i class="fa fa-edit fa-fw"> </i>  </button>
+
+                              <button type="submit"  <?php echo $btnSave; ?> name="update_category" id="btnSubmit" class="btn btn-success" >
+                              <i class="fa fa-check fa-fw"> </i> </button>
+
+                              <a href="properties.php">
+                                <button type="button" name="cancel" class="btn btn-danger" value="Cancel">       
+                                <i class="fa fa-close fa-fw"> </i> </button>
+                            </a>
+                          </div>
+
+                    </div>
+                  
+                  </form>
+                </div>
+              <!-- /.box -->
           </div>
-          <!-- /.box -->
         </div>
-        <div class="col-md-1"></div>
-    </div>
+          
 
-
-
-
-
-  </section>
+    </section>
     
 
 
