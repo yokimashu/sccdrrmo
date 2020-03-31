@@ -52,6 +52,7 @@
         $get_time = $_POST['report_time'];
         $ge_symptomsss = $_POST['symptomlk'];
         $get_id = $_POST['idno'];
+        $get_status = $_POST['status'];
     
        
         $update_categ_sql = "UPDATE tbl_pum SET
@@ -60,15 +61,14 @@
             time_report         = :timesss,
             symptoms            = :symp,
             status              = :stat, 
-
             where idno      = :id";
                 
         $update_data = $con->prepare($update_categ_sql);
         $update_data->execute([
-            ':datess'           => $get_id,
-            ':namesss'          => $get_category,
-            ':timesss'          => $get_code,
-            ':symp'             => $get_code,
+            ':datess'           => $get_date,
+            ':namesss'          => $get_fullname,
+            ':timesss'          => $get_time,
+            ':symp'             => $ge_symptomsss,
             ':stat'             => $get_status
             ]);
     
