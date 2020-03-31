@@ -101,7 +101,7 @@ $get_all_symptoms_data->execute();
                 <div class="card-header">
                   <h3>Update PUM </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body" align="center">
                   <form role="form" method="post" action="">
                     
                     <div class="box-body">
