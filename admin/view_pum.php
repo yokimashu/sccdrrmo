@@ -132,7 +132,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                         <label>Name of the Patient:</label>
                       </div>
                       <div class="col-md-7" >
-                        <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                        <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
                       </div>
                     </div><br>
 
@@ -141,7 +141,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                         <label>Name of the Patient:</label>
                       </div>
                       <div class="col-md-7" >
-                        <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                        <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
                       </div>
                     </div><br>
                  
