@@ -50,7 +50,7 @@
         $get_fullname = $_POST['fullname'];
         $get_date = $_POST['report_date'];
         $get_time = $_POST['report_time'];
-        $get_symptoms = $_POST['symptomlk'];
+        $get_symptoms = $_POST['symptoms'];
         $get_id = $_POST['idno'];
         $get_status = $_POST['status'];
     
@@ -68,7 +68,7 @@
             ':datess'           => $get_date,
             ':namesss'          => $get_fullname,
             ':timesss'          => $get_time,
-            ':symp'             => $ge_symptomsss,
+            ':symp'             => $get_symptoms,
             ':stat'             => $get_status,
             ':id'               => $get_id
 
