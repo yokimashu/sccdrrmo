@@ -11,7 +11,6 @@ if (isset($_POST['update_pum'])) {
     $get_id = $_POST['idno'];
     $get_status = $_POST['status'];
 
-   
     $update_pum_sql = " UPDATE tbl_pum SET
         date_report         = :datess,
         fullname            = :namesss,
