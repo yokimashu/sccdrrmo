@@ -29,15 +29,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
-$get_all_pum_data = $con->prepare($get_all_pum_sql);
-$get_all_pum_data->execute();
-
-
-
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='Active'";
-$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
-$get_all_symptoms_data->execute();
 
 
 ?>
@@ -94,50 +85,6 @@ $get_all_symptoms_data->execute();
 
 
 
-<div class="modal fade" id="addPUM" tabindex="-1" role="dialog" aria-labelledby="addPUM" style="display: none;" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addPUM">Add PUM</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-          </div>
-          <div class="modal-body">
-            <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
-                <?php echo $alert_msg;?>
-
-
-                <div class="form-group" hidden>
-                    <input type="hidden" class="form-control" name="report_time" value="<?php echo $time; ?>" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="report_date" value="<?php echo $date; ?>" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" class="form-control" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
-                </div>
-        
-         
-                <div class="form-group">
-                    <select class="form-control select2" id="symptoms" style="width: 100%;" name="get_symptoms" value="<?php echo $symptoms; ?>">
-                        <option selected="selected">Select Symptoms</option>
-                        <?php while ($get_symptoms =$get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                        <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-
-              <button type="submit" class="btn btn-success" name="insert_pum"><i class="fa fa-check fa-fw"></i></button>
-              <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
-            </form> 
-           
-          </div>
-
-        </div>
-      </div>
-</div>
 
 
 
