@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('sql_pum.php');
+include ('update_pum.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -102,7 +102,7 @@ $get_all_symptoms_data->execute();
                   <h3>Update PUM </h3>
                 </div>
                 <div class="card-body" align="center">
-                  <form role="form" method="post" action="sql_pum.php">
+                  <form role="form" method="post" action="update_pum.php">
                     
                     <div class="box-body">
                       
