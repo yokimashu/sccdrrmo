@@ -102,7 +102,7 @@ $get_all_symptoms_data->execute();
                   <h3>Update PUM </h3>
                 </div>
                 <div class="card-body" align="center">
-                  <form role="form" method="post" action="">
+                  <form role="form" method="post" action="sql_pum.php">
                     
                     <div class="box-body">
                       
@@ -120,13 +120,13 @@ $get_all_symptoms_data->execute();
                               <label>Date:</label>
                             </div>
                             <div class="col-md-2" align="center" >
-                              <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
+                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
                             </div>
                             <div class="col-md-1" style="text-align: right;padding-top: 5px;">
                               <label>Time:</label>
                             </div>
                             <div class="col-md-2" align="center">
-                            <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
+                            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
                             </div>
                           </div><br>
 
@@ -135,7 +135,7 @@ $get_all_symptoms_data->execute();
                               <label>Name of the Patient:</label>
                             </div>
                             <div class="col-md-5" >
-                              <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
                             </div>
                           </div><br>
 
@@ -143,7 +143,7 @@ $get_all_symptoms_data->execute();
                             <div class="col-md-4" style="text-align:right;padding-top: 5px;">
                                   <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-5" style="text-align:left;" >
+                            <div class="col-md-5" readonly style="text-align:left;" >
                               <select class="form-control select2" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
@@ -157,7 +157,7 @@ $get_all_symptoms_data->execute();
                               <label>Status:</label>
                             </div>
                             <div class="col-md-2" >
-                              <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
+                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
                             </div>
                           </div><br>                
         
@@ -168,11 +168,11 @@ $get_all_symptoms_data->execute();
                               <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
                               <i class="fa fa-edit fa-fw"> </i>  </button>
 
-                              <button type="submit"  <?php echo $btnSave; ?> name="update_category" id="btnSubmit" class="btn btn-success" >
+                              <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
                               <i class="fa fa-check fa-fw"> </i> </button>
 
-                              <a href="properties.php">
-                                <button type="button" name="cancel" class="btn btn-danger" value="Cancel">       
+                              <a href="list_pum.php">
+                                <button type="button" name="cancel" class="btn btn-danger">       
                                 <i class="fa fa-close fa-fw"> </i> </button>
                             </a>
                           </div>
@@ -254,6 +254,24 @@ $get_all_symptoms_data->execute();
         autoHide: true,
         zIndex: 2048,
       });
+    });
+
+
+    $("#btnSubmit").attr("disabled", true);
+
+    $(document).ready(function(){
+        $('#btnEdit').click(function() {
+          $("input[name='idno']").removeAttr("readonly");
+          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='report_time']").removeAttr("readonly");
+          $("input[name='fullname']").removeAttr("readonly");
+          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='status']").removeAttr("readonly");
+          $("select[name='symptoms']").removeAttr("readonly");
+   
+          $("#btnSubmit").attr("disabled", false);
+          $("#btnEdit").attr("disabled", true);
+        });
     });
 
 </script>
