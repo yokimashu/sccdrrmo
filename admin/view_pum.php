@@ -93,10 +93,10 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
 
 
-    <section class="content" >
+    <section class="content col-md-8" >
 
  
-        <div class="card card-info col-lg-5" >
+        <div class="card card-info " >
          
                 <div class="card-header">
                   <h3>Update PUM </h3>
