@@ -89,11 +89,11 @@ $get_all_symptoms_data->execute();
   <?php include('sidebar.php');?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" >
+  <div class="content-wrapper" align="center">
     <div class="content-header"></div>
 
 
-    <section class="content col-md-10" align="center">
+    <section class="content col-md-10" >
 
  
         <div class="card card-info "  >
@@ -143,7 +143,7 @@ $get_all_symptoms_data->execute();
                             <div class="col-md-3" style="text-align:right;padding-top: 5px;">
                                   <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3" style="text-align:left;" >
                               <select class="form-control select2" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
