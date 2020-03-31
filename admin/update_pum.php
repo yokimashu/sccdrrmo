@@ -12,13 +12,13 @@ if (isset($_POST['update_pum'])) {
     $get_status = $_POST['status'];
 
    
-    $update_pum_sql = "UPDATE tbl_pum SET
+    $update_pum_sql = " UPDATE tbl_pum SET
         date_report         = :datess,
         fullname            = :namesss,
         time_report         = :timesss,
         symptoms            = :symp,
         status              = :stat 
-        where idno      = :id";
+        where idno          = :id";
             
     $pum_data = $con->prepare($update_pum_sql);
     $pum_data->execute([
