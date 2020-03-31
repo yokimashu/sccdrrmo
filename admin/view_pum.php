@@ -107,43 +107,43 @@ $get_all_symptoms_data->execute();
                     <div class="box-body">
                       
                           <div class="row"> 
-                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>ID No:</label>
                             </div>
-                            <div class="col-md-2" >
+                            <div class="col-md-3" >
                               <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
                             </div>
                           </div><br>
 
                           <div class="row"> 
-                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Date:</label>
                             </div>
-                            <div class="col-md-2" align="center" >
+                            <div class="col-md-3" align="center" >
                               <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
                             </div>
-                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Time:</label>
                             </div>
-                            <div class="col-md-2" align="center">
+                            <div class="col-md-3" align="center">
                             <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
                             </div>
                           </div><br>
 
                           <div class="row"> 
-                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Name of the Patient:</label>
                             </div>
-                            <div class="col-md-2" >
+                            <div class="col-md-5" >
                               <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
                             </div>
                           </div><br>
 
                           <div class="row">
-                            <div class="col-md-3" style="text-align:right;padding-top: 5px;">
+                            <div class="col-md-4" style="text-align:right;padding-top: 5px;">
                                   <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-3" style="text-align:left;" >
+                            <div class="col-md-4" style="text-align:left;" >
                               <select class="form-control select2" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
@@ -153,7 +153,7 @@ $get_all_symptoms_data->execute();
                           </div><br>
                           
                           <div class="row"> 
-                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Status:</label>
                             </div>
                             <div class="col-md-2" >
