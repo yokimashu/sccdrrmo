@@ -31,7 +31,7 @@ include ('../config/db_config.php');
 		$mobileno = $result['mobileno'];
 		$account_type = $result['account_type'];
 
-
+		$birthdate2 =date('m-d-Y', strtotime($birthdate));	
 		if  ($account_type == 1){
 			$convert_account_type = "Administrator";
 		} else if ($account_type == 2) {
@@ -48,7 +48,7 @@ include ('../config/db_config.php');
 		'username'	=>	 $username,
 		'fullname'	=>	 $fullname,
 		'email'		=>	 $email,
-		'birthdate'	=>	 $birthdate,
+		'birthdate'	=>	 $birthdate2,
 		'gender'	=>	 $gender,
 		'address'	=>	 $address,
 		'mobileno'	=>	 $mobileno,

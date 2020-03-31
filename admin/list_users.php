@@ -5,7 +5,7 @@ $state ="edit";
 $button ="update";
 session_start();
 include ('../config/db_config.php');
-
+include('update_user.php'); 
 include('header.php');
 if (!isset($_SESSION['id'])) {
     header('location:../index');
@@ -115,7 +115,7 @@ $user_id = $_SESSION['id'];
 
   <!-- footer here -->
   <?php include('../adduser_modal.php');?>
-  <?include('../insert_user.php'); ?>
+  
     <?php include('footer.php');?>
 </div>
 <!-- ./wrapper -->
@@ -204,7 +204,7 @@ $user_id = $_SESSION['id'];
           "columnDefs": [{
                 "targets" : -1,
                 "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-success btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-check"></i></button>'
+                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-success btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i></button>'
           
          
               }],
