@@ -30,6 +30,29 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
+if (isset($_GET['objid'])) {
+
+    $user_id = $_GET['id'];
+    $get_items_sql = "SELECT * FROM tbl_items WHERE idno = :id";
+    $get_items_data = $con->prepare($get_items_sql);
+    $get_items_data->execute([':id' => $user_id]);
+    while ($result = $get_items_data->fetch(PDO::FETCH_ASSOC)) {
+      $get_id                     = $result['idno'];
+      $get_itemcode               = $result['itemcode'];
+      $get_itemname               = $result['itemname'];
+      $get_category               = $result['category'];
+      $get_unit                   = $result['unit'];
+      $get_description            = $result['description'];
+      $get_price                  = $result['price'];
+      $get_status                 = $result['status'];
+  
+       
+     
+  
+    }
+  
+  }
+
 
 ?>
 
@@ -69,7 +92,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     <div class="content-header"></div>
     
     <section class="content">
-     
+
         
     </section>
     
