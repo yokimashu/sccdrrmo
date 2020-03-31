@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms= $patient='';
+$btnSave= $btnEdit='';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
@@ -29,7 +29,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-if (isset($_GET['objid'])) {
 
   $user_id = $_GET['id'];
   $get_approved_sql = "SELECT * FROM tbl_approvedby WHERE idno = :id and status='Active'";
@@ -44,7 +43,7 @@ if (isset($_GET['objid'])) {
     $get_status                 = $result['status'];
   }
 
-}
+
 
 
 
@@ -86,11 +85,61 @@ if (isset($_GET['objid'])) {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
     <div class="content-header"></div>
+    <section class="content" >
     
-    <section class="content">
+    <div class="card card-info" >
+            <div class="card-header">
+              <h3>Update PUM </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+          
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="">
+            
+              <div class="box-body" >
 
-        
-    </section>
+                    <div class="row" hidden > 
+                      <div class="col-md-3" hidden style="text-align: right;padding-top: 5px;">
+                      <label hidden>ID No:</label>
+                      </div>
+                      <div class="col-md-7" hidden>
+                          <input type="hidden" readonly onkeyup="this.value = this.value.toUpperCase();" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
+                      </div>
+                    </div><br>
+
+   
+                
+
+             
+                    <!-- /.box-body -->
+                    <div class="box-footer" align="center">
+                    
+                        <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
+                        <i class="fa fa-edit fa-fw"> </i>  </button>
+
+                        <button type="submit"  <?php echo $btnSave; ?> name="update_category" id="btnSubmit" class="btn btn-success" >
+                        <i class="fa fa-check fa-fw"> </i> </button>
+
+                        <a href="properties.php">
+                          <button type="button" name="cancel" class="btn btn-danger" value="Cancel">       
+                          <i class="fa fa-close fa-fw"> </i> </button>
+                      </a>
+
+                    </div>
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+
+
+
+
+  </section>
     
 
 
