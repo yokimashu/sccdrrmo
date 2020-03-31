@@ -93,8 +93,9 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
     <section class="content" >
     
+      <div class="col-md-8">
         <div class="card card-info" >
-          <div class="col-md-8">
+         
                 <div class="card-header">
                   <h3>Update PUM </h3>
                 </div>
@@ -186,8 +187,8 @@ $get_all_symptoms_data->execute();
                   </form>
                 </div>
               <!-- /.box -->
-          </div>
         </div>
+      </div>
           
 
     </section>
