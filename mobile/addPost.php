@@ -10,11 +10,17 @@ date_default_timezone_set('Asia/Manila');
      // echo "</pre>";
 
 // $content = $_POST['Content_Type'];
-
+$path = '';
 $type = $_POST['Type'];
 $severity = $_POST['topicSeverity'];
 $title = $_POST['topicTitle'];
-$image = $_POST['topicImage'];
+
+if($_POST['topicImage'] != null){
+     $image = base64_decode($_POST['topicImage']);
+}else{
+     $image = "";
+}
+
 $latitude= $_POST['latitude'];
 $longitude = $_POST['longitude'];
 $locationAddress = $_POST['topicLocationAddress'];
@@ -24,11 +30,21 @@ $created = $_POST['topicDateAndTimePosted'];
 $date = date('Y-m-d');
 $time = date('h:i:s');
 
+$id = md5(time() . rand());
+
+if($image != null){
+     $path = "images/$id.jpg";
+     $file = fopen($path, 'wb');
+
+     $isWritten = fwrite($file, $image);
+     fclose($file);
+}
+
 $insert_users_sql = "INSERT INTO tbl_incident SET
 type                = :type,
 severity            = :severity,
 topic               = :topic,
-image               = :image,
+image               = :path,
 date                = :date,
 time                = :time,
 latitude            = :latitude,
@@ -44,7 +60,7 @@ $users_data->execute([
 ':type'             => $type,
 ':severity'         => $severity,
 ':topic'            => $title,
-':image'            => $image,
+':path'             => $path,
 ':date'             => $date,
 ':time'             => $time,
 ':latitude'         => $latitude,
@@ -55,7 +71,7 @@ $users_data->execute([
 ':createdAt'        => $created
 
 ]);
-
+echo "Incident Reported! We will contact you as soon as possible. Thank you!"
 ?>
 
 
