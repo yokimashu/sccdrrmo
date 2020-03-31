@@ -26,30 +26,30 @@ $time = date('h:i:s');
 $insert_pum_sql = "INSERT INTO tbl_reportpum SET
 date                = :date,
 time                = :time,
-fullName            = :fullName,
-contactNo           = :contactNo,
+fullname            = :fullname,
+contactno           = :contactno,
 address             = :address,
 travel              = :travel,
-travelHistory       = :travelHistory,
+travelhistory       = :travelhistory,
 symptoms            = :symptoms,
-reportedBy          = :reportedBy,
-mobileNo            = :mobileno,
-createdAt           = :createdAt,
+reportedby          = :reportedby,
+mobileno            = :mobileno,
+createdat           = :createdat,
 remarks             = 'NEW REPORT'";
 
 $users_data = $con->prepare($insert_pum_sql);
 $users_data->execute([
 ':date'             => $date,
 ':time'             => $time,
-':fullName'         => $fullName,
-':contactNo'        => $contactNo,
+':fullname'         => $fullName,
+':contactno'        => $contactNo,
 ':address'          => $address,
 ':travel'           => $travel,
-':travelHistory'    => $travelHistory,
+':travelhistory'    => $travelHistory,
 ':symptoms'         => $symptoms,
-':reportedBy'       => $postedBy,
+':reportedby'       => $postedBy,
 ':mobileno'         => $mobileno,
-':createdAt'        => $created
+':createdat'        => $created
 
 
 ]);
