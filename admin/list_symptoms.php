@@ -93,9 +93,9 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_symptoms['symptoms'];?> </td>
                                                         <td><?php echo $list_symptoms['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-success btn-xs" href=" ">
-                                                            <i class="fa fa-folder-open-o"></i>  </a>
-                                                            <button class="btn btn-danger btn-md" data-role="confirm_delete" 
+                                                            <a class="btn btn-success btn-sm" href=" ">
+                                                            <i class="fa fa-folder-open-o"></i></a>
+                                                            <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
                                                             data-id="<?php echo $list_symptoms["idno"]; ?>"><i class="fa fa-trash-o"></i></button>
                                                             &nbsp;                           
                                                             
