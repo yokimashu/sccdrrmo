@@ -89,7 +89,7 @@ $get_all_symptoms_data->execute();
   <?php include('sidebar.php');?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" align="center">
+  <div class="content-wrapper" >
     <div class="content-header"></div>
 
 
@@ -140,7 +140,7 @@ $get_all_symptoms_data->execute();
                           </div><br>
 
                           <div class="row">
-                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-3" style="text-align:right;padding-top: 5px;">
                                   <label>Symptoms:</label>
                             </div>
                             <div class="col-md-5">
