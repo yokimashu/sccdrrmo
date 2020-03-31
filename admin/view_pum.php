@@ -48,6 +48,9 @@ $get_fullname = $get_symptoms = $get_status= '';
 
 
 
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
+$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
+$get_all_symptoms_data->execute();
 
 
 
@@ -107,7 +110,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                       <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                         <label>ID No:</label>
                       </div>
-                      <div class="col-md-7" >
+                      <div class="col-md-5" >
                         <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
                       </div>
                     </div><br>
@@ -136,14 +139,39 @@ $get_fullname = $get_symptoms = $get_status= '';
                       </div>
                     </div><br>
 
+  
+
+                    <div class="row">
+                          <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                              <!-- <div class="form-group"> -->
+                            <label>Symptoms:</label>
+                          </div>
+                          <div class="col-md-7">
+                              <select class="form-control select2" readonly style="width: 30%;" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
+                                  <!-- <option>Please select...</option> -->
+                              <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <?php
+                              //if $get_author naa value, check nato if equals sa $get_author1['fullname']
+                              //if equals, put 'selected' sa option
+                              $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';
+                          ?>
+                          <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option> 
+                            <?php } ?>
+                          </select>
+                          </div>
+                    </div><br>
+
+                    
                     <div class="row"> 
                       <div class="col-md-3" style="text-align: right;padding-top: 5px;">
-                        <label>Name of the Patient:</label>
+                        <label>Status:</label>
                       </div>
-                      <div class="col-md-7" >
-                        <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                      <div class="col-md-5" >
+                        <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
                       </div>
                     </div><br>
+
+                
                  
    
                 
