@@ -3,6 +3,7 @@
 if (isset($_POST['update_pum'])) {
 
     $alert_msg = '';
+    $alert_msg1 = '';
     $get_fullname = $_POST['fullname'];
     $get_date = $_POST['report_date'];
     $get_time = $_POST['report_time'];
