@@ -116,13 +116,13 @@ $get_all_symptoms_data->execute();
                     </div><br>
 
                     <div class="row"> 
-                      <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
                         <label>Date:</label>
                       </div>
                       <div class="col-md-2" align="center" >
                         <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
                       </div>
-                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                      <div class="col-md-1" style="text-align: right;padding-top: 5px;">
                         <label>Time:</label>
                       </div>
                       <div class="col-md-2" align="center">
@@ -134,7 +134,7 @@ $get_all_symptoms_data->execute();
                       <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                         <label>Name of the Patient:</label>
                       </div>
-                      <div class="col-md-5" >
+                      <div class="col-md-3" >
                         <input type="text" align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
                       </div>
                     </div><br>
