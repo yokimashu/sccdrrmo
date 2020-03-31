@@ -101,7 +101,7 @@ $get_fullname = $get_symptoms = $get_status= '';
             <!-- form start -->
             <form role="form" method="post" action="">
             
-              <div class="box-body" >
+              <div class="box-body">
 
                     <div class="row"> 
                       <div class="col-md-3" style="text-align: right;padding-top: 5px;">
@@ -127,7 +127,23 @@ $get_fullname = $get_symptoms = $get_status= '';
                       </div>
                     </div><br>
 
+                    <div class="row"> 
+                      <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                        <label>Name of the Patient:</label>
+                      </div>
+                      <div class="col-md-7" >
+                        <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                      </div>
+                    </div><br>
 
+                    <div class="row"> 
+                      <div class="col-md-3" style="text-align: right;padding-top: 5px;">
+                        <label>Name of the Patient:</label>
+                      </div>
+                      <div class="col-md-7" >
+                        <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
+                      </div>
+                    </div><br>
                  
    
                 
