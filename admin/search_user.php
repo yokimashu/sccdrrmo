@@ -8,6 +8,7 @@ $dbname = "sccdrrmo";
 // $office = $_POST['office'];
 
 
+
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
 
 
@@ -35,14 +36,14 @@ $requestData= $_REQUEST;
 
 // getting total number records without any search
 
-$sql = "SELECT id, fullname, username, email,  mobileno, status  FROM tbl_users";
-
+$sql = "SELECT id, fullname, username, email, mobileno, status  FROM tbl_users ";
+$sql.=" ORDER BY created_at DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $query=mysqli_query($conn, $sql) or die("search_user.php");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT id, fullname, username, email, mobileno, status  FROM tbl_users where";
+$sql = "SELECT id, fullname, username, email, mobileno, status  FROM tbl_users where ";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.="  (id LIKE '%".$requestData['search']['value']."%' ";    
@@ -54,14 +55,13 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
     $sql.=" OR birthdate LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR account_type LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR status LIKE '%".$requestData['search']['value']."%' )";
-}
+
 $query=mysqli_query($conn, $sql) or die("search_user.php");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-$sql.=" ORDER BY id ASC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
-
+$sql.=" ORDER BY created_at DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 
 $query=mysqli_query($conn, $sql) or die("search_user.php");
-
+}
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData=array(); 
@@ -72,7 +72,6 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["email"];
 	$nestedData[] = $row["mobileno"];
 
-  
     $nestedData[] = $row["status"];
 
 	$data[] = $nestedData;

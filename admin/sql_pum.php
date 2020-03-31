@@ -2,9 +2,7 @@
 
     include ('../config/db_config.php');
 
-    if (isset($_POST['insert_pum'])) {
-
-     
+    if (isset($_POST['insert_pum'])) {  
         $symptoms = $_POST['get_symptoms'];
         $patient = $_POST['fullname'];
         $date = $_POST['report_date'];
@@ -43,6 +41,10 @@
         header('location: list_pum.php');
 
     }
+
+   
+
+
 
 
 

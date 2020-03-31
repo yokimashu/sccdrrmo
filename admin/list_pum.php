@@ -96,7 +96,6 @@ $get_all_symptoms_data->execute();
                                                 <th> Time </th>
                                                 <th> ID No </th>
                                                 <th> Full Name </th>
-                                              
                                                 <th> Symptoms</th>
                                                 <th> Status</th>
                                                 <th> Options</th>
@@ -111,7 +110,7 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_pum['symptoms'];?> </td>
                                                         <td><?php echo $list_pum['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-xs" href="view_pum.php?objid=<?php echo $list_pum['objid'];?> ">
+                                                            <a class="btn btn-danger btn-xs" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
                                                             <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
                                                             &nbsp;                           
