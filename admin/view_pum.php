@@ -30,7 +30,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 $btnSave = $btnEdit = $get_time = $get_date = $get_id=
-$get_fullname = $get_symptoms = $get_status= $ge_symptomsss='';
+$get_fullname = $get_symptoms = $get_status= $type='';
 
   $user_id = $_GET['id'];
 
@@ -144,7 +144,7 @@ $get_all_symptoms_data->execute();
                                   <label>Symptoms:</label>
                             </div>
                             <div class="col-md-5" style="text-align:left;" >
-                              <select class="form-control select2"  id="symptoms" name="symptomlk" value="<?php echo $ge_symptomsss; ?>">
+                              <select class="form-control select2"  id="symptoms" name="symptomlk" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
                                 <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option><?php } ?>
