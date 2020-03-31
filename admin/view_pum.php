@@ -119,13 +119,13 @@ $get_all_symptoms_data->execute();
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Date:</label>
                             </div>
-                            <div class="col-md-3" align="center" >
+                            <div class="col-md-2" align="center" >
                               <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
                             </div>
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
                               <label>Time:</label>
                             </div>
-                            <div class="col-md-3" align="center">
+                            <div class="col-md-2" align="center">
                             <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
                             </div>
                           </div><br>
@@ -143,7 +143,7 @@ $get_all_symptoms_data->execute();
                             <div class="col-md-4" style="text-align:right;padding-top: 5px;">
                                   <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-4" style="text-align:left;" >
+                            <div class="col-md-5" style="text-align:left;" >
                               <select class="form-control select2" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
