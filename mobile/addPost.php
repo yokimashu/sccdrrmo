@@ -58,7 +58,6 @@ $users_data->execute([
 
 ?>
 
-//changes of charity
 
 
 

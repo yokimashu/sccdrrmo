@@ -20,6 +20,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $fullName= $result['fullname'];
     $email = $result['email'];
     $mobileno = $result['mobileno'];
+    $address = $result['address'];
 }
 
 //     $userInfo = [
@@ -33,7 +34,8 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
              array(
                  'Fullname'         => $fullName,
                  'Email'            => $email,
-                 'MobileNumber'     => $mobileno
+                 'MobileNumber'     => $mobileno,
+                 'Address'          => $address
 
                    )
                             )

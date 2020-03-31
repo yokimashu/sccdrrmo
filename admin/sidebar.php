@@ -146,7 +146,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
             <li class="nav-item">
                 <a href="list_symptoms" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
-                  <p>Add Symptom</p>
+                  <p>Add Symptoms</p>
                 </a>
               </li>
               

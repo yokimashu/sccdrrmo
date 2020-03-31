@@ -93,9 +93,10 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_symptoms['symptoms'];?> </td>
                                                         <td><?php echo $list_symptoms['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-success btn-xs" href=" ">
-                                                            <i class="fa fa-folder-open-o"></i> Open
-                                                            </a>
+                                                            <a class="btn btn-success btn-sm" href=" ">
+                                                            <i class="fa fa-folder-open-o"></i></a>
+                                                            <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
+                                                            data-id="<?php echo $list_symptoms["idno"];?>"><i class="fa fa-trash-o"></i></button>
                                                             &nbsp;                           
                                                             
                                                         </td>
@@ -141,9 +142,6 @@ $get_all_symptoms_data->execute();
                 <div class="form-group">
                     <input type="text" class="form-control"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
                 </div>
-
-              
-    
               <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
               <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
             </form> 
@@ -152,6 +150,34 @@ $get_all_symptoms_data->execute();
 
         </div>
       </div>
+</div>
+
+<div class="modal fade" id="deleteordinance_Modal" role="dialog" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Confirm Delete</h4>
+              </div>
+              <form method="POST" action="<?php htmlspecialchars("PHP_SELF")?>">
+                <div class="modal-body">  
+                  <div class="box-body">
+                    <div class="form-group">
+                    <label>Delete Record?</label>
+                     <input readonly="true" type="text" name="user_id" id="user_id" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                  <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
+                  <input type="submit" name="delete_ordinance" class="btn btn-danger" value="Yes">
+                </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
 </div>
 
 
@@ -199,6 +225,16 @@ $get_all_symptoms_data->execute();
 
     $('#addSymptoms').on('hidden.bs.modal', function () {
         $('#addSymptoms form')[0].reset();
+    });
+
+    $(document).on('click', 'button[data-role=confirm_delete]', function(event){
+      event.preventDefault();
+
+      var user_id = ($(this).data('id'));
+
+      $('#user_id').val(user_id);
+      $('#deleteordinance_Modal').modal('toggle');
+
     });
 
   
