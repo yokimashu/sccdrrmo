@@ -18,7 +18,6 @@ $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
-
     $db_fullname = $result['fullname'];
 
 }

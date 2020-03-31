@@ -1,4 +1,5 @@
-<?php include('insert_user.php')?>
+<?
+
 <div  class="modal fade"   id="addnew">
      <div class="modal-dialog">
          
@@ -7,7 +8,7 @@
                     <h4 class="modal-title"><b>Sign up</b></h4>
                </div>  
 
-                <form class="form-horizontal" method="POST" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  enctype="multipart/form-data">
+                <form class="form-horizontal" method="POST" action= "insert_user.php"  enctype="multipart/form-data">
                	<div class="modal-body" style =align:center; width:80%;>
                     
                     <div class="form-group row">
@@ -27,7 +28,7 @@
                     <div class="form-group row">
                     <label for="fullname" style = "font-size:13px;"class="col-md-2 col-form-label ">Full Name</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="fullname" class="form-control" id="fullname" required>
+                      <input type="text" name ="fullname" class="form-control" id="fullname1" required>
                     </div>  
                     </div>
 
