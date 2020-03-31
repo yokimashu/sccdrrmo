@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$btnSave= $btnEdit='';
+
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
@@ -29,17 +29,20 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
+$btnSave = $btnEdit = $get_time = $get_date = $get_id=
+$get_fullname = $get_symptoms = $get_status= '';
 
   $user_id = $_GET['id'];
-  $get_approved_sql = "SELECT * FROM tbl_approvedby WHERE idno = :id and status='Active'";
-  $get_approved_data = $con->prepare($get_approved_sql);
-  $get_approved_data->execute([':id' => $user_id]);
-  while ($result = $get_approved_data->fetch(PDO::FETCH_ASSOC)) {
+
+  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id and status='Active'";
+  $get_pum_data = $con->prepare($get_pum_sql);
+  $get_pum_data->execute([':id' => $user_id]);
+  while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
     $get_id                     = $result['idno'];  
-    $get_firstname              = $result['firstname'];
-    $get_middlename             = $result['middlename'];
-    $get_lastname               = $result['lastname'];
-    $get_position               = $result['position'];
+    $get_date                   = $result['date_report'];
+    $get_time                   = $result['date_time'];
+    $get_fullname               = $result['fullname'];
+    $get_symptoms               = $result['symptoms'];
     $get_status                 = $result['status'];
   }
 
@@ -58,7 +61,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Dashboard</title>
+  <title>SCCDRRMO | Update PUM</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -100,15 +103,23 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
             
               <div class="box-body" >
 
-                    <div class="row" hidden > 
-                      <div class="col-md-3" hidden style="text-align: right;padding-top: 5px;">
-                      <label hidden>ID No:</label>
+                    <div class="row"  > 
+                      <div class="col-md-3"  style="text-align: right;padding-top: 5px;">
+                        <label hidden>ID No:</label>
                       </div>
-                      <div class="col-md-7" hidden>
-                          <input type="hidden" readonly onkeyup="this.value = this.value.toUpperCase();" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
+                      <div class="col-md-7" >
+                        <input type="text" readonly onkeyup="this.value = this.value.toUpperCase();" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
                       </div>
                     </div><br>
 
+                    <div class="row"  > 
+                      <div class="col-md-3"  style="text-align: right;padding-top: 5px;">
+                        <label hidden>ID No:</label>
+                      </div>
+                      <div class="col-md-7" >
+                        <input type="text" readonly onkeyup="this.value = this.value.toUpperCase();" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
+                      </div>
+                    </div><br>
    
                 
 
