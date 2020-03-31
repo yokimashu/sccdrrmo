@@ -96,7 +96,6 @@ $get_all_symptoms_data->execute();
                                                 <th> Time </th>
                                                 <th> ID No </th>
                                                 <th> Full Name </th>
-                                              
                                                 <th> Symptoms</th>
                                                 <th> Status</th>
                                                 <th> Options</th>
