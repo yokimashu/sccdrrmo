@@ -144,7 +144,7 @@ $get_all_symptoms_data->execute();
                                   <label>Symptoms:</label>
                             </div>
                             <div class="col-md-5" style="text-align:left;" >
-                              <select class="form-control select2" readonly  id="symptoms" name="symptoms" value="<?php echo $type; ?>">
+                              <select class="form-control select2"  id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
                                 <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option><?php } ?>
@@ -258,6 +258,7 @@ $get_all_symptoms_data->execute();
 
 
     $("#btnSubmit").attr("disabled", true);
+    $("#symptoms").attr("disabled", true);
 
     $(document).ready(function(){
         $('#btnEdit').click(function() {
@@ -267,7 +268,7 @@ $get_all_symptoms_data->execute();
           $("input[name='report_date']").removeAttr("readonly");
           $("input[name='status']").removeAttr("readonly");
           $("select[name='symptoms']").removeAttr("readonly");
-   
+          $("#symptoms").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
           $("#btnEdit").attr("disabled", true);
         });
