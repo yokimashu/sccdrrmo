@@ -95,7 +95,7 @@ $get_all_symptoms_data->execute();
                                                         <td>
                                                             <a class="btn btn-success btn-xs" href=" ">
                                                             <i class="fa fa-folder-open-o"></i>  </a>
-                                                            <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
+                                                            <button class="btn btn-danger btn-xs" data-role="confirm_delete" 
                                                             data-id="<?php echo $list_symptoms["idno"]; ?>"><i class="fa fa-trash-o"></i></button>
                                                             &nbsp;                           
                                                             
