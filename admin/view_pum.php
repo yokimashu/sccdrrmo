@@ -89,11 +89,11 @@ $get_all_symptoms_data->execute();
   <?php include('sidebar.php');?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" >
+  <div class="content-wrapper" align="center">
     <div class="content-header"></div>
 
 
-    <section class="content col-md-8" align="center">
+    <section class="content col-md-8">
 
  
         <div class="card card-info "  >
