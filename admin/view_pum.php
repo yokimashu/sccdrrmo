@@ -29,6 +29,25 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
+if (isset($_GET['objid'])) {
+
+  $user_id = $_GET['id'];
+  $get_approved_sql = "SELECT * FROM tbl_approvedby WHERE idno = :id and status='Active'";
+  $get_approved_data = $con->prepare($get_approved_sql);
+  $get_approved_data->execute([':id' => $user_id]);
+  while ($result = $get_approved_data->fetch(PDO::FETCH_ASSOC)) {
+    $get_id                     = $result['idno'];  
+    $get_firstname              = $result['firstname'];
+    $get_middlename             = $result['middlename'];
+    $get_lastname               = $result['lastname'];
+    $get_position               = $result['position'];
+    $get_status                 = $result['status'];
+  }
+
+}
+
+
+
 
 
 ?>
