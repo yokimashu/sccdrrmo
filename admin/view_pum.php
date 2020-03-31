@@ -107,7 +107,7 @@ $get_all_symptoms_data->execute();
                     <div class="box-body">
                       
                           <div class="row"> 
-                            <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                               <label>ID No:</label>
                             </div>
                             <div class="col-md-3" >
@@ -116,13 +116,13 @@ $get_all_symptoms_data->execute();
                           </div><br>
 
                           <div class="row"> 
-                            <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                               <label>Date:</label>
                             </div>
                             <div class="col-md-2" align="center" >
                               <input type="text"  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
                             </div>
-                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-2" style="text-align: right;padding-top: 5px;">
                               <label>Time:</label>
                             </div>
                             <div class="col-md-2" align="center">
@@ -131,7 +131,7 @@ $get_all_symptoms_data->execute();
                           </div><br>
 
                           <div class="row"> 
-                            <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                               <label>Name of the Patient:</label>
                             </div>
                             <div class="col-md-2" >
@@ -140,12 +140,12 @@ $get_all_symptoms_data->execute();
                           </div><br>
 
                           <div class="row">
-                                <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                                <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                                     <!-- <div class="form-group"> -->
                                   <label>Symptoms:</label>
                                 </div>
                                 <div class="col-md-5">
-                                    <select class="form-control select2" readonly style="width: 30%;" id="symptoms" name="symptoms" value="<?php echo $type; ?>">
+                                    <select class="form-control select2" readonly  id="symptoms" name="symptoms" value="<?php echo $type; ?>">
                                         <!-- <option>Please select...</option> -->
                                     <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php
@@ -160,7 +160,7 @@ $get_all_symptoms_data->execute();
                           </div><br>
                           
                           <div class="row"> 
-                            <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                            <div class="col-md-3" style="text-align: right;padding-top: 5px;">
                               <label>Status:</label>
                             </div>
                             <div class="col-md-2" >
