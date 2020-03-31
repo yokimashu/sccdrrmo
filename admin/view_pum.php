@@ -93,7 +93,7 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
 
 
-    <section class="content col-md-8">
+    <section class="content col-md-10">
 
  
         <div class="card card-info "  >
