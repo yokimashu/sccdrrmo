@@ -55,7 +55,7 @@
         $get_status = $_POST['status'];
     
        
-        $update_categ_sql = "UPDATE tbl_pum SET
+        $update_pum_sql = "UPDATE tbl_pum SET
             date_report         = :datess,
             fullname            = :namesss,
             time_report         = :timesss,
@@ -63,13 +63,15 @@
             status              = :stat, 
             where idno      = :id";
                 
-        $update_data = $con->prepare($update_categ_sql);
-        $update_data->execute([
+        $pum_data = $con->prepare($update_pum_sql);
+        $pum_data->execute([
             ':datess'           => $get_date,
             ':namesss'          => $get_fullname,
             ':timesss'          => $get_time,
             ':symp'             => $ge_symptomsss,
-            ':stat'             => $get_status
+            ':stat'             => $get_status,
+            ':id'               => $get_id
+
             ]);
     
             $alert_msg .= ' 
