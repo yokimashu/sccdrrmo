@@ -40,7 +40,7 @@ $get_fullname = $get_symptoms = $get_status= '';
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
     $get_id                     = $result['idno'];  
     $get_date                   = $result['date_report'];
-    $get_time                   = $result['date_time'];
+    $get_time                   = $result['time_report'];
     $get_fullname               = $result['fullname'];
     $get_symptoms               = $result['symptoms'];
     $get_status                 = $result['status'];
