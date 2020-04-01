@@ -1,7 +1,6 @@
 
 <?php
 
- include('config/db_config.php');
 
 
 if(isset($_POST['add'])){
@@ -85,7 +84,7 @@ else {
 
 
 }
-// header('location: index.php');
+
 }
 
 
