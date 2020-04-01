@@ -3,6 +3,7 @@
 
 include ('../config/db_config.php');
 include ('sql_symptoms.php');
+include ('delete_symptoms.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -171,7 +172,7 @@ $get_all_symptoms_data->execute();
 
                   <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
                   <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-                  <input type="submit" name="delete_ordinance" class="btn btn-danger" value="Yes">
+                  <input type="submit" name="delete_symptoms" class="btn btn-danger" value="Yes">
                 </div>
               </form>
             </div>
