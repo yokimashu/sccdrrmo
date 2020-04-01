@@ -34,7 +34,7 @@ $get_fullname = $get_symptoms = $get_status= '';
 
   $user_id = $_GET['id'];
 
-  $get_pum_sql = "SELECT * FROM tbl_symtpms WHERE idno = :id and status='Active'";
+  $get_pum_sql = "SELECT * FROM tbl_symptoms WHERE idno = :id and status='Active'";
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
