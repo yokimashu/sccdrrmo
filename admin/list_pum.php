@@ -166,7 +166,7 @@ $get_all_symptoms_data->execute();
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
                 </div>
         
          

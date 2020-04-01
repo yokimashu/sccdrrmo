@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('update_pum.php');
+include ('update_symptoms.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -34,7 +34,7 @@ $get_fullname = $get_symptoms = $get_status= '';
 
   $user_id = $_GET['id'];
 
-  $get_pum_sql = "SELECT * FROM tbl_symtpms WHERE idno = :id and status='Active'";
+  $get_pum_sql = "SELECT * FROM tbl_symptoms WHERE idno = :id and status='Active'";
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
@@ -89,10 +89,10 @@ $get_fullname = $get_symptoms = $get_status= '';
         <div class="card card-info "  >
          
                 <div class="card-header">
-                  <h3>Update PUM </h3>
+                  <h3>Update Symptoms </h3>
                 </div>
                 <div class="card-body" align="center">
-                  <form role="form" method="post" action="update_pum.php">
+                  <form role="form" method="post" action="update_symptoms.php">
                     
                     <div class="box-body">
                       
@@ -101,7 +101,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>ID No:</label>
                             </div>
                             <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
+                              <input type="text" readonly  class="form-control"  name="id_number" placeholder="ID NO" value="<?php echo $get_id;?>" required>
                             </div>
                           </div><br>
 
@@ -109,8 +109,8 @@ $get_fullname = $get_symptoms = $get_status= '';
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-5" >
-                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
+                            <div class="col-md-3" >
+                              <input type="text" readonly align="center" class="form-control"  name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
                             </div>
                           </div><br>
                           
@@ -119,7 +119,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>Status:</label>
                             </div>
                             <div class="col-md-2" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
+                              <input type="text" readonly class="form-control"  name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
                             </div>
                           </div><br>                
         
@@ -130,7 +130,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
                               <i class="fa fa-edit fa-fw"> </i>  </button>
 
-                              <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
+                              <button type="submit"  <?php echo $btnSave; ?> name="update_symptoms" id="btnSubmit" class="btn btn-success" >
                               <i class="fa fa-check fa-fw"> </i> </button>
 
                               <a href="list_pum.php">
@@ -224,10 +224,7 @@ $get_fullname = $get_symptoms = $get_status= '';
 
     $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='report_time']").removeAttr("readonly");
-          $("input[name='fullname']").removeAttr("readonly");
-          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='symptoms']").removeAttr("readonly");
           $("input[name='status']").removeAttr("readonly");
           $("#name_symptoms").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
