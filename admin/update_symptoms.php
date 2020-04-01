@@ -8,7 +8,7 @@ if (isset($_POST['update_symptoms'])) {
     $get_id = $_POST['id_number'];
     $get_status = $_POST['status'];
 
-    $update_symptoms_sql = " UPDATE tbl_symptoms SET
+    $update_symptoms_sql = "UPDATE tbl_symptoms SET
         symptoms            = :symptoms,
         status              = :stat 
         where idno          = :id";
