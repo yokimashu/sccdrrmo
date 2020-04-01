@@ -28,6 +28,9 @@ if (isset($_POST['update_symptoms'])) {
             Data Updated.
         </div>     
       ';
+
+
+      
     header('location: view_symptoms.php');
 
 }
