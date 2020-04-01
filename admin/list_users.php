@@ -3,7 +3,7 @@
 session_start();
 include ('../config/db_config.php');
 include('update_user.php'); 
-include('header.php');
+
 $alert_msg='';
 $state ="edit";
 $button ="update";
@@ -25,7 +25,7 @@ $user_id = $_SESSION['id'];
 <body class="hold-transition sidebar-mini">
 
 <div class="wrapper">
-  
+<?php include('header.php');?>
   <!-- Left side column. contains the logo and sidebar -->
   <?php include('sidebar.php');?>
 
