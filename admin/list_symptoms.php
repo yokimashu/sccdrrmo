@@ -64,7 +64,7 @@ $get_all_symptoms_data->execute();
                     <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
-                                <div class="table-responsive" >
+                                <div class="card-body" >
                                     <table id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
@@ -206,7 +206,8 @@ $get_all_symptoms_data->execute();
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,
-      'autoHeight'  : true
+      'autoHeight'  : true,
+      'responsive'  :true
     });
 
     $('#addSymptoms').on('hidden.bs.modal', function () {
