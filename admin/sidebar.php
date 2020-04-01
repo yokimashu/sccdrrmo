@@ -90,6 +90,15 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="announcement" class="nav-link">
+                  <i class="nav-icon fa fa-exclamation-circle"></i>
+                  <p>
+                  Announcement
+                   
+                  </p>
+                </a>
+              </li>
               <li class="nav-item has-treeview" style="font-size:16px">
               <a href="" class="nav-link ">
                 <i class="nav-icon fa fa-thermometer-full"></i>
