@@ -59,7 +59,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
    <div class="greenBG">
-    <a href="#" class="brand-link">
+    <a href="index" class="brand-link">
       <img src="../dist/img/scdrrmo_logo.png" class="img-circle elevation-2" width="40px">   
       <span class="brand-text font-weight-light"><b>SCCDRRMO</b> | SYSTEM</span>
     </a>
