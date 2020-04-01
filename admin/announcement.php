@@ -22,7 +22,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 //fetch published posts from database
-$get_all_published_sql = "SELECT * FROM posts WHERE status='published'";
+$get_all_published_sql = "SELECT * FROM tbl_announcement WHERE status='published'";
 $get_all_published_data = $con->prepare($get_all_published_sql);
 $get_all_published_data->execute();
 
@@ -77,7 +77,7 @@ $get_all_published_data->execute();
 
            $totalPages = $numRows / $rpp;
 
-           $posts = $con->query("SELECT * FROM posts WHERE status='published' ORDER BY updated_on DESC")->fetchall(PDO::FETCH_ASSOC);
+           $posts = $con->query("SELECT * FROM tbl_announcement WHERE status='published' ORDER BY updated_on DESC")->fetchall(PDO::FETCH_ASSOC);
                        
             foreach(array_slice($posts, $start, $rpp) as $row):
               if ($row['status'] !== 'published') {

@@ -25,7 +25,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 if (isset($_GET['post'])) {
     
     $post = $_GET['post'];
-    $get_post_sql = "SELECT * FROM posts where id = :post";
+    $get_post_sql = "SELECT * FROM tbl_announcement where id = :post";
     $get_post_data = $con->prepare($get_post_sql);
     $get_post_data->execute([':post' => $post]);
     while ($row = $get_post_data->fetch(PDO::FETCH_ASSOC)) {

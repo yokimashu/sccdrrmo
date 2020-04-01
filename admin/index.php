@@ -34,7 +34,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
  <!-- Date Picker -->
