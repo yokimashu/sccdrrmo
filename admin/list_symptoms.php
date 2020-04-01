@@ -64,8 +64,8 @@ $get_all_symptoms_data->execute();
                     <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
-                                <div class="box-body">
-                                    <table style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
+                                <div class="card-body" >
+                                    <table id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
                                                 <th> ID No </th>
@@ -73,7 +73,8 @@ $get_all_symptoms_data->execute();
                                                 <th> Status</th>
                                                 <th> Options</th>
                                             </tr>
-                                            <tbody >
+                                        </thead>
+                                        <tbody >
                                                 <?php while($list_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)){ ?>
                                                     <tr align="center">  
                                                         <td><?php echo $list_symptoms['idno'];?> </td>
@@ -90,9 +91,7 @@ $get_all_symptoms_data->execute();
                                                     </tr>
                                                 <?php } ?>
                                             
-                                            </tbody>
-                            
-                                        </thead>
+                                        </tbody>
                                     </table>
                                 </div>
                             </form>
@@ -207,7 +206,8 @@ $get_all_symptoms_data->execute();
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,
-      'autoHeight'  : true
+      'autoHeight'  : true,
+      'responsive'  :true
     });
 
     $('#addSymptoms').on('hidden.bs.modal', function () {

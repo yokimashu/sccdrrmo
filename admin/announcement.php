@@ -43,7 +43,7 @@ $get_all_published_data->execute();
         <div class="col-lg-2">
         </div>
         <div class="col-lg-8">
-           <div class="card">   
+           <div class="card shadow">   
              <div class="card-header">
                <h3 class="card-title text-center">Announcement</h3>
              </div>
@@ -84,6 +84,8 @@ $get_all_published_data->execute();
                         <?php }?>
                         <?php endforeach; ?>
 
+        </div><!-- end col-lg-8 -->
+      </div><!-- end row -->
                         <div class="float-center">
                         <?php
                         echo "<ul class='pagination'>";
@@ -97,8 +99,6 @@ $get_all_published_data->execute();
                         ?>
                         </div>
 
-        </div><!-- end col-lg-8 -->
-      </div><!-- end row -->
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->
   

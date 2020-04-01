@@ -50,7 +50,7 @@
                     <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <i class="icon fa fa-warning"></i>
-                    Incomplete Details!
+                    Password did not match!
                     </div>     
                     
                 ';
