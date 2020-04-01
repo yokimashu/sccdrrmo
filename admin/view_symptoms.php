@@ -89,7 +89,7 @@ $get_fullname = $get_symptoms = $get_status= '';
         <div class="card card-info "  >
          
                 <div class="card-header">
-                  <h3>Update PUM </h3>
+                  <h3>Update Symptoms </h3>
                 </div>
                 <div class="card-body" align="center">
                   <form role="form" method="post" action="update_pum.php">
@@ -109,7 +109,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Symptoms:</label>
                             </div>
-                            <div class="col-md-5" >
+                            <div class="col-md-3" >
                               <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
                             </div>
                           </div><br>
@@ -224,10 +224,7 @@ $get_fullname = $get_symptoms = $get_status= '';
 
     $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='report_time']").removeAttr("readonly");
-          $("input[name='fullname']").removeAttr("readonly");
-          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='symtoms']").removeAttr("readonly");
           $("input[name='status']").removeAttr("readonly");
           $("#name_symptoms").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
