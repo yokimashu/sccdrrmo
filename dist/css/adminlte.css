@@ -13092,7 +13092,7 @@ a.text-muted:hover {
 
 .float-center{
 	position:fixed;
-	top:40px;
+	bottom:20px;
   right:750px;
   z-index:5;
 }

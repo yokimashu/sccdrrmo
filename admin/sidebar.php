@@ -157,10 +157,16 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
             </a>
             <ul class="nav nav-treeview">
               
-            <li class="nav-item">
+              <li class="nav-item">
                 <a href="list_symptoms" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <p>Add Symptoms</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="add_announcement" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Add Announcement</p>
                 </a>
               </li>
               
