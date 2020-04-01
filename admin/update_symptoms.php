@@ -5,7 +5,7 @@ if (isset($_POST['update_symptoms'])) {
     $alert_msg = '';
     $alert_msg1 = '';
     $get_symptoms = $_POST['symptoms'];
-    $get_id = $_POST['idno'];
+    $get_id = $_POST['id_number'];
     $get_status = $_POST['status'];
 
     $update_symptoms_sql = " UPDATE tbl_symptoms SET

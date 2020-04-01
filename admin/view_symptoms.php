@@ -101,7 +101,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>ID No:</label>
                             </div>
                             <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
+                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="id_number" placeholder="ID NO" value="<?php echo $get_id;?>" required>
                             </div>
                           </div><br>
 
