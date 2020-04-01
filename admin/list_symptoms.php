@@ -91,7 +91,7 @@ $get_all_symptoms_data->execute();
                                                     </tr>
                                                 <?php } ?>
                                             
-                                            </tbody>
+                                        </tbody>
                                     </table>
                                 </div>
                             </form>
