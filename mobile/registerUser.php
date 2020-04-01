@@ -29,6 +29,7 @@ include ('db-config.php');
         gender              = :gender,
         address             = :address,
         account_type        = '3',
+        status              = 'PENDING',
         created_at          = :created";
 
     $users_data = $con->prepare($insert_users_sql);
