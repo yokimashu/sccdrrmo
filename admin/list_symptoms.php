@@ -61,10 +61,10 @@ $get_all_symptoms_data->execute();
                             style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
                         </h4>
                     </div>
-                    <div class="table-responsive">
+                    <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
-                                <div class="box-body" >
+                                <div class="box-body table-responsive" >
                                     <table  style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
