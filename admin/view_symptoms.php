@@ -34,24 +34,14 @@ $get_fullname = $get_symptoms = $get_status= '';
 
   $user_id = $_GET['id'];
 
-  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id and status='Active'";
+  $get_pum_sql = "SELECT * FROM tbl_symtpms WHERE idno = :id and status='Active'";
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
     $get_id                     = $result['idno'];  
-    $get_date                   = $result['date_report'];
-    $get_time                   = $result['time_report'];
-    $get_fullname               = $result['fullname'];
     $get_symptoms               = $result['symptoms'];
     $get_status                 = $result['status'];
   }
-
-
-
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
-$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
-$get_all_symptoms_data->execute();
-
 
 
 
@@ -117,38 +107,10 @@ $get_all_symptoms_data->execute();
 
                           <div class="row"> 
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Date:</label>
-                            </div>
-                            <div class="col-md-2" align="center" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
-                            </div>
-                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                              <label>Time:</label>
-                            </div>
-                            <div class="col-md-2" align="center">
-                            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
-                            </div>
-                          </div><br>
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Name of the Patient:</label>
+                              <label>Symptoms:</label>
                             </div>
                             <div class="col-md-5" >
-                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
-                            </div>
-                          </div><br>
-
-                          <div class="row">
-                            <div class="col-md-4" style="text-align:right;padding-top: 5px;">
-                                  <label>Symptoms:</label>
-                            </div>
-                            <div class="col-md-5" style="text-align:left;" >
-                              <select class="form-control select2"  id="name_symptoms" name="name_symptoms" value="<?php echo $type; ?>">
-                                <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
-                                <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option><?php } ?>
-                              </select>
+                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
                             </div>
                           </div><br>
                           
