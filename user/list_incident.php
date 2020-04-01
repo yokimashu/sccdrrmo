@@ -99,7 +99,7 @@ $get_all_incident_data->execute();
                             <td><?php echo $incident_data['severity'];?> </td>
                             <td><?php echo $incident_data['topic'];?> </td>
                             <td><?php echo $incident_data['reported_by'];?></td>
-                            <td>Send;?> </td>
+                            <td><p class="text-success" style="text-align:center;"><strong>SEND</p></strong></td>
                             
                           
                           <td>
