@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('update_pum.php');
+include ('update_symptoms.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -92,7 +92,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                   <h3>Update Symptoms </h3>
                 </div>
                 <div class="card-body" align="center">
-                  <form role="form" method="post" action="update_pum.php">
+                  <form role="form" method="post" action="update_symptoms.php">
                     
                     <div class="box-body">
                       
@@ -130,7 +130,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
                               <i class="fa fa-edit fa-fw"> </i>  </button>
 
-                              <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
+                              <button type="submit"  <?php echo $btnSave; ?> name="update_symptoms" id="btnSubmit" class="btn btn-success" >
                               <i class="fa fa-check fa-fw"> </i> </button>
 
                               <a href="list_pum.php">
@@ -224,7 +224,7 @@ $get_fullname = $get_symptoms = $get_status= '';
 
     $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='symtoms']").removeAttr("readonly");
+          $("input[name='symptoms']").removeAttr("readonly");
           $("input[name='status']").removeAttr("readonly");
           $("#name_symptoms").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
