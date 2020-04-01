@@ -73,7 +73,8 @@ $get_all_symptoms_data->execute();
                                                 <th> Status</th>
                                                 <th> Options</th>
                                             </tr>
-                                            <tbody >
+                                        </thead>
+                                        <tbody >
                                                 <?php while($list_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)){ ?>
                                                     <tr align="center">  
                                                         <td><?php echo $list_symptoms['idno'];?> </td>
@@ -91,8 +92,6 @@ $get_all_symptoms_data->execute();
                                                 <?php } ?>
                                             
                                             </tbody>
-                            
-                                        </thead>
                                     </table>
                                 </div>
                             </form>
