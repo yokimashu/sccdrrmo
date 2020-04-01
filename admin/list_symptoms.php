@@ -159,7 +159,7 @@ $get_all_symptoms_data->execute();
               <div class="modal-header">
                 <h4 class="modal-title">Confirm Delete</h4>
               </div>
-              <form method="POST" action="delete_symtoms.php">
+              <form method="POST" action="delete_symptoms.php">
                 <div class="modal-body">  
                   <div class="box-body">
                     <div class="form-group">
