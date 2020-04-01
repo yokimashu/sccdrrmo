@@ -1,12 +1,12 @@
 <?php
 
-$alert_msg='';
-$state ="edit";
-$button ="update";
 session_start();
 include ('../config/db_config.php');
 include('update_user.php'); 
 include('header.php');
+$alert_msg='';
+$state ="edit";
+$button ="update";
 if (!isset($_SESSION['id'])) {
     header('location:../index');
 }
@@ -14,7 +14,6 @@ if (!isset($_SESSION['id'])) {
 $user_id = $_SESSION['id'];
 
 //querry to select current user's information
-
 
 ?>
 
@@ -186,6 +185,7 @@ $user_id = $_SESSION['id'];
         // var office = $('#department').val();
         
 				var dataTable = $('#users').DataTable( {
+          
           "page"      : true,
           "stateSave" :true,
 					"processing": true,
@@ -264,7 +264,7 @@ $user_id = $_SESSION['id'];
         $('#contactno').val(result.mobileno);
         $('#usertype').val(result.account_type);
         $('#user_id').val(result.id);
-              console.log(result.account_type);
+         console.log(result.account_type);
         
        },
        error: function (xhr, b, c) {
