@@ -46,7 +46,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
         <a href="../../lockscreen.php" class="nav-link">Lock Screen</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../logout.php" class="nav-link">Log Out</a>
+        <a href="../index.php" class="nav-link">Log Out</a>
       </li>
      </ul>
     
@@ -56,30 +56,25 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-   <div class="greenBG">
-    <a href="index" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../dist/img/scdrrmo_logo.png" class="img-circle elevation-2" width="40px">   
       <span class="brand-text font-weight-light"><b>SCCDRRMO</b> | SYSTEM</span>
     </a>
-   
+
     <!-- Sidebar -->
-    
+    <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a style="color:white" href="profile.php" class="d-block"><?php echo $db_fullname ?>  </a>
+          <a href="profile.php" class="d-block"><?php echo $db_fullname ?>  </a>
         </div>
       </div>
-      </div>
-      
-   </div>
-    <div class="sidebar">
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -95,8 +90,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                   </p>
                 </a>
               </li>
+           
               <li class="nav-item">
-                <a href="announcement" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="nav-icon fa fa-exclamation-circle"></i>
                   <p>
                   Announcement
@@ -104,67 +100,73 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                   </p>
                 </a>
               </li>
-              <li class="nav-item has-treeview" style="font-size:16px">
-              <a href="" class="nav-link ">
-                <i class="nav-icon fa fa-thermometer-full"></i>
-                <p>
-                  COVID-19
-                  <i class="right fa fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="list_pum" class="nav-link">
-                    <i class="fa fa-minus nav-icon"></i>
-                    <p>PUM</p>
-                  </a>
-                </li>          
-              </ul>
 
-              <li class="nav-item has-treeview" style="font-size:16px">
-            <a href="" class="nav-link ">
-              <i class="nav-icon fa fa-exchange"></i>
+          <li class="nav-item has-treeview" style="font-size:16px">
+            <a href="addIncident.php" class="nav-link ">
+              <i class="nav-icon fa fa-plus"></i>
               <p>
-                REGISTRATION LIST
-                <i class="right fa fa-angle-left"></i>
+                REPORT INCIDENT
               </p>
             </a>
 
+            <li class="nav-item has-treeview" style="font-size:16px">
+            <a href="list_incident.php" class="nav-link ">
+              <i class="nav-icon fa fa-exchange"></i>
+              <p>
+                LIST INCIDENT REPORTED
+              </p>
+            </a>
        
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="list_users" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Users</p>
-                </a>
-
-                <a href="list_incident" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Incident List</p>
-                </a>
-              </li>
            
-            
-            </ul>
-
             <li class="nav-item has-treeview" style="font-size:16px">
             <a href="properties" class="nav-link ">
               <i class="nav-icon fa fa-list"></i>
               <p>
                 PROPERTIES
-                <i class="right fa fa-angle-left"></i>
+                <!-- <i class="right fa fa-angle-left"></i> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              
-            <li class="nav-item">
-                <a href="list_symptoms" class="nav-link">
+            <!-- <ul class="nav nav-treeview">
+               -->
+
+               <!-- <li class="nav-item">
+                <a href="list_position" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
-                  <p>Add Symptoms</p>
+                  <p>Position</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="list_section" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Section</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="list_employee" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Employee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="list_approvedby" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Approved by</p> 
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="list_preparedby" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Prepared by</p> 
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="list_requestedby" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Requested by</p> 
+                </a>
+              </li> -->
               
-            </ul>
+            <!-- </ul> -->
               
             
             <li class="nav-item has-treeview" style="font-size:16px">
@@ -182,7 +184,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                   <p>Lock Screen</p>
                 </a>
                 <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="../index.php" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Log Out</p>
                 </a>

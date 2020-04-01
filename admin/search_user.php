@@ -1,10 +1,10 @@
 <?php
-session_start();
 /* Database connection start */
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sccdrrmo";
+// include('..config/db_config.php');
 // $office = $_POST['office'];
 
 
@@ -26,7 +26,7 @@ $requestData= $_REQUEST;
 	2 => 'username',
 	3 => 'email',
 	4 => 'mobileno',
-  	 5 => 'status'
+  	5 => 'status'
 	
 
 
@@ -51,6 +51,7 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
 	$sql.=" OR username LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR email LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR gender LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR address LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR mobileno LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR birthdate LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR account_type LIKE '%".$requestData['search']['value']."%' ";
@@ -71,9 +72,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["username"];
 	$nestedData[] = $row["email"];
 	$nestedData[] = $row["mobileno"];
-
     $nestedData[] = $row["status"];
-
 	$data[] = $nestedData;
 }
 

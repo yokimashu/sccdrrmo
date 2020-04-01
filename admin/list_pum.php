@@ -50,21 +50,7 @@ $get_all_symptoms_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SCCDRRMO | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
-  <!-- Select2-->
-  <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <?php include('header.php');?>
 
 
 </head>
@@ -110,7 +96,7 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_pum['symptoms'];?> </td>
                                                         <td><?php echo $list_pum['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-xs" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
+                                                            <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
                                                             <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
                                                             &nbsp;                           
@@ -166,7 +152,7 @@ $get_all_symptoms_data->execute();
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
                 </div>
         
          

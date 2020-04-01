@@ -1,12 +1,12 @@
 <?php
 
-$alert_msg='';
-$state ="edit";
-$button ="update";
 session_start();
 include ('../config/db_config.php');
 include('update_user.php'); 
-include('header.php');
+
+$alert_msg='';
+$state ="edit";
+$button ="update";
 if (!isset($_SESSION['id'])) {
     header('location:../index');
 }
@@ -14,7 +14,6 @@ if (!isset($_SESSION['id'])) {
 $user_id = $_SESSION['id'];
 
 //querry to select current user's information
-
 
 ?>
 
@@ -26,7 +25,7 @@ $user_id = $_SESSION['id'];
 <body class="hold-transition sidebar-mini">
 
 <div class="wrapper">
-  
+<?php include('header.php');?>
   <!-- Left side column. contains the logo and sidebar -->
   <?php include('sidebar.php');?>
 
@@ -125,9 +124,11 @@ $user_id = $_SESSION['id'];
 <!-- Bootstrap 3.3.7 -->
 <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- PACE -->
+
 <script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
@@ -184,10 +185,9 @@ $user_id = $_SESSION['id'];
         // var office = $('#department').val();
         
 				var dataTable = $('#users').DataTable( {
-          'paging'      : true,
-          'lengthChange': true,
-          'autoWidth'   : true,
-          'autoHeight'  : true,
+          
+          "page"      : true,
+          "stateSave" :true,
 					"processing": true,
           "serverSide": true,
           'scrollX'   : true,
@@ -204,7 +204,7 @@ $user_id = $_SESSION['id'];
           "columnDefs": [{
                 "targets" : -1,
                 "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-success btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i></button>'
+                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-danger btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i></button>'
           
          
               }],
@@ -264,7 +264,7 @@ $user_id = $_SESSION['id'];
         $('#contactno').val(result.mobileno);
         $('#usertype').val(result.account_type);
         $('#user_id').val(result.id);
-              console.log(result.account_type);
+         console.log(result.account_type);
         
        },
        error: function (xhr, b, c) {
