@@ -4489,6 +4489,27 @@ input[type="button"].btn-block {
   display: none;
 }
 
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 50px;
+  line-height: 1.42857;
+}
+
+
 .btn .badge {
   position: relative;
   top: -1px;
@@ -13052,6 +13073,26 @@ a.text-muted:hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
+/* float */
+
+.float{
+	position:fixed;
+	bottom:40px;
+  right:40px;
+  z-index:5;
+}
+
+.float-center{
+	position:fixed;
+	top:40px;
+  right:750px;
+  z-index:5;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
 /* animation */
 
 .Ashake {
@@ -13080,5 +13121,6 @@ a.text-muted:hover {
   50%    {transform: rotate(180deg);}
   100%  {transform: rotate(360deg);}
 }
+
 
 /*# sourceMappingURL=adminlte.css.map */

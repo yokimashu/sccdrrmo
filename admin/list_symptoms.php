@@ -3,6 +3,7 @@
 
 include ('../config/db_config.php');
 include ('sql_symptoms.php');
+include ('delete_symptoms.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -25,7 +26,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE' order by idno DESC";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -93,7 +94,7 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_symptoms['symptoms'];?> </td>
                                                         <td><?php echo $list_symptoms['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-success btn-sm" href=" ">
+                                                            <a class="btn btn-success btn-sm" href="view_symptoms.php?&id=<?php echo $list_symptoms['idno'];?>  ">
                                                             <i class="fa fa-folder-open-o"></i></a>
                                                             <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
                                                             data-id="<?php echo $list_symptoms["idno"];?>"><i class="fa fa-trash-o"></i></button>
@@ -140,7 +141,7 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_symptoms.php" >
 
                 <div class="form-group">
-                    <input type="text" class="form-control"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
                 </div>
               <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
               <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
@@ -158,7 +159,7 @@ $get_all_symptoms_data->execute();
               <div class="modal-header">
                 <h4 class="modal-title">Confirm Delete</h4>
               </div>
-              <form method="POST" action="<?php htmlspecialchars("PHP_SELF")?>">
+              <form method="POST" action="">
                 <div class="modal-body">  
                   <div class="box-body">
                     <div class="form-group">
@@ -171,7 +172,7 @@ $get_all_symptoms_data->execute();
 
                   <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
                   <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-                  <input type="submit" name="delete_ordinance" class="btn btn-danger" value="Yes">
+                  <input type="submit" name="delete_symptoms" class="btn btn-danger" value="Yes">
                 </div>
               </form>
             </div>

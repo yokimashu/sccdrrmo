@@ -21,7 +21,7 @@ $user_id = $_SESSION['id'];
 
 $alert_msg = '';  
 include ('../../config/db_config.php');
-include ('addprinfo.php');
+
 
 //select user
 

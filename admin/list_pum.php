@@ -110,7 +110,7 @@ $get_all_symptoms_data->execute();
                                                         <td><?php echo $list_pum['symptoms'];?> </td>
                                                         <td><?php echo $list_pum['status'];?></td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-xs" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
+                                                            <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
                                                             <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
                                                             &nbsp;                           
@@ -166,7 +166,7 @@ $get_all_symptoms_data->execute();
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
                 </div>
         
          
