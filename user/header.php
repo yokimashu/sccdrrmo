@@ -1,3 +1,9 @@
+<!DOCTYPE html> 
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SCCDRRMO | Incident Report</title>
  <!-- Tell the browser to be responsive to screen width -->
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -22,5 +28,10 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
    <!-- DataTables -->
    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
-   <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
    <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+   <link rel="stylesheet" href="../plugins/bootstrap/bootstrap.min.css">
+   </html>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+
+<div class="wrapper">
