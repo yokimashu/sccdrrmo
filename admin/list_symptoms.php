@@ -64,7 +64,7 @@ $get_all_symptoms_data->execute();
                     <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
-                                <div class="table-responsive">
+                                <div class="box-body" style="table-layout: fixed;" >
                                     <table  style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
