@@ -101,7 +101,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>ID No:</label>
                             </div>
                             <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="id_number" placeholder="ID NO" value="<?php echo $get_id;?>" required>
+                              <input type="text" readonly  class="form-control"  name="id_number" placeholder="ID NO" value="<?php echo $get_id;?>" required>
                             </div>
                           </div><br>
 
@@ -110,7 +110,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>Symptoms:</label>
                             </div>
                             <div class="col-md-3" >
-                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
+                              <input type="text" readonly align="center" class="form-control"  name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
                             </div>
                           </div><br>
                           
@@ -119,7 +119,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>Status:</label>
                             </div>
                             <div class="col-md-2" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
+                              <input type="text" readonly class="form-control"  name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
                             </div>
                           </div><br>                
         

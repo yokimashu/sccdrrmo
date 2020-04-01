@@ -141,7 +141,7 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_symptoms.php" >
 
                 <div class="form-group">
-                    <input type="text" class="form-control"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
                 </div>
               <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
               <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
