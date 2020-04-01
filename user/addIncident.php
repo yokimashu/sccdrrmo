@@ -43,7 +43,7 @@
       
               <div class="form-group">
                 <label for="inputCreate">CREATED</label>
-               <input type="text" id="inputReported" readonly="true"name="topicDateAndTimePosted" class="form-control" value="<?php echo $date=date('F t, Y');?> | <?php echo $time=date('h:i:s')?>"> 
+               <input type="text" id="inputReported" readonly="true"name="topicDateAndTimePosted" class="form-control" value="<?php echo $date=date('F d, Y');?> | <?php echo $time=date('h:i:s')?>"> 
               </div>
                    
                 <div class="form-group">
