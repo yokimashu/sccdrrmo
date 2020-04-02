@@ -1,6 +1,7 @@
 
 <?php
 $title = '';
+
 if($state == 'edit' ){
 $title = 'Modify User';
 }else{
@@ -16,7 +17,7 @@ $title = 'Modify User';
                     <h4 class="modal-title"><b><?php echo $title;?></b></h4>
                </div>  
 
-                <form class="form-horizontal" method="POST" action= "<?php htmlspecialchars("PHP_SELF"); ?>"  enctype="multipart/form-data">
+                <form class="form-horizontal" id ="userform" method="POST" action= "<?php htmlspecialchars("PHP_SELF"); ?>"  enctype="multipart/form-data">
                	<div class="modal-body" style =align:center; width:80%;>
                     
                     <div class="form-group row">

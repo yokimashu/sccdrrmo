@@ -2,12 +2,11 @@
 
 session_start();
 $alert_msg='';
-include ('../config/db_config.php');
-include('update_user.php'); 
-
-
-$state ="edit";
 $button ="update";
+include ('../config/db_config.php');
+include ('../insert_user.php'); 
+$state ="edit";
+
 if (!isset($_SESSION['id'])) {
     header('location:../index');
 }
@@ -124,8 +123,9 @@ $user_id = $_SESSION['id'];
 <script src="../plugins/jquery/jquery.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- datepicker -->
+<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- PACE -->
-
 <script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
@@ -277,6 +277,7 @@ $user_id = $_SESSION['id'];
         $('#contactno').val(result.mobileno);
         $('#usertype').val(result.account_type);
         $('#user_id').val(result.id);
+        document.getElementById("datepicker").setAttribute("data-provide", "datepicker");
          console.log(result.account_type);
         
        },
