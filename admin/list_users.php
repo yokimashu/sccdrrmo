@@ -1,10 +1,11 @@
 <?php
 
 session_start();
+$alert_msg='';
 include ('../config/db_config.php');
 include('update_user.php'); 
 
-$alert_msg='';
+
 $state ="edit";
 $button ="update";
 if (!isset($_SESSION['id'])) {
@@ -64,7 +65,7 @@ $user_id = $_SESSION['id'];
                             <th > Email</th>                                                                 
                            <th> Contact No. </th>
                             <th> Status </th>
-                            <th> Approved </th>
+                            <th> Options </th>
                             
                           
                       </thead>
@@ -185,7 +186,10 @@ $user_id = $_SESSION['id'];
         // var office = $('#department').val();
         
 				var dataTable = $('#users').DataTable( {
-          
+          "fixedHeader": {
+          "header": false,
+          "footer": false
+          },
           "page"      : true,
           "stateSave" :true,
 					"processing": true,
@@ -196,12 +200,21 @@ $user_id = $_SESSION['id'];
 						type: "post",  // method  , by default get
 						error: function(){  // error handling
 							$("#users-error").html("");
-							$("#users").append('<tbody class="users-error"><tr>< th colspan="3">No data found in the server</th></tr></tbody>');
+							$("#users").append('<tbody class="users-error"><tr>< td colspan="3">No data found in the server</td></tr></tbody>');
 							$("#users_processing").css("display","none");
              
 						}
+            // error: function (xhr, b, c) {
+            //     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+            // }
 					},
-          "columnDefs": [{
+          "columnDefs": 
+          
+          [ { "width": "30px", "targets": 0 },
+           {   "width": "150px", "targets": 1 },
+           {   "width": "200px", "targets": 3 },
+           {   "width": "120px", "targets": 4 },
+            {    "width": "90px",
                 "targets" : -1,
                 "data" : null,
                 "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-danger btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i></button>'

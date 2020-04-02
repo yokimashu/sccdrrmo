@@ -3,7 +3,7 @@
 session_start();
 include ('../config/db_config.php');
 include('header.php');
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id'])) {  
     header('location:../index');
 }
 
@@ -86,13 +86,8 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
                       <tbody>
                         <?php while($incident_data = $get_all_incident_data->fetch(PDO::FETCH_ASSOC)){  
-                          $account_type ='';
-                          if($users_data['account_type']=='1'){
-                            $account_type ='Administrator';
-                          }  
-                          else{
-                            $account_type ='User';
-                          }
+                          
+                          
                           ?>
                           <tr style="font-size: 1rem">
                             <td><?php echo $incident_data['objid'];?> </td>
@@ -107,7 +102,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                           
                           <td>
                             <a class="btn btn-success btn-sm btn-flat approved" 
-                            data-id=<?php echo $incident['id'];?> data-name=<?php echo $incident_data['reported_by'];?>>
+                            data-id=<?php echo $incident_data['objid'];?> data-name=<?php echo $incident_data['reported_by'];?>>
                             <i class="fa fa-check"></i>
                              </a>
                            
