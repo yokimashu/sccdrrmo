@@ -84,20 +84,25 @@ $get_all_published_data->execute();
                         <?php }?>
                         <?php endforeach; ?>
 
-        </div><!-- end col-lg-8 -->
-      </div><!-- end row -->
+                        <div class="container-fluid">
                         <div class="float-center">
                         <?php
                         echo "<ul class='pagination'>";
-                        echo "<li class='my-float page-item'><a href='?page=".($page-1)."'class='page-link'><i class='fa fa-angle-left'></i></a></li>"; 
+                        echo "<li class='page-item'><a href='?page=".($page-1)."'class='page-link'><i class='fa fa-angle-left'></i></a></li>"; 
                         for($x = 1; $x <= $totalPages +1; $x++)
                         {
-                        echo "<li class='my-float page-item'><a href='?page=$x' class='page-link'>$x</a></li>";
+                        echo "<li class='page-item'><a href='?page=$x' class='page-link'>$x</a></li>";
                         } 
-                        echo "<li class='my-float page-item'><a href='?page=".($page+1)."'class='page-link'><i class='fa fa-angle-right'></i></a></li>";
+                        echo "<li class='page-item'><a href='?page=".($page+1)."'class='page-link'><i class='fa fa-angle-right'></i></a></li>";
                         echo "</ul>";
                         ?>
                         </div>
+                        </div>
+                        
+
+        </div><!-- end col-lg-8 -->
+      </div><!-- end row -->
+
 
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->

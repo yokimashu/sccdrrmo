@@ -31,14 +31,16 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 ?>
-<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+
+<nav class="main-header navbar navbar-expand greenBG navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
-
-     
+      <li class="nav-item">
+      <a href="index.php" class="nav-link">SCCDRRMO | SYSTEM</a>
+      </li>
     </ul>
    
     <ul class="navbar-nav ml-auto">
@@ -59,10 +61,11 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
    <div class="greenBG">
-    <a href="index" class="brand-link">
+     <br>
+   
+    <!-- <a href="index" class="brand-link">
       <img src="../dist/img/scdrrmo_logo.png" class="img-circle elevation-2" width="40px">   
-      <span class="brand-text font-weight-light"><b>SCCDRRMO</b> | SYSTEM</span>
-    </a>
+    </a> -->
    
     <!-- Sidebar -->
     
