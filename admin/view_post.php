@@ -75,7 +75,7 @@ if (isset($_GET['post'])) {
      <div class="row">
         <div class="col-lg-6">
              <div class="card-body shadow">
-                <p><h2><a href="#"><?php echo $post_title; ?></a></h2></p>
+                <p><h2><a href="#"><?php echo strtoupper($post_title); ?></a></h2></p>
                 <p><h5>by <a href="#"><?php echo $post_author; ?></a></h5></p>
                 <p><span class="fa fa-clock-o"></span> Posted on <?php echo $post_date; ?></p>
                 <hr>

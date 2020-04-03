@@ -4004,23 +4004,23 @@ input[type="button"].btn-block {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: rgb(255, 255, 255);
 }
 
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.726);
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
 }
 
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.411);
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgb(255, 255, 255);
 }
 
 .navbar-light .navbar-nav .show > .nav-link,
@@ -5795,9 +5795,24 @@ button.label-info:focus {
   background-color: #117a8b !important;
 }
 
+.bg-orange, .alert-orange, .label-orange {
+  background-color: #ff9317 !important;
+}
+
+a.bg-orange:hover, a.alert-orange:hover, a.label-orange:hover, a.bg-orange:focus, a.alert-orange:focus, a.label-orange:focus,
+button.bg-orange:hover,
+button.alert-orange:hover,
+button.label-orange:hover,
+button.bg-orange:focus,
+button.alert-orange:focus,
+button.label-orange:focus {
+  background-color: #c26d0b !important;
+}
+
 .bg-warning, .alert-warning, .label-warning {
   background-color: #ffc107 !important;
 }
+
 
 a.bg-warning:hover, a.alert-warning:hover, a.label-warning:hover, a.bg-warning:focus, a.alert-warning:focus, a.label-warning:focus,
 button.bg-warning:hover,
@@ -11094,6 +11109,18 @@ label:not(.form-check-label):not(.custom-file-label) {
   color: #ffffff;
 }
 
+.bg-orange .btn-tool, .alert-orange .btn-tool, .label-orange .btn-tool,
+.bg-orange-gradient .btn-tool,
+.card-orange:not(.card-outline) .btn-tool {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.bg-orange .btn-tool:hover, .alert-orange .btn-tool:hover, .label-orange .btn-tool:hover,
+.bg-orange-gradient .btn-tool:hover,
+.card-orange:not(.card-outline) .btn-tool:hover {
+  color: rgb(0, 0, 0);
+}
+
 .card-light:not(.card-outline) .card-header {
   background-color: #f8f9fa;
   border-bottom: 0;
@@ -12609,6 +12636,13 @@ a.text-muted:hover {
   color: #1F2D3D !important;
 }
 
+.bg-orange, .alert-orange, .label-orange,
+.bg-orange a,
+.alert-orange a,
+.label-orange a {
+  color: rgba(0, 0, 0, 0.815) !important;
+}
+
 .bg-danger, .alert-danger,
 .alert-error, .label-danger,
 .bg-danger a,
@@ -13079,6 +13113,16 @@ a.text-muted:hover {
 
 .greenBG {
   background: linear-gradient(to bottom right, #015c19 0%, #02992a 100%);
+
+}
+
+.greenBG2 {
+  /* background: linear-gradient(to bottom right, #015c19 0%, #02992a 100%); */
+      /* The image used */
+      background-image: url('../dist/img/scdrrmo_logo.png');
+
+      /* Full height */
+      max-height: 100%; 
 }
 
 /* float */
@@ -13092,9 +13136,10 @@ a.text-muted:hover {
 
 .float-center{
 	position:fixed;
-	bottom:20px;
-  right:750px;
-  z-index:5;
+	 bottom:20px; 
+   left: 50%;
+   transform: translateX(-50%);
+   z-index:5;
 }
 
 .my-float{

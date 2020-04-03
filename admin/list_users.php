@@ -2,12 +2,11 @@
 
 session_start();
 $alert_msg='';
-include ('../config/db_config.php');
-include('update_user.php'); 
-
-
-$state ="edit";
 $button ="update";
+include('../config/db_config.php');
+include('../insert_user.php'); 
+$state ="edit";
+
 if (!isset($_SESSION['id'])) {
     header('location:../index');
 }
@@ -124,13 +123,15 @@ $user_id = $_SESSION['id'];
 <script src="../plugins/jquery/jquery.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- datepicker -->
+<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- PACE -->
-
 <script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <script>
@@ -185,6 +186,29 @@ $user_id = $_SESSION['id'];
   $(document).ready(function() {  
         // var office = $('#department').val();
         
+function post_notify(message, type){
+
+if (type == 'success') {
+
+  $.notify({
+    message: message
+  },{
+    type: 'success',
+    delay: 10000
+  });
+
+} else{
+
+  $.notify({
+    message: message
+  },{
+    type: 'danger',
+    delay: 2000
+  }); 
+
+}
+
+}
 				var dataTable = $('#users').DataTable( {
           "fixedHeader": {
           "header": false,
@@ -236,7 +260,7 @@ $user_id = $_SESSION['id'];
       url: 'updatecredentials.php',
       data: {id:id},
        dataType: 'json',
-       
+       success: post_notify('User Activated', 'success')
        })
       //  table.ajax.reload();
   });
@@ -277,6 +301,7 @@ $user_id = $_SESSION['id'];
         $('#contactno').val(result.mobileno);
         $('#usertype').val(result.account_type);
         $('#user_id').val(result.id);
+        
          console.log(result.account_type);
         
        },

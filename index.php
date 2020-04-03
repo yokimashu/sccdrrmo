@@ -35,14 +35,14 @@
                   if (password_verify($password, $hash_password)) {
                    session_start();
                    $_SESSION['id'] = $result['id'];
-    
-                    if ($result['account_type'] == 1) {
+                   $_SESSION['user_type'] = $result['account_type'];
+                    // if ($result['account_type'] == 1) {
     
                       header('location: admin'); //location is folder
-                    }
-                    else {
-                      header('location: user');
-                    }
+                    // }
+                    // else {
+                    //   header('location: user');
+                    // }
                   }
                   else{
                     //echo "Password does not match!";
@@ -127,8 +127,6 @@
     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
       <div class="Ashake form-group has-feedback">
          <?php echo $alert_msg; ?>      
-                 
-            
       </div>
 
       <div class="form-group">
@@ -148,10 +146,8 @@
       <br>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <a href="#addnew" data-toggle="modal" style ="color:white;"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
-        </div>
-        <div class="col-md-6">
           <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
         </div>
       </div>

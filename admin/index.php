@@ -11,6 +11,11 @@ if (!isset($_SESSION['id'])) {
 
 }
 
+//select all pum
+$get_all_pum_sql = "SELECT * FROM tbl_pum";
+$get_all_pum_data = $con->prepare($get_all_pum_sql);
+$get_all_pum_data->execute();
+
 ?>
 
 <!DOCTYPE html>
@@ -33,49 +38,91 @@ if (!isset($_SESSION['id'])) {
     <div class="content-header"></div>
 
     <div class="container-fluid">      
+ 
      <div class="row">
-        <div class="col-lg-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <i class="fa fa-th-list fa-fw"></i> 
-                </div>
-                <div class="panel-heading"> SAN CARLOS -CDRRMO</div>
 
-
-                <div class="row no-gutters align-items-center mt-1">
-                  <div class="col-auto">
-                    <div class="h6 mb-0 mr-0 text-gray-800">
-                      <div class="panel-body">
-                        <div class="list-group">
-                          <?php 
-                                // $query = "SELECT NAME, PRODUCT_CODE FROM product order by PRODUCT_ID DESC LIMIT 10";
-                                // $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                                // while ($row = mysqli_fetch_array($result)) {
-
-                                //     echo "<a href='#' class='list-group-item text-gray-800'>
-                                //           <i class='fa fa-tasks fa-fw'></i> $row[0]
-                                //           </a>";
-                                //   }
-                          ?>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+         <div class="col-12 col-sm-6 col-md-3">
+           <div class="info-box mb-3">
+            <a href="list_pum.php" class="info-box-icon bg-warning elevation-1"><span ><i class="fa fa-male"></i></span></a>
+              <div class="info-box-content">
+                <span class="info-box-text">Person Under Monitor</span>
+                <span class="info-box-number">
+                  <?php echo $get_all_pum_data->rowCount()?>
+                </span>
               </div>
-            </div>   
-          </div>
-        
-        </div>
-      </div>
-    </div>
-    <!-- end row -->
+           </div>
+         </div>
 
-  </div>
-  <!-- /.content-wrapper -->
+         <div class="col-12 col-sm-6 col-md-3">
+           <div class="info-box mb-3">
+            <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span ><i class="fa fa-male"></i></span></a>
+              <div class="info-box-content">
+                <span class="info-box-text">Person Under Investigation</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+           </div>
+
+           <div class="collapse" id="collapseExample">
+         
+              <div class="card p-0">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>PUI Number</th>
+                      <th>Address</th>
+                      <th style="width: 40px">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1 PUI</td>
+                      <td>S. Carmona Street, Zone 1, Brgy.6</td>
+                      <td><span class="badge bg-danger">HOT ZONE</span></td>
+                    </tr>
+                    <tr>
+                      <td>3 PUIs</td>
+                      <td>St. Vincent Subdivision, Brgy. 1</td>
+                      <td><span class="badge bg-danger">HOT ZONE</span></td>
+                    </tr>
+                    <tr>
+                      <td>1 PUI</td>
+                      <td>Brgy. Quezon</td>
+                      <td><span class="badge bg-danger">HOT ZONE</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div><!-- /.card-body -->
+            
+            </div>
+
+
+         </div>       
+
+
+     
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+           <div class="info-box mb-3">
+            <a href="#" class="info-box-icon bg-danger elevation-1"><span ><i class="fa fa-male"></i></span></a>
+              <div class="info-box-content">
+                <span class="info-box-text">Confirmed Cases</span>
+                <span class="info-box-number">
+                  0
+                </span>
+              </div>
+           </div>
+         </div> 
+
+      </div><!-- end row -->
+   </div><!-- end container-fluid -->
+    
+
+  </div><!-- /.content-wrapper -->
+  
  <?php include('footer.php')?>
 
 </div>
