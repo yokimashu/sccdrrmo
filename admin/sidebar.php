@@ -127,6 +127,8 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 </li>          
               </ul>
 
+
+
               <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
               <i class="nav-icon fa fa-exchange"></i>
@@ -143,14 +145,29 @@ $numberofdraft = $get_all_draft_data->rowCount();
               <?php echo $registration_list?>
                
 
-                <a href="list_incident" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Incident List</p>
-                </a>
-              </li>
            
+
             
             </ul>
+
+            <li class="nav-item has-treeview" style="font-size:16px">
+              <a href="" class="nav-link ">
+                <i class="nav-icon fa fa-book"></i>
+                <p>
+                  INCIDENT RECORDS
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="list_incident" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>INCIDENT LIST</p>
+                  </a>
+                </li>          
+              </ul>
+
+            
 
             <li class="nav-item has-treeview" style="font-size:16px">
             <a href="properties" class="nav-link ">
