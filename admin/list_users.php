@@ -245,8 +245,11 @@ if (type == 'success') {
           
          
               }],
-   
+
 				} );
+        setInterval( function () {
+    dataTable.ajax.reload();
+}, 2000 ); 
        $('#users tbody').on( 'click', '#btn', function(){
         // $("#users").on("click","button.btn",function(){
         // $('.approved').on( 'click',function() {
@@ -310,7 +313,8 @@ if (type == 'success') {
             }
      });
  
-} 
+}
+
   });
 
 </script> 
