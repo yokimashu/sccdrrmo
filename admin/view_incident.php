@@ -44,18 +44,18 @@ $get_name = $get_details = $get_type = $get_serivity = '';
     $get_name                   = $result['reported_by'];
     $get_type                   = $result['type'];
     $get_severity               = $result['severity'];
-    $get_mobileno              = $result['mobileno'];
-    $get_details               = $result['topic'];
-    $get_createdat               = $result['createdat'];
+    $get_mobileno               = $result['mobileno'];
+    $get_details                = $result['topic'];
+    $get_createdat              = $result['createdat'];
+    $latitude                   = $result['latitude'];
+    $longitude                  = $result['longitude'];
 
 
   }
 
-
-
-
-
-
+  // this is an example of valid latitude ang longitude
+  $lat = '11.140884';
+  $lon = '123.998932';
 
 ?>
 
@@ -167,22 +167,10 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                               <textarea type="text" readonly align="center" class="form-control" row="5"  name="topic" placeholder="Details of Incident" value="<?php echo $get_details;?>" required></textarea>
                      
                           </div><br>
-
-
-
-
-                          
-
-                     
-                          
-                                    
-        
                                
                           <!-- /.box-body -->
                           <div class="box-footer" align="center">
-                          
-                              <button type="button"  <?php echo $btnMap; ?> name="location" id ="map" class="btn btn-info" >
-                              <label>Location</label> </button>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">Location</button>
 
                               <button type="button"  <?php echo $btnMap; ?> name="image" id ="image" class="btn btn-info" >
                               <label>Photo</label> </button>
@@ -205,6 +193,34 @@ $get_name = $get_details = $get_type = $get_serivity = '';
 
     </section>
     
+
+
+    <!-- modals here -->
+
+    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Map</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row col-md-12">
+              <iframe width="800" height="340" frameborder="0" src = "https://maps.google.com/maps?q=<?= $lat ?>,<?= $lon ?>&hl=es;z=14&amp;output=embed"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
 
 
   </div>
