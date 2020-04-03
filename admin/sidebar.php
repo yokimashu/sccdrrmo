@@ -24,15 +24,18 @@ $get_user_sql = "SELECT * FROM tbl_users where id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
-
     $db_fullname = $result['fullname'];
-  
 }
 
+//get all draft from announcement
+$get_all_draft_sql = "SELECT * FROM tbl_announcement WHERE status = 'draft'";
+$get_all_draft_data = $con->prepare($get_all_draft_sql);
+$get_all_draft_data->execute();
+$numberofdraft = $get_all_draft_data->rowCount();
 
 ?>
 
-<nav class="main-header navbar navbar-expand greenBG navbar-light border-bottom">
+  <nav class="main-header navbar navbar-expand greenBG navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -71,14 +74,14 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     
       <!-- Sidebar user panel (optional) -->
       <div class="sidebar">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a style="color:white" href="profile.php" class="d-block"><?php echo $db_fullname ?>  </a>
         </div>
-      </div>
+       </div>
       </div>
       
    </div>
@@ -170,6 +173,13 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                 <a href="add_announcement" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <p>Add Announcement</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="view_all_posts" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
+                  <p>View All Announcements</p>
                 </a>
               </li>
               

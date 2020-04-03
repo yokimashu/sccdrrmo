@@ -127,8 +127,6 @@
     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
       <div class="Ashake form-group has-feedback">
          <?php echo $alert_msg; ?>      
-                 
-            
       </div>
 
       <div class="form-group">
@@ -148,10 +146,8 @@
       <br>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <a href="#addnew" data-toggle="modal" style ="color:white;"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
-        </div>
-        <div class="col-md-6">
           <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
         </div>
       </div>

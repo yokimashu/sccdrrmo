@@ -67,49 +67,47 @@ $get_all_published_data->execute();
               echo "NO POST PLS";
             } else {    
             ?>
-                       <div class="card-body shadow">
-                        <p><h2><a href="view_post.php?post=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></h2></p>
-                        <p><h5>by <a href="#"><?php echo $row['author']; ?></a></h5></p>
-                        <p><span class="fa fa-clock-o"></span> Posted on <?php echo $row['postdate']; ?></p>
-                        <hr><a href="view_post.php?post=<?php echo $row['id']; ?>">
-                        <div class="text-center">
-                           <img class="img-fluid img-rounded" src="../postimage/<?php echo $row['image']; ?>" alt="900 * 300"></a>
-                        </div>
-                        <hr>
-                        <p><?php echo substr($row['content'], 0, 300) . '.........'; ?></p>
-                        <hr>
-                        <a href="view_post.php?post=<?php echo $row['id']; ?>"><button type="button" class="btn btn-info">Read More  <span class="fa fa-angle-right"></span></button></a>
-                       </div>
-                       <br>                     
-                        <?php }?>
-                        <?php endforeach; ?>
+             <div class="card-body shadow">
+               <p><h2><a href="view_post.php?post=<?php echo $row['id']; ?>"><?php echo strtoupper($row['title']); ?></a></h2></p>
+               <p><h5>by <a href="#"><?php echo $row['author']; ?></a></h5></p>
+               <p><span class="fa fa-clock-o"></span> Posted on <?php echo $row['postdate']; ?></p>
+               <hr>
+               <a href="view_post.php?post=<?php echo $row['id']; ?>">
+                 <div class="text-center">
+                   <img class="img-fluid img-rounded" src="../postimage/<?php echo $row['image']; ?>" alt="900 * 300">
+                 </div>
+               </a>
+               <hr>
+               <p><?php echo substr($row['content'], 0, 300) . '.........'; ?></p>
+               <hr>
+               <a href="view_post.php?post=<?php echo $row['id']; ?>"><button type="button" class="btn btn-info">Read More  <span class="fa fa-angle-right"></span></button></a>
+             </div>
+             <br>                     
+             <?php }?>
+             <?php endforeach; ?>
 
-                        <div class="container-fluid">
-                        <div class="float-center">
-                        <?php
-                        echo "<ul class='pagination'>";
-                        echo "<li class='page-item'><a href='?page=".($page-1)."'class='page-link'><i class='fa fa-angle-left'></i></a></li>"; 
-                        for($x = 1; $x <= $totalPages +1; $x++)
-                        {
-                        echo "<li class='page-item'><a href='?page=$x' class='page-link'>$x</a></li>";
-                        } 
-                        echo "<li class='page-item'><a href='?page=".($page+1)."'class='page-link'><i class='fa fa-angle-right'></i></a></li>";
-                        echo "</ul>";
-                        ?>
-                        </div>
-                        </div>
-                        
-
+             <div class="container-fluid">
+               <div class="float-center">
+                 <?php
+                 echo "<ul class='pagination'>";
+                 echo "<li class='page-item'><a href='?page=".($page-1)."'class='page-link'><i class='fa fa-angle-left'></i></a></li>"; 
+                 for($x = 1; $x <= $totalPages +1; $x++)
+                 {
+                 echo "<li class='page-item'><a href='?page=$x' class='page-link'>$x</a></li>";
+                 } 
+                 echo "<li class='page-item'><a href='?page=".($page+1)."'class='page-link'><i class='fa fa-angle-right'></i></a></li>";
+                 echo "</ul>";
+                 ?>
+               </div><!-- end float-center -->
+             </div><!-- end container-fluid -->                     
         </div><!-- end col-lg-8 -->
       </div><!-- end row -->
-
-
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->
   
  <?php include('footer.php')?>
 
-</div>
+</div><!-- /.wrapper -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
