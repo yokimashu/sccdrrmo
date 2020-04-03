@@ -3,8 +3,9 @@
 
 
 
+
+
 if(isset($_POST['add'])){
- 
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
     $fullname = $_POST['fullname'];
@@ -14,7 +15,6 @@ if(isset($_POST['add'])){
     $email = $_POST['email'];
     $mobileNumber = $_POST['contactno'];
     $registered = date("Y/m/d");
-   
     
 
 $hashed_password  = password_hash($userpass, PASSWORD_DEFAULT);
@@ -88,7 +88,17 @@ else {
 }
 
 if(isset($_POST['update'])){
-
+    $account_type = $_POST['user_type'];
+    $account_type_value = 0;
+if($account_type == "Administrator"){
+    $account_type_value = 1;
+}
+if($account_type == "User"){
+    $account_type_value = 2;
+}
+if($account_type == "Mobile"){
+    $account_type_value = 3;
+}
     $id = $_POST['user_id'];
     $username = $_POST['username'];
     // $userpass = $_POST['userpass'];
@@ -98,7 +108,7 @@ if(isset($_POST['update'])){
     $address = $_POST['address'];
     $email = $_POST['email'];
     $mobileNumber = $_POST['contactno'];
-    $account_type = $_POST['user_type'];
+   
     
     
     $sql2 = "UPDATE tbl_users SET 
@@ -109,7 +119,7 @@ if(isset($_POST['update'])){
     address             = '$address',
     mobileno            = '$mobileNumber',
     gender              = '$gender',
-    account_type        = '$account_type'
+    account_type        = '$account_type_value'
      WHERE  id          = '$id'";
     
     if ($con->query($sql2))
@@ -135,7 +145,7 @@ if(isset($_POST['update'])){
         </div>     
     ';
     }
- 
+  
     }
 
 
