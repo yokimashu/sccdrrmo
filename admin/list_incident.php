@@ -21,19 +21,15 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
 $get_all_incident_sql = "SELECT * FROM tbl_incident ";
 $get_all_incident_data = $con->prepare($get_all_incident_sql);
-$get_all_incident_data->execute(); 
-while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
-  $remarks   = $result['remarks'];
-}
-
+$get_all_incident_data->execute();
 
 
 ?>
 
-<!DOCTYPE html> 
-<html >
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SCCDRRMO | Dashboard</title>
   <?php include('header.php');?>
@@ -48,15 +44,14 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
     <div class="content-header"></div>
-      
-      <section class="content">
     
-          <div class="card card-info">
-            <div class="card-header">
-              <h4 style="float:left;" >INCIDENT LIST</h4>
-           
-              
-            </div>
+    <section class="content">
+            <div class="card card-info">
+                    <div class="card-header">
+                        <h4  >LIST OF INCIDENT</h4>
+                       
+                        
+                    </div>
           
             <div class="card-body">
 
@@ -144,7 +139,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 <script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <script>
