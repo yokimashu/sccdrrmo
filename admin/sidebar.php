@@ -3,18 +3,18 @@
 
 include ('../config/db_config.php');
 
-
+include('session.php');
 
 
 // include ('../config/db_config.php');
 // session_start();
-$user_id = $_SESSION['id'];
+// $user_id = $_SESSION['id'];
 
-if (!isset($_SESSION['id'])) {
-    header('location:../index.php');
-} else {
+// if (!isset($_SESSION['id'])) {
+//     header('location:../index.php');
+// } else {
 
-}
+// }
 
 
 $db_fullname = '';
@@ -135,14 +135,13 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
+           
 
        
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="list_users" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Users</p>
-                </a>
+              <?php echo $registration_list?>
+               
 
                 <a href="list_incident" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>

@@ -1,6 +1,6 @@
 <?php
 //this page controls the user access to the system.
-session_start();
+
 //admin 
 $registration_list='';
 
@@ -9,8 +9,8 @@ $registration_list='';
 $user_id = $_SESSION['id'];
 $account_type = $_SESSION['user_type'];
 if($account_type == 1){
-require_once('admin_controls.php');
-} else{
+    require_once('user_controls.php');
+} else {
 
 }
 // echo "<pre>";
