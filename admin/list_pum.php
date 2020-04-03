@@ -75,6 +75,7 @@ $get_all_symptoms_data->execute();
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
                                 <div class="box-body">
+                                  <div class="table-responsive">
                                     <table style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
@@ -86,30 +87,31 @@ $get_all_symptoms_data->execute();
                                                 <th> Status</th>
                                                 <th> Options</th>
                                             </tr>
-                                            <tbody >
-                                             <?php while($list_pum = $get_all_pum_data->fetch(PDO::FETCH_ASSOC)){ ?>
-                                                    <tr align="center">  
-                                                        <td><?php echo $list_pum['date_report'];  ?></td>
-                                                        <td><?php echo $list_pum['time_report']; ?></td>
-                                                        <td><?php echo $list_pum['idno'];?> </td>
-                                                        <td><?php echo $list_pum['fullname'];?> </td>
-                                                        <td><?php echo $list_pum['symptoms'];?> </td>
-                                                        <td><?php echo $list_pum['status'];?></td>
-                                                        <td>
-                                                            <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
-                                                            <i class="fa fa-folder-open-o"></i> Open
-                                                            </a>
-                                                            &nbsp;                           
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
-
-                                            
-                                            </tbody>
-                            
                                         </thead>
+                                        <tbody >
+                                         <?php while($list_pum = $get_all_pum_data->fetch(PDO::FETCH_ASSOC)){ ?>
+                                                <tr align="center">  
+                                                    <td><?php echo $list_pum['date_report'];  ?></td>
+                                                    <td><?php echo $list_pum['time_report']; ?></td>
+                                                    <td><?php echo $list_pum['idno'];?> </td>
+                                                    <td><?php echo $list_pum['fullname'];?> </td>
+                                                    <td><?php echo $list_pum['symptoms'];?> </td>
+                                                    <td><?php echo $list_pum['status'];?></td>
+                                                    <td>
+                                                        <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
+                                                        <i class="fa fa-folder-open-o"></i> Open
+                                                        </a>
+                                                        &nbsp;                           
+                                                        
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+
+                                        
+                                        </tbody>
                                     </table>
+                                    
+                                  </div>
                                 </div>
                             </form>
                         </div>

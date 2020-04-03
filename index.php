@@ -35,14 +35,14 @@
                   if (password_verify($password, $hash_password)) {
                    session_start();
                    $_SESSION['id'] = $result['id'];
-    
-                    if ($result['account_type'] == 1) {
+                   $_SESSION['user_type'] = $result['account_type'];
+                    // if ($result['account_type'] == 1) {
     
                       header('location: admin'); //location is folder
-                    }
-                    else {
-                      header('location: user');
-                    }
+                    // }
+                    // else {
+                    //   header('location: user');
+                    // }
                   }
                   else{
                     //echo "Password does not match!";

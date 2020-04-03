@@ -2,7 +2,7 @@
 
 session_start();
 include ('../config/db_config.php');
-include('header.php');
+
 if (!isset($_SESSION['id'])) {  
     header('location:../index');
 }
@@ -32,30 +32,29 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
 <!DOCTYPE html> 
 <html >
+<head>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SCCDRRMO | Dashboard</title>
+  <?php include('header.php');?>
 
 
-
+</head>
 <body class="hold-transition sidebar-mini">
-
 <div class="wrapper">
-  
-  <!-- Left side column. contains the logo and sidebar -->
+
   <?php include('sidebar.php');?>
 
- 
-    <div class="content-wrapper">
-      <div class="content-header"></div>
-
-      
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" >
+    <div class="content-header"></div>
       
       <section class="content">
     
           <div class="card card-info">
             <div class="card-header">
               <h4 style="float:left;" >INCIDENT LIST</h4>
-              <a href="add_incident" style="text-decoration:none;">
-                <button  style="float:right; "type="button" class="btn btn-success" >Add Incident</button>
-              </a>
+           
               
             </div>
           
@@ -101,16 +100,13 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                             
                           
                           <td>
-                            <a class="btn btn-success btn-sm btn-flat approved" 
-                            data-id=<?php echo $incident_data['objid'];?> data-name=<?php echo $incident_data['reported_by'];?>>
-                            <i class="fa fa-check"></i>
-                             </a>
-                           
-                      
+                          <a class="btn btn-danger btn-sm" href="view_incident.php?&id=<?php echo $incident_data['objid'];?> ">
+                           <i class="fa fa-folder-open-o"></i> Open
+                                                            </a>
 
-                                                 
-                            
                           </td>
+
+                          
 
 
                           </tr>
@@ -124,28 +120,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
           </div>
       </section>
       
-      <div class = "modal fade " id="approved">
-    <div class ="modal-dialog ">
-    <div class ="modal-content ">
-    <div class="modal-header card-outline card-primary" >
-    <h4 class ="modal-title">Do you want to approve this data?</h4>
-    </div>
-    <form class =form-horizontal method ="POST" action = "update_incident.php"  enctype="multipart/form-data">
-         <div class = "modal-body ">
-
-         <label class = col-sm-2 col-form-label"> User ID:</label>
-         <input type = "text" name = "userId" readonly class="form-control" id="userId">
-         <label class = col-sm-3 col-form-label"> Full Name:</label>
-         <input type = "text" name = "fullname" readonly class="form-control" id="fullname">
-         <div class="modal-footer">            
-        
-        
-         <button type="submit" class="btn btn-primary btn-sm " name = "approved" ><i class="fa fa-save"></i> YES</button>
-
-         <button type="button" class="btn  btn-primary btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>CLOSE</button>
-         </div>
-       
-         </div>                 
+              
 
     </form>
     </div>
