@@ -65,7 +65,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
                   <div class="box-body">
                   
-                    <table style = "overflow-x: auto;"id="users" class="table table-bordered table-striped">
+                    <table id="users" class="table table-bordered table-striped">
                       <thead>
                       
                         <tr style="font-size: 1.10rem">
@@ -77,7 +77,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
                             <th> Topic </th>
                             <th> Reported_by </th>
                             <th> Remarks</th>
-                           
+                           <th>Options</th>
                     
                           </tr>
                           
@@ -156,7 +156,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
       'info'        : true,
       'autoWidth'   : true,
       "scrollX"     : true
-    })
+    });
     $('.approved').click(function(e){
     e.preventDefault();
     $('#approved').modal('show');
