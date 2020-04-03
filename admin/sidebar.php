@@ -121,6 +121,8 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                 </li>          
               </ul>
 
+
+
               <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
               <i class="nav-icon fa fa-exchange"></i>
@@ -138,14 +140,29 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                   <p>Users</p>
                 </a>
 
-                <a href="list_incident" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Incident List</p>
-                </a>
-              </li>
            
+
             
             </ul>
+
+            <li class="nav-item has-treeview" style="font-size:16px">
+              <a href="" class="nav-link ">
+                <i class="nav-icon fa fa-book"></i>
+                <p>
+                  INCIDENT RECORDS
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="list_incident" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>INCIDENT LIST</p>
+                  </a>
+                </li>          
+              </ul>
+
+            
 
             <li class="nav-item has-treeview" style="font-size:16px">
             <a href="properties" class="nav-link ">
