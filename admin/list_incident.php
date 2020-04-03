@@ -60,7 +60,7 @@ $get_all_incident_data->execute();
 
                   <div class="box-body">
                   
-                    <table style = "overflow-x: auto;"id="users" class="table table-bordered table-striped">
+                    <table id="users" class="table table-bordered table-striped">
                       <thead>
                       
                         <tr style="font-size: 1.10rem">
@@ -72,7 +72,7 @@ $get_all_incident_data->execute();
                             <th> Topic </th>
                             <th> Reported_by </th>
                             <th> Remarks</th>
-                           
+                           <th>Options</th>
                     
                           </tr>
                           
@@ -151,7 +151,7 @@ $get_all_incident_data->execute();
       'info'        : true,
       'autoWidth'   : true,
       "scrollX"     : true
-    })
+    });
     $('.approved').click(function(e){
     e.preventDefault();
     $('#approved').modal('show');
