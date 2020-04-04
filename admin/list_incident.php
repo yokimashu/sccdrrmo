@@ -139,6 +139,9 @@ $get_all_incident_data->execute();
 <script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
