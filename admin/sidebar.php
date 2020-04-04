@@ -1,9 +1,9 @@
 <!-- navbar and sidebar -->
 <?php
-
+include_once('session.php');
 include ('../config/db_config.php');
 
-include('session.php');
+// include('session.php');
 
 
 // include ('../config/db_config.php');
@@ -15,7 +15,7 @@ include('session.php');
 // } else {
 
 // }
-
+$user_id = $_SESSION['id'];
 
 $db_fullname = '';
 
@@ -143,11 +143,6 @@ $numberofdraft = $get_all_draft_data->rowCount();
             <ul class="nav nav-treeview">
               <li class="nav-item">
               <?php echo $registration_list?>
-               
-
-           
-
-            
             </ul>
 
             <li class="nav-item has-treeview" style="font-size:16px">

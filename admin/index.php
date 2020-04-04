@@ -2,14 +2,13 @@
 <?php
 
 include ('../config/db_config.php');
-session_start();
-$user_id = $_SESSION['id'];
+// $user_id = $_SESSION['id'];
 
-if (!isset($_SESSION['id'])) {
-    header('location:../index.php');
-} else {
+// if (!isset($_SESSION['id'])) {
+//     header('location:../index.php');
+// } else {
 
-}
+// }
 
 //select all pum
 $get_all_pum_sql = "SELECT * FROM tbl_pum";
@@ -60,10 +59,14 @@ $get_all_pum_data->execute();
                 <span class="info-box-text">Person Under Investigation</span>
                 <span class="info-box-number">
                   5
+                  <?php echo "<pre";
+echo print_r($_SESSION['user_type']);
+echo "</pre>";
+?>
                 </span>
               </div>
            </div>
-
+         
            <div class="collapse" id="collapseExample">
          
               <div class="card p-0">

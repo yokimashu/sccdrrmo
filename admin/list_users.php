@@ -1,17 +1,12 @@
 <?php
 
-session_start();
 $alert_msg='';
 $button ="update";
+// include('verify_admin.php');
 include('../config/db_config.php');
 include('../insert_user.php'); 
+include('verify_admin.php');
 $state ="edit";
-
-if (!isset($_SESSION['id'])) {
-    header('location:../index');
-}
-
-$user_id = $_SESSION['id'];
 
 //querry to select current user's information
 
@@ -210,10 +205,7 @@ if (type == 'success') {
 
 }
 				var dataTable = $('#users').DataTable( {
-          "fixedHeader": {
-          "header": false,
-          "footer": false
-          },
+        
           "page"      : true,
           "stateSave" :true,
 					"processing": true,
@@ -249,7 +241,7 @@ if (type == 'success') {
 				} );
         setInterval( function () {
     dataTable.ajax.reload();
-}, 2000 ); 
+}, 10000 ); 
        $('#users tbody').on( 'click', '#btn', function(){
         // $("#users").on("click","button.btn",function(){
         // $('.approved').on( 'click',function() {
