@@ -81,6 +81,14 @@ if (isset($_GET['post'])) {
                 <hr>
                 <p><?php echo $post_content; ?></p>
              </div>
+             <div class="card-body shadow">
+             <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Write a comment...">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
+                  </span>
+                </div>
+             </div>
         </div><!-- end col-lg-6 -->
         <div class="col-lg-6">
          

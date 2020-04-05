@@ -12,16 +12,32 @@ if (!isset($_SESSION['id'])) {
 $btnSave = '';
 $btnNew = 'hidden';
 
+if (isset($_GET['post'])) {
+
+  //select filename
+  $id = $_GET['post'];
+  $get_sql = "SELECT * FROM tbl_announcement where id = :post";
+  $get_data = $con->prepare($get_sql);
+  $get_data->execute([':post' => $id]);
+  while ($result = $get_data->fetch(PDO::FETCH_ASSOC)) {
+      $post_id = $result['id'];
+      $post_title = $result['title'];
+      $post_postdate = $result['postdate'];
+      $post_image = $result['image'];
+      $post_content = $result['content'];
+      $post_status = $result['status'];
+      $post_tag = $result['tag'];
+  }
+}
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Add Announcement</title>
+  <title>SCCDRRMO | Update Announcement</title>
  
   <?php include('header.php');?>
 
@@ -48,7 +64,7 @@ $btnNew = 'hidden';
               </div>
             </div>
             <div class="card-body">
-              <img src="<?php if(isset($_POST['insert_announcement'])) { echo '../postimage/'.$fileName; }else{ echo '../dist/img/scdrrmo_logo.png';} ?>" class="img-fluid" id="image">
+              <img src="<?php echo '../postimage/'.$post_image; ?>" class="img-fluid" id="image">
             </div>
           </div>
         </div>
@@ -57,7 +73,7 @@ $btnNew = 'hidden';
          <div class="card shadow">
            <div class="card-header">
              <h2 class="page-header">
-               Add Announcement 
+               Update Announcement 
              </h2>
            </div><!-- end card-header -->
 
@@ -66,11 +82,14 @@ $btnNew = 'hidden';
 
              <div class="float-topright">
                <?php echo $alert_msg; ?> 
-             </div>               
+             </div>
+            <div class="form-group">
+                <input hidden type="text" name="id" value= "<?php  echo $post_id; ?>"  class="form-control">
+            </div>
 
             <div class="form-group">
                 <label for="post_title">Post Title</label>
-                <input type="text" name="title" placeholder = "ENTER TITLE " value= "<?php if(isset($_POST['insert_announcement'])) { echo $post_title; } ?>"  class="form-control" pattern=".{15,}" required title="15 characters minimum">
+                <input type="text" name="title" placeholder = "ENTER TITLE " value= "<?php  echo $post_title; ?>"  class="form-control" pattern=".{15,}" required title="15 characters minimum">
             </div>
             
             <div class="form-group">
@@ -80,18 +99,19 @@ $btnNew = 'hidden';
 
             <div class="form-group">
                 <label for="post_tag">Post Tags</label>
-                <input type="text" name="tags" placeholder = "ENTER SOME TAGS SEPERATED BY COMMA (,)" value= "<?php if(isset($_POST['insert_announcement'])) { echo $post_tag; } ?>" class="form-control" required>
+                <input type="text" name="tags" placeholder = "ENTER SOME TAGS SEPERATED BY COMMA (,)" value= "<?php echo $post_tag; ?>" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="post_content">Post Content</label>
-                <textarea class="textarea" name="content"  id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" placeholder = "ENTER CONTENT" minlength="15" required><?php if(isset($_POST['insert_announcement'])) { echo $post_content; } ?></textarea>
+                <textarea class="textarea" name="content"  id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" placeholder = "ENTER CONTENT" minlength="15" required><?php echo $post_content; ?></textarea>
             </div>
            </div><!-- end card-body -->
 
            <div class="card-footer">
-            <button type="submit" <?php echo $btnSave; ?> name="insert_announcement" class="btn btn-primary" onclick="return checkWordCount()"  value="Publish Post">Publish Post</button>
-            <button type="submit"  <?php echo $btnNew; ?> name="add" class="btn btn-success" value="New"><i class="fa fa-refresh"></i></button>
+            <a href="view_all_posts" class="btn btn-info" value="Publish Post"><span class="fa fa-angle-left"> </span>  Back</a>
+            <button type="submit" <?php echo $btnSave; ?> name="insert_update_announcement" class="btn btn-primary" onclick="return checkWordCount()"  value="Publish Post">Update Post</button>
+            <a href="update_announcement?post=<?php echo $data["id"]; ?>"><button <?php echo $btnNew; ?> class="btn btn-success"><i class="fa fa-refresh"></i></button></a>
            </div><!-- end card-footer -->
            </form>
            
@@ -149,7 +169,7 @@ function checkWordCount(){
     s = s.replace(/(^\s*)|(\s*$)/gi,"");
     s = s.replace(/[ ]{2,}/gi," ");
     s = s.replace(/\n /,"\n");
-    if (s.split('').length <= 50) {
+    if (s.split(' ').length <= 50) {
         alert("Content is 50 characters minimum");
         return false;
     }
