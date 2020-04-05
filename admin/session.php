@@ -7,12 +7,11 @@ if (session_status() == PHP_SESSION_NONE) {
 //admin 
 $registration_list='';
 
-//user
 
 $user_id = $_SESSION['id'];
 $account_type = $_SESSION['user_type'];
 if($account_type == 1){
-    require_once('user_controls.php');
+    require_once('user_controls.php');// THIS SCRIPT HOLDS ALL THE BUTTONS WHICH CAN BE ACCESS ONLY BY THE ADMIN.
 } else {
 
 }
