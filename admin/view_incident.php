@@ -76,10 +76,8 @@ $get_name = $get_details = $get_type = $get_serivity = '';
   <?php include('sidebar.php');?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" >
+  <div class="content-wrapper" align="center">
     <div class="content-header"></div>
-
-
 
 
     <section class="content col-md-10" >
@@ -87,13 +85,13 @@ $get_name = $get_details = $get_type = $get_serivity = '';
  
         <div class="card card-info "  >
          
-                <div class="card-header">
-                  <h3>View Incident Records </h3>
+                <div class="card-header ">
+                  <h3>View Incident Details </h3>
                 </div>
-                <div class="card-body" >
-                  <form role="form" method="post" action="update_incident.php">
-                    
-                    <div class="box-body">
+                <div class="card-body" align="center">
+               
+            
+            <div class="box-body">
                       
                           <div class="row"> 
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
@@ -128,7 +126,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                               <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="type" placeholder="Type" value="<?php echo $get_type;?>" required>
                             </div>
                             <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                              <label>Serivity:</label>
+                              <label>Serevity:</label>
                             </div>
                             <div class="col-md-2" >
                             <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="severity" placeholder="Serivity" value="<?php echo $get_severity;?>" required>     
@@ -160,7 +158,8 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                  
                               <label>Details of Incident:</label>
-                       
+                              </div>
+                              <div class="col-md-5" >
                               <textarea readonly class="form-control" row="10"  name="topic" placeholder="Details of Incident" required><?php echo $get_details;?></textarea>
                      
                               </div>
