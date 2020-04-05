@@ -25,6 +25,8 @@ try {
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //"nakasulod sa internet";
     
+   // $appUrl = "http://192.168.1.7/ALERRT/mobile_app/";
+    $newsURL = '../postimage/'
 
 }
 catch (PDOEXCEPTION $error) {

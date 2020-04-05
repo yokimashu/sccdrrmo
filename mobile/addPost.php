@@ -33,6 +33,7 @@ $time = date('h:i:s');
 $id = md5(time() . rand());
 
 if($image != null){
+    // $filename = ""
      $path = "images/$id.jpg";
      $file = fopen($path, 'wb');
 
@@ -60,7 +61,7 @@ $users_data->execute([
 ':type'             => $type,
 ':severity'         => $severity,
 ':topic'            => $title,
-':path'             => $path,
+':path'             => $id . '.jpg',
 ':date'             => $date,
 ':time'             => $time,
 ':latitude'         => $latitude,

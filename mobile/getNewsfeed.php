@@ -1,15 +1,8 @@
 <?php
 
-// session_start();
-// $user_id = $_SESSION['id'];
-
-    //  echo "<pre>";
-    //  print_r($_GET);
-    //  echo "</pre>";
-
     header('Content-Type: application/json; charset=utf-8');
 
-    //if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // if($_SERVER["REQUEST_METHOD"] == "POST"){
         require 'db-config.php';
         showAllPost();
     // }else{
@@ -20,6 +13,7 @@
 function showAllPost(){
         global $con;
         global $appUrl;
+        $newsUrl = "http://35.241.87.123/sccdrrmo/postimage/";
 
         $listOfPosts = array();
 
@@ -34,11 +28,11 @@ while ($result = $get_data->fetch(PDO::FETCH_ASSOC)) {
         'title'     => str_replace([':', '\\', '/', '*',','],"",$result['title']),
         'author'    => $result['author'],
         'postDate'  => $result['postdate'],
-        'image'     => $result['image'],
-        'content'   =>  $$result['content'],
+        'image'     => $newsUrl . $result['image'],
+        'content'   => $result['content'],
         'updatedOn' => $result['updated_on'],
         'status'    => $result['status'],
-        'tag'       =>  $result['tag']
+        'tag'       => $result['tag']
         
     ];
 }
