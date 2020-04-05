@@ -25,7 +25,7 @@ $get_all_announcement_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Dashboard</title>
+  <title>SCCDRRMO | View All Announcement</title>
  
   <?php include('header.php');?>
 
@@ -54,7 +54,7 @@ $get_all_announcement_data->execute();
              </div> <!-- /.card-header -->
              <form role="form" method="get" action="<?php htmlspecialchars("PHP_SELF");?>">
               <div class="card-body">
-                 <div class="Ashake form-group has-feedback">
+                 <div class="float-topright">
                     <?php echo $alert_msg; ?>      
                  </div>
 
@@ -80,12 +80,13 @@ $get_all_announcement_data->execute();
                         <td><img src=<?php echo '../postimage/'.$data['image'];?> class="img-fluid" ></td>
                         <td><?php echo $data['tag'];?></td>
                         <td><?php echo $data['postdate'];?></td>
-                        <td><?php echo $data['status']; if($data['status'] == 'draft'){$btnpublish = ''; $btnunpublish = 'hidden';}else{$btnpublish = 'hidden'; $btnunpublish = '';}?></td>
+                        <td><?php if($data['status'] == 'draft'){$btnpublish = ''; $btnunpublish = 'hidden';}else{$btnpublish = 'hidden'; $btnunpublish = '';}?>
+                           <button class="btn col-12  btn-success publish btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Publish Post" <?php echo $btnpublish ?> ><i class="fa fa-file"></i>  DRAFT</button>
+                           <button class="btn col-12 btn-outline-success unpublish btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Unpublish Post" <?php echo $btnunpublish ?> ><i class="fa fa-check"></i>  PUBLISHED</button>
+                        </td>
                         <td>
-                           <button class="btn btn-outline-success publish btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Publish Post" <?php echo $btnpublish ?> ><i class="fa fa-check"></i></button>
-                           <button class="btn btn-outline-warning unpublish btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Unpublish Post" <?php echo $btnunpublish ?> ><i class="fa fa-times"></i></button>
-                           <button class="btn btn-outline-success view btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="View Post"><i class="fa fa-eye"></i></button>
-                           <button class='btn btn-outline-success edit btn-sm' data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Edit Post"><i class='fa fa-pencil'></i></button>       
+                           <a href="update_announcement?post=<?php echo $data["id"]; ?>" class="btn btn-outline-success btn-sm" data-placement="top" title="Edit Post"><i class='fa fa-pencil'></i></a>       
+                           <a href="view_post?post=<?php echo $data["id"]; ?>" class="btn btn-outline-success btn-sm" data-placement="top" title="Edit Post"><i class='fa fa-eye'></i></a>    
                            <button class="btn btn-outline-danger delete btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Delete Post"><i class="fa fa-trash-o"></i></button>
                         </td>   
                       </tr>
@@ -194,7 +195,6 @@ function getRow(id){
       $('.edit_status').val(data.status).html(data.status);
       $('.edit_title').val(data.title).html(data.title);
       $('.edit_author').val(data.author).html(data.author);
-
       
     }
   });

@@ -1,11 +1,11 @@
 <?php
 
-session_start();
+// session_start();
 include ('../config/db_config.php');
-
-if (!isset($_SESSION['id'])) {  
-    header('location:../index');
-}
+include ('verify_admin.php');
+// if (!isset($_SESSION['id'])) {  
+//     header('location:../index');
+// }
 
 $user_id = $_SESSION['id'];
 
@@ -118,6 +118,8 @@ $get_all_incident_data->execute();
               
 
     </form>
+
+
     </div>
     </div>
      </div>
@@ -138,6 +140,9 @@ $get_all_incident_data->execute();
 <!-- PACE -->
 <script src="../plugins/pace/pace.min.js"></script>
 <!-- DataTables -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 
 <!-- AdminLTE App -->

@@ -1,9 +1,9 @@
 <!-- navbar and sidebar -->
 <?php
-
+include_once('session.php');
 include ('../config/db_config.php');
 
-include('session.php');
+// include('session.php');
 
 
 // include ('../config/db_config.php');
@@ -15,7 +15,7 @@ include('session.php');
 // } else {
 
 // }
-
+$user_id = $_SESSION['id'];
 
 $db_fullname = '';
 
@@ -143,11 +143,6 @@ $numberofdraft = $get_all_draft_data->rowCount();
             <ul class="nav nav-treeview">
               <li class="nav-item">
               <?php echo $registration_list?>
-               
-
-           
-
-            
             </ul>
 
             <li class="nav-item has-treeview" style="font-size:16px">
@@ -195,7 +190,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 <a href="view_all_posts" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
-                  <p>View All Announcements</p>
+                  <p>View Announcements</p>
                 </a>
               </li>
               

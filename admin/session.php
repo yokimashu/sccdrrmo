@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 //this page controls the user access to the system.
 
 //admin 
@@ -18,6 +21,7 @@ if($account_type == 1){
 // echo "</pre>";
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
-} 
+}
+
 
 ?>

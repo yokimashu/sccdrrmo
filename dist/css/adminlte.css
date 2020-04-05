@@ -13134,6 +13134,14 @@ a.text-muted:hover {
   z-index:5;
 }
 
+.float-topright{
+  position:fixed;
+  opacity: .8;
+	top:75px;
+  right:20px;
+  z-index:5;
+}
+
 .float-center{
 	position:fixed;
 	 bottom:20px; 
