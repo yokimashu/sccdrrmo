@@ -53,9 +53,9 @@ $get_name = $get_details = $get_type = $get_serivity = '';
 
   }
 
-  // this is an example of valid latitude ang longitude
-  $lat = '11.140884';
-  $lon = '123.998932';
+  // // this is an example of valid latitude ang longitude
+  // $lat = $latitude;
+  // $lon = $longitude;
 
 ?>
 
@@ -208,7 +208,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
           </div>
           <div class="modal-body">
             <div class="row col-md-12">
-              <iframe width="800" height="340" frameborder="0" src = "https://maps.google.com/maps?q=<?= $lat ?>,<?= $lon ?>&hl=es;z=14&amp;output=embed"></iframe>
+              <iframe width="800" height="340" frameborder="0" src = "https://maps.google.com/maps?q=<?= $latitude ?>,<?= $longitude ?>&hl=es;z=14&amp;output=embed"></iframe>
             </div>
           </div>
           <div class="modal-footer">
