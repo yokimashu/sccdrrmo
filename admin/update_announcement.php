@@ -169,7 +169,7 @@ function checkWordCount(){
     s = s.replace(/(^\s*)|(\s*$)/gi,"");
     s = s.replace(/[ ]{2,}/gi," ");
     s = s.replace(/\n /,"\n");
-    if (s.split(' ').length <= 50) {
+    if (s.split('').length <= 50) {
         alert("Content is 50 characters minimum");
         return false;
     }

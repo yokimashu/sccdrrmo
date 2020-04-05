@@ -101,6 +101,11 @@ $get_all_published_data->execute();
                </div><!-- end float-center -->
              </div><!-- end container-fluid -->                     
         </div><!-- end col-lg-8 -->
+
+        <a href="add_announcement" class="float">
+            <button class="my-float btn btn-success btn-circle btn-xl"><i class="fa fa-plus"></i></button>
+            </a>
+        
       </div><!-- end row -->
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->
@@ -130,7 +135,6 @@ $get_all_published_data->execute();
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-
 
 </body>
 </html>

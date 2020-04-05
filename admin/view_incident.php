@@ -296,33 +296,9 @@ $get_name = $get_details = $get_type = $get_serivity = '';
      
     });
 
-    $('#addPUM').on('hidden.bs.modal', function () {
-        $('#addPUM form')[0].reset();
-    });
-
-    $(function() {
-      $('[data-toggle="datepicker"]').datepicker({
-        autoHide: true,
-        zIndex: 2048,
-      });
-    });
 
 
-    $("#btnSubmit").attr("disabled", true);
-    $("#name_symptoms").attr("disabled", true);
-
-    $(document).ready(function(){
-        $('#btnEdit').click(function() {
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='report_time']").removeAttr("readonly");
-          $("input[name='fullname']").removeAttr("readonly");
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='status']").removeAttr("readonly");
-          $("#name_symptoms").attr("disabled", false);
-          $("#btnSubmit").attr("disabled", false);
-          $("#btnEdit").attr("disabled", true);
-        });
-    });
+ 
 $('#image').click(function(){
   $('#modal-image').modal('toggle');
    var id = $('#objid').val();

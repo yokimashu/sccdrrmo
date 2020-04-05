@@ -13111,6 +13111,11 @@ a.text-muted:hover {
 
 /* sidebard BG */
 
+.comment-reply {
+
+  border-left: 3px solid #02992a;
+}
+
 .greenBG {
   background: linear-gradient(to bottom right, #015c19 0%, #02992a 100%);
 
