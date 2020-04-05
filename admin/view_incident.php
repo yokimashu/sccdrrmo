@@ -188,8 +188,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                 </div>
               <!-- /.box -->
         </div>
-    
-          
+       
 
     </section>
     
@@ -218,6 +217,25 @@ $get_name = $get_details = $get_type = $get_serivity = '';
       </div>
     </div>
 
+    <div  class="modal fade"  id="modal-image">
+     <div class="modal-dialog">
+
+     <div class="modal-header card-outline card-primary" >
+                    <h4 class="modal-title"><b>Photo</b></h4>
+               </div>  
+
+               
+               	<div class="modal-body" style ="align:center; width:80%;">
+                 <form class="form-horizontal" id ="userform">
+                 <div class="form-group row">
+
+                  <image id = "displayimage">  </image>
+
+                 </div>
+                 </form>
+                 </div>
+                 </div>
+                 </div>
 
 
 
@@ -305,7 +323,34 @@ $get_name = $get_details = $get_type = $get_serivity = '';
           $("#btnEdit").attr("disabled", true);
         });
     });
+$('#image').click(function(){
+  $('#modal-image').modal('toggle');
+   var id = $('#objid').val();
 
+   $('#displayimage').load('get_photo.php',{image:id
+  },
+  function(response, status, xhr) {
+  if (status == "error") {
+      alert(msg + xhr.status + " " + xhr.statusText);
+      console.log(msg + xhr.status + " " + xhr.statusText);
+  }
+   )};
+  // $.ajax({
+
+  //   type:"POST",
+  //   url:'get_photo.php',
+  //   data:{image:id},
+  //   success:function(response){
+  //     // var result = jQuery.parseJSON(response);
+  //    // document.getElementById("displayImage").setAttribute("src",response.image);
+  //     alert(response);
+  //   },
+  //   error: function (xhr, b, c) {
+  //             console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+  //           }
+
+  // })
+});
 </script>
 </body>
 </html>

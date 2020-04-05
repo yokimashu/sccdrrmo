@@ -3,7 +3,11 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(!isset($_SESSION['user_type']) == 1){
+// $alert= $_SESSION['user_type']
+// echo "<p>";
+// print_r($_SESSION['user_type']);
+// echo "</p>";
+if($_SESSION['user_type'] != 1){
     header('location: index');
 }
 

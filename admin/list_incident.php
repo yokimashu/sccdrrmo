@@ -1,11 +1,11 @@
 <?php
 
-session_start();
+// session_start();
 include ('../config/db_config.php');
-
-if (!isset($_SESSION['id'])) {  
-    header('location:../index');
-}
+include ('verify_admin.php');
+// if (!isset($_SESSION['id'])) {  
+//     header('location:../index');
+// }
 
 $user_id = $_SESSION['id'];
 
@@ -118,6 +118,8 @@ $get_all_incident_data->execute();
               
 
     </form>
+
+
     </div>
     </div>
      </div>

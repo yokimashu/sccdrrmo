@@ -39,7 +39,8 @@ $state ="edit";
               
             </div>
             <div class="Ashake form-group has-feedback">
-         <?php echo $alert_msg; ?>      
+         <?php echo $alert_msg;
+        //  echo $alert; ?>      
                    
         </div>
             <div class="card-body">
