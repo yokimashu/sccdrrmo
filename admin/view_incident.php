@@ -108,13 +108,13 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Date:</label>
                             </div>
-                            <div class="col-md-2" align="center" >
+                            <div class="col-md-2" >
                               <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="date" placeholder="Date" value="<?php echo $get_date;?>" required>
                             </div>
                             <div class="col-md-1" style="text-align: right;padding-top: 5px;">
                               <label>Time:</label>
                             </div>
-                            <div class="col-md-2" align="center">
+                            <div class="col-md-2">
                             <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="time" placeholder="Time" value="<?php echo $get_time;?>" required>     
                             </div>
                           </div><br>
@@ -124,13 +124,13 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>Type:</label>
                             </div>
-                            <div class="col-md-2" align="center" >
+                            <div class="col-md-2" >
                               <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="type" placeholder="Type" value="<?php echo $get_type;?>" required>
                             </div>
                             <div class="col-md-1" style="text-align: right;padding-top: 5px;">
                               <label>Serivity:</label>
                             </div>
-                            <div class="col-md-2" align="center">
+                            <div class="col-md-2" >
                             <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="severity" placeholder="Serivity" value="<?php echo $get_severity;?>" required>     
                             </div>
                           </div><br>
@@ -143,7 +143,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                               <label>Name:</label>
                             </div>
                             <div class="col-md-5" >
-                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="name" placeholder="Name" value="<?php echo $get_name;?>" required>
+                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="name" placeholder="Name" value="<?php echo $get_name;?>" required>
                             </div>
                           </div><br>
 
@@ -152,20 +152,18 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                               <label>Mobile Number:</label>
                             </div>
                             <div class="col-md-5" >
-                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="mobileno" placeholder="Mobile Number" value="<?php echo $get_mobileno;?>" required>
+                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="mobileno" placeholder="Mobile Number" value="<?php echo $get_mobileno;?>" required>
                             </div>
                           </div><br>
 
-                 
-
-
-                          <div class="form-group"> 
+                          <div class="row"> 
+                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                  
                               <label>Details of Incident:</label>
-                         
                        
-                              <textarea type="text" readonly align="center" class="form-control" row="5"  name="topic" placeholder="Details of Incident" value="<?php echo $get_details;?>" required></textarea>
+                              <textarea readonly class="form-control" row="10"  name="topic" placeholder="Details of Incident" required><?php echo $get_details;?></textarea>
                      
+                              </div>
                           </div><br>
                                
                           <!-- /.box-body -->
