@@ -190,7 +190,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 <a href="view_all_posts" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
-                  <p>View All Announcements</p>
+                  <p>View Announcements</p>
                 </a>
               </li>
               
