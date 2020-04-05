@@ -19,7 +19,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$get_all_incident_sql = "SELECT * FROM tbl_incident ";
+$get_all_incident_sql = "SELECT * FROM tbl_incident ORDER BY objid DESC";
 $get_all_incident_data = $con->prepare($get_all_incident_sql);
 $get_all_incident_data->execute();
 

@@ -19,7 +19,7 @@ $time = date('H:i:s');
 
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id ORDER BY id DESC";
+$get_user_sql = "SELECT * FROM tbl_users where id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
