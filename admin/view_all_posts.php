@@ -58,7 +58,7 @@ $get_all_announcement_data->execute();
                     <?php echo $alert_msg; ?>      
                  </div>
 
-                <table id="maintable" class="table table-bordered table-striped">
+                <table id="maintable" class="table table-bordered table-striped table-responsive">
                   <thead>
                     <tr>
                       <th>ID</th>

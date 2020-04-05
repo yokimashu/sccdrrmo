@@ -38,6 +38,8 @@ if (isset($_GET['post'])) {
         $post_tags = $row['tag'];
         $post_status = $row['status'];
     }
+
+    $_SESSION['post_id'] = $post_id;
 }
 ?>
 
@@ -81,14 +83,26 @@ if (isset($_GET['post'])) {
                 <hr>
                 <p><?php echo $post_content; ?></p>
              </div>
+
+               <!--------------- C O M M E N T ------------->
              <div class="card-body shadow">
-             <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" placeholder="Write a comment...">
-                  <span class="input-group-append">
-                    <button type="button" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
+               <form method="POST" id="comment_form">
+                 <input hidden name="comment_post_id" id="comment_post_id" class="form-control" value="<?php echo $post_id ?>">
+                 <input hidden name="comment_name" id="comment_name" class="form-control" value="<?php echo $db_fullname ?>">
+                 <div class="input-group input-group-sm">
+                  
+                   <input name="comment_content" id="comment_content" class="form-control" placeholder="Write a comment...">
+                   <span class="input-group-append">
+                    <input type="hidden" name="comment_id" id="comment_id" value="0" />
+                    <button type="submit" id="submit" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
                   </span>
-                </div>
-             </div>
+                 </div>
+               </form>
+               <span id="comment_message"></span>
+               <br />
+               <div id="display_comment"></div>
+             </div><!-- card-body -->
+
         </div><!-- end col-lg-6 -->
         <div class="col-lg-6">
          
@@ -128,6 +142,53 @@ if (isset($_GET['post'])) {
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+
+<script>
+$(document).ready(function(){
+ 
+ $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  var form_data = $(this).serialize();
+  $.ajax({
+   url:"add_comment.php",
+   method:"POST",
+   data:form_data,
+   dataType:"JSON",
+   success:function(data)
+   {
+    if(data.error != '')
+    {
+     $('#comment_form')[0].reset();
+     $('#comment_message').html(data.error);
+     $('#comment_id').val('0');
+     load_comment();
+    }
+   }
+  })
+ });
+
+ load_comment();
+
+ function load_comment()
+ {
+  $.ajax({
+   url:"fetch_comment.php",
+   method:"POST",
+   success:function(data)
+   {
+    $('#display_comment').html(data);
+   }
+  })
+ }
+
+ $(document).on('click', '.reply', function(){
+  var comment_id = $(this).attr("id");
+  $('#comment_id').val(comment_id);
+  $('#comment_content').focus();
+ });
+ 
+});
+</script>
 
 </body>
 </html>
