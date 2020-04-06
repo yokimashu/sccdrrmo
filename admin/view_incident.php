@@ -3,9 +3,10 @@
 
 include ('../config/db_config.php');
 include ('update_incident.php');
+// include ('get_photo.php');
 session_start();
 $user_id = $_SESSION['id'];
-
+$loadImage = '';
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 } else {
@@ -168,10 +169,10 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                           </div><br>
                                
                           <!-- /.box-body -->
-                          <div class="box-footer" align="center">
+                          <div class="box-footer" >
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">LOCATION</button>
 
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-image">PHOTO</button>
+                              <button type="button" name = "photosubmit" class="btn btn-primary" data-toggle="modal" data-target="#modal-image">PHOTO</button>
 
 
                               <a href="list_incident.php">
@@ -216,23 +217,23 @@ $get_name = $get_details = $get_type = $get_serivity = '';
     </div>
 
     <div  class="modal fade"  id="modal-image">
-     <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-     <div class="modal-header card-outline card-primary" >
-                    <h4 class="modal-title"><b>Photo</b></h4>
-               </div>  
-
-               
-               	<div class="modal-body" style ="align:center; width:80%;">
-                 <form class="form-horizontal" id ="userform">
-                 <div class="form-group row">
-
-                  <image id = "image">  </image>
-
-                 </div>
-                 </form>
-                 </div>
-                 </div>
+    <img id = "displayImage" class = "img-fluid">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
                  </div>
 
 
@@ -241,7 +242,10 @@ $get_name = $get_details = $get_type = $get_serivity = '';
 
   </div>
   <!-- /.content-wrapper -->
- <?php include('footer.php')?>
+  
+ <?php 
+
+ include('footer.php')?>
 
 </div>
 
@@ -296,35 +300,37 @@ $get_name = $get_details = $get_type = $get_serivity = '';
 
 
 
- 
+    $(document).ready(function(){
 $('#image').click(function(){
   $('#modal-image').modal('toggle');
    var id = $('#objid').val();
 
-   $('#displayimage').load('get_photo.php',{image:id
-  },
-  function(response, status, xhr) {
-  if (status == "error") {
-      alert(msg + xhr.status + " " + xhr.statusText);
-      console.log(msg + xhr.status + " " + xhr.statusText);
-  }
-   )};
-  // $.ajax({
+  //  $('#displayimage').load('get_photo.php',{image:id
+  // },
+  // function(response, status, xhr) {
+  // if (status == "error") {
+  //     alert(msg + xhr.status + " " + xhr.statusText);
+  //     console.log(msg + xhr.status + " " + xhr.statusText);
+  // }
+  //  )};
+alert(id);
+  $.ajax({
 
-  //   type:"POST",
-  //   url:'get_photo.php',
-  //   data:{image:id},
-  //   success:function(response){
-  //     // var result = jQuery.parseJSON(response);
-  //    // document.getElementById("displayImage").setAttribute("src",response.image);
-  //     alert(response);
-  //   },
-  //   error: function (xhr, b, c) {
-  //             console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-  //           }
+    type:"POST",
+    url:'get_photo.php',
+    data:{image:id},
+    success:function(response){
+      var result = jQuery.parseJSON(response);
+     document.getElementById("displayImage").setAttribute("src",result.loadImage);
+console.log(result);
+    },
+    error: function (xhr, b, c) {
+              console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+            }
 
-  // })
+  })
 });
+    });
 </script>
 </body>
 </html>
