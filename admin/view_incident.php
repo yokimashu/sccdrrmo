@@ -49,6 +49,8 @@ $get_name = $get_details = $get_type = $get_serivity = '';
     $get_createdat              = $result['createdat'];
     $latitude                   = $result['latitude'];
     $longitude                  = $result['longitude'];
+    $image                      = $result['image'];
+
 
 
   }
@@ -167,15 +169,14 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                                
                           <!-- /.box-body -->
                           <div class="box-footer" align="center">
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">Location</button>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">LOCATION</button>
 
-                              <button type="button"  <?php echo $btnMap; ?> name="image" id ="image" class="btn btn-info" >
-                              <label>Photo</label> </button>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-image">PHOTO</button>
 
 
                               <a href="list_incident.php">
                                 <button type="button" name="cancel" class="btn btn-danger">       
-                                <i class="fa fa-close fa-fw"> </i> </button>
+                                CLOSE </button>
                             </a>
                           </div>
 
@@ -226,7 +227,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                  <form class="form-horizontal" id ="userform">
                  <div class="form-group row">
 
-                  <image id = "displayimage">  </image>
+                  <image id = "image">  </image>
 
                  </div>
                  </form>
