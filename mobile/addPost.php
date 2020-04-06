@@ -1,7 +1,15 @@
 <?php
 
-include ('db-config.php');
-date_default_timezone_set('Asia/Manila');
+
+//if($_SERVER["REQUEST_METHOD"] == "POST"){
+	require 'db-config.php';
+	addPost();
+//}else{
+//	echo "Oops! We're sorry! You do not have access to this option!";
+//}
+
+
+
 // session_start();
 // $user_id = $_SESSION['id'];
 
@@ -10,6 +18,11 @@ date_default_timezone_set('Asia/Manila');
      // echo "</pre>";
 
 // $content = $_POST['Content_Type'];
+function addPost(){
+
+global $con;
+date_default_timezone_set('Asia/Manila');
+
 $path = '';
 $type = $_POST['Type'];
 $severity = $_POST['topicSeverity'];
@@ -29,12 +42,14 @@ $mobileno = $_POST['mobileNo'];
 $created = $_POST['topicDateAndTimePosted'];
 $date = date('Y-m-d');
 $time = date('h:i:s');
+$user_id = $_POST['userID'];
 
 $id = md5(time() . rand());
 
 if($image != null){
     // $filename = ""
      $path = "images/$id.jpg";
+     $filename = $id.".jpg";
      $file = fopen($path, 'wb');
 
      $isWritten = fwrite($file, $image);
@@ -54,6 +69,7 @@ location_address    = :locationAddress,
 reported_by         = :reportedBy,
 mobileno            = :mobileno,
 createdat           = :createdAt,
+userid              = :userid,
 remarks             = 'NEW REPORT'";
 
 $users_data = $con->prepare($insert_users_sql);
@@ -61,18 +77,23 @@ $users_data->execute([
 ':type'             => $type,
 ':severity'         => $severity,
 ':topic'            => $title,
-':path'             => $id . '.jpg',
+':path'             => $filename,
 ':date'             => $date,
 ':time'             => $time,
 ':latitude'         => $latitude,
 ':longitude'        => $longitude,
 ':locationAddress'  => $locationAddress,
 ':reportedBy'       => $postedBy,
+':userid'           => $user_id,
 ':mobileno'         => $mobileno,
 ':createdAt'        => $created
 
 ]);
+}
+
 echo "Incident Reported! We will contact you as soon as possible. Thank you!"
+
+
 ?>
 
 

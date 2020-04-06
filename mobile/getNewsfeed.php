@@ -2,12 +2,12 @@
 
     header('Content-Type: application/json; charset=utf-8');
 
-    // if($_SERVER["REQUEST_METHOD"] == "POST"){
+     if($_SERVER["REQUEST_METHOD"] == "GET"){
         require 'db-config.php';
         showAllPost();
-    // }else{
-    //     echo "Oops! We're sorry! You do not have access to this option!";
-    // }
+     }else{
+         echo "Oops! We're sorry! You do not have access to this option!";
+     }
 
 
 function showAllPost(){
@@ -16,11 +16,12 @@ function showAllPost(){
         $newsUrl = "http://35.241.87.123/sccdrrmo/postimage/";
 
         $listOfPosts = array();
+        $status = "published";
 
 //fetch user from database
-$get_announcement_sql = "SELECT * FROM tbl_announcement ORDER BY id DESC";
+$get_announcement_sql = "SELECT * FROM tbl_announcement where status = :status ORDER BY id DESC";
 $get_data = $con->prepare($get_announcement_sql);
-$get_data->execute();
+$get_data->execute([':status' => $status]);
 while ($result = $get_data->fetch(PDO::FETCH_ASSOC)) {
 
     $listOfPosts[$result['id']] = [
