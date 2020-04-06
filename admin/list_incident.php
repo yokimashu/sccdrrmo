@@ -98,8 +98,8 @@ $get_all_incident_data->execute();
                           <a class="btn btn-danger btn-sm" href="view_incident.php?&id=<?php echo $incident_data['objid'];?> ">
                            <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
-
                           </td>
+                          
 
                           
 
@@ -152,7 +152,7 @@ $get_all_incident_data->execute();
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
-      'ordering'    : true,
+      'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
       "scrollX"     : true
