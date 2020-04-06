@@ -32,6 +32,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $userInfo = array(
         'userInfo' => array (
              array(
+                 'UserID'           => $userID,
                  'Fullname'         => $fullName,
                  'Email'            => $email,
                  'MobileNumber'     => $mobileno,
