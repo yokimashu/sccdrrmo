@@ -19,7 +19,7 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$get_all_incident_sql = "SELECT * FROM tbl_incident ORDER BY date and time DESC";
+$get_all_incident_sql = "SELECT * FROM tbl_incident ORDER BY objid DESC";
 $get_all_incident_data = $con->prepare($get_all_incident_sql);
 $get_all_incident_data->execute();
 
@@ -98,8 +98,8 @@ $get_all_incident_data->execute();
                           <a class="btn btn-danger btn-sm" href="view_incident.php?&id=<?php echo $incident_data['objid'];?> ">
                            <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
-
                           </td>
+                          
 
                           
 
@@ -152,7 +152,7 @@ $get_all_incident_data->execute();
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
-      'ordering'    : true,
+      'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
       "scrollX"     : true
