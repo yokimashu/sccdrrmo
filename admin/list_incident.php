@@ -6,7 +6,8 @@ include ('verify_admin.php');
 // if (!isset($_SESSION['id'])) {  
 //     header('location:../index');
 // }
-
+$reported_by= '';
+$alert_msg =''; 
 $user_id = $_SESSION['id'];
 
 //querry to select current user's information
@@ -17,6 +18,25 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
   $user_name   = $result['username'];
 
 }
+
+
+
+
+  if (ISSET($_POST['update'])){
+    $update_stmt = "Update tbl_incident set remarks =:remarks where objid =:objid";
+    $stmt_update = $con->prepare($update_stmt);
+    $stmt_update->execute([
+      ':remarks'=> $_POST['remarks'],
+    ':objid' => $_POST['objid']]);
+
+    
+     if($stmt_update->query($stmt_update)){
+       $alert_msg.= 'Update successfully';
+     }
+  }
+
+
+
 
 
 $get_all_incident_sql = "SELECT * FROM tbl_incident ORDER BY objid DESC";
@@ -59,7 +79,7 @@ $get_all_incident_data->execute();
                 <form role="form" method="get" action="<?php htmlspecialchars("PHP_SELF");?>">
 
                   <div class="box-body">
-                  
+                  <p> <?php echo $alert_msg; ?> </p>
                     <table id="users" class="table table-bordered table-striped">
                       <thead>
                       
@@ -130,9 +150,19 @@ $get_all_incident_data->execute();
       </div>
       <div class="modal-body">
 
+      <div class="form-group">
+                    <input type="text" id="idremarks" class="form-control" name="objid">
+                </div>
+                          
+                <div class="form-group">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="remarks" placeholder="remarks" >
+                </div>
+               
+      
+
       </div>
       <div class="modal-footer">
-      
+        <button type="submit" name="update" class="btn btn-success">UPDATE</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -195,11 +225,12 @@ $get_all_incident_data->execute();
     
           var id = data[0];
           $('#modal-edit').modal('toggle');
-       
+          $('#idremarks').val(id);
           // console.log(id);
         });
     $('.approved').click(function(e){
     e.preventDefault();
+
     $('#approved').modal('show');
     var id = $(this).data('id');
     var name = $(this).data('name');
