@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms= $patient='';
+$symptoms= $patient= $person_status ='';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
@@ -145,12 +145,30 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_pum.php" >
                 <?php echo $alert_msg;?>
 
-
-             
+                
+                <div class="form-group">
+                    <select class="form-control select2" id="personstatus" style="width: 100%;" name="get_symptoms" value="<?php echo $person_status; ?>">
+                        <option selected="selected">Select Person Status</option>
+                        <option value="PUM">Person Under Monitoring (PUMs)</option>       
+                        <option value="PUI">Person Under Investigation (PUIs)</option>
+                        <option value="Positive">Positive</option>  
+                        <option value="Death">Death</option>     
+                        <option value="Tested">Tested</option>
+                        <option selected="Recovered">Recovered</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
                 </div>
-        
+
+                <div class="form-group">
+                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $patient;?>">
+                </div>
+
+
+
+
+                                          
          
                 <div class="form-group">
                     <select class="form-control select2" id="symptoms" style="width: 100%;" name="get_symptoms" value="<?php echo $symptoms; ?>">
