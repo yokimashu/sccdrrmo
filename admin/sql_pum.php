@@ -3,10 +3,11 @@
     include ('../config/db_config.php');
 
     if (isset($_POST['insert_pum'])) {  
+        date_default_timezone_set('Asia/Manila');
         $symptoms = $_POST['get_symptoms'];
         $patient = $_POST['fullname'];
-        $date = $_POST['report_date'];
-        $time = $_POST['report_time'];
+        $date = date('Y-m-d');
+        $time = date('h:i:s');
         $status = 'Active';
         $alert_msg = '';
         $alert_msg1 = '';
