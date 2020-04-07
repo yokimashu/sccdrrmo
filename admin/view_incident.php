@@ -101,7 +101,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                               <label>ID No:</label>
                             </div>
                             <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="objid" placeholder="ID NO" value="<?php echo $get_objid;?>" required>
+                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="objid" id ="objid" placeholder="ID NO" value="<?php echo $get_objid;?>" required>
                             </div>
                           </div><br>
 
@@ -172,7 +172,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
                           <div class="box-footer" >
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">LOCATION</button>
 
-                              <button type="button" name = "photosubmit" class="btn btn-primary" data-toggle="modal" data-target="#modal-image">PHOTO</button>
+                              <button type="button" name = "photosubmit" id ="image" class="btn btn-primary">PHOTO</button>
 
 
                               <a href="list_incident.php">
@@ -227,7 +227,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
       </div>
       <div class="modal-body">
 
-    <img id = "displayImage" class = "img-fluid">
+    <img src = "../postimage/sancarlos.png" id = "displayImage" class = "img-fluid">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -300,11 +300,11 @@ $get_name = $get_details = $get_type = $get_serivity = '';
 
 
 
-    $(document).ready(function(){
+    
 $('#image').click(function(){
   $('#modal-image').modal('toggle');
    var id = $('#objid').val();
-
+console.log(id);
   //  $('#displayimage').load('get_photo.php',{image:id
   // },
   // function(response, status, xhr) {
@@ -313,16 +313,17 @@ $('#image').click(function(){
   //     console.log(msg + xhr.status + " " + xhr.statusText);
   // }
   //  )};
-alert(id);
   $.ajax({
 
     type:"POST",
     url:'get_photo.php',
-    data:{image:id},
-    success:function(response){
-      var result = jQuery.parseJSON(response);
-     document.getElementById("displayImage").setAttribute("src",result.loadImage);
-console.log(result);
+    data:{photo:id},
+    success: function(response){
+      // console.log(response.responseText);
+      // var result = jQuery.parseJSON(response);
+      var img = document.getElementById("displayImage");
+      img.src = '../postimage/'+response.image;
+      console.log(response.image);
     },
     error: function (xhr, b, c) {
               console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
@@ -330,7 +331,7 @@ console.log(result);
 
   })
 });
-    });
+   
 </script>
 </body>
 </html>
