@@ -37,6 +37,7 @@ if($error == '')
   )
  );
  $error = '<label class="text-success">Comment Added</label>';
+ 
 }
 
 $data = array(

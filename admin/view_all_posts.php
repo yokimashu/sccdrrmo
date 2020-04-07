@@ -192,6 +192,7 @@ function getRow(id){
       
       $('.objid').val(data.id);
       $('#objid').val(data.id);
+      $('.image').val(data.image);
       $('.edit_status').val(data.status).html(data.status);
       $('.edit_title').val(data.title).html(data.title);
       $('.edit_author').val(data.author).html(data.author);
