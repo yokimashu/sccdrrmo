@@ -320,10 +320,10 @@ console.log(id);
     data:{photo:id},
     success: function(response){
       // console.log(response.responseText);
-      // var result = jQuery.parseJSON(response);
+       var result = jQuery.parseJSON(response);
       var img = document.getElementById("displayImage");
-      img.src = '../postimage/'+response.image;
-      console.log(response.image);
+      img.src = '../postimage/'+result.loadImage;
+      // console.log(response.image);
     },
     error: function (xhr, b, c) {
               console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
