@@ -217,7 +217,7 @@ $get_name = $get_details = $get_type = $get_serivity = '';
     </div>
 
     <div  class="modal fade"  id="modal-image">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Photo</h5>
@@ -227,14 +227,15 @@ $get_name = $get_details = $get_type = $get_serivity = '';
       </div>
       <div class="modal-body">
 
-    <img src = "../postimage/sancarlos.png" id = "displayImage" class = "img-fluid">
+    <img src = "" style = "width:330px;height:350px;"id = "displayImage" class = "img-fluid img-rounded ">
       </div>
       <div class="modal-footer">
+      
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-                 </div>
+  </div>
 
 
 
@@ -322,7 +323,7 @@ console.log(id);
       // console.log(response.responseText);
        var result = jQuery.parseJSON(response);
       var img = document.getElementById("displayImage");
-      img.src = '../postimage/'+result.loadImage;
+      img.src = '../mobile/images/'+result.loadImage;
       // console.log(response.image);
     },
     error: function (xhr, b, c) {
