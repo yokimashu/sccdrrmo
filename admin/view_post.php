@@ -72,7 +72,7 @@ if (isset($_GET['post'])) {
     <div class="content-header"></div>
     <div class="container-fluid">
             <a href="announcement" class="float">
-            <button class="my-float btn btn-info btn-circle btn-xl"><i class="fa fa-angle-left"></i></button>
+            <button class="my-float btn btn-success btn-circle btn-xl"><i class="fa fa-angle-left"></i></button>
             </a>
      <div class="row">
         <div class="col-lg-6">
@@ -182,6 +182,12 @@ $(document).ready(function(){
  }
 
  $(document).on('click', '.reply', function(){
+  var comment_id = $(this).attr("id");
+  $('#comment_id').val(comment_id);
+  $('#comment_content').focus();
+ });
+
+ $(document).on('click', '.delete', function(){
   var comment_id = $(this).attr("id");
   $('#comment_id').val(comment_id);
   $('#comment_content').focus();
