@@ -73,7 +73,7 @@ $get_all_incident_data->execute();
                             <th> Reported_by </th>
                             <th> Remarks</th>
                            <th>Options</th>
-                    
+                           <th>Update</th>
                           </tr>
                           
                       </thead>
@@ -99,7 +99,7 @@ $get_all_incident_data->execute();
                            <i class="fa fa-folder-open-o"></i> Open
                                                             </a>
                           </td>
-                          
+                          <td></td>
 
                           
 
@@ -118,7 +118,26 @@ $get_all_incident_data->execute();
               
 
     </form>
+                          
+    <div  class="modal fade"  id="modal-edit">
+    <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
+      </div>
+      <div class="modal-footer">
+      
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
 
     </div>
     </div>
@@ -155,8 +174,30 @@ $get_all_incident_data->execute();
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
-      "scrollX"     : true
+      "scrollX"     : true,
+      "columnDefs": [{
+        "targets" : -1,
+        "data" : null,
+       "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button>'
+          
+         
+
+      }]
     });
+
+
+    $('#users tbody').on( 'click', '#btn', function(){
+        // $("#users").on("click","button.btn",function(){
+        // $('.approved').on( 'click',function() {
+          event.preventDefault();
+         var table = $('#users').DataTable();
+         var data = table.row( $(this).parents('tr') ).data();
+    
+          var id = data[0];
+          $('#modal-edit').modal('toggle');
+       
+          // console.log(id);
+        });
     $('.approved').click(function(e){
     e.preventDefault();
     $('#approved').modal('show');
