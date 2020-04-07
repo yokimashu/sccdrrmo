@@ -207,7 +207,7 @@ $get_all_symptoms_data->execute();
       'info'        : true,
       'autoWidth'   : true,
       'autoHeight'  : true,
-      'responsive'  :true
+      'responsive'  : true
     });
 
     $('#addSymptoms').on('hidden.bs.modal', function () {
