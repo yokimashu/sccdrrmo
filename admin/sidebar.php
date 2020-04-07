@@ -212,7 +212,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
                   <p>Lock Screen</p>
                 </a>
                 <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="log_out" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Log Out</p>
                 </a>
