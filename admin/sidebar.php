@@ -134,14 +134,14 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 <li class="nav-item">
                   <a href="list_pum" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
-                    <p>LIST OF PUMs</p>
+                    <p>List of PUMs</p>
                   </a>
                 </li>          
              
                 <li class="nav-item">
                   <a href="list_pum" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
-                    <p>LIST OF PUIs</p>
+                    <p>List of PUIs</p>
                   </a>
                 </li>          
               </ul>
