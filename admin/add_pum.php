@@ -40,8 +40,8 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
 
       <section class="content" >
-        <div class="card text-white bg-success">
-          <div class="card-header"><h3>Add PUMs / PUIs </h3></div>
+        <div class="card">
+          <div class="card-header text-white bg-success "><h3>Add PUMs / PUIs </h3></div>
                       
           <div class="card-body" align="center">
             <form role="form" method="post" action="update_pum.php"> 
@@ -71,6 +71,7 @@ $get_all_symptoms_data->execute();
         </div>
    
       </section>
+  </div>
   
 
   <?php include('footer.php')?> 
