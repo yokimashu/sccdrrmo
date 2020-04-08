@@ -164,9 +164,14 @@ $get_all_symptoms_data->execute();
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-
+<!-- Select2 -->
+<script src="../plugins/select2/select2.full.min.js"></script>
 <!-- textarea wysihtml style -->
 <script>
+  s$('.select2').select2();
+
+
+
   $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
@@ -174,10 +179,7 @@ $get_all_symptoms_data->execute();
   })
 </script>
 
-<!-- content minimum characters -->
-<script type="text/javascript">
 
-</script> 
 
 
 </body>
