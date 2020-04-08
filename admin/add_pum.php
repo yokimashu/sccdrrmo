@@ -54,8 +54,8 @@ $get_all_symptoms_data->execute();
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
                     <div class="box-body">
                       <br>
-                        <div class="row" style="padding: auto;">
-                          <div class="col-md-3" >
+                        <div class="row" style="text-align:center;">
+                          <div class="col-md-3">
                             <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
                           </div>
                           <div class="col-md-3" >
