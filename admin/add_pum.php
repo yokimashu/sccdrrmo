@@ -62,7 +62,7 @@ $get_all_symptoms_data->execute();
                             <input type="text"  class="form-control"  name="idno" placeholder="ID NO" value="" required>
                           </div>
 
-                          <div class="col-md-2" style=" text-align: center; padding-top: 5px ">
+                          <div class="col-md-1" style=" text-align: center; padding-top: 5px ">
                             <label>Middle Name:</label>
                           </div>
                           <div class="col-md-2" >
