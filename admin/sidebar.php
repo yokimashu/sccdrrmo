@@ -137,9 +137,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
                     <p>LIST OF PUMs</p>
                   </a>
                 </li>          
-              </ul>
-
-              <ul class="nav nav-treeview">
+             
                 <li class="nav-item">
                   <a href="list_pum" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
