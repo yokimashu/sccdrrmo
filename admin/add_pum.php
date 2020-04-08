@@ -51,10 +51,11 @@ $get_all_symptoms_data->execute();
               <div class="box-body">
 
                 <div class="card">
-                  <div class="card-header"><h5>PERSONAL INFORMATION</h5></div>
+                  <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
                   <div class="box-body">
-                    <div class=""> 
-                      <div class="col-md-4" style="text-align: right;padding-top: 5px;">
+                  
+                    <div class="row"> 
+                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
                         <label>ID No:</label>
                       </div>
                       <div class="col-md-3" >
