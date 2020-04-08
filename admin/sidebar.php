@@ -121,7 +121,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
  
               <li class="nav-item has-treeview" style="font-size:16px">
               <a href="" class="nav-link ">
-                <i class="nav-icon fa fa-file-medical"></i>
+                <i class="nav-icon fa fa-medkit"></i>
                 <p>
                    MASTERLIST
                   <i class="right fa fa-angle-left"></i>
