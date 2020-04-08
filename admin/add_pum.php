@@ -41,11 +41,35 @@ $get_all_symptoms_data->execute();
 
       <section class="content" >
         <div class="card">
-          <div class="card-header text-white bg-success "><h3>Add PUMs / PUIs </h3></div>
-                      
-          <div class="card-body" align="center">
+          <div class="card-header text-white bg-success">
+            <h3>Add PUMs / PUIs </h3>
+          </div>
+
+
+          <div class="card-body">
             <form role="form" method="post" action="update_pum.php"> 
               <div class="box-body">
+
+                <div class="row"> 
+                  <div class="col-md-4" style="text-align: right;padding-top: 5px;">
+                    <label>ID No:</label>
+                  </div>
+                  <div class="col-md-3" >
+                    <input type="text" readonly  class="form-control"  name="idno" placeholder="ID NO" value="" required>
+                  </div>
+                </div><br>
+
+                <div class="row"> 
+                  <div class="col-md-4" style="text-align: right;padding-top: 5px;">
+                    <label>ID No:</label>
+                  </div>
+                  <div class="col-md-3" >
+                    <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
+                  </div>
+                </div><br>
+
+
+
 
                 
                 <div class="box-footer" align="center">
@@ -67,6 +91,11 @@ $get_all_symptoms_data->execute();
             </form>
             <!-- end form -->
           </div>
+
+
+
+                      
+          
           
         </div>
    
