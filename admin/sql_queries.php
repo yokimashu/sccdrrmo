@@ -85,7 +85,7 @@
        header('location: view_pum.php');
    
     }
-
+    
     else if (isset($_POST['insert_symptoms'])) {
 
         
