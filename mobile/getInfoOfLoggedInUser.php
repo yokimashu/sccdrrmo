@@ -7,6 +7,7 @@ include ('db-config.php');
     //  echo "<pre>";
     //  print_r($_GET);
     //  echo "</pre>";
+$imageUrl = "http://35.241.87.123/sccdrrmo/userimage/";
 
 $username = $_GET['username'];
 
@@ -21,8 +22,10 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $middleName = $result['middlename'];
     $lastName = $result['lastname'];
     $email = $result['email'];
+    $birthdate = $result['birthdate'];
     $mobileno = $result['mobileno'];
     $address = $result['address'];
+    $image = $imageUrl . $result['photo'];
 }
 
 $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
@@ -38,9 +41,14 @@ $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
              array(
                  'UserID'           => $userID,
                  'Fullname'         => $fullName,
+                 'Firstname'        => $firstName,
+                 'Middlename'       => $middleName,
+                 'Lastname'         => $lastName,
+                 'Birthdate'        => $birthdate,
                  'Email'            => $email,
                  'MobileNumber'     => $mobileno,
-                 'Address'          => $address
+                 'Address'          => $address,
+                 'Photo'            => $image
 
                    )
                             )
