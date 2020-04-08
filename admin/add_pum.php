@@ -55,7 +55,7 @@ $get_all_symptoms_data->execute();
                     <div class="box-body">
                       <br>
                         <div class="row">
-                          <div class="col-md-2" style=" text-align: center; padding-top: 5px">
+                          <div class="col-md-1" style=" text-align: center; padding-top: 5px">
                             <label>First Name:</label>
                           </div>
                           <div class="col-md-2" >
