@@ -192,7 +192,7 @@ $get_all_symptoms_data->execute();
 <script src="../plugins/select2/select2.full.min.js"></script>
 <!-- textarea wysihtml style -->
 <script>
-  s$('.select2').select2();
+  $('.select2').select2();
 
 
 
