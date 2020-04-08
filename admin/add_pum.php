@@ -40,53 +40,38 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
 
       <section class="content" >
+        <div class="card text-white bg-success">
+          <div class="card-header"><h3>Add PUMs / PUIs </h3></div>
+                      
+          <div class="card-body" align="center">
+            <form role="form" method="post" action="update_pum.php"> 
+              <div class="box-body">
 
-  
-   
-        
-                <div class="card text-white bg-success"><h3>Add PUMs / PUIs </h3></div>
                 
-                <div class="card-body" align="center">
-                  <form role="form" method="post" action="update_pum.php">
-                    
-                    <div class="box-body">
-  
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>ID No:</label>
-                            </div>
-                            <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
-                            </div>
-                          </div><br>
+                <div class="box-footer" align="center">
+                                
+                  <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
+                  <i class="fa fa-edit fa-fw"> </i>  </button>
 
-                              
-                          <!-- /.box-body -->
-                          <div class="box-footer" align="center">
-                          
-                              <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
-                              <i class="fa fa-edit fa-fw"> </i>  </button>
+                  <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
+                  <i class="fa fa-check fa-fw"> </i> </button>
 
-                              <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
-                              <i class="fa fa-check fa-fw"> </i> </button>
-
-                              <a href="list_pum.php">
-                                <button type="button" name="cancel" class="btn btn-danger">       
-                                <i class="fa fa-close fa-fw"> </i> </button>
-                            </a>
-                          </div>
-                                  
-                    </div>
-                  
-                  </form>
+                  <a href="list_pum.php">
+                    <button type="button" name="cancel" class="btn btn-danger">       
+                    <i class="fa fa-close fa-fw"> </i> </button>
+                  </a>
                 </div>
-              <!-- /.box -->
-      
-
-    
-
+                <!-- end box-footer -->
+              </div>
+              <!-- end box-body -->
+            </form>
+            <!-- end form -->
+          </div>
+          
+        </div>
+   
       </section>
-  </div>
+  
 
   <?php include('footer.php')?> 
 
