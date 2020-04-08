@@ -89,11 +89,13 @@ if (isset($_GET['post'])) {
                <form method="POST" id="comment_form">
                  <input hidden name="comment_post_id" id="comment_post_id" class="form-control" value="<?php echo $post_id ?>">
                  <input hidden name="comment_name" id="comment_name" class="form-control" value="<?php echo $db_fullname ?>">
-                 <div class="input-group input-group-sm">
-                  
+                   <span id="replyto"></span>
+                   <div class="input-group input-group-sm">
+                   
                    <input name="comment_content" id="comment_content" class="form-control" placeholder="Write a comment...">
+                   
                    <span class="input-group-append">
-                    <input type="hidden" name="comment_id" id="comment_id" value="0" />
+                    <input hidden name="comment_id" id="comment_id" value="0" />
                     <button type="submit" id="submit" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
                   </span>
                  </div>
@@ -120,6 +122,39 @@ if (isset($_GET['post'])) {
  <?php include('footer.php')?>
 
 </div>
+
+  <!-- Delete -->
+  <div class="modal fade" id="delete">
+    <div class="modal-dialog">
+          <div class="modal-content">
+          	<div class="modal-header card-outline card-danger">
+            	<h4 class="modal-title"><b>Delete</b></h4>
+          	</div>
+          	<div class="modal-body">
+            	<form class="form-horizontal" method="POST" action="">
+            		<input type="" type="" class="delid" name="id">
+            		<div class="">
+                    <p>Are you sure you want to delete this comment?</p>
+	            	</div>
+          	</div>
+          	<div class="modal-footer">
+            	<button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+            	<button type="submit" class="btn btn-danger btn-sm" name="submit_delete"><i class="fa fa-trash"></i> Delete</button>
+            	</form>
+          	</div>
+          </div>
+     </div>
+  </div>
+
+  <?php if(isset($_POST['submit_delete'])){
+      $id = $_POST['id'];
+
+        $query = "DELETE FROM tbl_comment WHERE comment_id = '$id' OR parent_comment_id = '$id' ";
+        $stmt = $con->prepare($query);
+        $stmt->execute();
+
+		}
+  ?>
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
@@ -162,6 +197,7 @@ $(document).ready(function(){
      $('#comment_message').html(data.error);
      $('#comment_id').val('0');
      load_comment();
+     $('#replyto').hide();
     }
    }
   })
@@ -185,15 +221,37 @@ $(document).ready(function(){
   var comment_id = $(this).attr("id");
   $('#comment_id').val(comment_id);
   $('#comment_content').focus();
+  getRow(comment_id);
+  $('#replyto').show();
  });
 
  $(document).on('click', '.delete', function(){
   var comment_id = $(this).attr("id");
   $('#comment_id').val(comment_id);
-  $('#comment_content').focus();
+  $('#delete').modal('show');
+  getRow(comment_id);
+  $('#replyto').hide();
  });
  
 });
+
+function getRow(comment_id){
+
+$.ajax({
+
+  type: 'POST',
+  url: 'fetch_comment2.php',
+  data: {id:comment_id},
+  dataType: 'json',
+  success: function(data){
+
+
+    $('#replyto').html(data.csn);
+    $('.delid').val(data.id);
+    
+  }
+});
+};
 </script>
 
 </body>

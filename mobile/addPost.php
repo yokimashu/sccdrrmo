@@ -91,7 +91,7 @@ $users_data->execute([
 ]);
 }
 
-echo "Incident Reported! We will contact you as soon as possible. Thank you!"
+echo "Incident Reported! We will contact you as soon as possible. Thank you!";
 
 
 ?>

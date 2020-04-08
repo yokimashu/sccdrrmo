@@ -71,8 +71,13 @@ if (isset($_POST['insert_announcement'])) {
     $fileType = $_FILES['myFiles']['type'];
     $target_file = $uploadDirectory . basename($_FILES['myFiles']['name']);
     $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // $fileExtension = strtolower(end(explode('.',$fileName)));
-    $uploadPath = $uploadDirectory . basename($fileName);
+    
+    //make temporary name according to timestamp
+    $temp = explode(".", $_FILES["myFiles"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+
+    $uploadPath = $uploadDirectory . $newfilename;
+   
 
 
 
@@ -132,7 +137,7 @@ if (isset($_POST['insert_announcement'])) {
         ':title'      => $post_title,
         ':author'     => $post_author,
         ':postdate'   => $post_date,
-        ':image'      => $fileName,
+        ':image'      => $newfilename,
         ':content'    => $post_content,
         ':status'     => $post_status,
         ':tag'        => $post_tag
@@ -164,6 +169,8 @@ if (isset($_POST['insert_update_announcement'])) {
     $post_status = 'draft';
     $post_author = $db_fullname;
     $post_tag = $_POST['tags'];
+    $old_image = $_POST['old_image'];
+    
 
     //if file input is empty
     if ($_FILES["myFiles"]["error"] == 4){     
@@ -188,7 +195,7 @@ if (isset($_POST['insert_update_announcement'])) {
         ':title'      => $post_title,
         ':author'     => $post_author,
         ':postdate'   => $post_date,
-        ':image'      => 'sancarlos.png',
+        ':image'      => $old_image,
         ':content'    => $post_content,
         ':status'     => $post_status,
         ':tag'        => $post_tag,
@@ -224,8 +231,12 @@ if (isset($_POST['insert_update_announcement'])) {
     $fileType = $_FILES['myFiles']['type'];
     $target_file = $uploadDirectory . basename($_FILES['myFiles']['name']);
     $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // $fileExtension = strtolower(end(explode('.',$fileName)));
-    $uploadPath = $uploadDirectory . basename($post_image);
+
+    //make temporary name according to timestamp
+    $temp = explode(".", $_FILES["myFiles"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+
+    $uploadPath = $uploadDirectory . $newfilename;
 
     
 
@@ -266,6 +277,8 @@ if (isset($_POST['insert_update_announcement'])) {
 
         }
     }
+
+    
    
     $insert_sql = "UPDATE tbl_announcement SET 
 
@@ -287,7 +300,7 @@ if (isset($_POST['insert_update_announcement'])) {
         ':title'      => $post_title,
         ':author'     => $post_author,
         ':postdate'   => $post_date,
-        ':image'      => $post_image,
+        ':image'      => $newfilename,
         ':content'    => $post_content,
         ':status'     => $post_status,
         ':tag'        => $post_tag,
@@ -295,6 +308,10 @@ if (isset($_POST['insert_update_announcement'])) {
         ':id'        => $post_id
         
         ]);
+
+    unlink('../postimage/'.$old_image);
+
+        
 
     $alert_msg .= ' 
         <div class="alert alert-success alert-dismissible">

@@ -33,9 +33,12 @@ $alert_msg = '';
   }
   
   if(isset($_POST['submit_delete'])){
-		$id = $_POST['id'];
+      $id = $_POST['id'];
+      $image = $_POST['image'];
 
-		$sql = "DELETE FROM tbl_announcement WHERE id = '$id'";
+      unlink('../postimage/'.$image);
+      $sql = "DELETE FROM tbl_announcement WHERE id = '$id';
+              DELETE FROM tbl_comment WHERE post_id = '$id'";
 		if($con->query($sql)){
       $alert_msg .= ' 
       <div class="alert alert-danger alert-dismissible">

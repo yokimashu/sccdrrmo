@@ -17,11 +17,15 @@ $user_data->execute([':username' => $username]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
     $userID = $result['id'];
-    $fullName= $result['fullname'];
+    $firstName = $result['firstname'];
+    $middleName = $result['middlename'];
+    $lastName = $result['lastname'];
     $email = $result['email'];
     $mobileno = $result['mobileno'];
     $address = $result['address'];
 }
+
+$fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
 
 //     $userInfo = [
 //         'userInfo' => array(

@@ -15,6 +15,7 @@
   $author   = $result2['author'];
   $status   = $result2['status'];
   $content   = $result2['content'];
+  $image  = $result2['image'];
   
 }
 
@@ -24,6 +25,7 @@ $row = array(
   'author'     => $author,
   'status'     => $status,
   'content'     => $content,
+  'image'     => $image,
 );
     echo json_encode($row);
     

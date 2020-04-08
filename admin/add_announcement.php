@@ -48,7 +48,7 @@ $btnNew = 'hidden';
               </div>
             </div>
             <div class="card-body">
-              <img src="<?php if(isset($_POST['insert_announcement'])) { echo '../postimage/'.$fileName; }else{ echo '../dist/img/scdrrmo_logo.png';} ?>" class="img-fluid" id="image">
+              <img src="<?php if(isset($_POST['insert_announcement'])) { echo '../postimage/'.$newfilename; }else{ echo '../dist/img/scdrrmo_logo.png';} ?>" class="img-fluid" id="image">
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ $btnNew = 'hidden';
            </div><!-- end card-body -->
 
            <div class="card-footer">
-            <button type="submit" <?php echo $btnSave; ?> name="insert_announcement" class="btn btn-primary" onclick="return checkWordCount()"  value="Publish Post">Publish Post</button>
+            <button type="submit" <?php echo $btnSave; ?> name="insert_announcement" class="btn btn-success" onclick="return checkWordCount()"  value="Publish Post">Publish Post</button>
             <button type="submit"  <?php echo $btnNew; ?> name="add" class="btn btn-success" value="New"><i class="fa fa-refresh"></i></button>
            </div><!-- end card-footer -->
            </form>
