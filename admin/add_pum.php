@@ -53,16 +53,16 @@ $get_all_symptoms_data->execute();
                 <div class="card">
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
                     <div class="box-body">
-                      <br><br>
+                      
                         <div class="row">
-                          <div class="col-md-2" >
+                          <div class="col-md-2" style="text-align: right;padding-top: 5px;">
                             <label>ID No:</label>
                           </div>
                           <div class="col-md-3" >
                             <input type="text" readonly  class="form-control"  name="idno" placeholder="ID NO" value="" required>
                           </div>
                         </div><br>
-                      <br><br>
+                     
                     </div>
                 </div>
                
