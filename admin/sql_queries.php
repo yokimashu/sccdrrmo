@@ -85,7 +85,6 @@
        header('location: view_pum.php');
    
     }
-    
     else if (isset($_POST['insert_symptoms'])) {
 
         
@@ -153,7 +152,7 @@
         header('location: view_symptoms.php');
     
     }
-    
+        
 
 
 
