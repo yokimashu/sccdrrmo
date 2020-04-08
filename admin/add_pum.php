@@ -97,7 +97,7 @@ $get_all_symptoms_data->execute();
                             <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
                           </div>
                           <div class="col-md-3" >
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="get_symptoms" value="">
+                            <select class="form-control select2" id="symptoms" style="width: 100%; height:15px" name="get_symptoms" value="">
                                 <option selected="selected">Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
