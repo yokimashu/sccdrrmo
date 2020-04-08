@@ -55,6 +55,7 @@ $get_all_symptoms_data->execute();
                     <div class="box-body" >
                       <br>
                         <div class="row" >
+                          <div class="col-md-2"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
                           </div>
