@@ -66,14 +66,18 @@ $get_all_symptoms_data->execute();
                             <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
                           </div>
                         </div><br>
-                        
+
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
+                            <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text"  class="form-control"  name="idno" placeholder="Middle Name" value="" required>
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="get_symptoms" value="<?php echo $symptoms; ?>">
+                                <option selected="selected">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
                           </div>
                           <div class="col-md-3">
                             <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
