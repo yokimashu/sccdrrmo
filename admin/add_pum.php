@@ -50,7 +50,7 @@ $get_all_symptoms_data->execute();
             <form role="form" method="post" action="update_pum.php"> 
               <div class="box-body">
 
-                <div class="box-body">
+                <div class="card-body">
                   <div class="row"> 
                     <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                       <label>ID No:</label>
@@ -58,13 +58,11 @@ $get_all_symptoms_data->execute();
                     <div class="col-md-3" >
                       <input type="text" readonly  class="form-control"  name="idno" placeholder="ID NO" value="" required>
                     </div>
-
-                   
                   </div><br>
                   
                 </div>
                
-                <div class="box-body">
+                <div class="card-body">
                 <div class="row"> 
                   <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                     <label>ID No:</label>
