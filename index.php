@@ -166,6 +166,18 @@
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 
+
+<script>
+function loadImage(){
+var input = document.getElementById("fileToUpload");
+var fReader = new FileReader();
+fReader.readAsDataURL(input.files[0]);
+fReader.onloadend = function(event){
+    var img = document.getElementById("profilepic");
+    img.src = event.target.result;
+}
+}
+</script>
 </body>
 
 </html>

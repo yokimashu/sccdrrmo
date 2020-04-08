@@ -74,7 +74,7 @@ if (isset($_POST['insert_announcement'])) {
     // $fileExtension = strtolower(end(explode('.',$fileName)));
     $uploadPath = $uploadDirectory . basename($fileName);
 
-    
+
 
 
 

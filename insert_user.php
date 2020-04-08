@@ -8,36 +8,32 @@
 if(isset($_POST['add'])){
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
-    $fullname = $_POST['fullname'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname   = $_POST['lastname'];
     $gender = $_POST['gender'];
     $birthdate = date('Y-m-d', strtotime($_POST['birthdate']));
     $address = $_POST['address'];
     $email = $_POST['email'];
     $mobileNumber = $_POST['contactno'];
     $registered = date("Y/m/d");
-    
-
+    $fileName = '';
+    if ($_FILES["myFiles"]["error"] == 4)
+        {  
+        $fileName = 'avatar5.png';
+        }else
+        {
+     $fileName = $_FILES['myFiles']['name'];
+        }
+      
+       
 $hashed_password  = password_hash($userpass, PASSWORD_DEFAULT);
 
    
-// $insert_users_sql = "INSERT INTO tbl_users SET
-// username            = :username,
-// fullname            = :fullname,
-// email               = :email,
-// password            = :password,
-// birthdate           = :bday,
-// mobileno            = :mobileno,
-// gender              = :gender,
-// account_type        = '2',
-// created_at          = :created,
-// status              = 'PENDING'";
-
-
 
 $check_username = "SELECT * from tbl_users where username = '$username'";
 $sql =$con->query($check_username);
 if($sql ->rowCount() > 0){
-
 
 $alert_msg .= ' 
 <div class="alert alert-danger alert-dismissible">
@@ -48,13 +44,16 @@ $alert_msg .= '
 }else{
 $sql2 = "INSERT INTO tbl_users SET
 username            = '$username',
-fullname            = '$fullname' ,
+firstname           = '$firstname' ,
+middlename          = '$middlename', 
+lastname            = '$lastname',
 email               = '$email',
 password            = '$hashed_password',
 birthdate           = '$birthdate',
-address           = '$address',
+address             = '$address',
 mobileno            = '$mobileNumber',
 gender              = '$gender',
+photo               =  '$fileName',
 account_type        = '2',
 created_at          = '$registered',
 status              = 'PENDING'";
@@ -85,7 +84,58 @@ else {
 
 }
 
+    $currentDir = getcwd();
+    $uploadDirectory = "userimage/";
+    
+
+    $errors = [];
+
+    $fileExtensions = ['png','jpg','jpeg'];
+
+    // $fileName = $_FILES['myFiles']['name'];
+    $fileSize = $_FILES['myFiles']['size'];
+    $fileTmpName = $_FILES['myFiles']['tmp_name'];
+    $fileType = $_FILES['myFiles']['type'];
+    $target_file = $uploadDirectory . basename($_FILES['myFiles']['name']);
+    $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // $fileExtension = strtolower(end(explode('.',$fileName)));
+    $uploadPath = $uploadDirectory . basename($fileName);
+        echo "<pre>";
+        echo print_r($uploadPath);
+        echo "</pre";
+    
+
+    if (!in_array($fileExtension, $fileExtensions)) {
+        $errors[] = "This file extension is not allowed.";
+    }
+    if (empty($errors)) {
+        $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
+    }
+
+//         if ($dipUpload) {
+//             $alert_msg .= ' 
+//        <div class="table-bordered">
+//            <i class="icon fa fa-success"></i>
+//            File has been uploaded
+//        </div>     
+//    ';
+//             // $fname = $mname = $lname = $contact_number = $email = $uname = $upass = '';
+
+
+//         } else {
+//             $alert_msg .= ' 
+//        <div class="alert alert-warning alert-dismissible"">
+//            <i class="icon fa fa-warning"></i>
+//            An Error Occured;
+//        </div>     
+//    ';
+
+//         }
+
+
+
 }
+
 
 if(isset($_POST['update'])){
     $account_type = $_POST['user_type'];
@@ -113,7 +163,9 @@ if($account_type == "Mobile"){
     
     $sql2 = "UPDATE tbl_users SET 
     username            = '$username',
-    fullname            = '$fullname' ,
+    firstname           = '$firstname' ,
+    middlename          = '$middlename,
+    lastname            = '$lastname',
     email               = '$email',
     birthdate           = '$birthdate',
     address             = '$address',
