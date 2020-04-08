@@ -13,28 +13,23 @@ if (!isset($_SESSION['id'])) {
 }
 
 date_default_timezone_set('Asia/Manila');  
-$date = date('Y-m-d');
-$time = date('H:i:s');
-
-
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
-
     $db_fullname = $result['fullname'];
-
 }
 
 
 $btnSave = $btnEdit = $get_time = $get_date = $get_id=
-$get_fullname = $get_symptoms = $get_status= '';
+$get_fullname = $get_symptoms = $get_status= $get_idd='';
 
-  $user_id = $_GET['id'];
 
-  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id and status='Active'";
+  $get_idd= $_GET['idno'];
+
+  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = $get_idd and status='Active'";
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
