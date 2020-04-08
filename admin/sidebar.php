@@ -111,12 +111,15 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 </a>
               </li>
               <li class="nav-item has-treeview" style="font-size:16px">
-              <a href="add_pum" class="nav-link ">
-                <i class="nav-icon fa fa-thermometer-full"></i>
-                <p>
-                  COVID-19
-                </p>
-              </a>
+                <a href="add_pum" class="nav-link ">
+                  <i class="nav-icon fa fa-thermometer-full"></i>
+                  <p>
+                    COVID-19
+                  </p>
+                </a>
+                <ul >
+                </ul>
+
               
  
               <li class="nav-item has-treeview" style="font-size:16px">
