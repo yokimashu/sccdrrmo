@@ -96,8 +96,8 @@ $get_all_symptoms_data->execute();
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
                           </div>
-                          <div class="col-md-3" style="height: 50%;" >
-                            <select class="form-control select2" id="symptoms" name="get_symptoms" value="">
+                          <div class="col-md-3 " >
+                            <select class=" form-control" id="symptoms"  name="get_symptoms" value="">
                                 <option selected="selected">Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
@@ -192,7 +192,7 @@ $get_all_symptoms_data->execute();
 <script src="../plugins/select2/select2.full.min.js"></script>
 <!-- textarea wysihtml style -->
 <script>
-  $('.select2').select2();
+  $('#symptoms').select2();
 
 
 
