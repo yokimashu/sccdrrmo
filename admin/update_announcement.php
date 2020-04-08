@@ -23,7 +23,7 @@ if (isset($_GET['post'])) {
       $post_id = $result['id'];
       $post_title = $result['title'];
       $post_postdate = $result['postdate'];
-      $post_image = $result['image'];
+      $newfilename = $result['image'];
       $post_content = $result['content'];
       $post_status = $result['status'];
       $post_tag = $result['tag'];
@@ -64,7 +64,7 @@ if (isset($_GET['post'])) {
               </div>
             </div>
             <div class="card-body">
-              <img src="<?php echo '../postimage/'.$post_image; ?>" class="img-fluid" id="image">
+              <img src="<?php echo '../postimage/'.$newfilename; ?>" class="img-fluid" id="image">
             </div>
           </div>
         </div>
@@ -84,6 +84,7 @@ if (isset($_GET['post'])) {
                <?php echo $alert_msg; ?> 
              </div>
             <div class="form-group">
+                <input hidden type="text" name="old_image" value= "<?php  echo $newfilename; ?>"  class="form-control">
                 <input hidden type="text" name="id" value= "<?php  echo $post_id; ?>"  class="form-control">
             </div>
 
@@ -110,7 +111,7 @@ if (isset($_GET['post'])) {
 
            <div class="card-footer">
             <a href="view_all_posts" class="btn btn-info" value="Publish Post"><span class="fa fa-angle-left"> </span>  Back</a>
-            <button type="submit" <?php echo $btnSave; ?> name="insert_update_announcement" class="btn btn-primary" onclick="return checkWordCount()"  value="Publish Post">Update Post</button>
+            <button type="submit" <?php echo $btnSave; ?> name="insert_update_announcement" class="btn btn-success" onclick="return checkWordCount()"  value="Publish Post">Update Post</button>
             <a href="update_announcement?post=<?php echo $data["id"]; ?>"><button <?php echo $btnNew; ?> class="btn btn-success"><i class="fa fa-refresh"></i></button></a>
            </div><!-- end card-footer -->
            </form>

@@ -9073,7 +9073,7 @@ body,
 }
 
 .sidebar-light-primary .user-panel .dropdown-item {
-  color: #212529;
+  color: #015c19;
 }
 
 .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:focus {
@@ -9082,7 +9082,7 @@ body,
 
 .sidebar-light-primary .nav-sidebar > .nav-item.menu-open > .nav-link,
 .sidebar-light-primary .nav-sidebar > .nav-item:hover > .nav-link {
-  color: #212529;
+  color: #015c19;
   background-color: #f4f4f5;
 }
 
@@ -9113,11 +9113,12 @@ body,
 }
 
 .sidebar-light-primary .nav-treeview > .nav-item > .nav-link.active, .sidebar-light-primary .nav-treeview > .nav-item > .nav-link.active:hover {
-  color: #212529;
-  background-color: #f4f4f5;
+  color: #015c19;
+  background-color: #c2c3c5;
 }
 
 .sidebar-light-primary .nav-treeview > .nav-item > .nav-link:hover {
+  color: #015c19;
   background-color: #f4f4f5;
 }
 
@@ -13113,7 +13114,8 @@ a.text-muted:hover {
 
 .comment-reply {
 
-  border-left: 3px solid #02992a;
+  border-left: 2px solid #02992a31;
+  border-bottom: 2px solid #02992a31;
 }
 
 .greenBG {

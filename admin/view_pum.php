@@ -176,7 +176,7 @@ $get_all_symptoms_data->execute();
                                 <i class="fa fa-close fa-fw"> </i> </button>
                             </a>
                           </div>
-
+                                  
                     </div>
                   
                   </form>

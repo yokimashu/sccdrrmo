@@ -60,6 +60,7 @@
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="<?php htmlspecialchars("PHP_SELF"); ?>">
             		<input type="hidden" type="" class="objid" name="id">
+					<input type="hidden" class="image" name="image">
             		<div class="">
                     <h2 class="edit_title"></h2>
                     <p>by:</p>

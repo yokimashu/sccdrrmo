@@ -39,3 +39,5 @@ if (isset($_POST['update_pum'])) {
     header('location: view_pum.php');
 
 }
+
+?>
