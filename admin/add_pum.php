@@ -48,7 +48,7 @@ $get_all_symptoms_data->execute();
 
           <div class="card-body">
             <form role="form" method="post" action="update_pum.php"> 
-              <div class="box-body">
+              <div class="box-body"> 
 
                 <div class="card">
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
