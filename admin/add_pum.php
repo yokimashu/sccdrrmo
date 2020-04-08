@@ -55,12 +55,27 @@ $get_all_symptoms_data->execute();
                     <div class="box-body">
                       <br>
                         <div class="row">
-                          <div class="col-md-1" style=" text-align:center; padding-top: 5px;">
-                            <label>ID No:</label>
+                          <div class="col-md-2" style=" text-align:center; padding-top: 5px;">
+                            <label>First Name:</label>
                           </div>
-                          <div class="col-md-3" >
-                            <input type="text" readonly  class="form-control"  name="idno" placeholder="ID NO" value="" required>
+                          <div class="col-md-2" >
+                            <input type="text"  class="form-control"  name="idno" placeholder="ID NO" value="" required>
                           </div>
+
+                          <div class="col-md-2" style=" text-align:center; padding-top: 5px;">
+                            <label>Middle Name:</label>
+                          </div>
+                          <div class="col-md-2" >
+                            <input type="text"  class="form-control"  name="idno" placeholder="ID NO" value="" required>
+                          </div>
+
+                          <div class="col-md-2" style=" text-align:center; padding-top: 5px;">
+                            <label>Last Name:</label>
+                          </div>
+                          <div class="col-md-2" >
+                            <input type="text"  class="form-control"  name="idno" placeholder="ID NO" value="" required>
+                          </div>
+
                         </div><br>
                      
                     </div>
