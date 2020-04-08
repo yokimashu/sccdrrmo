@@ -121,7 +121,7 @@ echo "</pre>";
          </div> 
          <div class="col-12 col-sm-6 col-md-3">
            <div class="info-box mb-3">
-            <a href="https://l.facebook.com/l.php?u=http%3A%2F%2F35.241.87.123%2Fsccdrrmo%2Fdownloads%2Fsccdrrmo-debug.apk%3Ffbclid%3DIwAR0eJLQpLG70Lzhdg0weckbotiJYaWGDhn6Xeod02JdVYRsp5WTWeBBWuJQ&h=AT2gVGncAsQuz5w21zjmxl3mg5xmpozBoqrE389XiULW_h4S4OUYzVJe66sWkVf--BeZJcVuX0eh6w_s1MYeMhDrKr7fkAnOhVtX-y_RghGnJXA7V7C39tHKkEOb0b-hQGsgEQ" class="info-box-icon bg-success  elevation-1"><span ><i class="fa fa-download "></i></span></a>
+            <a href="http://35.241.87.123/sccdrrmo/downloads/sccdrrmo-debug.apk" class="info-box-icon bg-success  elevation-1"><span ><i class="fa fa-download "></i></span></a>
               <div class="info-box-content">
                 <span class="info-box-text">Download Application</span>
                 
