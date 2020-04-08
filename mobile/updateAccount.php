@@ -1,6 +1,6 @@
 <?php
 
-if($_SERVER["REQUEST_METHOD"] == "GET"){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 	require 'db-config.php';
 	updateUser();
 }else{
@@ -21,9 +21,8 @@ function updateUser(){
    $firstname      = $_POST['firstname'];
    $middlename     = $_POST['middlename'];
    $lastname       = $_POST['lastname'];
-   $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
+   $birthdate      = $_POST['birthdate'];
    $mobileNumber   = $_POST['mobileNumber'];
-   $gender         = $_POST['gender'];
    $address        = $_POST['address'];
 
    $id = md5(time() . rand());
@@ -37,6 +36,8 @@ function updateUser(){
         $isWritten = fwrite($file, $image);
         fclose($file);
    }
+
+  if ($image != null){ 
    $update_users_sql = "UPDATE tbl_users SET
        
         firstname           = :fname,
@@ -62,6 +63,33 @@ function updateUser(){
         ':userid'           => $userID
         
         ]);
+        
+    }else{
+        $update_users_sql = "UPDATE tbl_users SET
+       
+        firstname           = :fname,
+        middlename          = :mname,
+        lastname            = :lname,
+        birthdate           = :bday,
+        mobileno            = :mobileno,
+        address             = :address,
+        WHERE id            = :userid";
+        
+
+    $users_data = $con->prepare($update_users_sql);
+    $users_data->execute([
+       
+        ':fname'            => $firstname,
+        ':mname'            => $middlename,
+        ':lname'            => $lastname,
+        ':bday'             => $birthdate,
+        ':mobileno'         => $mobileNumber,
+        ':address'          => $address,
+        ':userid'           => $userID
+        
+        ]);
+
+    }
 }
 
 echo "Account Updated!";

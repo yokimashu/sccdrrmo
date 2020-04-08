@@ -1,12 +1,16 @@
 <?php
 
-include ('db-config.php');
-// session_start();
-// $user_id = $_SESSION['id'];
 
-    //  echo "<pre>";
-    //  print_r($_GET);
-    //  echo "</pre>";
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+    require 'db-config.php';
+    showInfo();
+ }else{
+     echo "Oops! We're sorry! You do not have access to this option!";
+ }
+
+function showInfo(){
+    global $con;
+
 $imageUrl = "http://35.241.87.123/sccdrrmo/userimage/";
 
 $username = $_GET['username'];
@@ -55,6 +59,9 @@ $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
             );
             
     echo json_encode($userInfo);
+    die();
+
+        }
 
 ?>
 
