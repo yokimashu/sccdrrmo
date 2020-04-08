@@ -63,6 +63,9 @@ $get_all_symptoms_data->execute();
                 </div>
                
                 <div class="card-body">
+                  <div class="card-header">
+                    <h4>GOOOOOOO</h4>
+                  </div>
                 <div class="row"> 
                   <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                     <label>ID No:</label>
