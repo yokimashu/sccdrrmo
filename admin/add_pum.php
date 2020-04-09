@@ -220,7 +220,7 @@ $get_all_health_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
-                                  value="<?php echo $now->format('m/d/Y'); ?>">
+                                  value="<?php echo $now->format('m-d-Y'); ?>">
                             </div>
                           </div>
                          

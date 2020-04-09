@@ -17,13 +17,13 @@
         $city                   = $_POST['city'];
         $province               = $_POST['province'];
         $city_origin            = $_POST['city0rigin'];
-        $arrival                = date('m-d-Y', strtotime($_POST['date_arrival']));
+        $arrival                = date('Y-m-d', strtotime($_POST['date_arrival']));
         $contact_number         = $_POST['contact_number'];
         $travel_days            = $_POST['travel_days'];
         $patient_disease        = $_POST['disease'];
         $symptoms               = $_POST['symptoms'];
         $health_status          = $_POST['health_status'];
-        $process                = date('m-d-Y', strtotime($_POST['date_process']));        
+        $process                = date('Y-m-d', strtotime($_POST['date_process']));        
         
         $time = date('h:i:s');
         $status = 'Active';
@@ -86,6 +86,7 @@
         
         $btnSave = 'disabled';
         $btnNew = 'enabled';
+        header('location: add_pum.php');
 
 
     }
