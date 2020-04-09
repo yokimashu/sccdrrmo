@@ -313,7 +313,7 @@ $get_all_health_data->execute();
    $(document).ready(function(){
         $('#btnEdit').click(function() {
           $("input[name='firstname']").removeAttr("readonly");
-          $("input[name='middlenam']").removeAttr("readonly");
+          $("input[name='middlename']").removeAttr("readonly");
           $("input[name='lastname']").removeAttr("readonly");
           $("input[name='age']").removeAttr("readonly");
           $("input[name='street']").removeAttr("readonly");
@@ -323,6 +323,7 @@ $get_all_health_data->execute();
           $("input[name='date_arrival']").removeAttr("readonly");
           $("input[name='contact_number']").removeAttr("readonly");
           $("input[name='date_process']").removeAttr("readonly");
+          $("input[name='disease']").removeAttr("readonly");
 
           $(".select2").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
