@@ -5,7 +5,7 @@
 	if(isset($_POST['id'])){
 
     $id = $_POST['id'];
-    $query = "UPDATE tbl_reportpum SET remarks = 'done' WHERE objid = '$id' ";
+    $query = "UPDATE tbl_reportpum SET remarks = 'READ' WHERE objid = '$id' ";
     $stmt = $con->prepare($query);
     $stmt->execute();
     

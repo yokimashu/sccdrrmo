@@ -35,6 +35,7 @@
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="<?php htmlspecialchars("PHP_SELF"); ?>">
             		<input type="hidden" class="objid" name="id">
+					<input hidden type="text" class="edit_title" name="title">
             		<div class="">
                     <h2 class="edit_title"></h2>
                     <p>by:</p>
