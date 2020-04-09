@@ -12,10 +12,40 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit= $firstname = $middlename= $lastname = $age= $gender=
-$brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-$travel_days = $patient_disease = $symptoms= $health_status='';
+$btnSave = $btnEdit = $get_firstname = '';
 $btnNew = 'hidden';
+
+
+if (isset($_GET['objid'])) {
+
+  $user_id = $_GET['id'];
+  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id";
+  $get_pum_data = $con->prepare($get_pum_sql);
+  $get_pum_data->execute([':id' => $user_id]);
+  while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
+    $get_id                     = $result['idno'];
+    $get_firstname              = $result['first_name'];
+     
+   
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";
@@ -39,7 +69,7 @@ $get_all_health_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Add Announcement</title>
+  <title>SCCDRRMO ERP | Update PUM</title>
      <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -82,7 +112,7 @@ $get_all_health_data->execute();
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
-            <h3>Add PUMs / PUIs </h3>
+            <h3>Update PUMs</h3>
           </div>
           
           <div class="card-body">
@@ -99,16 +129,16 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="<?php echo $firstname;?>" required>
+                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="<?php echo $get_firstname;?>" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="<?php echo $middlename;?>" required>
+                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="<?php echo $lastname;?>" required>
+                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="" required>
                           </div>
                         </div><br>
-
+<!-- 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
@@ -129,9 +159,9 @@ $get_all_health_data->execute();
                                 <?php } ?>
                             </select>
                           </div>
-                        </div><br>
+                        </div><br> -->
 
-                        <div class="row" >
+                        <!-- <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
@@ -143,12 +173,12 @@ $get_all_health_data->execute();
                           <div class="col-md-3 " >
                             <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
                           </div>
-                        </div><br>
+                        </div><br> -->
                     </div>
                 </div>
          
                 <!-- travel history -->
-                <div class="card">
+                <!-- <div class="card">
                   <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
                     <div class="box-body" >
                       <br>
@@ -183,10 +213,10 @@ $get_all_health_data->execute();
                         </div><br>
                      
                     </div>
-                </div>
+                </div> -->
                 
                 <!--  -->
-                <div class="card">
+                <!-- <div class="card">
                   <div class="card-header"><h6>HEALTH HISTORY</h6></div>
                     <div class="box-body" >
                       <br>
@@ -233,7 +263,7 @@ $get_all_health_data->execute();
                         </div><br>
                      
                     </div>
-                </div>
+                </div> -->
 
 
                 
