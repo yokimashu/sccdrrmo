@@ -17,6 +17,9 @@ $get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
+$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
+$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
+$get_all_brgy_data->execute();
 
 
 ?>
@@ -81,43 +84,49 @@ $get_all_symptoms_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
+                            <input type="text"  class="form-control"  name="firstname" placeholder="First Name" value="" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text"  class="form-control"  name="idno" placeholder="Middle Name" value="" required>
+                            <input type="text"  class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
+                            <input type="text"  class="form-control"  name="lastname" placeholder="Last Name" value="" required>
                           </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
+                            <input type="number"  class="form-control"  name="age" placeholder="Age" value="" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class=" form-control" id="symptoms"  name="get_symptoms" value="">
+                            <select class=" form-control select2" id="gender"  name="gender" value="">
                                 <option selected="selected">Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                             </select>
                           </div>
+                          <div class="col-md-3 " >
+                          <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="">
+                              <option selected="selected">Select Barangay</option>
+                              <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                              <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                              <?php } ?>
+                          </select>
+                          </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="idno" placeholder="Street / Lot # / Block #" value="" required>
+                            <input type="text"  class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="" required>
                           </div>
-                          <div class="col-md-2 " >
-                            <input type="text"  class="form-control"  name="idno" placeholder="Brgy" value="" required>  
+                          
+                          <div class="col-md-3 " >
+                            <input type="text"  class="form-control"  name="city" placeholder ="City / Municipality" value="" required>  
                           </div>
                           <div class="col-md-3 " >
-                            <input type="text"  class="form-control"  name="idno" value="San Carlos City" required>  
-                          </div>
-                          <div class="col-md-3 " >
-                            <input type="text"  class="form-control"  name="idno" value="Negros Occidental" required>  
+                            <input type="text"  class="form-control"  name="province" placeholder="Province" value="" required>  
                           </div>
                         </div><br>
                     </div>
@@ -229,7 +238,7 @@ $get_all_symptoms_data->execute();
 <script src="../plugins/select2/select2.full.min.js"></script>
 <!-- textarea wysihtml style -->
 <script>
-  $('#symptoms').select2();
+  $('.select2').select2();
 
 
 
