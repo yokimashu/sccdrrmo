@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('update_pum.php');
+
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -33,9 +33,9 @@ if (isset($_GET['objid'])) {
   $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id";
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
-  while ($result = $get_items_data->fetch(PDO::FETCH_ASSOC)) {
+  while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
     $get_id                     = $result['idno'];
-    $get_fname                  = $result['idno'];
+    $get_fname                  = $result['first_name'];
   
 
      
@@ -97,18 +97,18 @@ $get_all_health_data->execute();
   <?php include('sidebar.php');?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" align="center">
+  <div class="content-wrapper">
     <div class="content-header"></div>
 
-
-    <div class="float-topright">
+<!-- 
+      <div class="float-topright">
         <?php echo $alert_msg; ?> 
-      </div>
+      </div> -->
 
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
-            <h3>UPDATE PUM </h3>
+            <h5>UPDATE PUM </h5>
           </div>
           
           <div class="card-body">
