@@ -3,7 +3,7 @@
 
 include ('../config/db_config.php');
 include ('sql_queries.php');
-include ('delete_symptoms.php');
+
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -26,7 +26,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE' order by idno DESC";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where order by idno DESC";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
