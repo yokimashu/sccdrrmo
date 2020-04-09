@@ -125,14 +125,14 @@ if (isset($_GET['post'])) {
 
   <!-- Delete -->
   <div class="modal fade" id="delete">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-dialog-centered">
           <div class="modal-content">
           	<div class="modal-header card-outline card-danger">
             	<h4 class="modal-title"><b>Delete</b></h4>
           	</div>
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="">
-            		<input type="" type="" class="delid" name="id">
+            		<input type="hidden" type="" class="delid" name="id">
             		<div class="">
                     <p>Are you sure you want to delete this comment?</p>
 	            	</div>
@@ -147,7 +147,7 @@ if (isset($_GET['post'])) {
   </div>
 
   <?php if(isset($_POST['submit_delete'])){
-      $id = $_POST['id'];
+        $id = $_POST['id'];
 
         $query = "DELETE FROM tbl_comment WHERE comment_id = '$id' OR parent_comment_id = '$id' ";
         $stmt = $con->prepare($query);
@@ -178,7 +178,7 @@ if (isset($_GET['post'])) {
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
  
  $('#comment_form').on('submit', function(event){
@@ -213,8 +213,11 @@ $(document).ready(function(){
    success:function(data)
    {
     $('#display_comment').html(data);
-   }
-  })
+   },
+   complete: function() {
+     setTimeout(load_comment,1000); //After completion of request, time to redo it after a second
+    }
+  });
  }
 
  $(document).on('click', '.reply', function(){

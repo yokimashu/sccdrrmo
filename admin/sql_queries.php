@@ -17,13 +17,13 @@
         $city                   = $_POST['city'];
         $province               = $_POST['province'];
         $city_origin            = $_POST['city0rigin'];
-        $arrival                = date('m-d-Y', strtotime($_POST['date_arrival']));
+        $arrival                = date('Y-m-d', strtotime($_POST['date_arrival']));
         $contact_number         = $_POST['contact_number'];
         $travel_days            = $_POST['travel_days'];
         $patient_disease        = $_POST['disease'];
         $symptoms               = $_POST['symptoms'];
         $health_status          = $_POST['health_status'];
-        $process                = date('m-d-Y', strtotime($_POST['date_process']));        
+        $process                = date('Y-m-d', strtotime($_POST['date_process']));        
         
         $time = date('h:i:s');
         $status = 'Active';
@@ -78,14 +78,16 @@
             ]);
 
         $alert_msg .= ' 
-            <div class="new-alert new-alert-success alert-dismissible">
-                <i class="icon fa fa-success"></i>
-                Data Inserted
-            </div>     
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>
+                <strong> Success ! </strong> Data Inserted.
+            </div>      
         ';
         
         $btnSave = 'disabled';
         $btnNew = 'enabled';
+
 
 
     }
@@ -196,6 +198,17 @@
         header('location: view_symptoms.php');
     
     }
+    else if (isset($_POST['delete_symptoms'])) {
+
+        $delete_user_id = $_POST['user_id'];
+        $delete_user_sql = "UPDATE tbl_symptoms SET status ='Inactive' WHERE idno = :id ";
+        $delete_user_data = $con->prepare($delete_user_sql);
+        $delete_user_data->execute([':id'=>$delete_user_id]);
+    
+        header('location: list_symptoms.php');
+        
+    }
+    
         
 
 

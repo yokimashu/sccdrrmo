@@ -34,6 +34,12 @@ $get_all_draft_data = $con->prepare($get_all_draft_sql);
 $get_all_draft_data->execute();
 $numberofdraft = $get_all_draft_data->rowCount();
 
+//get all new report from report pum/pui
+$get_all_newreport_sql = "SELECT * FROM tbl_reportpum WHERE remarks = 'NEW REPORT'";
+$get_all_newreport_data = $con->prepare($get_all_newreport_sql);
+$get_all_newreport_data->execute();
+$numberofnewreport = $get_all_newreport_data->rowCount();
+
 ?>
 
   <nav class="main-header navbar navbar-expand greenBG navbar-light border-bottom">
@@ -132,6 +138,15 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 </p>
               </a>
               <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                  <a href="report_pum" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <span class="badge badge-danger navbar-badge"><?php if($numberofnewreport>0){echo $numberofnewreport;}?></span>
+                    <p>REPORTED PUM/PUI</p>
+                  </a>
+                </li>
+
                 <li class="nav-item">
                   <a href="list_pum" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>

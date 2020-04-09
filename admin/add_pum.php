@@ -18,7 +18,7 @@ $travel_days = $patient_disease = $symptoms= $health_status='';
 $btnNew = 'hidden';
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -75,16 +75,21 @@ $get_all_health_data->execute();
   <div class="content-wrapper" >
     <div class="content-header"></div>
 
+      <div class="float-topright">
+        <?php echo $alert_msg; ?> 
+      </div>
+
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
             <h3>Add PUMs / PUIs </h3>
           </div>
-          <?php  $alert_msg;?>
-
+          
           <div class="card-body">
-            <form role="form" method="post" action="sql_queries.php"> 
+            <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF");?>"> 
               <div class="box-body"> 
+
+              
                 
                 <!-- personal information -->
                 <div class="card">
@@ -220,7 +225,7 @@ $get_all_health_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
-                                  value="<?php echo $now->format('m/d/Y'); ?>">
+                                  value="<?php echo $now->format('m-d-Y'); ?>">
                             </div>
                           </div>
                          
