@@ -19,7 +19,7 @@ $time = date('H:i:s');
 $symptoms= $patient= $person_status ='';
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id";
+$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
@@ -29,7 +29,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status ='PUM' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
@@ -84,7 +84,7 @@ $get_all_symptoms_data->execute();
                                                 <th> ID No </th>
                                                 <th> Full Name </th>
                                                 <th> Symptoms</th>
-                                                <th> Status</th>
+                                                <th> Health Status</th>
                                                 <th> Options</th>
                                             </tr>
                                         </thead>
@@ -94,9 +94,9 @@ $get_all_symptoms_data->execute();
                                                     <td><?php echo $list_pum['date_report'];  ?></td>
                                                     <td><?php echo $list_pum['time_report']; ?></td>
                                                     <td><?php echo $list_pum['idno'];?> </td>
-                                                    <td><?php echo $list_pum['fullname'];?> </td>
+                                                    <td><?php echo $list_pum['first_name']; echo " "; ?> </td>
                                                     <td><?php echo $list_pum['symptoms'];?> </td>
-                                                    <td><?php echo $list_pum['status'];?></td>
+                                                    <td><?php echo $list_pum['health_status'];?></td>
                                                     <td>
                                                         <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
                                                         <i class="fa fa-folder-open-o"></i> Open
