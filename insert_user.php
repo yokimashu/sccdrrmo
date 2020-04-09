@@ -19,6 +19,7 @@ if(isset($_POST['add'])){
     $registered = date("Y/m/d");
     $fileName = '';
     $newfilename = '';
+    $verification = rand(100000,999999);
     if ($_FILES["myFiles"]["error"] == 4)
         {  
         $fileName = 'avatar5.png';
@@ -56,10 +57,17 @@ birthdate           = '$birthdate',
 address             = '$address',
 mobileno            = '$mobileNumber',
 gender              = '$gender',
-photo               =  '$newfilename',
 account_type        = '2',
 created_at          = '$registered',
-status              = 'PENDING'";
+verification_code   =  '$verification',
+status              = 'PENDING',";
+if($newfilename == '')
+{
+$sql2.="photo   =  '$fileName'";
+}else
+{
+$sql2.="photo   =  '$newfilename'"; 
+}
 if ($con->query($sql2))
 
     {

@@ -1,11 +1,11 @@
 <?php
 
-$base_url = "http://localhost/tutorial/email-address-verification-script-using-php/";  //change this baseurl value as per your file path
+$base_url = "http://localhost/";  //change this baseurl value as per your file path
 			$mail_body = "
 			<p>Hi ".$username.",</p>
-			<p>Thanks for Registration. Your password is, This password will work only after your email verification.</p>
-			<p>Please Open this link to verified your email address - ".$base_url."email_verification.php?activation_code=
-			<p>Best Regards,<br />Webslesson</p>
+			<p>Thanks for Registration.</p>
+			<p>Please Open this link to verified your email address - ".$base_url."email_verification.php?activation_code=".$verification."
+			<p>Best Regards,<br />SCCDRRMO</p>
 			";
 			require 'class/class.phpmailer.php';
 			$mail = new PHPMailer;
