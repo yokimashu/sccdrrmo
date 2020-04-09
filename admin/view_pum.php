@@ -13,7 +13,7 @@ if (!isset($_SESSION['id'])) {
 $now = new DateTime();
 
 $btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender=
-$get_brgy='';
+$get_brgy = $get_city = $get_province = $get_street='';
 $btnNew = 'hidden';
 
 
@@ -31,6 +31,9 @@ if (isset($_GET['objid'])) {
     $get_age                = $result['age'];
     $get_gender             = $result['gender'];
     $get_brgy               = $result['barangay'];
+    $get_street               = $result['street'];
+    $get_city               = $result['city'];
+    $get_province               = $result['province'];
     
      
    
@@ -38,21 +41,6 @@ if (isset($_GET['objid'])) {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";
@@ -169,7 +157,7 @@ $get_all_health_data->execute();
                           </div>
                         </div><br> 
 
-                        <!-- <div class="row" >
+                        <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
@@ -181,7 +169,7 @@ $get_all_health_data->execute();
                           <div class="col-md-3 " >
                             <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
                           </div>
-                        </div><br> -->
+                        </div><br>
                     </div>  
                 </div>
          
