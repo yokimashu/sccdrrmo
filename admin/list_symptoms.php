@@ -2,8 +2,8 @@
 <?php
 
 include ('../config/db_config.php');
-include ('sql_symptoms.php');
-include ('delete_symptoms.php');
+include ('sql_queries.php');
+
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -26,7 +26,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE' order by idno DESC";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where order by idno DESC";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -123,7 +123,7 @@ $get_all_symptoms_data->execute();
               </button>
           </div>
           <div class="modal-body">
-            <form role="form" id="submitFormCateg" method="post" action="sql_symptoms.php" >
+            <form role="form" id="submitFormCateg" method="post" action="sql_queries.php" >
 
                 <div class="form-group">
                     <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">

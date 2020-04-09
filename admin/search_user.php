@@ -38,7 +38,7 @@ $requestData= $_REQUEST;
 
 // getting total number records without any search
 
-$sql = "SELECT id, fullname, username, email, mobileno, status  FROM tbl_users ";
+$sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id,username, email, mobileno, status  FROM tbl_users ";
 $sql.=" ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
@@ -54,7 +54,7 @@ $totalData = $getrecord['id'];
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT id, fullname, username, email, mobileno, status  FROM tbl_users where ";
+$sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id, username, email, mobileno, status  FROM tbl_users where ";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.="  (id LIKE '%".$requestData['search']['value']."%' ";    

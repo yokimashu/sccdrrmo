@@ -208,7 +208,13 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+            
+            <li class="nav-item">
+                <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Push Notifications</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="list_symptoms" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
@@ -258,4 +264,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+
+  <?php include('push_notification.php'); ?>
+
   </aside>

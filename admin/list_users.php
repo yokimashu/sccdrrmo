@@ -289,7 +289,9 @@ if (type == 'success') {
         var result = jQuery.parseJSON(response);
          $('#user_id').val(id);
         $('#username').val(result.username);
-        $('#fullname').val(result.fullname);
+        $('#firstname').val(result.firstname);
+        $('#middlename').val(result.middlename);
+        $('#lastname').val(result.lastname);
         $('#gender').val(result.gender);
         $('#address').val(result.address);
         $('#datepicker').val(result.birthdate);
@@ -297,7 +299,8 @@ if (type == 'success') {
         $('#contactno').val(result.mobileno);
         $('#usertype').val(result.account_type);
         $('#user_id').val(result.id);
-        
+        var img = document.getElementById("profilepic");
+       img.src = '../userimage/'+result.photo;
          console.log(result.account_type);
         
        },
@@ -309,6 +312,18 @@ if (type == 'success') {
 }
 
   });
+
+
+  function loadImage(){
+var input = document.getElementById("fileToUpload");
+var fReader = new FileReader();
+fReader.readAsDataURL(input.files[0]);
+fReader.onloadend = function(event){
+    var img = document.getElementById("profilepic");
+    img.src = event.target.result;
+}
+}
+
 
 </script> 
 </body>
