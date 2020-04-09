@@ -150,13 +150,15 @@ $get_all_health_data->execute();
                             <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $get_age;?>" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class=" form-control select2" id="gender"  name="gender" value="">
-                                <option >Select Gender</option>
-                                <option value="<?php echo $get_gender;?>"><?php echo $get_gender;?></option>
-                            </select>
+                            <select class="form-control select2" name="gender" value="<?php echo $get_gender; ?>">
+                              <option >Select Gender</option>
+                              <option <?php if ($get_gender == 'Female') echo 'selected'; ?> value="Female">Female </option>
+                              <option <?php if ($get_gender == 'Male') echo 'selected'; ?> value="Male">Male </option>
+                            </select> 
+                            
                           </div>
                            <!-- <div class="col-md-3 " >
-                            <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy;?>">
+                            <select class="form-control select2" id="barangay" name="barangay" value="<?php echo $brgy;?>">
                                 <option selected="selected">Select Barangay</option>
                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
