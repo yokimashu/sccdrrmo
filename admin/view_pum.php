@@ -150,10 +150,9 @@ $get_all_health_data->execute();
                             <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $get_age;?>" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class=" form-control select2" id="gender"  name="gender" value="<?php echo $get_gender;?>">
-                                <option selected="selected">Select Gender</option>
-                                <option value="Female"><?php echo $get_gender;?></option>
-                                <option value="Male"><?php echo $get_gender;?></option>
+                            <select class=" form-control select2" id="gender"  name="gender" value="">
+                                <option >Select Gender</option>
+                                <option value="<?php echo $get_gender;?>"><?php echo $get_gender;?></option>
                             </select>
                           </div>
                            <!-- <div class="col-md-3 " >
