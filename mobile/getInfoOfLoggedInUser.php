@@ -1,12 +1,17 @@
 <?php
 
-include ('db-config.php');
-// session_start();
-// $user_id = $_SESSION['id'];
 
-    //  echo "<pre>";
-    //  print_r($_GET);
-    //  echo "</pre>";
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+    require 'db-config.php';
+    showInfo();
+ }else{
+     echo "Oops! We're sorry! You do not have access to this option!";
+ }
+
+function showInfo(){
+    global $con;
+
+$imageUrl = "http://35.241.87.123/sccdrrmo/userimage/";
 
 $username = $_GET['username'];
 
@@ -21,8 +26,10 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $middleName = $result['middlename'];
     $lastName = $result['lastname'];
     $email = $result['email'];
+    $birthdate = $result['birthdate'];
     $mobileno = $result['mobileno'];
     $address = $result['address'];
+    $image = $imageUrl . $result['photo'];
 }
 
 $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
@@ -38,15 +45,23 @@ $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
              array(
                  'UserID'           => $userID,
                  'Fullname'         => $fullName,
+                 'Firstname'        => $firstName,
+                 'Middlename'       => $middleName,
+                 'Lastname'         => $lastName,
+                 'Birthdate'        => $birthdate,
                  'Email'            => $email,
                  'MobileNumber'     => $mobileno,
-                 'Address'          => $address
+                 'Address'          => $address,
+                 'Photo'            => $image
 
                    )
                             )
             );
             
     echo json_encode($userInfo);
+    die();
+
+        }
 
 ?>
 

@@ -111,10 +111,22 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 </a>
               </li>
               <li class="nav-item has-treeview" style="font-size:16px">
+                <a href="add_pum" class="nav-link ">
+                  <i class="nav-icon fa fa-thermometer-full"></i>
+                  <p>
+                    COVID-19
+                  </p>
+                </a>
+                <ul >
+                </ul>
+
+              
+ 
+              <li class="nav-item has-treeview" style="font-size:16px">
               <a href="" class="nav-link ">
-                <i class="nav-icon fa fa-thermometer-full"></i>
+                <i class="nav-icon fa fa-medkit"></i>
                 <p>
-                  COVID-19
+                   MASTERLIST
                   <i class="right fa fa-angle-left"></i>
                 </p>
               </a>
@@ -122,10 +134,18 @@ $numberofdraft = $get_all_draft_data->rowCount();
                 <li class="nav-item">
                   <a href="list_pum" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
-                    <p>PUM</p>
+                    <p>List of PUMs</p>
+                  </a>
+                </li>          
+             
+                <li class="nav-item">
+                  <a href="list_pum" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of PUIs</p>
                   </a>
                 </li>          
               </ul>
+              
 
 
 
