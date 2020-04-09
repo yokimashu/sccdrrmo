@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-
+include ('update_symptoms.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -13,6 +13,9 @@ if (!isset($_SESSION['id'])) {
 }
 
 date_default_timezone_set('Asia/Manila');  
+$date = date('Y-m-d');
+$time = date('H:i:s');
+
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
@@ -23,8 +26,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$btnSave = $btnEdit = $get_id =
-$get_fname ='';
+$btnSave = $btnEdit =  $get_fname='';
+
+
 
 
 if (isset($_GET['objid'])) {
@@ -35,8 +39,7 @@ if (isset($_GET['objid'])) {
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
     $get_id                     = $result['idno'];
-    $get_fname                  = $result['first_name'];
-  
+    $get_fname                 = $result['first_name'];
 
      
    
@@ -44,24 +47,6 @@ if (isset($_GET['objid'])) {
   }
 
 }
-
-
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
-$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
-$get_all_symptoms_data->execute();
-
-
-$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
-$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
-$get_all_brgy_data->execute();
-
-
-$get_all_health_sql = "SELECT * FROM tbl_health";
-$get_all_health_data = $con->prepare($get_all_health_sql);
-$get_all_health_data->execute();
-
-
-
 
 ?>
 
@@ -97,18 +82,14 @@ $get_all_health_data->execute();
   <?php include('sidebar.php');?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" align="center">
     <div class="content-header"></div>
 
-<!-- 
-      <div class="float-topright">
-        <?php echo $alert_msg; ?> 
-      </div> -->
 
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
-            <h5>UPDATE PUM </h5>
+            <h3>Update PUM </h3>
           </div>
           
           <div class="card-body">
@@ -155,9 +136,9 @@ $get_all_health_data->execute();
                                 <?php } ?>
                             </select>
                           </div>
-                        </div><br>
+                        </div><br> -->
 
-                        <div class="row" >
+                        <!-- <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
@@ -291,8 +272,6 @@ $get_all_health_data->execute();
         </div>
    
       </section>
-    
-
 
   </div>
   <!-- /.content-wrapper -->
@@ -366,10 +345,7 @@ $get_all_health_data->execute();
 
     $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='report_time']").removeAttr("readonly");
-          $("input[name='fullname']").removeAttr("readonly");
-          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='symptoms']").removeAttr("readonly");
           $("input[name='status']").removeAttr("readonly");
           $("#name_symptoms").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
