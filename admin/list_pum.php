@@ -19,7 +19,7 @@ $time = date('H:i:s');
 $symptoms= $patient= $person_status ='';
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id";
+$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
@@ -29,13 +29,13 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status = 'PUM' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='Active'";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status = 'Active'";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -49,7 +49,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Dashboard</title>
+  <title>SCCDRRMO ERP | List of PUMs </title>
   <?php include('header.php');?>
 
 
@@ -65,11 +65,8 @@ $get_all_symptoms_data->execute();
     
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header">
-                        <h4  >LIST OF PUM
-                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addPUM" type="button" class="btn btn-danger bg-gradient-danger" 
-                            style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
-                        </h4>
+                    <div class="card-header  text-white bg-success">
+                        <h4> List of Person Under Monitor (PUMs)  </h4>
                     </div>
                     <div class="card-body">
                         <div class="box box-primary">
@@ -81,10 +78,9 @@ $get_all_symptoms_data->execute();
                                             <tr style="font-size: 1.10rem">
                                                 <th> Date </th>
                                                 <th> Time </th>
-                                                <th> ID No </th>
                                                 <th> Full Name </th>
                                                 <th> Symptoms</th>
-                                                <th> Status</th>
+                                                <th> Health Status</th>
                                                 <th> Options</th>
                                             </tr>
                                         </thead>
@@ -93,21 +89,20 @@ $get_all_symptoms_data->execute();
                                                 <tr align="center">  
                                                     <td><?php echo $list_pum['date_report'];  ?></td>
                                                     <td><?php echo $list_pum['time_report']; ?></td>
-                                                    <td><?php echo $list_pum['idno'];?> </td>
-                                                    <td><?php echo $list_pum['fullname'];?> </td>
+                                                    <td><?php echo $list_pum['first_name']; echo " "; echo $list_pum['middle_name']; echo " "; echo $list_pum['last_name'];?> </td>
                                                     <td><?php echo $list_pum['symptoms'];?> </td>
-                                                    <td><?php echo $list_pum['status'];?></td>
+                                                    <td><?php echo $list_pum['health_status'];?></td>
                                                     <td>
-                                                        <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
-                                                        <i class="fa fa-folder-open-o"></i> Open
+                                                        <a class="btn btn-success btn-sm" href="view_pum.php?objid=<?php echo $list_pum['objid'];?>&id=<?php echo $list_pum['idno'];?> ">
+                                                        <i class="fa fa-folder-open-o"></i>
                                                         </a>
+                                                        <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
+                                                            data-id="<?php echo $list_pum["idno"];?>"><i class="fa fa-trash-o"></i></button>
                                                         &nbsp;                           
                                                         
                                                     </td>
                                                 </tr>
                                             <?php } ?>
-
-                                        
                                         </tbody>
                                     </table>
                                     

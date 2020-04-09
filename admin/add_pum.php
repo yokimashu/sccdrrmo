@@ -39,7 +39,7 @@ $get_all_health_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Add Announcement</title>
+  <title>SCCDRRMO ERP | Add PUMs / PUI</title>
      <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -82,7 +82,7 @@ $get_all_health_data->execute();
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
-            <h3>Add PUMs / PUIs </h3>
+            <h4>Add PUMs / PUIs </h4>
           </div>
           
           <div class="card-body">

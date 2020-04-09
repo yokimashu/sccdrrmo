@@ -106,7 +106,7 @@ $alert_msg = '';
 
   </div><!-- /.content-wrapper -->
 
-  <!-- Delete -->
+  <!-- View Report Modal -->
   <div class="modal fade" id="viewreport">
     <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -196,7 +196,7 @@ $alert_msg = '';
           	</div>
           </div>
      </div>
-  </div>
+  </div><!-- View Report Modal -->
 
  <?php include('footer.php')?>
 
