@@ -321,7 +321,7 @@ $get_all_health_data->execute();
           $("input[name='street']").removeAttr("readonly");
           $("input[name='city']").removeAttr("readonly");
           $("input[name='province']").removeAttr("readonly");
-          $("input[name='city_origin']").removeAttr("readonly");
+          $("input[name='city0rigin']").removeAttr("readonly");
           $("input[name='date_arrival']").removeAttr("readonly");
           $("input[name='contact_number']").removeAttr("readonly");
           $("input[name='date_process']").removeAttr("readonly");
