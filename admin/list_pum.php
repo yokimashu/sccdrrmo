@@ -81,7 +81,6 @@ $get_all_symptoms_data->execute();
                                             <tr style="font-size: 1.10rem">
                                                 <th> Date </th>
                                                 <th> Time </th>
-                                                <th> ID No </th>
                                                 <th> Full Name </th>
                                                 <th> Symptoms</th>
                                                 <th> Health Status</th>
@@ -93,7 +92,6 @@ $get_all_symptoms_data->execute();
                                                 <tr align="center">  
                                                     <td><?php echo $list_pum['date_report'];  ?></td>
                                                     <td><?php echo $list_pum['time_report']; ?></td>
-                                                    <td><?php echo $list_pum['idno'];?> </td>
                                                     <td><?php echo $list_pum['first_name']; echo " "; ?> </td>
                                                     <td><?php echo $list_pum['symptoms'];?> </td>
                                                     <td><?php echo $list_pum['health_status'];?></td>
