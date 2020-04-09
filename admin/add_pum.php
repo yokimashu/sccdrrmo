@@ -296,8 +296,6 @@ $get_all_health_data->execute();
 <script>
   $('.select2').select2();
 
-
-
   $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
@@ -306,8 +304,25 @@ $get_all_health_data->execute();
 
   //Date picker
   $('#datepicker').datepicker({
-                    autoclose: true
+     autoclose: true
    });
+
+   $("#btnSubmit").attr("disabled", true);
+
+   $(document).ready(function(){
+        $('#btnEdit').click(function() {
+          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='report_time']").removeAttr("readonly");
+          $("input[name='fullname']").removeAttr("readonly");
+          $("input[name='report_date']").removeAttr("readonly");
+          $("input[name='status']").removeAttr("readonly");
+
+          $("#name_symptoms").attr("disabled", false);
+          $("#btnSubmit").attr("disabled", false);
+          $("#btnEdit").attr("disabled", true);
+        });
+    });
+
 </script>
 
 
