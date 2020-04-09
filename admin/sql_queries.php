@@ -24,6 +24,7 @@
         $symptoms               = $_POST['symptoms'];
         $health_status          = $_POST['health_status'];
         $process                = date('m-d-Y', strtotime($_POST['date_process']));        
+        
         $time = date('h:i:s');
         $status = 'Active';
         $alert_msg = '';
@@ -54,7 +55,7 @@
         $pum_data = $con->prepare($insert_pum_sql);
         $pum_data->execute([
             ':id'               => $id_pum,
-            ':dates'            => $date,
+            ':dates'            => $process,
             ':timess'           => $time,
             ':firstName'        => $firstname,
             ':middleName'       => $middlename,
