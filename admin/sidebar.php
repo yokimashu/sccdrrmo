@@ -195,7 +195,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
             <ul class="nav nav-treeview">
             
             <li class="nav-item">
-                <a href="#addnew" data-toggle="modal" class="nav-link">
+                <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <p>Push Notifications</p>
                 </a>

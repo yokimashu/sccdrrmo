@@ -1,6 +1,6 @@
 <?php
 
-$base_url = "http://localhost/";  //change this baseurl value as per your file path
+$base_url = "http://35.241.87.123/sccdrrmo/";  //change this baseurl value as per your file path
 			$mail_body = "
 			<p>Hi ".$username.",</p>
 			<p>Thanks for Registration.</p>
