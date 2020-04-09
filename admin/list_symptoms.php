@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('sql_symptoms.php');
+include ('sql_queries.php');
 include ('delete_symptoms.php');
 session_start();
 $user_id = $_SESSION['id'];
@@ -123,7 +123,7 @@ $get_all_symptoms_data->execute();
               </button>
           </div>
           <div class="modal-body">
-            <form role="form" id="submitFormCateg" method="post" action="sql_symptoms.php" >
+            <form role="form" id="submitFormCateg" method="post" action="sql_queries.php" >
 
                 <div class="form-group">
                     <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
