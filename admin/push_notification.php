@@ -30,7 +30,7 @@ $title = 'Modify User';
     }
     
 </style>
-<div  class="modal fade"   id="<?php echo $state?>">
+<div  class="modal fade"   id="push_notify">
      <div class="modal-dialog modalsize">
         
              
@@ -70,7 +70,7 @@ $title = 'Modify User';
 
                     <div class="modal-footer">
                 
-                       <button type="submit" class="btn btn-primary btn-sm" name="<?php echo $button ?>"><i class="fa fa-save"></i> Save</button>
+                       <button type="submit" class="btn btn-primary btn-sm"  action ="notification/send_notification.php" name="save"><i class="fa fa-save"></i> Save</button>
                        
                        <button class="btn btn-default btn-sm pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>              
                     </div> <!-- modal footer -->
