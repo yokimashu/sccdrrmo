@@ -75,6 +75,10 @@ $get_all_health_data->execute();
   <div class="content-wrapper" >
     <div class="content-header"></div>
 
+      <div class="float-topright">
+        <?php echo $alert_msg; ?> 
+      </div>
+
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
@@ -86,10 +90,6 @@ $get_all_health_data->execute();
               <div class="box-body"> 
 
               
-                <div class="float-topright">
-                  <?php echo $alert_msg; ?> 
-                </div>
-
                 
                 <!-- personal information -->
                 <div class="card">

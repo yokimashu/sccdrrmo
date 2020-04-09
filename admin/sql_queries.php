@@ -80,8 +80,8 @@
         $alert_msg .= ' 
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <i class="nav-icon fa fa-check-double"></i>
-                Data Inserted.
+                <i class="fa fa-warning"></i>
+                <strong> Sucess! </strong> Data Inserted.
             </div>      
         ';
         
