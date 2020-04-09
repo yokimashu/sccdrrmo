@@ -49,7 +49,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Dashboard</title>
+  <title>SCCDRRMO ERP | List of PUMs </title>
   <?php include('header.php');?>
 
 
@@ -65,7 +65,7 @@ $get_all_symptoms_data->execute();
     
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header">
+                    <div class="card-header  text-white bg-success">
                         <h4> LIST OF PUMs  </h4>
                     </div>
                     <div class="card-body">
