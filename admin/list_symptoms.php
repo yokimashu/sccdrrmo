@@ -113,31 +113,6 @@ $get_all_symptoms_data->execute();
 
 
 
-<div class="modal fade" id="addSymptoms" tabindex="-1" role="dialog" aria-labelledby="addPUM" style="display: none;" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addSymptoms">Add Symptoms</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-          </div>
-          <div class="modal-body">
-            <form role="form" id="submitFormCateg" method="post" action="sql_queries.php" >
-
-                <div class="form-group">
-                    <input type="text" class="form-control"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
-                </div>
-              <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
-              <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
-            </form> 
-           
-          </div>
-
-        </div>
-      </div>
-</div>
-
 <div class="modal fade" id="deleteordinance_Modal" role="dialog" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
