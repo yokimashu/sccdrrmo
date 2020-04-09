@@ -193,7 +193,13 @@ $numberofdraft = $get_all_draft_data->rowCount();
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+            
+            <li class="nav-item">
+                <a href="#addnew" data-toggle="modal" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Push Notifications</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="list_symptoms" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
@@ -243,4 +249,7 @@ $numberofdraft = $get_all_draft_data->rowCount();
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+
+  <?php include('push_notification.php'); ?>
+
   </aside>
