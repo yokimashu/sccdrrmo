@@ -3,9 +3,9 @@
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     require 'db-config.php';
     
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
 	//addPost();
 }else{
 	echo "Oops! We're sorry! You do not have access to this option!";

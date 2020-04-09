@@ -2,6 +2,7 @@
 <?php
 include_once('session.php');
 include ('../config/db_config.php');
+include('send_notification.php');
 
 // include('session.php');
 

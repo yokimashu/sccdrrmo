@@ -39,7 +39,7 @@ $title = 'Modify User';
                     <h4 class="modal-title"><b><?php echo $title;?></b></h4>
                </div>  
 
-                <form class="form-horizontal" id ="userform" method="POST" action= "<?php htmlspecialchars("PHP_SELF"); ?>"  enctype="multipart/form-data">  
+                <form class="form-horizontal" id ="userform" method="POST" action= "send_notification.php"  enctype="multipart/form-data">  
                    
                	<div class="modal-body"  >
                     <div class = "container">
@@ -70,7 +70,7 @@ $title = 'Modify User';
 
                     <div class="modal-footer">
                 
-                       <button type="submit" class="btn btn-primary btn-sm"  action ="notification/send_notification.php" name="save"><i class="fa fa-save"></i> Save</button>
+                       <button type="submit" class="btn btn-primary btn-sm"  name="save"><i class="fa fa-save"></i> Save</button>
                        
                        <button class="btn btn-default btn-sm pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>              
                     </div> <!-- modal footer -->
