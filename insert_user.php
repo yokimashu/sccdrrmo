@@ -18,12 +18,15 @@ if(isset($_POST['add'])){
     $mobileNumber = $_POST['contactno'];
     $registered = date("Y/m/d");
     $fileName = '';
+    $newfilename = '';
     if ($_FILES["myFiles"]["error"] == 4)
         {  
         $fileName = 'avatar5.png';
         }else
         {
      $fileName = $_FILES['myFiles']['name'];
+     $temp = explode(".", $_FILES["myFiles"]["name"]);
+     $newfilename = round(microtime(true)) . '.' . end($temp);
         }
       
        
@@ -53,19 +56,29 @@ birthdate           = '$birthdate',
 address             = '$address',
 mobileno            = '$mobileNumber',
 gender              = '$gender',
-photo               =  '$fileName',
+photo               =  '$newfilename',
 account_type        = '2',
 created_at          = '$registered',
 status              = 'PENDING'";
 if ($con->query($sql2))
 
     {
-     $alert_msg .= ' 
-        <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <i class="icon fa fa-check"></i>Registered Successfully.
-        </div>     
-    ';
+        //send email
+
+        include ('email_user.php');
+
+        
+        // $to = $email;
+        // $subject = "Email Verification";
+        // $message ="sample email verification";
+        // $headers = "From: jonardmondero@gmail.com";
+        // $headers.=  'MIME-Version: 1.0' . "\r\n"; 
+        // $headers.='Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
+
+        // mail($to,$subject,$message,$headers);
+
+
+    
     // $_SESSION['success'] = "<i class='icon fa fa-check'></i>Registered Successfully.";
    
 
@@ -99,10 +112,13 @@ else {
     $target_file = $uploadDirectory . basename($_FILES['myFiles']['name']);
     $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     // $fileExtension = strtolower(end(explode('.',$fileName)));
-    $uploadPath = $uploadDirectory . basename($fileName);
-        echo "<pre>";
-        echo print_r($uploadPath);
-        echo "</pre";
+
+   
+
+    $uploadPath = $uploadDirectory .  $newfilename;
+        // echo "<pre>";
+        // echo print_r($uploadPath);
+        // echo "</pre";
     
 
     if (!in_array($fileExtension, $fileExtensions)) {
@@ -152,7 +168,10 @@ if($account_type == "Mobile"){
     $id = $_POST['user_id'];
     $username = $_POST['username'];
     // $userpass = $_POST['userpass'];
-    $fullname = $_POST['fullname'];
+    
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname = $_POST['lastname'];
     $gender = $_POST['gender'];
     $birthdate = date('Y-m-d', strtotime($_POST['birthdate']));
     $address = $_POST['address'];
@@ -163,8 +182,8 @@ if($account_type == "Mobile"){
     
     $sql2 = "UPDATE tbl_users SET 
     username            = '$username',
-    firstname           = '$firstname' ,
-    middlename          = '$middlename,
+    firstname           = '$firstname',
+    middlename          = '$middlename',
     lastname            = '$lastname',
     email               = '$email',
     birthdate           = '$birthdate',
