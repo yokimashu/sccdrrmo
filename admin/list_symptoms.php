@@ -26,7 +26,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where order by idno DESC";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms order by idno DESC";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
