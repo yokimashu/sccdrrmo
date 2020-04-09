@@ -96,13 +96,13 @@ $get_all_symptoms_data->execute();
                                                         <a class="btn btn-danger btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
                                                         <i class="fa fa-folder-open-o"></i> Open
                                                         </a>
+                                                        <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
+                                                            data-id="<?php echo $list_symptoms["idno"];?>"><i class="fa fa-trash-o"></i></button>
                                                         &nbsp;                           
                                                         
                                                     </td>
                                                 </tr>
                                             <?php } ?>
-
-                                        
                                         </tbody>
                                     </table>
                                     
