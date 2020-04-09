@@ -9,15 +9,24 @@ if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 } else {}
 
+$now = new DateTime();
+
 $btnSave = $btnEdit='';
 $btnNew = 'hidden';
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
+$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
+$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
+$get_all_brgy_data->execute();
 
+
+$get_all_health_sql = "SELECT * FROM tbl_health";
+$get_all_health_data = $con->prepare($get_all_health_sql);
+$get_all_health_data->execute();
 
 ?>
 
@@ -73,7 +82,8 @@ $get_all_symptoms_data->execute();
           <div class="card-body">
             <form role="form" method="post" action="update_pum.php"> 
               <div class="box-body"> 
-
+                
+                <!-- personal information -->
                 <div class="card">
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
                     <div class="box-body" >
@@ -81,50 +91,142 @@ $get_all_symptoms_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
+                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text"  class="form-control"  name="idno" placeholder="Middle Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="" required>
                           </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
+                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class=" form-control" id="symptoms"  name="get_symptoms" value="">
+                            <select class=" form-control select2" id="gender"  name="gender" value="">
                                 <option selected="selected">Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                             </select>
                           </div>
+                          <div class="col-md-3 " >
+                            <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="">
+                                <option selected="selected">Select Barangay</option>
+                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="" required>
+                          </div>
+                          
+                          <div class="col-md-3 " >
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="" required>  
+                          </div>
+                          <div class="col-md-3 " >
+                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="" required>  
+                          </div>
+                        </div><br>
+                    </div>
+                </div>
+         
+                <!-- travel history -->
+                <div class="card">
+                  <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text" readonly class="form-control"  name="city_origin" placeholder="City of Origin" value="" required>
+                          </div>
                           <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival" 
+                                  value="">
+                            </div>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3">
+                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="" required>
+                          </div>
+                         
+                          <div class="col-md-3">
+                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="">
+                                  <option selected="selected">Traveled during the past 14 days?</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                            </select>
                           </div>
                         </div><br>
                      
                     </div>
                 </div>
-               
-                <!-- <div class="card">
-                  
-                <div class="row"> 
-                  <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                    <label>ID No:</label>
-                  </div>
-                  <div class="col-md-3" >
-                    <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
-                  </div>
-                </div><br>
-                </div> -->
                 
+                <!--  -->
+                <div class="card">
+                  <div class="card-header"><h6>HEALTH HISTORY</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+
+                          <div class="col-md-3">
+                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="" required>
+                          </div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="">
+                                <option selected="selected">Select Symptoms</option>
+                                <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
 
 
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="">
+                                <option selected="selected">Health Status</option>
+                                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                  value="<?php echo $now->format('m/d/Y'); ?>">
+                            </div>
+                          </div>
+                         
+                         
+                        </div><br>
+                     
+                    </div>
+                </div>
 
 
                 
@@ -192,15 +294,43 @@ $get_all_symptoms_data->execute();
 <script src="../plugins/select2/select2.full.min.js"></script>
 <!-- textarea wysihtml style -->
 <script>
-  $('#symptoms').select2();
-
-
+  $('.select2').select2();
 
   $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
     })
-  })
+  });
+
+  //Date picker
+  $('#datepicker').datepicker({
+     autoclose: true
+   });
+
+   $("#btnSubmit").attr("disabled", true);
+   $(".select2").attr("disabled", true);
+
+   $(document).ready(function(){
+        $('#btnEdit').click(function() {
+          $("input[name='firstname']").removeAttr("readonly");
+          $("input[name='middlename']").removeAttr("readonly");
+          $("input[name='lastname']").removeAttr("readonly");
+          $("input[name='age']").removeAttr("readonly");
+          $("input[name='street']").removeAttr("readonly");
+          $("input[name='city']").removeAttr("readonly");
+          $("input[name='province']").removeAttr("readonly");
+          $("input[name='city_origin']").removeAttr("readonly");
+          $("input[name='date_arrival']").removeAttr("readonly");
+          $("input[name='contact_number']").removeAttr("readonly");
+          $("input[name='date_process']").removeAttr("readonly");
+          $("input[name='disease']").removeAttr("readonly");
+
+          $(".select2").attr("disabled", false);
+          $("#btnSubmit").attr("disabled", false);
+          $("#btnEdit").attr("disabled", true);
+        });
+    });
+
 </script>
 
 
