@@ -2,6 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
+include ('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -11,7 +12,9 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit='';
+$btnSave = $btnEdit= $firstname = $middlename= $lastname = $age= $gender=
+$brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
+$travel_days = $patient_disease = $symptoms= $health_status='';
 $btnNew = 'hidden';
 
 
@@ -80,7 +83,7 @@ $get_all_health_data->execute();
 
 
           <div class="card-body">
-            <form role="form" method="post" action="update_pum.php"> 
+            <form role="form" method="post" action="sql_queries.php"> 
               <div class="box-body"> 
                 
                 <!-- personal information -->
@@ -91,30 +94,30 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="" required>
+                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="<?php echo $firstname;?>" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="<?php echo $middlename;?>" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="<?php echo $lastname;?>" required>
                           </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="" required>
+                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $age;?>" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class=" form-control select2" id="gender"  name="gender" value="">
+                            <select class=" form-control select2" id="gender"  name="gender" value="<?php echo $gender;?>">
                                 <option selected="selected">Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                             </select>
                           </div>
                           <div class="col-md-3 " >
-                            <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="">
+                            <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy;?>">
                                 <option selected="selected">Select Barangay</option>
                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
@@ -126,14 +129,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="" required>
+                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
                           </div>
                           
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="" required>  
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $city;?>" required>  
                           </div>
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="" required>  
+                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
                           </div>
                         </div><br>
                     </div>
@@ -147,15 +150,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="city_origin" placeholder="City of Origin" value="" required>
+                            <input type="text" readonly class="form-control"  name="city_origin" placeholder="City of Origin" value="<?php echo $city_origin;?>" required>
                           </div>
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival" 
-                                  value="">
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $date_arrival;?>">
                             </div>
                           </div>
                         </div><br>
@@ -163,11 +165,11 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
-                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="" required>
+                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $contact_number;?>" required>
                           </div>
                          
                           <div class="col-md-3">
-                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="">
+                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="<?php echo $travel_days;?>">
                                   <option selected="selected">Traveled during the past 14 days?</option>
                                   <option value="Yes">Yes</option>
                                   <option value="No">No</option>
@@ -187,10 +189,10 @@ $get_all_health_data->execute();
                           <div class="col-md-1"></div>
 
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="" required>
+                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="<?php echo $symptoms;?>">
                                 <option selected="selected">Select Symptoms</option>
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
@@ -200,7 +202,7 @@ $get_all_health_data->execute();
 
 
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="">
+                            <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="<?php echo $health_status;?>">
                                 <option selected="selected">Health Status</option>
                                 <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
@@ -235,7 +237,7 @@ $get_all_health_data->execute();
                   <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
                   <i class="fa fa-edit fa-fw"> </i>  </button>
 
-                  <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
+                  <button type="submit"  <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success" >
                   <i class="fa fa-check fa-fw"> </i> </button>
 
                   <a href="list_pum.php">
