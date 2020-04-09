@@ -27,25 +27,38 @@ $btnSave = $btnEdit = $get_time = $get_date = $get_id=
 $get_fullname = $get_symptoms = $get_status= $get_idd='';
 
 
-  $get_idd= $_GET['idno'];
+if (isset($_GET['objid'])) {
 
-  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = $get_idd and status='Active'";
+  $user_id = $_GET['id'];
+  $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id";
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
-  while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
-    $get_id                     = $result['idno'];  
-    $get_date                   = $result['date_report'];
-    $get_time                   = $result['time_report'];
-    $get_fullname               = $result['fullname'];
-    $get_symptoms               = $result['symptoms'];
-    $get_status                 = $result['status'];
+  while ($result = $get_items_data->fetch(PDO::FETCH_ASSOC)) {
+    $get_id                     = $result['idno'];
+    $get_fname                  = $result['idno'];
+  
+
+     
+   
+
   }
 
+}
 
 
 $get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
+
+
+$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
+$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
+$get_all_brgy_data->execute();
+
+
+$get_all_health_sql = "SELECT * FROM tbl_health";
+$get_all_health_data = $con->prepare($get_all_health_sql);
+$get_all_health_data->execute();
 
 
 
@@ -88,100 +101,196 @@ $get_all_symptoms_data->execute();
     <div class="content-header"></div>
 
 
-    <section class="content col-md-10" >
+    <div class="float-topright">
+        <?php echo $alert_msg; ?> 
+      </div>
 
- 
-        <div class="card card-info "  >
-         
-                <div class="card-header">
-                  <h3>Update PUM </h3>
-                </div>
-                <div class="card-body" align="center">
-                  <form role="form" method="post" action="update_pum.php">
-                    
-                    <div class="box-body">
-                      
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>ID No:</label>
-                            </div>
-                            <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="<?php echo $get_id;?>" required>
-                            </div>
-                          </div><br>
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Date:</label>
-                            </div>
-                            <div class="col-md-2" align="center" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_date" placeholder="Date of Report" value="<?php echo $get_date;?>" required>
-                            </div>
-                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                              <label>Time:</label>
-                            </div>
-                            <div class="col-md-2" align="center">
-                            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="report_time" placeholder="Time of Report" value="<?php echo $get_time;?>" required>     
-                            </div>
-                          </div><br>
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Name of the Patient:</label>
-                            </div>
-                            <div class="col-md-5" >
-                              <input type="text" readonly align="center" class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="fullname" placeholder="Name of the Patient" value="<?php echo $get_fullname;?>" required>
-                            </div>
-                          </div><br>
-
-                          <div class="row">
-                            <div class="col-md-4" style="text-align:right;padding-top: 5px;">
-                                  <label>Symptoms:</label>
-                            </div>
-                            <div class="col-md-5" style="text-align:left;" >
-                              <select class="form-control select2"  id="name_symptoms" name="name_symptoms" value="<?php echo $type; ?>">
-                                <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';?>
-                                <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option><?php } ?>
-                              </select>
-                            </div>
-                          </div><br>
-                          
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Status:</label>
-                            </div>
-                            <div class="col-md-2" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="status" placeholder="Status" value="<?php echo $get_status;?>" required>
-                            </div>
-                          </div><br>                
-        
-                               
-                          <!-- /.box-body -->
-                          <div class="box-footer" align="center">
-                          
-                              <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
-                              <i class="fa fa-edit fa-fw"> </i>  </button>
-
-                              <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
-                              <i class="fa fa-check fa-fw"> </i> </button>
-
-                              <a href="list_pum.php">
-                                <button type="button" name="cancel" class="btn btn-danger">       
-                                <i class="fa fa-close fa-fw"> </i> </button>
-                            </a>
-                          </div>
-                                  
-                    </div>
-                  
-                  </form>
-                </div>
-              <!-- /.box -->
-        </div>
-    
+      <section class="content" >
+        <div class="card">
+          <div class="card-header text-white bg-success">
+            <h3>UPDATE PUM </h3>
+          </div>
           
+          <div class="card-body">
+            <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF");?>"> 
+              <div class="box-body"> 
 
-    </section>
+              
+                
+                <!-- personal information -->
+                <div class="card">
+                  <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="<?php echo $get_fname;?>" required>
+                          </div>
+                          <div class="col-md-3" >
+                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
+                          </div>
+                          <div class="col-md-3">
+                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="" required>
+                          </div>
+                        </div><br>
+
+                        <!-- <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $age;?>" required>
+                          </div>
+                          <div class="col-md-3 " >
+                            <select class=" form-control select2" id="gender"  name="gender" value="<?php echo $gender;?>">
+                                <option selected="selected">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                          </div>
+                          <div class="col-md-3 " >
+                            <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy;?>">
+                                <option selected="selected">Select Barangay</option>
+                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
+                          </div>
+                          
+                          <div class="col-md-3 " >
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $city;?>" required>  
+                          </div>
+                          <div class="col-md-3 " >
+                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
+                          </div>
+                        </div><br> -->
+                    </div>
+                </div>
+         
+                <!-- travel history -->
+                <!-- <div class="card">
+                  <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text" readonly class="form-control"  name="city0rigin" placeholder="City of Origin" value="<?php echo $city_origin;?>" required>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $now->format('m-d-Y'); ?>">
+                            </div>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3">
+                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $contact_number;?>" required>
+                          </div>
+                         
+                          <div class="col-md-3">
+                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="<?php echo $travel_days;?>">
+                                  <option selected="selected">Traveled during the past 14 days?</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                            </select>
+                          </div>
+                        </div><br>
+                     
+                    </div>
+                </div> -->
+                
+                <!--  -->
+                <!-- <div class="card">
+                  <div class="card-header"><h6>HEALTH HISTORY</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+
+                          <div class="col-md-3">
+                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
+                          </div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="<?php echo $symptoms;?>">
+                                <option selected="selected">Select Symptoms</option>
+                                <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+
+
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="<?php echo $health_status;?>">
+                                <option selected="selected">Health Status</option>
+                                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                  value="<?php echo $now->format('m-d-Y'); ?>">
+                            </div>
+                          </div>
+                         
+                         
+                        </div><br>
+                     
+                    </div>
+                </div> -->
+
+
+                
+                <div class="box-footer" align="center">
+                                
+                  <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
+                  <i class="fa fa-edit fa-fw"> </i>  </button>
+
+                  <button type="submit"  <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success" >
+                  <i class="fa fa-check fa-fw"> </i> </button>
+
+                  <a href="list_pum.php">
+                    <button type="button" name="cancel" class="btn btn-danger">       
+                    <i class="fa fa-close fa-fw"> </i> </button>
+                  </a>
+                </div>
+                <!-- end box-footer -->
+              </div>
+              <!-- end box-body -->
+            </form>
+            <!-- end form -->
+          </div>
+
+
+
+                      
+          
+          
+        </div>
+   
+      </section>
     
 
 
