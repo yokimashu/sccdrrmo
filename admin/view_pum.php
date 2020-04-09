@@ -112,7 +112,7 @@ $get_all_health_data->execute();
       <section class="content" >
         <div class="card">
           <div class="card-header text-white bg-success">
-            <h3>Update PUMs</h3>
+            <h4>Update Person Under Monitor (PUMs)</h4>
           </div>
           
           <div class="card-body">
