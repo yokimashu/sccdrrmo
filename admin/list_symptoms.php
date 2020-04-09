@@ -26,7 +26,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms order by idno DESC";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active' order by idno DESC";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -126,7 +126,7 @@ $get_all_symptoms_data->execute();
             <form role="form" id="submitFormCateg" method="post" action="sql_queries.php" >
 
                 <div class="form-group">
-                    <input type="text" class="form-control" onkeyup="this.value = this.value.toUpperCase();"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
+                    <input type="text" class="form-control"  name="symptoms" placeholder="Name of Symptoms" value="<?php echo $symptoms;?>">
                 </div>
               <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
               <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>

@@ -18,7 +18,7 @@ $travel_days = $patient_disease = $symptoms= $health_status='';
 $btnNew = 'hidden';
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -80,11 +80,12 @@ $get_all_health_data->execute();
           <div class="card-header text-white bg-success">
             <h3>Add PUMs / PUIs </h3>
           </div>
-          <?php  $alert_msg;?>
-
+          
           <div class="card-body">
             <form role="form" method="post" action="sql_queries.php"> 
               <div class="box-body"> 
+              <?php  $alert_msg;?>
+
                 
                 <!-- personal information -->
                 <div class="card">
