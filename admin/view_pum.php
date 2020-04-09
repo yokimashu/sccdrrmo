@@ -164,7 +164,7 @@ $get_all_health_data->execute();
                           </div>
                           
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $get_cityg;?>" required>  
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $get_city;?>" required>  
                           </div>
                           <div class="col-md-3 " >
                             <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $get_province;?>" required>  
