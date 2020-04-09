@@ -103,6 +103,57 @@ $get_all_symptoms_data->execute();
                                 <option value="Male">Male</option>
                             </select>
                           </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text"  class="form-control"  name="idno" placeholder="Street / Lot # / Block #" value="" required>
+                          </div>
+                          <div class="col-md-2 " >
+                            <input type="text"  class="form-control"  name="idno" placeholder="Brgy" value="" required>  
+                          </div>
+                          <div class="col-md-3 " >
+                            <input type="text"  class="form-control"  name="idno" value="San Carlos City" required>  
+                          </div>
+                          <div class="col-md-3 " >
+                            <input type="text"  class="form-control"  name="idno" value="Negros Occidental" required>  
+                          </div>
+                        </div><br>
+                    </div>
+                </div>
+         
+                
+
+                <div class="card">
+                  <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
+                          </div>
+                          <div class="col-md-3" >
+                            <input type="text"  class="form-control"  name="idno" placeholder="Middle Name" value="" required>
+                          </div>
+                          <div class="col-md-3">
+                            <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
+                          </div>
+                          <div class="col-md-3 " >
+                            <select class=" form-control" id="symptoms"  name="get_symptoms" value="">
+                                <option selected="selected">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                          </div>
                           <div class="col-md-3">
                             <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
                           </div>
@@ -110,21 +161,7 @@ $get_all_symptoms_data->execute();
                      
                     </div>
                 </div>
-               
-                <!-- <div class="card">
-                  
-                <div class="row"> 
-                  <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                    <label>ID No:</label>
-                  </div>
-                  <div class="col-md-3" >
-                    <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="idno" placeholder="ID NO" value="" required>
-                  </div>
-                </div><br>
-                </div> -->
-                
-
-
+         
 
 
                 
