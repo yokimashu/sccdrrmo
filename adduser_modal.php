@@ -1,12 +1,15 @@
 
 <?php
 $title = '';
-
+$avatar = '';
 if($state == 'edit' ){
 $title = 'Modify User';
+$avatar = '../userimage/avatar5.png';
 }else{
   $title = 'Sign Up';
+  $avatar = 'userimage/avatar5.png';
 }
+
 
 ?>
 
@@ -46,7 +49,7 @@ $title = 'Modify User';
                         <div class = "row margin-bottom">
                             
                          <div class = "col-12" style="margin-left:150px;margin-right:100px;">
-                          <img src= "userimage/avatar5.png" id="profilepic" style = "width:150px"; class = "img-fluid img-thumbnail" > 
+                          <img src= "<?php echo $avatar ?>" id="profilepic" style = "width:150px"; class = "img-fluid img-thumbnail" > 
                             
                             
                             </div>

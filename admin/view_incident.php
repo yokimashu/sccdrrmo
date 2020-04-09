@@ -322,7 +322,7 @@ console.log(id);
     success: function(response){
       // console.log(response.responseText);
        var result = jQuery.parseJSON(response);
-      var img = document.getElementById("displayImage");
+       var img = document.getElementById("displayImage");
       img.src = '../mobile/images/'+result.loadImage;
       // console.log(response.image);
     },
