@@ -51,15 +51,22 @@ $get_name = $get_details = $get_type = $get_serivity = '';
     $latitude                   = $result['latitude'];
     $longitude                  = $result['longitude'];
     $image                      = $result['image'];
+    $remarks                     = $result['remarks'];
 
-
-
-  }
+  };
 
   // // this is an example of valid latitude ang longitude
   // $lat = $latitude;
   // $lon = $longitude;
 
+ 
+
+ //update remarks to read so that it will not appear on notification
+ if($remarks == 'NEW REPORT'){
+$query = "UPDATE tbl_incident SET remarks = 'READ' WHERE objid = '$user_id' ";
+$stmt = $con->prepare($query);
+$stmt->execute();
+};
 ?>
 
  
