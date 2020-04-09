@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $get_firstname = '';
+$btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender='';
 $btnNew = 'hidden';
 
 
@@ -23,8 +23,13 @@ if (isset($_GET['objid'])) {
   $get_pum_data = $con->prepare($get_pum_sql);
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
-    $get_id                     = $result['idno'];
-    $get_firstname              = $result['first_name'];
+    $get_id                 = $result['idno'];
+    $get_fName              = $result['first_name'];
+    $get_mName              = $result['middle_name'];
+    $get_lName              = $result['last_name'];
+    $get_age                = $result['age'];
+    $get_gender             = $result['gender'];
+    
      
    
 
@@ -129,29 +134,29 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="<?php echo $get_firstname;?>" required>
+                            <input type="text" readonly  class="form-control"  name="fName" placeholder="First Name" value="<?php echo $get_fName;?>" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="mName" placeholder="Middle Name" value="<?php echo $get_mName;?>" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="lName" placeholder="Last Name" value="<?php echo $get_lName;?>" required>
                           </div>
                         </div><br>
-<!-- 
+
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $age;?>" required>
+                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $get_age;?>" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class=" form-control select2" id="gender"  name="gender" value="<?php echo $gender;?>">
+                            <select class=" form-control select2" id="gender"  name="gender" value="<?php echo $get_gender;?>">
                                 <option selected="selected">Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                             </select>
                           </div>
-                          <div class="col-md-3 " >
+                          <!-- <div class="col-md-3 " >
                             <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy;?>">
                                 <option selected="selected">Select Barangay</option>
                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
