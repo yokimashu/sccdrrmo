@@ -50,7 +50,7 @@ $get_all_pum_data->execute();
                 </span>
               </div>
            </div>
-         </div>
+         </div> <!-- /.col-12 col-sm-6 col-md-3 -->
 
          <div class="col-12 col-sm-6 col-md-3">
            <div class="info-box mb-3">
@@ -60,9 +60,9 @@ $get_all_pum_data->execute();
                 <span class="info-box-number">
                   5
                   <?php echo "<pre";
-echo print_r($_SESSION['user_type']);
-echo "</pre>";
-?>
+                    echo print_r($_SESSION['user_type']);
+                    echo "</pre>";
+                    ?>
                 </span>
               </div>
            </div>
@@ -96,15 +96,12 @@ echo "</pre>";
                     </tr>
                   </tbody>
                 </table>
-              </div><!-- /.card-body -->
+              </div><!-- /.card-p-0 -->
             
-            </div>
+           </div><!-- /.collapse -->
 
+         </div>  <!-- /.col-12 col-sm-6 col-md-3 -->     
 
-         </div>       
-
-
-     
           <!-- fix for small devices only -->
           <div class="clearfix hidden-md-up"></div>
 
@@ -118,7 +115,8 @@ echo "</pre>";
                 </span>
               </div>
            </div>
-         </div> 
+         </div> <!-- /.col-12 col-sm-6 col-md-3 -->   
+
          <div class="col-12 col-sm-6 col-md-3">
            <div class="info-box mb-3">
             <a href="http://35.241.87.123/sccdrrmo/downloads/sccdrrmo-debug.apk" class="info-box-icon bg-success  elevation-1"><span ><i class="fa fa-download "></i></span></a>
@@ -127,9 +125,19 @@ echo "</pre>";
                 
               </div> 
            </div>
-         </div>
+         </div> <!-- /.col-12 col-sm-6 col-md-3 -->   
 
-      </div><!-- end row -->
+     </div><!-- end row -->
+     <div class="row">
+       <div class="col-2"></div>
+       <div class="col-8">
+          <div class="float">
+          <div id="display_update"></div>
+          </div>
+       
+       </div>
+     </div><!-- end row -->
+
    </div><!-- end container-fluid -->
     
 
@@ -137,7 +145,7 @@ echo "</pre>";
   
  <?php include('footer.php')?>
 
-</div>
+</div> <!-- /.wrapper -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
@@ -160,7 +168,26 @@ echo "</pre>";
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<script type="text/javascript">
 
+load_update();
+
+function load_update()
+{
+ $.ajax({
+  url:"load_update_fetch.php",
+  method:"POST",
+  success:function(data)
+  {
+   $('#display_update').html(data);
+  },
+  complete: function() {
+    setTimeout(load_update,1000); //After completion of request, time to redo it after a second
+   }
+ });
+}
+
+</script>
 <script>
 $('#users').DataTable({
       'paging'      : true,
