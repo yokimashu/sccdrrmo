@@ -9,6 +9,8 @@ if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 } else {}
 
+$now = new DateTime();
+
 $btnSave = $btnEdit='';
 $btnNew = 'hidden';
 
@@ -76,7 +78,8 @@ $get_all_brgy_data->execute();
           <div class="card-body">
             <form role="form" method="post" action="update_pum.php"> 
               <div class="box-body"> 
-
+                
+                <!-- personal information -->
                 <div class="card">
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
                     <div class="box-body" >
@@ -132,8 +135,7 @@ $get_all_brgy_data->execute();
                     </div>
                 </div>
          
-                
-
+                <!-- travel history -->
                 <div class="card">
                   <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
                     <div class="box-body" >
@@ -141,11 +143,26 @@ $get_all_brgy_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="idno" placeholder="First Name" value="" required>
+                            <input type="text"  class="form-control"  name="idno" placeholder="City of Origin" value="" required>
                           </div>
-                          <div class="col-md-3" >
+
+
+
+
+
+
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker" name="date" placeholder="Date Created" 
+                                  value="<?php echo $now->format('m/d/Y');; ?>">
+                            </div>
+                          </div>
+                          <!-- <div class="col-md-3" >
                             <input type="text"  class="form-control"  name="idno" placeholder="Middle Name" value="" required>
-                          </div>
+                          </div> -->
                           <div class="col-md-3">
                             <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
                           </div>
@@ -154,7 +171,7 @@ $get_all_brgy_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number"  class="form-control"  name="idno" placeholder="Age" value="" required>
+                            <input type="number"  class="form-control"  name="idno" placeholder="City" value="" required>
                           </div>
                           <div class="col-md-3 " >
                             <select class=" form-control" id="symptoms"  name="get_symptoms" value="">
@@ -170,7 +187,8 @@ $get_all_brgy_data->execute();
                      
                     </div>
                 </div>
-         
+                
+                <!--  -->
 
 
                 
@@ -246,7 +264,12 @@ $get_all_brgy_data->execute();
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
     })
-  })
+  });
+
+  //Date picker
+  $('#datepicker').datepicker({
+                    autoclose: true
+   });
 </script>
 
 
