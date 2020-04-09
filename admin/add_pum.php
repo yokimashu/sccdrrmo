@@ -145,34 +145,25 @@ $get_all_brgy_data->execute();
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text"  class="form-control"  name="idno" placeholder="City of Origin" value="" required>
                           </div>
-
-
-
-
-
-
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker" name="date" placeholder="Date Created" 
+                                <input type="text" class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival" 
                                   value="">
                             </div>
-                          </div>
-                          <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
                           </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number"  class="form-control"  name="idno" placeholder="City" value="" required>
+                          <div class="col-md-3">
+                            <input type="number"  class="form-control"  name="contact_number" placeholder="Contact Number" value="" required>
                           </div>
                          
                           <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
+                            <input type="number"  class="form-control"  name="idno" placeholder="Days of Travel" value="" required>
                           </div>
                         </div><br>
                      
