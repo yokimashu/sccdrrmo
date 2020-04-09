@@ -86,7 +86,7 @@ $get_all_announcement_data->execute();
                         </td>
                         <td>
                            <a href="update_announcement?post=<?php echo $data["id"]; ?>" class="btn btn-outline-success btn-sm" data-placement="top" title="Edit Post"><i class='fa fa-pencil'></i></a>       
-                           <a href="view_post?post=<?php echo $data["id"]; ?>" class="btn btn-outline-success btn-sm" data-placement="top" title="Edit Post"><i class='fa fa-eye'></i></a>    
+                           <a href="view_post?post=<?php echo $data["id"]; ?>" class="btn btn-outline-success btn-sm" data-placement="top" title="View Post"><i class='fa fa-eye'></i></a>    
                            <button class="btn btn-outline-danger delete btn-sm" data-id="<?php echo $data["id"]; ?>" data-placement="top" title="Delete Post"><i class="fa fa-trash-o"></i></button>
                         </td>   
                       </tr>
