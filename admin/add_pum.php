@@ -157,12 +157,9 @@ $get_all_brgy_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" class="form-control pull-right" id="datepicker" name="date" placeholder="Date Created" 
-                                  value="<?php echo $now->format('m/d/Y');; ?>">
+                                  value="">
                             </div>
                           </div>
-                          <!-- <div class="col-md-3" >
-                            <input type="text"  class="form-control"  name="idno" placeholder="Middle Name" value="" required>
-                          </div> -->
                           <div class="col-md-3">
                             <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
                           </div>
@@ -173,13 +170,7 @@ $get_all_brgy_data->execute();
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="number"  class="form-control"  name="idno" placeholder="City" value="" required>
                           </div>
-                          <div class="col-md-3 " >
-                            <select class=" form-control" id="symptoms"  name="get_symptoms" value="">
-                                <option selected="selected">Select Gender</option>
-                                <option value="Female">Female</option>
-                                <option value="Male">Male</option>
-                            </select>
-                          </div>
+                         
                           <div class="col-md-3">
                             <input type="text"  class="form-control"  name="idno" placeholder="Last Name" value="" required>
                           </div>
