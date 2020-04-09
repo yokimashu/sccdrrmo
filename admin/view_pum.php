@@ -160,14 +160,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
+                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street;?>" required>
                           </div>
                           
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $city;?>" required>  
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $get_cityg;?>" required>  
                           </div>
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
+                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $get_province;?>" required>  
                           </div>
                         </div><br>
                     </div>  
