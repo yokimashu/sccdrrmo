@@ -4,29 +4,73 @@
 
     if (isset($_POST['insert_pum'])) {  
 
-        $categUnique = uniqid('id',true);
+        $id_pum = uniqid('id',true);
         date_default_timezone_set('Asia/Manila');
-        $symptoms = $_POST['get_symptoms'];
-        $patient = $_POST['fullname'];
-        $date = date('Y-m-d');
+        
+        $firstname              = $_POST['firstname'];
+        $middlename             = $_POST['middlename'];
+        $lastname               = $_POST['lastname'];
+        $age                    = $_POST['age'];
+        $gender                 = $_POST['gender'];
+        $brgy                   = $_POST['barangay'];
+        $street                 = $_POST['street'];
+        $city                   = $_POST['city'];
+        $province               = $_POST['province'];
+        $city_origin            = $_POST['city0rigin'];
+        $arrival                = date('m-d-Y', strtotime($_POST['date_arrival']));
+        $contact_number         = $_POST['contact_number'];
+        $travel_days            = $_POST['travel_days'];
+        $patient_disease        = $_POST['disease'];
+        $symptoms               = $_POST['symptoms'];
+        $health_status          = $_POST['health_status'];
+        $process                = date('m-d-Y', strtotime($_POST['date_process']));        
         $time = date('h:i:s');
         $status = 'Active';
         $alert_msg = '';
         $alert_msg1 = '';
 
         $insert_pum_sql = "INSERT INTO tbl_pum SET 
-
+            objid               = :id,
             date_report         = :dates,
-            fullname            = :names,
             time_report         = :timess,
+            first_name          = :firstName,
+            middle_name         = :middleName,
+            last_name           = :lastName,
+            age                 = :age,
+            gender              = :gender,
+            barangay            = :brgy,
+            street              = :streets,
+            city                = :citys,
+            province            = :prov,
+            city_origin         = :origin,
+            date_arrival        = :arrival,
+            contact_number      = :contact,
+            travel_days         = :travel,
+            patient_disease     = :disease,
+            health_status       = :health,
             symptoms            = :symp,
             status              = :status";
             
         $pum_data = $con->prepare($insert_pum_sql);
         $pum_data->execute([
+            ':id'               => $id_pum,
             ':dates'            => $date,
-            ':names'            => $patient,
             ':timess'           => $time,
+            ':firstName'        => $firstname,
+            ':middleName'       => $middlename,
+            ':lastName'         => $lastname,
+            ':age'              => $age,
+            ':gender'           => $gender,
+            ':brgy'             => $brgy,
+            ':streets'          => $street,
+            ':citys'            => $city,
+            ':prov'             => $province,
+            ':origin'           => $city_origin,
+            ':arrival'          => $arrival,
+            ':contact'          => $contact_number,
+            ':travel'           => $travel_days,
+            ':disease'          => $patient_disease,
+            ':health'           => $health_status,
             ':symp'             => $symptoms, 
             ':status'           => $status
          
@@ -42,7 +86,6 @@
         $btnSave = 'disabled';
         $btnNew = 'enabled';
 
-        header('location: list_pum.php');
 
     }
 

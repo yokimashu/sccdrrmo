@@ -150,14 +150,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="city_origin" placeholder="City of Origin" value="<?php echo $city_origin;?>" required>
+                            <input type="text" readonly class="form-control"  name="city0rigin" placeholder="City of Origin" value="<?php echo $city_origin;?>" required>
                           </div>
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $date_arrival;?>">
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $now->format('m-d-Y'); ?>">
                             </div>
                           </div>
                         </div><br>
