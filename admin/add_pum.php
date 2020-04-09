@@ -91,20 +91,20 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="firstname" placeholder="First Name" value="" required>
+                            <input type="text" readonly  class="form-control"  name="firstname" placeholder="First Name" value="" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text"  class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="middlename" placeholder="Middle Name" value="" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="lastname" placeholder="Last Name" value="" required>
+                            <input type="text" readonly class="form-control"  name="lastname" placeholder="Last Name" value="" required>
                           </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number"  class="form-control"  name="age" placeholder="Age" value="" required>
+                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="" required>
                           </div>
                           <div class="col-md-3 " >
                             <select class=" form-control select2" id="gender"  name="gender" value="">
@@ -126,14 +126,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="" required>
+                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="" required>
                           </div>
                           
                           <div class="col-md-3 " >
-                            <input type="text"  class="form-control"  name="city" placeholder ="City / Municipality" value="" required>  
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="" required>  
                           </div>
                           <div class="col-md-3 " >
-                            <input type="text"  class="form-control"  name="province" placeholder="Province" value="" required>  
+                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="" required>  
                           </div>
                         </div><br>
                     </div>
@@ -147,14 +147,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="city_origin" placeholder="City of Origin" value="" required>
+                            <input type="text" readonly class="form-control"  name="city_origin" placeholder="City of Origin" value="" required>
                           </div>
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival" 
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival" 
                                   value="">
                             </div>
                           </div>
@@ -163,7 +163,7 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
-                            <input type="number"  class="form-control"  name="contact_number" placeholder="Contact Number" value="" required>
+                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="" required>
                           </div>
                          
                           <div class="col-md-3">
@@ -187,7 +187,7 @@ $get_all_health_data->execute();
                           <div class="col-md-1"></div>
 
                           <div class="col-md-3">
-                            <input type="text"  class="form-control"  name="disease" placeholder="Patient's Disease" value="" required>
+                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="" required>
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="">
@@ -217,7 +217,7 @@ $get_all_health_data->execute();
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
                                   value="<?php echo $now->format('m/d/Y'); ?>">
                             </div>
                           </div>
@@ -308,16 +308,23 @@ $get_all_health_data->execute();
    });
 
    $("#btnSubmit").attr("disabled", true);
+   $(".select2").attr("disabled", true);
 
    $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='report_time']").removeAttr("readonly");
-          $("input[name='fullname']").removeAttr("readonly");
-          $("input[name='report_date']").removeAttr("readonly");
-          $("input[name='status']").removeAttr("readonly");
+          $("input[name='firstname']").removeAttr("readonly");
+          $("input[name='middlenam']").removeAttr("readonly");
+          $("input[name='lastname']").removeAttr("readonly");
+          $("input[name='age']").removeAttr("readonly");
+          $("input[name='street']").removeAttr("readonly");
+          $("input[name='city']").removeAttr("readonly");
+          $("input[name='province']").removeAttr("readonly");
+          $("input[name='city_origin']").removeAttr("readonly");
+          $("input[name='date_arrival']").removeAttr("readonly");
+          $("input[name='contact_number']").removeAttr("readonly");
+          $("input[name='date_process']").removeAttr("readonly");
 
-          $("#name_symptoms").attr("disabled", false);
+          $(".select2").attr("disabled", false);
           $("#btnSubmit").attr("disabled", false);
           $("#btnEdit").attr("disabled", true);
         });
