@@ -1,6 +1,6 @@
 <?php
 
-include ('../config/db_config.php');
+include ('..config/db_config.php');
 
 if (isset($_POST['send'])) {
 
@@ -11,7 +11,6 @@ $get_token_sql = "SELECT token FROM tbl_users";
 $get_token_data = $con->prepare($get_token_sql);
 $get_token_data->execute();
 while ($result = $get_token_data->fetch(PDO::FETCH_ASSOC)) {
- 
     $token[]=$result['token'];
 }
 
@@ -31,12 +30,13 @@ while ($result = $get_token_data->fetch(PDO::FETCH_ASSOC)) {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
     curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+  
     //Send the request
     $response = curl_exec($ch);
     //Close request
     if ($response === FALSE) {
-    //die('FCM Send Error: ' . curl_error($ch));
-    die();
+    die('FCM Send Error: ' . curl_error($ch));
     }
     curl_close($ch);
 
