@@ -82,7 +82,7 @@ $get_all_health_data->execute();
           </div>
           
           <div class="card-body">
-            <form role="form" method="post" action="sql_queries.php"> 
+            <form role="form" method="post" action=""> 
               <div class="box-body"> 
               <?php  $alert_msg;?>
 
