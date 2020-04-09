@@ -2,7 +2,7 @@
 
     include ('../config/db_config.php');
 
-    if (isset($_POST['insert_pum'])) {  
+    if (isset($_POST['add_pum'])) {  
 
         $id_pum = uniqid('id',true);
         date_default_timezone_set('Asia/Manila');

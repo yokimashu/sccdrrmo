@@ -80,7 +80,7 @@ $get_all_health_data->execute();
           <div class="card-header text-white bg-success">
             <h3>Add PUMs / PUIs </h3>
           </div>
-
+          <?php  $alert_msg;?>
 
           <div class="card-body">
             <form role="form" method="post" action="sql_queries.php"> 
