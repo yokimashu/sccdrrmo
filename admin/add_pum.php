@@ -147,7 +147,7 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text"  class="form-control"  name="idno" placeholder="City of Origin" value="" required>
+                            <input type="text"  class="form-control"  name="city_origin" placeholder="City of Origin" value="" required>
                           </div>
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
@@ -191,7 +191,7 @@ $get_all_health_data->execute();
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="">
-                                <option selected="selected">Health Status</option>
+                                <option selected="selected">Select Symptoms</option>
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
                                 <?php } ?>
@@ -218,7 +218,7 @@ $get_all_health_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
-                                  value="">
+                                  value="<?php echo $now->format('m/d/Y'); ?>">
                             </div>
                           </div>
                          
