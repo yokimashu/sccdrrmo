@@ -78,10 +78,11 @@
             ]);
 
         $alert_msg .= ' 
-            <div class="new-alert new-alert-success alert-dismissible">
+            <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="icon fa fa-success"></i>
-                Data Inserted
-            </div>     
+                Data Inserted.
+            </div>      
         ';
         
         $btnSave = 'disabled';

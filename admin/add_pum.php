@@ -84,7 +84,9 @@ $get_all_health_data->execute();
           <div class="card-body">
             <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF");?>"> 
               <div class="box-body"> 
-              <?php echo $alert_msg;?>
+                <div class="float-topright">
+                  <?php echo $alert_msg; ?> 
+                </div>
 
                 
                 <!-- personal information -->
