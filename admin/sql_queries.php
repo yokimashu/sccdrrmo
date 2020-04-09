@@ -86,6 +86,7 @@
         
         $btnSave = 'disabled';
         $btnNew = 'enabled';
+
         header('location: add_pum.php');
 
 
