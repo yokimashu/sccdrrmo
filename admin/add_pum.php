@@ -15,7 +15,7 @@ $btnSave = $btnEdit='';
 $btnNew = 'hidden';
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='ACTIVE'";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -23,6 +23,10 @@ $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
 
+
+$get_all_health_sql = "SELECT * FROM tbl_health";
+$get_all_health_data = $con->prepare($get_all_health_sql);
+$get_all_health_data->execute();
 
 ?>
 
@@ -110,12 +114,12 @@ $get_all_brgy_data->execute();
                             </select>
                           </div>
                           <div class="col-md-3 " >
-                          <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="">
-                              <option selected="selected">Select Barangay</option>
-                              <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                              <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
-                              <?php } ?>
-                          </select>
+                            <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="">
+                                <option selected="selected">Select Barangay</option>
+                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                <?php } ?>
+                            </select>
                           </div>
                         </div><br>
 
@@ -163,7 +167,11 @@ $get_all_brgy_data->execute();
                           </div>
                          
                           <div class="col-md-3">
-                            <input type="number"  class="form-control"  name="idno" placeholder="Days of Travel" value="" required>
+                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="">
+                                  <option selected="selected">Traveled during the past 14 days?</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                            </select>
                           </div>
                         </div><br>
                      
@@ -171,6 +179,54 @@ $get_all_brgy_data->execute();
                 </div>
                 
                 <!--  -->
+                <div class="card">
+                  <div class="card-header"><h6>HEALTH HISTORY</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+
+                          <div class="col-md-3">
+                            <input type="text"  class="form-control"  name="disease" placeholder="Patient's Disease" value="" required>
+                          </div>
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="">
+                                <option selected="selected">Health Status</option>
+                                <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+
+
+                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="">
+                                <option selected="selected">Health Status</option>
+                                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+                        </div><br>
+
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                  value="">
+                            </div>
+                          </div>
+                         
+                         
+                        </div><br>
+                     
+                    </div>
+                </div>
 
 
                 
