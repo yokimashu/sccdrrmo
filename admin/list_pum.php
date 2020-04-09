@@ -29,13 +29,13 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status ='PUM' order by idno DESC";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status = 'PUM' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status='Active'";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status = 'Active'";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
 
@@ -66,10 +66,7 @@ $get_all_symptoms_data->execute();
     <section class="content">
             <div class="card card-info">
                     <div class="card-header">
-                        <h4  >LIST OF PUM
-                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addPUM" type="button" class="btn btn-danger bg-gradient-danger" 
-                            style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
-                        </h4>
+                        <h4> LIST OF PUMs  </h4>
                     </div>
                     <div class="card-body">
                         <div class="box box-primary">
@@ -92,7 +89,7 @@ $get_all_symptoms_data->execute();
                                                 <tr align="center">  
                                                     <td><?php echo $list_pum['date_report'];  ?></td>
                                                     <td><?php echo $list_pum['time_report']; ?></td>
-                                                    <td><?php echo $list_pum['first_name']; echo " "; ?> </td>
+                                                    <td><?php echo $list_pum['first_name']; echo " "; echo $list_pum['middle_name']; echo " "; echo $list_pum['last_name'];?> </td>
                                                     <td><?php echo $list_pum['symptoms'];?> </td>
                                                     <td><?php echo $list_pum['health_status'];?></td>
                                                     <td>
