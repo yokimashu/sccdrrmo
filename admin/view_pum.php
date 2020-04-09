@@ -152,19 +152,19 @@ $get_all_health_data->execute();
                           <div class="col-md-3 " >
                             <select class=" form-control select2" id="gender"  name="gender" value="<?php echo $get_gender;?>">
                                 <option selected="selected">Select Gender</option>
-                                <option value="Female">Female</option>
-                                <option value="Male">Male</option>
+                                <option value="Female"><?php echo $get_gender;?></option>
+                                <option value="Male"><?php echo $get_gender;?></option>
                             </select>
                           </div>
-                          <!-- <div class="col-md-3 " >
+                           <!-- <div class="col-md-3 " >
                             <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy;?>">
                                 <option selected="selected">Select Barangay</option>
                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
                                 <?php } ?>
                             </select>
-                          </div>
-                        </div><br> -->
+                          </div> -->
+                        </div><br> 
 
                         <!-- <div class="row" >
                           <div class="col-md-1"></div>
@@ -179,7 +179,7 @@ $get_all_health_data->execute();
                             <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
                           </div>
                         </div><br> -->
-                    </div>
+                    </div>  
                 </div>
          
                 <!-- travel history -->
