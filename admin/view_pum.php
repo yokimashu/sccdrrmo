@@ -23,8 +23,8 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$btnSave = $btnEdit = $get_time = $get_date = $get_id=
-$get_fullname = $get_symptoms = $get_status= $get_idd='';
+$btnSave = $btnEdit = $get_id =
+$get_fname ='';
 
 
 if (isset($_GET['objid'])) {
