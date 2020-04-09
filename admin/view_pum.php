@@ -12,7 +12,8 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender='';
+$btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender=
+$get_brgy = $get_city = $get_province = $get_street='';
 $btnNew = 'hidden';
 
 
@@ -29,6 +30,10 @@ if (isset($_GET['objid'])) {
     $get_lName              = $result['last_name'];
     $get_age                = $result['age'];
     $get_gender             = $result['gender'];
+    $get_brgy               = $result['barangay'];
+    $get_street               = $result['street'];
+    $get_city               = $result['city'];
+    $get_province               = $result['province'];
     
      
    
@@ -36,21 +41,6 @@ if (isset($_GET['objid'])) {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";
@@ -154,32 +144,32 @@ $get_all_health_data->execute();
                               <option >Select Gender</option>
                               <option <?php if ($get_gender == 'Female') echo 'selected'; ?> value="Female">Female </option>
                               <option <?php if ($get_gender == 'Male') echo 'selected'; ?> value="Male">Male </option>
-                            </select> 
-                            
+                            </select>   
                           </div>
-                           <!-- <div class="col-md-3 " >
-                            <select class="form-control select2" id="barangay" name="barangay" value="<?php echo $brgy;?>">
-                                <option selected="selected">Select Barangay</option>
-                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
-                                <?php } ?>
+                          <div class="col-md-3 " >
+                            <select class="form-control select2" readonly id="barangay" name="barangay" value="<?php echo $type; ?>">
+                              <option>Please select...</option>
+                                <?php while ($get_brgy_data = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <?php  $selected = ($get_brgy == $get_brgy_data['barangay'])? 'selected':''; ?>
+                                <option <?=$selected;?> value="<?php echo $get_brgy_data['barangay']; ?>"><?php echo $get_brgy_data['barangay']; ?></option> 
+                              <?php } ?>
                             </select>
-                          </div> -->
+                          </div>
                         </div><br> 
 
-                        <!-- <div class="row" >
+                        <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street;?>" required>
+                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street;?>" required>
                           </div>
                           
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $city;?>" required>  
+                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $get_city;?>" required>  
                           </div>
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $province;?>" required>  
+                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $get_province;?>" required>  
                           </div>
-                        </div><br> -->
+                        </div><br>
                     </div>  
                 </div>
          
