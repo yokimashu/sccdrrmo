@@ -76,7 +76,7 @@ $get_all_symptoms_data->execute();
                             <form role="form" method="get" action="">
                                 <div class="box-body">
                                   <div class="table-responsive">
-                                    <table style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
+                                    <table style = "overflow-x: auto;" id="users" name ="user"class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
                                                 <th> Date </th>
@@ -225,7 +225,7 @@ $get_all_symptoms_data->execute();
                     this.api().columns().every( function () {
                         var column = this;
                         var select = $('<select><option value=""></option></select>')
-                            .appendTo('#header' )
+                            .appendTo( $(column.header())  )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
@@ -241,7 +241,6 @@ $get_all_symptoms_data->execute();
                 }
             } );
         })
-
 </script>
 </body>
 </html>
