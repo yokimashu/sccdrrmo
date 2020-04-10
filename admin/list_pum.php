@@ -68,7 +68,9 @@ $get_all_symptoms_data->execute();
                     <div class="card-header  text-white bg-success">
                         <h4> List of Person Under Monitor (PUMs) 
                         </h4>
-                        <div class=""> 
+                       
+                    </div> 
+                    <div class="col-md-3"> 
                           <select class="form-control select2" id="heath_status" style="float:right;"  name="health_status" value="<?php echo $health_status;?>">
                                 <option selected="selected">Health Status</option>
                                 <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -77,8 +79,6 @@ $get_all_symptoms_data->execute();
                             </select>
                         </div>
                    
-                       
-                    </div>
                     <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
