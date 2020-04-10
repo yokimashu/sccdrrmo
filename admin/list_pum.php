@@ -66,7 +66,7 @@ $get_all_symptoms_data->execute();
     <section class="content">
             <div class="card card-info">
                     <div class="card-header  text-white bg-success"  >
-                        <h4 id="header"> Master Lists 
+                        <h4 > Master Lists 
                         </h4>
                        
                     </div> 
@@ -75,8 +75,10 @@ $get_all_symptoms_data->execute();
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
                                 <div class="box-body">
-                                <div id="combo"></div>
+                                
                                   <div class="table-responsive">
+                                    <div id="combo"></div>
+                                    
                                     <table style = "overflow-x: auto;" id="users" name ="user"class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
