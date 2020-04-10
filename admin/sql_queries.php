@@ -269,7 +269,27 @@
         $delete_pos_data = $con->prepare($delete_pos_sql);
         $delete_pos_data->execute([':id'=>$delete_pos_id]);
     
-        header('location: list_pui.php');
+        header('location: list_positive.php');
+        
+    }
+    else if (isset($_POST['delete_tested'])) {
+
+        $delete_tes_id = $_POST['user_id'];
+        $delete_tes_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_tes_data = $con->prepare($delete_tes_sql);
+        $delete_tes_data->execute([':id'=>$delete_tes_id]);
+    
+        header('location: list_tested.php');
+        
+    }
+    else if (isset($_POST['delete_death'])) {
+
+        $delete_death_id = $_POST['user_id'];
+        $delete_death_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_death_data = $con->prepare($delete_death_sql);
+        $delete_death_data->execute([':id'=>$delete_death_id]);
+    
+        header('location: list_death.php');
         
     }
     
