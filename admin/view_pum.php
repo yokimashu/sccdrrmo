@@ -12,8 +12,9 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender=
-$get_brgy = $get_city = $get_province = $get_street='';
+$btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender =
+$get_brgy = $get_city = $get_province = $get_street = $get_origin = $get_arrival = $get_contact =
+$get_travel = $get_disease = $get_health = $get_symptoms = $get_status = $get_date = '';
 $btnNew = 'hidden';
 
 
@@ -25,21 +26,26 @@ if (isset($_GET['objid'])) {
   $get_pum_data->execute([':id' => $user_id]);
   while ($result = $get_pum_data->fetch(PDO::FETCH_ASSOC)) {
     $get_id                 = $result['idno'];
+    $get_date               = $result['date_report'];
     $get_fName              = $result['first_name'];
     $get_mName              = $result['middle_name'];
     $get_lName              = $result['last_name'];
     $get_age                = $result['age'];
     $get_gender             = $result['gender'];
     $get_brgy               = $result['barangay'];
-    $get_street               = $result['street'];
+    $get_street             = $result['street'];
     $get_city               = $result['city'];
-    $get_province               = $result['province'];
-    
-     
-   
+    $get_province           = $result['province'];
+    $get_origin             = $result['city_origin'];
+    $get_arrival            = $result['date_arrival'];
+    $get_contact            = $result['contact_number'];
+    $get_travel             = $result['travel_days'];
+    $get_disease            = $result['patient_days'];
+    $get_health             = $result['health_status'];
+    $get_symptoms           = $result['symptoms'];
+    $get_status             = $result['status'];
 
   }
-
 }
 
 
@@ -174,21 +180,21 @@ $get_all_health_data->execute();
                 </div>
          
                 <!-- travel history -->
-                <!-- <div class="card">
+                <div class="card">
                   <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
                     <div class="box-body" >
                       <br>
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="city0rigin" placeholder="City of Origin" value="<?php echo $city_origin;?>" required>
+                            <input type="text" readonly class="form-control"  name="city0rigin" placeholder="City of Origin" value="<?php echo $get_origin;?>" required>
                           </div>
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $now->format('m-d-Y'); ?>">
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $get_arrival;?>">
                             </div>
                           </div>
                         </div><br>
@@ -196,23 +202,23 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
-                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $contact_number;?>" required>
+                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $get_contact;?>" required>
                           </div>
                          
                           <div class="col-md-3">
-                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="<?php echo $travel_days;?>">
+                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="<?php echo $get_travel;?>">
                                   <option selected="selected">Traveled during the past 14 days?</option>
-                                  <option value="Yes">Yes</option>
-                                  <option value="No">No</option>
+                                  <option <?php if ($get_travel == 'Yes') echo 'selected'; ?> value="Yes">Yes </option>
+                                  <option <?php if ($get_travel == 'No') echo 'selected'; ?> value="No">No </option>
                             </select>
                           </div>
                         </div><br>
                      
                     </div>
-                </div> -->
+                </div>
                 
                 <!--  -->
-                <!-- <div class="card">
+                <div class="card">
                   <div class="card-header"><h6>HEALTH HISTORY</h6></div>
                     <div class="box-body" >
                       <br>
@@ -220,24 +226,26 @@ $get_all_health_data->execute();
                           <div class="col-md-1"></div>
 
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
+                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="<?php echo $symptoms;?>">
-                                <option selected="selected">Select Symptoms</option>
-                                <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
-                                <?php } ?>
+                            <select class="form-control select2" readonly id="symptoms" name="symptoms" value="<?php echo $get_symptoms; ?>">
+                              <option>Select Symptoms</option>
+                                <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <?php  $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':''; ?>
+                                <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option> 
+                              <?php } ?>
                             </select>
                           </div>
 
 
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="<?php echo $health_status;?>">
-                                <option selected="selected">Health Status</option>
-                                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
-                                <?php } ?>
+                            <select class="form-control select2" readonly id="symptoms" name="symptoms" value="<?php echo $get_symptoms; ?>">
+                              <option>Select Health Status</option>
+                                <?php while ($get_health_data = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <?php  $selected = ($get_health == $get_health_data['health_status'])? 'selected':''; ?>
+                                <option <?=$selected;?> value="<?php echo $get_health_data['health_status']; ?>"><?php echo $get_health_data['health_status']; ?></option> 
+                              <?php } ?>
                             </select>
                           </div>
                         </div><br>
@@ -251,7 +259,7 @@ $get_all_health_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
-                                  value="<?php echo $now->format('m-d-Y'); ?>">
+                                  value="<?php echo $get_date; ?>">
                             </div>
                           </div>
                          
@@ -259,7 +267,7 @@ $get_all_health_data->execute();
                         </div><br>
                      
                     </div>
-                </div> -->
+                </div>
 
 
                 
