@@ -97,6 +97,7 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
+                            <label>Date Report: </label>
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
@@ -105,6 +106,12 @@ $get_all_health_data->execute();
                                   value="<?php echo $now->format('m-d-Y'); ?>">
                             </div>
                           </div>
+                          <div class="col-md-3">
+                          <label>Patient # : </label>
+                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $contact_number;?>" required>
+                          </div>
+
+
                          
                         </div><br>
 
