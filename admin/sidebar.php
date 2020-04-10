@@ -155,11 +155,17 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 </li>          
              
                 <li class="nav-item">
-                  <a href="list_pum" class="nav-link">
+                  <a href="list_pui" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
                     <p>List of PUIs</p>
                   </a>
-                </li>          
+                </li>
+                <li class="nav-item">
+                  <a href="list_positive" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Positive</p>
+                  </a>
+                </li>            
               </ul>
               
 

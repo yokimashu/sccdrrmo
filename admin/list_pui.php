@@ -29,7 +29,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status = 'PUM' order by idno DESC";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status = 'Positive' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
@@ -49,7 +49,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | List of PUMs </title>
+  <title>SCCDRRMO ERP | List of PUIs </title>
   <?php include('header.php');?>
 
 
@@ -123,34 +123,7 @@ $get_all_symptoms_data->execute();
 
 </div>
 
-<div class="modal fade" id="deleteordinance_Modal" role="dialog" data-backdrop="static" data-keyboard="false">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Confirm Delete</h4>
-              </div>
-              <form method="POST" action="">
-                <div class="modal-body">  
-                  <div class="box-body">
-                    <div class="form-group">
-                    <label>Delete Record?</label>
-                     <input readonly="true" type="text" name="user_id" id="user_id" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-
-                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-                  <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-                  <input type="submit" name="delete_pum" class="btn btn-danger" value="Yes">
-                </div>
-              </form>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-</div>
-
+<!-- add pum modal -->
 
 
 
