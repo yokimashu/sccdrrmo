@@ -39,7 +39,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Dashboard</title>
+  <title>SCCDRRMO | List of Symptoms</title>
   <?php include('header.php');?>
 
 
@@ -55,8 +55,8 @@ $get_all_symptoms_data->execute();
     
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header">
-                        <h4> LIST OF SYMPTOMS
+                    <div class="card-header text-white bg-success">
+                        <h4> List of Symptoms
                          <a href="#" data-toggle="modal" style="float:right;" data-target="#addSymptoms" type="button" class="btn btn-success bg-gradient-success" 
                             style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
                         </h4>
