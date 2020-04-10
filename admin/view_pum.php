@@ -226,7 +226,7 @@ $get_all_health_data->execute();
                           <div class="col-md-1"></div>
 
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
+                            <input type="text" readonly class="form-control"  name="get_disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" readonly id="symptoms_data" name="symptoms_data" value="<?php echo $get_symptoms; ?>">
@@ -258,7 +258,7 @@ $get_all_health_data->execute();
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_process" placeholder="Date Process" 
                                   value="<?php echo $get_date; ?>">
                             </div>
                           </div>
