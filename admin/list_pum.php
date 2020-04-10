@@ -62,24 +62,7 @@ $get_all_symptoms_data->execute();
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
     <div class="content-header"  ></div>
-    <div class="content">
-      <div class="card ">
-      
-        <div class="box-body">
-            <div class="col-md-8"> 
-              <select class="form-control select2" id="heath_status"  name="health_status" value="<?php echo $health_status;?>">
-                <option selected="selected">Health Status</option>
-                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-          
-          
-        </div>
-      </div>
-    </div>
-
+ 
     <section class="content">
             <div class="card card-info">
                     <div class="card-header  text-white bg-success">
@@ -236,6 +219,28 @@ $get_all_symptoms_data->execute();
       $('#delete_PUMl').modal('toggle');
 
     });
+    $(function (){
+            $('#users').DataTable( {
+                initComplete: function () { 
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo( $(column.header())  )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+                         column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    } );
+                }
+            } );
+        })
 
 </script>
 </body>
