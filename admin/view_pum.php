@@ -194,7 +194,7 @@ $get_all_health_data->execute();
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_arrivals" placeholder="Date Arrival"  value="<?php echo $get_arrival->format('m-d-Y');?>">
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_arrivals" placeholder="Date Arrival"  value="<?php echo $get_arrival;?>">
                             </div>
                           </div>
                         </div><br>
@@ -259,7 +259,7 @@ $get_all_health_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_process" placeholder="Date Process" 
-                                  value="<?php echo $get_date->format('m-d-Y'); ?>">
+                                  value="<?php echo $get_date; ?>">
                             </div>
                           </div>
                          
