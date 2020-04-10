@@ -197,9 +197,10 @@ $get_all_symptoms_data->execute();
       'autoWidth'   : true,
       'autoHeight'  : true,
       initComplete: function () { 
+        this.api().columns().every( function () {
                         var column = this;
                         var select = $('<select class="form-control"><option value=""></option></select>')
-                            .appendTo('user' )
+                            .appendTo( $(column.header())  )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
@@ -208,10 +209,10 @@ $get_all_symptoms_data->execute();
                                     .search( val ? '^'+val+'$' : '', true, false )
                                     .draw();
                             } );
-                         column.data().unique().sort().each( function ( d , j) {
-
+                         column.data().unique().sort().each( function ( d, j ) {
                             select.append( '<option value="'+d+'">'+d+'</option>' )
-                        } );                 
+                        } );
+                    } );
                 }
      
     });
