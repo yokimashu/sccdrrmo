@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('sql_pum.php');
+include ('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -93,7 +93,7 @@ $get_all_symptoms_data->execute();
                                                     <td><?php echo $list_pum['symptoms'];?> </td>
                                                     <td><?php echo $list_pum['health_status'];?></td>
                                                     <td>
-                                                        <a class="btn btn-success btn-sm" href="view_pum.php?objid=<?php echo $list_pum['objid'];?>&id=<?php echo $list_pum['idno'];?> ">
+                                                        <a class="btn btn-success btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
                                                         <i class="fa fa-folder-open-o"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
@@ -123,7 +123,34 @@ $get_all_symptoms_data->execute();
 
 </div>
 
-<!-- add pum modal -->
+<!-- delete modal -->
+<div class="modal fade" id="deletePositive" role="dialog" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Confirm Delete</h4>
+              </div>
+              <form method="POST" action="">
+                <div class="modal-body">  
+                  <div class="box-body">
+                    <div class="form-group">
+                    <label>Delete Record?</label>
+                     <input readonly="true" type="text" name="user_id" id="user_id" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                  <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
+                  <input type="submit" name="delete_positive" class="btn btn-danger" value="Yes">
+                </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+</div>
 
 
 
@@ -178,6 +205,18 @@ $get_all_symptoms_data->execute();
         zIndex: 2048,
       });
     });
+
+    $(document).on('click', 'button[data-role=confirm_delete]', function(event){
+      event.preventDefault();
+
+      var user_id = ($(this).data('id'));
+
+      $('#user_id').val(user_id);
+      $('#deletePositive').modal('toggle');
+
+    });
+
+
 
 </script>
 </body>

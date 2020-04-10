@@ -252,6 +252,26 @@
         header('location: list_pum.php');
         
     }
+    else if (isset($_POST['delete_pui'])) {
+
+        $delete_pui_id = $_POST['user_id'];
+        $delete_pui_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_pui_data = $con->prepare($delete_pui_sql);
+        $delete_pui_data->execute([':id'=>$delete_pui_id]);
+    
+        header('location: list_pui.php');
+        
+    }
+    else if (isset($_POST['delete_positive'])) {
+
+        $delete_pos_id = $_POST['user_id'];
+        $delete_pos_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_pos_data = $con->prepare($delete_pos_sql);
+        $delete_pos_data->execute([':id'=>$delete_pos_id]);
+    
+        header('location: list_pui.php');
+        
+    }
     
         
 
