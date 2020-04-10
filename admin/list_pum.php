@@ -197,8 +197,8 @@ $get_all_symptoms_data->execute();
       'autoWidth'   : true,
       'autoHeight'  : true,
       initComplete: function () { 
-                        var column = this;
-                        var select = $('<select class="form-control" ><option value=""></option></select>')
+        var column = this;
+                        var select = $('<select class="form-control"  style="width:100px; float:right;"><option value=""></option></select>')
                             .appendTo($(column.header()) )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
