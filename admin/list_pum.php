@@ -61,8 +61,8 @@ $get_all_symptoms_data->execute();
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
-    <div class="content-header" style="float:right;" ></div>
-    <section class="content">
+    <div class="content-header"  ></div>
+    <div class="content">
       <div class="card ">
       
       <div class="box-body">
@@ -77,7 +77,7 @@ $get_all_symptoms_data->execute();
         
         </div>
       </div>
-    </section>
+    </div>
 
     <section class="content">
             <div class="card card-info">
