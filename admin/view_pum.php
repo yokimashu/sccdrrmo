@@ -14,7 +14,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender =
 $get_brgy = $get_city = $get_province = $get_street = $get_origin = $get_arrival = $get_contact =
-$get_travel = $get_disease = $get_health = $get_symptoms = $get_status = $get_date = '';
+$get_travel = $get_disease = $get_health = $get_symptoms = $get_status = $get_date = $get_cleared ='';
 $btnNew = 'hidden';
 
 
@@ -269,7 +269,7 @@ $get_all_health_data->execute();
                                   <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_cleared" placeholder="Date Cleared" 
-                                  value="<?php echo $now->format('m-d-Y'); ?>">
+                                  value="<?php echo $get_cleared; ?>">
                             </div>
                           </div>
                         </div><br>
