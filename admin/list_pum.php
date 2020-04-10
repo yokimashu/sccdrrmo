@@ -212,7 +212,7 @@ $get_all_symptoms_data->execute();
       var user_id = ($(this).data('id'));
 
       $('#user_id').val(user_id);
-      $('#delete_PUM').modal('toggle');
+      $('#delete_PUMl').modal('toggle');
 
     });
 
