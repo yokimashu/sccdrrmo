@@ -61,7 +61,18 @@ $get_all_symptoms_data->execute();
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
-    <div class="content-header"></div>
+    <div class="content-header" style="float:right;" >
+    
+      <div class="col-md-3"> 
+                          <select class="form-control select2" id="heath_status"  name="health_status" value="<?php echo $health_status;?>">
+                                <option selected="selected">Health Status</option>
+                                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                   
+      </div>
     
     <section class="content">
             <div class="card card-info">
@@ -70,15 +81,7 @@ $get_all_symptoms_data->execute();
                         </h4>
                        
                     </div> 
-                    <div class="col-md-3"> 
-                          <select class="form-control select2" id="heath_status" style="float:right;"  name="health_status" value="<?php echo $health_status;?>">
-                                <option selected="selected">Health Status</option>
-                                <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                   
+                 
                     <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
