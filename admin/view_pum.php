@@ -262,8 +262,16 @@ $get_all_health_data->execute();
                                   value="<?php echo $get_date; ?>">
                             </div>
                           </div>
-                         
-                         
+                          
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_cleared" placeholder="Date Cleared" 
+                                  value="<?php echo $now->format('m-d-Y'); ?>">
+                            </div>
+                          </div>
                         </div><br>
                      
                     </div>
@@ -361,10 +369,10 @@ $get_all_health_data->execute();
           $("input[name='get_city']").removeAttr("readonly");
           $("input[name='get_province']").removeAttr("readonly");
           $("input[name='get_city0rigin']").removeAttr("readonly");
-          $("input[name='get_arrivals']").removeAttr("readonly");
           $("input[name='get_number']").removeAttr("readonly");
-          $("input[name='get_process']").removeAttr("readonly");
           $("input[name='get_disease']").removeAttr("readonly");
+          $("input[name='get_cleared']").removeAttr("readonly");
+          
           
           // 5 ka combobox
           $(".select2").attr("disabled", false); 
