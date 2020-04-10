@@ -199,7 +199,7 @@ $get_all_symptoms_data->execute();
       initComplete: function () { 
                     this.api().columns().every( function () {
                         var column = this;
-                        var select = $('<select><option value=""></option></select>')
+                        var select = $('<select class="form-control select2"><option value=""></option></select>')
                             .appendTo( '#header' )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
