@@ -3,6 +3,7 @@
 
 include ('../config/db_config.php');
 include ('sql_queries.php');
+include ('generate_pum.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -14,7 +15,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit= $firstname = $middlename= $lastname = $age= $gender=
 $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-$travel_days = $patient_disease = $symptoms= $health_status='';
+$travel_days = $patient_disease = $symptoms = $health_status = $patient = '';
 $btnNew = 'hidden';
 
 
@@ -97,7 +98,7 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
-                            <label>Date Report: </label>
+                            <label>Date Reported: </label>
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
@@ -107,8 +108,8 @@ $get_all_health_data->execute();
                             </div>
                           </div>
                           <div class="col-md-3">
-                          <label>Patient # : </label>
-                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $contact_number;?>" required>
+                            <label>Patient # : </label>
+                            <input type="number" readonly class="form-control"  name="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
                           </div>
 
 
