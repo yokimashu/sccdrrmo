@@ -90,7 +90,28 @@ $get_all_health_data->execute();
               <div class="box-body"> 
 
               
-                
+              <div class="card">
+                  <div class="card-header"><h6>REPORT DETAILS</h6></div>
+                    <div class="box-body" >
+                      <br>
+                        <div class="row" >
+                          <div class="col-md-1"></div>
+                          <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker" >
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                  value="<?php echo $now->format('m-d-Y'); ?>">
+                            </div>
+                          </div>
+                         
+                        </div><br>
+
+
+                     
+                    </div>
+                </div>
                 <!-- personal information -->
                 <div class="card">
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
@@ -216,22 +237,7 @@ $get_all_health_data->execute();
                           </div>
                         </div><br>
 
-                        <div class="row" >
-                          <div class="col-md-1"></div>
-                          
-                          <div class="col-md-3">
-                            <div class="input-group date" data-provide="datepicker" >
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
-                                  value="<?php echo $now->format('m-d-Y'); ?>">
-                            </div>
-                          </div>
-                         
-                         
-                        </div><br>
-                     
+                                         
                     </div>
                 </div>
 
