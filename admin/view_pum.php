@@ -40,7 +40,7 @@ if (isset($_GET['objid'])) {
     $get_arrival            = $result['date_arrival'];
     $get_contact            = $result['contact_number'];
     $get_travel             = $result['travel_days'];
-    $get_disease            = $result['patient_days'];
+    $get_disease            = $result['patient_disease'];
     $get_health             = $result['health_status'];
     $get_symptoms           = $result['symptoms'];
     $get_status             = $result['status'];
@@ -229,7 +229,7 @@ $get_all_health_data->execute();
                             <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" readonly id="symptoms" name="symptoms" value="<?php echo $get_symptoms; ?>">
+                            <select class="form-control select2" readonly id="symptoms_data" name="symptoms_data" value="<?php echo $get_symptoms; ?>">
                               <option>Select Symptoms</option>
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php  $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':''; ?>
@@ -240,8 +240,8 @@ $get_all_health_data->execute();
 
 
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" readonly id="symptoms" name="symptoms" value="<?php echo $get_symptoms; ?>">
-                              <option>Select Health Status</option>
+                            <select class="form-control select2" readonly id="health" name="health" value="<?php echo $get_health; ?>">
+                              <option>Select Patient Status</option>
                                 <?php while ($get_health_data = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php  $selected = ($get_health == $get_health_data['health_status'])? 'selected':''; ?>
                                 <option <?=$selected;?> value="<?php echo $get_health_data['health_status']; ?>"><?php echo $get_health_data['health_status']; ?></option> 
