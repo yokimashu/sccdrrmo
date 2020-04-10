@@ -57,7 +57,7 @@ $get_all_symptoms_data->execute();
             <div class="card card-info">
                     <div class="card-header text-white bg-success">
                         <h4> List of Symptoms
-                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addSymptoms" type="button" class="btn btn-success bg-gradient-success" 
+                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addSymptoms" type="button" class="btn btn-info bg-gradient-info" 
                             style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
                         </h4>
                     </div>
