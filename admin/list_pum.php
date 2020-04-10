@@ -197,7 +197,7 @@ $get_all_symptoms_data->execute();
       'autoWidth'   : true,
       'autoHeight'  : true,
       initComplete: function () { 
-                    this.api().columns().every( function () {
+              
                         var column = this;
                         var select = $('<select class="form-control select2"><option value=""></option></select>')
                             .appendTo('#header')
@@ -213,7 +213,7 @@ $get_all_symptoms_data->execute();
                             select.append( '<option value="'+d+'">'+d+'</option>' )
                         } );
                     } );
-                }
+                
      
     });
 
