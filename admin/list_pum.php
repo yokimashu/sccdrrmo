@@ -2,7 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
-include ('sql_pum.php');
+include ('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
 
