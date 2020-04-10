@@ -3,6 +3,7 @@
 
 include ('../config/db_config.php');
 include ('sql_queries.php');
+include ('generate_pum.php');
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -14,7 +15,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit= $firstname = $middlename= $lastname = $age= $gender=
 $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-$travel_days = $patient_disease = $symptoms= $health_status='';
+$travel_days = $patient_disease = $symptoms = $health_status = $patient = '';
 $btnNew = 'hidden';
 
 
@@ -97,6 +98,7 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
+                            <label>Date Reported: </label>
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
@@ -105,6 +107,12 @@ $get_all_health_data->execute();
                                   value="<?php echo $now->format('m-d-Y'); ?>">
                             </div>
                           </div>
+                          <div class="col-md-3">
+                            <label>Patient # : </label>
+                            <input type="number" readonly class="form-control"  name="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
+                          </div>
+
+
                          
                         </div><br>
 
@@ -217,16 +225,18 @@ $get_all_health_data->execute();
                           <div class="col-md-3">
                             <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
                           </div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" name="symptoms" value="<?php echo $symptoms;?>">
-                                <option selected="selected">Select Symptoms</option>
+                          <div class="col-md-6" style="text-algin:center; padding-right:5px;">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms" placeholder="Select Symptoms" svalue="<?php echo $symptoms;?>">
+                              
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
                                 <?php } ?>
                             </select>
                           </div>
+                        </div><br>
 
-
+                        <div class="row" >
+                          <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="<?php echo $health_status;?>">
                                 <option selected="selected">Health Status</option>

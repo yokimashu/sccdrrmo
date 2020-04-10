@@ -154,12 +154,54 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                   </a>
                 </li>          
              
-                <li class="nav-item">
-                  <a href="list_pum" class="nav-link">
+                <!-- <li class="nav-item">
+                  <a href="list_pui" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
                     <p>List of PUIs</p>
                   </a>
-                </li>          
+                </li>
+                <li class="nav-item">
+                  <a href="list_positive" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Positive</p>
+                  </a>
+                </li>      
+                <li class="nav-item">
+                  <a href="list_tested" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Tested</p>
+                  </a>
+                </li>    
+                <li class="nav-item">
+                  <a href="list_recovered" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Recovered</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="list_death" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Death</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="list_completed" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Completed</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="list_home" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Home Quarantine</p>
+                  </a>
+                </li>   
+                <li class="nav-item">
+                  <a href="list_followup" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Lost to Follow Up</p>
+                  </a>
+                </li>                  -->
               </ul>
               
 

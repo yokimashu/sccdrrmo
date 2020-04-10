@@ -19,7 +19,7 @@ $get_travel = $get_disease = $get_health = $get_symptoms = $get_status = $get_da
 $btnNew = 'hidden';
 
 
-if (isset($_GET['objid'])) {
+
 
   $user_id = $_GET['id'];
   $get_pum_sql = "SELECT * FROM tbl_pum WHERE idno = :id";
@@ -47,7 +47,7 @@ if (isset($_GET['objid'])) {
     $get_status             = $result['status'];
 
   }
-}
+
 
 
 $get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";

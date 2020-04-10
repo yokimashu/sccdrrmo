@@ -234,12 +234,92 @@
     }
     else if (isset($_POST['delete_symptoms'])) {
 
-        $delete_user_id = $_POST['user_id'];
-        $delete_user_sql = "UPDATE tbl_symptoms SET status ='Inactive' WHERE idno = :id ";
-        $delete_user_data = $con->prepare($delete_user_sql);
-        $delete_user_data->execute([':id'=>$delete_user_id]);
+        $delete_sym_id = $_POST['user_id'];
+        $delete_symp_sql = "UPDATE tbl_symptoms SET status ='Inactive' WHERE idno = :id ";
+        $delete_symp_data = $con->prepare($delete_symp_sql);
+        $delete_symp_data->execute([':id'=>$delete_sym_id]);
     
         header('location: list_symptoms.php');
+        
+    }
+    else if (isset($_POST['delete_pum'])) {
+
+        $delete_pum_id = $_POST['user_id'];
+        $delete_pum_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_pum_data = $con->prepare($delete_pum_sql);
+        $delete_pum_data->execute([':id'=>$delete_pum_id]);
+    
+        header('location: list_pum.php');
+        
+    }
+    else if (isset($_POST['delete_pui'])) {
+
+        $delete_pui_id = $_POST['user_id'];
+        $delete_pui_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_pui_data = $con->prepare($delete_pui_sql);
+        $delete_pui_data->execute([':id'=>$delete_pui_id]);
+    
+        header('location: list_pui.php');
+        
+    }
+    else if (isset($_POST['delete_positive'])) {
+
+        $delete_pos_id = $_POST['user_id'];
+        $delete_pos_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_pos_data = $con->prepare($delete_pos_sql);
+        $delete_pos_data->execute([':id'=>$delete_pos_id]);
+    
+        header('location: list_positive.php');
+        
+    }
+    else if (isset($_POST['delete_tested'])) {
+
+        $delete_tes_id = $_POST['user_id'];
+        $delete_tes_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_tes_data = $con->prepare($delete_tes_sql);
+        $delete_tes_data->execute([':id'=>$delete_tes_id]);
+    
+        header('location: list_tested.php');
+        
+    }
+    else if (isset($_POST['delete_death'])) {
+
+        $delete_death_id = $_POST['user_id'];
+        $delete_death_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_death_data = $con->prepare($delete_death_sql);
+        $delete_death_data->execute([':id'=>$delete_death_id]);
+    
+        header('location: list_death.php');
+        
+    }
+    else if (isset($_POST['delete_completed'])) {
+
+        $delete_com_id = $_POST['user_id'];
+        $delete_com_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_com_data = $con->prepare($delete_com_sql);
+        $delete_com_data->execute([':id'=>$delete_com_id]);
+    
+        header('location: list_completed.php');
+        
+    }
+    else if (isset($_POST['delete_home'])) {
+
+        $delete_home_id = $_POST['user_id'];
+        $delete_home_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_home_data = $con->prepare($delete_home_sql);
+        $delete_home_data->execute([':id'=>$delete_home_id]);
+    
+        header('location: list_home.php');
+        
+    }
+    else if (isset($_POST['delete_follow'])) {
+
+        $delete_follow_id = $_POST['user_id'];
+        $delete_follow_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_follow_data = $con->prepare($delete_follow_sql);
+        $delete_follow_data->execute([':id'=>$delete_follow_id]);
+    
+        header('location: list_followup.php');
         
     }
     

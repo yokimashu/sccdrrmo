@@ -88,7 +88,7 @@ $get_fullname = $get_symptoms = $get_status= '';
  
         <div class="card card-info "  >
          
-                <div class="card-header">
+                <div class="card-header text-white bg-success">
                   <h3>Update Symptoms </h3>
                 </div>
                 <div class="card-body" align="center">

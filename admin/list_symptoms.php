@@ -39,7 +39,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO | Dashboard</title>
+  <title>SCCDRRMO | List of Symptoms</title>
   <?php include('header.php');?>
 
 
@@ -55,9 +55,9 @@ $get_all_symptoms_data->execute();
     
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header">
-                        <h4> LIST OF SYMPTOMS
-                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addSymptoms" type="button" class="btn btn-success bg-gradient-success" 
+                    <div class="card-header text-white bg-success">
+                        <h4> List of Symptoms
+                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addSymptoms" type="button" class="btn btn-info bg-gradient-info" 
                             style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
                         </h4>
                     </div>
@@ -109,7 +109,43 @@ $get_all_symptoms_data->execute();
 
 </div>
 
-<!-- add pum modal -->
+
+
+
+
+
+<div class="modal fade" id="addSymptoms" tabindex="-1" role="dialog" aria-labelledby="addSymptoms" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addSymptoms">Add Symptoms</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="submitFormCateg" method="post" action="sql_queries.php" >
+
+              <div class="form-group">
+                <input type="text"   class="form-control" name="symptoms" placeholder="Symptoms" id= "symptoms" value="<?php echo $symptoms; ?>" required>
+              </div>
+              
+              <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
+              <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
+            </form> 
+           
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
 
 
 
