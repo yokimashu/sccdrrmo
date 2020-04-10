@@ -65,10 +65,10 @@ $get_all_symptoms_data->execute();
     
       <div class="col-md-3"> 
                           <select class="form-control select2" id="heath_status"  name="health_status" value="<?php echo $health_status;?>">
-                                <option selected="selected">Health Status</option>
+                                <!-- <option selected="selected">Health Status</option>
                                 <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
-                                <?php } ?>
+                                <?php } ?> -->
                             </select>
                         </div>
                    
