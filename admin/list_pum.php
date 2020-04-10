@@ -29,7 +29,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status = 'PUM' order by idno DESC";
+$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
 $get_all_pum_data = $con->prepare($get_all_pum_sql);
 $get_all_pum_data->execute();
 
@@ -66,7 +66,7 @@ $get_all_symptoms_data->execute();
     <section class="content">
             <div class="card card-info">
                     <div class="card-header  text-white bg-success"  >
-                        <h4 id="header"> List of Person Under Monitor (PUMs) 
+                        <h4 id="header"> Master Lists 
                         </h4>
                        
                     </div> 
