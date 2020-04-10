@@ -199,7 +199,7 @@ $get_all_symptoms_data->execute();
       'autoHeight'  : true,
       initComplete: function () { 
         var column = this;
-                        var select = $('<select class="form-control" id="combo style="width:150px; float:right;"><option value=""></option></select>')
+                        var select = $('<select class="form-control" id="combo" style="width:150px; float:right;"><option value=""></option></select>')
                             .appendTo('#header')
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
