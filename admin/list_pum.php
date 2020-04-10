@@ -220,7 +220,7 @@ $get_all_symptoms_data->execute();
 
     });
     $(function (){
-            $('#example').DataTable( {
+            $('#users').DataTable( {
                 initComplete: function () { 
                     this.api().columns().every( function () {
                         var column = this;
