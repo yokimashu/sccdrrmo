@@ -75,6 +75,7 @@ $get_all_symptoms_data->execute();
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
                                 <div class="box-body">
+                                <div id="combo"></div>
                                   <div class="table-responsive">
                                     <table style = "overflow-x: auto;" id="users" name ="user"class="table table-bordered table-striped">
                                         <thead align="center">
@@ -200,7 +201,7 @@ $get_all_symptoms_data->execute();
         this.api().columns([4]).every( function () {
                         var column = this;
                         var select = $('<select class="form-control"><option value=""></option></select>')
-                            .appendTo( $(column.header())  )
+                            .appendTo('#combo' )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
