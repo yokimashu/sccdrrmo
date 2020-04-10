@@ -232,7 +232,8 @@ $get_all_health_data->execute();
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
                                 <?php } ?>
                             </select>
-                          </div><br>
+                          </div>
+                        </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
