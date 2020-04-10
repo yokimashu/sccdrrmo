@@ -66,7 +66,7 @@ $get_all_symptoms_data->execute();
     <section class="content">
             <div class="card card-info">
                     <div class="card-header  text-white bg-success"  >
-                        <h4 id="header" style="float:left;"> List of Person Under Monitor (PUMs) 
+                        <h4 id="header"> List of Person Under Monitor (PUMs) 
                         </h4>
                        
                     </div> 
