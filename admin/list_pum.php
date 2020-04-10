@@ -193,7 +193,7 @@ $get_all_symptoms_data->execute();
 <script src="../plugins/select2/select2.full.min.js"></script>
 
 <script>
-     $('.select2').select2();
+ 
 
     $('#users').DataTable({
       'paging'      : true,
@@ -223,6 +223,7 @@ $get_all_symptoms_data->execute();
                 }
      
     });
+    $('.select2').select2();
 
     $('#addPUM').on('hidden.bs.modal', function () {
         $('#addPUM form')[0].reset();
