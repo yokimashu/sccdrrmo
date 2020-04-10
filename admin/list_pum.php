@@ -195,7 +195,25 @@ $get_all_symptoms_data->execute();
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,
-      'autoHeight'  : true
+      'autoHeight'  : true,
+      initComplete: function () { 
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo( $(column.header())  )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+                         column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    } );
+                }
      
     });
 
@@ -219,28 +237,7 @@ $get_all_symptoms_data->execute();
       $('#delete_PUMl').modal('toggle');
 
     });
-    $(function (){
-            $('#users').DataTable( {
-                initComplete: function () { 
-                    this.api().columns().every( function () {
-                        var column = this;
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo( $(column.header())  )
-                            .on( 'change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex(
-                                    $(this).val()
-                                );
-                                column
-                                    .search( val ? '^'+val+'$' : '', true, false )
-                                    .draw();
-                            } );
-                         column.data().unique().sort().each( function ( d, j ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' )
-                        } );
-                    } );
-                }
-            } );
-        })
+  
 </script>
 </body>
 </html>
