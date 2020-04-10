@@ -12,9 +12,10 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
+
 $btnSave = $btnEdit = $get_fName = $get_lName = $get_mName= $get_age = $get_gender =
 $get_brgy = $get_city = $get_province = $get_street = $get_origin = $get_arrival = $get_contact =
-$get_travel = $get_disease = $get_health = $get_symptoms = $get_status = $get_date = $get_cleared ='';
+$get_travel = $get_disease = $get_health = $get_symptoms = $get_status = $get_date = $get_cleared = '';
 $btnNew = 'hidden';
 
 
@@ -206,7 +207,7 @@ $get_all_health_data->execute();
                           </div>
                          
                           <div class="col-md-3">
-                            <select class=" form-control select2" id="travel_days"  name="travel_days" value="<?php echo $get_travel;?>">
+                            <select class=" form-control select2" id="travel_days"  name="get_travel" value="<?php echo $get_travel;?>">
                                   <option selected="selected">Traveled during the past 14 days?</option>
                                   <option <?php if ($get_travel == 'Yes') echo 'selected'; ?> value="Yes">Yes </option>
                                   <option <?php if ($get_travel == 'No') echo 'selected'; ?> value="No">No </option>
@@ -229,7 +230,7 @@ $get_all_health_data->execute();
                             <input type="text" readonly class="form-control"  name="get_disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
                           </div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" readonly id="symptoms_data" name="symptoms_data" value="<?php echo $get_symptoms; ?>">
+                            <select class="form-control select2" readonly id="symptoms_data" name="get_symptoms" value="<?php echo $get_symptoms; ?>">
                               <option>Select Symptoms</option>
                                 <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php  $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':''; ?>
@@ -240,7 +241,7 @@ $get_all_health_data->execute();
 
 
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" readonly id="health" name="health" value="<?php echo $get_health; ?>">
+                            <select class="form-control select2" readonly id="health" name="get_health" value="<?php echo $get_health; ?>">
                               <option>Select Patient Status</option>
                                 <?php while ($get_health_data = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php  $selected = ($get_health == $get_health_data['health_status'])? 'selected':''; ?>
@@ -284,7 +285,7 @@ $get_all_health_data->execute();
                   <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
                   <i class="fa fa-edit fa-fw"> </i>  </button>
 
-                  <button type="submit"  <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success" >
+                  <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
                   <i class="fa fa-check fa-fw"> </i> </button>
 
                   <a href="list_pum.php">

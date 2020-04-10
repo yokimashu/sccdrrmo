@@ -52,8 +52,8 @@
             symptoms            = :symp,
             status              = :status";
             
-        $pum_data = $con->prepare($insert_pum_sql);
-        $pum_data->execute([
+        $add_pum_data = $con->prepare($insert_pum_sql);
+        $add_pum_data->execute([
             ':id'               => $id_pum,
             ':dates'            => $process,
             ':timess'           => $time,
@@ -96,39 +96,74 @@
    
        $alert_msg = '';
        $alert_msg1 = '';
-       $get_fullname = $_POST['fullname'];
-       $get_date = $_POST['report_date'];
-       $get_time = $_POST['report_time'];
-       $get_symptoms = $_POST['name_symptoms'];
-       $get_id = $_POST['idno'];
-       $get_status = $_POST['status'];
+       $get_fName               = $_POST['get_fName'];
+       $get_mName               = $_POST['get_mName'];
+       $get_lName               = $_POST['get_lName'];
+       $get_age                 = $_POST['get_age'];
+       $get_gender              = $_POST['get_gender'];
+       $get_brgy                = $_POST['get_barangay'];
+       $get_street              = $_POST['get_street'];
+       $get_city                = $_POST['get_city'];
+       $get_province            = $_POST['get_province'];
+       $get_origin              = $_POST['get_city0rigin'];
+       $get_contact             = $_POST['get_number'];
+       $get_travel              = $_POST['get_travel'];
+       $get_disease             = $_POST['get_disease'];
+       $get_symptoms            = $_POST['get_symptoms'];
+       $get_health              = $_POST['get_health'];
+       $get_health              = $_POST['get_health'];
+       $get_cleared             = date('Y-m-d', strtotime($_POST['get_cleared']));        
+       $get_time                = date('h:i:s');
    
        $update_pum_sql = " UPDATE tbl_pum SET
-           date_report         = :datess,
-           fullname            = :namesss,
-           time_report         = :timesss,
-           symptoms            = :symp,
-           status              = :stat 
-           where idno          = :id";
+            first_name          = :firstName,
+            middle_name         = :middleName,
+            last_name           = :lastName,
+            age                 = :age,
+            gender              = :gender,
+            barangay            = :brgy,
+            street              = :streets,
+            city                = :citys,
+            province            = :prov,
+            city_origin         = :origin,
+            date_arrival        = :arrival,
+            contact_number      = :contact,
+            travel_days         = :travel,
+            patient_disease     = :disease,
+            health_status       = :health,
+            symptoms            = :symp,
+            date_cleared        = :cleared
+            where idno          = :id";
                
-       $pum_data = $con->prepare($update_pum_sql);
-       $pum_data->execute([
-           ':datess'           => $get_date,
-           ':namesss'          => $get_fullname,
-           ':timesss'          => $get_time,
-           ':symp'             => $get_symptoms,
-           ':stat'             => $get_status,
-           ':id'               => $get_id
+       $update_pum_data = $con->prepare($update_pum_sql);
+       $update_pum_data->execute([
+           ':cleared'         => $get_cleared,
+           ':firstName'       => $get_id,
+           ':middleName'      => $get_fullname,
+           ':lastName'        => $get_time,
+           ':age'             => $get_symptoms,
+           ':gender'          => $get_status,
+           ':brgy'            => $get_id,
+           ':streets'         => $get_id,
+           ':citys'           => $get_id,
+           ':prov'            => $get_id,
+           ':origin'          => $get_id,
+           ':arrival'         => $get_id,
+           ':contact'         => $get_id,
+           ':travel'          => $get_id,
+           ':disease'         => $get_id,
+           ':citys'             => $get_id,
+
    
            ]);
    
            $alert_msg .= ' 
-           <div class="new-alert new-alert-success alert-dismissible">
-               <i class="icon fa fa-success"></i>
-               Data Updated.
-           </div>     
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>
+                <strong> Success ! </strong> Data Updated.
+            </div>     
          ';
-       header('location: view_pum.php');
    
     }
     else if (isset($_POST['insert_symptoms'])) {
