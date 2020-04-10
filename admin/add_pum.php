@@ -227,7 +227,7 @@ $get_all_health_data->execute();
                           </div>
                           <div class="col-md-6" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms" value="<?php echo $symptoms;?>">
-                                <option selected="selected">Select Symptoms</option>
+                                <option >Select Symptoms</option>
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
                                 <?php } ?>
