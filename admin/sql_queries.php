@@ -234,20 +234,20 @@
     }
     else if (isset($_POST['delete_symptoms'])) {
 
-        $delete_user_id = $_POST['user_id'];
+        $delete_sym_id = $_POST['user_id'];
         $delete_symp_sql = "UPDATE tbl_symptoms SET status ='Inactive' WHERE idno = :id ";
         $delete_symp_data = $con->prepare($delete_symp_sql);
-        $delete_symp_data->execute([':id'=>$delete_symp_data]);
+        $delete_symp_data->execute([':id'=>$delete_sym_id]);
     
         header('location: list_symptoms.php');
         
     }
     else if (isset($_POST['delete_pum'])) {
 
-        $delete_user_id = $_POST['user_id'];
+        $delete_pum_id = $_POST['user_id'];
         $delete_pum_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
         $delete_pum_data = $con->prepare($delete_pum_sql);
-        $delete_pum_data->execute([':id'=>$delete_pum_data]);
+        $delete_pum_data->execute([':id'=>$delete_pum_id]);
     
         header('location: list_pum.php');
         
