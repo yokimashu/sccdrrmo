@@ -80,7 +80,7 @@ $get_all_symptoms_data->execute();
                                   <div class="row">
                                     <div class="col-md-4" id="combo"></div>
                                   </div>
-                                  <br><br>
+                                  <br>
                                     
 
                                     <table style = "overflow-x: auto;" id="users" name ="user"class="table table-bordered table-striped">
