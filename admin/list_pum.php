@@ -65,8 +65,8 @@ $get_all_symptoms_data->execute();
  
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header  text-white bg-success"  id="header">
-                        <h4> List of Person Under Monitor (PUMs) 
+                    <div class="card-header  text-white bg-success"  >
+                        <h4 id="header" style="float:left;"> List of Person Under Monitor (PUMs) 
                         </h4>
                        
                     </div> 
@@ -198,7 +198,7 @@ $get_all_symptoms_data->execute();
       'autoHeight'  : true,
       initComplete: function () { 
         var column = this;
-                        var select = $('<select class="form-control" style="width:2px; float:right;"><option value=""></option></select>')
+                        var select = $('<select class="form-control" style="width:30px; float:right;"><option value=""></option></select>')
                             .appendTo('#header')
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
