@@ -26,11 +26,11 @@ while ($result = $get_data->fetch(PDO::FETCH_ASSOC)) {
 
     $listOfPosts[$result['id']] = [
         'id'        => $result['id'],
-        'title'     => str_replace([':', '\\', '/', '*',','],"",$result['title']),
+        'title'     => str_replace(['<p>', '</p>', '<b>','</b>',','],"",$result['title']),
         'author'    => $result['author'],
         'postDate'  => $result['postdate'],
         'image'     => $newsUrl . $result['image'],
-        'content'   => $result['content'],
+        'content'   => tr_replace([':', '\\', '/', '*',','],"",$result['content'],
         'updatedOn' => $result['updated_on'],
         'status'    => $result['status'],
         'tag'       => $result['tag']

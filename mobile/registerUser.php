@@ -1,21 +1,20 @@
 <?php
 
-//if($_SERVER["REQUEST_METHOD"] == "POST"){
-	require 'db-config.php';
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    require 'db-config.php';
 	registerUser();
-//}else{
-//	echo "Oops! We're sorry! You do not have access to this option!";
-//}
+}else{
+	echo "Oops! We're sorry! You do not have access to this option!";
+}
 
 
 
 function registerUser(){
     global $con;
+    // ob_start();
    
 
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
+
     
     // If we wanted to change the base currency, we would uncomment the following line
   
@@ -31,12 +30,12 @@ function registerUser(){
     $address        = $_POST['address'];
     $registered     = $_POST['dateAndTimeRegistered'];
     $deviceid       = $_POST['deviceid'];
-   
+    $verification = rand(100000,999999);
 
     $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
 
-     $queryToDetectIfExisting=mysqli_query($con,"SELECT * FROM tbl_users WHERE username='$username'");
-     $numrows=mysqli_num_rows($queryToDetectIfExisting);
+    $queryToDetectIfExisting=mysqli_query($con,"SELECT * FROM tbl_users WHERE username='$username'");
+    $numrows=mysqli_num_rows($queryToDetectIfExisting);
     $get_user1_sql = "SELECT * FROM tbl_users where username = :username";
     $user_data1 = $con->prepare($get_user1_sql);
     $user_data1->execute([':username' => $username]);
@@ -59,6 +58,9 @@ function registerUser(){
             $result2 = $deviceid_data->fetch(PDO::FETCH_ASSOC);
 
             if($result2==0){
+                
+
+    
             
     $insert_users_sql = "INSERT INTO tbl_users SET
         username            = :username,
@@ -73,6 +75,7 @@ function registerUser(){
         address             = :address,
         others              = :others,
         account_type        = '3',
+        verification_code   = :verification, 
         status              = 'PENDING',
         created_at          = :created";
 
@@ -91,11 +94,14 @@ function registerUser(){
         ':gender'           => $gender,
         ':address'          => $address,
         ':others'           => $deviceid,
+        ':verification'     => $verification,
         ':created'          => $registered
         
         ]);
 
-        echo 'success';
+        require_once ('email_user.php');     
+        // ob_end_clean();
+        // echo "success";
 
     }else{ 
         echo "device";
@@ -109,7 +115,7 @@ function registerUser(){
         echo "username"; 
     }
 
-         
+    
     }    
    
   
