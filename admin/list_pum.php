@@ -197,9 +197,9 @@ $get_all_symptoms_data->execute();
       'autoWidth'   : true,
       'autoHeight'  : true,
       initComplete: function () { 
-        var column = this;
-                        var select = $('<select class="form-control" style="float:right; width:200px;" ><option value=""></option></select>')
-                            .appendTo('#header' )
+                        var column = this;
+                        var select = $('<select class="form-control"><option value=""></option></select>')
+                            .appendTo('user' )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
@@ -208,9 +208,9 @@ $get_all_symptoms_data->execute();
                                     .search( val ? '^'+val+'$' : '', true, false )
                                     .draw();
                             } );
-                         column.data().unique().sort().each( function ( d ) {
-                            select.append( '<option>Select Status</option>' )
-                            // select.append( '<option value="'+d+'">'+d+'</option>' )
+                         column.data().unique().sort().each( function ( d , j) {
+
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
                         } );                 
                 }
      
