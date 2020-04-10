@@ -208,7 +208,7 @@ $get_all_symptoms_data->execute();
                                     .search( val ? '^'+val+'$' : '', true, false )
                                     .draw();
                             } );
-                         column.data().unique().sort().each( function ( d, j ) {
+                         column.data().unique().sort().each( function ( d ) {
                             select.append( '<option value="'+d+'">'+d+'</option>' )
                         } );                 
                 }
