@@ -292,6 +292,36 @@
         header('location: list_death.php');
         
     }
+    else if (isset($_POST['delete_completed'])) {
+
+        $delete_com_id = $_POST['user_id'];
+        $delete_com_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_com_data = $con->prepare($delete_com_sql);
+        $delete_com_data->execute([':id'=>$delete_com_id]);
+    
+        header('location: list_completed.php');
+        
+    }
+    else if (isset($_POST['delete_home'])) {
+
+        $delete_home_id = $_POST['user_id'];
+        $delete_home_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_home_data = $con->prepare($delete_home_sql);
+        $delete_home_data->execute([':id'=>$delete_home_id]);
+    
+        header('location: list_home.php');
+        
+    }
+    else if (isset($_POST['delete_follow'])) {
+
+        $delete_follow_id = $_POST['user_id'];
+        $delete_follow_sql = "UPDATE tbl_pum SET status ='Inactive' WHERE idno = :id ";
+        $delete_follow_data = $con->prepare($delete_follow_sql);
+        $delete_follow_data->execute([':id'=>$delete_follow_id]);
+    
+        header('location: list_followup.php');
+        
+    }
     
         
 

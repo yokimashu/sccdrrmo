@@ -183,7 +183,25 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                     <i class="fa fa-minus nav-icon"></i>
                     <p>List of Death</p>
                   </a>
-                </li>            
+                </li>
+                <li class="nav-item">
+                  <a href="list_completed" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Completed</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="list_home" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Home Quarantine</p>
+                  </a>
+                </li>   
+                <li class="nav-item">
+                  <a href="list_followup" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>List of Lost to Follow Up</p>
+                  </a>
+                </li>                 
               </ul>
               
 
