@@ -65,7 +65,7 @@ $get_all_symptoms_data->execute();
  
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header  text-white bg-success">
+                    <div class="card-header  text-white bg-success"  id="header">
                         <h4> List of Person Under Monitor (PUMs) 
                         </h4>
                        
@@ -220,12 +220,12 @@ $get_all_symptoms_data->execute();
 
     });
     $(function (){
-            $('#users').DataTable( {
+            $('#example').DataTable( {
                 initComplete: function () { 
                     this.api().columns().every( function () {
                         var column = this;
                         var select = $('<select><option value=""></option></select>')
-                            .appendTo( $(column.header())  )
+                            .appendTo('#header' )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
