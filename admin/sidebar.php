@@ -154,7 +154,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                   </a>
                 </li>          
              
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="list_pui" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
                     <p>List of PUIs</p>
@@ -201,7 +201,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                     <i class="fa fa-minus nav-icon"></i>
                     <p>List of Lost to Follow Up</p>
                   </a>
-                </li>                 
+                </li>                  -x->
               </ul>
               
 
