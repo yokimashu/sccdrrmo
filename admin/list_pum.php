@@ -209,7 +209,8 @@ $get_all_symptoms_data->execute();
                                     .draw();
                             } );
                          column.data().unique().sort().each( function ( d ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                            select.append( '<option>Select Status</option>' )
+                            // select.append( '<option value="'+d+'">'+d+'</option>' )
                         } );                 
                 }
      
