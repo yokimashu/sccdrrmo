@@ -63,10 +63,10 @@ $get_all_symptoms_data->execute();
   <div class="content-wrapper" >
     <div class="content-header" style="float:right;" ></div>
     <section class="content">
-      <div class="card">
+      <div class="card ">
       
-        <div class="box-body">
-          <div class="col-md-3"> 
+      <div class="box-body">
+          <div class="col-md-8"> 
             <select class="form-control select2" id="heath_status"  name="health_status" value="<?php echo $health_status;?>">
               <option selected="selected">Health Status</option>
               <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
