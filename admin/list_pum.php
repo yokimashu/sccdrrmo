@@ -197,7 +197,7 @@ $get_all_symptoms_data->execute();
       'autoWidth'   : true,
       'autoHeight'  : true,
       initComplete: function () { 
-        this.api().columns().every( function () {
+        this.api().columns([4]).every( function () {
                         var column = this;
                         var select = $('<select class="form-control"><option value=""></option></select>')
                             .appendTo( $(column.header())  )
