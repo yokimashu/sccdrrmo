@@ -123,7 +123,7 @@ $get_all_symptoms_data->execute();
 
 </div>
 
-<div class="modal fade" id="deleteordinance_Modal" role="dialog" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="delete_PUMl" role="dialog" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
               <div class="modal-header">
@@ -204,6 +204,16 @@ $get_all_symptoms_data->execute();
         autoHide: true,
         zIndex: 2048,
       });
+    });
+
+    $(document).on('click', 'button[data-role=confirm_delete]', function(event){
+      event.preventDefault();
+
+      var user_id = ($(this).data('id'));
+
+      $('#user_id').val(user_id);
+      $('#delete_PUM').modal('toggle');
+
     });
 
 </script>
