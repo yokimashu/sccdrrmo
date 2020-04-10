@@ -130,30 +130,30 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly  class="form-control"  name="fName" placeholder="First Name" value="<?php echo $get_fName;?>" required>
+                            <input type="text" readonly  class="form-control"  name="get_fName" placeholder="First Name" value="<?php echo $get_fName;?>" required>
                           </div>
                           <div class="col-md-3" >
-                            <input type="text" readonly class="form-control"  name="mName" placeholder="Middle Name" value="<?php echo $get_mName;?>" required>
+                            <input type="text" readonly class="form-control"  name="get_mName" placeholder="Middle Name" value="<?php echo $get_mName;?>" required>
                           </div>
                           <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="lName" placeholder="Last Name" value="<?php echo $get_lName;?>" required>
+                            <input type="text" readonly class="form-control"  name="get_lName" placeholder="Last Name" value="<?php echo $get_lName;?>" required>
                           </div>
                         </div><br>
 
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number" readonly class="form-control"  name="age" placeholder="Age" value="<?php echo $get_age;?>" required>
+                            <input type="number" readonly class="form-control"  name="get_age" placeholder="Age" value="<?php echo $get_age;?>" required>
                           </div>
                           <div class="col-md-3 " >
-                            <select class="form-control select2" name="gender" value="<?php echo $get_gender; ?>">
+                            <select class="form-control select2" name="get_gender" value="<?php echo $get_gender; ?>">
                               <option >Select Gender</option>
                               <option <?php if ($get_gender == 'Female') echo 'selected'; ?> value="Female">Female </option>
                               <option <?php if ($get_gender == 'Male') echo 'selected'; ?> value="Male">Male </option>
                             </select>   
                           </div>
                           <div class="col-md-3 " >
-                            <select class="form-control select2" readonly id="barangay" name="barangay" value="<?php echo $type; ?>">
+                            <select class="form-control select2" readonly id="get_barangay" name="get_barangay" value="<?php echo $get_brgy; ?>">
                               <option>Please select...</option>
                                 <?php while ($get_brgy_data = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <?php  $selected = ($get_brgy == $get_brgy_data['barangay'])? 'selected':''; ?>
@@ -166,14 +166,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street;?>" required>
+                            <input type="text" readonly class="form-control"  name="get_street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street;?>" required>
                           </div>
                           
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="city" placeholder ="City / Municipality" value="<?php echo $get_city;?>" required>  
+                            <input type="text" readonly class="form-control"  name="get_city" placeholder ="City / Municipality" value="<?php echo $get_city;?>" required>  
                           </div>
                           <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="province" placeholder="Province" value="<?php echo $get_province;?>" required>  
+                            <input type="text" readonly class="form-control"  name="get_province" placeholder="Province" value="<?php echo $get_province;?>" required>  
                           </div>
                         </div><br>
                     </div>  
@@ -187,14 +187,14 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="city0rigin" placeholder="City of Origin" value="<?php echo $get_origin;?>" required>
+                            <input type="text" readonly class="form-control"  name="get_city0rigin" placeholder="City of Origin" value="<?php echo $get_origin;?>" required>
                           </div>
                           <div class="col-md-3">
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival"  value="<?php echo $get_arrival;?>">
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_arrivals" placeholder="Date Arrival"  value="<?php echo $get_arrival;?>">
                             </div>
                           </div>
                         </div><br>
@@ -202,7 +202,7 @@ $get_all_health_data->execute();
                         <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3">
-                            <input type="number" readonly class="form-control"  name="contact_number" placeholder="Contact Number" value="<?php echo $get_contact;?>" required>
+                            <input type="number" readonly class="form-control"  name="get_number" placeholder="Contact Number" value="<?php echo $get_contact;?>" required>
                           </div>
                          
                           <div class="col-md-3">
@@ -353,20 +353,21 @@ $get_all_health_data->execute();
 
    $(document).ready(function(){
         $('#btnEdit').click(function() {
-          $("input[name='firstname']").removeAttr("readonly");
-          $("input[name='middlename']").removeAttr("readonly");
-          $("input[name='lastname']").removeAttr("readonly");
-          $("input[name='age']").removeAttr("readonly");
-          $("input[name='street']").removeAttr("readonly");
-          $("input[name='city']").removeAttr("readonly");
-          $("input[name='province']").removeAttr("readonly");
-          $("input[name='city0rigin']").removeAttr("readonly");
-          $("input[name='date_arrival']").removeAttr("readonly");
-          $("input[name='contact_number']").removeAttr("readonly");
-          $("input[name='date_process']").removeAttr("readonly");
-          $("input[name='disease']").removeAttr("readonly");
-
-          $(".select2").attr("disabled", false);
+          $("input[name='get_fName']").removeAttr("readonly");
+          $("input[name='get_mName']").removeAttr("readonly");
+          $("input[name='get_lName']").removeAttr("readonly");
+          $("input[name='get_age']").removeAttr("readonly");
+          $("input[name='get_street']").removeAttr("readonly");
+          $("input[name='get_city']").removeAttr("readonly");
+          $("input[name='get_province']").removeAttr("readonly");
+          $("input[name='get_city0rigin']").removeAttr("readonly");
+          $("input[name='get_arrivals']").removeAttr("readonly");
+          $("input[name='get_number']").removeAttr("readonly");
+          $("input[name='get_process']").removeAttr("readonly");
+          $("input[name='get_disease']").removeAttr("readonly");
+          
+          // 5 ka combobox
+          $(".select2").attr("disabled", false); 
           $("#btnSubmit").attr("disabled", false);
           $("#btnEdit").attr("disabled", true);
         });
