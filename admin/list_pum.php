@@ -93,11 +93,12 @@ $get_all_symptoms_data->execute();
                                                     <td><?php echo $list_pum['symptoms'];?> </td>
                                                     <td><?php echo $list_pum['health_status'];?></td>
                                                     <td>
-                                                        <a class="btn btn-success btn-sm" href="view_pum.php?objid=<?php echo $list_pum['objid'];?>&id=<?php echo $list_pum['idno'];?> ">
+                                                        <a class="btn btn-success btn-sm" href="view_pum.php?id=<?php echo $list_pum['idno'];?> ">
                                                         <i class="fa fa-folder-open-o"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
-                                                            data-id="<?php echo $list_pum["idno"];?>"><i class="fa fa-trash-o"></i></button>
+                                                            data-id="<?php echo $list_pum["idno"];?>"><i class="fa fa-trash-o"></i>
+                                                        </button>
                                                         &nbsp;                           
                                                         
                                                     </td>
