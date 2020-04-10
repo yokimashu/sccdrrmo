@@ -225,16 +225,17 @@ $get_all_health_data->execute();
                           <div class="col-md-3">
                             <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
                           </div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
+                          <div class="col-md-6" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms" value="<?php echo $symptoms;?>">
                                 <option selected="selected">Select Symptoms</option>
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
                                 <?php } ?>
                             </select>
-                          </div>
+                          </div><br>
 
-
+                        <div class="row" >
+                          <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="<?php echo $health_status;?>">
                                 <option selected="selected">Health Status</option>
