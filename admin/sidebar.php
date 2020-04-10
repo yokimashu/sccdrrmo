@@ -201,7 +201,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                     <i class="fa fa-minus nav-icon"></i>
                     <p>List of Lost to Follow Up</p>
                   </a>
-                </li>                  -x->
+                </li>                  -->
               </ul>
               
 
