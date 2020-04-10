@@ -27,7 +27,7 @@ $get_all_type_data->execute([':status'=> $health_status]);
  
 }
 
-$get_noofdocs_sql= "SELECT COUNT(`health_status`) as total FROM `tbl_health` WHERE health_status LIKE '".$health_status."%' ";
+$get_noofdocs_sql= "SELECT COUNT(`health_status`) as total FROM `tbl_health` WHERE health_status LIKE '".$health_status."' ";
 $get_noofdocs_data = $con->prepare($get_noofdocs_sql);
 $get_noofdocs_data->execute();
 $get_noofdocs_data->setFetchMode(PDO::FETCH_ASSOC);
