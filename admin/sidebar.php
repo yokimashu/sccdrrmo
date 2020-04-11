@@ -295,7 +295,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             <ul class="nav nav-treeview">
             
             <li class="nav-item">
-                <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
+                <a href="list_users.php"  class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <p>Users</p>
                 </a>
