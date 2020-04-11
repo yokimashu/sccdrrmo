@@ -114,7 +114,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 <i class="nav-icon fa fa-exclamation-circle"></i>
                 <p>
                    ANNOUNCEMENTS
-                  <i class="right fa fa-angle-left"></i>
                 </p>
               </a>
 
@@ -267,23 +266,14 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               //<?php echo $registration_list?>
             </ul> -->
 
-            <li class="nav-item has-treeview" style="font-size:16px">
-              <a href="" class="nav-link ">
+            <li class="nav-item " style="font-size:16px">
+              <a href="list_incident" class="nav-link ">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
-                  REPORTS
-                  <i class="right fa fa-angle-left"></i>
+                  INCIDENT REPORT
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="list_incident" class="nav-link">
-                    <i class="fa fa-minus nav-icon"></i>
-                    <p>Incidents</p>
-                  </a>
-                </li>          
-              </ul>
-
+            
             <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
               <i class="nav-icon fa fa-list"></i>
