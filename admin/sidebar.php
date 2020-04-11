@@ -108,6 +108,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                   </p>
                 </a>
               </li>
+              
               <li class="nav-item has-treeview" style="font-size:16px">
               <a href="announcement" class="nav-link ">
                 <i class="nav-icon fa fa-exclamation-circle"></i>
@@ -116,17 +117,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                   <i class="right fa fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <a href="view_all_posts" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
-                  <p>View Announcements</p>
-                </a>
-              </li>
-              
-              </ul>
 
               <li class="nav-item has-treeview" style="font-size:16px">
               <a href="" class="nav-link ">
@@ -303,16 +293,26 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               </p>
             </a>
             <ul class="nav nav-treeview">
+            
             <li class="nav-item">
                 <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <p>Users</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="view_all_posts" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
+                  <p>View Announcements</p>
+                </a>
+              </li>
+              
             <li class="nav-item">
                 <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
-                  <p>Push Notifications</p>
+                  <p>Send Mobile Alerts</p>
                 </a>
               </li>
               
