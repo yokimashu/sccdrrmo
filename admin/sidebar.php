@@ -109,7 +109,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 </a>
               </li>
               
-              <li class="nav-item has-treeview" style="font-size:16px">
+              <li class="nav-item " style="font-size:16px">
               <a href="announcement" class="nav-link ">
                 <i class="nav-icon fa fa-exclamation-circle"></i>
                 <p>
