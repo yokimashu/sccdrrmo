@@ -4,7 +4,7 @@ $title = '';
 $avatar = '';
 if($state == 'edit' ){
 $title = 'Modify User';
-$avatar = '../userimage/avatar5.png';
+// $avatar = '../userimage/avatar5.png';
 }else{
   $title = 'Sign Up';
   $avatar = 'userimage/avatar5.png';

@@ -185,9 +185,12 @@ if($account_type == "Mobile"){
     $address = $_POST['address'];
     $email = $_POST['email'];
     $mobileNumber = $_POST['contactno'];
-   
-    
-    
+    $fileName = '';
+    $newfilename = '';  
+     $fileName = $_FILES['myFiles']['name'];
+     $temp = explode(".", $_FILES["myFiles"]["name"]);
+     $newfilename = round(microtime(true)) . '.' . end($temp);
+
     $sql2 = "UPDATE tbl_users SET 
     username            = '$username',
     firstname           = '$firstname',
@@ -198,8 +201,13 @@ if($account_type == "Mobile"){
     address             = '$address',
     mobileno            = '$mobileNumber',
     gender              = '$gender',
-    account_type        = '$account_type_value'
-     WHERE  id          = '$id'";
+    account_type        = '$account_type_value'";
+
+    if($newfilename != '')
+    {
+        $sql2.=",photo = '$newfilename'";
+    }
+    $sql2.= " WHERE  id    = '$id'";
     
     if ($con->query($sql2))
     
@@ -224,6 +232,42 @@ if($account_type == "Mobile"){
         </div>     
     ';
     }
+
+
+    $currentDir = getcwd();
+    $uploadDirectory = "../userimage/";
+    
+
+    $errors = [];
+
+    $fileExtensions = ['png','jpg','jpeg'];
+
+    // $fileName = $_FILES['myFiles']['name'];
+    $fileSize = $_FILES['myFiles']['size'];
+    $fileTmpName = $_FILES['myFiles']['tmp_name'];
+    $fileType = $_FILES['myFiles']['type'];
+    $target_file = $uploadDirectory . basename($_FILES['myFiles']['name']);
+    $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // $fileExtension = strtolower(end(explode('.',$fileName)));
+
+   
+
+    $uploadPath = $uploadDirectory .  $newfilename;
+        // echo "<pre>";
+        // echo print_r($uploadPath);
+        // echo "</pre";
+    
+
+    if (!in_array($fileExtension, $fileExtensions)) {
+        $errors[] = "This file extension is not allowed.";
+    }
+    if (empty($errors)) {
+        $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
+    }
+
+
+
+
   
     }
 

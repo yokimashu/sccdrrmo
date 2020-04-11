@@ -39,7 +39,7 @@ $requestData= $_REQUEST;
 // getting total number records without any search
 
 $sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id,username, email, mobileno, status  FROM tbl_users ";
-$sql.=" ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.="where status != 'DEACTIVATE'  ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -54,10 +54,10 @@ $totalData = $getrecord['id'];
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id, username, email, mobileno, status  FROM tbl_users where ";
+$sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id, username, email, mobileno, status  FROM tbl_users where status !='DEACTIVATE'";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-	$sql.="  (id LIKE '%".$requestData['search']['value']."%' ";    
+	$sql.="  and (id LIKE '%".$requestData['search']['value']."%' ";    
 	$sql.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR username LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR email LIKE '%".$requestData['search']['value']."%' ";
@@ -72,7 +72,7 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
 
 
 // $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-$sql.=" ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.="   ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $totalData = $get_user_data->fetch(PDOStatement::rowCount);

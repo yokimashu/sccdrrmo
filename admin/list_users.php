@@ -1,15 +1,28 @@
 <?php
 
 $alert_msg='';
+
 $button ="update";
 // include('verify_admin.php');
 include('../config/db_config.php');
 include('../insert_user.php'); 
 include('verify_admin.php');
+// include('sms.php');
 $state ="edit";
 
-//querry to select current user's information
-
+//deactivate user
+ if(isset($_POST['send'])){
+   $id = $_POST['user_id'];
+   $sql = "UPDATE tbl_users set status = 'DEACTIVATED' where id = '$id'";
+   $set_sql = $con->prepare($sql);
+   $set_sql->execute();
+   $alert_msg .= ' 
+   <div class="alert alert-danger alert-dismissible">
+   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+   <i class="icon fa fa-check"></i>You have successfully deleted the user.
+   </div>     
+';
+ }
 ?>
 
 <!DOCTYPE html> 
@@ -76,40 +89,50 @@ $state ="edit";
           </div>
       </section>
       
-      <div class = "modal fade " id="approved">
-    <div class ="modal-dialog ">
-    <div class ="modal-content ">
-    <div class="modal-header card-outline card-primary" >
-    <h4 class ="modal-title">Do you want to approve this user?</h4>
-    </div>
-    <!-- <form class =form-horizontal method ="POST" action = "updatecredentials.php"  enctype="multipart/form-data">
-         <div class = "modal-body ">
+      <div  class="modal fade"  id="modal-sms">
+    <div class="modal-dialog " role="document">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF");?>">
+      <div class = "container">
+      <div class = "row">
+      <div class ="col-12">
+        <div class = "input-group">
+     Full Name:<input type = "text" style="margin-left:10px;" readonly class="form-control" name = "personnum" id = "person">
+     </div>
+                 <input type="hidden" id="user_id" readonly class="form-control" name="user_id" >
+           </div>
+           </div>
+                
+     
+     
+           </div>
+      <div class="modal-footer">
+      
+        <button type="submit" name = "send" class="btn btn-primary" >DELETE</button>
+        <button   class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+  </div>
+  </div>
 
-         <label class = "col-sm-2 col-form-label"> User ID:</label>
-         <input type = "text" name = "userId" readonly class="form-control" id="userId">
-         <label class = "col-sm-3 col-form-label"> Full Name:</label>
-         <input type = "text" name = "fullname" readonly class="form-control" id="fullname">
-         <div class="modal-footer">            
-        
-        
-         <button type="submit" class="btn btn-primary btn-sm " name = "approved" ><i class="fa fa-save"></i> YES</button>
-
-         <button type="button" class="btn  btn-primary btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>CLOSE</button>
-         </div>
-       
-         </div>                 
-
-    </form> -->
     </div>
     </div>
      </div>
 
 
-
+     <?php include('../adduser_modal.php');?>
     </div>
 
   <!-- footer here -->
-  <?php include('../adduser_modal.php');?>
+ 
+  
   
     <?php include('footer.php');?>
 </div>
@@ -234,7 +257,7 @@ if (type == 'success') {
             {    "width": "90px",
                 "targets" : -1,
                 "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-danger btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i></button>'
+                "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-danger btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i> </button> <button class="btn btn-warning btn-sm btn-flat" id ="delete">  <i class="fa fa-trash"></i></button> '
           
          
               }],
@@ -274,6 +297,20 @@ if (type == 'success') {
           getRow(id);
           // console.log(id);
         });
+        $('#users tbody').on( 'click', '#delete', function(){
+        // $("#users").on("click","button.btn",function(){
+        // $('.approved').on( 'click',function() {
+          event.preventDefault();
+         var table = $('#users').DataTable();
+         var data = table.row( $(this).parents('tr') ).data();
+         var id = data[0];
+          var fullname = data[1];
+          $('#modal-sms').modal('toggle');
+          $('#person').val(fullname);
+          $('#user_id').val(id);
+          // getnumber(id);
+          // console.log(id);
+        });
        
        
        
@@ -300,7 +337,7 @@ if (type == 'success') {
         $('#usertype').val(result.account_type);
         $('#user_id').val(result.id);
         var img = document.getElementById("profilepic");
-       img.src = '../userimage/'+result.photo;
+        img.src = '../userimage/'+result.photo;
          console.log(result.account_type);
         
        },
@@ -310,6 +347,40 @@ if (type == 'success') {
      });
  
 }
+
+
+// function getnumber(id){
+//     $.ajax({
+//            type:"POST",
+//             url:'getUserdetail.php',
+//             data:{userId:id},
+         
+//             success:function(response){
+//         console.log("hello");
+//         var result = jQuery.parseJSON(response);
+//          $('#user_id').val(id);
+//         $('#username').val(result.username);
+//         $('#firstname').val(result.firstname);
+//         $('#middlename').val(result.middlename);
+//         $('#lastname').val(result.lastname);
+//         $('#gender').val(result.gender);
+//         $('#address').val(result.address);
+//         $('#datepicker').val(result.birthdate);
+//         $('#email').val(result.email);
+//         $('#contactno').val(result.mobileno);
+//         $('#usertype').val(result.account_type);
+//         $('#user_id').val(result.id);
+//         var img = document.getElementById("profilepic");
+//        img.src = '../userimage/'+result.photo;
+//          console.log(result.account_type);
+        
+//        },
+//        error: function (xhr, b, c) {
+//                 console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+//             }
+//      });
+ 
+// }
 
   });
 
