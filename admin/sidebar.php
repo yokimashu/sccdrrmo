@@ -108,28 +108,82 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                   </p>
                 </a>
               </li>
+              <li class="nav-item has-treeview" style="font-size:16px">
+              <a href="announcement" class="nav-link ">
+                <i class="nav-icon fa fa-exclamation-circle"></i>
+                <p>
+                   ANNOUNCEMENTS
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
               <li class="nav-item">
-                <a href="announcement" class="nav-link">
-                  <i class="nav-icon fa fa-exclamation-circle"></i>
-                  <p>
-                  Announcement
-                   
-                  </p>
+                <a href="view_all_posts" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
+                  <p>View Announcements</p>
                 </a>
               </li>
+              
+              </ul>
+
               <li class="nav-item has-treeview" style="font-size:16px">
+              <a href="" class="nav-link ">
+                <i class="nav-icon fa fa-thermometer-full"></i>
+                <p>
+                   COVID-19
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+              
+                <li class="nav-item">
+                  <a href="list_pum" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p>Master List</p>
+                  </a>
+                </li>     
+
+                <li class="nav-item">
+                  <a href="add_pum" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <span class="badge badge-danger navbar-badge"><?php if($numberofnewreport>0){echo $numberofnewreport;}?></span>
+                    <p>New Record</p>
+                  </a>
+                </li>
+  
+
+                <li class="nav-item">
+                  <a href="report_pum" class="nav-link">
+                    <i class="nav-icon fa fa-medkit"></i>
+                    <span class="badge badge-danger navbar-badge"><?php if($numberofnewreport>0){echo $numberofnewreport;}?></span>
+                    <p>Reported Cases</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                <a href="list_symptoms" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Add Symptoms</p>
+                </a>
+              </li>
+
+
+              <!-- <li class="nav-item has-treeview" style="font-size:16px">
                 <a href="add_pum" class="nav-link ">
                   <i class="nav-icon fa fa-thermometer-full"></i>
                   <p>
-                    COVID-19
+                    New Record
                   </p>
                 </a>
                 <ul >
-                </ul>
+                </ul> -->
 
               
  
-              <li class="nav-item has-treeview" style="font-size:16px">
+              <!-- <li class="nav-item has-treeview" style="font-size:16px">
               <a href="" class="nav-link ">
                 <i class="nav-icon fa fa-medkit"></i>
                 <p>
@@ -153,7 +207,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                     <p>List of PUMs</p>
                   </a>
                 </li>          
-             
+              -->
                 <!-- <li class="nav-item">
                   <a href="list_pui" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
@@ -207,7 +261,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
-              <li class="nav-item has-treeview" style="font-size:16px">
+              <!-- <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
               <i class="nav-icon fa fa-exchange"></i>
               <p>
@@ -220,14 +274,14 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
        
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <?php echo $registration_list?>
-            </ul>
+              //<?php echo $registration_list?>
+            </ul> -->
 
             <li class="nav-item has-treeview" style="font-size:16px">
               <a href="" class="nav-link ">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
-                  INCIDENT RECORDS
+                  REPORTS
                   <i class="right fa fa-angle-left"></i>
                 </p>
               </a>
@@ -235,46 +289,30 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 <li class="nav-item">
                   <a href="list_incident" class="nav-link">
                     <i class="fa fa-minus nav-icon"></i>
-                    <p>INCIDENT LIST</p>
+                    <p>Incidents</p>
                   </a>
                 </li>          
               </ul>
 
-            
-
             <li class="nav-item has-treeview" style="font-size:16px">
-            <a href="properties" class="nav-link ">
+            <a href="" class="nav-link ">
               <i class="nav-icon fa fa-list"></i>
               <p>
-                PROPERTIES
+                SETTINGS
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-            
+            <li class="nav-item">
+                <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
+                  <i class="fa fa-minus nav-icon"></i>
+                  <p>Users</p>
+                </a>
+              </li>
             <li class="nav-item">
                 <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
                   <i class="fa fa-minus nav-icon"></i>
                   <p>Push Notifications</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="list_symptoms" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Add Symptoms</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="add_announcement" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Add Announcement</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="view_all_posts" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <span class="badge badge-danger navbar-badge"><?php if($numberofdraft>0){echo $numberofdraft;}?></span>
-                  <p>View Announcements</p>
                 </a>
               </li>
               
