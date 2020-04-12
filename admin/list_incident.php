@@ -30,9 +30,8 @@ while ($result = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
     ':objid' => $_POST['objid']]);
 
     
-     if($stmt_update->query($stmt_update)){
+    
        $alert_msg.= 'Update successfully';
-     }
   }
 
 
@@ -149,7 +148,7 @@ $get_all_incident_data->execute();
         </button>
       </div>
       <div class="modal-body">
-
+      <form class ="form-horizontal" method="POST" action= "<?php htmlspecialchars("PHP_SELF"); ?> ">
       <div class="form-group">
                     <input type="text" id="idremarks" class="form-control" name="objid">
                 </div>
@@ -164,6 +163,7 @@ $get_all_incident_data->execute();
       <div class="modal-footer">
         <button type="submit" name="update" class="btn btn-success">UPDATE</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
       </div>
     </div>
   </div>
