@@ -7,6 +7,7 @@ include ('generate_pum.php');
 session_start();
 $user_id = $_SESSION['id'];
 
+include ('verify_admin.php');
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 } else {}
