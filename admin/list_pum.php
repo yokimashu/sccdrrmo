@@ -12,6 +12,8 @@ if (!isset($_SESSION['id'])) {
 } else {
 
 }
+include ('verify_admin.php');
+
 
 date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');
