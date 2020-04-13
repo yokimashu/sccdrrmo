@@ -153,11 +153,11 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 </li>
 
                 <li class="nav-item">
-                <a href="list_symptoms" class="nav-link">
-                  <i class="fa fa-minus nav-icon"></i>
-                  <p>Add Symptoms</p>
-                </a>
-              </li>
+                  <a href="list_symptoms" class="nav-link">
+                    <i class="fa fa-minus nav-icon"></i>
+                    <p> Symptoms</p>
+                  </a>
+                </li>
 
 
            
