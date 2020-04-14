@@ -18,6 +18,8 @@ $alert_msg = '';
       ';
       }
       
+    if (isset($_POST['notify'])) {
+
       $token = array();
 
       $get_token_sql = "SELECT token FROM tbl_users";
@@ -44,16 +46,17 @@ $alert_msg = '';
           curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
           curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
           curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
           //Send the request
           $response = curl_exec($ch);
           //Close request
           if ($response === FALSE) {
-          //die('FCM Send Error: ' . curl_error($ch));
-          die();
+          die('FCM Send Error: ' . curl_error($ch));
+         //  die();
           }
           curl_close($ch);
 
-
+    } 
 
 
   }

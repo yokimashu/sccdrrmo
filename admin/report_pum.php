@@ -121,7 +121,7 @@ $alert_msg = '';
                      <label class="col-form-label ">DATE</label>
                      <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                      <input type="text" name ="date" class="form-control date" data-provide="datepicker" id="datepicker">
+                      <input type="text" name ="date" class="form-control date" data-provide="datepicker" data-date-format="yyyy/mm/dd" data-date-today-btn="linked" id="datepicker">
                      </div>
                   </div>
                   <div class="col-md-5">
@@ -280,5 +280,6 @@ function getRow(id){
 };
 
  </script>
+
 </body>
 </html>
