@@ -270,7 +270,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               <a href="list_incident" class="nav-link ">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
-                  INCIDENT REPORT
+                  INCIDENT REPORT 
                 </p>
               </a>
             
