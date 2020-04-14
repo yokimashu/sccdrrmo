@@ -43,9 +43,9 @@ $get_all_published_data->execute();
         <div class="col-lg-2">
         </div>
         <div class="col-lg-8">
-           <div class="card shadow">   
+           <div class="card card-success shadow">   
              <div class="card-header">
-               <h3 class="card-title text-center">Announcement</h3>
+               <h4 class="text-center">ANNOUNCEMENT</h4>
              </div>
            </div>
            <?php
