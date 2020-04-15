@@ -11,6 +11,7 @@ if (!isset($_SESSION['id'])) {
 
 }
 
+
 //fetch published posts from database
 $get_all_published_sql = "SELECT * FROM tbl_announcement WHERE status='published'";
 $get_all_published_data = $con->prepare($get_all_published_sql);
@@ -86,8 +87,8 @@ $get_all_published_data->execute();
              <?php }?>
              <?php endforeach; ?>
 
-             <div class="container-fluid">
-               <div class="float-center">
+             
+               <div class="text-center">
                  <?php
                  echo "<ul class='pagination'>";
                  echo "<li class='page-item'><a href='?page=".($page-1)."'class='page-link'><i class='fa fa-angle-left'></i></a></li>"; 
@@ -98,14 +99,11 @@ $get_all_published_data->execute();
                  echo "<li class='page-item'><a href='?page=".($page+1)."'class='page-link'><i class='fa fa-angle-right'></i></a></li>";
                  echo "</ul>";
                  ?>
-               </div><!-- end float-center -->
-             </div><!-- end container-fluid -->                     
-        </div><!-- end col-lg-8 -->
-
-        <a href="add_announcement" class="float">
-            <button class="my-float btn btn-success btn-circle btn-xl"><i class="fa fa-plus"></i></button>
-            </a>
-        
+               </div>
+               
+           
+                               
+        </div><!-- end col-lg-8 -->       
       </div><!-- end row -->
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->

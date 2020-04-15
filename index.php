@@ -162,6 +162,7 @@
 
 <!-- jQuery 3 -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -177,6 +178,77 @@ fReader.onloadend = function(event){
     img.src = event.target.result;
 }
 }
+$(document).ready(function() {  
+  
+$('#username').keyup(function(){
+  var username = $('#username').val();
+ 
+$.ajax({
+  type:"POST",
+  url:"check_username.php",
+  data:{uname:username},
+  success: function(response){
+    var result = jQuery.parseJSON(response);
+    if(result.data1!= ''){
+      // $('#username').toggle("tooltip");
+      // $('#username').attr("title","This username is already taken.");
+      $('#checkusername').html('This username is already taken.');
+      $('#save').prop('disabled', true);
+// console.log(result.data1);
+}
+else{
+  if(username !=''){
+    $('#checkusername').html('This username is available.');
+    $('#save').prop('disabled', false);
+}
+}
+  },
+  error: function (xhr, b, c) {
+   console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+     }
+})
+if(username == ''){
+  $('#checkusername').html('');
+  $('#save').prop('disabled', true);
+}
+
+})
+
+$('#email').keyup(function(){
+  var mail = $('#email').val();
+ 
+$.ajax({
+  type:"POST",
+  url:"check_username.php",
+  data:{email:mail},
+  success: function(response){
+    var result = jQuery.parseJSON(response);
+    if(result.data2!= ''){
+      $('#checkemail').html('This email is already taken.');
+      $('#save').prop('disabled', true);
+// console.log(result.data1);
+}
+else{
+  if(mail !=''){
+    $('#checkemail').html('This email is available.');
+    $('#save').prop('disabled', false);
+}
+}
+  },
+  error: function (xhr, b, c) {
+   console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+     }
+})
+if(mail == ''){
+  $('#checkemail').html('');
+  $('#save').prop('disabled', false);
+}
+
+
+})
+
+
+});
 </script>
 </body>
 

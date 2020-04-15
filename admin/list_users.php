@@ -11,7 +11,7 @@ include('verify_admin.php');
 $state ="edit";
 
 //deactivate user
- if(isset($_POST['send'])){
+ if(isset($_POST['delete'])){
    $id = $_POST['user_id'];
    $sql = "UPDATE tbl_users set status = 'DEACTIVATED' where id = '$id'";
    $set_sql = $con->prepare($sql);
@@ -115,7 +115,7 @@ $state ="edit";
            </div>
       <div class="modal-footer">
       
-        <button type="submit" name = "send" class="btn btn-primary" >DELETE</button>
+        <button type="submit" name = "delete" class="btn btn-primary" >DELETE</button>
         <button   class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -263,9 +263,9 @@ if (type == 'success') {
               }],
 
 				} );
-        setInterval( function () {
-    dataTable.ajax.reload();
-}, 10000 ); 
+//         setInterval( function () {
+//     dataTable.ajax.reload();
+// }, 10000 ); 
        $('#users tbody').on( 'click', '#btn', function(){
         // $("#users").on("click","button.btn",function(){
         // $('.approved').on( 'click',function() {
@@ -349,38 +349,78 @@ if (type == 'success') {
 }
 
 
-// function getnumber(id){
-//     $.ajax({
-//            type:"POST",
-//             url:'getUserdetail.php',
-//             data:{userId:id},
-         
-//             success:function(response){
-//         console.log("hello");
-//         var result = jQuery.parseJSON(response);
-//          $('#user_id').val(id);
-//         $('#username').val(result.username);
-//         $('#firstname').val(result.firstname);
-//         $('#middlename').val(result.middlename);
-//         $('#lastname').val(result.lastname);
-//         $('#gender').val(result.gender);
-//         $('#address').val(result.address);
-//         $('#datepicker').val(result.birthdate);
-//         $('#email').val(result.email);
-//         $('#contactno').val(result.mobileno);
-//         $('#usertype').val(result.account_type);
-//         $('#user_id').val(result.id);
-//         var img = document.getElementById("profilepic");
-//        img.src = '../userimage/'+result.photo;
-//          console.log(result.account_type);
-        
-//        },
-//        error: function (xhr, b, c) {
-//                 console.log("xhr=" + xhr + " b=" + b + " c=" + c);
-//             }
-//      });
- 
-// }
+$(document).ready(function() {  
+  
+  $('#username').keyup(function(){
+    var username = $('#username').val();
+   
+  $.ajax({
+    type:"POST",
+    url:"../check_username.php",
+    data:{uname:username},
+    success: function(response){
+      var result = jQuery.parseJSON(response);
+      if(result.data1!= ''){
+        // $('#username').toggle("tooltip");
+        // $('#username').attr("title","This username is already taken.");
+        $('#checkusername').html('This username is already taken.');
+        $('#save').prop('disabled', true);
+  // console.log(result.data1);
+  }
+  else{
+    if(username !=''){
+      $('#checkusername').html('This username is available.');
+      $('#save').prop('disabled', false);
+  }
+  }
+    },
+    error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+  })
+  if(username == ''){
+    $('#checkusername').html('');
+    $('#save').prop('disabled', true);
+  }
+  
+  })
+  
+  $('#email').keyup(function(){
+    var mail = $('#email').val();
+   
+  $.ajax({
+    type:"POST",
+    url:"../check_username.php",
+    data:{email:mail},
+    success: function(response){
+      var result = jQuery.parseJSON(response);
+      if(result.data2!= ''){
+        $('#checkemail').html('This email is already taken.');
+        $('#save').prop('disabled', true);
+  // console.log(result.data1);
+  }
+  else{
+    if(mail !=''){
+      $('#checkemail').html('This email is available.');
+      $('#save').prop('disabled', false);
+  }
+  }
+    },
+    error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+  })
+  if(mail == ''){
+    $('#checkemail').html('');
+    $('#save').prop('disabled', false);
+  }
+  
+  
+  })
+  
+  
+  });
+  
 
   });
 

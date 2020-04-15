@@ -59,7 +59,7 @@ if($no_of_row > 0)
          <img style = "width:500px;height:500px;"src="dist/img/scdrrmo_logo.png" class ="img-fluid ">
                 </div>
                 </div>
-        <a href="http://35.241.87.123/sccdrrmo/">SCCDRRMO WEBSITE</a>
+        <a href="http://34.92.117.58/sccdrrmo/">SCCDRRMO WEBSITE</a>
 
 			
 		

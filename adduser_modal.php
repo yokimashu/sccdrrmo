@@ -62,18 +62,18 @@ $title = 'Modify User';
                             
                             </div>
                         </div>
-                    <div class = "row">
-                      <div class = "col-6">
+                    <div style ="margin-bottom:0px;padding-bottom:0px" class = "row">
+                      <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="form-group " >
 <!--                        <div class = ".col-lg-6 .col-md-6 .col-sm-6 .col-xs-6" >-->
                     <label for="username" class="col-form-label ">Username </label>
                      
-                     <input type="text" name ="username" class="form-control " id="username" required>
+                     <input type="text"  name ="username" class="form-control " id="username" required>
                     
                     </div>
                        </div>
                   <?php if($state =='addnew'){// if the state is addnew the password field will show else hidden.
-                  echo '<div class ="col-6">';
+                  echo '<div class ="col-lg-6 col-md-6 col-sm-6 col-xs-6">';
                   echo  '<div class="form-group">';
 //                  echo '<div class = ".col-lg-6 .col-md-6 .col-sm-6 .col-xs-6">';
                   echo '<label for="password" class="col-form-label ">Password </label>';
@@ -82,6 +82,12 @@ $title = 'Modify User';
                   echo '</div>' ;
                   echo '</div>';
                   } ?>
+                  </div>
+                  <div style ="margin-top:0px;padding-top:0px"  class = "row">
+                  <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <label id ="checkusername"style="font-style:italic;font-weight:normal;color:red;font-size:12px"> </label>
+                
+                         </div>
                          </div>
                      <div class = "row">
                      <div class = "col-4 ">   
@@ -149,8 +155,9 @@ $title = 'Modify User';
                     <div class ="col-12">
                     <div class="input-group margin-bottom">
                     <label for="email" class=" col-form-label margin-medium">Email:</label>             
-                    <input type="email"  name ="email" class="form-control" id="email" required>
-                    </div>                   
+                    <input type="email"  name ="email margin-small" class="form-control" id="email" required>
+                    </div>  
+                    <label id = "checkemail" style="margin-left:60px;font-style:italic;font-weight:normal;color:red;font-size:12px"></label>                 
                     </div>
                     </div> 
                         
@@ -184,7 +191,7 @@ $title = 'Modify User';
 
                     <div class="modal-footer">
                 
-                       <button type="submit" class="btn btn-primary btn-sm" name="<?php echo $button ?>"><i class="fa fa-save"></i> Save</button>
+                       <button type="submit" id ="save" class="btn btn-primary btn-sm" name="<?php echo $button ?>"><i class="fa fa-save"></i> Save</button>
                        
                        <button class="btn btn-default btn-sm pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>              
                     </div> <!-- modal footer -->

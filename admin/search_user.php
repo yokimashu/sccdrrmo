@@ -54,7 +54,7 @@ $totalData = $getrecord['id'];
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id, username, email, mobileno, status  FROM tbl_users where status !='DEACTIVATE'";
+$sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id,username, email, mobileno, status  FROM tbl_users where status !='DEACTIVATE'";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.="  and (id LIKE '%".$requestData['search']['value']."%' ";    
