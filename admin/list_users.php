@@ -11,7 +11,7 @@ include('verify_admin.php');
 $state ="edit";
 
 //deactivate user
- if(isset($_POST['send'])){
+ if(isset($_POST['delete'])){
    $id = $_POST['user_id'];
    $sql = "UPDATE tbl_users set status = 'DEACTIVATED' where id = '$id'";
    $set_sql = $con->prepare($sql);
@@ -115,7 +115,7 @@ $state ="edit";
            </div>
       <div class="modal-footer">
       
-        <button type="submit" name = "send" class="btn btn-primary" >DELETE</button>
+        <button type="submit" name = "delete" class="btn btn-primary" >DELETE</button>
         <button   class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       </form>
