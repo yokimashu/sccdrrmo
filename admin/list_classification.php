@@ -3,6 +3,7 @@
 
 include ('../config/db_config.php');
 include ('sql_queries.php');
+
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -11,15 +12,11 @@ if (!isset($_SESSION['id'])) {
 } else {
 
 }
+$symptoms ='';
 
-date_default_timezone_set('Asia/Manila');  
-$date = date('Y-m-d');
-$time = date('H:i:s');
-
-$symptoms= $patient= $person_status ='';
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+$get_user_sql = "SELECT * FROM tbl_users where id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
@@ -29,16 +26,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' and health_status = 'Lost of Follow Up' order by idno DESC";
-$get_all_pum_data = $con->prepare($get_all_pum_sql);
-$get_all_pum_data->execute();
-
-
-
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status = 'Active'";
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active' order by idno DESC";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
-
 
 ?>
 
@@ -49,7 +39,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | List of Lost of Follow Up </title>
+  <title>SCCDRRMO | List of Symptoms</title>
   <?php include('header.php');?>
 
 
@@ -65,49 +55,44 @@ $get_all_symptoms_data->execute();
     
     <section class="content">
             <div class="card card-info">
-                    <div class="card-header  text-white bg-success">
-                        <h4> List of Lost to Follow Up  </h4>
+                    <div class="card-header text-white bg-success">
+                        <h4> List of Symptoms
+                         <a href="#" data-toggle="modal" style="float:right;" data-target="#addSymptoms" type="button" class="btn btn-info bg-gradient-info" 
+                            style="border-radius: 0px;"><i class="nav-icon fa fa-plus"></i></a>
+                        </h4>
                     </div>
                     <div class="card-body">
                         <div class="box box-primary">
                             <form role="form" method="get" action="">
-                                <div class="box-body">
-                                  <div class="table-responsive">
-                                    <table style = "overflow-x: auto;" id="users" class="table table-bordered table-striped">
+                                <div class="card-body" >
+                                    <table id="users" class="table table-bordered table-striped">
                                         <thead align="center">
                                             <tr style="font-size: 1.10rem">
-                                                <th> Date </th>
-                                                <th> Time </th>
-                                                <th> Full Name </th>
-                                                <th> Symptoms</th>
-                                                <th> Health Status</th>
+                                                <th> ID No </th>
+                                                <th> Symptoms </th>
+                                                <th> Status</th>
                                                 <th> Options</th>
                                             </tr>
                                         </thead>
                                         <tbody >
-                                         <?php while($list_pum = $get_all_pum_data->fetch(PDO::FETCH_ASSOC)){ ?>
-                                                <tr align="center">  
-                                                    <td><?php echo $list_pum['date_report'];  ?></td>
-                                                    <td><?php echo $list_pum['time_report']; ?></td>
-                                                    <td><?php echo $list_pum['first_name']; echo " "; echo $list_pum['middle_name']; echo " "; echo $list_pum['last_name'];?> </td>
-                                                    <td><?php echo $list_pum['symptoms'];?> </td>
-                                                    <td><?php echo $list_pum['health_status'];?></td>
-                                                    <td>
-                                                        <a class="btn btn-success btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno'];?> ">
-                                                        <i class="fa fa-folder-open-o"></i>
-                                                        </a>
-                                                        <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
-                                                            data-id="<?php echo $list_pum["idno"];?>"><i class="fa fa-trash-o"></i>
-                                                        </button>
-                                                        &nbsp;                           
-                                                        
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
+                                                <?php while($list_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)){ ?>
+                                                    <tr align="center">  
+                                                        <td><?php echo $list_symptoms['idno'];?> </td>
+                                                        <td><?php echo $list_symptoms['symptoms'];?> </td>
+                                                        <td><?php echo $list_symptoms['status'];?></td>
+                                                        <td>
+                                                            <a class="btn btn-success btn-sm" href="view_symptoms.php?&id=<?php echo $list_symptoms['idno'];?>  ">
+                                                            <i class="fa fa-folder-open-o"></i></a>
+                                                            <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
+                                                            data-id="<?php echo $list_symptoms["idno"];?>"><i class="fa fa-trash-o"></i></button>
+                                                            &nbsp;                           
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            
                                         </tbody>
                                     </table>
-                                    
-                                  </div>
                                 </div>
                             </form>
                         </div>
@@ -124,7 +109,47 @@ $get_all_symptoms_data->execute();
 
 </div>
 
-<div class="modal fade" id="deleteFollow" role="dialog" data-backdrop="static" data-keyboard="false">
+
+
+
+
+
+<div class="modal fade" id="addSymptoms" tabindex="-1" role="dialog" aria-labelledby="addSymptoms" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addSymptoms">Add Symptoms</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="submitFormCateg" method="post" action="sql_queries.php" >
+
+              <div class="form-group">
+                <input type="text"   class="form-control" name="symptoms" placeholder="Symptoms" id= "symptoms" value="<?php echo $symptoms; ?>" required>
+              </div>
+              
+              <button type="submit" class="btn btn-success" name="insert_symptoms"><i class="fa fa-check fa-fw"></i></button>
+              <button type="reset" class="btn btn-info" ><i class="fa fa-undo fa-fw"></i></button>
+            </form> 
+           
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="deleteordinance_Modal" role="dialog" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
               <div class="modal-header">
@@ -143,7 +168,7 @@ $get_all_symptoms_data->execute();
 
                   <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
                   <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-                  <input type="submit" name="delete_follow" class="btn btn-danger" value="Yes">
+                  <input type="submit" name="delete_symptoms" class="btn btn-danger" value="Yes">
                 </div>
               </form>
             </div>
@@ -192,19 +217,12 @@ $get_all_symptoms_data->execute();
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,
-      'autoHeight'  : true
-     
+      'autoHeight'  : true,
+      'responsive'  : true
     });
 
-    $('#addPUM').on('hidden.bs.modal', function () {
-        $('#addPUM form')[0].reset();
-    });
-
-    $(function() {
-      $('[data-toggle="datepicker"]').datepicker({
-        autoHide: true,
-        zIndex: 2048,
-      });
+    $('#addSymptoms').on('hidden.bs.modal', function () {
+        $('#addSymptoms form')[0].reset();
     });
 
     $(document).on('click', 'button[data-role=confirm_delete]', function(event){
@@ -213,10 +231,11 @@ $get_all_symptoms_data->execute();
       var user_id = ($(this).data('id'));
 
       $('#user_id').val(user_id);
-      $('#deleteFollow').modal('toggle');
+      $('#deleteordinance_Modal').modal('toggle');
 
     });
 
+  
 </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <?php
 
 include ('../config/db_config.php');
+
 session_start();
 $user_id = $_SESSION['id'];
 

@@ -6,11 +6,14 @@ include ('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
 
+include ('verify_admin.php');
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 } else {
 
 }
+include ('verify_admin.php');
+
 
 date_default_timezone_set('Asia/Manila');  
 $date = date('Y-m-d');

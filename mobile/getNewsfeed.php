@@ -13,7 +13,7 @@
 function showAllPost(){
         global $con;
         global $appUrl;
-        $newsUrl = "http://35.241.87.123/sccdrrmo/postimage/";
+        $newsUrl = "http://34.92.117.58/sccdrrmo/postimage/";
 
         $listOfPosts = array();
         $status = "published";
