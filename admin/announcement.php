@@ -11,6 +11,7 @@ if (!isset($_SESSION['id'])) {
 
 }
 
+
 //fetch published posts from database
 $get_all_published_sql = "SELECT * FROM tbl_announcement WHERE status='published'";
 $get_all_published_data = $con->prepare($get_all_published_sql);
