@@ -22,5 +22,9 @@ if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 }
 
+// IF UNREGISTERED USER BROWSE THE SITE, ONLY USED IN ANNOUNCEMENT
+if($_SESSION['id'] == "guest") {
+    header('location:../index.php');
+}
 
 ?>

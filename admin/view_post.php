@@ -3,13 +3,14 @@
 
 include ('../config/db_config.php');
 session_start();
-$user_id = $_SESSION['id'];
 
-if (!isset($_SESSION['id'])) {
-    header('location:../index.php');
-} else {
-
+// set unregistered user
+if (empty($_SESSION['id'])) {
+  $_SESSION['id'] = "guest";
 }
+
+
+$user_id = $_SESSION['id'];
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id";
@@ -40,14 +41,26 @@ if (isset($_GET['post'])) {
     }
 
     $_SESSION['post_id'] = $post_id;
+
+    $stripcontent = strip_tags($post_content);
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta property="og:url"           content="http://34.92.117.58/sccdrrmo/admin/view_post.php?post=<?php echo $post_id ?>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="<?php echo $post_title; ?>" />
+  <meta property="og:description"   content="<?php echo $stripcontent; ?>" />
+  <meta property="og:image"         content="http://34.92.117.58/sccdrrmo/postimage/<?php echo $post_image; ?>" />
+  <meta property="og:image:width"   content="1920"/>
+  <meta property="og:image:height"  content="1080"/>
+
   <title>SCCDRRMO | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,40 +76,73 @@ if (isset($_GET['post'])) {
    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
 
-  <?php include('sidebar.php');?>
+
+
+<div class="wrapper">
+<?php if($_SESSION['id'] == "guest") {
+  include('UnregisteredSidebar.php');
+  $btncomment = "hidden";
+}else{
+  include('sidebar.php');
+  $btncomment = "";
+}
+
+ ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
+  
     <div class="content-header"></div>
     <div class="container-fluid">
-            <a href="announcement" class="float">
-            <button class="my-float btn btn-success btn-circle btn-xl"><i class="fa fa-angle-left"></i></button>
-            </a>
-     <div class="row">
-        <div class="col-lg-6">
-             <div class="card-body shadow">
-                <p><h2><a href="#"><?php echo strtoupper($post_title); ?></a></h2></p>
-                <p><h5>by <a href="#"><?php echo $post_author; ?></a></h5></p>
-                <p><span class="fa fa-clock-o"></span> Posted on <?php echo $post_date; ?></p>
-                <hr>
-                <p><?php echo $post_content; ?></p>
-             </div>
 
+     <div class="row">
+        <div class="col-lg-1">
+          <div class="card">
+           <a href="announcement">
+            <button <?php echo $btncomment; ?> class="btn btn-info btn-block"><i class="fa fa-angle-left"></i> BACK </button>
+           </a>
+          </div>
+        </div><!-- end col-lg-1 -->
+
+        <div class="col-lg-6">
+           <div class="card">
+             <div class="card-header">
+                <p><h2><a href="#"><?php echo strtoupper($post_title); ?></a></h2></p>
+                <p><h6>by <a href="#"><?php echo $post_author; ?></a></h6></p>
+                <p><span class="fa fa-clock-o"></span> Posted on <?php echo $post_date; ?></p>
+             </div><!-- end card-head -->
+
+             <div class="card-body text-center">
+                <img class="img-fluid img-rounded" src="../postimage/<?php echo $post_image; ?>" alt="900 * 300">
+                <hr>
+             </div><!-- end card-body -->
+
+             <div class="card-body text-justify">
+                <p><?php echo $post_content; ?></p>
+             </div><!-- end card-body -->
+
+             <div class="card-footer">
+                <div class="fb-like" data-href="http://34.92.117.58/sccdrrmo/admin/view_post?post=<?php echo $post_id ?>" data-width="500" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+             </div><!-- end card-footer -->
+           </div> <!-- end card -->
+        </div><!-- end col-lg-6 -->
+
+        <div class="col-lg-4">
                <!--------------- C O M M E N T ------------->
-             <div class="card-body shadow">
+           <div class="card">
+             <div class="card-body">
                <form method="POST" id="comment_form">
                  <input hidden name="comment_post_id" id="comment_post_id" class="form-control" value="<?php echo $post_id ?>">
                  <input hidden name="comment_name" id="comment_name" class="form-control" value="<?php echo $db_fullname ?>">
                    <span id="replyto"></span>
                    <div class="input-group input-group-sm">
                    
-                   <input name="comment_content" id="comment_content" class="form-control" placeholder="Write a comment...">
+                   <input <?php echo $btncomment; ?> name="comment_content" id="comment_content" class="form-control" placeholder="Write a comment...">
                    
                    <span class="input-group-append">
                     <input hidden name="comment_id" id="comment_id" value="0" />
-                    <button type="submit" id="submit" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
+                    <button <?php echo $btncomment; ?> type="submit" id="submit" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
                   </span>
                  </div>
                </form>
@@ -104,26 +150,22 @@ if (isset($_GET['post'])) {
                <br />
                <div id="display_comment"></div>
              </div><!-- card-body -->
-
-        </div><!-- end col-lg-6 -->
-        <div class="col-lg-6">
-         
-             <div class="card-body shadow">
-             <img class="img-fluid img-rounded" src="../postimage/<?php echo $post_image; ?>" alt="900 * 300">
-             </div>
-
-             
-
-        </div><!-- end col-lg-8 -->
+           </div><!-- card -->
+        </div><!-- end col-lg-4 -->
       </div><!-- end row -->
+
+
+
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->
+
+ 
   
  <?php include('footer.php')?>
 
-</div>
+</div><!-- Main Wrapper -->
 
-  <!-- Delete -->
+  <!-- Delete Comment Modal -->
   <div class="modal fade" id="delete">
     <div class="modal-dialog  modal-dialog-centered">
           <div class="modal-content">
@@ -156,6 +198,10 @@ if (isset($_GET['post'])) {
 		}
   ?>
 
+
+ <!-- facebook like and share -->
+ <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -177,6 +223,7 @@ if (isset($_GET['post'])) {
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function(){
