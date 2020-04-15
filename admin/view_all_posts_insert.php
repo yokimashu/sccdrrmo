@@ -32,7 +32,7 @@ $alert_msg = '';
       
           $url = "https://fcm.googleapis.com/fcm/send";
           //$token              = "your device token";
-          $serverKey          = 'AAAAPN2sEA0:APA91bFJNXG0TYDBo51vJbCJh2bMEL_uO3KJ5qGhzkW9V1w32wEz5HgQLRBmP2nJwAz1-_rS3g4xdQQKRWHNmF00fqShvDNRwEnNP5GTMLAkY23ABb6uGdPjtm2P5Yqjrc_4bObc_J7G';
+          $serverKey          = 'AAAAuF1uNFM:APA91bGXH4SXapwXpI6qxaapsX_Me9M5573saXnFxFpW4tZD_M3xV_pg4tYAxvHzovPkqDr0u5pnlZPHvZLPdlsZoCKp6wnUXpWEW5EhG7xM4byW8PTAxfsCedSWvXFy-lEQvonU-FVN';
           $message            = $_POST['title'];
           $title              = 'SCCDRRMO ANNOUNCEMENT';
           $notification       = array('title' =>$title , 'body' => $message, 'sound' => 'default', 'badge' => '1');
