@@ -13,7 +13,7 @@
 function showAllPost(){
         global $con;
         //global $appUrl;
-        $imageUrl = "http://35.241.87.123/sccdrrmo/mobile/images/";
+        $imageUrl = "http://34.92.117.58/sccdrrmo/mobile/images/";
 
         $listOfPosts = array();
         $userID = $_GET['userID'];

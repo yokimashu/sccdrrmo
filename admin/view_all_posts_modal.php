@@ -41,6 +41,8 @@
                     <p>by:</p>
                     <h4 class="edit_author"></h4>
 	            	</div>
+					<br>
+					<input type="checkbox"  name="notify" checked><span style="color:red"> Send notification to users. </span>
           	</div>
           	<div class="modal-footer">
             	<button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>

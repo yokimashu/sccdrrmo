@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 function showInfo(){
     global $con;
 
-$imageUrl = "http://35.241.87.123/sccdrrmo/userimage/";
+$imageUrl = "http://34.92.117.58/sccdrrmo/userimage/";
 
 $username = $_GET['username'];
 
