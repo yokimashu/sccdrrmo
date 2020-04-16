@@ -19,12 +19,15 @@
   
 }
 
+$photo = '../postimage/'.$image ;
+
 $row = array(
   'id'         => $id,
   'title'      => $title,
   'author'     => $author,
   'status'     => $status,
   'content'     => $content,
+  'image1'     => $photo,
   'image'     => $image,
 );
     echo json_encode($row);

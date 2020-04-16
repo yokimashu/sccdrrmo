@@ -91,6 +91,7 @@ $btnNew = 'hidden';
            </div><!-- end card-body -->
 
            <div class="card-footer">
+            <a href="view_all_posts" class="btn btn-info" value="Publish Post"><span class="fa fa-angle-left"> </span>  Back</a>
             <button type="submit" <?php echo $btnSave; ?> name="insert_announcement" class="btn btn-success" onclick="return checkWordCount()"  value="Publish Post">Publish Post</button>
             <button type="submit"  <?php echo $btnNew; ?> name="add" class="btn btn-success" value="New"><i class="fa fa-refresh"></i></button>
            </div><!-- end card-footer -->

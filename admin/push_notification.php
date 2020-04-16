@@ -3,8 +3,6 @@
  <div  class="modal fade"   id="push_notify">
    <div class="small-box modal-dialog">
    <div class="modal-content bg-info">
-
-     
        
          <form class="form-horizontal" id ="userform" method="POST" action= "<?php htmlspecialchars("PHP_SELF");?>"  enctype="multipart/form-data">  
          <div class = "modal-body">

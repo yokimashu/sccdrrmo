@@ -10637,7 +10637,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   top: -10px;
   right: 10px;
   z-index: 0;
-  font-size: 150px;
+  font-size: 125px;
   color: rgba(0, 0, 0, 0.15);
 }
 
@@ -10646,7 +10646,7 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 
 .small-box:hover .icon {
-  font-size: 175px;
+  font-size: 150px;
 }
 
 @media (max-width: 767.98px) {
