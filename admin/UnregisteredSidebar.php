@@ -94,14 +94,15 @@ $get_all_sbpublished_data->execute();
   </aside>
                <!--------------- PLEASE LOG IN ------------->
 
-       <div class="alert alert-default shadow alert-dismissible float-center">
-       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <div class="alert-body text-center">
-            
-            <p>HELLO GUEST! </p>
-            <p><a href="../index.php"><button type="button" class="btn btn-block btn-success">SIGN IN</button></a> 
-            or 
-            <a href="../index.php"><button type="button" class="btn btn-block btn-info">SIGN UP</button></a></p>
- 
+       <div class="card float-center">
+           <div class="card-tools">
+             <button type="button" class="btn btn-tool pull-right" data-widget="remove"><i class="fa fa-times"></i></button>
+           </div>
+         <div class="card-body text-center">            
+           Hello Guest!<br>
+            <a href="../index.php"><button type="button" class="btn btn-sm btn-success">SIGN IN / REGISTER</button></a> <br>
+            - or- <br>
+            <a href="../index.php"><button type="button" class="btn btn-sm btn-info"><i class="fa fa-android"></i> DOWNLOAD APP</button></a>  <br>
+           
          </div>
        </div>
