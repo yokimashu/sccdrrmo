@@ -188,9 +188,7 @@ $alert_msg = '';
                 </div>
           	</div>
           	<div class="modal-footer">
-              <button type="submit" class="btn btn-flat btn-warning btn-lg" name="submit_delete"><i class="fa fa-exclamation"></i> Transfer to PUM</button>
-              <button type="submit" class="btn btn-flat btn-danger btn-lg" name="submit_delete"><i class="fa fa-exclamation"></i> Transfer to PUI</button>
-            	<button type="submit" class="btn btn-flat btn-default btn-sm pull-left"><i class="fa fa-close"></i> Close</button>
+            	<button type="submit" class="btn btn-flat btn-dark pull-left"><i class="fa fa-close"></i> Close</button>
             	
             	</form>
           	</div>

@@ -84,7 +84,10 @@ $alert_msg = '';
       $id = $_POST['id'];
       $image = $_POST['image'];
 
-      unlink('../postimage/'.$image);
+      if($image != "sancarlos.png"){
+        unlink('../postimage/'.$image); // delete image in the file directory
+      }
+      
       $sql = "DELETE FROM tbl_announcement WHERE id = '$id';
               DELETE FROM tbl_comment WHERE post_id = '$id'";
 		if($con->query($sql)){

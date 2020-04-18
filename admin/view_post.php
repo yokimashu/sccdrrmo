@@ -108,9 +108,9 @@ if (isset($_GET['post'])) {
         <div class="col-lg-6">
            <div class="card">
              <div class="card-header">
-                <p><h2><a href="#"><?php echo strtoupper($post_title); ?></a></h2></p>
-                <p><h6>by <a href="#"><?php echo $post_author; ?></a></h6></p>
-                <p><span class="fa fa-clock-o"></span> Posted on <?php echo $post_date; ?></p>
+                <p><h2><?php echo strtoupper($post_title); ?></h2></p>
+                <h6 class="text-muted">by <?php echo $post_author; ?></h6>
+                <h6 class="text-muted"><small><span class="fa fa-clock-o"></span> Posted on <?php echo date("F d, Y", strtotime($post_date)); ?></small></h6>
              </div><!-- end card-head -->
 
              <div class="card-body text-center">

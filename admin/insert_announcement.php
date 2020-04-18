@@ -14,7 +14,7 @@ if (isset($_POST['insert_announcement'])) {
     $post_status = 'draft';
     $post_author = $db_fullname;
     $post_tag = $_POST['tags'];
-
+    
     //if file input is empty
     if ($_FILES["myFiles"]["error"] == 4){     
 
@@ -51,7 +51,7 @@ if (isset($_POST['insert_announcement'])) {
           </div>     
       ';
       
-      $fileName = 'sancarlos.png';
+      $newfilename = 'sancarlos.png';
       $btnSave = 'hidden';
       $btnNew = '';
     
@@ -166,8 +166,6 @@ if (isset($_POST['insert_update_announcement'])) {
     $post_title= $_POST['title'];
     $post_date = date('Y-m-d');
     $post_content = $_POST['content'];
-    $post_status = 'draft';
-    $post_author = $db_fullname;
     $post_tag = $_POST['tags'];
     $old_image = $_POST['old_image'];
     
@@ -178,11 +176,9 @@ if (isset($_POST['insert_update_announcement'])) {
     $insert_sql = "UPDATE tbl_announcement SET 
 
         title       = :title,
-        author      = :author,
         postdate    = :postdate,
         image       = :image,
         content     = :content,
-        status      = :status,
         tag         = :tag
 
         WHERE id  = :id
@@ -193,11 +189,9 @@ if (isset($_POST['insert_update_announcement'])) {
     $sql_data->execute([
  
         ':title'      => $post_title,
-        ':author'     => $post_author,
         ':postdate'   => $post_date,
         ':image'      => $old_image,
         ':content'    => $post_content,
-        ':status'     => $post_status,
         ':tag'        => $post_tag,
 
         ':id'        => $post_id
@@ -283,11 +277,9 @@ if (isset($_POST['insert_update_announcement'])) {
     $insert_sql = "UPDATE tbl_announcement SET 
 
         title       = :title,
-        author      = :author,
         postdate    = :postdate,
         image       = :image,
         content     = :content,
-        status      = :status,
         tag         = :tag
 
         WHERE id  = :id
@@ -298,19 +290,18 @@ if (isset($_POST['insert_update_announcement'])) {
     $sql_data->execute([
  
         ':title'      => $post_title,
-        ':author'     => $post_author,
         ':postdate'   => $post_date,
         ':image'      => $newfilename,
         ':content'    => $post_content,
-        ':status'     => $post_status,
         ':tag'        => $post_tag,
 
         ':id'        => $post_id
         
         ]);
 
-    unlink('../postimage/'.$old_image);
-
+    if($old_image != "sancarlos.png"){
+        unlink('../postimage/'.$old_image); // delete image in the file directory
+      }
         
 
     $alert_msg .= ' 

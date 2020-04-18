@@ -70,8 +70,8 @@ $get_all_published_data->execute();
             ?>
              <div class="card-body shadow">
                <p><h2><a href="view_post.php?post=<?php echo $row['id']; ?>"><?php echo strtoupper($row['title']); ?></a></h2></p>
-               <p><h5>by <a href="#"><?php echo $row['author']; ?></a></h5></p>
-               <p><span class="fa fa-clock-o"></span> Posted on <?php echo $row['postdate']; ?></p>
+               <h6 class="text-muted">by <?php echo $row['author']; ?></h6>
+               <h6 class="text-muted"><small><span class="fa fa-clock-o"></span> Posted on <?php echo date("F d, Y", strtotime( $row['postdate'])); ?></small></h6>
                <hr>
                <a href="view_post.php?post=<?php echo $row['id']; ?>">
                  <div class="text-center">
