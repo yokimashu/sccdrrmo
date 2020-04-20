@@ -155,7 +155,7 @@ $title = 'Modify User';
                     <div class ="col-12">
                     <div class="input-group margin-bottom">
                     <label for="email" class=" col-form-label margin-medium">Email:</label>             
-                    <input type="email"  name ="email margin-small" class="form-control" id="email" required>
+                    <input type="email"  name ="email"  class="form-control" id="email" required>
                     </div>  
                     <label id = "checkemail" style="margin-left:60px;font-style:italic;font-weight:normal;color:red;font-size:12px"></label>                 
                     </div>
