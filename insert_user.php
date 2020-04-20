@@ -173,7 +173,7 @@ if($account_type == "User"){
 if($account_type == "Mobile"){
     $account_type_value = 3;
 }
-    $id = $_POST['user_id'];
+    $id = $_POST['user_id_edit'];
     $username = $_POST['username'];
     // $userpass = $_POST['userpass'];
     
@@ -207,7 +207,7 @@ if($account_type == "Mobile"){
     {
         $sql2.=",photo = '$newfilename'";
     }
-    $sql2.= " WHERE  id    = '$id'";
+    $sql2.= " WHERE  id    = $id";
     
     if ($con->query($sql2))
     

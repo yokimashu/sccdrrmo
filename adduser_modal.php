@@ -183,7 +183,7 @@ $title = 'Modify User';
                    echo '</div>';
                     echo '</div>';
                    echo '</div>';
-                   echo  '<input type="hidden" id="user_id" readonly class="form-control" name="user_id" >';
+                   echo  '<input type="hidden" id="user_id_edit" readonly class="form-control" name="user_id_edit" >';
                    
                    
                    }?>
