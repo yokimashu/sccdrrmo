@@ -201,7 +201,7 @@ if($account_type == "Mobile"){
     address             = '$address',
     mobileno            = '$mobileNumber',
     gender              = '$gender',
-    account_type        = '$account_type_value'";
+    account_type        = $account_type_value";
 
     if($newfilename != '')
     {
