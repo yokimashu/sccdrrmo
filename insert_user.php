@@ -163,7 +163,7 @@ else {
 
 if(isset($_POST['update'])){
     $account_type = $_POST['user_type'];
-    $account_type_value = 0;
+    $account_type_value ;
 if($account_type == "Administrator"){
     $account_type_value = 1;
 }
