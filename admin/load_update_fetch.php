@@ -4,6 +4,8 @@
  
   $output = '';
 
+
+
   $query2 = "
   SELECT * FROM tbl_incident 
   WHERE remarks = 'NEW REPORT'
@@ -52,12 +54,10 @@
                </div> <!-- modal body -->
              </div> <!-- container -->
            </form> 
-         
+          <audio control autoplay><source src="../dist/sound/alarm.mp3" type="audio/mpeg"></audio>
        </div> <!-- modal content -->
      </div> <!-- modal dialog -->
-
-
-   ';
+     ';
 }
 
   $query = "
@@ -100,10 +100,10 @@
                </div> <!-- modal body -->
              </div> <!-- container -->
            </form> 
-         
+         <audio control autoplay><source src="../dist/sound/alarm.mp3" type="audio/mpeg"></audio>
        </div> <!-- modal content -->
      </div> <!-- modal dialog -->
-'
+     '
 ;
 }
 

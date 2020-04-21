@@ -40,8 +40,6 @@ if (isset($_GET['post'])) {
         $post_status = $row['status'];
     }
 
-    $_SESSION['post_id'] = $post_id;
-
     $stripcontent = strip_tags($post_content);
 }
 ?>
@@ -77,6 +75,12 @@ if (isset($_GET['post'])) {
 </head>
 <body class="hold-transition sidebar-mini">
 
+<!-- facebook comment , facebook like and share sdk -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+
+
+
 
 
 <div class="wrapper">
@@ -105,56 +109,35 @@ if (isset($_GET['post'])) {
           </div>
         </div><!-- end col-lg-1 -->
 
-        <div class="col-lg-6">
+        <div class="col-lg-7">
            <div class="card">
              <div class="card-header">
-                <p><h2><?php echo strtoupper($post_title); ?></h2></p>
+                <div class="text-center">
+                  <p><h2><?php echo strtoupper($post_title); ?></h2></p>
+                </div>
                 <h6 class="text-muted">by <?php echo $post_author; ?></h6>
                 <h6 class="text-muted"><small><span class="fa fa-clock-o"></span> Posted on <?php echo date("F d, Y", strtotime($post_date)); ?></small></h6>
              </div><!-- end card-head -->
 
-             <div class="card-body text-center">
+             <div class="card-body">
+               <div class="text-center">
                 <img class="img-fluid img-rounded" src="../postimage/<?php echo $post_image; ?>" alt="900 * 300">
-                <hr>
-             </div><!-- end card-body -->
-
-             <div class="card-body text-justify">
-                <p><?php echo $post_content; ?></p>
-             </div><!-- end card-body -->
-
-             <div class="card-footer">
-                <div class="fb-like" data-href="http://34.92.117.58/sccdrrmo/admin/view_post?post=<?php echo $post_id ?>" data-width="500" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
-             </div><!-- end card-footer -->
+               </div>
+               <hr>
+               <p><?php echo $post_content; ?></p>
+               <hr>
+               <div class="fb-like" data-href="http://34.92.117.58/sccdrrmo/admin/view_post?post=<?php echo $post_id ?>" data-width="500" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+               <hr>
+               <div class="fb-comments" data-href="http://34.92.117.58/sccdrrmo/admin/view_post?post=<?php echo $post_id ?>" data-numposts="1" data-width="100%"></div>
+             </div> <!-- end card-body -->
            </div> <!-- end card -->
         </div><!-- end col-lg-6 -->
+        
+        <div class="col-lg-3">
+        </div><!-- end col-lg-3 -->
+     </div><!-- end row -->
 
-        <div class="col-lg-4">
-               <!--------------- C O M M E N T ------------->
-           <div class="card">
-             <div class="card-body">
-               <form method="POST" id="comment_form">
-                 <input hidden name="comment_post_id" id="comment_post_id" class="form-control" value="<?php echo $post_id ?>">
-                 <input hidden name="comment_name" id="comment_name" class="form-control" value="<?php echo $db_fullname ?>">
-                   <span id="replyto"></span>
-                   <div class="input-group input-group-sm">
-                   
-                   <input <?php echo $btncomment; ?> name="comment_content" id="comment_content" class="form-control" placeholder="Write a comment...">
-                   
-                   <span class="input-group-append">
-                    <input hidden name="comment_id" id="comment_id" value="0" />
-                    <button <?php echo $btncomment; ?> type="submit" id="submit" class="btn btn-info btn-flat"><i class="fa fa-check"></i></button>
-                  </span>
-                 </div>
-               </form>
-               <span id="comment_message"></span>
-               <br />
-               <div id="display_comment"></div>
-             </div><!-- card-body -->
-           </div><!-- card -->
-        </div><!-- end col-lg-4 -->
-      </div><!-- end row -->
-
-
+  
 
     </div> <!-- end container-fluid -->
   </div><!-- /.content-wrapper -->
@@ -199,9 +182,7 @@ if (isset($_GET['post'])) {
   ?>
 
 
- <!-- facebook like and share -->
- <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -223,86 +204,6 @@ if (isset($_GET['post'])) {
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){
- 
- $('#comment_form').on('submit', function(event){
-  event.preventDefault();
-  var form_data = $(this).serialize();
-  $.ajax({
-   url:"add_comment.php",
-   method:"POST",
-   data:form_data,
-   dataType:"JSON",
-   success:function(data)
-   {
-    if(data.error != '')
-    {
-     $('#comment_form')[0].reset();
-     $('#comment_message').html(data.error);
-     $('#comment_id').val('0');
-     load_comment();
-     $('#replyto').hide();
-    }
-   }
-  })
- });
-
- load_comment();
-
- function load_comment()
- {
-  $.ajax({
-   url:"fetch_comment.php",
-   method:"POST",
-   success:function(data)
-   {
-    $('#display_comment').html(data);
-   },
-   complete: function() {
-     setTimeout(load_comment,1000); //After completion of request, time to redo it after a second
-    }
-  });
- }
-
- $(document).on('click', '.reply', function(){
-  var comment_id = $(this).attr("id");
-  $('#comment_id').val(comment_id);
-  $('#comment_content').focus();
-  getRow(comment_id);
-  $('#replyto').show();
- });
-
- $(document).on('click', '.delete', function(){
-  var comment_id = $(this).attr("id");
-  $('#comment_id').val(comment_id);
-  $('#delete').modal('show');
-  getRow(comment_id);
-  $('#replyto').hide();
- });
- 
-});
-
-function getRow(comment_id){
-
-$.ajax({
-
-  type: 'POST',
-  url: 'fetch_comment2.php',
-  data: {id:comment_id},
-  dataType: 'json',
-  success: function(data){
-
-
-    $('#replyto').html(data.csn);
-    $('.delid').val(data.id);
-    
-  }
-});
-};
-</script>
 
 </body>
 </html>
