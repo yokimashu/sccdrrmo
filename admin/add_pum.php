@@ -83,7 +83,7 @@ $get_all_health_data->execute();
     <div class="content-header"></div>
 
       <div class="float-topright">
-        <!-- <?php echo $alert_msg; ?>  -->
+        <?php echo $alert_msg; ?> 
       </div>
 
       <section class="content" >
