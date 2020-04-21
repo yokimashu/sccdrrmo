@@ -115,7 +115,7 @@ $get_all_health_data->execute();
                           </div>
                           <div class="col-md-3">
                             <label>Patient # : </label>
-                            <input type="number" readonly class="form-control"  name="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
+                            <input type="number" readonly class="form-control"  name="patient_number" id="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
                           </div>
 
 
