@@ -5,7 +5,7 @@ session_start();
 
 include('../config/db_config.php');
 
-if (isset($_POST['patient_number'])) {
+if (isset($_POST['edit'])) {
 //     echo "<pre>";
 //     print_r($_POST);
 // echo "</pre>";
@@ -15,6 +15,7 @@ $finalcount1 = null;
 $finaltype = null;
 $obr = null;
 $health_status = $_POST['health_status'];
+
 // $office = $_POST['office'];
 $user_id = $_SESSION['id'];
 
