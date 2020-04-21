@@ -359,6 +359,24 @@ $get_all_health_data->execute();
           $("#btnEdit").attr("disabled", true);
         });
     });
+    
+  $('#btnEdit').on('change',function(){
+              var type = $(this).val();
+              // var office = $('#department').val();
+             
+              $.ajax({
+                type:'POST',
+                // data:{ office:office},
+                url:'generate_pum.php',
+                success:function(data){
+                $('#patient_number').val(data);
+    
+                }
+              
+                  
+                  });           
+      //  }
+    });
 
 </script>
 
