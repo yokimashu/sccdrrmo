@@ -58,7 +58,9 @@ $sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullna
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.="  and (id LIKE '%".$requestData['search']['value']."%' ";    
-	$sql.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR firstname LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR middlename LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR lastname LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR username LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR email LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR gender LIKE '%".$requestData['search']['value']."%' ";
@@ -81,7 +83,9 @@ $get_user_data->execute();
 
 	$countfilter= "SELECT COUNT(id) as id from tbl_users where ";
 	$countfilter.="  (id LIKE '%".$requestData['search']['value']."%' ";    
-	$countfilter.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR firstname LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR middlename LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR lastname LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR username LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR email LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR gender LIKE '%".$requestData['search']['value']."%' ";

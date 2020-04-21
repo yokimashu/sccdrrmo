@@ -137,7 +137,22 @@ $get_all_pum_data->execute();
        
        </div>
      </div><!-- end row -->
+    <div class="row">
+    <div class = "col-6">
+    <div id="curve_chart" style="width: 500; height: 300px"></div>
+    </div>
+  
+    <div class = "col-6">
+    <div id="chart_div" style="width: 500; height: 300px"></div>
+    </div>
+    </div> 
 
+    <div class ="row">
+    <div class = "col-6">
+    <div id="piechart" style="width: 500; height: 300px"></div>
+    </div>
+    
+    </div> 
    </div><!-- end container-fluid -->
     
 
@@ -168,6 +183,7 @@ $get_all_pum_data->execute();
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
 load_update();
@@ -198,6 +214,135 @@ $('#users').DataTable({
       'autoWidth'   : true,
       'autoHeight'  : true
     })
+
+
+    
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // var date ;
+        // var pum ;
+        // var pui ;
+        // var positive ;
+        // var row_count;
+        // $.ajax({
+        //   'async': false,
+        //   'global': false,
+        //   url:'get_covid.php',
+        //   type:"POST",
+        //   success: function(response){
+        //     var result = jQuery.parseJSON(response);
+        //   date = result.date;
+        //   pum = parseInt(result.pum);
+        //   pui = parseInt(result.pui);
+        //   positive = parseInt(result.positive);
+        //  row_count = parseInt(result.row)
+        //   // return date;
+        //   // return pum;
+        //   // return pui;
+        //   // return positive;
+        //   }
+        // })
+        // var i;
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Suspect', 'Probable','Confirment',"Death","Recovered"],
+          <?php 
+         
+          $sql ="Select *,DATE_FORMAT(date,'%b-%d') as datefilter from tbl_covid ";
+          $get_sql = $con->prepare($sql);
+          $get_sql->execute();
+          while($result = $get_sql->fetch(PDO::FETCH_ASSOC)){
+            $pum = $result['pum'];
+            $pui = $result['pui'];
+            $positive = $result['positive'];
+            $death = $result['death'];
+            $recovery = $result['recovery'];
+            $date = $result['datefilter'];
+            echo "['".$date."',".$pum.",".$pui.",".$positive.",".$death.",".$recovery."],";
+        }
+          ?>
+      
+        ]);
+
+        var options = {
+          title: 'COVID-19 REPORT',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+      var data = google.visualization.arrayToDataTable([
+        ['Date', 'Male', 'Female'],
+
+        <?php
+        $GET_GENDER ="select date_format(date_report,'%b-%d') as date_report,(Select count(gender)from tbl_pum where gender = 'Male')as Male,(Select count(gender)from tbl_pum where gender = 'Female')as Female from tbl_pum group by date_report";
+        $prepare_gender = $con->prepare($GET_GENDER);
+        $prepare_gender->execute();
+        while($get_sex = $prepare_gender->fetch(PDO::FETCH_ASSOC)){
+          $datefilter = $get_sex['date_report'];
+          $male = $get_sex['Male'];
+          $female = $get_sex['Female'];
+          echo "['".$datefilter."',".$male.",". $female."],";
+        }
+        
+        ?>
+
+    
+      ]);
+
+      var materialOptions = {
+        chart: {
+          title: 'Confirmed Cases by Gender'
+        },
+        hAxis: {
+          title: 'Total Population',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Date'
+        },
+        bars: 'horizontal'
+      };
+      var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+      materialChart.draw(data, materialOptions);
+    }
+
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawPie);
+
+      function drawPie() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Incidents', 'Total Incidents'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'Incidents Reported Chart'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+
   </script>
+
+
+  
 </body>
 </html>
