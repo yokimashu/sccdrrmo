@@ -161,42 +161,6 @@ $get_all_health_data->execute();
 
 
                         <div class="row" >
-                          <div class="col-md-1"></div>  
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly  class="form-control"  name="get_fName" placeholder="First Name" value="<?php echo $get_fName;?>" required>
-                          </div>
-                          <div class="col-md-3" >
-                            <input type="text" readonly class="form-control"  name="get_mName" placeholder="Middle Name" value="<?php echo $get_mName;?>" required>
-                          </div>
-                          <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="get_lName" placeholder="Last Name" value="<?php echo $get_lName;?>" required>
-                          </div>
-                        </div><br>
-
-                        <div class="row" >
-                          <div class="col-md-1"></div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="number" readonly class="form-control"  name="get_age" placeholder="Age" value="<?php echo $get_age;?>" required>
-                          </div>
-                          <div class="col-md-3 " >
-                            <select class="form-control select2" name="get_gender" value="<?php echo $get_gender; ?>">
-                              <option >Select Gender</option>
-                              <option <?php if ($get_gender == 'Female') echo 'selected'; ?> value="Female">Female </option>
-                              <option <?php if ($get_gender == 'Male') echo 'selected'; ?> value="Male">Male </option>
-                            </select>   
-                          </div>
-                          <div class="col-md-3 " >
-                            <select class="form-control select2" readonly id="get_barangay" name="get_barangay" value="<?php echo $get_brgy; ?>">
-                              <option>Please select...</option>
-                                <?php while ($get_brgy_data = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <?php  $selected = ($get_brgy == $get_brgy_data['barangay'])? 'selected':''; ?>
-                                <option <?=$selected;?> value="<?php echo $get_brgy_data['barangay']; ?>"><?php echo $get_brgy_data['barangay']; ?></option> 
-                              <?php } ?>
-                            </select>
-                          </div>
-                        </div><br> 
-
-                        <div class="row" >
                           <div class="col-md-1"></div>
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text" readonly class="form-control"  name="get_street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street;?>" required>
