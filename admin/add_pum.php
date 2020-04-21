@@ -363,10 +363,10 @@ $get_all_health_data->execute();
   $('#btnEdit').on('change',function(){
               var type = $(this).val();
               // var office = $('#department').val();
-             
+             alert('hello');
               $.ajax({
                 type:'POST',
-                // data:{ office:office},
+                data:{ },
                 url:'generate_pum.php',
                 success:function(data){
                 $('#patient_number').val(data);
