@@ -11,19 +11,18 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 function showInfo(){
     global $con;
 
-$imageUrl = "http://34.92.117.58/sccdrrmo/userimage/";
+//imageUrl = "http://34.92.117.58/sccdrrmo/userimage/";
 
-$username = $_GET['username'];
 
 //fetch user from database
-$get_settings_sql = "SELECT * FROM tbl_settings";
+$get_settings_sql = "SELECT * FROM tbl_settings where settings = 'text_gateway'";
 $settings_data = $con->prepare($get_settings_sql);
 $settings_data->execute();
 while ($result = $settings_data->fetch(PDO::FETCH_ASSOC)) {
 
-    $smart = $result['smart'];
-    $globe = $result['globe'];
-    $text = $result['text_gateway'];
+    $text = $result['value'];
+    // $globe = $result['globe'];
+    // $text = $result['text_gateway'];
    
 }
 
@@ -35,18 +34,16 @@ while ($result = $settings_data->fetch(PDO::FETCH_ASSOC)) {
 //         )
 //   ];
 
-    $userInfo = array(
+    $info = array(
         'settings' => array (
              array(
-                 'smart'           => $smart,
-                 'globe'            => $globe,
-                 'text'             => $text
+                 'text'           => $text
                 
                )
                             )
             );
             
-    echo json_encode($userInfo);
+    echo json_encode($info);
     die();
 
         }
