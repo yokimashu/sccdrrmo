@@ -120,176 +120,39 @@ $get_all_health_data->execute();
           <div class="card-body">
             <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF");?>"> 
               <div class="box-body"> 
+                <br>
 
-              
-                
-                <!-- personal information -->
+
+                <!-- report details -->
                 <div class="card">
-                  <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
-                    <div class="box-body" >
-                      <br>
-
-                        <div class="card">
-                          <div class="card-header"><h6>REPORT DETAILS</h6></div>
-                            <div class="box-body" >
-                              <br>
-                                <div class="row" >
-                                  <div class="col-md-1"></div>
-                                  <div class="col-md-3">
-                                    <label>Date Reported: </label>
-                                    <div class="input-group date" data-provide="datepicker" >
-                                        <div class="input-group-addon">
-                                          <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
-                                          value="<?php echo $now->format('m-d-Y'); ?>">
-                                    </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                    <label>Patient # : </label>
-                                    <input type="number" readonly class="form-control"  name="patient_number" id="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
-                                  </div>
-
-
-                                
-                                </div><br>
-
-
-                            
-                            </div>
-                        </div>
-
-
-                        <div class="row" >
-                          <div class="col-md-1"></div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="get_street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street;?>" required>
-                          </div>
-                          
-                          <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="get_city" placeholder ="City / Municipality" value="<?php echo $get_city;?>" required>  
-                          </div>
-                          <div class="col-md-3 " >
-                            <input type="text" readonly class="form-control"  name="get_province" placeholder="Province" value="<?php echo $get_province;?>" required>  
-                          </div>
-                        </div><br>
-                    </div>  
-                </div>
-         
-                <!-- travel history -->
-                <div class="card">
-                  <div class="card-header"><h6>TRAVEL HISTORY</h6></div>
+                  <div class="card-header"><h6>REPORT DETAILS</h6></div>
                     <div class="box-body" >
                       <br>
                         <div class="row" >
                           <div class="col-md-1"></div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <input type="text" readonly class="form-control"  name="get_city0rigin" placeholder="City of Origin" value="<?php echo $get_origin;?>" required>
-                          </div>
                           <div class="col-md-3">
+                            <label>Date Reported: </label>
                             <div class="input-group date" data-provide="datepicker" >
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_arrivals" placeholder="Date Arrival"  value="<?php echo $get_arrival;?>">
-                            </div>
-                          </div>
-                        </div><br>
-
-                        <div class="row" >
-                          <div class="col-md-1"></div>
-                          <div class="col-md-3">
-                            <input type="number" readonly class="form-control"  name="get_number" placeholder="Contact Number" value="<?php echo $get_contact;?>" required>
-                          </div>
-                         
-                          <div class="col-md-3">
-                            <select class=" form-control select2" id="travel_days"  name="get_travel" value="<?php echo $get_travel;?>">
-                                  <option selected="selected">Traveled during the past 14 days?</option>
-                                  <option <?php if ($get_travel == 'Yes') echo 'selected'; ?> value="Yes">Yes </option>
-                                  <option <?php if ($get_travel == 'No') echo 'selected'; ?> value="No">No </option>
-                            </select>
-                          </div>
-                        </div><br>
-                     
-                    </div>
-                </div>
-                
-                <!--  -->
-                <div class="card">
-                  <div class="card-header"><h6>HEALTH HISTORY</h6></div>
-                    <div class="box-body" >
-                      <br>
-                        <div class="row" >
-                          <div class="col-md-1"></div>
-
-                          <div class="col-md-3">
-                            <input type="text" readonly class="form-control"  name="get_disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
-                          </div>
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" readonly id="symptoms_data" name="get_symptoms" value="<?php echo $get_symptoms; ?>">
-                              <option>Select Symptoms</option>
-                                <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <?php  $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':''; ?>
-                                <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option> 
-                              <?php } ?>
-                            </select>
-                          </div>
-
-
-                          <div class="col-md-3" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" readonly id="health" name="get_health" value="<?php echo $get_health; ?>">
-                              <option>Select Patient Status</option>
-                                <?php while ($get_health_data = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <?php  $selected = ($get_health == $get_health_data['health_status'])? 'selected':''; ?>
-                                <option <?=$selected;?> value="<?php echo $get_health_data['health_status']; ?>"><?php echo $get_health_data['health_status']; ?></option> 
-                              <?php } ?>
-                            </select>
-                          </div>
-                        </div><br>
-
-                        <div class="row" >
-                          <div class="col-md-1"></div>
-                          
-                          <div class="col-md-3">
-                            <div class="input-group date" data-provide="datepicker" >
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_process" placeholder="Date Process" 
+                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
                                   value="<?php echo $get_date; ?>">
                             </div>
                           </div>
-                          
                           <div class="col-md-3">
-                            <div class="input-group date" data-provide="datepicker" >
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" readonly class="form-control pull-right" id="datepicker" name="get_cleared" placeholder="Date Cleared" 
-                                  value="<?php echo $get_cleared; ?>">
-                            </div>
+                            <label>Patient # : </label>
+                            <input type="number" readonly class="form-control"  name="patient_number" id="patient_number" placeholder="Patient Number" value="" required>
                           </div>
                         </div><br>
-                     
                     </div>
                 </div>
 
 
+
+
+              
                 
-                <div class="box-footer" align="center">
-                                
-                  <button type="button"  <?php echo $btnEdit; ?> name="edit" id ="btnEdit" class="btn btn-info" >
-                  <i class="fa fa-edit fa-fw"> </i>  </button>
-
-                  <button type="submit"  <?php echo $btnSave; ?> name="update_pum" id="btnSubmit" class="btn btn-success" >
-                  <i class="fa fa-check fa-fw"> </i> </button>
-
-                  <a href="list_pum.php">
-                    <button type="button" name="cancel" class="btn btn-danger">       
-                    <i class="fa fa-close fa-fw"> </i> </button>
-                  </a>
-                </div>
-                <!-- end box-footer -->
               </div>
               <!-- end box-body -->
             </form>
