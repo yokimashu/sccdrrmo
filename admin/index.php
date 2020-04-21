@@ -221,30 +221,7 @@ $('#users').DataTable({
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        // var date ;
-        // var pum ;
-        // var pui ;
-        // var positive ;
-        // var row_count;
-        // $.ajax({
-        //   'async': false,
-        //   'global': false,
-        //   url:'get_covid.php',
-        //   type:"POST",
-        //   success: function(response){
-        //     var result = jQuery.parseJSON(response);
-        //   date = result.date;
-        //   pum = parseInt(result.pum);
-        //   pui = parseInt(result.pui);
-        //   positive = parseInt(result.positive);
-        //  row_count = parseInt(result.row)
-        //   // return date;
-        //   // return pum;
-        //   // return pui;
-        //   // return positive;
-        //   }
-        // })
-        // var i;
+      
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Suspect', 'Probable','Confirment',"Death","Recovered"],
           <?php 
@@ -323,11 +300,17 @@ function drawMaterial() {
 
         var data = google.visualization.arrayToDataTable([
           ['Incidents', 'Total Incidents'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          <?php
+            $incident = "select type ,count(type) as count from tbl_incident GROUP BY type order by type";
+            $prepare = $con->prepare($incident);
+            $prepare->execute();
+            while($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)){
+              $type =  $incident_result['type'];
+              $count = $incident_result['count'];
+              echo "['".$type."',".$count."],";
+            }
+            ?>
+         
         ]);
 
         var options = {
