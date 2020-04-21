@@ -325,6 +325,26 @@ $get_all_health_data->execute();
 <script>
   $('.select2').select2();
 
+      
+  $('#btnEdit').on('change',function(){
+              var type = $(this).val();
+              // var office = $('#department').val();
+
+              alert(hello);
+              $.ajax({
+                type:'POST',
+                data:{ },
+                url:'generate_pum.php',
+                success:function(data){
+                  $('#patient_number').val(data);
+    
+                }
+              
+                  
+              });           
+      //  }
+    });
+
   $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
@@ -360,23 +380,24 @@ $get_all_health_data->execute();
         });
     });
     
-  $('#btnEdit').on('change',function(){
-              var type = $(this).val();
-              // var office = $('#department').val();
-             alert('hello');
-              $.ajax({
-                type:'POST',
-                data:{ },
-                url:'generate_pum.php',
-                success:function(data){
-                $('#patient_number').val(data);
+  // $('#btnEdit').on('change',function(){
+  //             var type = $(this).val();
+  //             // var office = $('#department').val();
+
+  //             alert(hello);
+  //             $.ajax({
+  //               type:'POST',
+  //               data:{ },
+  //               url:'generate_pum.php',
+  //               success:function(data){
+  //                 $('#patient_number').val(data);
     
-                }
+  //               }
               
                   
-                  });           
-      //  }
-    });
+  //             });           
+  //     //  }
+  //   });
 
 </script>
 
