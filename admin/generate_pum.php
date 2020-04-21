@@ -5,7 +5,7 @@ session_start();
 
 include('../config/db_config.php');
 
-if (isset($_POST['health_status'])) {
+if (isset($_POST['patient_number'])) {
 //     echo "<pre>";
 //     print_r($_POST);
 // echo "</pre>";
