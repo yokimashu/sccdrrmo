@@ -45,7 +45,7 @@ $title = 'Modify User';
                 <form class="form-horizontal" id ="userform" method="POST" action= "<?php htmlspecialchars("PHP_SELF"); ?>"  enctype="multipart/form-data">  
                    
                	<div class="modal-body"  >
-                    <div class = "container">
+                    <div class = "container-fluid">
                         <div class = "row margin-bottom">
                             
                          <div class = "col-12" style="margin-left:150px;margin-right:100px;">
@@ -183,7 +183,7 @@ $title = 'Modify User';
                    echo '</div>';
                     echo '</div>';
                    echo '</div>';
-                   echo  '<input type="hidden" id="user_id" readonly class="form-control" name="user_id" >';
+                   echo  '<input type="hidden" id="user_id_edit" readonly class="form-control" name="user_id_edit" >';
                    
                    
                    }?>

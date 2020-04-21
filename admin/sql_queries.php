@@ -3,7 +3,7 @@
     include ('../config/db_config.php');
 
     if (isset($_POST['add_pum'])) {  
-
+       
         $id_pum = uniqid('id',true);
         date_default_timezone_set('Asia/Manila');
         
@@ -21,7 +21,7 @@
         $contact_number         = $_POST['contact_number'];
         $travel_days            = $_POST['travel_days'];
         $patient_disease        = $_POST['disease'];
-        $symptoms               = $_POST['symptoms'];
+       
         $health_status          = $_POST['health_status'];
         $process                = date('Y-m-d', strtotime($_POST['date_process']));        
         
@@ -29,6 +29,13 @@
         $status = 'Active';
         $alert_msg = '';
         $alert_msg1 = '';
+        
+        if(empty($_POST['symptoms'])){
+            $symptoms = "";
+        }else{
+            $symptoms  =  implode(",", $_POST['symptoms']);
+        };
+
 
         $insert_pum_sql = "INSERT INTO tbl_pum SET 
             objid               = :id,
@@ -72,7 +79,7 @@
             ':travel'           => $travel_days,
             ':disease'          => $patient_disease,
             ':health'           => $health_status,
-            ':symp'             => $symptoms, 
+            ':symp'             => $symptoms,
             ':status'           => $status
          
             ]);

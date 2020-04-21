@@ -97,7 +97,7 @@ $get_all_health_data->execute();
               <div class="box-body"> 
 
               
-              <div class="card">
+                <div class="card">
                   <div class="card-header"><h6>REPORT DETAILS</h6></div>
                     <div class="box-body" >
                       <br>
@@ -115,7 +115,7 @@ $get_all_health_data->execute();
                           </div>
                           <div class="col-md-3">
                             <label>Patient # : </label>
-                            <input type="number" readonly class="form-control"  name="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
+                            <input type="number" readonly class="form-control"  name="patient_number" id="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
                           </div>
 
 
@@ -232,7 +232,7 @@ $get_all_health_data->execute();
                             <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
                           </div>
                           <div class="col-md-6" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms" placeholder="Select Symptoms" svalue="<?php echo $symptoms;?>">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms[]" placeholder="Select Symptoms" svalue="<?php echo $symptoms;?>">
                               
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
@@ -267,7 +267,7 @@ $get_all_health_data->execute();
                   <button type="submit"  <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success" >
                   <i class="fa fa-check fa-fw"> </i> </button>
 
-                  <a href="list_pum.php">
+                  <a href="add_pum.php">
                     <button type="button" name="cancel" class="btn btn-danger">       
                     <i class="fa fa-close fa-fw"> </i> </button>
                   </a>
@@ -325,6 +325,26 @@ $get_all_health_data->execute();
 <script>
   $('.select2').select2();
 
+      
+  $('#btnEdit').on('change',function(){
+              var type = $(this).val();
+              // var office = $('#department').val();
+
+              alert(hello);
+              $.ajax({
+                type:'POST',
+                data:{ },
+                url:'generate_pum.php',
+                success:function(data){
+                  $('#patient_number').val(data);
+    
+                }
+              
+                  
+              });           
+      //  }
+    });
+
   $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
@@ -350,7 +370,7 @@ $get_all_health_data->execute();
           $("input[name='province']").removeAttr("readonly");
           $("input[name='city0rigin']").removeAttr("readonly");
           $("input[name='date_arrival']").removeAttr("readonly");
-          $("input[name='contact_number']").removeAttr("readonly");
+          $("input[name='contact_number']").removeAttr("readonly"); 
           $("input[name='date_process']").removeAttr("readonly");
           $("input[name='disease']").removeAttr("readonly");
 
@@ -359,6 +379,25 @@ $get_all_health_data->execute();
           $("#btnEdit").attr("disabled", true);
         });
     });
+    
+  // $('#btnEdit').on('change',function(){
+  //             var type = $(this).val();
+  //             // var office = $('#department').val();
+
+  //             alert(hello);
+  //             $.ajax({
+  //               type:'POST',
+  //               data:{ },
+  //               url:'generate_pum.php',
+  //               success:function(data){
+  //                 $('#patient_number').val(data);
+    
+  //               }
+              
+                  
+  //             });           
+  //     //  }
+  //   });
 
 </script>
 
