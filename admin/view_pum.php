@@ -46,6 +46,7 @@ $btnNew = 'hidden';
     $get_symptoms           = $result['symptoms'];
     $get_status             = $result['status'];
 
+    $array_symptoms = explode(',', $get_symptoms);
   }
 
 
@@ -255,13 +256,17 @@ $get_all_health_data->execute();
                             <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $get_disease;?>" required>
                           </div>
                           <div class="col-md-6" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms[]" placeholder="Select Symptoms" svalue="<?php echo $symptoms;?>">
-                              
-                                <?php while ($get_symptoms_data = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <?php $selected = ($get_symptoms == $get_symptoms_data['symptoms'])? 'selected':'';   ?>
-                                <option <?=$selected;?> value="<?php echo $get_symptoms_data['symptoms']; ?>"><?php echo $get_symptoms_data['symptoms']; ?></option> 
-                                <?php } ?>
-                            </select>
+                          <select class="form-control select2"  id="symptoms" style="width: 100%" multiple="" name="symptoms[]">
+                             <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) {
+                               if( in_array($get_symptoms['symptoms'], $array_symptoms) ){
+                                 $selected = 'selected';
+                               }else{
+                                 $selected = '';
+                               }
+                             ?>
+                             <option <?= $selected ?> value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
+                             <?php } ?>
+                          </select>
                           </div>
                         </div><br>
 
