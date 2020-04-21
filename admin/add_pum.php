@@ -97,7 +97,7 @@ $get_all_health_data->execute();
               <div class="box-body"> 
 
               
-              <div class="card">
+                <div class="card">
                   <div class="card-header"><h6>REPORT DETAILS</h6></div>
                     <div class="box-body" >
                       <br>

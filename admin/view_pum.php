@@ -128,8 +128,40 @@ $get_all_health_data->execute();
                   <div class="card-header"><h6>PERSONAL INFORMATION</h6></div>
                     <div class="box-body" >
                       <br>
+
+                        <div class="card">
+                          <div class="card-header"><h6>REPORT DETAILS</h6></div>
+                            <div class="box-body" >
+                              <br>
+                                <div class="row" >
+                                  <div class="col-md-1"></div>
+                                  <div class="col-md-3">
+                                    <label>Date Reported: </label>
+                                    <div class="input-group date" data-provide="datepicker" >
+                                        <div class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" 
+                                          value="<?php echo $now->format('m-d-Y'); ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label>Patient # : </label>
+                                    <input type="number" readonly class="form-control"  name="patient_number" id="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
+                                  </div>
+
+
+                                
+                                </div><br>
+
+
+                            
+                            </div>
+                        </div>
+
+
                         <div class="row" >
-                          <div class="col-md-1"></div>
+                          <div class="col-md-1"></div>  
                           <div class="col-md-3" style="text-algin:center; padding-right:5px;">
                             <input type="text" readonly  class="form-control"  name="get_fName" placeholder="First Name" value="<?php echo $get_fName;?>" required>
                           </div>
