@@ -13151,12 +13151,21 @@ a.text-muted:hover {
   z-index:5;
 }
 
-.float-center{
+.float-bottom{
 	position:fixed;
 	 bottom:20px; 
    left: 50%;
    transform: translateX(-50%);
    z-index:5;
+}
+
+.float-center{
+	position:fixed;
+   top:50%; 
+   transform: translateY(-50%);
+   left: 50%;
+   transform: translateX(-50%);
+   z-index:1500;
 }
 
 .my-float{
