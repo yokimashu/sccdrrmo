@@ -19,9 +19,10 @@ include('send_notification.php');
 $user_id = $_SESSION['id'];
 
 $db_fullname = '';
+$photo = '';
 
 //fetch user from database
-$get_user_sql = " SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname FROM tbl_users where id = :id";
+$get_user_sql = " SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,photo FROM tbl_users where id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result4 = $user_data->fetch(PDO::FETCH_ASSOC)) {
