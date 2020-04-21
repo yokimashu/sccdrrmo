@@ -45,7 +45,7 @@ $title = 'Modify User';
                 <form class="form-horizontal" id ="userform" method="POST" action= "<?php htmlspecialchars("PHP_SELF"); ?>"  enctype="multipart/form-data">  
                    
                	<div class="modal-body"  >
-                    <div class = "container">
+                    <div class = "container-fluid">
                         <div class = "row margin-bottom">
                             
                          <div class = "col-12" style="margin-left:150px;margin-right:100px;">
