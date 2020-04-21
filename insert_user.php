@@ -163,7 +163,7 @@ else {
 
 if(isset($_POST['update'])){
     $account_type = $_POST['user_type'];
-    $account_type_value = 0;
+    $account_type_value ;
 if($account_type == "Administrator"){
     $account_type_value = 1;
 }
@@ -173,7 +173,7 @@ if($account_type == "User"){
 if($account_type == "Mobile"){
     $account_type_value = 3;
 }
-    $id = $_POST['user_id'];
+    $id = $_POST['user_id_edit'];
     $username = $_POST['username'];
     // $userpass = $_POST['userpass'];
     
@@ -201,13 +201,13 @@ if($account_type == "Mobile"){
     address             = '$address',
     mobileno            = '$mobileNumber',
     gender              = '$gender',
-    account_type        = '$account_type_value'";
+    account_type        = $account_type_value";
 
     if($newfilename != '')
     {
         $sql2.=",photo = '$newfilename'";
     }
-    $sql2.= " WHERE  id    = '$id'";
+    $sql2.= " WHERE  id    = $id";
     
     if ($con->query($sql2))
     

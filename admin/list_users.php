@@ -324,7 +324,7 @@ if (type == 'success') {
             success:function(response){
         console.log("hello");
         var result = jQuery.parseJSON(response);
-         $('#user_id').val(id);
+         $('#user_id_edit').val(id);
         $('#username').val(result.username);
         $('#firstname').val(result.firstname);
         $('#middlename').val(result.middlename);
@@ -335,7 +335,7 @@ if (type == 'success') {
         $('#email').val(result.email);
         $('#contactno').val(result.mobileno);
         $('#usertype').val(result.account_type);
-        $('#user_id').val(result.id);
+        // $('#user_id').val(result.id);
         var img = document.getElementById("profilepic");
         img.src = '../userimage/'+result.photo;
          console.log(result.account_type);

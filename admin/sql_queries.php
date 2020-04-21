@@ -72,7 +72,7 @@
             ':travel'           => $travel_days,
             ':disease'          => $patient_disease,
             ':health'           => $health_status,
-            ':symp'             => $symptoms, 
+            ':symp'             => implode(",", $symptoms), 
             ':status'           => $status
          
             ]);

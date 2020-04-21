@@ -115,7 +115,7 @@ $get_all_health_data->execute();
                           </div>
                           <div class="col-md-3">
                             <label>Patient # : </label>
-                            <input type="number" readonly class="form-control"  name="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
+                            <input type="number" readonly class="form-control"  name="patient_number" id="patient_number" placeholder="Patient Number" value="<?php echo $patient;?>" required>
                           </div>
 
 
@@ -325,6 +325,26 @@ $get_all_health_data->execute();
 <script>
   $('.select2').select2();
 
+      
+  $('#btnEdit').on('change',function(){
+              var type = $(this).val();
+              // var office = $('#department').val();
+
+              alert(hello);
+              $.ajax({
+                type:'POST',
+                data:{ },
+                url:'generate_pum.php',
+                success:function(data){
+                  $('#patient_number').val(data);
+    
+                }
+              
+                  
+              });           
+      //  }
+    });
+
   $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
@@ -350,7 +370,7 @@ $get_all_health_data->execute();
           $("input[name='province']").removeAttr("readonly");
           $("input[name='city0rigin']").removeAttr("readonly");
           $("input[name='date_arrival']").removeAttr("readonly");
-          $("input[name='contact_number']").removeAttr("readonly");
+          $("input[name='contact_number']").removeAttr("readonly"); 
           $("input[name='date_process']").removeAttr("readonly");
           $("input[name='disease']").removeAttr("readonly");
 
@@ -359,6 +379,25 @@ $get_all_health_data->execute();
           $("#btnEdit").attr("disabled", true);
         });
     });
+    
+  // $('#btnEdit').on('change',function(){
+  //             var type = $(this).val();
+  //             // var office = $('#department').val();
+
+  //             alert(hello);
+  //             $.ajax({
+  //               type:'POST',
+  //               data:{ },
+  //               url:'generate_pum.php',
+  //               success:function(data){
+  //                 $('#patient_number').val(data);
+    
+  //               }
+              
+                  
+  //             });           
+  //     //  }
+  //   });
 
 </script>
 
