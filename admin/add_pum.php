@@ -97,7 +97,7 @@ $get_all_health_data->execute();
               <div class="box-body"> 
 
               
-              <div class="card">
+                <div class="card">
                   <div class="card-header"><h6>REPORT DETAILS</h6></div>
                     <div class="box-body" >
                       <br>
@@ -232,7 +232,7 @@ $get_all_health_data->execute();
                             <input type="text" readonly class="form-control"  name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease;?>" required>
                           </div>
                           <div class="col-md-6" style="text-algin:center; padding-right:5px;">
-                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms" placeholder="Select Symptoms" svalue="<?php echo $symptoms;?>">
+                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms[]" placeholder="Select Symptoms" svalue="<?php echo $symptoms;?>">
                               
                                 <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
@@ -267,7 +267,7 @@ $get_all_health_data->execute();
                   <button type="submit"  <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success" >
                   <i class="fa fa-check fa-fw"> </i> </button>
 
-                  <a href="list_pum.php">
+                  <a href="add_pum.php">
                     <button type="button" name="cancel" class="btn btn-danger">       
                     <i class="fa fa-close fa-fw"> </i> </button>
                   </a>

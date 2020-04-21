@@ -13,7 +13,7 @@ $state ="edit";
 //deactivate user
  if(isset($_POST['delete'])){
    $id = $_POST['user_id'];
-   $sql = "UPDATE tbl_users set status = 'DEACTIVATED' where id = '$id'";
+   $sql = "UPDATE tbl_users set status = 'INACTIVE' where id = $id";
    $set_sql = $con->prepare($sql);
    $set_sql->execute();
    $alert_msg .= ' 

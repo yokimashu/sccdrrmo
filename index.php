@@ -146,7 +146,7 @@
       <br>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <a href="#addnew" data-toggle="modal" style ="color:white;"  data-backdrop="static"  class="btn btn-primary pull-left">Sign Up</a>
           <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
         </div>
