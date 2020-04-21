@@ -267,7 +267,7 @@ $get_all_health_data->execute();
                   <button type="submit"  <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success" >
                   <i class="fa fa-check fa-fw"> </i> </button>
 
-                  <a href="list_pum.php">
+                  <a href="add_pum.php">
                     <button type="button" name="cancel" class="btn btn-danger">       
                     <i class="fa fa-close fa-fw"> </i> </button>
                   </a>
