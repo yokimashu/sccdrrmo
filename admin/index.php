@@ -261,7 +261,7 @@ function drawMaterial() {
         ['Date', 'Male', 'Female'],
 
         <?php
-        $GET_GENDER ="select date_format(date_report,'%b-%d') as date_report,(Select count(gender)from tbl_pum where gender = 'Male')as Male,(Select count(gender)from tbl_pum where gender = 'Female')as Female from tbl_pum group by date_report";
+        $GET_GENDER ="select date_format(date_report,'%b-%d') as date_report,(Select count(gender)from tbl_report where gender = 'Male')as Male,(Select count(gender)from tbl_pum where gender = 'Female')as Female from tbl_pum group by date_report";
         $prepare_gender = $con->prepare($GET_GENDER);
         $prepare_gender->execute();
         while($get_sex = $prepare_gender->fetch(PDO::FETCH_ASSOC)){
@@ -301,12 +301,13 @@ function drawMaterial() {
         var data = google.visualization.arrayToDataTable([
           ['Incidents', 'Total Incidents'],
           <?php
-            $incident = "select type ,count(type) as count from tbl_incident GROUP BY type order by type";
+            $incident = "select type ,count(type) as count , (Select Count(objid) from tbl_incident) as total from tbl_incident GROUP BY type order by type";
             $prepare = $con->prepare($incident);
             $prepare->execute();
             while($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)){
               $type =  $incident_result['type'];
               $count = $incident_result['count'];
+              $total = $incident_result['total'];
               echo "['".$type."',".$count."],";
             }
             ?>
@@ -314,7 +315,7 @@ function drawMaterial() {
         ]);
 
         var options = {
-          title: 'Incidents Reported Chart'
+          title: 'Incidents Reported Total: <?php echo $total ?>'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
