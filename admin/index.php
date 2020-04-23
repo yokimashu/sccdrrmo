@@ -2,7 +2,6 @@
 <?php
 
 include ('../config/db_config.php');
-
 // $user_id = $_SESSION['id'];
 
 // if (!isset($_SESSION['id'])) {
@@ -127,21 +126,17 @@ $get_all_pum_data->execute();
               </div> 
            </div>
          </div> <!-- /.col-12 col-sm-6 col-md-3 -->   
-         
+
      </div><!-- end row -->
-     <?php if($_SESSION['user_type'] == 1){ ?>
-   
      <div class="row">
        <div class="col-2"></div>
        <div class="col-8">
-          <div class="float-center">
-           <div id="display_update"></div>
+          <div class="float">
+          <div id="display_update"></div>
           </div>
+       
        </div>
      </div><!-- end row -->
-     ;
-    <?php } ?>
-
     <div class="row">
     <div class = "col-6">
     <div id="curve_chart" style="width: 500; height: 300px"></div>
@@ -193,12 +188,6 @@ $get_all_pum_data->execute();
 
 load_update();
 
-var updsnd = $(".displayupdate");
-// var snd = new Audio('../dist/sound/alarm.mp3');
-
-
-
-
 function load_update()
 {
  $.ajax({
@@ -207,11 +196,6 @@ function load_update()
   success:function(data)
   {
    $('#display_update').html(data);
-
-//    if(updsnd.html() != "<div></div>") {
-//   //  snd.play();
-// }
-   
   },
   complete: function() {
     setTimeout(load_update,1000); //After completion of request, time to redo it after a second
@@ -220,12 +204,6 @@ function load_update()
 }
 
 </script>
-
-<script type="text/javascript">
-
-
-</script>
-
 <script>
 $('#users').DataTable({
       'paging'      : true,
@@ -237,7 +215,7 @@ $('#users').DataTable({
       'autoHeight'  : true
     })
 
-
+    $(document).ready(function() {  
     
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -283,7 +261,7 @@ function drawMaterial() {
         ['Date', 'Male', 'Female'],
 
         <?php
-        $GET_GENDER ="select date_format(date_report,'%b-%d') as date_report,(Select count(gender)from tbl_report where gender = 'Male')as Male,(Select count(gender)from tbl_pum where gender = 'Female')as Female from tbl_pum group by date_report";
+        $GET_GENDER ="select date_format(date_report,'%b-%d') as date_report,(Select count(gender)from tbl_pum where gender = 'Male')as Male,(Select count(gender)from tbl_pum where gender = 'Female')as Female from tbl_pum group by date_report";
         $prepare_gender = $con->prepare($GET_GENDER);
         $prepare_gender->execute();
         while($get_sex = $prepare_gender->fetch(PDO::FETCH_ASSOC)){
@@ -345,7 +323,7 @@ function drawMaterial() {
         chart.draw(data, options);
       }
 
-
+    });
   </script>
 
 
