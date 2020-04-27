@@ -2,7 +2,6 @@
 <?php
 
 include ('../config/db_config.php');
-
 // $user_id = $_SESSION['id'];
 
 // if (!isset($_SESSION['id'])) {
@@ -127,21 +126,17 @@ $get_all_pum_data->execute();
               </div> 
            </div>
          </div> <!-- /.col-12 col-sm-6 col-md-3 -->   
-         
+
      </div><!-- end row -->
-     <?php if($_SESSION['user_type'] == 1){ ?>
-   
      <div class="row">
        <div class="col-2"></div>
        <div class="col-8">
-          <div class="float-center">
-           <div id="display_update"></div>
+          <div class="float">
+          <div id="display_update"></div>
           </div>
+       
        </div>
      </div><!-- end row -->
-     ;
-    <?php } ?>
-
     <div class="row">
     <div class = "col-6">
     <div id="curve_chart" style="width: 500; height: 300px"></div>
@@ -193,12 +188,6 @@ $get_all_pum_data->execute();
 
 load_update();
 
-var updsnd = $(".displayupdate");
-// var snd = new Audio('../dist/sound/alarm.mp3');
-
-
-
-
 function load_update()
 {
  $.ajax({
@@ -207,11 +196,6 @@ function load_update()
   success:function(data)
   {
    $('#display_update').html(data);
-
-//    if(updsnd.html() != "<div></div>") {
-//   //  snd.play();
-// }
-   
   },
   complete: function() {
     setTimeout(load_update,2000); //After completion of request, time to redo it after a second
@@ -220,12 +204,6 @@ function load_update()
 }
 
 </script>
-
-<script type="text/javascript">
-
-
-</script>
-
 <script>
 $('#users').DataTable({
       'paging'      : true,
@@ -237,36 +215,13 @@ $('#users').DataTable({
       'autoHeight'  : true
     })
 
-
+    $(document).ready(function() {  
     
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        // var date ;
-        // var pum ;
-        // var pui ;
-        // var positive ;
-        // var row_count;
-        // $.ajax({
-        //   'async': false,
-        //   'global': false,
-        //   url:'get_covid.php',
-        //   type:"POST",
-        //   success: function(response){
-        //     var result = jQuery.parseJSON(response);
-        //   date = result.date;
-        //   pum = parseInt(result.pum);
-        //   pui = parseInt(result.pui);
-        //   positive = parseInt(result.positive);
-        //  row_count = parseInt(result.row)
-        //   // return date;
-        //   // return pum;
-        //   // return pui;
-        //   // return positive;
-        //   }
-        // })
-        // var i;
+      
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Suspect', 'Probable','Confirment',"Death","Recovered"],
           <?php 
@@ -345,15 +300,22 @@ function drawMaterial() {
 
         var data = google.visualization.arrayToDataTable([
           ['Incidents', 'Total Incidents'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          <?php
+            $incident = "select type ,count(type) as count , (Select Count(objid) from tbl_incident) as total from tbl_incident GROUP BY type order by type";
+            $prepare = $con->prepare($incident);
+            $prepare->execute();
+            while($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)){
+              $type =  $incident_result['type'];
+              $count = $incident_result['count'];
+              $total = $incident_result['total'];
+              echo "['".$type."',".$count."],";
+            }
+            ?>
+         
         ]);
 
         var options = {
-          title: 'Incidents Reported Chart'
+          title: 'Incidents Reported Total: <?php echo $total ?>'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -361,7 +323,7 @@ function drawMaterial() {
         chart.draw(data, options);
       }
 
-
+    });
   </script>
 
 
