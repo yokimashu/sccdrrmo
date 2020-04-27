@@ -214,7 +214,7 @@ function load_update()
    
   },
   complete: function() {
-    setTimeout(load_update,1000); //After completion of request, time to redo it after a second
+    setTimeout(load_update,2000); //After completion of request, time to redo it after a second
    }
  });
 }
