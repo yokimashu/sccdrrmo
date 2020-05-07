@@ -100,9 +100,11 @@ $get_all_sbpublished_data->execute();
            </div>
          <div class="card-body text-center">            
            Hello Guest!<br>
-            <a href="../index.php"><button type="button" class="btn btn-sm btn-success">SIGN IN / REGISTER</button></a> <br>
+            <a href="../index.php">
+            <button type="button" class="btn btn-sm btn-success">SIGN IN / REGISTER</button>
+            </a> <br>
             - or- <br>
-            <a href="../index.php"><button type="button" class="btn btn-sm btn-info"><i class="fa fa-android"></i> DOWNLOAD APP</button></a>  <br>
+            <a href="https://play.google.com/store/apps/details?id=com.capstone.sccdrrmo_final" ><button type="button" class="btn btn-sm btn-info"><i class="fa fa-android"></i> DOWNLOAD APP</button></a>  <br>
            
          </div>
        </div>

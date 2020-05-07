@@ -23,12 +23,12 @@ $base_url = "http://34.92.117.58/sccdrrmo/";  //change this baseurl value as per
 			$mail->IsHTML(true);							//Sets message type to HTML				
 			$mail->Subject = 'SCCDRRMO Email Verification';			//Sets the Subject of the message
 			$mail->Body = $mail_body;							//An HTML or plain text message body
-			//$mail->Send();								//Send an Email. Return true on success or false on error
-			if(!$mail->send()) {
-				echo "Mailer Error: " . $mail->ErrorInfo;
-			} 
-			else {
-				echo "success";
-			}
+			$mail->Send();								//Send an Email. Return true on success or false on error
+			// if(!$mail->send()) {
+			// 	echo "Mailer Error: " . $mail->ErrorInfo;
+			// } 
+			// else {
+			// 	echo "success";
+			// }
             
  ?>
