@@ -256,6 +256,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     </div>
     <!-- /.sidebar -->
 
-  <?php include('push_notification.php'); ?>
+    <?php include('push_notification.php'); ?>
 
   </aside>
