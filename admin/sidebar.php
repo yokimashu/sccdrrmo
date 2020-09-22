@@ -27,6 +27,7 @@ $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result4 = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $db_fullname = $result4['fullname'];
+    $photo = $result4['photo'];
 }
 
 //get all draft from announcement
@@ -84,7 +85,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <div class="sidebar">
        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../userimage/<?php echo $photo?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a style="color:white" href="profile.php" class="d-block"><?php echo $db_fullname ?>  </a>
@@ -186,12 +187,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </ul> -->
 
             <li class="nav-item " style="font-size:16px">
-              <a href="list_incident" class="nav-link ">
-                <i class="nav-icon fa fa-book"></i>
-                <p>
-                  INCIDENT REPORT 
-                </p>
-              </a>
+              <?php echo $incident_report?>
             
             <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
@@ -255,6 +251,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     </div>
     <!-- /.sidebar -->
 
-  <?php include('push_notification.php'); ?>
+    <?php include('push_notification.php'); ?>
 
   </aside>
