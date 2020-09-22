@@ -133,30 +133,30 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
             <li class="nav-item">
               <a href="#" class="nav-link">
-                &nbsp;&nbsp; <i class="fa fa-minus fa-flip-horizontal "></i>
+                &nbsp;&nbsp; <i class="fa fa-address-book-o "></i>
                 <p> &nbsp; Entity</p>
               </a>
 
               <ul class="nav nav-treeview">
 
                 <li class="nav-item">
-                  <a href="list_pum" class="nav-link">
+                  <a href="add_individual" class="nav-link">
                     &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                    <p> Individual</p>
+                    <p> &nbsp; Individual</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="add_juridical" class="nav-link">
+                    &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
+                    <p> &nbsp; Juridical</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="add_pum" class="nav-link">
                     &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                    <p>Juridical</p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="add_pum" class="nav-link">
-                    &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                    <p>Transportatio</p>
+                    <p> &nbsp; Transportation</p>
                   </a>
                 </li>
 
