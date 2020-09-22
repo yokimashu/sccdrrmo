@@ -187,12 +187,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </ul> -->
 
             <li class="nav-item " style="font-size:16px">
-              <a href="list_incident" class="nav-link ">
-                <i class="nav-icon fa fa-book"></i>
-                <p>
-                  INCIDENT REPORT 
-                </p>
-              </a>
+              <?php echo $incident_report?>
             
             <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
