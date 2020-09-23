@@ -68,6 +68,7 @@ $get_all_brgy_data->execute();
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+  
 
 </head>
 
@@ -149,7 +150,10 @@ $get_all_brgy_data->execute();
         </div>
     </form>
 </div>
-                                     
+
+
+
+
                         </div>
                         <div class ="row">
                         <div class = "col-12" style="margin-left:180px;margin-right:100px;">
@@ -281,7 +285,7 @@ $get_all_brgy_data->execute();
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 
 <script language="JavaScript">
     Webcam.set({
@@ -326,10 +330,7 @@ $get_all_brgy_data->execute();
       
 
 
-      
-    </script>
-
-
+    
 
 
 </body>
