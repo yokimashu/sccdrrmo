@@ -60,7 +60,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <a href="../../lockscreen.php" class="nav-link">Lock Screen</a>
     </li> -->
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../logout.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
+      <a href="../../index.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
     </li>
   </ul>
 

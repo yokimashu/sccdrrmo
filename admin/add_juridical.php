@@ -17,11 +17,12 @@ if (!isset($_SESSION['id'])) {
 } else {
 }
 
+include('sql_queries.php');
 $now = new DateTime();
 
 $btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus =
     $street_add = $brgy = $admin_name = $admin_position = $mobile_no =
-    $telephone_no = $email_add = $juri_username = $juri_password = '';
+    $telephone_no = $email_add = $juri_username = $juri_password = $city = $province = '';
 $btnNew = 'hidden';
 
 
@@ -123,12 +124,12 @@ $get_all_categ_data->execute();
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('Y-m-d'); ?>">
                                                 </div>
 
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Name of Organization <span class="required">*</span>: </label>
+                                                <label>Name of Organization: <span class="required">*</span></label>
                                                 <input type="text" readonly class="form-control" name="name_org" id="name_org" placeholder="Name of Organization" value="<?php echo $name_org; ?>" required>
                                             </div>
 
@@ -139,7 +140,7 @@ $get_all_categ_data->execute();
                                             <div class="col-md-1"></div>
 
                                             <div class="col-md-3">
-                                                <label>Type of Organization <span class="required">*</span>: </label>
+                                                <label>Type of Organization: <span class="required">*</span></label>
                                                 <select class="form-control select2" id="organization" style="width: 100%;" name="organization" value="<?php echo $org; ?>">
                                                     <option selected="selected">Select Organization</option>
                                                     <?php while ($get_categ = $get_all_categ_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -148,7 +149,7 @@ $get_all_categ_data->execute();
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Nature of Business : </label>
+                                                <label>Nature of Business: </label>
                                                 <input type="text" readonly class="form-control" name="nature_bus" id="nature_bus" placeholder="Nature of Business" value="<?php echo $nature_bus; ?>" required>
                                             </div>
 
@@ -175,12 +176,12 @@ $get_all_categ_data->execute();
 
                                             <div class="col-md-3">
                                                 <label>City: </label>
-                                                <input type="text" readonly class="form-control" name="city" id="city" placeholder="City" value="San Carlos City" required>
+                                                <input type="text" readonly class="form-control" name="city" id="city" placeholder="City" value="<?php echo $city ?>" required>
 
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Province: </label>
-                                                <input type="text" readonly class="form-control" name="province" id="province" placeholder="Province" value="Negros Occidental" required>
+                                                <input type="text" readonly class="form-control" name="province" id="province" placeholder="Province" value="<?php echo $province ?>" required>
                                             </div>
                                         </div><br>
 
@@ -249,11 +250,11 @@ $get_all_categ_data->execute();
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <label>Username<span class="required">*</span>: </label>
+                                                <label>Username: <span class="required">*</span></label>
                                                 <input type="text" readonly class="form-control" name="username" id="username" placeholder="Username" value="<?php echo $juri_username ?>" required>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Password<span class="required">*</span>: </label>
+                                                <label>Password: <span class="required">*</span></label>
                                                 <input type="password" readonly class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $juri_password ?>" required>
                                             </div>
 

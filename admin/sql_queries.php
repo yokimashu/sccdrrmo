@@ -230,33 +230,6 @@ if (isset($_POST['add_pum'])) {
     header('location: view_symptoms.php');
 } else if (isset($_POST['delete_symptoms'])) {
 
-    $id_pum = uniqid('id', true);
-
-
-    $insert_juridical_sql = "INSERT INTO tbl_symptoms SET 
-        symptoms            = :symp,
-        status              = :status";
-
-    $juridical_data = $con->prepare($insert_juridical_sql);
-    $juridical_data->execute([
-
-        ':symp'             => $symptoms,
-        ':status'           => $status
-
-
-
-
-
-    ]);
-
-    $alert_msg .= ' 
-        <div class="new-alert new-alert-success alert-dismissible">
-            <i class="icon fa fa-success"></i>
-            Data Inserted
-        </div>     
-    ';
-} else if (isset($_POST['delete_symptoms'])) {
-
     $delete_sym_id = $_POST['user_id'];
     $delete_symp_sql = "UPDATE tbl_symptoms SET status ='Inactive' WHERE idno = :id ";
     $delete_symp_data = $con->prepare($delete_symp_sql);
@@ -327,4 +300,70 @@ if (isset($_POST['add_pum'])) {
     $delete_follow_data->execute([':id' => $delete_follow_id]);
 
     header('location: list_followup.php');
+} else if (isset($_POST['add_juridical'])) {
+
+    $id_juridical = uniqid('id', true);
+    $ent_number = $_POST['entity_number'];
+    $name_org = $_POST['name_org'];
+    $org = $_POST['organization'];
+    $nature_bus = $_POST['nature_bus'];
+    $street_add = $_POST['street_add'];
+    $brgy = $_POST['barangay'];
+    $city = $_POST['city'];
+    $province = $_POST['province'];
+    $admin_name = $_POST['admin_name'];
+    $admin_position = $_POST['admin_position'];
+    $mobile_no = $_POST['mobile_no'];
+    $telephone_no = $_POST['tel_no'];
+    $email_add = $_POST['email_add'];
+    $date_reeg = $_POST['date_reg'];
+    $juri_username = $_POST['username'];
+    $juri_password = $_POST['password'];
+    $hashed_password  = password_hash($juri_password, PASSWORD_DEFAULT);
+
+
+    $insert_juridical_sql = "INSERT INTO tbl_juridical SET 
+        entity_no               = :ent_no,
+        date_reg                = :regis,
+        org_name                = :name_org,
+        organization            = :orggg,
+        business_name           = :buss_name,
+        street_address          = :streeet,
+        barangay                = :brgysss,
+        city                    = :citysss,
+        province                = :citysss,
+        administrator_name      = :citysss,
+        admin_position          = :posss,
+        mobile_number           = :mobiles,
+        telephone_no            = :tel_nos,
+        email_address           = :emaails,
+        username                = :user,
+        password                = :passs,
+        status                  = :status";
+
+    $juridical_data = $con->prepare($insert_juridical_sql);
+    $juridical_data->execute([
+
+        ':ent'              => $ent_number,
+        ':regis'            => $date_reeg,
+        // ':name_org'
+
+
+
+
+        // ':symp'             => $symptoms,
+
+
+
+
+
+
+    ]);
+
+    $alert_msg .= ' 
+        <div class="new-alert new-alert-success alert-dismissible">
+            <i class="icon fa fa-success"></i>
+            Data Inserted
+        </div>     
+    ';
 }
