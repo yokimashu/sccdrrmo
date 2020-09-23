@@ -20,7 +20,7 @@ if (!isset($_SESSION['id'])) {
 include('sql_queries.php');
 $now = new DateTime();
 
-$btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus =
+$btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus = $alert_msg =
     $street_add = $brgy = $admin_name = $admin_position = $mobile_no =
     $telephone_no = $email_add = $juri_username = $juri_password = $city = $province = '';
 $btnNew = 'hidden';
@@ -370,7 +370,6 @@ $get_all_categ_data->execute();
         $(document).ready(function() {
             $('#btnEdit').click(function() {
                 $("input[name='entity_number']").removeAttr("readonly");
-                $("input[name='date_reg']").removeAttr("readonly");
                 $("input[name='name_org']").removeAttr("readonly");
                 $("input[name='organization']").removeAttr("readonly");
                 $("input[name='nature_bus']").removeAttr("readonly");
@@ -378,15 +377,12 @@ $get_all_categ_data->execute();
                 $("input[name='city']").removeAttr("readonly");
                 $("input[name='province']").removeAttr("readonly");
                 $("input[name='admin_name']").removeAttr("readonly");
-
                 $("input[name='admin_position']").removeAttr("readonly");
                 $("input[name='mobile_no']").removeAttr("readonly");
                 $("input[name='tel_no']").removeAttr("readonly");
                 $("input[name='email_add']").removeAttr("readonly");
-
                 $("input[name='username']").removeAttr("readonly");
                 $("input[name='password']").removeAttr("readonly");
-
 
                 $(".select2").attr("disabled", false);
                 $("#btnSubmit").attr("disabled", false);
