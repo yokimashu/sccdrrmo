@@ -68,6 +68,7 @@ $get_all_brgy_data->execute();
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+  
 
 </head>
 
@@ -150,24 +151,7 @@ $get_all_brgy_data->execute();
     </form>
 </div>
 
-<!-- Configure a few settings and attach camera -->
-<script language="JavaScript">
-    Webcam.set({
-        width: 490,
-        height: 390,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-  
-    Webcam.attach( '#my_camera' );
-  
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            $(".image-tag").val(data_uri);
-            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-        } );
-    }
-</script>
+
 
 
                         </div>
@@ -301,7 +285,7 @@ $get_all_brgy_data->execute();
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 
 <script language="JavaScript">
     Webcam.set({
@@ -346,10 +330,7 @@ $get_all_brgy_data->execute();
       
 
 
-      
-    </script>
-
-
+    
 
 
 </body>
