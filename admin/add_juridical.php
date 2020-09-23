@@ -19,24 +19,25 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
-    $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $health_status = $patient = '';
+$btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus =
+    $street_add = $brgy = $admin_name = $admin_position = $mobile_no =
+    $telephone_no = $email_add = $juri_username = $juri_password = '';
 $btnNew = 'hidden';
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status ='Active'";
-$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
-$get_all_symptoms_data->execute();
 
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
 
 
-$get_all_health_sql = "SELECT * FROM tbl_health";
-$get_all_health_data = $con->prepare($get_all_health_sql);
-$get_all_health_data->execute();
+
+$get_all_categ_sql = "SELECT * FROM categ_juridical";
+$get_all_categ_data = $con->prepare($get_all_categ_sql);
+$get_all_categ_data->execute();
+
+
+
 
 ?>
 
@@ -74,7 +75,11 @@ $get_all_health_data->execute();
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-
+    <style>
+        .required {
+            color: red;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -108,18 +113,75 @@ $get_all_health_data->execute();
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <label>Entity # : </label>
-                                                <input type="number" readonly class="form-control" name="entity_number" id="patient_number" placeholder="Entity Number" value="<?php echo $patient; ?>" required>
+                                                <label>Entity #: </label>
+                                                <input type="number" readonly class="form-control" name="entity_number" id="patient_number" placeholder="Entity Number" value="<?php echo $ent_number; ?>" required>
                                             </div>
-
 
                                             <div class="col-md-3">
-                                                <label>Patient # : </label>
-                                                <input type="number" readonly class="form-control" name="patient_number" id="patient_number" placeholder="Patient Number" value="<?php echo $patient; ?>" required>
+                                                <label>Date Registered: </label>
+                                                <div class="input-group date" data-provide="datepicker">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Name of Organization <span class="required">*</span>: </label>
+                                                <input type="text" readonly class="form-control" name="name_org" id="name_org" placeholder="Name of Organization" value="<?php echo $name_org; ?>" required>
                                             </div>
 
 
 
+                                        </div><br>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+
+                                            <div class="col-md-3">
+                                                <label>Type of Organization <span class="required">*</span>: </label>
+                                                <select class="form-control select2" id="organization" style="width: 100%;" name="organization" value="<?php echo $org; ?>">
+                                                    <option selected="selected">Select Organization</option>
+                                                    <?php while ($get_categ = $get_all_categ_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <option value="<?php echo $get_categ['categ_id']; ?>"><?php echo $get_categ['categ_name']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Nature of Business : </label>
+                                                <input type="text" readonly class="form-control" name="nature_bus" id="nature_bus" placeholder="Nature of Business" value="<?php echo $nature_bus; ?>" required>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Street Address / Block #: </label>
+                                                <input type="text" readonly class="form-control" name="street_add" id="street_add" placeholder="Street Address / Block #" value="<?php echo $street_add; ?>" required>
+                                            </div>
+
+
+
+                                        </div><br>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+
+                                            <div class="col-md-3">
+                                                <label>Barangay: </label>
+                                                <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
+                                                    <option selected="selected">Select Barangay</option>
+                                                    <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>City: </label>
+                                                <input type="text" readonly class="form-control" name="city" id="city" placeholder="City" value="San Carlos City" required>
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Province: </label>
+                                                <input type="text" readonly class="form-control" name="province" id="province" placeholder="Province" value="Negros Occidental" required>
+                                            </div>
                                         </div><br>
 
 
@@ -129,109 +191,50 @@ $get_all_health_data->execute();
                                 <!-- personal information -->
                                 <div class="card">
                                     <div class="card-header">
-                                        <h6>PERSONAL INFORMATION</h6>
+                                        <h6>ADMINISTRATOR</h6>
                                     </div>
                                     <div class="box-body">
                                         <br>
                                         <div class="row">
                                             <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="text" readonly class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
+                                            <div class="col-md-3">
+                                                <label>Admininstrator's Name: </label>
+                                                <input type="text" readonly class="form-control" name="admin_name" id="admin_name" placeholder="Admininstrator's Name" value="<?php echo $admin_name ?>" required>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" readonly class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input type="text" readonly class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
+                                                <label>Position: </label>
+                                                <input type="text" readonly class="form-control" name="admin_position" id="admin_position" placeholder="Admininstrator's Position" value="<?php echo $admin_position; ?>" required>
                                             </div>
                                         </div><br>
 
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="number" readonly class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
-                                            </div>
-                                            <div class="col-md-3 ">
-                                                <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
-                                                    <option selected="selected">Select Gender</option>
-                                                    <option value="Female">Female</option>
-                                                    <option value="Male">Male</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 ">
-                                                <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
-                                                    <option selected="selected">Select Barangay</option>
-                                                    <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div><br>
 
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="text" readonly class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
-                                            </div>
 
-                                            <div class="col-md-3 ">
-                                                <input type="text" readonly class="form-control" name="city" placeholder="City / Municipality" value="<?php echo $city; ?>" required>
-                                            </div>
-                                            <div class="col-md-3 ">
-                                                <input type="text" readonly class="form-control" name="province" placeholder="Province" value="<?php echo $province; ?>" required>
-                                            </div>
-                                        </div><br>
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-3">
-                                                <label>Date Reported: </label>
-                                                <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_process" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
-                                                </div>
-                                            </div>
-                                        </div><br>
                                     </div>
                                 </div>
 
                                 <!-- travel history -->
                                 <div class="card">
                                     <div class="card-header">
-                                        <h6>TRAVEL HISTORY</h6>
+                                        <h6>CONTACT INFORMATION</h6>
                                     </div>
                                     <div class="box-body">
                                         <br>
                                         <div class="row">
                                             <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="text" readonly class="form-control" name="city0rigin" placeholder="City of Origin" value="<?php echo $city_origin; ?>" required>
+                                            <div class="col-md-3">
+                                                <label>Mobile #: </label>
+                                                <input type="number" readonly class="form-control" name="mobile_no" id="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no ?>" required>
                                             </div>
                                             <div class="col-md-3">
-                                                <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_arrival" placeholder="Date Arrival" value="<?php echo $now->format('m-d-Y'); ?>">
-                                                </div>
+                                                <label>Telephone #: </label>
+                                                <input type="number" readonly class="form-control" name="tel_no" id="tel_no" placeholder="Telephone Number" value="<?php echo $telephone_no ?>" required>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Email Address: </label>
+                                                <input type="text" readonly class="form-control" name="email_add" id="email_add" placeholder="Email Address" value="<?php echo $email_add ?>" required>
                                             </div>
                                         </div><br>
 
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-3">
-                                                <input type="number" readonly class="form-control" name="contact_number" placeholder="Contact Number" value="<?php echo $contact_number; ?>" required>
-                                            </div>
-
-                                            <div class="col-md-3">
-                                                <select class=" form-control select2" id="travel_days" name="travel_days" value="<?php echo $travel_days; ?>">
-                                                    <option selected="selected">Traveled during the past 14 days?</option>
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
-                                                </select>
-                                            </div>
-                                        </div><br>
 
                                     </div>
                                 </div>
@@ -239,38 +242,22 @@ $get_all_health_data->execute();
                                 <!--  -->
                                 <div class="card">
                                     <div class="card-header">
-                                        <h6>HEALTH HISTORY</h6>
+                                        <h6>JURIDICAL CREDENTIALS</h6>
                                     </div>
                                     <div class="box-body">
                                         <br>
                                         <div class="row">
                                             <div class="col-md-1"></div>
-
                                             <div class="col-md-3">
-                                                <input type="text" readonly class="form-control" name="disease" placeholder="Patient's Disease" value="<?php echo $patient_disease; ?>" required>
+                                                <label>Username<span class="required">*</span>: </label>
+                                                <input type="text" readonly class="form-control" name="username" id="username" placeholder="Username" value="<?php echo $juri_username ?>" required>
                                             </div>
-                                            <div class="col-md-6" style="text-align:center; padding-right:5px;">
-                                                <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="symptoms[]" placeholder="Select Symptoms" svalue="<?php echo $symptoms; ?>">
+                                            <div class="col-md-3">
+                                                <label>Password<span class="required">*</span>: </label>
+                                                <input type="password" readonly class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $juri_password ?>" required>
+                                            </div>
 
-                                                    <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
                                         </div><br>
-
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <select class="form-control select2" id="heath_status" style="width: 100%;" name="health_status" value="<?php echo $health_status; ?>">
-                                                    <option selected="selected">Health Status</option>
-                                                    <?php while ($get_health = $get_all_health_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $get_health['health_status']; ?>"><?php echo $get_health['health_status']; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div><br>
-
 
                                     </div>
                                 </div>
@@ -381,18 +368,24 @@ $get_all_health_data->execute();
 
         $(document).ready(function() {
             $('#btnEdit').click(function() {
-                $("input[name='firstname']").removeAttr("readonly");
-                $("input[name='middlename']").removeAttr("readonly");
-                $("input[name='lastname']").removeAttr("readonly");
-                $("input[name='age']").removeAttr("readonly");
-                $("input[name='street']").removeAttr("readonly");
+                $("input[name='entity_number']").removeAttr("readonly");
+                $("input[name='date_reg']").removeAttr("readonly");
+                $("input[name='name_org']").removeAttr("readonly");
+                $("input[name='organization']").removeAttr("readonly");
+                $("input[name='nature_bus']").removeAttr("readonly");
+                $("input[name='street_add']").removeAttr("readonly");
                 $("input[name='city']").removeAttr("readonly");
                 $("input[name='province']").removeAttr("readonly");
-                $("input[name='city0rigin']").removeAttr("readonly");
-                $("input[name='date_arrival']").removeAttr("readonly");
-                $("input[name='contact_number']").removeAttr("readonly");
-                $("input[name='date_process']").removeAttr("readonly");
-                $("input[name='disease']").removeAttr("readonly");
+                $("input[name='admin_name']").removeAttr("readonly");
+
+                $("input[name='admin_position']").removeAttr("readonly");
+                $("input[name='mobile_no']").removeAttr("readonly");
+                $("input[name='tel_no']").removeAttr("readonly");
+                $("input[name='email_add']").removeAttr("readonly");
+
+                $("input[name='username']").removeAttr("readonly");
+                $("input[name='password']").removeAttr("readonly");
+
 
                 $(".select2").attr("disabled", false);
                 $("#btnSubmit").attr("disabled", false);

@@ -241,6 +241,39 @@
     }
     else if (isset($_POST['delete_symptoms'])) {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    }
+    else if (isset($_POST['delete_symptoms'])) {
+
         $delete_sym_id = $_POST['user_id'];
         $delete_symp_sql = "UPDATE tbl_symptoms SET status ='Inactive' WHERE idno = :id ";
         $delete_symp_data = $con->prepare($delete_symp_sql);
