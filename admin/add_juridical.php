@@ -269,7 +269,7 @@ $get_all_categ_data->execute();
                                     <button type="button" <?php echo $btnEdit; ?> name="edit" id="btnEdit" class="btn btn-info">
                                         <i class="fa fa-edit fa-fw"> </i> </button>
 
-                                    <button type="submit" <?php echo $btnSave; ?> name="add_pum" id="btnSubmit" class="btn btn-success">
+                                    <button type="submit" <?php echo $btnSave; ?> name="add_juridical" id="btnSubmit" class="btn btn-success">
                                         <i class="fa fa-check fa-fw"> </i> </button>
 
                                     <a href="add_pum.php">

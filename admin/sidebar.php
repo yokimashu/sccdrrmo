@@ -56,11 +56,11 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
   </ul>
 
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item d-none d-sm-inline-block">
+    <!-- <li class="nav-item d-none d-sm-inline-block">
       <a href="../../lockscreen.php" class="nav-link">Lock Screen</a>
-    </li>
+    </li> -->
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../logout.php" class="nav-link">Log Out</a>
+      <a href="../../logout.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
     </li>
   </ul>
 
@@ -263,7 +263,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </ul>
 
 
-        <li class="nav-item has-treeview" style="font-size:16px">
+          <!-- <li class="nav-item has-treeview" style="font-size:16px">
           <a href="#" class="nav-link ">
             <i class="nav-icon fa fa-cogs"></i>
             <p>
@@ -283,7 +283,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 <p>Log Out</p>
               </a>
 
-          </ul>
+          </ul> -->
 
     </nav>
     <!-- /.sidebar-menu -->
