@@ -50,7 +50,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | List of PUMs </title>
+  <title>SCCDRRMO ERP | List of Judiciary </title>
   <?php include('header.php'); ?>
 
 
@@ -69,6 +69,8 @@ $get_all_symptoms_data->execute();
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
             <h4> Master Lists
+              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a>
             </h4>
 
           </div>
