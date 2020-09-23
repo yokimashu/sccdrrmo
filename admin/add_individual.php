@@ -39,8 +39,9 @@ $get_all_brgy_data->execute();
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>SCCDRRMO ERP | Add PUMs / PUI</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,6 +70,14 @@ $get_all_brgy_data->execute();
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   
+    <style>
+#my_camera{
+ width: 320px;
+ height: 240px;
+ border: 1px solid black;
+}
+</style>
+
 
 </head>
 
@@ -130,29 +139,12 @@ $get_all_brgy_data->execute();
                                         <h6>PERSONAL INFORMATION</h6>
 
                                         <div class="container">
-    <h1 class="text-center">Capture webcam image</h1>
-   
+                                        <div id="my_camera"></div>
+                                        <div id="results">Your captured image will appear here...</div>
     <form method="POST" action="storeImage.php">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="my_camera"></div>
-                <br/>
-                <input type=button value="Take Snapshot" onClick="take_snapshot()">
-                <input type="hidden" name="image" class="image-tag">
-            </div>
-            <div class="col-md-6">
-                <div id="results">Your captured image will appear here...</div>
-            </div>
-            <div class="col-md-12 text-center">
-                <br/>
-                <button class="btn btn-success">Submit</button>
-            </div>
-        </div>
-    </form>
-</div>
 
 
-
+<input type=button value="Take Snapshot" onClick="take_snapshot()">
 
                         </div>
                         <div class ="row">
@@ -281,28 +273,18 @@ $get_all_brgy_data->execute();
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+<!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     -->
+     
+    <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script>
+  
+<script>
 
-<script language="JavaScript">
-    Webcam.set({
-        width: 490,
-        height: 390,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-  
-    Webcam.attach( '#my_camera' );
-  
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            $(".image-tag").val(data_uri);
-            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-        } );
-    }
 
 
         $('.select2').select2();
@@ -328,10 +310,30 @@ $get_all_brgy_data->execute();
         });
 
       
+</script>
 
-
+<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
     
-
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Here is your image:</h2>' + 
+					'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script>
 
 </body>
 
