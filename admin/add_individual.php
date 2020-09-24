@@ -3,7 +3,7 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 include('generate_id.php');
-
+include('insert_individual.php');
 
 
 
@@ -39,8 +39,9 @@ $get_all_brgy_data->execute();
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>SCCDRRMO ERP | Add PUMs / PUI</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,6 +70,14 @@ $get_all_brgy_data->execute();
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   
+    <!-- <style>
+#my_camera{
+ width: 320px;
+ height: 240px;
+ border: 1px solid black;
+}
+</style> -->
+
 
 </head>
 
@@ -108,12 +117,12 @@ $get_all_brgy_data->execute();
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                    <input type="text"  class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>ID : </label>
-                                                <input type="text" readonly class="form-control" name="id" id="id" placeholder="Registration Number" value="<?php echo $id; ?>" required>
+                                                <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Registration Number" value="<?php echo $id; ?>" required>
                                             </div>
 
 
@@ -124,35 +133,20 @@ $get_all_brgy_data->execute();
 
                                     </div>
                                 </div>
+
+
                                 <!-- personal information -->
                                 <div class="card">
                                     <div class="card-header">
                                         <h6>PERSONAL INFORMATION</h6>
 
-                                        <div class="container">
-    <h1 class="text-center">Capture webcam image</h1>
-   
+                                        <!-- <div class="container">
+                                        <div id="my_camera"></div>
+                                        <div id="results">Your captured image will appear here...</div>
     <form method="POST" action="storeImage.php">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="my_camera"></div>
-                <br/>
-                <input type=button value="Take Snapshot" onClick="take_snapshot()">
-                <input type="hidden" name="image" class="image-tag">
-            </div>
-            <div class="col-md-6">
-                <div id="results">Your captured image will appear here...</div>
-            </div>
-            <div class="col-md-12 text-center">
-                <br/>
-                <button class="btn btn-success">Submit</button>
-            </div>
-        </div>
-    </form>
-</div>
 
 
-
+<input type=button value="Take Snapshot" onClick="take_snapshot()">
 
                         </div>
                         <div class ="row">
@@ -161,7 +155,7 @@ $get_all_brgy_data->execute();
 
                             
                             </div>
-                        </div>
+                        </div> -->
 
                                     
                                     <div class="box-body">
@@ -169,20 +163,35 @@ $get_all_brgy_data->execute();
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="text"  class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
+                                                <input type="text"  class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" >
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text"  class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
+                                                <input type="text"  class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>">
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text"  class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
+                                                <input type="text"  class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" >
                                             </div>
                                         </div><br>
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
+                                            <div class="col-md-3">
+                                             
+                                                <div class="input-group date" data-provide="datepicker">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text"  class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                </div>
+                                            </div>
+                                            
+
+                                        
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
                                             <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="number"  class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
+                                            
+                                                <input type="number"  class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" >
                                             </div>
                                             <div class="col-md-3 ">
                                                 <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
@@ -200,24 +209,25 @@ $get_all_brgy_data->execute();
                                                 </select>
                                             </div>
                                         </div><br>
+                                        </div>
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                <input type="text" readonly class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
+                                                <input type="text"  class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" >
                                             </div>
 
                                             <div class="col-md-3 ">
-                                                <input type="text" readonly class="form-control" name="city" placeholder="City / Municipality" value="SAN CARLOS CITY" required>
+                                                <input type="text" readonly class="form-control" name="city" placeholder="City / Municipality" value="SAN CARLOS CITY" >
                                             </div>
                                             <div class="col-md-3 ">
-                                                <input type="text" readonly class="form-control" name="province" placeholder="Province" value="NEGROS OCCIDENTAL" required>
+                                                <input type="text" readonly class="form-control" name="province" placeholder="Province" value="NEGROS OCCIDENTAL" >
                                             </div>
                                         </div><br>
                                     </div>
                                 </div>
 
-
+                                </div>
 
 
 
@@ -281,28 +291,18 @@ $get_all_brgy_data->execute();
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+<!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     -->
+     
+    <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
+  
+<!-- <script>
 
-<script language="JavaScript">
-    Webcam.set({
-        width: 490,
-        height: 390,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-  
-    Webcam.attach( '#my_camera' );
-  
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            $(".image-tag").val(data_uri);
-            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-        } );
-    }
 
 
         $('.select2').select2();
@@ -325,13 +325,33 @@ $get_all_brgy_data->execute();
 
             });
             //  }
-        });
+        }); -->
 
       
-
-
+</script>
+<!-- 
+<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
     
-
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<!-- <script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Here is your image:</h2>' + 
+					'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script> --> -->
 
 </body>
 

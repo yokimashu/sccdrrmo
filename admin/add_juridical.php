@@ -1,13 +1,17 @@
 <?php
 
-include('../config/db_config.php');
-include('sql_queries.php');
-include('generate_pum.php');
-
-
 
 
 session_start();
+
+include('../config/db_config.php');
+include('insert_juridical.php');
+
+// include('generate_pum.php');
+
+
+
+
 $user_id = $_SESSION['id'];
 
 include('verify_admin.php');
@@ -17,24 +21,25 @@ if (!isset($_SESSION['id'])) {
 } else {
 }
 
+
 $now = new DateTime();
 
-$btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus =
+$btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus = $alert_msg =
     $street_add = $brgy = $admin_name = $admin_position = $mobile_no =
-    $telephone_no = $email_add = $juri_username = $juri_password = '';
+    $telephone_no = $email_add = $juri_username = $juri_password = $entity_no = $city = $province = '';
 $btnNew = 'hidden';
 
 
 
-$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
-$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
-$get_all_brgy_data->execute();
+// $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
+// $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
+// $get_all_brgy_data->execute();
 
 
 
-$get_all_categ_sql = "SELECT * FROM categ_juridical";
-$get_all_categ_data = $con->prepare($get_all_categ_sql);
-$get_all_categ_data->execute();
+// $get_all_categ_sql = "SELECT * FROM categ_juridical";
+// $get_all_categ_data = $con->prepare($get_all_categ_sql);
+// $get_all_categ_data->execute();
 
 
 
@@ -53,8 +58,7 @@ $get_all_categ_data->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.css">
     <!-- iCheck -->
@@ -69,8 +73,7 @@ $get_all_categ_data->execute();
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
@@ -89,9 +92,9 @@ $get_all_categ_data->execute();
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-            <div class="float-topright">
+            <!-- <div class="float-topright">
                 <?php echo $alert_msg; ?>
-            </div>
+            </div> -->
 
             <section class="content">
                 <div class="card">
@@ -112,34 +115,49 @@ $get_all_categ_data->execute();
                                         <br>
                                         <div class="row">
                                             <div class="col-md-1"></div>
+                                            <div class="col-md-3"></div>
                                             <div class="col-md-3">
-                                                <label>Entity #: </label>
-                                                <input type="number" readonly class="form-control" name="entity_number" id="patient_number" placeholder="Entity Number" value="<?php echo $ent_number; ?>" required>
+                                                <label>ENTITY NO. : </label>
+                                                <input type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Registration Number" value="<?php echo $entity_no; ?>">
                                             </div>
 
-                                            <div class="col-md-3">
-                                                <label>Date Registered: </label>
-                                                <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+
+                                            <div class="box-footer" align="center">
+
+                                                <button type="button" <?php echo $btnEdit; ?> name="edit" id="btnEdit" class="btn btn-info">
+                                                    <i class="fa fa-edit fa-fw"> </i> </button>
+
+                                                <button type="submit" <?php echo $btnSave; ?> name="insert_juridical" id="btnSubmit" class="btn btn-success">
+                                                    <i class="fa fa-check fa-fw"> </i> </button>
+
+                                                <a href="add_pum.php">
+                                                    <button type="button" name="cancel" class="btn btn-danger">
+                                                        <i class="fa fa-close fa-fw"> </i> </button>
+                                                </a>
+                                            </div>
+                                            <!-- <div class="col-md-3">
+                                                    <label>Date Registered: </label>
+                                                    <div class="input-group date" data-provide="datepicker">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('m-d-Y'); ?>">
                                                     </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('m-d-Y'); ?>">
-                                                </div>
 
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Name of Organization <span class="required">*</span>: </label>
-                                                <input type="text" readonly class="form-control" name="name_org" id="name_org" placeholder="Name of Organization" value="<?php echo $name_org; ?>" required>
-                                            </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Name of Organization: <span class="required">*</span></label>
+                                                    <input type="text" readonly class="form-control" name="name_org" id="name_org" placeholder="Name of Organization" value="<?php echo $name_org; ?>">
+                                                </div> -->
 
 
 
                                         </div><br>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-md-1"></div>
 
                                             <div class="col-md-3">
-                                                <label>Type of Organization <span class="required">*</span>: </label>
+                                                <label>Type of Organization: <span class="required">*</span></label>
                                                 <select class="form-control select2" id="organization" style="width: 100%;" name="organization" value="<?php echo $org; ?>">
                                                     <option selected="selected">Select Organization</option>
                                                     <?php while ($get_categ = $get_all_categ_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -148,19 +166,19 @@ $get_all_categ_data->execute();
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Nature of Business : </label>
-                                                <input type="text" readonly class="form-control" name="nature_bus" id="nature_bus" placeholder="Nature of Business" value="<?php echo $nature_bus; ?>" required>
+                                                <label>Nature of Business: </label>
+                                                <input type="text" readonly class="form-control" name="nature_bus" id="nature_bus" placeholder="Nature of Business" value="<?php echo $nature_bus; ?>">
                                             </div>
 
                                             <div class="col-md-3">
                                                 <label>Street Address / Block #: </label>
-                                                <input type="text" readonly class="form-control" name="street_add" id="street_add" placeholder="Street Address / Block #" value="<?php echo $street_add; ?>" required>
+                                                <input type="text" readonly class="form-control" name="street_add" id="street_add" placeholder="Street Address / Block #" value="<?php echo $street_add; ?>">
                                             </div>
 
 
 
-                                        </div><br>
-                                        <div class="row">
+                                        </div><br> -->
+                                        <!-- <div class="row">
                                             <div class="col-md-1"></div>
 
                                             <div class="col-md-3">
@@ -175,21 +193,20 @@ $get_all_categ_data->execute();
 
                                             <div class="col-md-3">
                                                 <label>City: </label>
-                                                <input type="text" readonly class="form-control" name="city" id="city" placeholder="City" value="San Carlos City" required>
+                                                <input type="text" readonly class="form-control" name="city" id="city" placeholder="City" value="<?php echo $city ?>">
 
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Province: </label>
-                                                <input type="text" readonly class="form-control" name="province" id="province" placeholder="Province" value="Negros Occidental" required>
+                                                <input type="text" readonly class="form-control" name="province" id="province" placeholder="Province" value="<?php echo $province ?>">
                                             </div>
-                                        </div><br>
+                                        </div><br> -->
 
 
 
                                     </div>
                                 </div>
-                                <!-- personal information -->
-                                <div class="card">
+                                <!-- <div class="card">
                                     <div class="card-header">
                                         <h6>ADMINISTRATOR</h6>
                                     </div>
@@ -199,21 +216,21 @@ $get_all_categ_data->execute();
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
                                                 <label>Admininstrator's Name: </label>
-                                                <input type="text" readonly class="form-control" name="admin_name" id="admin_name" placeholder="Admininstrator's Name" value="<?php echo $admin_name ?>" required>
+                                                <input type="text" readonly class="form-control" name="admin_name" id="admin_name" placeholder="Admininstrator's Name" value="<?php echo $admin_name ?>">
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Position: </label>
-                                                <input type="text" readonly class="form-control" name="admin_position" id="admin_position" placeholder="Admininstrator's Position" value="<?php echo $admin_position; ?>" required>
+                                                <input type="text" readonly class="form-control" name="admin_position" id="admin_position" placeholder="Admininstrator's Position" value="<?php echo $admin_position; ?>">
                                             </div>
                                         </div><br>
 
 
 
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <!-- travel history -->
-                                <div class="card">
+
+                                <!-- <div class="card">
                                     <div class="card-header">
                                         <h6>CONTACT INFORMATION</h6>
                                     </div>
@@ -223,23 +240,23 @@ $get_all_categ_data->execute();
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
                                                 <label>Mobile #: </label>
-                                                <input type="number" readonly class="form-control" name="mobile_no" id="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no ?>" required>
+                                                <input type="number" readonly class="form-control" name="mobile_no" id="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no ?>">
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Telephone #: </label>
-                                                <input type="number" readonly class="form-control" name="tel_no" id="tel_no" placeholder="Telephone Number" value="<?php echo $telephone_no ?>" required>
+                                                <input type="number" readonly class="form-control" name="tel_no" id="tel_no" placeholder="Telephone Number" value="<?php echo $telephone_no ?>">
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Email Address: </label>
-                                                <input type="text" readonly class="form-control" name="email_add" id="email_add" placeholder="Email Address" value="<?php echo $email_add ?>" required>
+                                                <input type="text" readonly class="form-control" name="email_add" id="email_add" placeholder="Email Address" value="<?php echo $email_add ?>">
                                             </div>
                                         </div><br>
 
 
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <!--  -->
+                                <!-- 
                                 <div class="card">
                                     <div class="card-header">
                                         <h6>JURIDICAL CREDENTIALS</h6>
@@ -249,34 +266,22 @@ $get_all_categ_data->execute();
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <label>Username<span class="required">*</span>: </label>
-                                                <input type="text" readonly class="form-control" name="username" id="username" placeholder="Username" value="<?php echo $juri_username ?>" required>
+                                                <label>Username: <span class="required">*</span></label>
+                                                <input type="text" readonly class="form-control" name="username" id="username" placeholder="Username" value="<?php echo $juri_username ?>">
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Password<span class="required">*</span>: </label>
-                                                <input type="password" readonly class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $juri_password ?>" required>
+                                                <label>Password: <span class="required">*</span></label>
+                                                <input type="password" readonly class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $juri_password ?>">
                                             </div>
 
                                         </div><br>
 
                                     </div>
                                 </div>
+ -->
 
 
 
-                                <div class="box-footer" align="center">
-
-                                    <button type="button" <?php echo $btnEdit; ?> name="edit" id="btnEdit" class="btn btn-info">
-                                        <i class="fa fa-edit fa-fw"> </i> </button>
-
-                                    <button type="submit" <?php echo $btnSave; ?> name="add_juridical" id="btnSubmit" class="btn btn-success">
-                                        <i class="fa fa-check fa-fw"> </i> </button>
-
-                                    <a href="add_pum.php">
-                                        <button type="button" name="cancel" class="btn btn-danger">
-                                            <i class="fa fa-close fa-fw"> </i> </button>
-                                    </a>
-                                </div>
                                 <!-- end box-footer -->
                             </div>
                             <!-- end box-body -->
@@ -363,35 +368,31 @@ $get_all_categ_data->execute();
             autoclose: true
         });
 
-        $("#btnSubmit").attr("disabled", true);
-        $(".select2").attr("disabled", true);
+        // $("#btnSubmit").attr("disabled", true);
+        // $(".select2").attr("disabled", true);
 
-        $(document).ready(function() {
-            $('#btnEdit').click(function() {
-                $("input[name='entity_number']").removeAttr("readonly");
-                $("input[name='date_reg']").removeAttr("readonly");
-                $("input[name='name_org']").removeAttr("readonly");
-                $("input[name='organization']").removeAttr("readonly");
-                $("input[name='nature_bus']").removeAttr("readonly");
-                $("input[name='street_add']").removeAttr("readonly");
-                $("input[name='city']").removeAttr("readonly");
-                $("input[name='province']").removeAttr("readonly");
-                $("input[name='admin_name']").removeAttr("readonly");
+        // $(document).ready(function() {
+        //     $('#btnEdit').click(function() {
+        //         $("input[name='entity_number']").removeAttr("readonly");
+        //         $("input[name='name_org']").removeAttr("readonly");
+        //         $("input[name='organization']").removeAttr("readonly");
+        //         $("input[name='nature_bus']").removeAttr("readonly");
+        //         $("input[name='street_add']").removeAttr("readonly");
+        //         $("input[name='city']").removeAttr("readonly");
+        //         $("input[name='province']").removeAttr("readonly");
+        //         $("input[name='admin_name']").removeAttr("readonly");
+        //         $("input[name='admin_position']").removeAttr("readonly");
+        //         $("input[name='mobile_no']").removeAttr("readonly");
+        //         $("input[name='tel_no']").removeAttr("readonly");
+        //         $("input[name='email_add']").removeAttr("readonly");
+        //         $("input[name='username']").removeAttr("readonly");
+        //         $("input[name='password']").removeAttr("readonly");
 
-                $("input[name='admin_position']").removeAttr("readonly");
-                $("input[name='mobile_no']").removeAttr("readonly");
-                $("input[name='tel_no']").removeAttr("readonly");
-                $("input[name='email_add']").removeAttr("readonly");
-
-                $("input[name='username']").removeAttr("readonly");
-                $("input[name='password']").removeAttr("readonly");
-
-
-                $(".select2").attr("disabled", false);
-                $("#btnSubmit").attr("disabled", false);
-                $("#btnEdit").attr("disabled", true);
-            });
-        });
+        //         $(".select2").attr("disabled", false);
+        //         $("#btnSubmit").attr("disabled", false);
+        //         $("#btnEdit").attr("disabled", true);
+        //     });
+        // });
 
         // $('#btnEdit').on('change',function(){
         //             var type = $(this).val();

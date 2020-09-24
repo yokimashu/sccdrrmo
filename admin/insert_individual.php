@@ -1,60 +1,77 @@
 <?php
 
 
-include('../config/db_config.php');
+
 //include('import_pdf.php');
 
 $alert_msg = '';
 $alert_msg1 = '';
 
-if (isset($_POST['insert_purchase'])) {
+if (isset($_POST['insert_individual'])) {
 
-    $pr_control_no = date("mdGis");
-    $time = $_POST['time'];
-    $dept_code = $_POST['dept'];
+   
+    $entity_no = $_POST['entity_no'];
+    $date_register = $_POST['date_register'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname = $_POST['lastname'];
+    $gender = $_POST['gender'];
+    $age = $_POST['age'];
+    $contact_no = $_POST['contact_no'];
+    $email_address = $_POST['email_address'];
+
+    $birthdate = $_POST['birthdate'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $province = $_POST['province'];
 
 
-    $section = $_POST['section'];
-    $saino = $_POST['saino'];
-    $saidate = $_POST['saidate'];
+    $insert_individual_sql = "INSERT INTO tbl_individual SET 
 
-    $requested = $_POST['requested'];
-    $prepared = $_POST['prepared'];
-    $approved = $_POST['approvedby'];
+    entity_no        = :entity_no,
+    date_register    = :date_register,
+    firstname        = :firstname,
+    middlename       = :middlename,
+    lastname         = :lastname,
+    age              = :age,
+    gender           = :gender,
+    contact_no       = :contact_no,
+    email_address    = :email_address,
+    birthdate        = :birthdate,
+    street           = :street,
+    city             = :city,
+    province         = :province
 
-    $purpose = $_POST['purpose'];
-    $status = 'Active';
+
+    
+    
+    
+    
+    
+    ";
+
+    $individual_data = $con->prepare($insert_individual_sql);
+    $individual_data->execute([
+
+     
+  
+        ':entity_no'         => $entity_no,
+        ':date_register'     => $date_register,
+        ':firstname'         => $firstname,
+        ':middlename'        => $middlename,
+        ':lastname'          => $lastname,
+        ':age'               => $age,
+        ':gender'            => $gender,
+        ':contact_no'        => $contact_no,
+        ':email_address'     => $email_address,
+        ':birthdate'         => $birthdate,
+        ':street'            => $street,
+        ':city'              => $city,
+        ':province'          => $province
 
 
-    $insert_pr_sql = "INSERT INTO pr_info SET 
-        pr_info_control_no          = :controlno,
-        pr_info_time                = :prtime,
 
-        pr_info_sai_no              = :saino,
-        pr_info_sai_date            = :saidate,
-        pr_info_dept                = :dept,
-        pr_info_section             = :section,
-        pr_info_reqby               = :reqby,
-        pr_info_prepby              = :prepby,
-        pr_info_approvedby          = :appby,
-        pr_info_purpose             = :purpose,
-        pr_info_status              = :stat
-       ";
-
-    $pr_data = $con->prepare($insert_pr_sql);
-    $pr_data->execute([
-
-        ':controlno'                => $pr_control_no,
-        ':prtime'                   => $time,
-        ':saino'                    => $saino,
-        ':saidate'                  => $saidate,
-        ':dept'                     => $dept_code,
-        ':section'                  => $section,
-        ':reqby'                    => $requested,
-        ':prepby'                   => $prepared,
-        ':appby'                    => $approved,
-        ':purpose'                  => $purpose,
-        ':stat'                     => $status
+      
 
     ]);
 
@@ -64,6 +81,6 @@ if (isset($_POST['insert_purchase'])) {
         Data Inserted
     </div>  
       ';
-      
-    header("location: add_pr_item.php?controlno=$pr_control_no");
+      echo print_r($firstname);
+      header("location: list_individual.php");
 }

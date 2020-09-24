@@ -29,9 +29,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_pum_sql = "SELECT * FROM tbl_pum where status = 'Active' order by idno DESC";
-$get_all_pum_data = $con->prepare($get_all_pum_sql);
-$get_all_pum_data->execute();
+$get_all_juridical_sql = "SELECT * FROM tbl_juridical j, categ_juridical c WHERE j.organization = c.categ_id AND status = 'Active' order by id DESC ";
+$get_all_juridical_data = $con->prepare($get_all_juridical_sql);
+$get_all_juridical_data->execute();
 
 
 
@@ -99,7 +99,7 @@ $get_all_symptoms_data->execute();
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_pum = $get_all_pum_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
                             <td><?php echo $list_pum['date_report'];  ?></td>
                             <td><?php echo $list_pum['time_report']; ?></td>
