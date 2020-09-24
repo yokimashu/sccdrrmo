@@ -120,11 +120,14 @@ $get_all_brgy_data->execute();
                                                 <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
-                                            <div class="container">
+                                            <div class="col-md-3">
+                                            
                                         <div id="my_camera"></div>
                                         <div id="results">Your captured image will appear here...</div>
-                                        </div><br>
+                                        
+                                            </div>
 
+                                      
 
 
                                     </div>
@@ -325,7 +328,7 @@ $(document).ready(function() {
 
 <script language="JavaScript">
 		Webcam.set({
-			width: 320,
+			width: 240,
 			height: 240,
 			image_format: 'jpeg',
 			jpeg_quality: 90
@@ -339,8 +342,7 @@ $(document).ready(function() {
 			// take snapshot and get image data
 			Webcam.snap( function(data_uri) {
 				// display results in page
-				document.getElementById('results').innerHTML = 
-					'<h2>Here is your image:</h2>' + 
+				document.getElementById('my_camera').innerHTML = 
 					'<img src="'+data_uri+'"/>';
 			} );
 		}
