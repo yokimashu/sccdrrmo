@@ -28,9 +28,6 @@ $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
 
-
-
-
 ?>
 
 
@@ -123,8 +120,9 @@ $get_all_brgy_data->execute();
                                                 <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
-
-
+                                            <div class="container">
+                                        <div id="my_camera"></div>
+                                        <div id="results">Your captured image will appear here...</div>
                                         </div><br>
 
 
@@ -139,9 +137,7 @@ $get_all_brgy_data->execute();
                                         <h6>PERSONAL INFORMATION</h6>
 
                                         
-                                        <div class="container">
-                                        <div id="my_camera"></div>
-                                        <div id="results">Your captured image will appear here...</div>
+                                      
     <form method="POST" action="storeImage.php">
 
 
