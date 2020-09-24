@@ -125,7 +125,7 @@ $get_all_categ_data->execute();
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('m-d-Y'); ?>">
                                                 </div>
 
                                             </div>
