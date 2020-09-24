@@ -27,19 +27,30 @@ $user_id = $_SESSION['id'];
  
 // }
 
-$get_noofdocs_sql= "SELECT COUNT(`id`) as total FROM `tbl_individual` ";
-$get_noofdocs_data = $con->prepare($get_noofdocs_sql);
-$get_noofdocs_data->execute();
-$get_noofdocs_data->setFetchMode(PDO::FETCH_ASSOC);
-while ($result1 = $get_noofdocs_data->fetch(PDO::FETCH_ASSOC)) {    
-  $finalcount =  $result1['total'];
-}
+// $get_noofdocs_sql= "SELECT COUNT(`id`) as total FROM `tbl_individual` ";
+// $get_noofdocs_data = $con->prepare($get_noofdocs_sql);
+// $get_noofdocs_data->execute();
+// $get_noofdocs_data->setFetchMode(PDO::FETCH_ASSOC);
+// while ($result1 = $get_noofdocs_data->fetch(PDO::FETCH_ASSOC)) {    
+//   $finalcount =  $result1['total'];
+// }
 
-    $finalcount1 = $finalcount + 1;
-    $id = 'SC'.'-'.$finalcount1;
-    echo $id;
+//     $finalcount1 = $finalcount + 1;
+//     $id = 'SC'.'-'.$finalcount1;
+//     echo $id;
 
-
+$template = 'XXXXXX9999';
+$k = strlen($template);
+$sernum ='';
+for ($i=0; $i<$k; $i++)
+  {
+    switch($template[$i])
+    {
+      case 'X': $sernum .= chr(rand(65,90)); break;
+      case '9': $sernum .= rand(0,9); break;
+      case '-': $sernum .= '-'; break;
+    }
+  }
 
 die();
 
