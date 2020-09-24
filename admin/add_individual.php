@@ -140,7 +140,7 @@ $get_all_brgy_data->execute();
 
                                         <div class="container">
                                         <div id="my_camera"></div>
-                                        <div id="results">Your captured image will appear here...</div>
+                                        <div id="results">Your captured image will appearx here...</div>
     <form method="POST" action="storeImage.php">
 
 
