@@ -2,7 +2,6 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
-include('generate_id.php');
 include('insert_individual.php');
 
 
@@ -303,37 +302,36 @@ $get_all_brgy_data->execute();
      -->
      
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-  
+    <script type="text/javascript">
+
+$(document).ready(function() {
+   
+    $('.select2').select2();
+
+  $(document).ajaxStart(function () {
+    Pace.restart()
+  })  
+
+});
+
+
+</script>
+
 <script>
-   $(document).ready(function () {
-    alert(hello);
-            $.ajax({
+    function generateID(){
+       
+        $.ajax({
                 type: 'POST',
                 data: {},
                 url: 'generate_id.php',
                 success: function(data) {
                     $('#entity_no').val(data);
-
                 }
-
-
             });
-    });
-
-
-        $('.select2').select2();
-
-
-        $('#btnEdit').on('change', function() {
-            var type = $(this).val();
-            // var office = $('#department').val();
-
-           
-         
-        });
-
-      
+    }
+    window.onload = generateID;
 </script>
+
 
 <script language="JavaScript">
 		Webcam.set({
