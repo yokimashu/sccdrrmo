@@ -1,13 +1,16 @@
 <?php
 
-include('../config/db_config.php');
-include('sql_queries.php');
-include('generate_pum.php');
-
-
 
 
 session_start();
+
+include('../config/db_config.php');
+include('insert_juridical.php');
+// include('generate_pum.php');
+
+
+
+
 $user_id = $_SESSION['id'];
 
 include('verify_admin.php');
@@ -17,7 +20,7 @@ if (!isset($_SESSION['id'])) {
 } else {
 }
 
-include('sql_queries.php');
+
 $now = new DateTime();
 
 $btnSave = $btnEdit = $ent_number = $name_org = $org = $nature_bus = $alert_msg =
@@ -54,8 +57,7 @@ $get_all_categ_data->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.css">
     <!-- iCheck -->
@@ -70,8 +72,7 @@ $get_all_categ_data->execute();
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
@@ -90,9 +91,9 @@ $get_all_categ_data->execute();
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-            <div class="float-topright">
+            <!-- <div class="float-topright">
                 <?php echo $alert_msg; ?>
-            </div>
+            </div> -->
 
             <section class="content">
                 <div class="card">

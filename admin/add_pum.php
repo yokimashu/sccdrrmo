@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+
+
+
 include('../config/db_config.php');
 include('sql_queries.php');
 include('generate_pum.php');
@@ -7,7 +11,7 @@ include('generate_pum.php');
 
 
 
-session_start();
+
 $user_id = $_SESSION['id'];
 
 include('verify_admin.php');
@@ -84,9 +88,9 @@ $get_all_health_data->execute();
     <div class="content-wrapper">
       <div class="content-header"></div>
 
-      <div class="float-topright">
+      <!-- <div class="float-topright">
         <?php echo $alert_msg; ?>
-      </div>
+      </div> -->
 
       <section class="content">
         <div class="card">
