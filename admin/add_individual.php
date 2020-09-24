@@ -78,7 +78,6 @@ $get_all_brgy_data->execute();
 }
 </style>
 
-
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -121,8 +120,8 @@ $get_all_brgy_data->execute();
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>ID : </label>
-                                                <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Registration Number" value="<?php echo $id; ?>" required>
+                                                <label>Entity ID : </label>
+                                                <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
 
@@ -320,9 +319,9 @@ $get_all_brgy_data->execute();
             $.ajax({
                 type: 'POST',
                 data: {},
-                url: 'generate_pum.php',
+                url: 'generate_id.php',
                 success: function(data) {
-                    $('#patient_number').val(data);
+                    $('#entity_no').val(data);
 
                 }
 
