@@ -35,11 +35,6 @@ $get_all_individual_data->execute();
 
 
 
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status = 'Active'";
-$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
-$get_all_symptoms_data->execute();
-
-
 ?>
 
 
@@ -72,6 +67,8 @@ $get_all_symptoms_data->execute();
 
             <a href="add_individual" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
+                <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a>
             </h4>
 
           </div>
@@ -92,7 +89,7 @@ $get_all_symptoms_data->execute();
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
                           <th> ID </th>
-                   
+                          <th> Date </th>
                           <th> Full Name </th>
                           <th> Address</th>
                           <th> Contact No.</th>
@@ -102,17 +99,17 @@ $get_all_symptoms_data->execute();
                       <tbody>
                         <?php while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
-                            <td><?php echo $list_individual['id'];  ?></td>
-                      
+                            <td><?php echo $list_individual['entity_no'];  ?></td>
+                            <td><?php echo $list_individual['date_register'];  ?></td>
                             <td><?php echo $list_individual['firstname'];
                                 echo " ";
                                 echo $list_individual['middlename'];
                                 echo " ";
                                 echo $list_individual['lastname']; ?> </td>
-                            <td><?php echo $list_individual['address']; ?> </td>
+                            <td><?php echo $list_individual['street']; ?> </td>
                             <td><?php echo $list_individual['contact_no']; ?></td>
                             <td>
-                              <a class="btn btn-success btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno']; ?> ">
+                              <a class="btn btn-success btn-sm" href="view_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i>
                               </a>
                               <button class="btn btn-danger btn-sm" data-role="confirm_delete" data-id="<?php echo $list_pum["idno"]; ?>"><i class="fa fa-trash-o"></i>

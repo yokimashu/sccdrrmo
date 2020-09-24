@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 include('../config/db_config.php');
@@ -338,3 +339,5 @@ $get_all_brgy_data->execute();
 </body>
 
 </html>
+=======
+>>>>>>> d34c02a437b4a1ea4ec23a802ed734a6a3107ba3
