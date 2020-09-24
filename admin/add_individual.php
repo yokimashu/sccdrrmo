@@ -117,19 +117,24 @@ $get_all_brgy_data->execute();
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Entity ID : </label>
-                                                <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                            <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
                                             <div class="col-md-3">
                                             
-                                        <div id="my_camera"></div>
-                                        <div id="results">Your captured image will appear here...</div>
+                                        <div id="my_camera"></div><br>
+                                        <!-- <div id="results">Your captured image will appear here...</div> -->
+                                        <form method="POST" action="storeImage.php">
                                         
-                                            </div>
-
                                       
 
+                                        <input type="button" class="btn btn-primary pull-left" value="Access Camera" onClick="setup(); $(this).hide().next().show();"> 
+                                        <input type=button class="btn btn-success pull-right" value="Take Snapshot" onClick="take_snapshot()">
+                              
+                             </div>
 
+                           
+                                            </div>  
                                     </div>
                                 </div>
 
@@ -141,12 +146,7 @@ $get_all_brgy_data->execute();
 
                                         
                                       
-    <form method="POST" action="storeImage.php">
-
-
-<input type=button value="Take Snapshot" onClick="take_snapshot()">
-
-                        </div>
+   
                         <div class ="row">
                         <div class = "col-12" style="margin-left:180px;margin-right:100px;">
                          <input type="file" name="myFiles" id="fileToUpload" onchange = "loadImage()">
@@ -328,16 +328,20 @@ $(document).ready(function() {
 
 <script language="JavaScript">
 		Webcam.set({
-			width: 240,
+			width: 320,
 			height: 240,
 			image_format: 'jpeg',
 			jpeg_quality: 90
 		});
-		Webcam.attach( '#my_camera' );
+		//Webcam.attach( '#my_camera' );
 	</script>
     
 
 	<script language="JavaScript">
+        function setup() {
+			Webcam.reset();
+			Webcam.attach( '#my_camera' );
+		}
 		function take_snapshot() {
 			// take snapshot and get image data
 			Webcam.snap( function(data_uri) {
