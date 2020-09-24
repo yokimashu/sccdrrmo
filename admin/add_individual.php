@@ -70,13 +70,13 @@ $get_all_brgy_data->execute();
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   
-    <!-- <style>
+    <style>
 #my_camera{
  width: 320px;
  height: 240px;
  border: 1px solid black;
 }
-</style> -->
+</style>
 
 
 </head>
@@ -121,8 +121,8 @@ $get_all_brgy_data->execute();
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Entity ID : </label>
-                                                <input type="text"  class="form-control" name="entity_no" id="entity_id" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                                <label>ID : </label>
+                                                <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Registration Number" value="<?php echo $id; ?>" required>
                                             </div>
 
 
@@ -141,7 +141,7 @@ $get_all_brgy_data->execute();
                                         <h6>PERSONAL INFORMATION</h6>
 
                                         
-                                        <!-- <div class="container">
+                                        <div class="container">
                                         <div id="my_camera"></div>
                                         <div id="results">Your captured image will appear here...</div>
     <form method="POST" action="storeImage.php">
@@ -156,7 +156,7 @@ $get_all_brgy_data->execute();
 
                             
                             </div>
-                        </div> -->
+                        </div>
 
                                     
                                     <div class="box-body">
@@ -225,10 +225,7 @@ $get_all_brgy_data->execute();
                                                 <input type="text" readonly class="form-control" name="province" placeholder="Province" value="NEGROS OCCIDENTAL" >
                                             </div>
                                         </div><br>
-                                        <div class="box-footer" align="center">
-                                        <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
-                                         UPLOAD PHOTO</a>
-                                         </div>
+                                       
                                     </div>
                                 </div>
 
@@ -309,27 +306,56 @@ $get_all_brgy_data->execute();
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
   
 <script>
-   
-   
-   $(function() {
+
+
 
         $('.select2').select2();
 
+
+        $('#btnEdit').on('change', function() {
+            var type = $(this).val();
+            // var office = $('#department').val();
+
             alert(hello);
-           
             $.ajax({
                 type: 'POST',
                 data: {},
-                url: 'generate_id.php',
+                url: 'generate_pum.php',
                 success: function(data) {
-                    $('#entity_id').val(data);
+                    $('#patient_number').val(data);
 
                 }
-            
+
+
             });
+         
         });
+
       
 </script>
+
+<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+    
+
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Here is your image:</h2>' + 
+					'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script>
 
 </body>
 
