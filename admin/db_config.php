@@ -24,15 +24,4 @@ try {
     //initialize and error exception
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //"nakasulod sa internet";
-    
 
-}
-catch (PDOEXCEPTION $error) {
-
-    echo "Connection Error: " . $error->getMessage();
-
-}
-
-
-
-?>

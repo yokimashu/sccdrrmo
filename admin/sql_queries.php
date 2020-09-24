@@ -1,6 +1,6 @@
 <?php
 
-include('../config/db_config.php');
+
 
 if (isset($_POST['add_pum'])) {
 
@@ -228,33 +228,6 @@ if (isset($_POST['add_pum'])) {
 
 
     header('location: view_symptoms.php');
-} else if (isset($_POST['delete_symptoms'])) {
-
-    $id_pum = uniqid('id', true);
-
-
-    $insert_juridical_sql = "INSERT INTO tbl_symptoms SET 
-        symptoms            = :symp,
-        status              = :status";
-
-    $juridical_data = $con->prepare($insert_juridical_sql);
-    $juridical_data->execute([
-
-        ':symp'             => $symptoms,
-        ':status'           => $status
-
-
-
-
-
-    ]);
-
-    $alert_msg .= ' 
-        <div class="new-alert new-alert-success alert-dismissible">
-            <i class="icon fa fa-success"></i>
-            Data Inserted
-        </div>     
-    ';
 } else if (isset($_POST['delete_symptoms'])) {
 
     $delete_sym_id = $_POST['user_id'];

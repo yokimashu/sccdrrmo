@@ -60,7 +60,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <a href="../../lockscreen.php" class="nav-link">Lock Screen</a>
     </li> -->
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../logout.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
+      <a href="../../index.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
     </li>
   </ul>
 
@@ -159,53 +159,24 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                     <p> &nbsp; Transportation</p>
                   </a>
                 </li>
-
-
-
-
               </ul>
-
-
-
-
             </li>
-
-
-
-
-
-
-
-
-
-
-            <!-- 
-
-            <li class="nav-item">
-              <a href="report_pum" class="nav-link">
-                <i class="nav-icon fa fa-medkit"></i>
-                <span class="badge badge-danger navbar-badge"><?php if ($numberofnewreport > 0) {
-                                                                echo $numberofnewreport;
-                                                              } ?></span>
-                <p>Reported Cases</p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="list_symptoms" class="nav-link">
-                <i class="fa fa-minus nav-icon"></i>
-                <p> Symptoms</p>
-              </a>
-            </li>
- -->
-
-
-
 
           </ul>
 
 
 
+
+
+
+        <li class="nav-item has-treeview" style="font-size:16px">
+          <a href="add_pum" class="nav-link ">
+            <i class="nav-icon fa fa-thermometer-full"></i>
+            <p>
+              Add pum
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
 
           <!-- <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
