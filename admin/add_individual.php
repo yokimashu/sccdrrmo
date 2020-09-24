@@ -121,8 +121,8 @@ $get_all_brgy_data->execute();
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>ID : </label>
-                                                <input type="text" readonly class="form-control" name="id" id="id" placeholder="Registration Number" value="<?php echo $id; ?>" required>
+                                                <label>Entity ID : </label>
+                                                <input type="text" readonly class="form-control" name="entityid" id="id" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
 
@@ -298,7 +298,7 @@ $get_all_brgy_data->execute();
             $.ajax({
                 type: 'POST',
                 data: {},
-                url: 'generate_pum.php',
+                url: 'generate_id.php',
                 success: function(data) {
                     $('#patient_number').val(data);
 
