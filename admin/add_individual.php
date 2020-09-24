@@ -305,17 +305,8 @@ $get_all_brgy_data->execute();
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
   
 <script>
-
-
-
-        $('.select2').select2();
-
-
-        $('#btnEdit').on('change', function() {
-            var type = $(this).val();
-            // var office = $('#department').val();
-
-            alert(hello);
+   $(document).ready(function () {
+    alert(hello);
             $.ajax({
                 type: 'POST',
                 data: {},
@@ -327,6 +318,17 @@ $get_all_brgy_data->execute();
 
 
             });
+    });
+
+
+        $('.select2').select2();
+
+
+        $('#btnEdit').on('change', function() {
+            var type = $(this).val();
+            // var office = $('#department').val();
+
+           
          
         });
 
