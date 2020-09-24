@@ -1,4 +1,7 @@
 {
+
+  
+  
   "name": "almasaeed2010/adminlte",
   "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
   "homepage": "http://adminlte.io/",
@@ -22,5 +25,12 @@
   "license": "MIT",
   "support": {
     "issues": "https://github.com/almasaeed2010/AdminLTE/issues"
+  },
+
+  "require": {
+    "endroid/qrcode": "^1.7"
   }
 }
+
+
+

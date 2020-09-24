@@ -3,7 +3,7 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 include('insert_individual.php');
-
+use Endroid\QrCode\QrCode;
 
 
 session_start();
