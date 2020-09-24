@@ -250,12 +250,6 @@ $get_all_brgy_data->execute();
                         </form>
                         <!-- end form -->
                     </div>
-
-
-
-
-
-
                 </div>
 
             </section>
