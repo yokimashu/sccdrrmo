@@ -1,22 +1,20 @@
 <?php
 
-
-
 include('../config/db_config.php');
 
-if (isset($_POST['edit'])) {
-//     echo "<pre>";
-//     print_r($_POST);
-// echo "</pre>";
+// if (isset($_POST['edit'])) {
+// //     echo "<pre>";
+// //     print_r($_POST);
+// // echo "</pre>";
 
-$finalcount = null;
-$finalcount1 = null;
-$finaltype = null;
-$id = null;
+// $finalcount = null;
+// $finalcount1 = null;
+// $finaltype = null;
+// $id = null;
 
 
 // $office = $_POST['office'];
-$user_id = $_SESSION['id'];
+// $user_id = $_SESSION['id'];
 
 //select all data type
 // $get_all_type_sql = "SELECT `health_status` FROM `tbl_PUM` WHERE health_status = :status";
@@ -52,8 +50,10 @@ for ($i=0; $i<$k; $i++)
     }
   }
 
-die();
 
-}
+
+// }
+
+?>
 
 

@@ -121,8 +121,8 @@ $get_all_brgy_data->execute();
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>ID : </label>
-                                                <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Registration Number" value="<?php echo $id; ?>" required>
+                                                <label>Entity ID : </label>
+                                                <input type="text"  class="form-control" name="entity_no" id="entity_id" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
 
@@ -308,57 +308,28 @@ $get_all_brgy_data->execute();
      
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
   
-<!-- <script>
-
-
+<script>
+   
+   
+   $(function() {
 
         $('.select2').select2();
 
-
-        $('#btnEdit').on('change', function() {
-            var type = $(this).val();
-            // var office = $('#department').val();
-
             alert(hello);
+           
             $.ajax({
                 type: 'POST',
                 data: {},
-                url: 'generate_pum.php',
+                url: 'generate_id.php',
                 success: function(data) {
-                    $('#patient_number').val(data);
+                    $('#entity_id').val(data);
 
                 }
-
-
+            
             });
-            //  }
-        }); -->
-
+        });
       
 </script>
-<!-- 
-<script language="JavaScript">
-		Webcam.set({
-			width: 320,
-			height: 240,
-			image_format: 'jpeg',
-			jpeg_quality: 90
-		});
-		Webcam.attach( '#my_camera' );
-	</script>
-    
-	<!-- Code to handle taking the snapshot and displaying it locally -->
-	<!-- <script language="JavaScript">
-		function take_snapshot() {
-			// take snapshot and get image data
-			Webcam.snap( function(data_uri) {
-				// display results in page
-				document.getElementById('results').innerHTML = 
-					'<h2>Here is your image:</h2>' + 
-					'<img src="'+data_uri+'"/>';
-			} );
-		}
-	</script> --> -->
 
 </body>
 
