@@ -114,11 +114,15 @@ if (isset($_POST['signin'])) {
   <div class="login-box">
     <div class="login-logo">
 
-      <img src="dist/img/scdrrmo_logo.png" class="ArotateHover img-circle" width="150px">
+      <img src="dist/img/final_logo.png" width="350px">
 
-      <br>
-      <h1 id="vamos"><b>VAMOS</b></h1>
-      <h6><b>VIRUS ASSESSMENT <br>AND MONITORING SYSTEM</b></h6>
+
+      <!-- <img src="{{ qr_code_data_uri(message, { writer: 'svg', size: 150 }) }}" /> -->
+
+
+
+      <!-- <h1 id="vamos"><b>VAMOS</b></h1>
+      <h6><b>VIRUS ASSESSMENT <br>AND MONITORING SYSTEM</b></h6> -->
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -145,9 +149,9 @@ if (isset($_POST['signin'])) {
 
         <br>
 
-        <div class="row">
+        <div class="row" align="center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <a href="#addnew" data-toggle="modal" style="color:white;" data-backdrop="static" class="btn btn-primary pull-left">Sign Up</a>
+            <!-- <a href="#addnew" data-toggle="modal" style="color:white;" data-backdrop="static" class="btn btn-primary pull-left">Sign Up</a> -->
             <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
           </div>
         </div>

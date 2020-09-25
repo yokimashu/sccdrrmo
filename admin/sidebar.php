@@ -51,7 +51,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
     </li>
     <li class="nav-item">
-      <a href="index.php" class="nav-link">SCCDRRMO | SYSTEM</a>
+      <a href="#" class="nav-link">VAMOS | SYSTEM</a>
     </li>
   </ul>
 
