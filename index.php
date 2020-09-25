@@ -117,6 +117,10 @@ if (isset($_POST['signin'])) {
       <img src="dist/img/final_logo.png" width="350px">
 
 
+      <!-- <img src="{{ qr_code_data_uri(message, { writer: 'svg', size: 150 }) }}" /> -->
+
+
+
       <!-- <h1 id="vamos"><b>VAMOS</b></h1>
       <h6><b>VIRUS ASSESSMENT <br>AND MONITORING SYSTEM</b></h6> -->
     </div>

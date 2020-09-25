@@ -98,7 +98,10 @@ $title = 'VAMOS | Add Individual';
                                                                 <input type=button class="btn btn-success pull-right" value="Take Snapshot" onClick="take_snapshot()">
                                                             </div>
 
-                                                        </div>
+                                                            <<<<<<< HEAD </div>======= <div class="row">
+                                                                <div class="col-12" style="margin-left:180px;margin-right:100px;">
+                                                                    <input type="file" name="myFiles" id="fileToUpload" onchange="loadImage()">
+                                                                    >>>>>>> 8e46cdd3ffc611e4a4822b4019ed2b695133c5d1
 
                                                     </form>
 
