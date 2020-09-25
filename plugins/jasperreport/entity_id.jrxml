@@ -69,7 +69,7 @@
 				<reportElement x="60" y="105" width="133" height="1" uuid="e92f4915-bb8f-43da-8581-b7b5458a611d"/>
 			</line>
 			<rectangle radius="10">
-				<reportElement x="43" y="11" width="165" height="261" uuid="c5f3738d-06ad-4d15-97d2-c6ff1160db8d"/>
+				<reportElement x="28" y="0" width="165" height="261" uuid="c5f3738d-06ad-4d15-97d2-c6ff1160db8d"/>
 			</rectangle>
 			<textField>
 				<reportElement x="43" y="62" width="165" height="20" uuid="5988ae26-9b33-4652-b746-fc3f59698cf7"/>
@@ -85,13 +85,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[""+$F{firstname}+" "+$F{middlename}+" "+$F{lastname}+""]]></textFieldExpression>
 			</textField>
-			<image onErrorType="Blank">
-				<reportElement x="63" y="135" width="130" height="112" uuid="18bb82c0-54d5-47ab-9a09-593c009e4bcd"/>
-				<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
-new com.google.zxing.qrcode.QRCodeWriter().encode(
-$F{entity_no},
-com.google.zxing.BarcodeFormat.QR_CODE, 300, 300))]]></imageExpression>
-			</image>
+			<componentElement>
+				<reportElement x="60" y="124" width="228" height="114" uuid="0cb0dc0b-94ff-4ea5-99b6-142cbbf7229e"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{entity_no}]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
 		</band>
 	</title>
 	<detail>
