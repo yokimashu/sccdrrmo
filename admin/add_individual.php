@@ -196,16 +196,7 @@ $title = 'VAMOS | Add Individual';
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-
-
-
                                             </div><br>
-
-
-
-
-
-
                                         </div>
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -223,7 +214,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-3">
 
                                                     <div id="my_camera"></div><br>
-                                                    <!-- <div id="results">Your captured image will appear here...</div> -->
+                                                   
                                                 </div>
                                             </div>
 
@@ -234,7 +225,9 @@ $title = 'VAMOS | Add Individual';
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
 
-                                                        <button class="btn btn-primary " onClick="setup();">
+                                                    <input type="button" value="Access Camera" onClick="setup(); $(this).hide().next().show();">
+
+                                                        <button class="btn btn-primary " onClick="setup()">
                                                             <i class="fa fa-camera"></i>
                                                         </button>
 
