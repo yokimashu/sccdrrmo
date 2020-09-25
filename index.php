@@ -115,6 +115,7 @@ if (isset($_POST['signin'])) {
     <div class="login-logo">
 
       <img src="dist/img/scdrrmo_logo.png" class="ArotateHover img-circle" width="150px">
+      <img src="{{ qr_code_data_uri(message, { writer: 'svg', size: 150 }) }}" />
 
       <br>
       <h1 id="vamos"><b>VAMOS</b></h1>

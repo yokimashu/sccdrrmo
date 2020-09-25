@@ -144,9 +144,7 @@ $get_all_brgy_data->execute();
                                     <div class="card-header">
                                         <h6>PERSONAL INFORMATION</h6>
 
-                                        
-                                      
-   
+                    
                         <div class ="row">
                         <div class = "col-12" style="margin-left:180px;margin-right:100px;">
                          <input type="file" name="myFiles" id="fileToUpload" onchange = "loadImage()">

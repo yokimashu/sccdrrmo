@@ -28,7 +28,7 @@
   },
 
   "require": {
-    "endroid/qrcode": "^1.7"
+    "endroid/qr-code": "^2.0.2"
   }
 }
 
