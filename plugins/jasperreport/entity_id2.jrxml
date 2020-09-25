@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pr_items2" language="javascript" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="614095aa-a1e6-4dee-b28b-fc6e604d8054">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<subDataset name="Table Dataset 1" uuid="863858bd-c66f-4c64-8284-455d01b525bc"/>
+	<queryString>
+		<![CDATA[select * from tbl_individual where entity_no ]]>
+	</queryString>
+	<field name="entity_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_register" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="username" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="password" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="middlename" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="barangay" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="photo" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="age" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="birthdate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="city" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="province" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_address" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qr_code" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="ITEM #" class="java.lang.Integer" incrementType="Report" calculation="Count">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="grandtotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="pr_info_prepby_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<title>
+		<band height="315" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="290">
+			<textField>
+				<reportElement x="15" y="92" width="165" height="15" uuid="83575d31-b238-4b7a-88a3-2a7517c04f65"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{firstname}+" "+$F{middlename}+" "+$F{lastname}+""]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="22" y="19" width="51" height="43" uuid="4081ed60-826e-4ae8-8315-3a5990d369da"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\LOGO-png.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="15" y="62" width="165" height="20" uuid="eb9b0a26-b836-4e80-bb93-bdf6c69c384f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement x="15" y="11" width="165" height="261" uuid="340d69bb-43f9-4bc5-b7ae-fa60c690ada6"/>
+			</rectangle>
+			<image onErrorType="Blank">
+				<reportElement x="35" y="135" width="177" height="121" uuid="9887d580-5456-4657-a230-0f8fce624673"/>
+				<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
+new com.google.zxing.qrcode.QRCodeWriter().encode(
+$F{entity_no},
+com.google.zxing.BarcodeFormat.QR_CODE, 300, 300))]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="32" y="105" width="133" height="1" uuid="143fd5f1-4804-4107-a876-5b0a0fe43d0a"/>
+			</line>
+			<textField>
+				<reportElement x="22" y="87" width="158" height="20" uuid="46b1986e-459a-4533-8700-dbde48d2e9ba"/>
+				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="43"/>
+	</summary>
+</jasperReport>

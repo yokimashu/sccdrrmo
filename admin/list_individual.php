@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms = $patient = $person_status = '';
+$symptoms = $patient = $person_status = $entity_no = '';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -109,9 +109,8 @@ $get_all_individual_data->execute();
                             <td><?php echo $list_individual['street']; ?> </td>
                             <td><?php echo $list_individual['contact_no']; ?></td>
                             <td>
-                              <a class="btn btn-success btn-sm" href="view_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i>
-                              </a>
+                            <a style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                <i class="nav-icon fa fa-print"></i></a>
                               <button class="btn btn-danger btn-sm" data-role="confirm_delete" data-id="<?php echo $list_pum["idno"]; ?>"><i class="fa fa-trash-o"></i>
                               </button>
                               &nbsp;
@@ -248,6 +247,33 @@ $get_all_individual_data->execute();
       $('#delete_PUMl').modal('toggle');
 
     });
+
+
+
+    // $(document).ready(function() {
+    //   $('#print').click(function() {
+    //     var entity_no = $('#entity_no').val();
+    //     console.log(entity_no);
+
+    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
+    //   })
+    // });
+
+
+
+
+    $('#users tbody').on( 'click', 'button.printlink', function() {
+          // alert ('hello');
+         // var row = $(this).closest('tr');
+         var table = $('#users').DataTable();
+         var data = table.row( $(this).parents('tr') ).data();
+        //  alert (data[0]);
+        //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+          var entity_no = data[0];
+          window.open("entity_id.php?entity_no="+ entity_no,'_parent');
+        });
+
+    
   </script>
 </body>
 
