@@ -2,9 +2,8 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
-include('generate_id.php');
 include('insert_individual.php');
-
+use Endroid\QrCode\QrCode;
 
 
 session_start();
@@ -28,9 +27,6 @@ $btnNew = 'hidden';
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
-
-
-
 
 ?>
 
@@ -70,14 +66,13 @@ $get_all_brgy_data->execute();
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
   
-    <!-- <style>
+    <style>
 #my_camera{
  width: 320px;
  height: 240px;
  border: 1px solid black;
 }
-</style> -->
-
+</style>
 
 </head>
 
@@ -122,15 +117,24 @@ $get_all_brgy_data->execute();
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Entity ID : </label>
-                                                <input type="text"  class="form-control" name="entity_no" id="entity_id" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                            <input type="text"  class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
 
+                                            <div class="col-md-3">
+                                            
+                                        <div id="my_camera"></div><br>
+                                        <!-- <div id="results">Your captured image will appear here...</div> -->
+                                        <form method="POST" action="storeImage.php">
+                                        
+                                      
 
+                                        <input type="button" class="btn btn-primary pull-left" value="Access Camera" onClick="setup(); $(this).hide().next().show();"> 
+                                        <input type=button class="btn btn-success pull-right" value="Take Snapshot" onClick="take_snapshot()">
+                              
+                             </div>
 
-                                        </div><br>
-
-
-
+                           
+                                            </div>  
                                     </div>
                                 </div>
 
@@ -141,22 +145,15 @@ $get_all_brgy_data->execute();
                                         <h6>PERSONAL INFORMATION</h6>
 
                                         
-                                        <!-- <div class="container">
-                                        <div id="my_camera"></div>
-                                        <div id="results">Your captured image will appear here...</div>
-    <form method="POST" action="storeImage.php">
-
-
-<input type=button value="Take Snapshot" onClick="take_snapshot()">
-
-                        </div>
+                                      
+   
                         <div class ="row">
                         <div class = "col-12" style="margin-left:180px;margin-right:100px;">
                          <input type="file" name="myFiles" id="fileToUpload" onchange = "loadImage()">
 
                             
                             </div>
-                        </div> -->
+                        </div>
 
                                     
                                     <div class="box-body">
@@ -225,10 +222,7 @@ $get_all_brgy_data->execute();
                                                 <input type="text" readonly class="form-control" name="province" placeholder="Province" value="NEGROS OCCIDENTAL" >
                                             </div>
                                         </div><br>
-                                        <div class="box-footer" align="center">
-                                        <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
-                                         UPLOAD PHOTO</a>
-                                         </div>
+                                       
                                     </div>
                                 </div>
 
@@ -255,12 +249,6 @@ $get_all_brgy_data->execute();
                         </form>
                         <!-- end form -->
                     </div>
-
-
-
-
-
-
                 </div>
 
             </section>
@@ -307,29 +295,62 @@ $get_all_brgy_data->execute();
      -->
      
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-  
+    <script type="text/javascript">
+
+$(document).ready(function() {
+   
+    $('.select2').select2();
+
+  $(document).ajaxStart(function () {
+    Pace.restart()
+  })  
+
+});
+
+
+</script>
+
 <script>
-   
-   
-   $(function() {
-
-        $('.select2').select2();
-
-            alert(hello);
-           
-            $.ajax({
+    function generateID(){
+       
+        $.ajax({
                 type: 'POST',
                 data: {},
                 url: 'generate_id.php',
                 success: function(data) {
-                    $('#entity_id').val(data);
-
+                    $('#entity_no').val(data);
                 }
-            
             });
-        });
-      
+    }
+    window.onload = generateID;
 </script>
+
+
+<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		//Webcam.attach( '#my_camera' );
+	</script>
+    
+
+	<script language="JavaScript">
+        function setup() {
+			Webcam.reset();
+			Webcam.attach( '#my_camera' );
+		}
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('my_camera').innerHTML = 
+					'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script>
 
 </body>
 

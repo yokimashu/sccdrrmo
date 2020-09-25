@@ -19,7 +19,8 @@ if (isset($_POST['insert_individual'])) {
     $age = $_POST['age'];
     $contact_no = $_POST['contact_no'];
     $email_address = $_POST['email_address'];
-
+    $barangay = $_POST['barangay'];
+    $photo = $_POST['myFiles'];
     $birthdate = $_POST['birthdate'];
     $street = $_POST['street'];
     $city = $_POST['city'];
@@ -37,6 +38,8 @@ if (isset($_POST['insert_individual'])) {
     gender           = :gender,
     contact_no       = :contact_no,
     email_address    = :email_address,
+    photo            = :photo,
+    barangay         = :barangay,
     birthdate        = :birthdate,
     street           = :street,
     city             = :city,
@@ -64,6 +67,8 @@ if (isset($_POST['insert_individual'])) {
         ':gender'            => $gender,
         ':contact_no'        => $contact_no,
         ':email_address'     => $email_address,
+        ':photo'          => $photo,
+        ':barangay'          => $barangay,
         ':birthdate'         => $birthdate,
         ':street'            => $street,
         ':city'              => $city,
