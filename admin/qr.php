@@ -48,7 +48,7 @@ use Endroid\QrCode\QrCode;
   <div class="login-box">
     <div class="login-logo">
 
-      <img src="{{ qr_code_data_uri(message, { writer: 'svg', size: 150 }) }}"  class="ArotateHover img-circle" width="150px"/>
+      <img src="{{ qr_code_data_uri(message, { writer: 'svg', size: 150 }) }}"  class="ArotateHover img-circle" width="150px">
 
       <br>
       <h1 id="vamos"><b>VAMOS</b></h1>

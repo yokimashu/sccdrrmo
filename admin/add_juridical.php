@@ -36,16 +36,14 @@ $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
 
-
 ?>
 
 
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>SCCDRRMO ERP | Juridical Form</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -74,16 +72,6 @@ $get_all_category_data->execute();
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-
-    <!-- <style>
-#my_camera{
- width: 320px;
- height: 240px;
- border: 1px solid black;
-}
-</style> -->
-
-
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -102,12 +90,9 @@ $get_all_category_data->execute();
                     <div class="card-header text-white bg-success">
                         <h4>Jurdical Form </h4>
                     </div>
-
                     <div class="card-body">
                         <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
                             <div class="box-body">
-
-
                                 <div class="card">
                                     <div class="card-header">
                                         <h6>GENERAL INFORMATION</h6>
@@ -129,20 +114,17 @@ $get_all_category_data->execute();
                                                     </div>
                                                     <input type="text" class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('Y-m-d'); ?>">
                                                 </div>
-
                                             </div>
-                                            <!-- <div class="col-md-3">
-                                                <label>Name of Organization: <span class="required">*</span></label>
+                                            <div class="col-md-3">
+                                                <label>Name of Organization: <span class="required"></span></label>
                                                 <input type="text" class="form-control" name="name_org" id="name_org" placeholder="Name of Organization" value="<?php echo $name_org; ?>">
-                                            </div> -->
-
+                                            </div>
                                         </div><br>
 
-
-                                        <!-- <div class="row">
+                                        <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <label>Type of Organization: <span class="required">*</span></label>
+                                                <label>Type of Organization: <span class="required"></span></label>
                                                 <select class="form-control select2" id="organization" style="width: 100%;" name="organization" value="<?php echo $org; ?>">
                                                     <option selected="selected">Select Organization</option>
                                                     <?php while ($get_categ = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -150,6 +132,7 @@ $get_all_category_data->execute();
                                                     <?php } ?>
                                                 </select>
                                             </div>
+
                                             <div class="col-md-3">
                                                 <label>Nature of Business: </label>
                                                 <input type="text" class="form-control" name="nature_bus" id="nature_bus" placeholder="Nature of Business" value="<?php echo $nature_bus; ?>">
@@ -159,11 +142,7 @@ $get_all_category_data->execute();
                                                 <label>Street Address / Block #: </label>
                                                 <input type="text" class="form-control" name="street_add" id="street_add" placeholder="Street Address / Block #" value="<?php echo $street_add; ?>">
                                             </div>
-
-                                        </div><br> -->
-
-
-
+                                        </div><br>
                                     </div>
                                 </div><br>
 
@@ -173,10 +152,7 @@ $get_all_category_data->execute();
                                     </div>
                                     <div class="box-body">
                                         <br>
-
-
                                     </div>
-
                                 </div>
 
 
@@ -186,10 +162,7 @@ $get_all_category_data->execute();
                                     </div>
                                     <div class="box-body">
                                         <br>
-
-
                                     </div>
-
                                 </div>
 
 
@@ -204,14 +177,6 @@ $get_all_category_data->execute();
                                     </div>
 
                                 </div>
-
-
-
-
-
-
-
-
 
                                 <div class="box-footer" align="center">
 
@@ -231,16 +196,10 @@ $get_all_category_data->execute();
                         <!-- end form -->
                     </div>
 
-
-
-
-
-
                 </div>
 
             </section>
         </div>
-
 
         <?php include('footer.php') ?>
 
