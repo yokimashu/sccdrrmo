@@ -129,75 +129,103 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                                 </div>
 
 
-                                            </div><br>
+                                            </div></br>
 
                                             <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label>First Name:</label>
-                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>">
-
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Middle Name:</label>
-                                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label> Last Name:</label>
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>">
-                                                </div>
-
-
-
-                                            </div><br>
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label>Birthdate: </label>
-                                                    <div class="input-group date" data-provide="datepicker">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
+                                                    <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
+                                                            <!-- <label>First Name:</label> -->
+                                                            <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>">
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Date Registered: </label>
-                                                    <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>">
-                                                </div>
-                                                <div class="col-md-3 ">
-                                                    <label>Gender:</label>
-                                                    <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
-                                                        <option selected="selected">Select Gender</option>
-                                                        <option value="Female">Female</option>
-                                                        <option value="Male">Male</option>
-                                                    </select>
-                                                </div>
+                                            </div></br>
 
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
+                                                            <!-- <label>Middle Name:</label> -->
+                                                            <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>">
+                                                        </div>
+                                                </div></br>
+
+                                                <div class="row">
+                                                     <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
+                                                            <!-- <label> Last Name:</label> -->
+                                                            <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>">
+                                                     </div>
                                             </div><br>
 
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                                    <div class="col-md-1"></div>
+                                                        <div class="col-md-3">
+                                                            <label>Birthdate: </label>
+                                                            <div class="input-group date" data-provide="datepicker">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </div>
+                                                                    <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                            </div>
+                                                        </div>
 
+                                                        <div class="col-md-3">
+                                                                <label>Age:</label>
+                                                                <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>">
+                                                        </div>
 
-                                                <div class="col-md-3" style="text-align:center; padding-right:5px;">
-                                                    <label>Street: </label>
-                                                    <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>">
-                                                </div>
-                                                <div class="col-md-3 ">
-                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
-                                                        <option selected="selected">Select Barangay</option>
-                                                        <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                        <div class="col-md-4">
+                                                                <label>Gender:</label>
+                                                                <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
+                                                                    <option selected="selected">Select Gender</option>
+                                                                    <option value="Female">Female</option>
+                                                                     <option value="Male">Male</option>
+                                                                </select>
+                                                        </div>
+                                                </div><br>
+
+                                            <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>">
+                                                            </div>
+                                            </div><br>            
+
+                                            <div class="row">
+                                                     <div class="col-md-1"></div>
+                                                    <div class="col-md-10">
+                                                <!-- <label>Barangay: </label> -->
+                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
+                                                                    <option selected="selected">Select Barangay</option>
+                                                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                    <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                                                <?php } ?>
+                                                                </select>
                                                 </div>
                                             </div><br>
+
+                                            <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="city" placeholder= "City" value="<?php echo $city; ?>">
+                                                            </div>
+                                            </div><br>  
+
+                                            <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="province" placeholder= "Province" value="<?php echo $province; ?>">
+                                                            </div>
+                                            </div><br> 
+
+
                                         </div>
+                                                      
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
