@@ -36,14 +36,43 @@ $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
 
-$title = '';
 ?>
 
 
 <!DOCTYPE html>
 <html>
-
-<?php include('heading.php'); ?>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SCCDRRMO ERP | Juridical Form</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="../plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
+    <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
+    <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+</head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -61,12 +90,9 @@ $title = '';
                     <div class="card-header text-white bg-success">
                         <h4>Jurdical Form </h4>
                     </div>
-
                     <div class="card-body">
                         <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
                             <div class="box-body">
-
-
                                 <div class="card">
                                     <div class="card-header">
                                         <h6>GENERAL INFORMATION</h6>
@@ -80,7 +106,6 @@ $title = '';
                                                 <label>Entity ID : </label>
                                                 <input type="text" class="form-control" name="entity_no" id="entityid" placeholder="Entity ID" value="<?php echo $id; ?>" required>
                                             </div>
-
                                             <div class="col-md-3">
                                                 <label>Date Registered: </label>
                                                 <div class="input-group date" data-provide="datepicker">
@@ -89,20 +114,17 @@ $title = '';
                                                     </div>
                                                     <input type="text" class="form-control pull-right" id="datepicker" name="date_reg" placeholder="Date Registered" value="<?php echo $now->format('Y-m-d'); ?>">
                                                 </div>
-
                                             </div>
-                                            <!-- <div class="col-md-3">
-                                                <label>Name of Organization: <span class="required">*</span></label>
+                                            <div class="col-md-3">
+                                                <label>Name of Organization: <span class="required"></span></label>
                                                 <input type="text" class="form-control" name="name_org" id="name_org" placeholder="Name of Organization" value="<?php echo $name_org; ?>">
-                                            </div> -->
-
+                                            </div>
                                         </div><br>
 
-
-                                        <!-- <div class="row">
+                                        <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-3">
-                                                <label>Type of Organization: <span class="required">*</span></label>
+                                                <label>Type of Organization: <span class="required"></span></label>
                                                 <select class="form-control select2" id="organization" style="width: 100%;" name="organization" value="<?php echo $org; ?>">
                                                     <option selected="selected">Select Organization</option>
                                                     <?php while ($get_categ = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -110,6 +132,7 @@ $title = '';
                                                     <?php } ?>
                                                 </select>
                                             </div>
+
                                             <div class="col-md-3">
                                                 <label>Nature of Business: </label>
                                                 <input type="text" class="form-control" name="nature_bus" id="nature_bus" placeholder="Nature of Business" value="<?php echo $nature_bus; ?>">
@@ -119,11 +142,7 @@ $title = '';
                                                 <label>Street Address / Block #: </label>
                                                 <input type="text" class="form-control" name="street_add" id="street_add" placeholder="Street Address / Block #" value="<?php echo $street_add; ?>">
                                             </div>
-
-                                        </div><br> -->
-
-
-
+                                        </div><br>
                                     </div>
                                 </div><br>
 
@@ -133,10 +152,7 @@ $title = '';
                                     </div>
                                     <div class="box-body">
                                         <br>
-
-
                                     </div>
-
                                 </div>
 
 
@@ -146,10 +162,7 @@ $title = '';
                                     </div>
                                     <div class="box-body">
                                         <br>
-
-
                                     </div>
-
                                 </div>
 
 
@@ -164,14 +177,6 @@ $title = '';
                                     </div>
 
                                 </div>
-
-
-
-
-
-
-
-
 
                                 <div class="box-footer" align="center">
 
@@ -191,16 +196,10 @@ $title = '';
                         <!-- end form -->
                     </div>
 
-
-
-
-
-
                 </div>
 
             </section>
         </div>
-
 
         <?php include('footer.php') ?>
 

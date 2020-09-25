@@ -38,7 +38,48 @@ $title = 'VAMOS | Add Individual';
 
 <!DOCTYPE html>
 <html>
-<?php include('heading.php'); ?>
+
+<head>
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><?php echo $title; ?></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="../plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
+    <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
+    <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+
+    <style>
+        #my_camera {
+            width: 320px;
+            height: 240px;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -59,28 +100,123 @@ $title = 'VAMOS | Add Individual';
 
 
                     <div class="card-body">
+
                         <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
-                                <div class="row ">
-                                    <div class="card col-md-7 ">
-                                        <div class="card-header">
+                                <div class="row">
+
+                                    <div class="m-1 pb-1"> </div>
+                                    <div class="card col-md-7">
+
+                                        <div class=" card-header">
                                             <h6>GENERAL INFORMATION</h6>
                                         </div>
 
                                         <div class="box-body">
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-4">
+                                                    <label>Date Registered: </label>
+                                                    <div class="input-group date" data-provide="datepicker">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4">
+                                                    <label>Entity ID : </label>
+                                                    <input type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                                </div>
+
+
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-3">
+                                                    <label>First Name:</label>
+                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>">
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Middle Name:</label>
+                                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label> Last Name:</label>
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>">
+                                                </div>
+
+
+
+                                            </div><br>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-3">
+                                                    <label>Birthdate: </label>
+                                                    <div class="input-group date" data-provide="datepicker">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Date Registered: </label>
+                                                    <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>">
+                                                </div>
+                                                <div class="col-md-3 ">
+                                                    <label>Gender:</label>
+                                                    <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
+                                                        <option selected="selected">Select Gender</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Male">Male</option>
+                                                    </select>
+                                                </div>
+
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+
+
+                                                <div class="col-md-3" style="text-align:center; padding-right:5px;">
+                                                    <label>Street: </label>
+                                                    <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>">
+                                                </div>
+                                                <div class="col-md-3 ">
+                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
+                                                        <option selected="selected">Select Barangay</option>
+                                                        <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+
+
+                                            </div><br>
+
+
+
+
+
 
                                         </div>
 
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-                                    </div> &nbsp;&nbsp;&nbsp;
-                                    <div class="card col-sm-4 ">
+                                    <div class="card col-md-4">
                                         <div class="card-header">
                                             <h6> ID PHOTO</h6>
                                         </div>
-                                        <br>
+
                                         <div class="box-body">
+                                            <br>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
 
@@ -88,54 +224,85 @@ $title = 'VAMOS | Add Individual';
 
                                                     <div id="my_camera"></div><br>
                                                     <!-- <div id="results">Your captured image will appear here...</div> -->
-                                                    <form method="POST" action="storeImage.php">
-                                                        <div class="row">
-                                                            <div class="col-sm-2">
-                                                                <input type="button" class="btn btn-primary pull-left" value="Access Camera" onClick="setup(); $(this).hide().next().show();">
-                                                            </div> &nbsp; &nbsp;
-                                                            <div class="col-sm-2">
-
-                                                                <input type=button class="btn btn-success pull-right" value="Take Snapshot" onClick="take_snapshot()">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-12" style="margin-left:180px;margin-right:100px;">
-                                                                <input type="file" name="myFiles" id="fileToUpload" onchange="loadImage()">
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-
                                                 </div>
-
                                             </div>
+
+                                            <div class="row" align="center">
+                                                <form method="POST" action="storeImage.php">
+
+                                                    <div class="col-md-3"></div>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <div>
+
+                                                        <button class="btn btn-primary " onClick="setup();">
+                                                            <i class="fa fa-camera"></i>
+                                                        </button>
+
+                                                        <button class="btn btn-success " onClick="take_snapshot();">
+                                                            <i class="fa fa-photo"></i>
+                                                        </button>
+
+                                                        <a href="#">
+
+                                                            <button type="button" class="btn btn-danger ">
+                                                                <i class="fa fa-upload"></i>
+                                                            </button>
+
+                                                        </a>
+
+
+                                                    </div>
+
+
+
+                                                </form>
+
+
+
+
+
+
+                                            </div><br>
+
+
 
                                         </div>
 
-
-
-
-
                                     </div>
 
-
                                 </div>
-                                <div class="row ">
 
 
 
-                                </div>
+
+
+
+
+
+
 
                             </div>
 
+
+
+
+
+
+                            <!-- card starts here -->
+
+
+
+
+
+
+
+
+
+
+
+
                         </form>
                     </div>
-
-
-
-
 
                 </div>
             </section>
@@ -182,10 +349,15 @@ $title = 'VAMOS | Add Individual';
      -->
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
+
+
+
+
     <script type="text/javascript">
+        $('.select2').select2();
         $(document).ready(function() {
 
-            $('.select2').select2();
+
 
             $(document).ajaxStart(function() {
                 Pace.restart()
@@ -236,7 +408,6 @@ $title = 'VAMOS | Add Individual';
             });
         }
     </script>
-
 </body>
 
 </html>
