@@ -169,14 +169,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
-        <li class="nav-item has-treeview" style="font-size:16px">
-          <a href="add_pum" class="nav-link ">
-            <i class="nav-icon fa fa-thermometer-full"></i>
-            <p>
-              Add pum
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
 
           <!-- <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">

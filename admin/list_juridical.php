@@ -29,15 +29,10 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_juridical_sql = "SELECT * FROM tbl_juridical j, categ_juridical c WHERE j.organization = c.categ_id AND status = 'Active' order by id DESC ";
-$get_all_juridical_data = $con->prepare($get_all_juridical_sql);
-$get_all_juridical_data->execute();
+$get_all_individual_sql = "SELECT * FROM tbl_individual";
+$get_all_individual_data = $con->prepare($get_all_individual_sql);
+$get_all_individual_data->execute();
 
-
-
-$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms where status = 'Active'";
-$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
-$get_all_symptoms_data->execute();
 
 
 ?>
@@ -50,7 +45,7 @@ $get_all_symptoms_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | List of Judiciary </title>
+  <title>SCCDRRMO ERP | Juridical Masterlist </title>
   <?php include('header.php'); ?>
 
 
@@ -68,9 +63,11 @@ $get_all_symptoms_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists
-              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+            <h4> Juridical Masterlist
+
+              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
+
             </h4>
 
           </div>
@@ -90,37 +87,16 @@ $get_all_symptoms_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
+                          <th> ID </th>
                           <th> Date </th>
-                          <th> Time </th>
                           <th> Full Name </th>
-                          <th> Symptoms</th>
-                          <th> Health Status</th>
+                          <th> Address</th>
+                          <th> Contact No.</th>
                           <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr align="center">
-                            <td><?php echo $list_pum['date_report'];  ?></td>
-                            <td><?php echo $list_pum['time_report']; ?></td>
-                            <td><?php echo $list_pum['first_name'];
-                                echo " ";
-                                echo $list_pum['middle_name'];
-                                echo " ";
-                                echo $list_pum['last_name']; ?> </td>
-                            <td><?php echo $list_pum['symptoms']; ?> </td>
-                            <td><?php echo $list_pum['health_status']; ?></td>
-                            <td>
-                              <a class="btn btn-success btn-sm" href="view_pum.php?&id=<?php echo $list_pum['idno']; ?> ">
-                                <i class="fa fa-folder-open-o"></i>
-                              </a>
-                              <button class="btn btn-danger btn-sm" data-role="confirm_delete" data-id="<?php echo $list_pum["idno"]; ?>"><i class="fa fa-trash-o"></i>
-                              </button>
-                              &nbsp;
 
-                            </td>
-                          </tr>
-                        <?php } ?>
                       </tbody>
                     </table>
 
