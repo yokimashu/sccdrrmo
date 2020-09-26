@@ -20,20 +20,15 @@ if (!isset($_SESSION['id'])) {
 $now = new DateTime();
 
 $btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
-    $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
+    $transpo = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
     $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = '';
 $btnNew = 'hidden';
 
 
-$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
-$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
-$get_all_brgy_data->execute();
-
-
-
-$get_all_category_sql = "SELECT * FROM categ_juridical";
+$get_all_category_sql = "SELECT * FROM categ_transpo";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
+
 
 $title = 'VAMOS | Transportation Form';
 
@@ -100,7 +95,7 @@ $title = 'VAMOS | Transportation Form';
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
-                        <h4>Juridical Form</h4>
+                        <h4>Transportation Form</h4>
                     </div>
 
 
@@ -143,20 +138,20 @@ $title = 'VAMOS | Transportation Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization Name" value="">
+                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="transpo_type" value="<?php echo $transpo; ?>">
+                                                        <option selected="selected">Select Transportation Type</option>
+                                                        <?php while ($get_transpo = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $get_transpo['transpo_id']; ?>"><?php echo $get_transpo['transpo_name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
-                                                        <option selected="selected">Select Organization Type</option>
-                                                        <?php while ($get_categ = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_categ['categ_name']; ?>"><?php echo $get_categ['categ_name']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                    <!-- <label>Middle Name:</label> -->
+                                                    <input type="text" class="form-control" name="middlename" placeholder="Vehicle Name" value="">
                                                 </div>
                                             </div></br>
 
@@ -164,71 +159,49 @@ $title = 'VAMOS | Transportation Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Nature of Business" value="">
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Vehicle #" value="">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Administrator's Name " value="">
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Plate #" value="">
                                                 </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Administrator's Position" value="">
-                                                </div>
-                                            </div><br>
 
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Barangay: </label> -->
-                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
-                                                        <option selected="selected">Select Barangay</option>
-                                                        <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="city" placeholder="City" value="<?php echo $city; ?>">
+                                                    <input type="text" class="form-control" name="street" placeholder="Route" value="">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="province" placeholder="Province" value="<?php echo $province; ?>">
+                                                    <input type="text" class="form-control" name="street" placeholder="Contact Name" value="">
                                                 </div>
                                             </div><br>
 
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="street" placeholder="Contact Position" value="">
+                                                </div>
+                                            </div><br>
 
                                         </div>
 
 
-                                    </div>&nbsp;&nbsp;&nbsp;
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                     <div class="card col-md-5">
                                         <div class="card-header">
-                                            <h6> UPLOAD LOGO</h6>
+                                            <h6> ID PHOTO</h6>
                                         </div>
 
                                         <div class="box-body">
@@ -238,7 +211,7 @@ $title = 'VAMOS | Transportation Form';
 
                                                 <div class="col-md-3">
 
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"></div><br>
+                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
 
                                                 </div>
                                             </div>
@@ -247,12 +220,12 @@ $title = 'VAMOS | Transportation Form';
                                                 <form method="POST" action="storeImage.php">
 
                                                     <div class="col-md-3"></div>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
 
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                        <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
-                                                        <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
+                                                        <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
+                                                        <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
 
                                                     </div>
                                                 </form>
@@ -289,14 +262,13 @@ $title = 'VAMOS | Transportation Form';
                                                     <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
                                                 </div>
                                             </div><br>
-
                                             <div class="box-footer" align="center">
 
 
                                                 <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
 
-                                                <a href="list_juridical.php">
+                                                <a href="list_transportation.php">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
@@ -307,7 +279,7 @@ $title = 'VAMOS | Transportation Form';
                                                 </a>
 
 
-                                            </div>
+                                            </div><br><br>
                                         </div>
                                     </div>
                         </form>
@@ -363,6 +335,10 @@ $title = 'VAMOS | Transportation Form';
 
     <script type="text/javascript">
         $('.select2').select2();
+
+
+
+        
         $(document).ready(function() {
 
 

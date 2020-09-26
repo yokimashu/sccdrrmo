@@ -97,27 +97,7 @@ $get_all_individual_data->execute();
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr align="center">
-                            <td><?php echo $list_individual['entity_no'];  ?></td>
-                            <td><?php echo $list_individual['date_register'];  ?></td>
-                            <td><?php echo $list_individual['firstname'];
-                                echo " ";
-                                echo $list_individual['middlename'];
-                                echo " ";
-                                echo $list_individual['lastname']; ?> </td>
-                            <td><?php echo $list_individual['street']; ?> </td>
-                            <td><?php echo $list_individual['contact_no']; ?></td>
-                            <td>
-                              <a style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              <button class="btn btn-danger btn-sm" data-role="confirm_delete" data-id="<?php echo $list_pum["idno"]; ?>"><i class="fa fa-trash-o"></i>
-                              </button>
-                              &nbsp;
 
-                            </td>
-                          </tr>
-                        <?php } ?>
                       </tbody>
                     </table>
 
