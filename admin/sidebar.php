@@ -154,7 +154,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 </li>
 
                 <li class="nav-item">
-                  <a href="add_pum" class="nav-link">
+                  <a href="list_transportation" class="nav-link">
                     &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
                     <p> &nbsp; Transportation</p>
                   </a>

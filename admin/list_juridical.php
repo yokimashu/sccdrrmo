@@ -45,7 +45,7 @@ $get_all_individual_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | Juridical Masterlist </title>
+  <title>VAMOS | Master Lists Juridical </title>
   <?php include('header.php'); ?>
 
 
@@ -63,7 +63,7 @@ $get_all_individual_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Juridical Masterlist
+            <h4> Master Lists Juridical
 
               <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
