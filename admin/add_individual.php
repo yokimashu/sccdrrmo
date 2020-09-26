@@ -21,7 +21,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
     $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $health_status = $id = '';
+    $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = '';
 $btnNew = 'hidden';
 
 
@@ -129,7 +129,7 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
 
 
@@ -241,7 +241,7 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-md-3">
 
-                                                    <div id="my_camera"></div><br>
+                                                    <div stytle ="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align ="center" onClick="setup()"> Click to ACCESS Camera</div><br>
                                                    
                                                 </div>
                                             </div>
@@ -253,71 +253,68 @@ $title = 'VAMOS | Add Individual';
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
 
-                                                    <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()"> 
-                                                    <input type="button" class="btn btn-primary" value="&#128247" onClick="take_snapshot()">           
-                                        
-                                                        <a href="#">
-
-                                                            <button type="button" class="btn btn-danger ">
-                                                                <i class="fa fa-upload"></i>
-                                                            </button>
-
-                                                        </a>
-
-
-                                                    </div>
-
-
-
+                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                    <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">   
+                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
+                                
+                                                </div>
                                                 </form>
+                                                </div><br>
+
+                                                <div class="row">
+                                                <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <label>CONTACT DETAILS </label>
+                                                             
+                                                            </div>
+                                                                </div><br>
+                                               
+                                                <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                            </div>
+                                                </div></br>
+
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $tel_no; ?>">
+                                                            </div>
+                                                </div><br>
+
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email_address; ?>">
+                                                            </div>
+                                                </div><br>
+                                                            
+                                                <div class="box-footer" align="center">
 
 
+<button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+    <i class="fa fa-check fa-fw"> </i> </button>
 
+<a href="list_individual.php">
+    <button type="button" name="cancel" class="btn btn-danger">
+        <i class="fa fa-close fa-fw"> </i> </button>
+</a>
 
+<a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no;?>">
+    <button type="button" name="print" class="btn btn-primary">
+        <i class="nav-icon fa fa-print"> </i> </button>
+</a>
 
-
-                                            </div><br>
-
-
-
-                                        </div>
-
+                                          
                                     </div>
-
                                 </div>
-
-
-
-
-
-
-
-
-
-
                             </div>
-
-
-
-
-
-
-                            <!-- card starts here -->
-
-
-
-
-
-
-
-
-
-
-
-
                         </form>
                     </div>
-
                 </div>
             </section>
         </div>
