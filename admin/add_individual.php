@@ -1,9 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('insert_individual.php');
-
-use Endroid\QrCode\QrCode;
+// include('insert_individual.php');
 
 
 session_start();
@@ -110,7 +108,7 @@ $title = 'VAMOS | Add Individual';
                                     <div class="card col-md-6">
 
                                         <div class=" card-header">
-                                            <h6>GENERAL INFORMATION</h6>
+                                            <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
 
                                         <div class="box-body">
@@ -240,7 +238,7 @@ $title = 'VAMOS | Add Individual';
 
                                     <div class="card col-md-5">
                                         <div class="card-header">
-                                            <h6> ID PHOTO</h6>
+                                            <h6><strong> ID PHOTO </strong></h6>
                                         </div>
 
                                         <div class="box-body">
