@@ -1,7 +1,6 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
 include('insert_individual.php');
 
 use Endroid\QrCode\QrCode;
@@ -19,7 +18,7 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
+$btnSave = $btnEdit = $user_name = $firstname = $middlename = $lastname = $age = $gender =
     $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
     $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = '';
 $btnNew = 'hidden';
@@ -28,6 +27,7 @@ $btnNew = 'hidden';
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
+
 
 
 $title = 'VAMOS | Add Individual';
@@ -101,7 +101,7 @@ $title = 'VAMOS | Add Individual';
 
                     <div class="card-body">
 
-                        <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
@@ -134,6 +134,15 @@ $title = 'VAMOS | Add Individual';
 
 
                                             </div></br>
+
+                                            <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
+                                                            <!-- <label>First Name:</label> -->
+                                                            <input type="text" class="form-control" name="username" placeholder="User Name" value="<?php echo $user_name; ?>">
+                                                        </div>
+                                            </div></br>
+
 
                                             <div class="row">
                                                     <div class="col-md-1"></div>
@@ -247,7 +256,7 @@ $title = 'VAMOS | Add Individual';
                                             </div>
 
                                             <div class="row" align="center">
-                                                <form method="POST" action="storeImage.php">
+                                                <!-- <form method="POST" action="storeImage.php"> -->
 
                                                     <div class="col-md-3"></div>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -258,7 +267,7 @@ $title = 'VAMOS | Add Individual';
                                                     <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
                                 
                                                 </div>
-                                                </form>
+                                                <!-- </form> -->
                                                 </div><br>
 
                                                 <div class="row">
@@ -398,7 +407,7 @@ $title = 'VAMOS | Add Individual';
             width: 320,
             height: 240,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality: 100
         });
         //Webcam.attach( '#my_camera' );
     </script>
