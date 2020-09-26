@@ -107,7 +107,7 @@ $title = 'VAMOS | Add Individual';
                                 <div class="row">
 
                                     <div class="m-1 pb-1"> </div>
-                                    <div class="card col-md-7">
+                                    <div class="card col-md-6">
 
                                         <div class=" card-header">
                                             <h6>GENERAL INFORMATION</h6>
@@ -229,7 +229,7 @@ $title = 'VAMOS | Add Individual';
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                    <div class="card col-md-4">
+                                    <div class="card col-md-5">
                                         <div class="card-header">
                                             <h6> ID PHOTO</h6>
                                         </div>
@@ -253,16 +253,9 @@ $title = 'VAMOS | Add Individual';
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
 
-                                                    <input type="button" value="Access Camera" onClick="setup(); $(this).hide().next().show();">
-
-                                                        <button class="btn btn-primary " onClick="setup()">
-                                                            <i class="fa fa-camera"></i>
-                                                        </button>
-
-                                                        <button class="btn btn-success " onClick="take_snapshot();">
-                                                            <i class="fa fa-photo"></i>
-                                                        </button>
-
+                                                    <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()"> 
+                                                    <input type="button" class="btn btn-primary" value="&#128247" onClick="take_snapshot()">           
+                                        
                                                         <a href="#">
 
                                                             <button type="button" class="btn btn-danger ">
