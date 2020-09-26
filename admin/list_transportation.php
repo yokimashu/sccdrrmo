@@ -45,7 +45,7 @@ $get_all_individual_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | List of PUMs </title>
+  <title>VAMOS | List of PUMs </title>
   <?php include('header.php'); ?>
 
 

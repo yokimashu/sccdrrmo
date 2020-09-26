@@ -45,7 +45,7 @@ $get_all_individual_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SCCDRRMO ERP | List of PUMs </title>
+  <title>VAMOS | Master Lists Individual </title>
   <?php include('header.php'); ?>
 
 
@@ -109,8 +109,8 @@ $get_all_individual_data->execute();
                             <td><?php echo $list_individual['street']; ?> </td>
                             <td><?php echo $list_individual['contact_no']; ?></td>
                             <td>
-                            <a style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
-                <i class="nav-icon fa fa-print"></i></a>
+                              <a style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
                               <button class="btn btn-danger btn-sm" data-role="confirm_delete" data-id="<?php echo $list_pum["idno"]; ?>"><i class="fa fa-trash-o"></i>
                               </button>
                               &nbsp;
@@ -262,18 +262,16 @@ $get_all_individual_data->execute();
 
 
 
-    $('#users tbody').on( 'click', 'button.printlink', function() {
-          // alert ('hello');
-         // var row = $(this).closest('tr');
-         var table = $('#users').DataTable();
-         var data = table.row( $(this).parents('tr') ).data();
-        //  alert (data[0]);
-        //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-          var entity_no = data[0];
-          window.open("entity_id.php?entity_no="+ entity_no,'_parent');
-        });
-
-    
+    $('#users tbody').on('click', 'button.printlink', function() {
+      // alert ('hello');
+      // var row = $(this).closest('tr');
+      var table = $('#users').DataTable();
+      var data = table.row($(this).parents('tr')).data();
+      //  alert (data[0]);
+      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+      var entity_no = data[0];
+      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+    });
   </script>
 </body>
 
