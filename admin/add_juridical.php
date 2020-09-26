@@ -35,7 +35,7 @@ $get_all_category_sql = "SELECT * FROM categ_juridical";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
-$title = 'VAMOS | Add Juridical';
+$title = 'VAMOS | Juridical Form';
 
 
 ?>

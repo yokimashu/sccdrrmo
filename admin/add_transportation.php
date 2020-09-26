@@ -30,7 +30,12 @@ $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
 
 
-$title = 'VAMOS | Individual Form';
+
+$get_all_category_sql = "SELECT * FROM categ_juridical";
+$get_all_category_data = $con->prepare($get_all_category_sql);
+$get_all_category_data->execute();
+
+$title = 'VAMOS | Transportation Form';
 
 
 ?>
@@ -95,7 +100,7 @@ $title = 'VAMOS | Individual Form';
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
-                        <h4>Individual Form</h4>
+                        <h4>Juridical Form</h4>
                     </div>
 
 
@@ -139,15 +144,19 @@ $title = 'VAMOS | Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>">
+                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization Name" value="">
                                                 </div>
                                             </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>">
+                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
+                                                        <option selected="selected">Select Organization Type</option>
+                                                        <?php while ($get_categ = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $get_categ['categ_name']; ?>"><?php echo $get_categ['categ_name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div></br>
 
@@ -155,36 +164,24 @@ $title = 'VAMOS | Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>">
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Nature of Business" value="">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label>Birthdate: </label>
-                                                    <div class="input-group date" data-provide="datepicker">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <label>Age:</label>
-                                                    <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>">
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Gender:</label>
-                                                    <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
-                                                        <option selected="selected">Select Gender</option>
-                                                        <option value="Female">Female</option>
-                                                        <option value="Male">Male</option>
-                                                    </select>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Administrator's Name " value="">
                                                 </div>
                                             </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Administrator's Position" value="">
+                                                </div>
+                                            </div><br>
+
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -227,11 +224,11 @@ $title = 'VAMOS | Individual Form';
                                         </div>
 
 
-                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>&nbsp;&nbsp;&nbsp;
 
                                     <div class="card col-md-5">
                                         <div class="card-header">
-                                            <h6> ID PHOTO</h6>
+                                            <h6> UPLOAD LOGO</h6>
                                         </div>
 
                                         <div class="box-body">
@@ -241,7 +238,7 @@ $title = 'VAMOS | Individual Form';
 
                                                 <div class="col-md-3">
 
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
+                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"></div><br>
 
                                                 </div>
                                             </div>
@@ -254,8 +251,8 @@ $title = 'VAMOS | Individual Form';
                                                     <div>
 
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                        <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                        <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
+                                                        <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
+                                                        <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
 
                                                     </div>
                                                 </form>
@@ -299,7 +296,7 @@ $title = 'VAMOS | Individual Form';
                                                 <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
 
-                                                <a href="list_individual.php">
+                                                <a href="list_juridical.php">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
