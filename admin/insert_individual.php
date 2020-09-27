@@ -60,6 +60,20 @@ if (isset($_POST['insert_individual'])) {
     //     $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
     // }
 
+    $img = $_POST['image'];
+    $folderPath = "../flutter/images/";
+  
+    $image_parts = explode(";base64,", $img);
+    $image_type_aux = explode("image/", $image_parts[0]);
+    $image_type = $image_type_aux[1];
+  
+    $image_base64 = base64_decode($image_parts[1]);
+    $fileName = uniqid() . '.jpg';
+  
+    $file = $folderPath . $fileName;
+    file_put_contents($file, $image_base64);
+  
+    print_r($fileName);
 
     $insert_individual_sql = "INSERT INTO tbl_individual SET 
 
@@ -80,7 +94,7 @@ if (isset($_POST['insert_individual'])) {
     barangay         = :barangay,
     city             = :city,
     province         = :province   
-    -- photo            = :photo
+    photo            = :photo
     
     ";
     
@@ -105,7 +119,7 @@ if (isset($_POST['insert_individual'])) {
     ':street'            => $street,
     ':city'              => $city,
     ':province'          => $province
-    // ':photo'             => $fileName
+    ':photo'             => $fileName
 
 ]);
 

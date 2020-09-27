@@ -247,7 +247,7 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-md-3">
 
-                                                    <div stytle ="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align ="center" onClick="setup()"> Click to ACCESS Camera</div><br>
+                                                    <div style ="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align ="center" onClick="setup()"> Click to ACCESS Camera</div><br>
                                                    
                                                 </div>
                                             </div>
@@ -258,7 +258,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-3"></div>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
-
+                                                    <input type="hidden" name="image" class="image-tag">                  
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                     <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">   
                                                     <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
@@ -421,6 +421,7 @@ $title = 'VAMOS | Add Individual';
             // take snapshot and get image data
             Webcam.snap(function(data_uri) {
                 // display results in page
+                $(".image-tag").val(data_uri);
                 document.getElementById('my_camera').innerHTML =
                     '<img src="' + data_uri + '"/>';
             });
