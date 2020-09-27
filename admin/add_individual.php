@@ -135,7 +135,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" name="username" placeholder="User Name" value="<?php echo $user_name; ?>">
+                                                            <input type="text" class="form-control" id="username" name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>">
                                                         </div>
                                             </div></br>
 
@@ -373,14 +373,15 @@ $title = 'VAMOS | Add Individual';
     <script type="text/javascript">
         $('.select2').select2();
         $(document).ready(function() {
-
-
-
+    
             $(document).ajaxStart(function() {
                 Pace.restart()
             })
 
         });
+
+        
+
     </script>
 
     <script>
@@ -424,6 +425,20 @@ $title = 'VAMOS | Add Individual';
                     '<img src="' + data_uri + '"/>';
             });
         }
+
+        function checkUsername() {
+            var username = $('#username').val();
+            $.ajax({
+                type: 'POST',
+                data: {username:username},
+                url: 'check_username.php',
+                success: function(data) {
+                    $('#entity_no').val(data);
+                }
+            });
+        }
+      
+        
     </script>
 </body>
 
