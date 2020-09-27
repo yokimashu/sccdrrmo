@@ -269,8 +269,8 @@ $get_all_individual_data->execute();
          var data = table.row( $(this).parents('tr') ).data();
         //  alert (data[0]);
         //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-          var entity_no = data[0];
-          window.open("entity_id.php?entity_no="+ entity_no,'_parent');
+          var entity = data[0];
+          window.open("entity_id.php?entity_no="+ entity,'_parent');
         });
 
     
