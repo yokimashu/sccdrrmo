@@ -45,7 +45,7 @@ $get_all_individual_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Master Lists Individual </title>
+  <title>VAMOS | Master Lists Transportation </title>
   <?php include('header.php'); ?>
 
 
@@ -63,9 +63,9 @@ $get_all_individual_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Individual
+            <h4> Master Lists Transportation
 
-              <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+              <a href="add_transportation" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -97,27 +97,7 @@ $get_all_individual_data->execute();
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr align="center">
-                            <td><?php echo $list_individual['entity_no'];  ?></td>
-                            <td><?php echo $list_individual['date_register'];  ?></td>
-                            <td><?php echo $list_individual['firstname'];
-                                echo " ";
-                                echo $list_individual['middlename'];
-                                echo " ";
-                                echo $list_individual['lastname']; ?> </td>
-                            <td><?php echo $list_individual['street']; ?> </td>
-                            <td><?php echo $list_individual['contact_no']; ?></td>
-                            <td>
-                              <a style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              <button class="btn btn-danger btn-sm" data-role="confirm_delete" data-id="<?php echo $list_pum["idno"]; ?>"><i class="fa fa-trash-o"></i>
-                              </button>
-                              &nbsp;
 
-                            </td>
-                          </tr>
-                        <?php } ?>
                       </tbody>
                     </table>
 

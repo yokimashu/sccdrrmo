@@ -1,10 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
-include('insert_individual.php');
-
-use Endroid\QrCode\QrCode;
+// include('insert_individual.php');
 
 
 session_start();
@@ -19,15 +16,16 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
+$btnSave = $btnEdit = $user_name = $firstname = $middlename = $lastname = $age = $gender =
     $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $health_status = $id = '';
+    $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = '';
 $btnNew = 'hidden';
 
 
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
+
 
 
 $title = 'VAMOS | Add Individual';
@@ -101,16 +99,16 @@ $title = 'VAMOS | Add Individual';
 
                     <div class="card-body">
 
-                        <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
 
                                     <div class="m-1 pb-1"> </div>
-                                    <div class="card col-md-7">
+                                    <div class="card col-md-6">
 
                                         <div class=" card-header">
-                                            <h6>GENERAL INFORMATION</h6>
+                                            <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
 
                                         <div class="box-body">
@@ -129,11 +127,20 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $id; ?>" required>
+                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
 
 
                                             </div></br>
+
+                                            <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
+                                                            <!-- <label>First Name:</label> -->
+                                                            <input type="text" class="form-control" name="username" placeholder="User Name" value="<?php echo $user_name; ?>">
+                                                        </div>
+                                            </div></br>
+
 
                                             <div class="row">
                                                     <div class="col-md-1"></div>
@@ -229,9 +236,9 @@ $title = 'VAMOS | Add Individual';
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                    <div class="card col-md-4">
+                                    <div class="card col-md-5">
                                         <div class="card-header">
-                                            <h6> ID PHOTO</h6>
+                                            <h6><strong> ID PHOTO </strong></h6>
                                         </div>
 
                                         <div class="box-body">
@@ -241,90 +248,80 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-md-3">
 
-                                                    <div id="my_camera"></div><br>
+                                                    <div stytle ="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align ="center" onClick="setup()"> Click to ACCESS Camera</div><br>
                                                    
                                                 </div>
                                             </div>
 
                                             <div class="row" align="center">
-                                                <form method="POST" action="storeImage.php">
+                                                <!-- <form method="POST" action="storeImage.php"> -->
 
                                                     <div class="col-md-3"></div>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
 
-                                                    <input type="button" value="Access Camera" onClick="setup(); $(this).hide().next().show();">
+                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                    <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">   
+                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
+                                
+                                                </div>
+                                                <!-- </form> -->
+                                                </div><br>
 
-                                                        <button class="btn btn-primary " onClick="setup()">
-                                                            <i class="fa fa-camera"></i>
-                                                        </button>
+                                                <div class="row">
+                                                <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <label>CONTACT DETAILS </label>
+                                                             
+                                                            </div>
+                                                                </div><br>
+                                               
+                                                <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                            </div>
+                                                </div></br>
 
-                                                        <button class="btn btn-success " onClick="take_snapshot();">
-                                                            <i class="fa fa-photo"></i>
-                                                        </button>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $tel_no; ?>">
+                                                            </div>
+                                                </div><br>
 
-                                                        <a href="#">
-
-                                                            <button type="button" class="btn btn-danger ">
-                                                                <i class="fa fa-upload"></i>
-                                                            </button>
-
-                                                        </a>
-
-
-                                                    </div>
-
-
-
-                                                </form>
-
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                            <div class="col-md-10">
+                                                                <!-- <label>Street: </label> -->
+                                                                <input type="text" class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email_address; ?>">
+                                                            </div>
+                                                </div><br>
+                                                            
+                                                <div class="box-footer" align="center">
 
 
+<button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+    <i class="fa fa-check fa-fw"> </i> </button>
 
+<a href="list_individual.php">
+    <button type="button" name="cancel" class="btn btn-danger">
+        <i class="fa fa-close fa-fw"> </i> </button>
+</a>
 
+<a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no;?>">
+    <button type="button" name="print" class="btn btn-primary">
+        <i class="nav-icon fa fa-print"> </i> </button>
+</a>
 
-                                            </div><br>
-
-
-
-                                        </div>
-
+                                          
                                     </div>
-
                                 </div>
-
-
-
-
-
-
-
-
-
-
                             </div>
-
-
-
-
-
-
-                            <!-- card starts here -->
-
-
-
-
-
-
-
-
-
-
-
-
                         </form>
                     </div>
-
                 </div>
             </section>
         </div>
@@ -408,7 +405,7 @@ $title = 'VAMOS | Add Individual';
             width: 320,
             height: 240,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality: 100
         });
         //Webcam.attach( '#my_camera' );
     </script>
