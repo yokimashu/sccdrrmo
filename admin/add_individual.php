@@ -136,6 +136,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
                                                             <input type="text" class="form-control" id="username" name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>">
+                                                            <div id="status"></div>
                                                         </div>
                                             </div></br>
 
@@ -429,15 +430,19 @@ $title = 'VAMOS | Add Individual';
 
         function checkUsername() {
             var username = $('#username').val();
+            if(username.length >= 3){
+            $("#status").html('<img src="loader.gif" /> Checking availability...');
             $.ajax({
                 type: 'POST',
                 data: {username:username},
                 url: 'check_username.php',
                 success: function(data) {
-                    $('#entity_no').val(data);
+                    $("#status").html(data);
+                   
                 }
             });
         }
+    }
       
         
     </script>
