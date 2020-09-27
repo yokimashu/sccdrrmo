@@ -16,9 +16,9 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $user_name = $firstname = $middlename = $lastname = $age = $gender =
+$btnSave = $btnEdit = $entity_no = $user_name = $firstname = $middlename = $lastname = $age = $gender =
     $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = $mobile_no = $tel_no = $email_address ='';
+    $travel_days = $patient_disease = $symptoms = $barangay = $entity_no = $mobile_no = $telephone_no = $email ='';
 $btnNew = 'hidden';
 
 
@@ -204,7 +204,7 @@ $title = 'VAMOS | Add Individual';
                                                      <div class="col-md-1"></div>
                                                     <div class="col-md-10">
                                                 <!-- <label>Barangay: </label> -->
-                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
+                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>">
                                                                     <option selected="selected">Select Barangay</option>
                                                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
@@ -279,7 +279,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                                <input type="number" class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
                                                             </div>
                                                 </div></br>
 
@@ -287,7 +287,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $tel_no; ?>">
+                                                                <input type="number" class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $telephone_no; ?>">
                                                             </div>
                                                 </div><br>
 
@@ -295,7 +295,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email_address; ?>">
+                                                                <input type="text" class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email; ?>">
                                                             </div>
                                                 </div><br>
                                                             

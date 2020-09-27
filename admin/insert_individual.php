@@ -19,7 +19,7 @@ if (isset($_POST['insert_individual'])) {
     $middlename = $_POST['middlename'];
     $lastname = $_POST['lastname'];
     $fullname = $_POST['firstname'] .' ' . $_POST['middlename'] . '.' . ' ' . $_POST['lastname'];
-    $birthdate = $_POST['birthdate'];
+    $birthdate = date('Y-m-d', strtotime($_POST['birthdate']));
     $age = $_POST['age'];
     $gender = $_POST['gender'];
     $street = $_POST['street'];
@@ -29,7 +29,7 @@ if (isset($_POST['insert_individual'])) {
     $telephone_no = $_POST['telephone_no'];
     $barangay = $_POST['barangay'];
     $email = $_POST['email'];
-    $photo = $_POST['myFiles'];
+    // $photo = $_POST['myFiles'];
     
     //insert to tbl_entity 
     $username = $_POST['username'];
@@ -70,14 +70,14 @@ if (isset($_POST['insert_individual'])) {
     middlename       = :middlename,
     lastname         = :lastname,
     fullname         = :fullname,
-    mobile_no        = :mobile_no,
-    telephone_no     = :telephone_no,
-    email            = :email,
+    -- mobile_no        = :mobile_no,
+    -- telephone_no     = :telephone_no,
+    -- email            = :email,
     gender           = :gender,
     birthdate        = :birthdate,
     age              = :age,
     street           = :street,
-    barangay         = :barangay,
+    -- barangay         = :barangay,
     city             = :city,
     province         = :province   
     -- photo            = :photo
@@ -97,10 +97,10 @@ if (isset($_POST['insert_individual'])) {
     ':fullname'          => $fullname,
     ':age'               => $age,
     ':gender'            => $gender,
-    ':mobile_no'         => $mobile_no,
-    ':telephone_no'      => $telephone_no,
-    ':email'             => $email,
-    ':barangay'          => $barangay,
+    // ':mobile_no'         => $mobile_no,
+    // ':telephone_no'      => $telephone_no,
+    // ':email'             => $email,
+    // ':barangay'          => $barangay,
     ':birthdate'         => $birthdate,
     ':street'            => $street,
     ':city'              => $city,

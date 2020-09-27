@@ -2,6 +2,10 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
+
+include('list_individual.php');
+
+
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -29,10 +33,32 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_individual_sql = "SELECT * FROM tbl_individual";
-$get_all_individual_data = $con->prepare($get_all_individual_sql);
-$get_all_individual_data->execute();
+$entity_no = $_GET['entity_no'];
+$entity_no = '';
 
+
+$get_all_history_sql = "SELECT * FROM tbl_individual_history r inner join tbl_individual_history h on h.entity_no = r.entity_no where r.entity_no = :entity_no";
+$get_all_history_data = $con->prepare($get_all_history_sql);
+$get_all_history_data->execute();
+
+
+
+
+
+
+
+// $db = mysqli_connect('localhost', 'root', '1234', 'scc_bac');
+// $get_pr_info = "SELECT * FROM pr_info where pr_info_control_no =  :control ";
+// $get_pr_data = $con->prepare($get_pr_info);
+// $get_pr_data->execute([':control' => $control]);
+// while ($result = $get_pr_data->fetch(PDO::FETCH_ASSOC)) {
+//   $control_no = $result['pr_info_control_no'];
+//   $pr_no = $result['pr_info_no'];
+//   $sai_no = $result['pr_info_sai_no'];
+//   $date_pr = $result['pr_info_date'];
+//   $section = $result['pr_info_section'];
+//   $department = $result['pr_info_dept'];
+// }
 
 
 ?>
@@ -45,7 +71,7 @@ $get_all_individual_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Master Lists Individual </title>
+  <title>VAMOS | Master Lists Individual History </title>
   <?php include('header.php'); ?>
 
 
@@ -63,7 +89,7 @@ $get_all_individual_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Individual
+            <h4> Master Lists Individual History
 
               <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
@@ -88,33 +114,27 @@ $get_all_individual_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> ID </th>
+                        
                           <th> Date </th>
-                          <th> Full Name </th>
-                          <th> Address</th>
-                          <th> Contact No.</th>
+                       
+                          <th> location</th>
+                          <th> Person Scanned </th>
+                         
                           <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <?php while ($list_history = $get_all_history_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
-                            <td><?php echo $list_individual['entity_no'];  ?></td>
-                            <td><?php echo $list_individual['date_register'];  ?></td>
-                            <td><?php echo $list_individual['fullname']; ?> </td>
-                            <td><?php echo $list_individual['street']; ?> </td>
-                            <td><?php echo $list_individual['mobile_no']; 
-                                    echo "/tel # ";
-                                    echo $list_individual['telephone_no'];?></td>
+                            <td><?php echo $list_history['date_scan'];  ?></td>
+                            <td><?php echo $list_history['location'];  ?></td>
+                            <td><?php echo $list_history['person_scan']; ?> </td>
+                         
                             <td>
                               
                                 <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i>
 
-                                <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-eye"></i>
-
-                            
                                 <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
