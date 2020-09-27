@@ -119,7 +119,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
                                                     </div>
                                                 </div>
 

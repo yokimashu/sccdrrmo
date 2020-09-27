@@ -89,23 +89,17 @@ $get_all_individual_data->execute();
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
                           <th> ID </th>
-                          <th> Date </th>
+                          <th> Username </th>
                           <th> Full Name </th>
-                          <th> Address</th>
-                          <th> Contact No.</th>
                           <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr align="center">
+                          <tr>
                             <td><?php echo $list_individual['entity_no'];  ?></td>
-                            <td><?php echo $list_individual['date_register'];  ?></td>
+                            <td><?php echo $list_individual['username'];  ?></td>
                             <td><?php echo $list_individual['fullname']; ?> </td>
-                            <td><?php echo $list_individual['street']; ?> </td>
-                            <td><?php echo $list_individual['mobile_no']; 
-                                    echo "/tel # ";
-                                    echo $list_individual['telephone_no'];?></td>
                             <td>
                               
                                 <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
