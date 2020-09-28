@@ -75,7 +75,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
   <div class="greenBG">
     <br>
 
-    <!-- <a href="index" class="brand-link">
+    <!-- <a href="index" class="brand-link">  
       <img src="../dist/img/scdrrmo_logo.png" class="img-circle elevation-2" width="40px">   
     </a> -->
 
@@ -128,6 +128,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </p>
           </a>
           <ul class="nav nav-treeview">
+
 
 
 
