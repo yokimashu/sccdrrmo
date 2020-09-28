@@ -3,7 +3,7 @@
 include ('../config/db_config.php');
 
 date_default_timezone_set('Asia/Manila');
-
+$alert_msg = '';
 
     
 if (isset($_POST['insert_individual'])) {
@@ -39,28 +39,43 @@ if (isset($_POST['insert_individual'])) {
     $status = 'ACTIVE';
 
     // //for photo
-    // $currentDir = getcwd();
-    // $uploadDirectory = "../flutter/images/";
-    // $errors = [];
-
-    // $fileExtensions = ['jpg'];
-
-    // $fileName = $_FILES['myFile']['name'];
-    // $fileSize = $_FILES['myFile']['size'];
-    // $fileTmpName = $_FILES['myFile']['tmp_name'];
-    // $fileType = $_FILES['myFile']['type'];
-    // $target_file = $uploadDirectory . basename($_FILES['myFile']['name']);
-    // $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // // $fileExtension = strtolower(end(explode('.',$fileName)));
-    // $uploadPath = $uploadDirectory . basename($fileName);
-
-    // if (!in_array($fileExtension, $fileExtensions)) {
-    //     $errors[] = "This file extension is not allowed.";
-    // }
-    // if (empty($errors)) {
-    //     $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
-    // }
+    $currentDir = getcwd();
+    $uploadDirectory = "../flutter/images/";
+    $errors = [];
     $img = $_POST['image'];
+    $fileExtensions = ['jpg'];
+    $fileName = $_FILES['myFile']['name'];
+    $fileSize = $_FILES['myFile']['size'];
+    $fileTmpName = $_FILES['myFile']['tmp_name'];
+    $fileType = $_FILES['myFile']['type'];
+    $target_file = $uploadDirectory . basename($_FILES['myFile']['name']);
+    $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $uploadPath = $uploadDirectory . basename($fileName);
+        $newfilename = '';
+        
+    if ($fileName == '' && $img == ''  )
+        {  
+        $fileName = 'user.jpeg';
+        }else if (  $fileName  != '') 
+        {
+            if (!in_array($fileExtension, $fileExtensions)) {
+                $errors[] = "This file extension is not allowed.";
+            }
+            if (empty($errors)) {
+                $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
+            }
+
+     $temp = explode(".", $_FILES["myFile"]["name"]);
+     $newfilename = round(microtime(true)) . '.' . end($temp);
+  
+     
+    
+     // $fileExtension = strtolower(end(explode('.',$fileName)));
+   
+        } else if ($fileName == ''){
+
+
+   
     $folderPath = "../flutter/images/";
   
     $image_parts = explode(";base64,", $img);
@@ -72,7 +87,7 @@ if (isset($_POST['insert_individual'])) {
   
     $file = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
-  
+        }
     // print_r($fileName);
     
 
@@ -99,6 +114,10 @@ if (isset($_POST['insert_individual'])) {
     
     ";
     
+    
+    if($newfilename != ''){
+        $fileName = $newfilename;
+    }
     
     $individual_data = $con->prepare($insert_individual_sql);
     $individual_data->execute([
