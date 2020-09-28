@@ -169,13 +169,13 @@ $entity_data->execute([
     </div>  
       ';
 
-      $btnStatus = 'disabled';
+      $btn_enabled = 'disabled';
       $btnNew = 'enabled';
       $btnPrint = 'enabled';
   
 
       //echo print_r($firstname);
-      header("location: list_individual.php");
+    
 
 }
 

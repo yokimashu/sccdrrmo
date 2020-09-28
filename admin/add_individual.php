@@ -2,7 +2,7 @@
 
 include('../config/db_config.php');
 include('insert_individual.php');
-
+ $btn_enabled = 'enabled';  
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -98,7 +98,7 @@ $title = 'VAMOS | Add Individual';
 
                     <div class="card-body">
 
-                        <form role="form" enctype="multipart/form-data" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post"  id = "input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
@@ -126,7 +126,7 @@ $title = 'VAMOS | Add Individual';
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
+                                                    <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
 
 
@@ -136,7 +136,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" id="username" name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                            <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
                                                             <div id="status"></div>
                                                         </div>
                                             </div></br>
@@ -147,7 +147,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
+                                                            <input type="text" class="form-control" <?php echo $btn_enabled ?> name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
                                                         </div>
                                             </div></br>
 
@@ -155,7 +155,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>Middle Name:</label> -->
-                                                            <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
+                                                            <input type="text" class="form-control" <?php echo $btn_enabled ?> name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
                                                         </div>
                                                 </div></br>
 
@@ -163,7 +163,7 @@ $title = 'VAMOS | Add Individual';
                                                      <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label> Last Name:</label> -->
-                                                            <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
+                                                            <input type="text" class="form-control" <?php echo $btn_enabled ?> name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
                                                      </div>
                                             </div><br>
 
@@ -175,18 +175,18 @@ $title = 'VAMOS | Add Individual';
                                                                 <div class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
-                                                                    <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>" required>
+                                                                    <input type="text" <?php echo $btn_enabled ?> class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>" required>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-3">
                                                                 <label>Age:</label>
-                                                                <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
+                                                                <input type="number" <?php echo $btn_enabled ?> class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
                                                         </div>
 
                                                         <div class="col-md-4">
                                                                 <label>Gender:</label>
-                                                                <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>" required>
+                                                                <select class=" form-control select2" <?php echo $btn_enabled ?> id="gender" name="gender" value="<?php echo $gender; ?>" required>
                                                                     <option selected="selected">Select Gender</option>
                                                                     <option value="Female">Female</option>
                                                                      <option value="Male">Male</option>
@@ -198,7 +198,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
+                                                                <input type="text" class="form-control" <?php echo $btn_enabled ?> name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
                                                             </div>
                                             </div><br>            
 
@@ -206,7 +206,7 @@ $title = 'VAMOS | Add Individual';
                                                      <div class="col-md-1"></div>
                                                     <div class="col-md-10">
                                                 <!-- <label>Barangay: </label> -->
-                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
+                                                                 <select class="form-control select2" <?php echo $btn_enabled ?> id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
                                                                     <option selected="selected">Select Barangay</option>
                                                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
@@ -219,7 +219,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="city" placeholder= "City" value="SAN CARLOS CITY"<?php echo $city; ?>" required>
+                                                                <input type="text" class="form-control" <?php echo $btn_enabled ?>  name="city" placeholder= "City" value="SAN CARLOS CITY"<?php echo $city; ?>" required>
                                                             </div>
                                             </div><br>  
 
@@ -227,7 +227,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="province" placeholder= "Province" value="NEGROS OCCIDENTAL"<?php echo $province; ?>" required>
+                                                                <input type="text" class="form-control" <?php echo $btn_enabled ?> name="province" placeholder= "Province" value="NEGROS OCCIDENTAL"<?php echo $province; ?>" required>
                                                             </div>
                                             </div><br> 
 
@@ -266,8 +266,8 @@ $title = 'VAMOS | Add Individual';
                                                     <div>
                                                     <input type="hidden" name="image" class="image-tag">                  
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <input type="button" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">   
-                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
+                                                    <input type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">   
+                                                    <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
                                 
                                                 </div>
                                                 <!-- </form> -->
@@ -285,7 +285,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="number" class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                                <input type="number" <?php echo $btn_enabled ?> class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
                                                             </div>
                                                 </div></br>
 
@@ -293,7 +293,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="number" class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $telephone_no; ?>">
+                                                                <input type="number" <?php echo $btn_enabled ?>  class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $telephone_no; ?>">
                                                             </div>
                                                 </div><br>
 
@@ -301,7 +301,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email; ?>">
+                                                                <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email; ?>">
                                                             </div>
                                                 </div><br>
                                                             
@@ -453,29 +453,11 @@ $title = 'VAMOS | Add Individual';
             });
         }
     }
-    $(function() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000
-    });
-    
-    $('.swalDefaultSuccess').click(function() {
-      Toast.fire({
-        type: 'success',
-        title: 'You have successfully saved the person.'
-      })
-    });
-    $('.toastsDefaultSuccess').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-success', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'You have successfully saved the person.'
-      })
-    });
-});
+//     $('#btnSubmit').click(function(){
+// $("#input-form :input").prop("disabled", true);
+//     });
+  
+  
         
     </script>
 </body>
