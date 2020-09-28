@@ -32,10 +32,11 @@ if (isset($_POST['insert_individual'])) {
     // $photo = $_POST['myFiles'];
     
     //insert to tbl_entity 
+
     $username = $_POST['username'];
-    // $password = $_POST['password'];
-    // $type = 'INDIVIDUAL';
-    // $status = 'ACTIVE';
+    $hashed_password  = password_hash($entity_no, PASSWORD_DEFAULT);
+    $type = 'INDIVIDUAL';
+    $status = 'ACTIVE';
 
     // //for photo
     // $currentDir = getcwd();
@@ -138,11 +139,11 @@ if (isset($_POST['insert_individual'])) {
 $entity_data = $con->prepare($insert_entity_sql);
 $entity_data->execute([
 
-':entity_no'         => $entity_no,
-':username'     => $username,
-':password'         => $entity_no,
-':type'         => 'INDIVIDUAL',
-':status'        => 'ACTIVE'
+':entity_no'        => $entity_no,
+':username'         => $username,
+':password'         => $hashed_password,
+':type'             => 'INDIVIDUAL',
+':status'           => 'ACTIVE'
 
 ]);
 
