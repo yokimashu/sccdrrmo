@@ -3,7 +3,7 @@
 include "dbconfig.php";
 
 
-$dateRegister = date('m-d-Y');
+$dateRegister = date('Y-m-d');
 
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -15,7 +15,7 @@ $telephoneno = $_POST["telephone_no"];
 $email = $_POST["email"];
 $gender = $_POST["gender"];
 $birthdate = $_POST["birthdate"];
-$newbirthdate = date("m-d-Y", strtotime($birthdate));
+$newbirthdate = date("Y-m-d", strtotime($birthdate));
 $street = $_POST["street"];
 $barangay = $_POST["barangay"];
 $city = $_POST["city"];

@@ -32,6 +32,8 @@ if ($username_data->rowCount() > 0) {
 
             if ($result['status'] != "ACTIVE") {
                 echo json_encode('Your account is not activated!');
+            }else{
+                
             }
         } else {
             echo json_encode('Password Incorrect!');
