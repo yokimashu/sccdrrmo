@@ -62,6 +62,7 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
@@ -244,11 +245,15 @@ $title = 'VAMOS | Add Individual';
                                         <div class="box-body">
                                             <br>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                            
 
-                                                <div class="col-md-3">
+                                                <div class="col-8"style = "margin:auto;">
 
-                                                    <div style ="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align ="center" onClick="setup()"> Click to ACCESS Camera</div><br>
+                                                    <div style ="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()"> 
+                                                    <img src = "../postimage/user.png" style = " height: 240px; width:270px;">
+                                                    Click to ACCESS Camera
+                                                    </div>
+                                                    <br>
                                                    
                                                 </div>
                                             </div>
@@ -261,7 +266,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div>
                                                     <input type="hidden" name="image" class="image-tag">                  
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">   
+                                                    <input type="button" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">   
                                                     <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
                                 
                                                 </div>
@@ -356,7 +361,10 @@ $title = 'VAMOS | Add Individual';
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Select2 -->
+   
+    <!-- Toastr -->
+        <script src="../plugins/toastr/toastr.min.js"></script>
+         <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
@@ -373,6 +381,7 @@ $title = 'VAMOS | Add Individual';
 
     <script type="text/javascript">
         $('.select2').select2();
+        
         $(document).ready(function() {
     
             $(document).ajaxStart(function() {
@@ -386,6 +395,7 @@ $title = 'VAMOS | Add Individual';
     </script>
 
     <script>
+      
         function generateID() {
 
             $.ajax({
@@ -403,10 +413,10 @@ $title = 'VAMOS | Add Individual';
 
     <script language="JavaScript">
         Webcam.set({
-            width: 320,
+            width: 300,
             height: 240,
             image_format: 'jpeg',
-            jpeg_quality: 100
+            jpeg_quality: 70
         });
         //Webcam.attach( '#my_camera' );
     </script>
@@ -443,7 +453,29 @@ $title = 'VAMOS | Add Individual';
             });
         }
     }
-      
+    $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        type: 'success',
+        title: 'You have successfully saved the person.'
+      })
+    });
+    $('.toastsDefaultSuccess').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'You have successfully saved the person.'
+      })
+    });
+});
         
     </script>
 </body>

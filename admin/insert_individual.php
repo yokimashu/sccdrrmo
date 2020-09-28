@@ -33,9 +33,9 @@ if (isset($_POST['insert_individual'])) {
     
     //insert to tbl_entity 
     $username = $_POST['username'];
-    $password = $_POST['password'];
-    $type = 'INDIVIDUAL';
-    $status = 'ACTIVE';
+    // $password = $_POST['password'];
+    // $type = 'INDIVIDUAL';
+    // $status = 'ACTIVE';
 
     // //for photo
     // $currentDir = getcwd();
@@ -59,12 +59,26 @@ if (isset($_POST['insert_individual'])) {
     // if (empty($errors)) {
     //     $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
     // }
-
+    $img = $_POST['image'];
+    $folderPath = "../flutter/images/";
+  
+    $image_parts = explode(";base64,", $img);
+    $image_type_aux = explode("image/", $image_parts[0]);
+    $image_type = $image_type_aux[1];
+  
+    $image_base64 = base64_decode($image_parts[1]);
+    $fileName = uniqid() . '.jpeg';
+  
+    $file = $folderPath . $fileName;
+    file_put_contents($file, $image_base64);
+  
+    // print_r($fileName);
+    
 
     $insert_individual_sql = "INSERT INTO tbl_individual SET 
 
     entity_no        = :entity_no,
-    username         = :username,
+    -- username         = :username,
     date_register    = :date_register,
     firstname        = :firstname,
     middlename       = :middlename,
@@ -79,8 +93,8 @@ if (isset($_POST['insert_individual'])) {
     street           = :street,
     barangay         = :barangay,
     city             = :city,
-    province         = :province   
-    -- photo            = :photo
+    province         = :province,  
+    photo            = :photo
     
     ";
     
@@ -89,7 +103,7 @@ if (isset($_POST['insert_individual'])) {
     $individual_data->execute([
 
     ':entity_no'         => $entity_no,
-    ':username'          => $username,
+    // ':username'          => $username,
     ':date_register'     => $date_register,
     ':firstname'         => $firstname,
     ':middlename'        => $middlename,
@@ -104,8 +118,8 @@ if (isset($_POST['insert_individual'])) {
     ':birthdate'         => $birthdate,
     ':street'            => $street,
     ':city'              => $city,
-    ':province'          => $province
-    // ':photo'             => $fileName
+    ':province'          => $province,
+    ':photo'             => $fileName
 
 ]);
 
