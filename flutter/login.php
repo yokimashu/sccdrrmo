@@ -14,26 +14,31 @@ if ($username_data->rowCount() > 0) {
     while ($result = $username_data->fetch(PDO::FETCH_ASSOC)) {
         //fetch entity number
         $entity_no = $result['entity_no'];
+
+        //fetch status number
+        $status = $result['status'];
+
         //from database already hash
         $hash_password = $result['password'];
 
         //hash the $u_pass and compared to $hashed_password
         if (password_verify($password, $hash_password)) {
 
-            //retrieve data from individual
-            $get_incident_sql = "SELECT * FROM tbl_individual WHERE entity_no = :entity_no";
-            $get_incident_data = $con->prepare($get_incident_sql);
-            $get_incident_data->execute([':entity_no' => $entity_no]);
-            while ($result2 = $get_incident_data->fetch(PDO::FETCH_ASSOC)) {
-                $firstname      = $result2['firstname'];
-                $middlename     = $result2['middlename'];
-                $lastname       = $result2['lastname'];
-            };
-
-            if ($result['status'] != "ACTIVE") {
+            //retrieve data from individual and enitity
+            $get_individual_sql = "SELECT * FROM tbl_individual i INNER JOIN tbl_entity e ON e.entity_no = i.entity_no  WHERE e.entity_no = :entity_no";
+            $get_individual_data = $con->prepare($get_individual_sql);
+            $get_individual_data->execute([':entity_no' => $entity_no]);
+            while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
+                $all = $result2;
+            }
+            if ($status != 'ACTIVE') {
+                // --- if user is not active
                 echo json_encode('Your account is not activated!');
-            }else{
-                
+
+            } else {
+                // --- if user is active
+                echo json_encode($all);
+
             }
         } else {
             echo json_encode('Password Incorrect!');
