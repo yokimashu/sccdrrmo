@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.8.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
-<!-- 2020-09-27T12:31:39 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entity_id" language="javascript" pageWidth="172" pageHeight="350" columnWidth="172" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8b35d81-fbfe-4639-a04a-fd350f424dec">
+<!-- 2020-09-27T02:13:04 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entity_id" language="javascript" pageWidth="172" pageHeight="720" columnWidth="172" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8b35d81-fbfe-4639-a04a-fd350f424dec">
 	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -152,7 +152,7 @@
 				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="13" y="166" width="141" height="90" uuid="3e8c999d-9fa5-4c88-9fc9-cb907d5f85d9">
+				<reportElement x="10" y="166" width="141" height="90" uuid="3e8c999d-9fa5-4c88-9fc9-cb907d5f85d9">
 					<property name="com.jaspersoft.studio.unit.margin" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" margin="1" qrVersion="2">
@@ -160,21 +160,15 @@
 				</jr:QRCode>
 			</componentElement>
 			<textField>
-				<reportElement x="2" y="149" width="165" height="30" uuid="0497b90a-ee06-4f6e-a11f-512d54179992"/>
+				<reportElement x="2" y="136" width="165" height="30" uuid="0497b90a-ee06-4f6e-a11f-512d54179992"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
 			</textField>
-			<image onErrorType="Blank">
-				<reportElement x="46" y="40" width="81" height="76" uuid="8c7a7920-915e-48ce-a718-eb6a87e944fa"/>
-				<box>
-					<topPen lineWidth="3.0"/>
-					<leftPen lineWidth="3.0"/>
-					<bottomPen lineWidth="3.0"/>
-					<rightPen lineWidth="3.0"/>
-				</box>
-				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/individual_image/"+$F{photo}+""]]></imageExpression>
+			<image>
+				<reportElement x="68" y="200" width="25" height="25" uuid="c4a3f5b1-5452-4beb-b70c-b93cc628474c"/>
+				<imageExpression><![CDATA["LOGO-png.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
