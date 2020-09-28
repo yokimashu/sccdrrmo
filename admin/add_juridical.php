@@ -115,7 +115,7 @@ $title = 'VAMOS | Juridical Form';
                                     <div class="card col-md-6">
 
                                         <div class=" card-header">
-                                            <h6>GENERAL INFORMATION</h6>
+                                            <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
 
                                         <div class="box-body">
@@ -136,16 +136,6 @@ $title = 'VAMOS | Juridical Form';
                                                     <label>Entity ID : </label>
                                                     <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
-
-
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization Name" value="">
-                                                </div>
                                             </div></br>
 
                                             <div class="row">
@@ -161,27 +151,29 @@ $title = 'VAMOS | Juridical Form';
                                             </div></br>
 
                                             <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
+                                                            <!-- <label>First Name:</label> -->
+                                                            <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                            <div id="status"></div>
+                                                        </div>
+                                            </div></br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>First Name:</label> -->
+                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization/Business Name" value="">
+                                                </div>
+                                            </div></br>
+
+                                            <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
                                                     <input type="text" class="form-control" name="lastname" placeholder="Nature of Business" value="">
                                                 </div>
                                             </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Administrator's Name " value="">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Administrator's Position" value="">
-                                                </div>
-                                            </div><br>
-
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -220,6 +212,19 @@ $title = 'VAMOS | Juridical Form';
                                                 </div>
                                             </div><br>
 
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="contact_person" placeholder="Contact Person " value="">
+                                                </div>
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="" placeholder="Position" value="">
+                                                </div>
+                                            </div><br>
 
                                         </div>
 
@@ -228,7 +233,7 @@ $title = 'VAMOS | Juridical Form';
 
                                     <div class="card col-md-5">
                                         <div class="card-header">
-                                            <h6> UPLOAD LOGO</h6>
+                                            <h6><strong> UPLOAD LOGO </strong></h6>
                                         </div>
 
                                         <div class="box-body">
@@ -247,7 +252,7 @@ $title = 'VAMOS | Juridical Form';
                                                 <form method="POST" action="storeImage.php">
 
                                                     <div class="col-md-3"></div>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <div>
 
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
@@ -265,6 +270,9 @@ $title = 'VAMOS | Juridical Form';
 
                                                 </div>
                                             </div><br>
+
+
+                                           
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
