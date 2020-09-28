@@ -247,10 +247,11 @@ $title = 'VAMOS | Add Individual';
                                             <div class="row">
                                             
 
-                                                <div class="col-8"style = "margin:auto;">
+                                                <div class="col-6"style = "margin:auto;">
 
                                                     <div style ="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()"> 
-                                                    <img src = "../postimage/user.png" style = " height: 240px; width:270px;">
+                                                    
+                                                    <img src = "../postimage/user.png" style = " height: 240px; width:270px;margin:auto;">
                                                     Click to ACCESS Camera
                                                     </div>
                                                     <br>
@@ -258,17 +259,17 @@ $title = 'VAMOS | Add Individual';
                                                 </div>
                                             </div>
 
-                                            <div class="row" align="center">
+                                            <div class="row" >
                                                 <!-- <form method="POST" action="storeImage.php"> -->
 
-                                                    <div class="col-md-3"></div>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <div class="col-4" style = "margin:auto;">
+                                                  
                                                     <div>
                                                     <input type="hidden" name="image" class="image-tag">                  
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                     <input type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">   
                                                     <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
-                                
+                                                                    </div>
                                                 </div>
                                                 <!-- </form> -->
                                                 </div><br>
@@ -345,7 +346,7 @@ $title = 'VAMOS | Add Individual';
     <!-- datepicker -->
     <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- CK Editor -->
-    <script src="../../plugins/ckeditor/ckeditor.js"></script>
+    <script src="../plugins/ckeditor/ckeditor.js"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
