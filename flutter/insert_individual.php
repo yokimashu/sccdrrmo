@@ -22,8 +22,8 @@ $city = $_POST["city"];
 $province = $_POST["province"];
 $photo = $_FILES["photo"]["name"];
 
-$status = "active";
-$type = "individual";
+$status = "ACTIVE";
+$type = "INDIVIDUAL";
 
 $fullname = $firstname. ' ' .$middlename. ' ' .$lastname;
 $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
