@@ -10,13 +10,14 @@ $password = $_POST["password"];
 $firstname = $_POST["firstname"];
 $middlename = $_POST["middlename"];
 $lastname = $_POST["lastname"];
-$contactno = $_POST["contactno"];
+$mobileno = $_POST["mobile_no"];
+$telephoneno = $_POST["telephone_no"];
 $email = $_POST["email"];
 $gender = $_POST["gender"];
 $birthdate = $_POST["birthdate"];
 $newbirthdate = date("m-d-Y", strtotime($birthdate));
 $street = $_POST["street"];
-$baranggay = $_POST["baranggay"];
+$barangay = $_POST["barangay"];
 $city = $_POST["city"];
 $province = $_POST["province"];
 $photo = $_FILES["photo"]["name"];
@@ -24,17 +25,16 @@ $photo = $_FILES["photo"]["name"];
 $status = "active";
 $type = "individual";
 
-
+$fullname = $firstname. ' ' .$middlename. ' ' .$lastname;
 $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
 
 // --- Check user if already exist
-$get_user1_sql = "SELECT * FROM tbl_entity where username = :username";
-$user_data1 = $con->prepare($get_user1_sql);
-$user_data1->execute([':username' => $username]);
-$result = $user_data1->fetch(PDO::FETCH_ASSOC);
+$get_entity_data_sql = "SELECT * FROM tbl_entity where username = :username";
+$get_entity_data = $con->prepare($get_entity_data_sql);
+$get_entity_data->execute([':username' => $username]);
+$result = $get_entity_data->fetch(PDO::FETCH_ASSOC);
 
 if ($result == 0) {
-
 
     //---generate entity number
     $template = 'XXXXXX9999';
@@ -94,15 +94,17 @@ if ($result == 0) {
 
             entity_no          = :entity_no,
             date_register      = :date_register,
+            fullname           = :fullname,
             firstname          = :firstname,
             middlename         = :middlename,
             lastname           = :lastname,
-            contact_no         = :contactno,
-            email_address      = :email,
+            mobile_no          = :mobileno,
+            telephone_no       = :telephoneno,
+            email              = :email,
             gender             = :gender,
             birthdate          = :birthdate,
             street             = :street,
-            baranggay          = :baranggay,
+            barangay           = :barangay,
             city               = :city,
             province           = :province,
             photo              = :photo
@@ -113,15 +115,17 @@ if ($result == 0) {
     $indivdata->execute([
         ':entity_no'       => $serializedEntityID,
         ':date_register'   => $dateRegister,
+        ':fullname'        => $fullname,
         ':firstname'       => $firstname,
         ':middlename'      => $middlename,
         ':lastname'        => $lastname,
-        ':contactno'       => $contactno,
+        ':mobileno'        => $$mobileno,
+        ':telephoneno'     => $$telephoneno,
         ':email'           => $email,
         ':gender'          => $gender,
         ':birthdate'       => $newbirthdate,
         ':street'          => $street,
-        ':baranggay'       => $baranggay,
+        ':barangay'       => $barangay,
         ':city'            => $city,
         ':province'        => $province,
         ':photo'           => $newfilename
