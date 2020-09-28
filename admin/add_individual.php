@@ -119,7 +119,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
                                                     </div>
                                                 </div>
 
@@ -135,7 +135,8 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" id="username" name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>">
+                                                            <input type="text" class="form-control" id="username" name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                            <div id="status"></div>
                                                         </div>
                                             </div></br>
 
@@ -145,7 +146,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>">
+                                                            <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
                                                         </div>
                                             </div></br>
 
@@ -153,7 +154,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>Middle Name:</label> -->
-                                                            <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>">
+                                                            <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
                                                         </div>
                                                 </div></br>
 
@@ -161,7 +162,7 @@ $title = 'VAMOS | Add Individual';
                                                      <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label> Last Name:</label> -->
-                                                            <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>">
+                                                            <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
                                                      </div>
                                             </div><br>
 
@@ -173,18 +174,18 @@ $title = 'VAMOS | Add Individual';
                                                                 <div class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
-                                                                    <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                                    <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>" required>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-3">
                                                                 <label>Age:</label>
-                                                                <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>">
+                                                                <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
                                                         </div>
 
                                                         <div class="col-md-4">
                                                                 <label>Gender:</label>
-                                                                <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>">
+                                                                <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>" required>
                                                                     <option selected="selected">Select Gender</option>
                                                                     <option value="Female">Female</option>
                                                                      <option value="Male">Male</option>
@@ -196,7 +197,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>">
+                                                                <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
                                                             </div>
                                             </div><br>            
 
@@ -204,7 +205,7 @@ $title = 'VAMOS | Add Individual';
                                                      <div class="col-md-1"></div>
                                                     <div class="col-md-10">
                                                 <!-- <label>Barangay: </label> -->
-                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>">
+                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
                                                                     <option selected="selected">Select Barangay</option>
                                                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
@@ -217,7 +218,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="city" placeholder= "City" value="SAN CARLOS CITY"<?php echo $city; ?>">
+                                                                <input type="text" class="form-control" name="city" placeholder= "City" value="SAN CARLOS CITY"<?php echo $city; ?>" required>
                                                             </div>
                                             </div><br>  
 
@@ -225,7 +226,7 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="col-md-1"></div>
                                                             <div class="col-md-10">
                                                                 <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" name="province" placeholder= "Province" value="NEGROS OCCIDENTAL"<?php echo $province; ?>">
+                                                                <input type="text" class="form-control" name="province" placeholder= "Province" value="NEGROS OCCIDENTAL"<?php echo $province; ?>" required>
                                                             </div>
                                             </div><br> 
 
@@ -243,11 +244,15 @@ $title = 'VAMOS | Add Individual';
                                         <div class="box-body">
                                             <br>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                            
 
-                                                <div class="col-md-3">
+                                                <div class="col-8"style = "margin:auto;">
 
-                                                    <div style ="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align ="center" onClick="setup()"> Click to ACCESS Camera</div><br>
+                                                    <div style ="border-style:dotted; vertical-align: middle; height: 240px; width:320px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()"> 
+                                                    <img src = "../postimage/user.png" style = " height: 200px; width:250px;">
+                                                    Click to ACCESS Camera
+                                                    </div>
+                                                    <br>
                                                    
                                                 </div>
                                             </div>
@@ -429,15 +434,19 @@ $title = 'VAMOS | Add Individual';
 
         function checkUsername() {
             var username = $('#username').val();
+            if(username.length >= 3){
+            $("#status").html('<img src="loader.gif" /> Checking availability...');
             $.ajax({
                 type: 'POST',
                 data: {username:username},
                 url: 'check_username.php',
                 success: function(data) {
-                    $('#entity_no').val(data);
+                    $("#status").html(data);
+                   
                 }
             });
         }
+    }
       
         
     </script>
