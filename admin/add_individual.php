@@ -136,7 +136,7 @@ $title = 'VAMOS | Add Individual';
                                                     <div class="col-md-1"></div>
                                                         <div class="col-md-10">
                                                             <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                            <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
                                                             <div id="status"></div>
                                                         </div>
                                             </div></br>
@@ -206,7 +206,7 @@ $title = 'VAMOS | Add Individual';
                                                      <div class="col-md-1"></div>
                                                     <div class="col-md-10">
                                                 <!-- <label>Barangay: </label> -->
-                                                                 <select class="form-control select2" <?php echo $btn_enabled ?> id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
+                                                                 <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
                                                                     <option selected="selected">Select Barangay</option>
                                                                 <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
@@ -364,9 +364,8 @@ $title = 'VAMOS | Add Individual';
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-   
     <!-- Toastr -->
-        <script src="../plugins/toastr/toastr.min.js"></script>
+    <script src="../plugins/toastr/toastr.min.js"></script>
          <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
@@ -383,7 +382,7 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
-        $('.select2').select2();
+     
         
         $(document).ready(function() {
     
@@ -407,6 +406,13 @@ $title = 'VAMOS | Add Individual';
       img.src = event.target.result;
     }
   }
+      
+      $(function() {
+            
+            //Initialize Select2 Elements
+            $('.select2').select2()
+      });
+
         function generateID() {
 
             $.ajax({
