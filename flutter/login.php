@@ -30,7 +30,7 @@ if ($username_data->rowCount() > 0) {
                 $lastname       = $result2['lastname'];
             };
 
-            if ($result['status'] != "active") {
+            if ($result['status'] != "ACTIVE") {
                 echo json_encode('Your account is not activated!');
             }
         } else {
