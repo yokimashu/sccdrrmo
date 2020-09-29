@@ -1,6 +1,7 @@
 <?php
 
 include ('../config/db_config.php');
+
 date_default_timezone_set('Asia/Manila');
 //include('import_pdf.php');
 
@@ -10,9 +11,11 @@ $alert_msg1 = '';
 
 if (isset($_POST['insert_juridical'])) {
 
+     echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+
     //for tbl_juridical
-    $entity_no = $_POST['entity_no'];
-   
     $entity_no = $_POST['entity_no'];
     $date_register = date('Y-m-d', strtotime($_POST['date_register']));
     $org_type = $_POST['type'];
@@ -34,8 +37,6 @@ if (isset($_POST['insert_juridical'])) {
     $type = 'JURIDICAL';
     $status = 'ACTIVE';
 
-
-
     $insert_juridical_sql = "INSERT INTO tbl_juridical SET 
 
         entity_no           = :entity_no,
@@ -52,13 +53,13 @@ if (isset($_POST['insert_juridical'])) {
         mobile_no           = :mobile_no,
         telephone_no        = :telephone_no,
         email_address       = :email_address,
-        status              = :status";
+        status              = :status
+        
+        ";
 
     $juridical_data = $con->prepare($insert_juridical_sql);
     $juridical_data->execute([
-
-
-
+        
         ':entity_no'         => $entity_no,
         ':date_register'     => $date_register,
         ':org_name'          => $org_name,
@@ -77,12 +78,38 @@ if (isset($_POST['insert_juridical'])) {
     
     ]);
 
-    $alert_msg .= ' 
-    <div class="new-alert new-alert-success alert-dismissible">
-        <i class="icon fa fa-success"></i>
-        Data Inserted
-    </div>  
-      ';
+    $insert_entity_sql = "INSERT INTO tbl_entity SET 
+    entity_no           = :entity_no,
+    username            = :username,
+    password            = :password,
+    type                = :type,
+    status              = :status";
+
+    
+$entity_data = $con->prepare($insert_entity_sql);
+$entity_data->execute([
+
+':entity_no'        => $entity_no,
+':username'         => $username,
+':password'         => $hashed_password,
+':type'             => 'JURIDICAL',
+':status'           => 'ACTIVE'
+
+]);
+
+$alert_msg .= ' 
+<div class="new-alert new-alert-success alert-dismissible">
+    <i class="icon fa fa-success"></i>
+    Data Inserted
+</div>  
+  ';
+
+  $btn_enabled = 'disabled';
+  $btnNew = 'enabled';
+  $btnPrint = 'enabled';
+
     // echo print_r($firstname);
-    header("location: list_juridical.php");
+    //header("location: list_juridical.php");
 }
+
+?>

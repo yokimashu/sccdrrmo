@@ -1,11 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
-include('insert_individual.php');
-
-use Endroid\QrCode\QrCode;
-
+include('insert_juridical.php');
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -30,11 +26,11 @@ $get_all_brgy_data->execute();
 
 
 
-$get_all_category_sql = "SELECT * FROM categ_juridical";
+$get_all_category_sql = "SELECT * FROM categ_juridical order by categ_name";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
-$get_all_nature_sql = "SELECT * FROM nature_of_business ORDER BY name";
+$get_all_nature_sql = "SELECT DISTINCT name FROM nature_of_business ORDER BY name";
 $get_all_nature_data = $con->prepare($get_all_nature_sql);
 $get_all_nature_data->execute();
 
@@ -109,7 +105,7 @@ $title = 'VAMOS | Juridical Form';
 
                     <div class="card-body">
 
-                        <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
@@ -256,7 +252,7 @@ $title = 'VAMOS | Juridical Form';
                                             </div>
 
                                             <div class="row" align="center">
-                                                <form method="POST" action="storeImage.php">
+                   
 
                                                     <div class="col-md-3"></div>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -267,7 +263,7 @@ $title = 'VAMOS | Juridical Form';
                                                         <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
 
                                                     </div>
-                                                </form>
+                                              
                                             </div><br>
 
                                             <div class="row">
