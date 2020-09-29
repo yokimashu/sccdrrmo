@@ -15,8 +15,8 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit =  $entity_no = $date_register = $org_type = $org_name = $nature = $street =
-$barangay = $city = $province = $contact_person = $contact_position = $mobile_no = $tel_no = $email_address = '';
+$btnSave = $btnEdit =  $entity_no = $date_register = $alert_msg = $btn_enabled = $org_type = $org_name = $nature = $street = $user_name =
+    $barangay = $city = $province = $contact_person = $contact_position = $mobile_no = $tel_no = $email_address = '';
 $btnNew = 'hidden';
 
 
@@ -105,7 +105,7 @@ $title = 'VAMOS | Juridical Form';
 
                     <div class="card-body">
 
-                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
@@ -150,12 +150,12 @@ $title = 'VAMOS | Juridical Form';
                                             </div></br>
 
                                             <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
-                                                            <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
-                                                            <div id="status"></div>
-                                                        </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>First Name:</label> -->
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                    <div id="status"></div>
+                                                </div>
                                             </div></br>
 
                                             <div class="row">
@@ -252,18 +252,18 @@ $title = 'VAMOS | Juridical Form';
                                             </div>
 
                                             <div class="row" align="center">
-                   
 
-                                                    <div class="col-md-3"></div>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <div>
 
-                                                        <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                        <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
-                                                        <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
+                                                <div class="col-md-3"></div>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div>
 
-                                                    </div>
-                                              
+                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                    <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
+                                                    <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
+
+                                                </div>
+
                                             </div><br>
 
                                             <div class="row">
@@ -275,7 +275,7 @@ $title = 'VAMOS | Juridical Form';
                                             </div><br>
 
 
-                                           
+
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -430,19 +430,21 @@ $title = 'VAMOS | Juridical Form';
 
         function checkUsername() {
             var username = $('#username').val();
-            if(username.length >= 3){
-            $("#status").html('<img src="loader.gif" /> Checking availability...');
-            $.ajax({
-                type: 'POST',
-                data: {username:username},
-                url: 'check_username.php',
-                success: function(data) {
-                    $("#status").html(data);
-                   
-                }
-            });
+            if (username.length >= 3) {
+                $("#status").html('<img src="loader.gif" /> Checking availability...');
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        username: username
+                    },
+                    url: 'check_username.php',
+                    success: function(data) {
+                        $("#status").html(data);
+
+                    }
+                });
+            }
         }
-    }
     </script>
 </body>
 

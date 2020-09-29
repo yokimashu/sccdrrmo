@@ -1,6 +1,6 @@
 <?php
 
-include ('../config/db_config.php');
+include('../config/db_config.php');
 
 date_default_timezone_set('Asia/Manila');
 //include('import_pdf.php');
@@ -11,7 +11,7 @@ $alert_msg1 = '';
 
 if (isset($_POST['insert_juridical'])) {
 
-     echo "<pre>";
+    echo "<pre>";
     print_r($_POST);
     echo "</pre>";
 
@@ -20,7 +20,7 @@ if (isset($_POST['insert_juridical'])) {
     $date_register = date('Y-m-d', strtotime($_POST['date_register']));
     $org_type = $_POST['type'];
     $org_name = $_POST['org_name'];
-    $nature = $_POST['nature']; 
+    $nature = $_POST['nature'];
     $street = $_POST['street'];
     $barangay = $_POST['barangay'];
     $city = $_POST['city'];
@@ -59,23 +59,23 @@ if (isset($_POST['insert_juridical'])) {
 
     $juridical_data = $con->prepare($insert_juridical_sql);
     $juridical_data->execute([
-        
+
         ':entity_no'         => $entity_no,
         ':date_register'     => $date_register,
         ':org_name'          => $org_name,
         ':org_type'          => $org_type,
         ':nature'            => $nature,
-        ':street'            => $street,
+        ':address'           => $street,
         ':barangay'          => $barangay,
         ':city'              => $city,
         ':province'          => $province,
-        ':contact_name'      => $contact_name,
-        ':contact_person'    => $contact_person,
+        ':contact_name'      => $contact_person,
+        ':position'          => $contact_position,
         ':mobile_no'         => $mobile_no,
         ':telephone_no'      => $telephone_no,
         ':email_address'     => $email_address,
         ':status'            => $status
-    
+
     ]);
 
     $insert_entity_sql = "INSERT INTO tbl_entity SET 
@@ -85,31 +85,29 @@ if (isset($_POST['insert_juridical'])) {
     type                = :type,
     status              = :status";
 
-    
-$entity_data = $con->prepare($insert_entity_sql);
-$entity_data->execute([
 
-':entity_no'        => $entity_no,
-':username'         => $username,
-':password'         => $hashed_password,
-':type'             => 'JURIDICAL',
-':status'           => 'ACTIVE'
+    $entity_data = $con->prepare($insert_entity_sql);
+    $entity_data->execute([
 
-]);
+        ':entity_no'        => $entity_no,
+        ':username'         => $username,
+        ':password'         => $hashed_password,
+        ':type'             => 'JURIDICAL',
+        ':status'           => 'ACTIVE'
 
-$alert_msg .= ' 
+    ]);
+
+    $alert_msg .= ' 
 <div class="new-alert new-alert-success alert-dismissible">
     <i class="icon fa fa-success"></i>
     Data Inserted
 </div>  
   ';
 
-  $btn_enabled = 'disabled';
-  $btnNew = 'enabled';
-  $btnPrint = 'enabled';
+    $btn_enabled = 'disabled';
+    $btnNew = 'enabled';
+    $btnPrint = 'enabled';
 
     // echo print_r($firstname);
     //header("location: list_juridical.php");
 }
-
-?>
