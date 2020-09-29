@@ -29,9 +29,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_individual_sql = "SELECT * FROM tbl_individual";
-$get_all_individual_data = $con->prepare($get_all_individual_sql);
-$get_all_individual_data->execute();
+$get_all_juridical_sql = "SELECT * FROM tbl_juridical j inner join tbl_entity e on e.entity_no = j.entity_no order by j.org_name";
+$get_all_juridical_data = $con->prepare($get_all_juridical_sql);
+$get_all_juridical_data->execute();
 
 
 
@@ -88,15 +88,35 @@ $get_all_individual_data->execute();
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
                           <th> ID </th>
-                          <th> Date </th>
+                          <th> Username</th>
                           <th> Full Name </th>
-                          <th> Address</th>
-                          <th> Contact No.</th>
-                          <th> Options</th>
+                          <th> Options </th>
+          
                         </tr>
                       </thead>
                       <tbody>
+                        <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <tr>
+                            <td><?php echo $list_juridical['entity_no'];  ?></td>
+                            <td><?php echo $list_juridical['username'];  ?></td>
+                            <td><?php echo $list_juridical['org_name']; ?> </td>
+                            <td>
 
+                              <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a>
+
+                              <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></a>
+
+
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a>
+                              &nbsp;
+
+                            </td>
+                          </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
 
