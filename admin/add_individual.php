@@ -2,7 +2,7 @@
 
 include('../config/db_config.php');
 include('insert_individual.php');
- $btn_enabled = 'enabled';  
+$btn_enabled = 'enabled';
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -18,7 +18,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit = $entity_no = $user_name = $firstname = $middlename = $lastname = $age = $gender =
     $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $barangay = $entity_no = $mobile_no = $telephone_no = $email ='';
+    $travel_days = $patient_disease = $symptoms = $barangay = $entity_no = $mobile_no = $telephone_no = $email = '';
 $btnNew = 'hidden';
 
 
@@ -87,7 +87,7 @@ $title = 'VAMOS | Add Individual';
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-            
+
 
             <section class="content">
                 <div class="card">
@@ -98,11 +98,11 @@ $title = 'VAMOS | Add Individual';
 
                     <div class="card-body">
 
-                        <form role="form" enctype="multipart/form-data" method="post"  id = "input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
-
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <div class="m-1 pb-1"> </div>
                                     <div class="card col-md-6">
 
@@ -112,7 +112,9 @@ $title = 'VAMOS | Add Individual';
 
                                         <div class="box-body">
                                             <br>
+
                                             <div class="row">
+
                                                 <div class="col-md-1"></div>
                                                 <div class="col-lg-4">
                                                     <label>Date Registered: </label>
@@ -133,107 +135,107 @@ $title = 'VAMOS | Add Individual';
                                             </div></br>
 
                                             <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
-                                                            <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
-                                                            <div id="status"></div>
-                                                        </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>First Name:</label> -->
+                                                    <input type="text" class="form-control" id="username" <?php echo $btn_enabled ?> name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                    <div id="status"></div>
+                                                </div>
                                             </div></br>
 
-                            
+
 
                                             <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
-                                                            <!-- <label>First Name:</label> -->
-                                                            <input type="text" class="form-control" <?php echo $btn_enabled ?> name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
-                                                        </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>First Name:</label> -->
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
+                                                </div>
                                             </div></br>
 
-                                                <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
-                                                            <!-- <label>Middle Name:</label> -->
-                                                            <input type="text" class="form-control" <?php echo $btn_enabled ?> name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
-                                                        </div>
-                                                </div></br>
-
-                                                <div class="row">
-                                                     <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
-                                                            <!-- <label> Last Name:</label> -->
-                                                            <input type="text" class="form-control" <?php echo $btn_enabled ?> name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
-                                                     </div>
-                                            </div><br>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Middle Name:</label> -->
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
+                                                </div>
+                                            </div></br>
 
                                             <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                        <div class="col-md-3">
-                                                            <label>Birthdate: </label>
-                                                            <div class="input-group date" data-provide="datepicker">
-                                                                <div class="input-group-addon">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </div>
-                                                                    <input type="text" <?php echo $btn_enabled ?> class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>" required>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-3">
-                                                                <label>Age:</label>
-                                                                <input type="number" <?php echo $btn_enabled ?> class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
-                                                        </div>
-
-                                                        <div class="col-md-4">
-                                                                <label>Gender:</label>
-                                                                <select class=" form-control select2" <?php echo $btn_enabled ?> id="gender" name="gender" value="<?php echo $gender; ?>" required>
-                                                                    <option selected="selected">Select Gender</option>
-                                                                    <option value="Female">Female</option>
-                                                                     <option value="Male">Male</option>
-                                                                </select>
-                                                        </div>
-                                                </div><br>
-
-                                            <div class="row">
-                                                        <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" <?php echo $btn_enabled ?> name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
-                                                            </div>
-                                            </div><br>            
-
-                                            <div class="row">
-                                                     <div class="col-md-1"></div>
-                                                    <div class="col-md-10">
-                                                <!-- <label>Barangay: </label> -->
-                                                                 <select class="form-control select2" <?php echo $btn_enabled ?> id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
-                                                                    <option selected="selected">Select Barangay</option>
-                                                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                    <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
-                                                                <?php } ?>
-                                                                </select>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label> Last Name:</label> -->
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
-                                                        <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" <?php echo $btn_enabled ?>  name="city" placeholder= "City" value="SAN CARLOS CITY"<?php echo $city; ?>" required>
-                                                            </div>
-                                            </div><br>  
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-3">
+                                                    <label>Birthdate: </label>
+                                                    <div class="input-group date" data-provide="datepicker">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" <?php echo $btn_enabled ?> class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Age:</label>
+                                                    <input type="number" <?php echo $btn_enabled ?> class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Gender:</label>
+                                                    <select class=" form-control select2" <?php echo $btn_enabled ?> id="gender" name="gender" value="<?php echo $gender; ?>" required>
+                                                        <option selected="selected">Select Gender</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Male">Male</option>
+                                                    </select>
+                                                </div>
+                                            </div><br>
 
                                             <div class="row">
-                                                        <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <!-- <label>Street: </label> -->
-                                                                <input type="text" class="form-control" <?php echo $btn_enabled ?> name="province" placeholder= "Province" value="NEGROS OCCIDENTAL"<?php echo $province; ?>" required>
-                                                            </div>
-                                            </div><br> 
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
+                                                </div>
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Barangay: </label> -->
+                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
+                                                        <option selected="selected">Select Barangay</option>
+                                                        <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="city" placeholder="City" value="SAN CARLOS CITY" <?php echo $city; ?>" required>
+                                                </div>
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="province" placeholder="Province" value="NEGROS OCCIDENTAL" <?php echo $province; ?>" required>
+                                                </div>
+                                            </div><br>
 
 
                                         </div>
-                                                      
+
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -245,87 +247,86 @@ $title = 'VAMOS | Add Individual';
                                         <div class="box-body">
                                             <br>
                                             <div class="row">
-                                            
 
-                                                <div class="col-6"style = "margin:auto;">
+                                                <div class="col-md-1"></div>
 
-                                                    <div style ="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()"> 
-                                                    
-                                                    <img src = "../postimage/user.png" style = " height: 240px; width:270px;margin:auto;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div class="col-md-7" style="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()">
+
+                                                    <img src="../postimage/user.png" style=" height: 240px; width:270px;margin:auto;">
                                                     Click to ACCESS Camera
-                                                    </div>
-                                                    <br>
-                                                   
                                                 </div>
-                                            </div>
 
-                                            <div class="row" >
+
+                                            </div> <br>
+
+                                            <div class="row">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-4">
 
-                                                    <div class="col-4" style = "margin:auto;">
-                                                  
-                                                    <div>
-                                                    <input type="hidden" name="image" class="image-tag">                  
+                                                    <input type="hidden" name="image" class="image-tag">
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <input type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">   
-                                                    <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">         
-                                                                    </div>
+                                                    <button type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
+                                                    <a href="#">
+                                                        <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"></a>
+
                                                 </div>
                                                 <!-- </form> -->
-                                                </div><br>
+                                            </div><br>
 
-                                                <div class="row">
+                                            <div class="row">
                                                 <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <label>CONTACT DETAILS </label>
-                                                             
-                                                            </div>
-                                                                </div><br>
-                                               
-                                                <div class="row">
-                                                        <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <!-- <label>Street: </label> -->
-                                                                <input type="number" <?php echo $btn_enabled ?> class="form-control" name="mobile_no" placeholder= "Mobile Number" value="<?php echo $mobile_no; ?>">
-                                                            </div>
-                                                </div></br>
+                                                <div class="col-md-10">
+                                                    <label>CONTACT DETAILS </label>
 
-                                                <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <!-- <label>Street: </label> -->
-                                                                <input type="number" <?php echo $btn_enabled ?>  class="form-control" name="telephone_no" placeholder= "Telephone Number" value="<?php echo $telephone_no; ?>">
-                                                            </div>
-                                                </div><br>
+                                                </div>
+                                            </div><br>
 
-                                                <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
-                                                                <!-- <label>Street: </label> -->
-                                                                <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder= "Email Address" value="<?php echo $email; ?>">
-                                                            </div>
-                                                </div><br>
-                                                            
-                                                <div class="box-footer" align="center">
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="number" <?php echo $btn_enabled ?> class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                </div>
+                                            </div></br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="number" <?php echo $btn_enabled ?> class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $telephone_no; ?>">
+                                                </div>
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder="Email Address" value="<?php echo $email; ?>">
+                                                </div>
+                                            </div><br>
+
+                                            <div class="box-footer" align="center">
 
 
-<button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
-    <i class="fa fa-check fa-fw"> </i> </button>
+                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+                                                    <i class="fa fa-check fa-fw"> </i> </button>
 
-<a href="list_individual.php">
-    <button type="button" name="cancel" class="btn btn-danger">
-        <i class="fa fa-close fa-fw"> </i> </button>
-</a>
+                                                <a href="list_individual.php">
+                                                    <button type="button" name="cancel" class="btn btn-danger">
+                                                        <i class="fa fa-close fa-fw"> </i> </button>
+                                                </a>
 
-<a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no;?>">
-    <button type="button" name="print" class="btn btn-primary">
-        <i class="nav-icon fa fa-print"> </i> </button>
-</a>
+                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                    <button type="button" name="print" class="btn btn-primary">
+                                                        <i class="nav-icon fa fa-print"> </i> </button>
+                                                </a>
 
-                                          
+
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -362,11 +363,10 @@ $title = 'VAMOS | Add Individual';
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-   
     <!-- Toastr -->
-        <script src="../plugins/toastr/toastr.min.js"></script>
-         <!-- Select2 -->
-    <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/toastr/toastr.min.js"></script>
+    <!-- Select2 -->
+
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -377,26 +377,14 @@ $title = 'VAMOS | Add Individual';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
-
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script type="text/javascript">
         $('.select2').select2();
-        
-        $(document).ready(function() {
-    
-            $(document).ajaxStart(function() {
-                Pace.restart()
-            })
-
-        });
-
-        
-
     </script>
 
     <script>
-      
         function generateID() {
 
             $.ajax({
@@ -441,25 +429,24 @@ $title = 'VAMOS | Add Individual';
 
         function checkUsername() {
             var username = $('#username').val();
-            if(username.length >= 3){
-            $("#status").html('<img src="loader.gif" /> Checking availability...');
-            $.ajax({
-                type: 'POST',
-                data: {username:username},
-                url: 'check_username.php',
-                success: function(data) {
-                    $("#status").html(data);
-                   
-                }
-            });
+            if (username.length >= 3) {
+                $("#status").html('<img src="loader.gif" /> Checking availability...');
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        username: username
+                    },
+                    url: 'check_username.php',
+                    success: function(data) {
+                        $("#status").html(data);
+
+                    }
+                });
+            }
         }
-    }
-//     $('#btnSubmit').click(function(){
-// $("#input-form :input").prop("disabled", true);
-//     });
-  
-  
-        
+        //     $('#btnSubmit').click(function(){
+        // $("#input-form :input").prop("disabled", true);
+        //     });
     </script>
 </body>
 

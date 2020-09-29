@@ -106,7 +106,7 @@ $get_all_individual_data->execute();
                                 <i class="fa fa-folder-open-o"></i></a>
 
                               <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-eye"></i></a>
+                                <i class="fa fa-suitcase"></i></a>
 
 
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
