@@ -388,20 +388,14 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
-
-            $(document).ajaxStart(function() {
-                Pace.restart()
-            })
-
-        });
+        $('.select2').select2()
     </script>
 
     <script>
         $(function() {
 
             //Initialize Select2 Elements
-            $('.select2').select2()
+
         });
 
         function generateID() {

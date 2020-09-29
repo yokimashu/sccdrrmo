@@ -11,9 +11,9 @@ $alert_msg1 = '';
 
 if (isset($_POST['insert_juridical'])) {
 
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
 
     //for tbl_juridical
     $entity_no = $_POST['entity_no'];
