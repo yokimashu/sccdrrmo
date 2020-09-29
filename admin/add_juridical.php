@@ -109,7 +109,7 @@ $title = 'VAMOS | Juridical Form';
 
                             <div class="box-body">
                                 <div class="row">
-
+                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                                     <div class="m-1 pb-1"> </div>
                                     <div class="card col-md-6">
 
@@ -243,7 +243,7 @@ $title = 'VAMOS | Juridical Form';
                                             <br>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <div class="col-md-3">
 
                                                     <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"></div><br>
@@ -369,7 +369,7 @@ $title = 'VAMOS | Juridical Form';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
-
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script type="text/javascript">
