@@ -29,7 +29,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_individual_sql = "SELECT * FROM tbl_individual";
+$get_all_individual_sql = "SELECT * FROM tbl_individual i inner join tbl_entity e on e.entity_no = i.entity_no order by i.lastname ASC ";
 $get_all_individual_data = $con->prepare($get_all_individual_sql);
 $get_all_individual_data->execute();
 
