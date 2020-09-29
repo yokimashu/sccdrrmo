@@ -1,43 +1,58 @@
 <?php
 
-
-
+include ('../config/db_config.php');
+date_default_timezone_set('Asia/Manila');
 //include('import_pdf.php');
 
 $alert_msg = '';
 $alert_msg1 = '';
 
+
 if (isset($_POST['insert_juridical'])) {
 
-
+    //for tbl_juridical
     $entity_no = $_POST['entity_no'];
-    date_default_timezone_set('Asia/Manila');
+   
+    $entity_no = $_POST['entity_no'];
+    $date_register = date('Y-m-d', strtotime($_POST['date_register']));
+    $org_type = $_POST['type'];
+    $org_name = $_POST['org_name'];
+    $nature = $_POST['nature']; 
+    $street = $_POST['street'];
+    $barangay = $_POST['barangay'];
+    $city = $_POST['city'];
+    $province = $_POST['province'];
+    $contact_person = $_POST['contact_person'];
+    $contact_position = $_POST['contact_position'];
+    $mobile_no = $_POST['mobile_no'];
+    $telephone_no = $_POST['telephone_no'];
+    $email_address = $_POST['email'];
 
-    $register               = date('Y-m-d', strtotime($_POST['date_reg']));
-    $name_org               = $_POST['name_org'];
-    $org                    = $_POST['organization'];
-    $nature_bus             = $_POST['nature_bus'];
-    $street_add             = $_POST['street_add'];
+    //for table entity
+    $username = $_POST['username'];
+    $hashed_password  = password_hash($entity_no, PASSWORD_DEFAULT);
+    $type = 'JURIDICAL';
+    $status = 'ACTIVE';
+
+
 
     $insert_juridical_sql = "INSERT INTO tbl_juridical SET 
 
         entity_no           = :entity_no,
-        date_reg            = :regg,
-        org_name            = :naaamee,
-        organization        = :organization,
-        business_nature     = :business,
-        street_address      = :addreess
-        -- barangay            = :brrgy,
-        -- city                = :cityss,
-        -- province            = :provvv,
-        -- administrator_name  = :adddmin,
-        -- admin_position      = :position,
-        -- mobile_number       = :mobilee,
-        -- telephone_no        = :teleee,
-        -- email_address       = :email,
-        -- username            = :useers,
-        -- password            = :passs,
-        -- status              = :staat";
+        date_reg            = :date_register,
+        org_name            = :org_name,
+        org_type            = :org_type,
+        business_nature     = :nature,
+        street              = :address,
+        barangay            = :barangay,
+        city                = :city,
+        province            = :province,
+        contact_name        = :contact_name,
+        contact_position    = :position,
+        mobile_no           = :mobile_no,
+        telephone_no        = :telephone_no,
+        email_address       = :email_address,
+        status              = :status";
 
     $juridical_data = $con->prepare($insert_juridical_sql);
     $juridical_data->execute([
@@ -45,15 +60,21 @@ if (isset($_POST['insert_juridical'])) {
 
 
         ':entity_no'         => $entity_no,
-        ':regg'              => $register,
-        ':naaamee'          => $name_org,
-        ':organization'     => $org,
-        ':business'         => $na
-        // ':addreess'         =>
-
-
-
-
+        ':date_register'     => $date_register,
+        ':org_name'          => $org_name,
+        ':org_type'          => $org_type,
+        ':nature'            => $nature,
+        ':street'            => $street,
+        ':barangay'          => $barangay,
+        ':city'              => $city,
+        ':province'          => $province,
+        ':contact_name'      => $contact_name,
+        ':contact_person'    => $contact_person,
+        ':mobile_no'         => $mobile_no,
+        ':telephone_no'      => $telephone_no,
+        ':email_address'     => $email_address,
+        ':status'            => $status
+    
     ]);
 
     $alert_msg .= ' 

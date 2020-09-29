@@ -19,9 +19,8 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
-    $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = '';
+$btnSave = $btnEdit =  $entity_no = $date_register = $org_type = $org_name = $nature = $street =
+$barangay = $city = $province = $contact_person = $contact_position = $mobile_no = $tel_no = $email_address = '';
 $btnNew = 'hidden';
 
 
@@ -34,6 +33,10 @@ $get_all_brgy_data->execute();
 $get_all_category_sql = "SELECT * FROM categ_juridical";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
+
+$get_all_nature_sql = "SELECT * FROM nature_of_business ORDER BY name";
+$get_all_nature_data = $con->prepare($get_all_nature_sql);
+$get_all_nature_data->execute();
 
 $title = 'VAMOS | Juridical Form';
 
@@ -128,7 +131,7 @@ $title = 'VAMOS | Juridical Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
                                                     </div>
                                                 </div>
 
@@ -141,7 +144,7 @@ $title = 'VAMOS | Juridical Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $brgy; ?>">
+                                                    <select class="form-control select2" id="type" style="width: 100%;" name="type" value="<?php echo $brgy; ?>">
                                                         <option selected="selected">Select Organization Type</option>
                                                         <?php while ($get_categ = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_categ['categ_name']; ?>"><?php echo $get_categ['categ_name']; ?></option>
@@ -163,17 +166,21 @@ $title = 'VAMOS | Juridical Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization/Business Name" value="">
+                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization/Business Name" value="<?php echo $org_name; ?>" required>
                                                 </div>
                                             </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Nature of Business" value="">
+                                                    <select class="form-control select2" id="type" style="width: 100%;" name="nature" value="<?php echo $nature; ?>">
+                                                        <option selected="selected">Select Nature of Business</option>
+                                                        <?php while ($get_nature = $get_all_nature_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $get_nature['name']; ?>"><?php echo $get_nature['name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
-                                            </div><br>
+                                            </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -222,7 +229,7 @@ $title = 'VAMOS | Juridical Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="" placeholder="Position" value="">
+                                                    <input type="text" class="form-control" name="contact_position" placeholder="Position" value="">
                                                 </div>
                                             </div><br>
 
@@ -301,7 +308,7 @@ $title = 'VAMOS | Juridical Form';
                                             <div class="box-footer" align="center">
 
 
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+                                                <button type="submit" <?php echo $btnSave; ?> name="insert_juridical" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
 
                                                 <a href="list_juridical.php">
@@ -371,6 +378,7 @@ $title = 'VAMOS | Juridical Form';
 
     <script type="text/javascript">
         $('.select2').select2();
+
         $(document).ready(function() {
 
 
@@ -423,6 +431,22 @@ $title = 'VAMOS | Juridical Form';
                     '<img src="' + data_uri + '"/>';
             });
         }
+
+        function checkUsername() {
+            var username = $('#username').val();
+            if(username.length >= 3){
+            $("#status").html('<img src="loader.gif" /> Checking availability...');
+            $.ajax({
+                type: 'POST',
+                data: {username:username},
+                url: 'check_username.php',
+                success: function(data) {
+                    $("#status").html(data);
+                   
+                }
+            });
+        }
+    }
     </script>
 </body>
 
