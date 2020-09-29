@@ -2,8 +2,6 @@
 
 include('../config/db_config.php');
 include('insert_individual.php');
- $btn_enabled = 'enabled';  
-$alert_msg = '';
 $btn_enabled = 'enabled';
 
 session_start();
@@ -249,15 +247,11 @@ $title = 'VAMOS | Add Individual';
                                             <div class="row">
 
 
-                                                    <div style ="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()"> 
-                                                    
-                                                    <img src = "../postimage/user.png" id = "photo" style = " height: 240px; width:270px;margin:auto;">
-                                                    Click to ACCESS Camera
                                                 <div class="col-6" style="margin:auto;">
 
                                                     <div style="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()">
 
-                                                        <img src="../postimage/user.png" style=" height: 240px; width:270px;margin:auto;">
+                                                        <img src="../postimage/user.png" id = "photo" style=" height: 240px; width:270px;margin:auto;">
                                                         Click to ACCESS Camera
                                                     </div>
                                                     <br>
@@ -267,17 +261,6 @@ $title = 'VAMOS | Add Individual';
 
                                             <div class="row">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
-                                                                    
-                                                    <div class="col-12" style = "margin-left:200px;margin-right:160px;padding:auto;">
-                                                  
-                                                    <div>
-                                                    <input type="hidden" name="image" class="image-tag">                  
-                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                   
-                                                    <input type="button" <?php echo $btn_enabled ?> class="btn btn-primary " id = "capture" value="CAPTURE" onClick="take_snapshot()">   
-                                                    <input type="file" name="myFile" id="fileToUpload"  onchange = "loadImage()">
-                                                    <!-- <input type="button"class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">          -->
-                                                                    </div>
 
                                                 <div class="col-4" style="margin:auto;">
 
@@ -285,7 +268,8 @@ $title = 'VAMOS | Add Individual';
                                                         <input type="hidden" name="image" class="image-tag">
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                         <input type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">
-                                                        <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
+                                                        <!-- <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"> -->
+                                                        <input type="file" name="myFile" id="fileToUpload" onchange = "loadImage()">
                                                     </div>
                                                 </div>
                                                 <!-- </form> -->
@@ -397,11 +381,7 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
-        $('.select2').select2();
-    </script>
-
-    <script>
-       function loadImage() {
+      function loadImage() {
     var input = document.getElementById("fileToUpload");
     var fReader = new FileReader();
     fReader.readAsDataURL(input.files[0]);
@@ -409,13 +389,12 @@ $title = 'VAMOS | Add Individual';
       var img = document.getElementById("photo");
       img.src = event.target.result;
     }
-  }
-      
-      $(function() {
-            
-            //Initialize Select2 Elements
-            $('.select2').select2()
-      });
+}   
+        $('.select2').select2();
+    </script>
+
+    <script>
+       
 
         function generateID() {
 
@@ -431,9 +410,8 @@ $title = 'VAMOS | Add Individual';
         window.onload = generateID;
     </script>
 
-        
+
     <script language="JavaScript">
-    //access the camera 
         Webcam.set({
             width: 300,
             height: 240,
@@ -477,15 +455,6 @@ $title = 'VAMOS | Add Individual';
                 });
             }
         }
-    }
-    // when the capture button is clicked the file element value will reset
-    $('#capture').click(function(){
-// $("#input-form :input").prop("disabled", true);
-$('#fileToUpload').val('')
-    });
-  
-  
-        
         //     $('#btnSubmit').click(function(){
         // $("#input-form :input").prop("disabled", true);
         //     });
