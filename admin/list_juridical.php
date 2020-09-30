@@ -91,7 +91,7 @@ $get_all_juridical_data->execute();
                           <th> Username</th>
                           <th> Full Name </th>
                           <th> Options </th>
-          
+
                         </tr>
                       </thead>
                       <tbody>
@@ -102,14 +102,14 @@ $get_all_juridical_data->execute();
                             <td><?php echo $list_juridical['org_name']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
+                              <a class="btn btn-success btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i></a>
 
-                              <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
+                              <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>
 
 
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
                               &nbsp;
