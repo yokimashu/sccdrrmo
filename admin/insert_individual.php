@@ -66,14 +66,14 @@ if (isset($_POST['insert_individual'])) {
             }
 
      $temp = explode(".", $_FILES["myFile"]["name"]);
-     $newfilename = round(microtime(true)) . '.' . end($temp);
+    //      
   
         
     
      // $fileExtension = strtolower(end(explode('.',$fileName)));
    
         } 
-        if ($_FILES["myFile"]["error"] == 4){
+        if ($img != ''){
 
 
    
@@ -91,9 +91,9 @@ if (isset($_POST['insert_individual'])) {
         }
 
     // print_r($fileName);
-    if($newfilename != ''){
-        $fileName = $newfilename;
-    }
+    // if($newfilename != ''){
+    //     $fileName = $newfilename;
+    // }
 
     $insert_individual_sql = "INSERT INTO tbl_individual SET 
 
