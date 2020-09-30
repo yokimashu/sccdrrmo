@@ -281,7 +281,7 @@ $title = 'VAMOS | Juridical Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                    <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
                                                 </div>
                                             </div></br>
 
@@ -289,7 +289,7 @@ $title = 'VAMOS | Juridical Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
+                                                    <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
                                                 </div>
                                             </div><br>
 
@@ -297,7 +297,7 @@ $title = 'VAMOS | Juridical Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
+                                                    <input type="email" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
                                                 </div>
                                             </div><br>
 
