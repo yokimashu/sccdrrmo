@@ -2,7 +2,7 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
-include('insert_individual.php');
+
 
 use Endroid\QrCode\QrCode;
 
@@ -19,18 +19,16 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $firstname = $middlename = $lastname = $age = $gender =
-    $transpo = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
-    $travel_days = $patient_disease = $symptoms = $health_status = $entity_no = '';
+$btnSave = $btnEdit = $alert_msg = $entity_no = '';
 $btnNew = 'hidden';
 
 
-$get_all_category_sql = "SELECT * FROM categ_transpo";
+$get_all_category_sql = "SELECT * FROM categ_land_transpo";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
 
-$title = 'VAMOS | Transportation Form';
+$title = 'VAMOS | Land Trans Form';
 
 
 ?>
@@ -95,7 +93,7 @@ $title = 'VAMOS | Transportation Form';
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
-                        <h4>Transportation Form</h4>
+                        <h4> Land Transportation Form</h4>
                     </div>
 
 
@@ -138,7 +136,7 @@ $title = 'VAMOS | Transportation Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="transpo_type" value="<?php echo $transpo; ?>">
+                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="land_transpo_type" value="<?php echo $transpo; ?>">
                                                         <option selected="selected">Select Transportation Type</option>
                                                         <?php while ($get_transpo = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_transpo['transpo_id']; ?>"><?php echo $get_transpo['transpo_name']; ?></option>
@@ -151,7 +149,7 @@ $title = 'VAMOS | Transportation Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="middlename" placeholder="Vehicle Name" value="">
+                                                    <input type="text" class="form-control" name="vechicle_name" placeholder="Vehicle Name" value="">
                                                 </div>
                                             </div></br>
 
@@ -159,14 +157,14 @@ $title = 'VAMOS | Transportation Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Vehicle #" value="">
+                                                    <input type="text" class="form-control" name="vehicle_no" placeholder="Vehicle #" value="">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Plate #" value="">
+                                                    <input type="text" class="form-control" name="plate_no" placeholder="Plate #" value="">
                                                 </div>
 
 
@@ -176,7 +174,7 @@ $title = 'VAMOS | Transportation Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="street" placeholder="Route" value="">
+                                                    <input type="text" class="form-control" name="route" placeholder="Route / Area of Operation" value="">
                                                 </div>
                                             </div><br>
 
@@ -319,7 +317,7 @@ $title = 'VAMOS | Transportation Form';
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
-    <script src="../plugins/select2/select2.full.min.js"></script>
+
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -330,7 +328,7 @@ $title = 'VAMOS | Transportation Form';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
-
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script type="text/javascript">
@@ -338,7 +336,7 @@ $title = 'VAMOS | Transportation Form';
 
 
 
-        
+
         $(document).ready(function() {
 
 

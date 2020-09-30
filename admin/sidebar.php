@@ -131,39 +131,55 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
+            <li class="nav-item">
+              <a href="list_individual" class="nav-link">
+                &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
+                <p> &nbsp; Individual</p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="list_juridical" class="nav-link">
+                &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
+                <p> &nbsp; Juridical</p>
+              </a>
+            </li>
+
+
 
             <li class="nav-item">
               <a href="#" class="nav-link">
-                &nbsp;&nbsp; <i class="fa fa-address-book-o "></i>
-                <p> &nbsp; Entity</p>
+                &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
+                <p> &nbsp; Transportation</p>
               </a>
+
 
               <ul class="nav nav-treeview">
 
+
                 <li class="nav-item">
-                  <a href="list_individual" class="nav-link">
-                    &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                    <p> &nbsp; Individual</p>
+                  <a href="list_land_trans" class="nav-link">
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa fa-arrow-right "></i>
+                    <p> &nbsp; Land Trans.</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="list_juridical" class="nav-link">
-                    &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                    <p> &nbsp; Juridical</p>
+                  <a href="" class="nav-link">
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa fa-arrow-right "></i>
+                    <p> &nbsp; Sea Trans.</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
-                  <a href="list_transportation" class="nav-link">
-                    &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                    <p> &nbsp; Transportation</p>
-                  </a>
-                </li>
+
+
               </ul>
             </li>
 
-          </ul>
+        </li>
+
+      </ul>
 
 
 
@@ -171,7 +187,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
-          <!-- <li class="nav-item has-treeview" style="font-size:16px">
+      <!-- <li class="nav-item has-treeview" style="font-size:16px">
             <a href="" class="nav-link ">
               <i class="nav-icon fa fa-exchange"></i>
               <p>
@@ -187,47 +203,47 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               //<?php echo $registration_list ?>
             </ul> -->
 
-        <li class="nav-item " style="font-size:16px">
-          <?php echo $incident_report ?>
+      <li class="nav-item " style="font-size:16px">
+        <?php echo $incident_report ?>
 
-        <li class="nav-item has-treeview" style="font-size:16px">
-          <a href="" class="nav-link ">
-            <i class="nav-icon fa fa-list"></i>
-            <p>
-              SETTINGS
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
+      <li class="nav-item has-treeview" style="font-size:16px">
+        <a href="" class="nav-link ">
+          <i class="nav-icon fa fa-list"></i>
+          <p>
+            SETTINGS
+            <i class="right fa fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
 
-            <li class="nav-item">
-              <a href="list_users.php" class="nav-link">
-                <i class="fa fa-minus nav-icon"></i>
-                <p>Users</p>
-              </a>
-            </li>
+          <li class="nav-item">
+            <a href="list_users.php" class="nav-link">
+              <i class="fa fa-minus nav-icon"></i>
+              <p>Users</p>
+            </a>
+          </li>
 
-            <li class="nav-item">
-              <a href="view_all_posts" class="nav-link">
-                <i class="fa fa-minus nav-icon"></i>
-                <span class="badge badge-danger navbar-badge"><?php if ($numberofdraft > 0) {
-                                                                echo $numberofdraft;
-                                                              } ?></span>
-                <p>View Announcements</p>
-              </a>
-            </li>
+          <li class="nav-item">
+            <a href="view_all_posts" class="nav-link">
+              <i class="fa fa-minus nav-icon"></i>
+              <span class="badge badge-danger navbar-badge"><?php if ($numberofdraft > 0) {
+                                                              echo $numberofdraft;
+                                                            } ?></span>
+              <p>View Announcements</p>
+            </a>
+          </li>
 
-            <li class="nav-item">
-              <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
-                <i class="fa fa-minus nav-icon"></i>
-                <p>Send Mobile Alerts</p>
-              </a>
-            </li>
+          <li class="nav-item">
+            <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
+              <i class="fa fa-minus nav-icon"></i>
+              <p>Send Mobile Alerts</p>
+            </a>
+          </li>
 
-          </ul>
+        </ul>
 
 
-          <!-- <li class="nav-item has-treeview" style="font-size:16px">
+        <!-- <li class="nav-item has-treeview" style="font-size:16px">
           <a href="#" class="nav-link ">
             <i class="nav-icon fa fa-cogs"></i>
             <p>
