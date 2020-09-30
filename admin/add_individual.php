@@ -269,7 +269,7 @@ $title = 'VAMOS | Add Individual';
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                     <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
                                                     <a href="#">
-                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "myFile" name="myFile" id="fileToUpload" onchange = "loadImage()" class="btn btn-danger"></a>
+                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" id="fileToUpload" onchange = "loadImage()" class="btn btn-danger"></a>
                                                         </div>
                                                 </div>
                                                 <!-- </form> -->
@@ -436,7 +436,7 @@ $title = 'VAMOS | Add Individual';
             });
         }
         $('#capture').click(function(){
-            $("#myFile").val(''); 
+            $("#fileToUpload").val(''); 
 
         })
         function checkUsername() {
