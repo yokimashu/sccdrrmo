@@ -71,20 +71,57 @@ if (isset($_POST['update_juridical'])) {
 
 
 
-        // $insert_entity_sql = "UPDATE tbl_entity SET  
-        // username            = :username,
-        // password            = :password
-        // where entity_no     = :entity";
+        $insert_juridical_sql = "UPDATE tbl_juridical SET 
+           date_reg             = :dateee,
+           org_name             = :orgnamee,
+           org_type             = :orgtypeee,
+           business_nature      = :natureee,
+           street               = :streeet,
+           barangay             = :brgy,
+           city                 = :city,
+           province             = :province,
+           contact_name         = :cname,
+           contact_position     = :cposition,
+           mobile_no            = :mobilee,
+           telephone_no        = :teleephone,
+           email_address        = :email_add
+           where entity_no      = :entityNo ";
+
+        $update_juridical_data = $con->prepare($insert_juridical_sql);
+        $update_juridical_data->execute([
+
+            ':entityNo'                 => $get_entity_no,
+            ':dateee'                   => $get_date_register,
+            ':orgnamee'                 => $get_org_name,
+            ':orgtypeee'                => $get_org_type,
+            ':natureee'                 => $get_bus_nature,
+            ':streeet'                  => $get_street,
+            ':brgy'                     => $get_brgy,
+            ':city'                     => $get_city,
+            ':province'                 => $get_province,
+            ':cname'                    => $get_contact_name,
+            ':cposition'                => $get_contact_pos,
+            ':mobilee'                  => $get_mobile_no,
+            ':teleephone'               => $get_tel_no,
+            ':email_add'                => $get_email
+
+        ]);
 
 
-        // $entity_data = $con->prepare($insert_entity_sql);
-        // $entity_data->execute([
+        $insert_entity_sql = "UPDATE tbl_entity SET  
+        username            = :username,
+        password            = :password
+        where entity_no     = :entity";
 
-        //     ':entity'           => $get_entity_no,
-        //     ':username'         => $get_username,
-        //     ':password'         => $hashed_password
 
-        // ]);
+        $entity_data = $con->prepare($insert_entity_sql);
+        $entity_data->execute([
+
+            ':entity'           => $get_entity_no,
+            ':username'         => $get_username,
+            ':password'         => $hashed_password
+
+        ]);
     }
 
     $alert_msg .= ' 

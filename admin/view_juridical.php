@@ -2,7 +2,7 @@
 
 include('../config/db_config.php');
 
-
+include('update_juridical.php');
 
 session_start();
 $user_id = $_SESSION['id'];
