@@ -16,7 +16,7 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $get_entity_no = $alert_msg = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
+$btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
     $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
 $btnNew = 'hidden';
 
@@ -60,7 +60,7 @@ $get_all_brgy_data->execute();
 
 
 
-$title = 'VAMOS | Update Individual';
+$title = 'VAMOS | Add Individual';
 
 
 ?>
@@ -118,9 +118,6 @@ $title = 'VAMOS | Update Individual';
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-            <div class="float-topright">
-                <?php echo $alert_msg; ?>
-            </div>
 
 
             <section class="content">
