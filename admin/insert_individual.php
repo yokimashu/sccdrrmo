@@ -195,7 +195,7 @@ if (isset($_POST['insert_individual'])) {
     $btn_enabled = 'disabled';
     $btnNew = 'enabled';
     $btnPrint = 'enabled';
-
+ 
 
     //echo print_r($firstname);
 
