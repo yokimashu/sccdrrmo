@@ -56,7 +56,7 @@ if (isset($_POST['insert_individual'])) {
     if ($_FILES['myFile']['name'] == null && $img == ''  )
         {  
         $fileName = 'user.jpeg';
-        }else  ( $_FILES['myFile']['size'] != 0 && $_FILES['myFile']['error'] == 0) 
+        }else  if( $_FILES['myFile']['size'] != 0 && $_FILES['myFile']['error'] == 0) 
         {
             if (!in_array($fileExtension, $fileExtensions)) {
                 $errors[] = "This file extension is not allowed.";
@@ -68,7 +68,7 @@ if (isset($_POST['insert_individual'])) {
      $temp = explode(".", $_FILES["myFile"]["name"]);
      $newfilename = round(microtime(true)) . '.' . end($temp);
   
-     
+        
     
      // $fileExtension = strtolower(end(explode('.',$fileName)));
    
