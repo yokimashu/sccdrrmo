@@ -16,14 +16,15 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $get_entity_no = $alert_msg = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
-    $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
+$btnSave = $btnEdit = $get_entity_no = $alert_msg = $get_username = $get_password = $get_date_register = $get_new_password =
+    $get_org_name = $get_org_type = $get_bus_nature = $get_street = $get_barangay = $get_province =
+    $get_contact_name = $get_contact_pos = $get_mobile_no = $get_tel_no = $get_email = $categ = '';
 $btnNew = 'hidden';
 
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
 $user_id = $_GET['id'];
-$get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='$user_id'";
+$get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_juridical oh ON  oh.entity_no = en.entity_no where oh.entity_no ='$user_id'";
 $get_data_data = $con->prepare($get_data_sql);
 $get_data_data->execute([':id' => $user_id]);
 
@@ -33,25 +34,30 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
     $get_entity_no = $result['entity_no'];
     $get_username = $result['username'];
     $get_password = $result['password'];
+    $get_date_register = $result['date_reg'];
 
-    $get_date_register = $result['date_register'];
-    $get_firstname = $result['firstname'];
-    $get_middlename = $result['middlename'];
-    $get_lastname = $result['lastname'];
-
-    $get_birthdate = $result['birthdate'];
-    $get_age = $result['age'];
-    $get_gender = $result['gender'];
+    $get_org_name = $result['org_name'];
+    $get_org_type = $result['org_type'];
+    $get_bus_nature = $result['business_nature'];
     $get_street = $result['street'];
+    $get_barangay = $result['barangay'];
     $get_city = $result['city'];
     $get_province = $result['province'];
+    $get_contact_name = $result['contact_name'];
+    $get_contact_pos = $result['contact_position'];
     $get_mobile_no = $result['mobile_no'];
-    $get_telephone_no = $result['telephone_no'];
-    $get_barangay = $result['barangay'];
-    $get_email = $result['email'];
-    $get_photo = $result['photo'];
+    $get_tel_no = $result['telephone_no'];
+    $get_email = $result['email_address'];
 }
 
+
+$get_all_category_sql = "SELECT * FROM categ_juridical order by categ_name";
+$get_all_category_data = $con->prepare($get_all_category_sql);
+$get_all_category_data->execute();
+
+$get_all_nature_sql = "SELECT DISTINCT name FROM nature_of_business ORDER BY name";
+$get_all_nature_data = $con->prepare($get_all_nature_sql);
+$get_all_nature_data->execute();
 
 
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
@@ -60,7 +66,7 @@ $get_all_brgy_data->execute();
 
 
 
-$title = 'VAMOS | Update Individual';
+$title = 'VAMOS | Update Juridical';
 
 
 ?>
@@ -122,21 +128,20 @@ $title = 'VAMOS | Update Individual';
                 <?php echo $alert_msg; ?>
             </div>
 
-
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
-                        <h4>Individual Form</h4>
+                        <h4>Juridical Form</h4>
                     </div>
 
 
                     <div class="card-body">
 
-                        <form role="form" enctype="multipart/form-data" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
-
+                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                                     <div class="m-1 pb-1"> </div>
                                     <div class="card col-md-6">
 
@@ -154,7 +159,7 @@ $title = 'VAMOS | Update Individual';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
+                                                        <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
                                                     </div>
                                                 </div>
 
@@ -162,18 +167,19 @@ $title = 'VAMOS | Update Individual';
                                                     <label>Entity ID : </label>
                                                     <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $get_entity_no; ?>" required>
                                                 </div>
-
-
                                             </div></br>
+
+
+
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="username" placeholder="User Name" value="<?php echo $get_username; ?>">
+                                                    <input type="text" class="form-control" readonly id="username" name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $get_username; ?>" required>
+                                                    <div id="status"></div>
                                                 </div>
                                             </div></br>
-
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -184,59 +190,41 @@ $title = 'VAMOS | Update Individual';
                                                 </div>
                                             </div><br>
 
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <select class="form-control select2" style="width: 100%;" name="org_type" value="<?php echo $type; ?>">
+                                                        <option>Please select...</option>
+                                                        <?php while ($get_categ = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_org_type == $get_categ['categ_name']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_categ['categ_name']; ?>"><?php echo $get_categ['categ_name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div></br>
+
 
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $get_firstname; ?>">
+                                                    <input type="text" class="form-control" name="org_name" placeholder="Organization/Business Name" value="<?php echo $get_org_name; ?>" required>
                                                 </div>
                                             </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $get_middlename; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $get_lastname; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label>Birthdate: </label>
-                                                    <div class="input-group date" data-provide="datepicker">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $get_birthdate; ?>">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <label>Age:</label>
-                                                    <input type="number" class="form-control" name="age" placeholder="Age" value="<?php echo $get_age; ?>">
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Gender:</label>
-                                                    <select class="form-control select2" style="width: 100%;" name="get_gender" value="<?php echo $status; ?>">
+                                                    <select class="form-control select2" style="width: 100%;" name="get_nature" value="<?php echo $type; ?>">
                                                         <option>Please select...</option>
-                                                        <option <?php if ($get_gender == 'Female') echo 'selected'; ?> value="Female">Female </option>
-                                                        <option <?php if ($get_gender == 'Male') echo 'selected'; ?> value="Male">Male </option>
-
+                                                        <?php while ($get_buss = $get_all_nature_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_bus_nature == $get_buss['name']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_buss['name']; ?>"><?php echo $get_buss['name']; ?></option>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
-                                            </div><br>
+                                            </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -276,42 +264,55 @@ $title = 'VAMOS | Update Individual';
                                                 </div>
                                             </div><br>
 
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="contact_person" placeholder="Contact Person " value="<?php echo $get_contact_name; ?>">
+                                                </div>
+                                            </div><br>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="contact_position" placeholder="Position" value="<?php echo $get_contact_pos; ?>">
+                                                </div>
+                                            </div><br>
 
                                         </div>
 
 
-                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>&nbsp;&nbsp;&nbsp;
 
                                     <div class="card col-md-5">
                                         <div class="card-header">
-                                            <h6><strong> ID PHOTO </strong></h6>
+                                            <h6><strong> UPLOAD LOGO </strong></h6>
                                         </div>
 
                                         <div class="box-body">
                                             <br>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <div class="col-md-3">
 
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
+                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"></div><br>
 
                                                 </div>
                                             </div>
 
                                             <div class="row" align="center">
-                                                <!-- <form method="POST" action="storeImage.php"> -->
+
 
                                                 <div class="col-md-3"></div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <div>
 
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
+                                                    <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
+                                                    <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
 
                                                 </div>
-                                                <!-- </form> -->
+
                                             </div><br>
 
                                             <div class="row">
@@ -322,11 +323,14 @@ $title = 'VAMOS | Update Individual';
                                                 </div>
                                             </div><br>
 
+
+
+
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $get_mobile_no; ?>">
+                                                    <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $get_mobile_no; ?>">
                                                 </div>
                                             </div></br>
 
@@ -334,7 +338,7 @@ $title = 'VAMOS | Update Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $get_telephone_no; ?>">
+                                                    <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $get_tel_no; ?>">
                                                 </div>
                                             </div><br>
 
@@ -342,31 +346,30 @@ $title = 'VAMOS | Update Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
+                                                    <input type="email" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
                                                 </div>
                                             </div><br>
 
-
-
                                             <div class="box-footer" align="center">
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+
+
+                                                <button type="submit" <?php echo $btnSave; ?> name="update_juridical" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
-                                                <a href="list_individual.php">
+
+                                                <a href="list_juridical.php">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
+
                                                 <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                     <button type="button" name="print" class="btn btn-primary">
                                                         <i class="nav-icon fa fa-print"> </i> </button>
                                                 </a>
+
+
                                             </div>
-
-
-
                                         </div>
                                     </div>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -404,7 +407,7 @@ $title = 'VAMOS | Update Individual';
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
-    <script src="../plugins/select2/select2.full.min.js"></script>
+
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -415,7 +418,7 @@ $title = 'VAMOS | Update Individual';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
-
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script type="text/javascript">
