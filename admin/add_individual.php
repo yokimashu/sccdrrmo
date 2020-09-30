@@ -63,9 +63,7 @@ $title = 'VAMOS | Add Individual';
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
-      <!-- image cropper -->
-    <link rel="stylesheet" href="../plugins/cropperjs/css/cropper.css">
-    <link rel="stylesheet" href="../dist/cropper.min.css"
+    
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
@@ -256,7 +254,7 @@ $title = 'VAMOS | Add Individual';
                                              <div style = "margin:auto">
                                                 <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
 
-                                                    <img src="../postimage/user.png" alt="Picture" id = "photo" style=" height: 240px; width:270px;margin:auto;">
+                                                    <img src="../postimage/user.png" id = "photo" style=" height: 240px; width:270px;margin:auto;">
                                                     Click to ACCESS Camera
                                                 </div>
                                                         </div>
@@ -363,10 +361,6 @@ $title = 'VAMOS | Add Individual';
     <script src="../dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
-     <!-- image cropper -->
-    <script src="../plugins/cropperjs/js/cropper.js"></script>
-    <script src="../dist/cropper.min.js"></script>
-
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
@@ -414,9 +408,7 @@ $title = 'VAMOS | Add Individual';
         }
         window.onload = generateID;
     </script>
-<script>
-   
-  </script>
+
 
     <script language="JavaScript">
         Webcam.set({
@@ -430,61 +422,23 @@ $title = 'VAMOS | Add Individual';
 
 
     <script language="JavaScript">
-        // function setup() {
-        //     Webcam.reset();
-        //     Webcam.attach('#my_camera');
-        // }
+        function setup() {
+            Webcam.reset();
+            Webcam.attach('#my_camera');
+        }
 
-        // function take_snapshot() {
-        //     // take snapshot and get image data
-        //     Webcam.snap(function(data_uri) {
-        //         // display results in page
-        //         $(".image-tag").val(data_uri);
-        //         document.getElementById('my_camera').innerHTML =
-        //             '<img src="' + data_uri + '"/>';
-        //     });
-        // }
+        function take_snapshot() {
+            // take snapshot and get image data
+            Webcam.snap(function(data_uri) {
+                // display results in page
+                $(".image-tag").val(data_uri);
+                document.getElementById('my_camera').innerHTML =
+                    '<img src="' + data_uri + '"/>';
+            });
+        }
         $('#capture').click(function(){
             $("#fileToUpload").val(''); 
- window.addEventListener('DOMContentLoaded', function () {
-      var image = document.querySelector('#photo');
-      var minAspectRatio = 0.5;
-      var maxAspectRatio = 1.5;
-      var cropper = new Cropper(image, {
-        ready: function () {
-          var cropper = this.cropper;
-          var containerData = cropper.getContainerData();
-          var cropBoxData = cropper.getCropBoxData();
-          var aspectRatio = cropBoxData.width / cropBoxData.height;
-          var newCropBoxWidth;
 
-          if (aspectRatio < minAspectRatio || aspectRatio > maxAspectRatio) {
-            newCropBoxWidth = cropBoxData.height * ((minAspectRatio + maxAspectRatio) / 2);
-
-            cropper.setCropBoxData({
-              left: (containerData.width - newCropBoxWidth) / 2,
-              width: newCropBoxWidth
-            });
-          }
-        },
-
-        cropmove: function () {
-          var cropper = this.cropper;
-          var cropBoxData = cropper.getCropBoxData();
-          var aspectRatio = cropBoxData.width / cropBoxData.height;
-
-          if (aspectRatio < minAspectRatio) {
-            cropper.setCropBoxData({
-              width: cropBoxData.height * minAspectRatio
-            });
-          } else if (aspectRatio > maxAspectRatio) {
-            cropper.setCropBoxData({
-              width: cropBoxData.height * maxAspectRatio
-            });
-          }
-        },
-      });
-    });
         })
         function checkUsername() {
             var username = $('#username').val();
