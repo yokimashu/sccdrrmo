@@ -248,29 +248,29 @@ $title = 'VAMOS | Add Individual';
                                             <br>
                                             <div class="row">
 
-                                                <div class="col-md-1"></div>
+                                              
 
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <div class="col-md-7" style="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()">
+                                             <div style = "margin:auto">
+                                                <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
 
-                                                    <img src="../postimage/user.png" style=" height: 240px; width:270px;margin:auto;">
+                                                    <img src="../postimage/user.png" id = "photo" style=" height: 240px; width:270px;margin:auto;">
                                                     Click to ACCESS Camera
                                                 </div>
-
+                                                        </div>
 
                                             </div> <br>
 
                                             <div class="row">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-4">
+                                                            <div style ="margin:auto">
+                                                <div class="col-12" >
 
                                                     <input type="hidden" name="image" class="image-tag">
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <button type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
                                                     <a href="#">
-                                                        <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"></a>
-
+                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" id="fileToUpload" onchange = "loadImage()" class="btn btn-danger"></a>
+                                                        </div>
                                                 </div>
                                                 <!-- </form> -->
                                             </div><br>
@@ -381,6 +381,15 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
+    function loadImage() {
+    var input = document.getElementById("fileToUpload");
+    var fReader = new FileReader();
+    fReader.readAsDataURL(input.files[0]);
+    fReader.onloadend = function(event) {
+      var img = document.getElementById("photo");
+      img.src = event.target.result;
+    }
+  }
         $('.select2').select2();
     </script>
 
@@ -426,7 +435,10 @@ $title = 'VAMOS | Add Individual';
                     '<img src="' + data_uri + '"/>';
             });
         }
+        $('#capture').click(function(){
+            $("#fileToUpload").val(''); 
 
+        })
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {

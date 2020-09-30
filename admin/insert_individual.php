@@ -43,20 +43,20 @@ if (isset($_POST['insert_individual'])) {
     $uploadDirectory = "../flutter/images/";
     $errors = [];
     $img = $_POST['image'];
-    $fileExtensions = ['jpg'];
+    $fileExtensions = ['png','jpg','jpeg'];
     $fileName = $_FILES['myFile']['name'];
     $fileSize = $_FILES['myFile']['size'];
     $fileTmpName = $_FILES['myFile']['tmp_name'];
     $fileType = $_FILES['myFile']['type'];
     $target_file = $uploadDirectory . basename($_FILES['myFile']['name']);
     $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $uploadPath = $uploadDirectory . basename($fileName);
+    $uploadPath = $uploadDirectory . $fileName;
         $newfilename = '';
         
-    if ($_FILES['myFile']['name'] == null && $img == ''  )
+    if ($_FILES['myFile']['name'] == null && $img == null  )
         {  
         $fileName = 'user.jpeg';
-        }else  ( $_FILES['myFile']['size'] != 0 && $_FILES['myFile']['error'] == 0) 
+        }else  if($_FILES["myFile"]["error"] == 0 ) 
         {
             if (!in_array($fileExtension, $fileExtensions)) {
                 $errors[] = "This file extension is not allowed.";
@@ -68,11 +68,12 @@ if (isset($_POST['insert_individual'])) {
      $temp = explode(".", $_FILES["myFile"]["name"]);
      $newfilename = round(microtime(true)) . '.' . end($temp);
   
-     
+        
     
      // $fileExtension = strtolower(end(explode('.',$fileName)));
    
-        } if ($_FILES['myFile']['size'] == 0 && $_FILES['myFile']['error'] == 0){
+        } 
+        if ($_FILES["myFile"]["error"] == 4){
 
 
    
@@ -90,7 +91,9 @@ if (isset($_POST['insert_individual'])) {
         }
 
     // print_r($fileName);
-
+    if($newfilename != ''){
+        $fileName = $newfilename;
+    }
 
     $insert_individual_sql = "INSERT INTO tbl_individual SET 
 
@@ -116,9 +119,7 @@ if (isset($_POST['insert_individual'])) {
     ";
     
     
-    if($newfilename != ''){
-        $fileName = $newfilename;
-    }
+   
     
 
 
