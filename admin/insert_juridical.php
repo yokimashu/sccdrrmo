@@ -41,32 +41,32 @@ if (isset($_POST['insert_juridical'])) {
 
 
 
-    if ($_FILES['myFile']['name'] == null && $img == null) {
-        $fileName = 'user.jpeg';
-    } else  if ($_FILES["myFile"]["error"] == 0) {
-        if (!in_array($fileExtension, $fileExtensions)) {
-            $errors[] = "This file extension is not allowed.";
-        }
-        if (empty($errors)) {
-            $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
-        }
+    // if ($_FILES['myFile']['name'] == null && $img == null) {
+    //     $fileName = 'user.jpeg';
+    // } else  if ($_FILES["myFile"]["error"] == 0) {
+    //     if (!in_array($fileExtension, $fileExtensions)) {
+    //         $errors[] = "This file extension is not allowed.";
+    //     }
+    //     if (empty($errors)) {
+    //         $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
+    //     }
 
-        $temp = explode(".", $_FILES["myFile"]["name"]);
-    }
-    if ($img != '') {
+    //     $temp = explode(".", $_FILES["myFile"]["name"]);
+    // }
+    // if ($img != '') {
 
-        $folderPath = "../flutter/images/";
+    //     $folderPath = "../flutter/images/";
 
-        $image_parts = explode(";base64,", $img);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
+    //     $image_parts = explode(";base64,", $img);
+    //     $image_type_aux = explode("image/", $image_parts[0]);
+    //     $image_type = $image_type_aux[1];
 
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = uniqid() . '.jpeg';
+    //     $image_base64 = base64_decode($image_parts[1]);
+    //     $fileName = uniqid() . '.jpeg';
 
-        $file = $folderPath . $fileName;
-        file_put_contents($file, $image_base64);
-    }
+    //     $file = $folderPath . $fileName;
+    //     file_put_contents($file, $image_base64);
+    // }
 
 
 
@@ -94,7 +94,7 @@ if (isset($_POST['insert_juridical'])) {
         mobile_no           = :mobile_no,
         telephone_no        = :telephone_no,
         email_address       = :email_address,
-        
+
         status              = :status
         
         ";

@@ -149,6 +149,14 @@ $title = 'VAMOS | Juridical Form';
                                                 </div>
                                             </div></br>
 
+
+
+
+
+
+
+
+
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
@@ -158,6 +166,8 @@ $title = 'VAMOS | Juridical Form';
                                                 </div>
                                             </div></br>
 
+
+
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
@@ -165,6 +175,9 @@ $title = 'VAMOS | Juridical Form';
                                                     <input type="text" class="form-control" name="org_name" placeholder="Organization/Business Name" value="<?php echo $org_name; ?>" required>
                                                 </div>
                                             </div></br>
+
+
+
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -305,6 +318,13 @@ $title = 'VAMOS | Juridical Form';
                                                 </div>
                                             </div><br>
 
+
+
+
+
+
+
+
                                             <div class="box-footer" align="center">
 
 
@@ -322,13 +342,14 @@ $title = 'VAMOS | Juridical Form';
                                                 </a>
 
 
-                                            </div>
+                                            </div><br>
                                         </div>
                                     </div>
                         </form>
                     </div>
                 </div>
             </section>
+
         </div>
 
 
@@ -376,21 +397,41 @@ $title = 'VAMOS | Juridical Form';
     <script src="../plugins/select2/select2.full.min.js"></script>
 
 
+
     <script type="text/javascript">
+        //     function loadImage() {
+        //     var input = document.getElementById("fileTo Upload");
+        //     var fReader = new FileReader();
+        //     fReader.readAsDataURL(input.files[0]);
+        //     fReader.onloadend = function(event) {
+        //       var img = document.getElementById("photo");
+        //       img.src = event.target.result;
+        //     }
+        //   }
         $('.select2').select2();
-
-        $(document).ready(function() {
-
-
-
-            $(document).ajaxStart(function() {
-                Pace.restart()
-            })
-
-        });
     </script>
 
     <script>
+        $(document).ready(function() {
+            20
+            $("#fileToUpload").change(function(e) {
+                21
+                var img = e.target.files[0];
+                22
+                if (!pixelarity.open(img, false, function(res) {
+                        23
+                        $("#photo").attr("src", res);
+                        24
+                    }, "jpg", 0.7)) {
+                    25
+                    alert("Whoops! That is not an image!");
+                    26
+                }
+                27
+            });
+            28
+        });
+
         function generateID() {
 
             $.ajax({
@@ -408,10 +449,10 @@ $title = 'VAMOS | Juridical Form';
 
     <script language="JavaScript">
         Webcam.set({
-            width: 320,
+            width: 300,
             height: 240,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality: 70
         });
         //Webcam.attach( '#my_camera' );
     </script>
@@ -427,10 +468,15 @@ $title = 'VAMOS | Juridical Form';
             // take snapshot and get image data
             Webcam.snap(function(data_uri) {
                 // display results in page
+                $(".image-tag").val(data_uri);
                 document.getElementById('my_camera').innerHTML =
                     '<img src="' + data_uri + '"/>';
             });
         }
+        $('#capture').click(function() {
+            $("#fileToUpload").val('');
+
+        })
 
         function checkUsername() {
             var username = $('#username').val();
@@ -449,6 +495,9 @@ $title = 'VAMOS | Juridical Form';
                 });
             }
         }
+        //     $('#btnSubmit').click(function(){
+        // $("#input-form :input").prop("disabled", true);
+        //     });
     </script>
 </body>
 
