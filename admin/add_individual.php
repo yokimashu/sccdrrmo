@@ -260,11 +260,13 @@ $title = 'VAMOS | Add Individual';
                                               
 
                                              <div style = "margin:auto">
-                                                <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()"> -->
-
-                                                    <img src="" id = "photo" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;"onClick="setup()">
+                                                <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
+                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
+                                                        Click me to Open Camera
+                                                  
                                                   
                                                 </div>
+                                             
                                                         </div>
 
                                             </div> <br>
@@ -396,7 +398,7 @@ $title = 'VAMOS | Add Individual';
 
     <script type="text/javascript">
 //     function loadImage() {
-//     var input = document.getElementById("fileTo Upload");
+//     var input = document.getElementById("fileToUpload");
 //     var fReader = new FileReader();
 //     fReader.readAsDataURL(input.files[0]);
 //     fReader.onloadend = function(event) {
@@ -446,7 +448,7 @@ $(document).ready(function(){
       alert("Whoops! That is not an image!");
 26
     }
-27
+
   });
 28
 });
@@ -480,7 +482,7 @@ $(document).ready(function(){
     <script language="JavaScript">
         function setup() {
             Webcam.reset();
-            Webcam.attach('#photo');
+            Webcam.attach('#my_camera');
         }
 
         function take_snapshot() {
@@ -488,34 +490,13 @@ $(document).ready(function(){
             Webcam.snap(function(data_uri) {
                 // display results in page
                 $(".image-tag").val(data_uri);
-                document.getElementById('photo').innerHTML =
+                document.getElementById('my_camera').innerHTML =
                     '<img src="' + data_uri + '"/>';
+                // $("#photo").attr("src", data_uri);
+
             });
         }
-        $('#capture').click(function(){
-            $("#fileToUpload").val('');
-            $(document).ready(function(){
-20
-  $("#fileToUpload").change(function(e){
-21
-    var img = e.target.files[0];
-22
-    if(!pixelarity.open(img,false,function(res){
-23
-      $("#photo").attr("src", res);
-24
-    },"jpg", 0.7)){
-25
-      alert("Whoops! That is not an image!");
-26
-    }
-27
-  });
-28
-}); 
-
-
-        })
+        
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
