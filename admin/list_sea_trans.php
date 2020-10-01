@@ -29,9 +29,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_landtranspo_sql = "SELECT * FROM tbl_landtranspo j inner join tbl_entity e on e.entity_no = j.entity_no ";
-$get_all_landtranspo_data = $con->prepare($get_all_landtranspo_sql);
-$get_all_landtranspo_data->execute();
+$get_all_individual_sql = "SELECT * FROM tbl_individual";
+$get_all_individual_data = $con->prepare($get_all_individual_sql);
+$get_all_individual_data->execute();
 
 
 
@@ -45,7 +45,7 @@ $get_all_landtranspo_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Land Trans Master List </title>
+  <title>VAMOS | Sea Trans Master List </title>
   <?php include('header.php'); ?>
 
 
@@ -63,9 +63,9 @@ $get_all_landtranspo_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Land Transportation Master List
+            <h4> Master List Sea Transportation
 
-              <a href="add_land_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+              <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -88,44 +88,15 @@ $get_all_landtranspo_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
+                          <th> ID </th>
                           <th> Date </th>
-                          <th> Entity # </th>
-
-                          <th> Username </th>
-                          <th> Trans. Type</th>
+                          <th> Full Name </th>
+                          <th> Address</th>
+                          <th> Contact No.</th>
                           <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
-
-                        <?php while ($list_land = $get_all_landtranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr>
-                            <td><?php echo $list_land['date_reg'];  ?></td>
-                            <td><?php echo $list_land['entity_no'];  ?></td>
-                            <td><?php echo $list_land['username'];  ?></td>
-                            <td><?php echo $list_land['trans_type']; ?> </td>
-                            <td>
-
-                              <button class="btn btn-success btn-sm" href="view_land_trans.php?&id=<?php echo $list_land['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></button>
-
-                              <button class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_land['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></button>
-
-
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_land['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              </a>
-                              &nbsp;
-
-                            </td>
-                          </tr>
-                        <?php } ?>
-
-
-
-
-
 
                       </tbody>
                     </table>
@@ -213,25 +184,25 @@ $get_all_landtranspo_data->execute();
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true
-      // initComplete: function() {
-      //   this.api().columns([4]).every(function() {
-      //     var column = this;
-      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-      //       .appendTo('#combo')
-      //       .on('change', function() {
-      //         var val = $.fn.dataTable.util.escapeRegex(
-      //           $(this).val()
-      //         );
-      //         column
-      //           .search(val ? '^' + val + '$' : '', true, false)
-      //           .draw();
-      //       });
-      //     column.data().unique().sort().each(function(d, j) {
-      //       select.append('<option value="' + d + '">' + d + '</option>')
-      //     });
-      //   });
-      // }
+      'autoHeight': true,
+      initComplete: function() {
+        this.api().columns([4]).every(function() {
+          var column = this;
+          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+            .appendTo('#combo')
+            .on('change', function() {
+              var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+              );
+              column
+                .search(val ? '^' + val + '$' : '', true, false)
+                .draw();
+            });
+          column.data().unique().sort().each(function(d, j) {
+            select.append('<option value="' + d + '">' + d + '</option>')
+          });
+        });
+      }
 
     });
     $('.select2').select2();
