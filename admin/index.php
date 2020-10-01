@@ -10,9 +10,13 @@ include('../config/db_config.php');
 // }
 
 //select all pum
-$get_all_pum_sql = "SELECT * FROM tbl_pum";
-$get_all_pum_data = $con->prepare($get_all_pum_sql);
-$get_all_pum_data->execute();
+$get_all_individual_sql = "SELECT * FROM tbl_individual";
+$get_all_individual_data = $con->prepare($get_all_individual_sql);
+$get_all_individual_data->execute();
+
+$get_all_juridical_sql = "SELECT * FROM tbl_juridical";
+$get_all_juridical_data = $con->prepare($get_all_juridical_sql);
+$get_all_juridical_data->execute();
 
 
 
@@ -48,9 +52,9 @@ $title = 'VAMOS | Dashboard';
             <div class="info-box mb-3">
               <a href="list_pum.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
               <div class="info-box-content">
-                <span class="info-box-text">Person Under Monitor</span>
+                <span class="info-box-text">Individual</span>
                 <span class="info-box-number">
-                  <?php echo $get_all_pum_data->rowCount() ?>
+                  <?php echo $get_all_individual_data->rowCount() ?>
                 </span>
               </div>
             </div>
@@ -60,7 +64,19 @@ $title = 'VAMOS | Dashboard';
             <div class="info-box mb-3">
               <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
               <div class="info-box-content">
-                <span class="info-box-text">Person Under Investigation</span>
+                <span class="info-box-text">Juridical</span>
+                <span class="info-box-number">
+                <?php echo $get_all_juridical_data->rowCount() ?>
+                </span>
+              </div>
+            </div>
+</div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
+              <div class="info-box-content">
+                <span class="info-box-text">Transportation</span>
                 <span class="info-box-number">
                   5
                   <?php echo "<pre";
@@ -71,38 +87,8 @@ $title = 'VAMOS | Dashboard';
               </div>
             </div>
 
-            <div class="collapse" id="collapseExample">
 
-              <div class="card p-0">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>PUI Number</th>
-                      <th>Address</th>
-                      <th style="width: 40px">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1 PUI</td>
-                      <td>S. Carmona Street, Zone 1, Brgy.6</td>
-                      <td><span class="badge bg-danger">HOT ZONE</span></td>
-                    </tr>
-                    <tr>
-                      <td>3 PUIs</td>
-                      <td>St. Vincent Subdivision, Brgy. 1</td>
-                      <td><span class="badge bg-danger">HOT ZONE</span></td>
-                    </tr>
-                    <tr>
-                      <td>1 PUI</td>
-                      <td>Brgy. Quezon</td>
-                      <td><span class="badge bg-danger">HOT ZONE</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div><!-- /.card-p-0 -->
-
-            </div><!-- /.collapse -->
+           
 
           </div> <!-- /.col-12 col-sm-6 col-md-3 -->
 
@@ -113,7 +99,7 @@ $title = 'VAMOS | Dashboard';
             <div class="info-box mb-3">
               <a href="#" class="info-box-icon bg-danger elevation-1"><span><i class="fa fa-male"></i></span></a>
               <div class="info-box-content">
-                <span class="info-box-text">Confirmed Cases</span>
+                <span class="info-box-text">Positive Cases</span>
                 <span class="info-box-number">
                   0
                 </span>
@@ -121,15 +107,7 @@ $title = 'VAMOS | Dashboard';
             </div>
           </div> <!-- /.col-12 col-sm-6 col-md-3 -->
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <a href="http://35.241.87.123/sccdrrmo/downloads/sccdrrmo-debug.apk" class="info-box-icon bg-success  elevation-1"><span><i class="fa fa-download "></i></span></a>
-              <div class="info-box-content">
-                <span class="info-box-text">Download Application</span>
-
-              </div>
-            </div>
-          </div> <!-- /.col-12 col-sm-6 col-md-3 -->
+         
 
         </div><!-- end row -->
         <div class="row">

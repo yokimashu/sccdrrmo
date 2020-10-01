@@ -28,6 +28,8 @@ $type = "INDIVIDUAL";
 $fullname = $firstname. ' ' .$middlename. ' ' .$lastname;
 $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
 
+$age = date_diff(date_create($newbirthdate), date_create($dateRegister))->y;
+
 // --- Check user if already exist
 $get_entity_data_sql = "SELECT * FROM tbl_entity where username = :username";
 $get_entity_data = $con->prepare($get_entity_data_sql);
@@ -103,6 +105,7 @@ if ($result == 0) {
             email              = :email,
             gender             = :gender,
             birthdate          = :birthdate,
+            age                = :age,
             street             = :street,
             barangay           = :barangay,
             city               = :city,
@@ -119,20 +122,21 @@ if ($result == 0) {
         ':firstname'       => $firstname,
         ':middlename'      => $middlename,
         ':lastname'        => $lastname,
-        ':mobileno'        => $$mobileno,
-        ':telephoneno'     => $$telephoneno,
+        ':mobileno'        => $mobileno,
+        ':telephoneno'     => $telephoneno,
         ':email'           => $email,
         ':gender'          => $gender,
         ':birthdate'       => $newbirthdate,
+        ':age'             => $age,
         ':street'          => $street,
-        ':barangay'       => $barangay,
+        ':barangay'        => $barangay,
         ':city'            => $city,
         ':province'        => $province,
         ':photo'           => $newfilename
 
     ]);
 
-    echo json_encode('Registration Success!');
+    echo json_encode('Success');
 } else {
     echo json_encode('Username already exist!');
 }
