@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms = $patient = $person_status = '';
+$symptoms = $patient = $person_status = $entity_no = '';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -29,9 +29,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_juridical_sql = "SELECT * FROM tbl_juridical j inner join tbl_entity e on e.entity_no = j.entity_no order by j.org_name";
-$get_all_juridical_data = $con->prepare($get_all_juridical_sql);
-$get_all_juridical_data->execute();
+$get_all_landtranspo_sql = "SELECT * FROM tbl_landtranspo j inner join tbl_entity e on e.entity_no = j.entity_no ";
+$get_all_landtranspo_data = $con->prepare($get_all_landtranspo_sql);
+$get_all_landtranspo_data->execute();
 
 
 
@@ -45,7 +45,7 @@ $get_all_juridical_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Master Lists Juridical </title>
+  <title>VAMOS | Land Trans Master List </title>
   <?php include('header.php'); ?>
 
 
@@ -63,11 +63,12 @@ $get_all_juridical_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Juridical
+            <h4> Land Transportation Master List
 
-              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
+              <a href="add_land_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
-
+              <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
 
           </div>
@@ -87,29 +88,32 @@ $get_all_juridical_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> ID </th>
-                          <th> Username</th>
-                          <th> Full Name </th>
-                          <th> Options </th>
+                          <th> Date </th>
+                          <th> Entity # </th>
 
+                          <th> Username </th>
+                          <th> Trans. Type</th>
+                          <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                        <?php while ($list_land = $get_all_landtranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
-                            <td><?php echo $list_juridical['entity_no'];  ?></td>
-                            <td><?php echo $list_juridical['username'];  ?></td>
-                            <td><?php echo $list_juridical['org_name']; ?> </td>
+                            <td><?php echo $list_land['date_reg'];  ?></td>
+                            <td><?php echo $list_land['entity_no'];  ?></td>
+                            <td><?php echo $list_land['username'];  ?></td>
+                            <td><?php echo $list_land['trans_type']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <button class="btn btn-success btn-sm" href="view_land_trans.php?&id=<?php echo $list_land['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></button>
 
-                              <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></a>
+                              <button class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_land['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></button>
 
 
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_land['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
                               &nbsp;
@@ -117,6 +121,12 @@ $get_all_juridical_data->execute();
                             </td>
                           </tr>
                         <?php } ?>
+
+
+
+
+
+
                       </tbody>
                     </table>
 
@@ -203,25 +213,25 @@ $get_all_juridical_data->execute();
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true,
-      initComplete: function() {
-        this.api().columns([4]).every(function() {
-          var column = this;
-          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-            .appendTo('#combo')
-            .on('change', function() {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-              );
-              column
-                .search(val ? '^' + val + '$' : '', true, false)
-                .draw();
-            });
-          column.data().unique().sort().each(function(d, j) {
-            select.append('<option value="' + d + '">' + d + '</option>')
-          });
-        });
-      }
+      'autoHeight': true
+      // initComplete: function() {
+      //   this.api().columns([4]).every(function() {
+      //     var column = this;
+      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+      //       .appendTo('#combo')
+      //       .on('change', function() {
+      //         var val = $.fn.dataTable.util.escapeRegex(
+      //           $(this).val()
+      //         );
+      //         column
+      //           .search(val ? '^' + val + '$' : '', true, false)
+      //           .draw();
+      //       });
+      //     column.data().unique().sort().each(function(d, j) {
+      //       select.append('<option value="' + d + '">' + d + '</option>')
+      //     });
+      //   });
+      // }
 
     });
     $('.select2').select2();
@@ -246,10 +256,22 @@ $get_all_juridical_data->execute();
       $('#delete_PUMl').modal('toggle');
 
     });
-  </script>
 
-<script>
-$('#users tbody').on('click', 'button.printlink', function() {
+
+
+    // $(document).ready(function() {
+    //   $('#print').click(function() {
+    //     var entity_no = $('#entity_no').val();
+    //     console.log(entity_no);
+
+    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
+    //   })
+    // });
+
+
+
+
+    $('#users tbody').on('click', 'button.printlink', function() {
       // alert ('hello');
       // var row = $(this).closest('tr');
       var table = $('#users').DataTable();
@@ -257,7 +279,7 @@ $('#users tbody').on('click', 'button.printlink', function() {
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
       var entity_no = data[0];
-      window.open("juridical_id_new.php?entity_no=" + entity_no, '_parent');
+      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
     });
   </script>
 </body>

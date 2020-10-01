@@ -62,7 +62,11 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
+    <!-- <link rel="stylesheet" href="../plugins/pixelarity/jquerysctipttop.css"> -->
     <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+    
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
@@ -76,6 +80,11 @@ $title = 'VAMOS | Add Individual';
             height: 240px;
             border: 1px solid black;
         }
+        #photo{
+				display: block;
+				position: relative;
+				margin-top: 40px;
+			}
     </style>
 
 </head>
@@ -246,31 +255,40 @@ $title = 'VAMOS | Add Individual';
 
                                         <div class="box-body">
                                             <br>
-                                            <div class="row">
+                                            <div class="row col-12">
 
-                                                <div class="col-md-1"></div>
+                                              
 
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <div class="col-md-7" style="border-style:dotted; vertical-align: middle; height: 280px; width:300px;border: 5px double green ;" id="my_camera" align="center" onClick="setup()">
-
-                                                    <img src="../postimage/user.png" style=" height: 240px; width:270px;margin:auto;">
-                                                    Click to ACCESS Camera
+                                            
+                                                <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
+                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
+                                                        Click me to Open Camera
+                                                  
+                                                  
+                                                </div> -->
+                                                <div style = "margin:auto">
+                                                <video id="webcam" autoplay playsinline width="200px" hidden height="200px"></video>
+                                            <canvas id="canvas" class="d-none" hidden onClick="setup()"></canvas>
+                                                <audio id="snapSound" preload = "auto"></audio>
+                                                       
+                                            <img src="../flutter/images/user.png" id = "photo" style="height: 200px; width:200px;" class = "photo">           
+                                            </div> 
                                                 </div>
-
-
-                                            </div> <br>
-
+                                            </div>
                                             <div class="row">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-4">
+                                                            <div style ="margin:auto">
+                                                <div class="col-10" style = "margin:auto;" >
 
                                                     <input type="hidden" name="image" class="image-tag">
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <button type="button" <?php echo $btn_enabled ?> class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE">OPEN CAMERA</button>
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>
                                                     <a href="#">
-                                                        <input type="button" <?php echo $btn_enabled ?> class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"></a>
-
+                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger"></a>
+                                                    
+                                                        </div>
                                                 </div>
                                                 <!-- </form> -->
                                             </div><br>
@@ -362,11 +380,15 @@ $title = 'VAMOS | Add Individual';
     <script src="../dist/js/demo.js"></script>
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
+    <!-- <script src="../plugins/pixelarity/pixelarity-faceless.js"></script>
+    <script src="../plugins/pixelarity/script-faceless.js"></script> -->
+    <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Toastr -->
     <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
-
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -381,10 +403,101 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
+    const webcamElement = document.getElementById('webcam');
+const canvasElement = document.getElementById('canvas');
+const snapSoundElement = document.getElementById('snapSound');
+const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+//     function loadImage() {
+//     var input = document.getElementById("fileToUpload");
+//     var fReader = new FileReader();
+//     fReader.readAsDataURL(input.files[0]);
+//     fReader.onloadend = function(event) {
+//       var img = document.getElementById("photo");
+//       img.src = event.target.result;
+//     }
+//   }
         $('.select2').select2();
+       
+
+
     </script>
 
     <script>
+//      $(document).ready(function(){
+// 20
+//   $("#fileToUpload").change(function(e){
+// 21
+//     var img = e.target.files[0];
+// 22
+//     if(!pixelarity.open(img,false,function(res){
+// 23
+//       $("#photo").attr("src", res);
+// 24
+//     },"jpg", 0.7)){
+// 25
+//       alert("Whoops! That is not an image!");
+// 26
+//     }
+// 27
+//   });
+  
+// 28
+// });
+$(document).ready(function(){
+20
+  $("#fileToUpload").change(function(e){
+21
+    var img = e.target.files[0];
+22
+    if(!pixelarity.open(img,false,function(res){
+23
+      $("#photo").attr("src", res);
+24
+    },"jpg", 0.7)){
+25
+      alert("Whoops! That is not an image!");
+26
+    }
+ $( "#photo").show();
+  });
+  $("#crop").click(function(e){
+    // var img = $('.photo img').attr('src');;
+    // var img = e.target.files[0];
+    // var img = $(".image-tag").val();
+    var input = document.getElementById("fileToUpload");
+ 
+      
+    // var img = $('#photo').attr('src');
+    console.log(event.target);
+    if(!pixelarity.open(input,false,function(res){
+23
+      $("#photo").attr("src", res);
+24
+    },"jpeg", 0.7)){
+25
+      alert("Whoops! That is not an image!");
+26
+    
+}
+  });
+
+  $("#opencamera").click(function(){
+             $( "#canvas").show();
+            $( "#webcam").show();
+             $('#canvas').removeAttr('hidden');
+            $('#webcam').removeAttr('hidden');
+            $( "#photo").hide();
+webcam.start()
+.then(result =>{
+console.log("webcam started");
+    })
+.catch(err => {
+console.log(err);
+})
+});
+28
+});
+
         function generateID() {
 
             $.ajax({
@@ -413,20 +526,31 @@ $title = 'VAMOS | Add Individual';
 
     <script language="JavaScript">
         function setup() {
-            Webcam.reset();
-            Webcam.attach('#my_camera');
+            // Webcam.reset();
+            // Webcam.attach('#my_camera');
+           
         }
-
+    
         function take_snapshot() {
-            // take snapshot and get image data
-            Webcam.snap(function(data_uri) {
-                // display results in page
-                $(".image-tag").val(data_uri);
-                document.getElementById('my_camera').innerHTML =
-                    '<img src="' + data_uri + '"/>';
-            });
+            // // take snapshot and get image data
+            // Webcam.snap(function(data_uri) {
+            //     // display results in page
+            //     $(".image-tag").val(data_uri);
+            //     // document.getElementById('my_camera').innerHTML =
+            //     //     '<img src="' + data_uri + '"/>';
+            //     $("#photo").attr("src", data_uri);
+            //     Webcam.stop();
+            // });
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden",true);
+            webcam.stop();
+            $( "#canvas").hide();
+            $( "#webcam").hide();
+            $( "#photo").show();
         }
-
+        
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {

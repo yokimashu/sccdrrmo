@@ -45,7 +45,7 @@ $get_all_individual_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Master Lists Transportation </title>
+  <title>VAMOS | Sea Trans Master List </title>
   <?php include('header.php'); ?>
 
 
@@ -63,9 +63,9 @@ $get_all_individual_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Transportation
+            <h4> Master List Sea Transportation
 
-              <a href="add_transportation" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+              <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->

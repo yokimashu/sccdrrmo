@@ -3,7 +3,9 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 
-include('list_individual.php');
+// include('list_individual.php');
+
+
 
 
 session_start();
@@ -34,13 +36,18 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 $entity_no = $_GET['entity_no'];
-$entity_no = '';
+// $entity_no = '';
 
 
-$get_all_history_sql = "SELECT * FROM tbl_individual_history r inner join tbl_individual_history h on h.entity_no = r.entity_no where r.entity_no = :entity_no";
+// $get_all_history_sql = "select * from tbl_individual r
+//                         inner join tbl_individual_history t on t.entity_id = r.entity_no where r.entity_no = :entity_no";
+// $get_all_history_data = $con->prepare($get_all_history_sql);
+// $get_all_history_data->execute();
+
+
+$get_all_history_sql = "select * from tbl_individual r inner join tbl_tracehistory t on t.entity_no = r.entity_no where r.entity_no = '".$entity_no."'";
 $get_all_history_data = $con->prepare($get_all_history_sql);
 $get_all_history_data->execute();
-
 
 
 
@@ -91,8 +98,11 @@ $get_all_history_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual History
 
-              <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
-                <i class="nav-icon fa fa-plus-square"></i></a>
+            <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+
+              <!-- <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a> -->
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
@@ -117,7 +127,7 @@ $get_all_history_data->execute();
                         
                           <th> Date </th>
                        
-                          <th> location</th>
+                          <th> entity_no</th>
                           <th> Person Scanned </th>
                          
                           <th> Options</th>
@@ -126,9 +136,10 @@ $get_all_history_data->execute();
                       <tbody>
                         <?php while ($list_history = $get_all_history_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
-                            <td><?php echo $list_history['date_scan'];  ?></td>
-                            <td><?php echo $list_history['location'];  ?></td>
-                            <td><?php echo $list_history['person_scan']; ?> </td>
+                            <td><?php echo $list_history['date'];  ?></td>
+                            <td><?php echo $list_history['entity_no'];  ?></td>
+                            <td><?php echo $list_history['trace_no'];  ?></td>
+                          
                          
                             <td>
                               
