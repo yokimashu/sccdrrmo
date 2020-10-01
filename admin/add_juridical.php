@@ -254,13 +254,17 @@ $title = 'VAMOS | Juridical Form';
                                             <div class="row" align="center">
 
 
-                                                <div class="col-md-3"></div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div class="col-md-2"></div>
+                                                &nbsp;&nbsp;
                                                 <div>
+
+
+                                                    <input type="file" id="fileToUpload" name="myFile" id="fileToUpload" onchange="loadImage()" class="form-control btn btn-danger">
+
 
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                     <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
-                                                    <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()">
+                                                    <!-- <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()"> -->
 
                                                 </div>
 

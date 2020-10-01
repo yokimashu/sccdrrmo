@@ -166,7 +166,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
                 </li>
 
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="list_sea_trans" class="nav-link">
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa fa-arrow-right "></i>
                     <p> &nbsp; Sea Trans.</p>
                   </a>
