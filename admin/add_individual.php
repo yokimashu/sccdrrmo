@@ -64,7 +64,7 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
-    <link rel="stylesheet" href="../plugins/pixelarity/jquerysctipttop.css">
+    <!-- <link rel="stylesheet" href="../plugins/pixelarity/jquerysctipttop.css"> -->
     <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
     
     <!-- Google Font: Source Sans Pro -->
@@ -80,6 +80,11 @@ $title = 'VAMOS | Add Individual';
             height: 240px;
             border: 1px solid black;
         }
+        #photo{
+				display: block;
+				position: relative;
+				margin-top: 40px;
+			}
     </style>
 
 </head>
@@ -256,10 +261,12 @@ $title = 'VAMOS | Add Individual';
 
                                              <div style = "margin:auto">
                                                 <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
-
-                                                    <img src="" id = "photo" style=" height: 240px; width:270px;margin:auto;">
-                                                    Click to ACCESS Camera
+                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
+                                                        Click me to Open Camera
+                                                  
+                                                  
                                                 </div>
+                                             
                                                         </div>
 
                                             </div> <br>
@@ -274,6 +281,7 @@ $title = 'VAMOS | Add Individual';
                                                     <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
                                                     <a href="#">
                                                         <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger"></a>
+                                                    
                                                         </div>
                                                 </div>
                                                 <!-- </form> -->
@@ -367,8 +375,9 @@ $title = 'VAMOS | Add Individual';
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
-    <script src="../plugins/pixelarity/pixelarity-faceless.js"></script>
- 
+    <!-- <script src="../plugins/pixelarity/pixelarity-faceless.js"></script>
+    <script src="../plugins/pixelarity/script-faceless.js"></script> -->
+    <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Toastr -->
     <script src="../plugins/toastr/toastr.min.js"></script>
@@ -389,7 +398,7 @@ $title = 'VAMOS | Add Individual';
 
     <script type="text/javascript">
 //     function loadImage() {
-//     var input = document.getElementById("fileTo Upload");
+//     var input = document.getElementById("fileToUpload");
 //     var fReader = new FileReader();
 //     fReader.readAsDataURL(input.files[0]);
 //     fReader.onloadend = function(event) {
@@ -404,7 +413,27 @@ $title = 'VAMOS | Add Individual';
     </script>
 
     <script>
-     $(document).ready(function(){
+//      $(document).ready(function(){
+// 20
+//   $("#fileToUpload").change(function(e){
+// 21
+//     var img = e.target.files[0];
+// 22
+//     if(!pixelarity.open(img,false,function(res){
+// 23
+//       $("#photo").attr("src", res);
+// 24
+//     },"jpg", 0.7)){
+// 25
+//       alert("Whoops! That is not an image!");
+// 26
+//     }
+// 27
+//   });
+  
+// 28
+// });
+$(document).ready(function(){
 20
   $("#fileToUpload").change(function(e){
 21
@@ -419,10 +448,11 @@ $title = 'VAMOS | Add Individual';
       alert("Whoops! That is not an image!");
 26
     }
-27
+
   });
 28
 });
+
         function generateID() {
 
             $.ajax({
@@ -462,12 +492,11 @@ $title = 'VAMOS | Add Individual';
                 $(".image-tag").val(data_uri);
                 document.getElementById('my_camera').innerHTML =
                     '<img src="' + data_uri + '"/>';
+                // $("#photo").attr("src", data_uri);
+
             });
         }
-        $('#capture').click(function(){
-            $("#fileToUpload").val(''); 
-
-        })
+        
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {

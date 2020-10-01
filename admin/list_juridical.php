@@ -109,7 +109,7 @@ $get_all_juridical_data->execute();
                                 <i class="fa fa-suitcase"></i></a>
 
 
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
                               &nbsp;
@@ -245,6 +245,19 @@ $get_all_juridical_data->execute();
       $('#user_id').val(user_id);
       $('#delete_PUMl').modal('toggle');
 
+    });
+  </script>
+
+<script>
+$('#users tbody').on('click', 'button.printlink', function() {
+      // alert ('hello');
+      // var row = $(this).closest('tr');
+      var table = $('#users').DataTable();
+      var data = table.row($(this).parents('tr')).data();
+      //  alert (data[0]);
+      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+      var entity_no = data[0];
+      window.open("juridical_id_new.php?entity_no=" + entity_no, '_parent');
     });
   </script>
 </body>

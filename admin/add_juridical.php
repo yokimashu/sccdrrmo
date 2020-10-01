@@ -133,7 +133,7 @@ $title = 'VAMOS | Juridical Form';
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
+                                                    <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
                                             </div></br>
 
@@ -396,6 +396,20 @@ $title = 'VAMOS | Juridical Form';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
+    <script>
+        function generateID() {
+
+            $.ajax({
+                type: 'POST',
+                data: {},
+                url: 'generate_id.php',
+                success: function(data) {
+                    $('#entity_no').val(data);
+                }
+            });
+        }
+        window.onload = generateID;
+    </script>
 
 
     <script type="text/javascript">
