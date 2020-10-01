@@ -1,8 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('insert_land_transpo.php');
-
+include('insert_individual.php');
 $btn_enabled = 'enabled';
 
 session_start();
@@ -18,9 +17,9 @@ if (!isset($_SESSION['id'])) {
 $now = new DateTime();
 
 
-$btnSave = $btnEdit = $alert_msg = $entity_no = $vehicle_name =
-    $vehicle_no = $plate_no = $route = $contact_name =
-    $contact_position = $mobile_no = $tel_no = $email_address = $user_name = '';
+$btnSave = $btnEdit = $alert_msg = $entity_no = $vessel_name = $voyage_no
+    = $port_embarkation = $contact_name = $contact_position = $mobile_no
+    = $tel_no = $email_address = '';
 
 
 
@@ -28,11 +27,11 @@ $btnSave = $btnEdit = $alert_msg = $entity_no = $vehicle_name =
 $btnNew = 'hidden';
 
 
-$get_all_category_sql = "SELECT * FROM categ_land_transpo";
+$get_all_category_sql = "SELECT * FROM categ_sea_transpo";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
-$title = 'VAMOS | Land Trans Form';
+$title = 'VAMOS | Sea Trans Form';
 
 
 ?>
@@ -96,7 +95,7 @@ $title = 'VAMOS | Land Trans Form';
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
-                        <h4>Land Transportation Form</h4>
+                        <h4>Sea Transportation Form</h4>
                     </div>
 
 
@@ -106,7 +105,7 @@ $title = 'VAMOS | Land Trans Form';
 
                             <div class="box-body">
                                 <div class="row">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <div class="m-1 pb-1"> </div>
                                     <div class="card col-md-6">
 
@@ -136,26 +135,13 @@ $title = 'VAMOS | Land Trans Form';
                                                 </div>
 
                                             </div></br>
-
-
-
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
-                                                    <div id="status"></div>
-                                                </div>
-                                            </div></br>
-
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="land_transpo_type" value="<?php echo $transpo; ?>">
+                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="sea_transpo_type" value="<?php echo $transpo; ?>">
                                                         <option selected="selected">Select Transportation Type</option>
                                                         <?php while ($get_transpo = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_transpo['transpo_name']; ?>"><?php echo $get_transpo['transpo_name']; ?></option>
+                                                            <option value="<?php echo $get_transpo['categ_sea_name']; ?>"><?php echo $get_transpo['categ_sea_name']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -165,7 +151,7 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="vechicle_name" placeholder="Vehicle Name" value="<?php echo $vehicle_name ?>">
+                                                    <input type="text" class="form-control" name="vessel_name" placeholder="Name of Vessel" value="<?php echo $vessel_name ?>">
                                                 </div>
                                             </div></br>
 
@@ -173,26 +159,19 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="vehicle_no" placeholder="Vehicle #" value="<?php echo $vehicle_no ?>">
+                                                    <input type="text" class="form-control" name="voyage_no" placeholder="Voyage #" value="<?php echo $voyage_no ?>">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="plate_no" placeholder="Plate #" value="<?php echo $plate_no ?>">
+                                                    <input type="text" class="form-control" name="port_embarkation" placeholder="Port of Embarkation" value="<?php echo $port_embarkation ?>">
                                                 </div>
 
 
                                             </div><br>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="route" placeholder="Route / Area of Operation" value="<?php echo $route ?>">
-                                                </div>
-                                            </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -221,9 +200,9 @@ $title = 'VAMOS | Land Trans Form';
                                         <div class="box-body">
                                             <br>
                                             <div class="row">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <div class="col-md-1"></div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                                                 <div class="col-md-3">
 
                                                     <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
@@ -235,7 +214,8 @@ $title = 'VAMOS | Land Trans Form';
                                                 <form method="POST" action="storeImage.php">
 
                                                     <div class="col-md-3"></div>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;
                                                     <div>
 
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
@@ -278,14 +258,13 @@ $title = 'VAMOS | Land Trans Form';
                                                 </div>
                                             </div><br>
 
-
                                             <div class="box-footer" align="center">
 
 
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_land_transpo" id="btnSubmit" class="btn btn-success">
+                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
 
-                                                <a href="list_land_trans">
+                                                <a href="list_sea_trans">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>

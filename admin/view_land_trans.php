@@ -20,19 +20,52 @@ $now = new DateTime();
 
 $btnSave = $btnEdit = $alert_msg = $entity_no = $vehicle_name =
     $vehicle_no = $plate_no = $route = $contact_name =
-    $contact_position = $mobile_no = $tel_no = $email_address = $user_name = '';
-
-
-
+    $contact_position = $mobile_no = $tel_no = $email_address = $geeeeeeeeeeeuser_name = '';
 
 $btnNew = 'hidden';
+
+
+
+
+$user_id = $_GET['id'];
+$get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='$user_id'";
+$get_data_data = $con->prepare($get_data_sql);
+$get_data_data->execute([':id' => $user_id]);
+
+while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+    $get_entity_no = $result['entity_no'];
+    $get_username = $result['username'];
+    $get_password = $result['password'];
+
+    $get_date_register = $result['date_register'];
+
+
+
+
+
+}
+
+
+
+
+
+
+
 
 
 $get_all_category_sql = "SELECT * FROM categ_land_transpo";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
 
-$title = 'VAMOS | Land Trans Form';
+
+
+
+
+
+
+$title = 'VAMOS | View Land Trans ';
 
 
 ?>
