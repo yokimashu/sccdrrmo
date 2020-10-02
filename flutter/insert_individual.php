@@ -25,7 +25,7 @@ $photo = $_FILES["photo"]["name"];
 $status = "ACTIVE";
 $type = "INDIVIDUAL";
 
-$fullname = $firstname. ' ' .$middlename. ' ' .$lastname;
+$fullname = $firstname . ' ' . $middlename . ' ' . $lastname;
 $hashed_password  = password_hash($password, PASSWORD_DEFAULT);
 
 $age = date_diff(date_create($newbirthdate), date_create($dateRegister))->y;
@@ -39,23 +39,51 @@ $result = $get_entity_data->fetch(PDO::FETCH_ASSOC);
 if ($result == 0) {
 
     //---generate entity number
-    $template = 'XXXXXX9999';
-    $k = strlen($template);
-    $sernum = '';
-    for ($i = 0; $i < $k; $i++) {
-        switch ($template[$i]) {
-            case 'X':
-                $sernum .= chr(rand(65, 90));
-                break;
-            case '9':
-                $sernum .= rand(0, 9);
-                break;
-            case '-':
-                $sernum .= '-';
-                break;
+    function generateEntityID()
+    {
+        global $entity_no;
+
+        $template = 'XXXXXX9999';
+        $k = strlen($template);
+        $sernum = '';
+        for ($i = 0; $i < $k; $i++) {
+            switch ($template[$i]) {
+                case 'X':
+                    $sernum .= chr(rand(65, 90));
+                    break;
+                case '9':
+                    $sernum .= rand(0, 9);
+                    break;
+                case '-':
+                    $sernum .= '-';
+                    break;
+            }
+        }
+        $entity_no = $sernum;
+
+        checkEntityID();
+    }
+
+    //---check if entity number is not duplicate
+    function checkEntityID()
+    {
+
+        global $con;
+        global $entity_no;
+
+        $check_entity_sql = "SELECT * FROM tbl_entity where entity_no = :entity";
+        $check_entity_data = $con->prepare($check_entity_sql);
+        $check_entity_data->execute([':entity' => $entity_no]);
+
+        $entity_count = $check_entity_data->rowCount();
+
+        if ($entity_count == 0) {
+        } else {
+            generateEntityID();
         }
     }
-    $serializedEntityID = $sernum;
+
+    generateEntityID();
 
     // --- photo location and generate unique photo name
     $currentDir = getcwd();
@@ -82,7 +110,7 @@ if ($result == 0) {
     $sql_data = $con->prepare($insert_entity_sql);
     $sql_data->execute([
 
-        ':entity_no'    => $serializedEntityID,
+        ':entity_no'    => $entity_no,
         ':username'     => $username,
         ':password'     => $hashed_password,
         ':type'         => $type,
@@ -116,7 +144,7 @@ if ($result == 0) {
 
     $indivdata = $con->prepare($insert_individual_sql);
     $indivdata->execute([
-        ':entity_no'       => $serializedEntityID,
+        ':entity_no'       => $entity_no,
         ':date_register'   => $dateRegister,
         ':fullname'        => $fullname,
         ':firstname'       => $firstname,
