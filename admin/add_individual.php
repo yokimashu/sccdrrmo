@@ -476,7 +476,9 @@ $(document).ready(function(){
       alert("Whoops! That is not an image!");
 26
     }
- $( "#photo").show();
+        $( "#photo").show();
+    $( "#canvas").hide();
+            $( "#webcam").hide();
   });
   $("#crop").click(function(e){
     // var img = $('.class').find('.photo').attr('src');
@@ -533,12 +535,12 @@ console.log(err);
 
 
     <script language="JavaScript">
-        Webcam.set({
-            width: 300,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 70
-        });
+        // Webcam.set({
+        //     width: 300,
+        //     height: 240,
+        //     image_format: 'jpeg',
+        //     jpeg_quality: 70
+        // });
         //Webcam.attach( '#my_camera' );
     </script>
 
