@@ -302,7 +302,7 @@ $title = 'VAMOS | Add Individual';
                                             <canvas id="canvas" class="d-none" hidden   width = "600" height="530" align="center" onClick="setup()" class = "photo  img-thumbnail"></canvas>
                                                 <audio id="snapSound" preload = "auto"></audio>
                                                        
-                                            <img src="../flutter/images/user.jpg" id = "photo"  style="height: 500px; width:600px;margin:auto;" class = "photo img-thumbnail">           
+                                            <img src="../flutter/images/user.jpg" id = "photo"  style="height: 460px; width:600px;margin:auto;" class = "photo img-thumbnail">           
                                             </div> 
                                             
                                                 </div>
@@ -310,20 +310,36 @@ $title = 'VAMOS | Add Individual';
                                             <div class="row">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
                                                             <div style ="margin:auto">
-                                                <div class="col-10" style = "margin:auto;" >
-
+                                                <div class="col-12" style = "margin:auto;margin-top:30px;margin-bottom:30px" >
+                                                    <span class="align-baseline">
                                                     <input type="hidden" name="image" class="image-tag">
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE">OPEN CAMERA</button>
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>
-                                                    <a href="#">
-                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger img-fluid"></a>
-                                                    
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE"><i class = "fa fa-camera"></i></button>
+                                        <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class = "fa fa-check"></i></button>
+                               <!--   <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>--> 
+                                                        <style>
+                                               input[type="file"] {
+                                                        display: none;
+                                                        }
+                                                            .custom-file-upload {
+                                                                border: 1px solid #ccc;
+                                                                border-radius: 5px;
+                                                                display: inline-block;
+                                                                padding: 7px 12px;
+                                                                cursor: pointer;
+                                                                }
+                                                                    </style>
+                                                        <label for="fileToUpload" class="custom-file-upload">
+                                                                <i class="fa fa-cloud-upload"></i> Import Image
+                                                            </label>
+                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" class="btn btn-danger custom-file-upload ">
+                                                
+                                                    </span>
                                                         </div>
                                                 </div>
                                                 <!-- </form> -->
-                                            </div><br>
+                                            </div>
+                                        <br>
 
                                             
 
