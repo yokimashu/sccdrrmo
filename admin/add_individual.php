@@ -244,50 +244,7 @@ $title = 'VAMOS | Add Individual';
 
 
                                         </div>
-
-
-                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                    <div class="card col-md-5">
-                                        <div class="card-header">
-                                            <h6><strong> ID PHOTO </strong></h6>
-                                        </div>
-
-                                        <div class="box-body">
-                                            <br>
-                                            <div class="row">
-
-                                              
-
-                                             <div style = "margin:auto">
-                                                <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
-                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
-                                                        Click me to Open Camera
-                                                  
-                                                  
-                                                </div>
-                                             
-                                                        </div>
-
-                                            </div> <br>
-
-                                            <div class="row">
-                                                <!-- <form method="POST" action="storeImage.php"> -->
-                                                            <div style ="margin:auto">
-                                                <div class="col-12" >
-
-                                                    <input type="hidden" name="image" class="image-tag">
-                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
-                                                    <a href="#">
-                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger"></a>
-                                                    
-                                                        </div>
-                                                </div>
-                                                <!-- </form> -->
-                                            </div><br>
-
-                                            <div class="row">
+                                        <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <label>CONTACT DETAILS </label>
@@ -318,6 +275,73 @@ $title = 'VAMOS | Add Individual';
                                                     <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder="Email Address" value="<?php echo $email; ?>">
                                                 </div>
                                             </div><br>
+
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <div class="card col-md-5">
+                                        <div class="card-header">
+                                            <h6><strong> ID PHOTO </strong></h6>
+                                        </div>
+
+                                        <div class="box-body">
+                                            <br>
+                                            <div class="row col-12">
+
+                                              
+
+                                            
+                                                <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
+                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
+                                                        Click me to Open Camera
+                                                  
+                                                  
+                                                </div> -->
+                                                <div style = "margin:auto">
+                                                 
+                                                <video id="webcam" autoplay playsinline width = "600" height="530" align = "center" hidden class = "photo  img-thumbnail"></video>
+                                            <canvas id="canvas" class="d-none" hidden   width = "600" height="530" align="center" onClick="setup()" class = "photo  img-thumbnail"></canvas>
+                                                <audio id="snapSound" preload = "auto"></audio>
+                                                       
+                                            <img src="../flutter/images/user.jpg" id = "photo"  style="height: 460px; width:600px;margin:auto;" class = "photo img-thumbnail">           
+                                            </div> 
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- <form method="POST" action="storeImage.php"> -->
+                                                            <div style ="margin:auto">
+                                                <div class="col-12" style = "margin:auto;margin-top:30px;margin-bottom:30px" >
+                                                    <span class="align-baseline">
+                                                    <input type="hidden" name="image" class="image-tag">
+                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE"><i class = "fa fa-camera"></i></button>
+                                        <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class = "fa fa-check"></i></button>
+                               <!--   <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>--> 
+                                                        <style>
+                                               input[type="file"] {
+                                                        display: none;
+                                                        }
+                                                            .custom-file-upload {
+                                                                border: 1px solid #ccc;
+                                                                border-radius: 5px;
+                                                                display: inline-block;
+                                                                padding: 7px 12px;
+                                                                cursor: pointer;
+                                                                }
+                                                                    </style>
+                                                        <label for="fileToUpload" class="custom-file-upload">
+                                                                <i class="fa fa-cloud-upload"></i> Import Image
+                                                            </label>
+                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" class="btn btn-danger custom-file-upload ">
+                                                
+                                                    </span>
+                                                        </div>
+                                                </div>
+                                                <!-- </form> -->
+                                            </div>
+                                        <br>
+
+                                            
 
                                             <div class="box-footer" align="center">
 
@@ -382,7 +406,7 @@ $title = 'VAMOS | Add Individual';
     <!-- Toastr -->
     <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
-
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -397,6 +421,10 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
+    const webcamElement = document.getElementById('webcam');
+const canvasElement = document.getElementById('canvas');
+const snapSoundElement = document.getElementById('snapSound');
+const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 //     function loadImage() {
 //     var input = document.getElementById("fileToUpload");
 //     var fReader = new FileReader();
@@ -448,8 +476,44 @@ $(document).ready(function(){
       alert("Whoops! That is not an image!");
 26
     }
-
+ $( "#photo").show();
   });
+  $("#crop").click(function(e){
+    // var img = $('.class').find('.photo').attr('src');
+    // var img = e.target.files[0];
+    // var img = $(".image-tag").val();
+    var image = new Image();
+    var img = $('#photo').prop('src');
+    image.src = img;
+      var image2 = image;
+    // var img = $('#photo').attr('src');
+    console.log(image);
+    if(!pixelarity.open(image2,false,function(res){
+23
+      $("#photo").attr("src", res);
+24
+    },"jpeg", 0.7)){
+25
+      alert("Whoops! That is not an image!");
+26
+    
+}
+  });
+
+  $("#opencamera").click(function(){
+             $( "#canvas").show();
+            $( "#webcam").show();
+             $('#canvas').removeAttr('hidden');
+            $('#webcam').removeAttr('hidden');
+            $( "#photo").hide();
+webcam.start()
+.then(result =>{
+console.log("webcam started");
+    })
+.catch(err => {
+console.log(err);
+})
+});
 28
 });
 
@@ -481,20 +545,29 @@ $(document).ready(function(){
 
     <script language="JavaScript">
         function setup() {
-            Webcam.reset();
-            Webcam.attach('#my_camera');
+            // Webcam.reset();
+            // Webcam.attach('#my_camera');
+           
         }
-
+    
         function take_snapshot() {
-            // take snapshot and get image data
-            Webcam.snap(function(data_uri) {
-                // display results in page
-                $(".image-tag").val(data_uri);
-                document.getElementById('my_camera').innerHTML =
-                    '<img src="' + data_uri + '"/>';
-                // $("#photo").attr("src", data_uri);
-
-            });
+            // // take snapshot and get image data
+            // Webcam.snap(function(data_uri) {
+            //     // display results in page
+            //     $(".image-tag").val(data_uri);
+            //     // document.getElementById('my_camera').innerHTML =
+            //     //     '<img src="' + data_uri + '"/>';
+            //     $("#photo").attr("src", data_uri);
+            //     Webcam.stop();
+            // });
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden",true);
+            webcam.stop();
+            $( "#canvas").hide();
+            $( "#webcam").hide();
+            $( "#photo").show();
         }
         
         function checkUsername() {

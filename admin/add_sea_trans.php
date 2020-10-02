@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('insert_individual.php');
+include('insert_sea_transpo.php');
 $btn_enabled = 'enabled';
 
 session_start();
@@ -19,7 +19,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit = $alert_msg = $entity_no = $vessel_name = $voyage_no
     = $port_embarkation = $contact_name = $contact_position = $mobile_no
-    = $tel_no = $email_address = '';
+    = $tel_no = $email_address = $user_name = '';
 
 
 
@@ -135,6 +135,23 @@ $title = 'VAMOS | Sea Trans Form';
                                                 </div>
 
                                             </div></br>
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>First Name:</label> -->
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
+                                                    <div id="status"></div>
+                                                </div>
+                                            </div></br>
+
+
+
+
+
+
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
@@ -261,7 +278,7 @@ $title = 'VAMOS | Sea Trans Form';
                                             <div class="box-footer" align="center">
 
 
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+                                                <button type="submit" <?php echo $btnSave; ?> name="insert_sea_transpo" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
 
                                                 <a href="list_sea_trans">
