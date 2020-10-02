@@ -244,56 +244,7 @@ $title = 'VAMOS | Add Individual';
 
 
                                         </div>
-
-
-                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                    <div class="card col-md-5">
-                                        <div class="card-header">
-                                            <h6><strong> ID PHOTO </strong></h6>
-                                        </div>
-
-                                        <div class="box-body">
-                                            <br>
-                                            <div class="row col-12">
-
-                                              
-
-                                            
-                                                <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
-                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
-                                                        Click me to Open Camera
-                                                  
-                                                  
-                                                </div> -->
-                                                <div style = "margin:auto">
-                                                <video id="webcam" autoplay playsinline width="200px" hidden height="200px"></video>
-                                            <canvas id="canvas" class="d-none" hidden onClick="setup()"></canvas>
-                                                <audio id="snapSound" preload = "auto"></audio>
-                                                       
-                                            <img src="../flutter/images/user.png" id = "photo" style="height: 200px; width:200px;" class = "photo">           
-                                            </div> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <!-- <form method="POST" action="storeImage.php"> -->
-                                                            <div style ="margin:auto">
-                                                <div class="col-10" style = "margin:auto;" >
-
-                                                    <input type="hidden" name="image" class="image-tag">
-                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE">OPEN CAMERA</button>
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>
-                                                    <a href="#">
-                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger"></a>
-                                                    
-                                                        </div>
-                                                </div>
-                                                <!-- </form> -->
-                                            </div><br>
-
-                                            <div class="row">
+                                        <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <label>CONTACT DETAILS </label>
@@ -324,6 +275,57 @@ $title = 'VAMOS | Add Individual';
                                                     <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder="Email Address" value="<?php echo $email; ?>">
                                                 </div>
                                             </div><br>
+
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <div class="card col-md-5">
+                                        <div class="card-header">
+                                            <h6><strong> ID PHOTO </strong></h6>
+                                        </div>
+
+                                        <div class="box-body">
+                                            <br>
+                                            <div class="row col-12">
+
+                                              
+
+                                            
+                                                <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
+                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
+                                                        Click me to Open Camera
+                                                  
+                                                  
+                                                </div> -->
+                                                <div style = "margin:auto">
+                                                 
+                                                <video id="webcam" autoplay playsinline width = "600" height="530" align = "center" hidden class = "photo  img-thumbnail"></video>
+                                            <canvas id="canvas" class="d-none" hidden   width = "600" height="530" align="center" onClick="setup()" class = "photo  img-thumbnail"></canvas>
+                                                <audio id="snapSound" preload = "auto"></audio>
+                                                       
+                                            <img src="../flutter/images/user.jpg" id = "photo"  style="height: 500px; width:600px;margin:auto;" class = "photo img-thumbnail">           
+                                            </div> 
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- <form method="POST" action="storeImage.php"> -->
+                                                            <div style ="margin:auto">
+                                                <div class="col-10" style = "margin:auto;" >
+
+                                                    <input type="hidden" name="image" class="image-tag">
+                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE">OPEN CAMERA</button>
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
+                                                    <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>
+                                                    <a href="#">
+                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger img-fluid"></a>
+                                                    
+                                                        </div>
+                                                </div>
+                                                <!-- </form> -->
+                                            </div><br>
+
+                                            
 
                                             <div class="box-footer" align="center">
 
@@ -461,15 +463,16 @@ $(document).ready(function(){
  $( "#photo").show();
   });
   $("#crop").click(function(e){
-    // var img = $('.photo img').attr('src');;
+    // var img = $('.class').find('.photo').attr('src');
     // var img = e.target.files[0];
     // var img = $(".image-tag").val();
-    var input = document.getElementById("fileToUpload");
- 
-      
+    var image = new Image();
+    var img = $('#photo').prop('src');
+    image.src = img;
+      var image2 = image;
     // var img = $('#photo').attr('src');
-    console.log(event.target);
-    if(!pixelarity.open(input,false,function(res){
+    console.log(image);
+    if(!pixelarity.open(image2,false,function(res){
 23
       $("#photo").attr("src", res);
 24
