@@ -17,7 +17,7 @@ if (!isset($_SESSION['id'])) {
 $now = new DateTime();
 
 $btnSave = $btnEdit = $entity_no = $user_name = $firstname = $middlename = $lastname = $age = $gender =
-    $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
+    $brgy = $street = $city = $province = $city_origin = $alert_msg = $date_arrival = $contact_number =
     $travel_days = $patient_disease = $symptoms = $barangay = $entity_no = $mobile_no = $telephone_no = $email = '';
 $btnNew = 'hidden';
 
@@ -99,7 +99,9 @@ $title = 'VAMOS | Add Individual';
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
 
             <section class="content">
                 <div class="card">
