@@ -316,7 +316,7 @@ $title = 'VAMOS | Add Individual';
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                     <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE"><i class = "fa fa-camera"></i></button>
                                         <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class = "fa fa-check"></i></button>
-                               <!--   <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>--> 
+                                 <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button> 
                                                         <style>
                                                input[type="file"] {
                                                         display: none;
@@ -483,14 +483,15 @@ $(document).ready(function(){
   $("#crop").click(function(e){
     // var img = $('.class').find('.photo').attr('src');
     // var img = e.target.files[0];
-    // var img = $(".image-tag").val();
-    var image = new Image();
-    var img = $('#photo').prop('src');
-    image.src = img;
-      var image2 = image;
+    
+    var  img = $("#photo").attr("src");
+    // var image = new Image();
+    // var img = $('#photo').getAttribute('src');
+    // image.src = img;
+    //   var image2 = image;
     // var img = $('#photo').attr('src');
-    console.log(image);
-    if(!pixelarity.open(image2,false,function(res){
+    console.log(img);
+    if(!pixelarity.open(img,true,function(res){
 23
       $("#photo").attr("src", res);
 24
