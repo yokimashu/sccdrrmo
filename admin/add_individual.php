@@ -487,22 +487,32 @@ $title = 'VAMOS | Add Individual';
         $(document).ready(function() {
             20
             $("#fileToUpload").change(function(e) {
-                21
+          
                 var img = e.target.files[0];
                 22
                 if (!pixelarity.open(img, false, function(res) {
                         23
                         $("#photo").attr("src", res);
-                        24
+                        $(".image-tag").attr("value", res);
                     }, "jpg", 0.7)) {
                     25
                     alert("Whoops! That is not an image!");
                     26
                 }
+                  
                 $("#photo").show();
                 $("#canvas").hide();
                 $("#webcam").hide();
+               
             });
+        //     $(".image-tag").change(function() {
+        //       var image = $('#photo').attr('src');
+        //         $(".image-tag").val(image);
+        //     )
+        // });
+
+        
+
             $("#crop").click(function(e) {
                 // var img = $('.class').find('.photo').attr('src');
                 // var img = e.target.files[0];
@@ -525,6 +535,7 @@ $title = 'VAMOS | Add Individual';
 
                 }
             });
+ 
 
             $("#opencamera").click(function() {
                 $("#canvas").show();
