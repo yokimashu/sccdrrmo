@@ -11,7 +11,7 @@ if (isset($_POST['insert_individual'])) {
     // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
-
+    $alert_msg = ' ';
     //insert to tbl_individual
     $entity_no = $_POST['entity_no'];
     $date_register = date('Y-m-d', strtotime($_POST['date_register']));
@@ -75,20 +75,31 @@ if (isset($_POST['insert_individual'])) {
         // } 
         if ($img != ''){
 
+        $temp = explode(".", $_FILES["myFile"]["name"]);
+        //      
 
-   
-    $folderPath = "../flutter/images/";
 
-    $image_parts = explode(";base64,", $img);
-    $image_type_aux = explode("image/", $image_parts[0]);
-    $image_type = $image_type_aux[1];
 
     $image_base64 = base64_decode($image_parts[1]);
     $fileName = uniqid() . '.jpg';
 
-    $file = $folderPath . $fileName;
-    file_put_contents($file, $image_base64);
-        }
+    }
+    if ($img != '') {
+
+
+
+        $folderPath = "../flutter/images/";
+
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid() . '.jpeg';
+
+        $file = $folderPath . $fileName;
+        file_put_contents($file, $image_base64);
+    }
 
     // print_r($fileName);
     // if($newfilename != ''){
@@ -117,10 +128,7 @@ if (isset($_POST['insert_individual'])) {
     photo            = :photo
     
     ";
-    
-    
-   
-    
+
 
 
     $individual_data = $con->prepare($insert_individual_sql);
@@ -186,16 +194,17 @@ if (isset($_POST['insert_individual'])) {
 
 
     $alert_msg .= ' 
-    <div class="new-alert new-alert-success alert-dismissible">
-        <i class="icon fa fa-success"></i>
-        Data Inserted
-    </div>  
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>
+                <strong> Success ! </strong> Data Inserted.
+        </div>    
       ';
 
     $btn_enabled = 'disabled';
     $btnNew = 'enabled';
     $btnPrint = 'enabled';
- 
+
 
     //echo print_r($firstname);
 
