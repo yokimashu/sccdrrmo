@@ -66,6 +66,9 @@ $title = 'VAMOS | Juridical Form';
     <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
+        
+        <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">  
+
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -253,35 +256,61 @@ $title = 'VAMOS | Juridical Form';
                                         </div>
 
                                         <div class="box-body">
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <div class="col-md-3">
+                                           <div class="row col-12">
 
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"></div><br>
 
+
+
+                                                <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
+                                                <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
+                                                        Click me to Open Camera
+                                                  
+                                                  
+                                                </div> -->
+                                                <div style="margin:auto">
+
+                                                    <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
+                                                    <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
+                                                    <audio id="snapSound" preload="auto"></audio>
+
+                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- <form method="POST" action="storeImage.php"> -->
+                                            <div style="margin:auto">
+                                                <div class="col-12" style="margin:auto;margin-top:30px;margin-bottom:30px">
+                                                    <span class="align-baseline">
+                                                        <input type="hidden" name="image" class="image-tag">
+                                                        <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                        <button type="button" <?php echo $btn_enabled ?> id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button>
+                                                        <button type="button" <?php echo $btn_enabled ?> id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
+<!--                                                        <button type="button" <?php echo $btn_enabled ?> id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>-->
+                                                        <style>
+                                                            input[type="file"] {
+                                                                display: none;
+                                                            }
+
+                                                            .custom-file-upload {
+                                                                border: 1px solid #ccc;
+                                                                border-radius: 5px;
+                                                                display: inline-block;
+                                                                padding: 7px 12px;
+                                                                cursor: pointer;
+                                                            }
+                                                        </style>
+                                                        <label for="fileToUpload" class="custom-file-upload">
+                                                            <i class="fa fa-cloud-upload"></i> Import Image
+                                                        </label>
+                                                        <input type="file" <?php echo $btn_enabled ?> id="fileToUpload" name="myFile" class="btn btn-danger custom-file-upload ">
+
+                                                    </span>
                                                 </div>
                                             </div>
-
-                                            <div class="row" align="center">
-
-
-                                                <div class="col-md-2"></div>
-                                                &nbsp;&nbsp;
-                                                <div>
-
-
-                                                    <input type="file" id="fileToUpload" name="myFile" id="fileToUpload" onchange="loadImage()" class="form-control btn btn-danger">
-
-
-                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()"> -->
-                                                    <!-- <input type="button" class="btn btn-danger" value="UPLOAD" onClick="take_snapshot()"> -->
-
-                                                </div>
-
-                                            </div><br>
+                                            <!-- </form> -->
+                                        </div>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -366,7 +395,7 @@ $title = 'VAMOS | Juridical Form';
     <!-- datepicker -->
     <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- CK Editor -->
-    <script src="../../plugins/ckeditor/ckeditor.js"></script>
+<!--    <script src="../../plugins/ckeditor/ckeditor.js"></script>-->
     <!-- Bootstrap WYSIHTML5 -->
     <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
@@ -380,12 +409,15 @@ $title = 'VAMOS | Juridical Form';
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- DataTables -->
+ <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
+  <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>-->
+<script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <!-- textarea wysihtml style -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
@@ -426,25 +458,54 @@ $title = 'VAMOS | Juridical Form';
     </script>
 
     <script>
-        $(document).ready(function() {
-            20
+     
+       $(document).ready(function() {
+             const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
             $("#fileToUpload").change(function(e) {
-                21
+          
                 var img = e.target.files[0];
-                22
+              
                 if (!pixelarity.open(img, false, function(res) {
-                        23
+                   
                         $("#photo").attr("src", res);
-                        24
+                        $(".image-tag").attr("value", res);
                     }, "jpg", 0.7)) {
-                    25
+                  
                     alert("Whoops! That is not an image!");
-                    26
+               
                 }
-                27
+                  
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+               
             });
-            28
-        });
+           
+           
+            $("#opencamera").click(function() {
+                $("#canvas").show();
+                $("#webcam").show();
+                $('#canvas').removeAttr('hidden');
+                $('#webcam').removeAttr('hidden');
+                $("#photo").hide();
+                webcam.start()
+                    .then(result => {
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            });
+          
+        
+       });
+           
+            
+                        
+
 
         function generateID() {
 
@@ -461,36 +522,36 @@ $title = 'VAMOS | Juridical Form';
     </script>
 
 
-    <script language="JavaScript">
-        Webcam.set({
-            width: 300,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 70
-        });
-        //Webcam.attach( '#my_camera' );
-    </script>
+   
 
 
     <script language="JavaScript">
-        function setup() {
-            Webcam.reset();
-            Webcam.attach('#my_camera');
-        }
-
-        function take_snapshot() {
+//        function setup() {
+//            Webcam.reset();
+//            Webcam.attach('#my_camera');
+//        }
+          function take_snapshot() {
             // take snapshot and get image data
-            Webcam.snap(function(data_uri) {
-                // display results in page
-                $(".image-tag").val(data_uri);
-                document.getElementById('my_camera').innerHTML =
-                    '<img src="' + data_uri + '"/>';
-            });
+//            Webcam.snap(function(data_uri) {
+//                // display results in page
+//                $(".image-tag").val(data_uri);
+//                document.getElementById('my_camera').innerHTML =
+//                    '<img src="' + data_uri + '"/>';
+             let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden", true);
+            webcam.stop();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
+//            });
         }
+      
         $('#capture').click(function() {
             $("#fileToUpload").val('');
 
-        })
+        });
 
         function checkUsername() {
             var username = $('#username').val();
@@ -509,9 +570,10 @@ $title = 'VAMOS | Juridical Form';
                 });
             }
         }
-        //     $('#btnSubmit').click(function(){
-        // $("#input-form :input").prop("disabled", true);
-        //     });
+        
+//             $('#btnSubmit').click(function(){
+//         $("#input-form :input").prop("disabled", true);
+//             });
     </script>
 </body>
 

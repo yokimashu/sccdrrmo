@@ -335,7 +335,7 @@ $title = 'VAMOS | Add Individual';
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                         <button type="button" <?php echo $btn_enabled ?> id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button>
                                                         <button type="button" <?php echo $btn_enabled ?> id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
-                                                        <button type="button" <?php echo $btn_enabled ?> id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>
+<!--                                                        <button type="button" <?php echo $btn_enabled ?> id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>-->
                                                         <style>
                                                             input[type="file"] {
                                                                 display: none;
@@ -553,7 +553,7 @@ $title = 'VAMOS | Add Individual';
                         console.log(err);
                     })
             });
-            28
+          
         });
 
         function generateID() {
