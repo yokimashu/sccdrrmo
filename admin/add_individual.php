@@ -319,7 +319,7 @@ $title = 'VAMOS | Add Individual';
                                                     <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
                                                     <audio id="snapSound" preload="auto"></audio>
 
-                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 460px; width:600px;margin:auto;" class="photo img-thumbnail">
+                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
                                                 </div>
 
                                             </div>
