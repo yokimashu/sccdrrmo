@@ -59,7 +59,7 @@ if (isset($_POST['insert_juridical'])) {
     $insert_juridical_sql = "INSERT INTO tbl_juridical SET 
 
         entity_no           = :entity_no,
-        date_reg            = :date_register,
+        date_register       = :date_register,
         org_name            = :org_name,
         org_type            = :org_type,
         business_nature     = :nature,
@@ -71,8 +71,8 @@ if (isset($_POST['insert_juridical'])) {
         contact_position    = :position,
         mobile_no           = :mobile_no,
         telephone_no        = :telephone_no,
-        email                = :email_address,
-        'photo'             =:photo
+        email               = :email_address,
+        photo               = :photo
       
         
         ";
