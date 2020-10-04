@@ -319,7 +319,7 @@ $title = 'VAMOS | Add Individual';
 
                                                     <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
                                                     <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
-                                                    <audio id="snapSound" preload="auto"></audio>
+                                                    <audio id="snapSound"  src="audio/snap.wav"  preload="auto"></audio>
 
                                                     <img src="../flutter/images/user.jpg" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
                                                 </div>
@@ -426,7 +426,8 @@ $title = 'VAMOS | Add Individual';
     <!-- Toastr -->
     <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
-    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -439,53 +440,60 @@ $title = 'VAMOS | Add Individual';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
-    <script>
-        function getAge() {
+
+        <script type="text/javascript">
+
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+      
+       function getAge() {
             var dob = document.getElementById('date').value;
             dob = new Date(dob);
             var today = new Date();
             var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
             document.getElementById('age').value = age;
         };
-    </script>
-    <script type="text/javascript">
-        const webcamElement = document.getElementById('webcam');
-        const canvasElement = document.getElementById('canvas');
-        const snapSoundElement = document.getElementById('snapSound');
-        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-        //     function loadImage() {
-        //     var input = document.getElementById("fileToUpload");
-        //     var fReader = new FileReader();
-        //     fReader.readAsDataURL(input.files[0]);
-        //     fReader.onloadend = function(event) {
-        //       var img = document.getElementById("photo");
-        //       img.src = event.target.result;
-        //     }
-        //   }
         $('.select2').select2();
-    </script>
+     </script>
 
-    <script>
-        //      $(document).ready(function(){
-        // 20
-        //   $("#fileToUpload").change(function(e){
-        // 21
-        //     var img = e.target.files[0];
-        // 22
-        //     if(!pixelarity.open(img,false,function(res){
-        // 23
-        //       $("#photo").attr("src", res);
-        // 24
-        //     },"jpg", 0.7)){
-        // 25
-        //       alert("Whoops! That is not an image!");
-        // 26
-        //     }
-        // 27
-        //   });
+   
+    
 
-        // 28
-        // });
+    <script language="JavaScript">
+       
+
+        function take_snapshot() {
+            // // take snapshot and get image data
+        
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden", true);
+            webcam.stop();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
+        }
+
+        function checkUsername() {
+            var username = $('#username').val();
+            if (username.length >= 3) {
+                $("#status").html('<img src="loader.gif" /> Checking availability...');
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        username: username
+                    },
+                    url: 'check_username.php',
+                    success: function(data) {
+                        $("#status").html(data);
+
+                    }
+                });
+            }
+        }
         $(document).ready(function() {
             20
             $("#fileToUpload").change(function(e) {
@@ -507,24 +515,15 @@ $title = 'VAMOS | Add Individual';
                 $("#webcam").hide();
                
             });
-        //     $(".image-tag").change(function() {
-        //       var image = $('#photo').attr('src');
-        //         $(".image-tag").val(image);
-        //     )
-        // });
+ 
 
         
 
             $("#crop").click(function(e) {
-                // var img = $('.class').find('.photo').attr('src');
-                // var img = e.target.files[0];
+            
 
                 var img = $("#photo").attr("src");
-                // var image = new Image();
-                // var img = $('#photo').getAttribute('src');
-                // image.src = img;
-                //   var image2 = image;
-                // var img = $('#photo').attr('src');
+              
                 console.log(img);
                 if (!pixelarity.open(img, true, function(res) {
                         23
@@ -555,80 +554,19 @@ $title = 'VAMOS | Add Individual';
             });
           
         });
-
         function generateID() {
 
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
-                }
-            });
-        }
-        window.onload = generateID;
-    </script>
-
-
-    <script language="JavaScript">
-        // Webcam.set({
-        //     width: 300,
-        //     height: 240,
-        //     image_format: 'jpeg',
-        //     jpeg_quality: 70
-        // });
-        //Webcam.attach( '#my_camera' );
-    </script>
-
-
-    <script language="JavaScript">
-        function setup() {
-            // Webcam.reset();
-            // Webcam.attach('#my_camera');
-
-        }
-
-        function take_snapshot() {
-            // // take snapshot and get image data
-            // Webcam.snap(function(data_uri) {
-            //     // display results in page
-            //     $(".image-tag").val(data_uri);
-            //     // document.getElementById('my_camera').innerHTML =
-            //     //     '<img src="' + data_uri + '"/>';
-            //     $("#photo").attr("src", data_uri);
-            //     Webcam.stop();
-            // });
-            let picture = webcam.snap();
-            document.querySelector('#photo').src = picture;
-            $(".image-tag").val(picture);
-            $("#canvas").attr("hidden", true);
-            webcam.stop();
-            $("#canvas").hide();
-            $("#webcam").hide();
-            $("#photo").show();
-        }
-
-        function checkUsername() {
-            var username = $('#username').val();
-            if (username.length >= 3) {
-                $("#status").html('<img src="loader.gif" /> Checking availability...');
-                $.ajax({
-                    type: 'POST',
-                    data: {
-                        username: username
-                    },
-                    url: 'check_username.php',
-                    success: function(data) {
-                        $("#status").html(data);
-
-                    }
-                });
-            }
-        }
-        //     $('#btnSubmit').click(function(){
-        // $("#input-form :input").prop("disabled", true);
-        //     });
+        $.ajax({
+        type: 'POST',
+     data: {},
+        url: 'generate_id.php',
+        success: function(data) {
+        $('#entity_no').val(data);
+    }
+});
+}
+window.onload = generateID;
+       
     </script>
 </body>
 

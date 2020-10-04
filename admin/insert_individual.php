@@ -29,87 +29,29 @@ if (isset($_POST['insert_individual'])) {
     $telephone_no = $_POST['telephone_no'];
     $barangay = $_POST['barangay'];
     $email = $_POST['email'];
-    // $photo = $_POST['myFiles'];
-
-    //insert to tbl_entity 
-
     $username = $_POST['username'];
     $hashed_password  = password_hash($entity_no, PASSWORD_DEFAULT);
     $type = 'INDIVIDUAL';
     $status = 'ACTIVE';
     $img = $_POST['image'];
     // //for photo
-    // $currentDir = getcwd();
-    // $uploadDirectory = "../flutter/images/";
-    // $errors = [];
-   
-    // $fileExtensions = ['png','jpg','jpeg'];
-    // $fileName = $_FILES['myFile']['name'];
-    // $fileSize = $_FILES['myFile']['size'];
-    // $fileTmpName = $_FILES['myFile']['tmp_name'];
-    // $fileType = $_FILES['myFile']['type'];
-    // $target_file = $uploadDirectory . basename($_FILES['myFile']['name']);
-    // $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // $uploadPath = $uploadDirectory . $fileName;
-    //     $newfilename = '';
-        
-    // if ($_FILES['myFile']['name'] == null && $img == null  )
-    //     {  
-    //     $fileName = 'user.jpeg';
-    //     }else  if($_FILES["myFile"]["error"] == 0 ) 
-    //     {
-    //         if (!in_array($fileExtension, $fileExtensions)) {
-    //             $errors[] = "This file extension is not allowed.";
-    //         }
-    //         if (empty($errors)) {
-    //             $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
-    //         }
-
-    //  $temp = explode(".", $_FILES["myFile"]["name"]);
-    //      
-  
-        
     
-     // $fileExtension = strtolower(end(explode('.',$fileName)));
-   
-        // } 
-        if ($img != ''){
-
-        $temp = explode(".", $_FILES["myFile"]["name"]);
-        //      
 
 
-
-    $image_base64 = base64_decode($image_parts[1]);
-    $fileName = uniqid() . '.jpg';
-
-    }
-    if ($img != '') {
-
-
+        //upload image
 
         $folderPath = "../flutter/images/";
-
         $image_parts = explode(";base64,", $img);
         $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
-
         $image_base64 = base64_decode($image_parts[1]);
-        $fileName = uniqid() . '.jpeg';
-
+        $fileName = uniqid() . '.jpg';
         $file = $folderPath . $fileName;
         file_put_contents($file, $image_base64);
-    }
-
-    // print_r($fileName);
-    // if($newfilename != ''){
-    //     $fileName = $newfilename;
-    // }
 
     $insert_individual_sql = "INSERT INTO tbl_individual SET 
 
     entity_no        = :entity_no,
-    -- username         = :username,
     date_register    = :date_register,
     firstname        = :firstname,
     middlename       = :middlename,
@@ -130,12 +72,10 @@ if (isset($_POST['insert_individual'])) {
     ";
 
 
-
     $individual_data = $con->prepare($insert_individual_sql);
     $individual_data->execute([
 
         ':entity_no'         => $entity_no,
-        // ':username'          => $username,
         ':date_register'     => $date_register,
         ':firstname'         => $firstname,
         ':middlename'        => $middlename,

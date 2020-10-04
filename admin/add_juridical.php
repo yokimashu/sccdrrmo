@@ -416,9 +416,10 @@ $title = 'VAMOS | Juridical Form';
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>-->
-<script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+<!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
     <!-- textarea wysihtml style -->
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -444,99 +445,58 @@ $title = 'VAMOS | Juridical Form';
     </script>
 
 
-    <script type="text/javascript">
-        //     function loadImage() {
-        //     var input = document.getElementById("fileTo Upload");
-        //     var fReader = new FileReader();
-        //     fReader.readAsDataURL(input.files[0]);
-        //     fReader.onloadend = function(event) {
-        //       var img = document.getElementById("photo");
-        //       img.src = event.target.result;
-        //     }
-        //   }
-        $('.select2').select2();
-    </script>
-
-    <script>
-     
-       $(document).ready(function() {
-             const webcamElement = document.getElementById('webcam');
-        const canvasElement = document.getElementById('canvas');
-        const snapSoundElement = document.getElementById('snapSound');
-        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-            $("#fileToUpload").change(function(e) {
-          
-                var img = e.target.files[0];
-              
-                if (!pixelarity.open(img, false, function(res) {
-                   
-                        $("#photo").attr("src", res);
-                        $(".image-tag").attr("value", res);
-                    }, "jpg", 0.7)) {
-                  
-                    alert("Whoops! That is not an image!");
-               
-                }
-                  
-                $("#photo").show();
-                $("#canvas").hide();
-                $("#webcam").hide();
-               
-            });
-           
-           
-            $("#opencamera").click(function() {
-                $("#canvas").show();
-                $("#webcam").show();
-                $('#canvas').removeAttr('hidden');
-                $('#webcam').removeAttr('hidden');
-                $("#photo").hide();
-                webcam.start()
-                    .then(result => {
-                        console.log("webcam started");
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            });
-          
-        
-       });
-           
-            
-                        
-
-
-        function generateID() {
-
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
-                }
-            });
-        }
-        window.onload = generateID;
-    </script>
-
-
-   
-
+ 
 
     <script language="JavaScript">
-//        function setup() {
-//            Webcam.reset();
-//            Webcam.attach('#my_camera');
-//        }
+    const webcamElement = document.getElementById('webcam');
+    const canvasElement = document.getElementById('canvas');
+     const snapSoundElement = document.getElementById('snapSound');
+    const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        $(document).ready(function() {
+    
+        $('.select2').select2();
+        //execute the image cropper when the image is imported
+           $("#fileToUpload").change(function(e) {
+         
+               var img = e.target.files[0];
+             
+               if (!pixelarity.open(img, false, function(res) {
+                  
+                       $("#photo").attr("src", res);
+                       $(".image-tag").attr("value", res);
+                   }, "jpg", 0.7)) {
+                 
+                   alert("Whoops! That is not an image!");
+              
+               }
+                 
+               $("#photo").show();
+               $("#canvas").hide();
+               $("#webcam").hide();
+              
+           });
+                //open the webcam
+           $("#opencamera").click(function() {
+               $("#canvas").show();
+               $("#webcam").show();
+               $('#canvas').removeAttr('hidden');
+               $('#webcam').removeAttr('hidden');
+               $("#photo").hide();
+               webcam.start()
+                   .then(result => {
+                       console.log("webcam started");
+                   })
+                   .catch(err => {
+                       console.log(err);
+                   })
+           });
+         
+       
+      });
+          
+             //takes picture from webcam 
           function take_snapshot() {
-            // take snapshot and get image data
-//            Webcam.snap(function(data_uri) {
-//                // display results in page
-//                $(".image-tag").val(data_uri);
-//                document.getElementById('my_camera').innerHTML =
-//                    '<img src="' + data_uri + '"/>';
+
              let picture = webcam.snap();
             document.querySelector('#photo').src = picture;
             $(".image-tag").val(picture);
@@ -545,14 +505,14 @@ $title = 'VAMOS | Juridical Form';
             $("#canvas").hide();
             $("#webcam").hide();
             $("#photo").show();
-//            });
+
         }
       
         $('#capture').click(function() {
             $("#fileToUpload").val('');
 
         });
-
+        //check the user is not exist
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
@@ -571,9 +531,7 @@ $title = 'VAMOS | Juridical Form';
             }
         }
         
-//             $('#btnSubmit').click(function(){
-//         $("#input-form :input").prop("disabled", true);
-//             });
+
     </script>
 </body>
 
