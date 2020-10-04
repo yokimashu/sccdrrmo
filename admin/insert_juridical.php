@@ -30,43 +30,21 @@ if (isset($_POST['insert_juridical'])) {
     $mobile_no = $_POST['mobile_no'];
     $telephone_no = $_POST['telephone_no'];
     $email_address = $_POST['email'];
-
+    $img = $_POST['image'];
     //for table entity
     $username = $_POST['username'];
     $hashed_password  = password_hash($entity_no, PASSWORD_DEFAULT);
-    $type = 'JURIDICAL';
-    $status = 'ACTIVE';
+    // $type = 'JURIDICAL';
+    // $status = 'ACTIVE';
 
-
-
-
-
-    // if ($_FILES['myFile']['name'] == null && $img == null) {
-    //     $fileName = 'user.jpeg';
-    // } else  if ($_FILES["myFile"]["error"] == 0) {
-    //     if (!in_array($fileExtension, $fileExtensions)) {
-    //         $errors[] = "This file extension is not allowed.";
-    //     }
-    //     if (empty($errors)) {
-    //         $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
-    //     }
-
-    //     $temp = explode(".", $_FILES["myFile"]["name"]);
-    // }
-    // if ($img != '') {
-
-    //     $folderPath = "../flutter/images/";
-
-    //     $image_parts = explode(";base64,", $img);
-    //     $image_type_aux = explode("image/", $image_parts[0]);
-    //     $image_type = $image_type_aux[1];
-
-    //     $image_base64 = base64_decode($image_parts[1]);
-    //     $fileName = uniqid() . '.jpeg';
-
-    //     $file = $folderPath . $fileName;
-    //     file_put_contents($file, $image_base64);
-    // }
+    $folderPath = "../flutter/images/";
+    $image_parts = explode(";base64,", $img);
+    $image_type_aux = explode("image/", $image_parts[0]);
+    $image_type = $image_type_aux[1];
+    $image_base64 = base64_decode($image_parts[1]);
+    $fileName = uniqid() . '.jpg';
+    $file = $folderPath . $fileName;
+    file_put_contents($file, $image_base64);
 
 
 
@@ -93,9 +71,9 @@ if (isset($_POST['insert_juridical'])) {
         contact_position    = :position,
         mobile_no           = :mobile_no,
         telephone_no        = :telephone_no,
-        email_address       = :email_address,
-
-        status              = :status
+        email                = :email_address,
+        'photo'             =:photo
+      
         
         ";
 
@@ -116,7 +94,7 @@ if (isset($_POST['insert_juridical'])) {
         ':mobile_no'         => $mobile_no,
         ':telephone_no'      => $telephone_no,
         ':email_address'     => $email_address,
-        ':status'            => $status
+        ':photo'            => $fileName
 
     ]);
 
