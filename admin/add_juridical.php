@@ -66,8 +66,8 @@ $title = 'VAMOS | Juridical Form';
     <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
-        
-        <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">  
+
+    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
 
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
@@ -256,7 +256,7 @@ $title = 'VAMOS | Juridical Form';
                                         </div>
 
                                         <div class="box-body">
-                                           <div class="row col-12">
+                                            <div class="row col-12">
 
 
 
@@ -287,7 +287,7 @@ $title = 'VAMOS | Juridical Form';
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                         <button type="button" <?php echo $btn_enabled ?> id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button>
                                                         <button type="button" <?php echo $btn_enabled ?> id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
-<!--                                                        <button type="button" <?php echo $btn_enabled ?> id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>-->
+                                                        <!--                                                        <button type="button" <?php echo $btn_enabled ?> id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>-->
                                                         <style>
                                                             input[type="file"] {
                                                                 display: none;
@@ -312,68 +312,68 @@ $title = 'VAMOS | Juridical Form';
                                             <!-- </form> -->
                                         </div>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label>CONTACT DETAILS </label>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <label>CONTACT DETAILS </label>
 
-                                                </div>
-                                            </div><br>
-
-
+                                            </div>
+                                        </div><br>
 
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="email" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
-                                                </div>
-                                            </div><br>
 
 
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                            </div>
+                                        </div></br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="email" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
+                                            </div>
+                                        </div><br>
 
 
 
 
 
 
-                                            <div class="box-footer" align="center">
 
 
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_juridical" id="btnSubmit" class="btn btn-success">
-                                                    <i class="fa fa-check fa-fw"> </i> </button>
-
-                                                <a href="list_juridical.php">
-                                                    <button type="button" name="cancel" class="btn btn-danger">
-                                                        <i class="fa fa-close fa-fw"> </i> </button>
-                                                </a>
-
-                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                                    <button type="button" name="print" class="btn btn-primary">
-                                                        <i class="nav-icon fa fa-print"> </i> </button>
-                                                </a>
+                                        <div class="box-footer" align="center">
 
 
-                                            </div><br>
-                                        </div>
+                                            <button type="submit" <?php echo $btnSave; ?> name="insert_juridical" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button>
+
+                                            <a href="list_juridical.php">
+                                                <button type="button" name="cancel" class="btn btn-danger">
+                                                    <i class="fa fa-close fa-fw"> </i> </button>
+                                            </a>
+
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                <button type="button" name="print" class="btn btn-primary">
+                                                    <i class="nav-icon fa fa-print"> </i> </button>
+                                            </a>
+
+
+                                        </div><br>
                                     </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -395,7 +395,7 @@ $title = 'VAMOS | Juridical Form';
     <!-- datepicker -->
     <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- CK Editor -->
-<!--    <script src="../../plugins/ckeditor/ckeditor.js"></script>-->
+    <!--    <script src="../../plugins/ckeditor/ckeditor.js"></script>-->
     <!-- Bootstrap WYSIHTML5 -->
     <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
@@ -409,15 +409,15 @@ $title = 'VAMOS | Juridical Form';
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- DataTables -->
- <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
+    <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
-  <script src="../plugins/pixelarity/pixelarity-face.js"></script>
+    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
-<!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
     <!-- textarea wysihtml style -->
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -430,6 +430,8 @@ $title = 'VAMOS | Juridical Form';
     <script src="../plugins/select2/select2.full.min.js"></script>
 
     <script>
+        $('.select2').select2();
+
         function generateID() {
 
             $.ajax({
@@ -445,59 +447,59 @@ $title = 'VAMOS | Juridical Form';
     </script>
 
 
- 
+
 
     <script language="JavaScript">
-    const webcamElement = document.getElementById('webcam');
-    const canvasElement = document.getElementById('canvas');
-     const snapSoundElement = document.getElementById('snapSound');
-    const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
         $(document).ready(function() {
-    
-        $('.select2').select2();
-        //execute the image cropper when the image is imported
-           $("#fileToUpload").change(function(e) {
-         
-               var img = e.target.files[0];
-             
-               if (!pixelarity.open(img, false, function(res) {
-                  
-                       $("#photo").attr("src", res);
-                       $(".image-tag").attr("value", res);
-                   }, "jpg", 0.7)) {
-                 
-                   alert("Whoops! That is not an image!");
-              
-               }
-                 
-               $("#photo").show();
-               $("#canvas").hide();
-               $("#webcam").hide();
-              
-           });
-                //open the webcam
-           $("#opencamera").click(function() {
-               $("#canvas").show();
-               $("#webcam").show();
-               $('#canvas').removeAttr('hidden');
-               $('#webcam').removeAttr('hidden');
-               $("#photo").hide();
-               webcam.start()
-                   .then(result => {
-                       console.log("webcam started");
-                   })
-                   .catch(err => {
-                       console.log(err);
-                   })
-           });
-         
-       
-      });
-          
-             //takes picture from webcam 
-          function take_snapshot() {
 
-             let picture = webcam.snap();
+
+            //execute the image cropper when the image is imported
+            $("#fileToUpload").change(function(e) {
+
+                var img = e.target.files[0];
+
+                if (!pixelarity.open(img, false, function(res) {
+
+                        $("#photo").attr("src", res);
+                        $(".image-tag").attr("value", res);
+                    }, "jpg", 0.7)) {
+
+                    alert("Whoops! That is not an image!");
+
+                }
+
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+
+            });
+            //open the webcam
+            $("#opencamera").click(function() {
+                $("#canvas").show();
+                $("#webcam").show();
+                $('#canvas').removeAttr('hidden');
+                $('#webcam').removeAttr('hidden');
+                $("#photo").hide();
+                webcam.start()
+                    .then(result => {
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            });
+
+
+        });
+
+        //takes picture from webcam 
+        function take_snapshot() {
+
+            let picture = webcam.snap();
             document.querySelector('#photo').src = picture;
             $(".image-tag").val(picture);
             $("#canvas").attr("hidden", true);
@@ -507,7 +509,7 @@ $title = 'VAMOS | Juridical Form';
             $("#photo").show();
 
         }
-      
+
         $('#capture').click(function() {
             $("#fileToUpload").val('');
 
@@ -530,8 +532,6 @@ $title = 'VAMOS | Juridical Form';
                 });
             }
         }
-        
-
     </script>
 </body>
 
