@@ -79,9 +79,9 @@ $title = 'VAMOS | Juridical Form';
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
 
     <style>
-        #my_camera {
-            width: 320px;
-            height: 240px;
+        #webcam {
+            width: 350px;
+            height: 350px;
             border: 1px solid black;
         }
     </style>
@@ -256,6 +256,8 @@ $title = 'VAMOS | Juridical Form';
                                         </div>
 
                                         <div class="box-body">
+                                            <br>
+
                                             <div class="row col-12">
 
 
@@ -268,12 +270,13 @@ $title = 'VAMOS | Juridical Form';
                                                   
                                                 </div> -->
                                                 <div style="margin:auto">
+                                                    &nbsp;&nbsp;&nbsp;
 
-                                                    <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
-                                                    <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
+                                                    <video id="webcam" autoplay playsinline width="450" height="450" align="center" hidden class="photo  img-thumbnail"></video>
+                                                    <canvas id="canvas" class="d-none" hidden width="450" height="450" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
                                                     <audio id="snapSound" preload="auto"></audio>
 
-                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
+                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 320px; width:320px;" class="photo img-thumbnail">
                                                 </div>
 
                                             </div>
