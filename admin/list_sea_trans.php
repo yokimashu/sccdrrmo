@@ -34,6 +34,11 @@ $get_all_individual_data = $con->prepare($get_all_individual_sql);
 $get_all_individual_data->execute();
 
 
+$get_all_seatranspo_sql = "SELECT * FROM tbl_seatranspo j inner join tbl_entity e on e.entity_no = j.entity_no ";
+$get_all_seatranspo_data = $con->prepare($get_all_seatranspo_sql);
+$get_all_seatranspo_data->execute();
+
+
 
 ?>
 
@@ -88,18 +93,47 @@ $get_all_individual_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> ID </th>
                           <th> Date </th>
-                          <th> Full Name </th>
-                          <th> Address</th>
-                          <th> Contact No.</th>
+                          <th> Entity # </th>
+
+                          <th> Username </th>
+                          <th> Trans. Type</th>
                           <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
 
+                        <?php while ($list_sea = $get_all_seatranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <tr>
+                            <td><?php echo $list_sea['date_register'];  ?></td>
+                            <td><?php echo $list_sea['entity_no'];  ?></td>
+                            <td><?php echo $list_sea['username'];  ?></td>
+                            <td><?php echo $list_sea['trans_type']; ?> </td>
+                            <td>
+
+                              <a class="btn btn-success btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a>
+
+                              <button class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></button>
+
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_sea['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a>
+                              &nbsp;
+
+                            </td>
+                          </tr>
+                        <?php } ?>
+
+
+
+
+
+
                       </tbody>
                     </table>
+
 
                   </div>
                 </div>
