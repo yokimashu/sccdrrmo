@@ -104,7 +104,7 @@ if (isset($_POST['insert_sea_transpo'])) {
         contact_position    = :poss,
         mobile_no           = :mobile,
         telephone_no        = :tel_no,
-        email_add           = :email
+        email          = :email
         -- photo            = :photo
     
     ";
