@@ -45,7 +45,7 @@ $entity_no = $_GET['entity_no'];
 // $get_all_history_data->execute();
 
 
-$get_all_history_sql = "select * from tbl_individual r inner join tbl_tracehistory t on t.entity_no = r.entity_no where r.entity_no = '" . $entity_no . "'";
+$get_all_history_sql = "SELECT * from tbl_tracehistory r inner join tbl_individual t on t.entity_no = r.trace_no where  r.entity_no = '" . $entity_no . "'";
 $get_all_history_data = $con->prepare($get_all_history_sql);
 $get_all_history_data->execute();
 
@@ -53,19 +53,6 @@ $get_all_history_data->execute();
 
 
 
-
-// $db = mysqli_connect('localhost', 'root', '1234', 'scc_bac');
-// $get_pr_info = "SELECT * FROM pr_info where pr_info_control_no =  :control ";
-// $get_pr_data = $con->prepare($get_pr_info);
-// $get_pr_data->execute([':control' => $control]);
-// while ($result = $get_pr_data->fetch(PDO::FETCH_ASSOC)) {
-//   $control_no = $result['pr_info_control_no'];
-//   $pr_no = $result['pr_info_no'];
-//   $sai_no = $result['pr_info_sai_no'];
-//   $date_pr = $result['pr_info_date'];
-//   $section = $result['pr_info_section'];
-//   $department = $result['pr_info_dept'];
-// }
 
 
 ?>
@@ -97,8 +84,17 @@ $get_all_history_data->execute();
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual History
+              <br>
 
-              <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+
+              <div class=" col-md-2 " style="float:left">
+                <input type="text" readonly class="form-control " style="text-align:center; font-weight:bold" name="entity_no" placeholder="entity_no" value="<?php echo $entity_no; ?>" required>
+
+              </div>
+
+
+
+              <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/individual_history.php?entity_no=<?php echo $entity_no;  ?>">
                 <i class="nav-icon fa fa-print"></i></a>
 
               <!-- <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
@@ -115,43 +111,45 @@ $get_all_history_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
-                      <div class="col-md-3" id="combo"></div>
-                    </div>
-                    <br>
+
+
 
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
 
+
+
+                          <th> Trace ID</th>
+                          <th> NAME</th>
+
+
                           <th> Date </th>
-
-                          <th> entity_no</th>
-                          <th> Person Scanned </th>
-
-                          <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($list_history = $get_all_history_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
-                            <td><?php echo $list_history['date'];  ?></td>
-                            <td><?php echo $list_history['entity_no'];  ?></td>
+
                             <td><?php echo $list_history['trace_no'];  ?></td>
+                            <td><?php echo $list_history['fullname'];  ?></td>
 
 
-                            <td>
+                            <td><?php echo $list_history['date'];  ?></td>
 
-                              <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
 
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                            <!-- <td>
+                               -->
+                            <!-- <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i>
+
+                                <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
+                              </a> -->
+                            &nbsp;
 
-                              &nbsp;
-
-                            </td>
+                            <!-- </td> -->
                           </tr>
                         <?php } ?>
                       </tbody>
@@ -286,27 +284,29 @@ $get_all_history_data->execute();
 
 
 
-    // $(document).ready(function() {
-    //   $('#print').click(function() {
-    //     var entity_no = $('#entity_no').val();
-    //     console.log(entity_no);
 
-    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
-    //   })
+
+
+    // $('#users tbody').on('click', 'button.printlink', function() {
+    //   // alert ('hello');
+    //   // var row = $(this).closest('tr');
+    //   var table = $('#users').DataTable();
+    //   var data = table.row($(this).parents('tr')).data();
+    //   //  alert (data[0]);
+    //   //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+    //   var entity_no = data[0];
+    //   window.open("individual_history.php?entity_no=" + entity_no + '_parent');
     // });
 
 
 
+    $(document).ready(function() {
+      $('#print').click(function() {
+        var entity_no = $('#entity_no').val();
+        console.log(entity_no);
 
-    $('#users tbody').on('click', 'button.printlink', function() {
-      // alert ('hello');
-      // var row = $(this).closest('tr');
-      var table = $('#users').DataTable();
-      var data = table.row($(this).parents('tr')).data();
-      //  alert (data[0]);
-      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-      var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
+      })
     });
   </script>
 </body>
