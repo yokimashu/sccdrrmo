@@ -372,6 +372,7 @@ $title = 'VAMOS | Land Trans Form';
     <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
  <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
+ <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>-->
     <!-- textarea wysihtml style -->
@@ -455,7 +456,30 @@ $title = 'VAMOS | Land Trans Form';
                         console.log(err);
                     })
             });
+
+
+            $(document).ready(function() {
+        
+            $("#fileToUpload").change(function(e) {
           
+                var img = e.target.files[0];
+            
+                if (!pixelarity.open(img, false, function(res) {
+                       
+                        $("#photo").attr("src", res);
+                        $(".image-tag").attr("value", res);
+                    }, "jpg", 0.7)) {
+                 
+                    alert("Whoops! That is not an image!");
+                   
+                }
+                  
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+               
+            });
+        });
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
