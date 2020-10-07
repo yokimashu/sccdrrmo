@@ -10,7 +10,7 @@ if (!isset($_SESSION['id'])) {
   header('location:../index.php');
 } else {
 }
-include('verify_admin.php');
+
 
 
 date_default_timezone_set('Asia/Manila');
@@ -63,7 +63,7 @@ $get_all_individual_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master List Sea Transportation
+            <h4> Sea Transportation Master Lists
 
               <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
@@ -184,27 +184,29 @@ $get_all_individual_data->execute();
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true,
-      initComplete: function() {
-        this.api().columns([4]).every(function() {
-          var column = this;
-          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-            .appendTo('#combo')
-            .on('change', function() {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-              );
-              column
-                .search(val ? '^' + val + '$' : '', true, false)
-                .draw();
-            });
-          column.data().unique().sort().each(function(d, j) {
-            select.append('<option value="' + d + '">' + d + '</option>')
-          });
-        });
-      }
+      'autoHeight': true
+      // initComplete: function() {
+      //   this.api().columns([4]).every(function() {
+      //     var column = this;
+      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+      //       .appendTo('#combo')
+      //       .on('change', function() {
+      //         var val = $.fn.dataTable.util.escapeRegex(
+      //           $(this).val()
+      //         );
+      //         column
+      //           .search(val ? '^' + val + '$' : '', true, false)
+      //           .draw();
+      //       });
+      //     column.data().unique().sort().each(function(d, j) {
+      //       select.append('<option value="' + d + '">' + d + '</option>')
+      //     });
+      //   });
+      // }
 
     });
+
+
     $('.select2').select2();
 
     $('#addPUM').on('hidden.bs.modal', function() {

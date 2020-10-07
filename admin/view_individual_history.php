@@ -45,7 +45,7 @@ $entity_no = $_GET['entity_no'];
 // $get_all_history_data->execute();
 
 
-$get_all_history_sql = "select * from tbl_individual r inner join tbl_tracehistory t on t.entity_no = r.entity_no where r.entity_no = '".$entity_no."'";
+$get_all_history_sql = "select * from tbl_individual r inner join tbl_tracehistory t on t.entity_no = r.entity_no where r.entity_no = '" . $entity_no . "'";
 $get_all_history_data = $con->prepare($get_all_history_sql);
 $get_all_history_data->execute();
 
@@ -98,8 +98,8 @@ $get_all_history_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual History
 
-            <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
+              <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                <i class="nav-icon fa fa-print"></i></a>
 
               <!-- <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -124,12 +124,12 @@ $get_all_history_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                        
+
                           <th> Date </th>
-                       
+
                           <th> entity_no</th>
                           <th> Person Scanned </th>
-                         
+
                           <th> Options</th>
                         </tr>
                       </thead>
@@ -139,16 +139,16 @@ $get_all_history_data->execute();
                             <td><?php echo $list_history['date'];  ?></td>
                             <td><?php echo $list_history['entity_no'];  ?></td>
                             <td><?php echo $list_history['trace_no'];  ?></td>
-                          
-                         
-                            <td>
-                              
-                                <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i>
 
-                                <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+
+                            <td>
+
+                              <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a>
+
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
-                              </a>
+
                               &nbsp;
 
                             </td>

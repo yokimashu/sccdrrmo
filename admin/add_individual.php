@@ -17,7 +17,7 @@ if (!isset($_SESSION['id'])) {
 $now = new DateTime();
 
 $btnSave = $btnEdit = $entity_no = $user_name = $firstname = $middlename = $lastname = $age = $gender =
-    $brgy = $street = $city = $province = $city_origin = $date_arrival = $contact_number =
+    $brgy = $street = $city = $province = $city_origin = $alert_msg = $date_arrival = $contact_number =
     $travel_days = $patient_disease = $symptoms = $barangay = $entity_no = $mobile_no = $telephone_no = $email = '';
 $btnNew = 'hidden';
 
@@ -26,6 +26,8 @@ $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
 
+$province = 'NEGROS OCCIDENTAL ';
+$city = 'SAN CARLOS CITY';
 
 
 $title = 'VAMOS | Add Individual';
@@ -66,7 +68,7 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
     <!-- <link rel="stylesheet" href="../plugins/pixelarity/jquerysctipttop.css"> -->
     <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
-    
+
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
@@ -80,11 +82,12 @@ $title = 'VAMOS | Add Individual';
             height: 240px;
             border: 1px solid black;
         }
-        #photo{
-				display: block;
-				position: relative;
-				margin-top: 40px;
-			}
+
+        #photo {
+            display: block;
+            position: relative;
+            margin-top: 40px;
+        }
     </style>
 
 </head>
@@ -96,7 +99,9 @@ $title = 'VAMOS | Add Individual';
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
 
             <section class="content">
                 <div class="card">
@@ -180,19 +185,22 @@ $title = 'VAMOS | Add Individual';
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <label>Birthdate: </label>
-                                                    <div class="input-group date" data-provide="datepicker">
+                                                    <!-- <div class="input-group date" data-provide="datepicker">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
                                                         <input type="text" <?php echo $btn_enabled ?> class="form-control pull-right" id="datepicker" name="birthdate" placeholder="Date Process" value="<?php echo $now->format('m-d-Y'); ?>" required>
-                                                    </div>
+                                                    </div> -->
+
+                                                    <input type="date" value="" id="date" name="birthdate" onblur="getAge();" class="form-control pull-right " placeholder="dd/mm/yyyy" />
                                                 </div>
 
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label>Age:</label>
-                                                    <input type="number" <?php echo $btn_enabled ?> class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required>
+                                                    <input type="number" id="age" name="age" class="form-control" placeholder="Age" value="<?php echo $age ?>">
+                                                    <!-- <input type="number" <?php echo $btn_enabled ?> class="form-control" name="age" placeholder="Age" value="<?php echo $age; ?>" required> -->
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -204,6 +212,17 @@ $title = 'VAMOS | Add Individual';
                                                     </select>
                                                 </div>
                                             </div><br>
+
+                                            <!-- <div class="row">
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-3">
+                                                    Put birthdate:
+                                                    Your age:
+
+                                                </div>
+
+                                            </div><br> -->
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -230,7 +249,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="city" placeholder="City" value="SAN CARLOS CITY" <?php echo $city; ?>" required>
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="city" placeholder="City" value=" <?php echo $city; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -238,13 +257,43 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="province" placeholder="Province" value="NEGROS OCCIDENTAL" <?php echo $province; ?>" required>
+                                                    <input type="text" class="form-control" <?php echo $btn_enabled ?> name="province" placeholder="Province" value=" <?php echo $province; ?>" required>
                                                 </div>
                                             </div><br>
 
 
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <label>CONTACT DETAILS </label>
 
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="number" <?php echo $btn_enabled ?> class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                            </div>
+                                        </div></br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="number" <?php echo $btn_enabled ?> class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $telephone_no; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder="Email Address" value="<?php echo $email; ?>">
+                                            </div>
+                                        </div><br>
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -257,94 +306,83 @@ $title = 'VAMOS | Add Individual';
                                             <br>
                                             <div class="row col-12">
 
-                                              
 
-                                            
+
+
                                                 <!-- <div class="col-12" style="vertical-align: middle; height: 280px; width:300px;border: 1px solid black ;" id="my_camera" align="center" onClick="setup()">
                                                 <img src="" id = "photo" style="margin:auto;height: 200px; width:280;"onClick="setup()">
                                                         Click me to Open Camera
                                                   
                                                   
                                                 </div> -->
-                                                <div style = "margin:auto">
-                                                <video id="webcam" autoplay playsinline width="200px" hidden height="200px"></video>
-                                            <canvas id="canvas" class="d-none" hidden onClick="setup()"></canvas>
-                                                <audio id="snapSound" preload = "auto"></audio>
-                                                       
-                                            <img src="../flutter/images/user.png" id = "photo" style="height: 200px; width:200px;" class = "photo">           
-                                            </div> 
+                                                <div style="margin:auto">
+
+                                                    <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
+                                                    <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
+                                                    <audio id="snapSound"  src="audio/snap.wav"  preload="auto"></audio>
+
+                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <!-- <form method="POST" action="storeImage.php"> -->
-                                                            <div style ="margin:auto">
-                                                <div class="col-10" style = "margin:auto;" >
-
-                                                    <input type="hidden" name="image" class="image-tag">
-                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "opencamera" class="btn btn-warning " value="CAPTURE">OPEN CAMERA</button>
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()">CAPTURE</button>
-                                                    <button type="button" <?php echo $btn_enabled ?> id = "crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>
-                                                    <a href="#">
-                                                        <input type="file" <?php echo $btn_enabled ?>  id  = "fileToUpload" name="myFile" onchange = "" class="btn btn-danger"></a>
-                                                    
-                                                        </div>
-                                                </div>
-                                                <!-- </form> -->
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label>CONTACT DETAILS </label>
-
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="number" <?php echo $btn_enabled ?> class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="number" <?php echo $btn_enabled ?> class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $telephone_no; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" <?php echo $btn_enabled ?> class="form-control" name="email" placeholder="Email Address" value="<?php echo $email; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="box-footer" align="center">
-
-
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
-                                                    <i class="fa fa-check fa-fw"> </i> </button>
-
-                                                <a href="list_individual.php">
-                                                    <button type="button" name="cancel" class="btn btn-danger">
-                                                        <i class="fa fa-close fa-fw"> </i> </button>
-                                                </a>
-
-                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                                    <button type="button" name="print" class="btn btn-primary">
-                                                        <i class="nav-icon fa fa-print"> </i> </button>
-                                                </a>
-
 
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <!-- <form method="POST" action="storeImage.php"> -->
+                                            <div style="margin:auto">
+                                                <div class="col-12" style="margin:auto;margin-top:30px;margin-bottom:30px">
+                                                    <span class="align-baseline">
+                                                        <input type="hidden" name="image" class="image-tag">
+                                                        <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                        <button type="button" <?php echo $btn_enabled ?> id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button>
+                                                        <button type="button" <?php echo $btn_enabled ?> id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
+<!--                                                        <button type="button" <?php echo $btn_enabled ?> id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>-->
+                                                        <style>
+                                                            input[type="file"] {
+                                                                display: none;
+                                                            }
+
+                                                            .custom-file-upload {
+                                                                border: 1px solid #ccc;
+                                                                border-radius: 5px;
+                                                                display: inline-block;
+                                                                padding: 7px 12px;
+                                                                cursor: pointer;
+                                                            }
+                                                        </style>
+                                                        <label for="fileToUpload" class="custom-file-upload">
+                                                            <i class="fa fa-cloud-upload"></i> Import Image
+                                                        </label>
+                                                        <input type="file" <?php echo $btn_enabled ?> id="fileToUpload" name="myFile" class="btn btn-danger custom-file-upload ">
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                        <br>
+
+
+
+                                        <div class="box-footer" align="center">
+
+
+                                            <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button>
+
+                                            <a href="list_individual.php">
+                                                <button type="button" name="cancel" class="btn btn-danger">
+                                                    <i class="fa fa-close fa-fw"> </i> </button>
+                                            </a>
+
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                <button type="button" name="print" class="btn btn-primary">
+                                                    <i class="nav-icon fa fa-print"> </i> </button>
+                                            </a>
+
+
+                                        </div>
                                     </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -388,7 +426,8 @@ $title = 'VAMOS | Add Individual';
     <!-- Toastr -->
     <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
-    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- textarea wysihtml style -->
@@ -402,155 +441,42 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/select2/select2.full.min.js"></script>
 
 
-    <script type="text/javascript">
-    const webcamElement = document.getElementById('webcam');
-const canvasElement = document.getElementById('canvas');
-const snapSoundElement = document.getElementById('snapSound');
-const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-//     function loadImage() {
-//     var input = document.getElementById("fileToUpload");
-//     var fReader = new FileReader();
-//     fReader.readAsDataURL(input.files[0]);
-//     fReader.onloadend = function(event) {
-//       var img = document.getElementById("photo");
-//       img.src = event.target.result;
-//     }
-//   }
+        <script type="text/javascript">
+
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+      
+       function getAge() {
+            var dob = document.getElementById('date').value;
+            dob = new Date(dob);
+            var today = new Date();
+            var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+            document.getElementById('age').value = age;
+        };
         $('.select2').select2();
+     </script>
+
+   
+    
+
+    <script language="JavaScript">
        
 
-
-    </script>
-
-    <script>
-//      $(document).ready(function(){
-// 20
-//   $("#fileToUpload").change(function(e){
-// 21
-//     var img = e.target.files[0];
-// 22
-//     if(!pixelarity.open(img,false,function(res){
-// 23
-//       $("#photo").attr("src", res);
-// 24
-//     },"jpg", 0.7)){
-// 25
-//       alert("Whoops! That is not an image!");
-// 26
-//     }
-// 27
-//   });
-  
-// 28
-// });
-$(document).ready(function(){
-20
-  $("#fileToUpload").change(function(e){
-21
-    var img = e.target.files[0];
-22
-    if(!pixelarity.open(img,false,function(res){
-23
-      $("#photo").attr("src", res);
-24
-    },"jpg", 0.7)){
-25
-      alert("Whoops! That is not an image!");
-26
-    }
- $( "#photo").show();
-  });
-  $("#crop").click(function(e){
-    // var img = $('.photo img').attr('src');;
-    // var img = e.target.files[0];
-    // var img = $(".image-tag").val();
-    var input = document.getElementById("fileToUpload");
- 
-      
-    // var img = $('#photo').attr('src');
-    console.log(event.target);
-    if(!pixelarity.open(input,false,function(res){
-23
-      $("#photo").attr("src", res);
-24
-    },"jpeg", 0.7)){
-25
-      alert("Whoops! That is not an image!");
-26
-    
-}
-  });
-
-  $("#opencamera").click(function(){
-             $( "#canvas").show();
-            $( "#webcam").show();
-             $('#canvas').removeAttr('hidden');
-            $('#webcam').removeAttr('hidden');
-            $( "#photo").hide();
-webcam.start()
-.then(result =>{
-console.log("webcam started");
-    })
-.catch(err => {
-console.log(err);
-})
-});
-28
-});
-
-        function generateID() {
-
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
-                }
-            });
-        }
-        window.onload = generateID;
-    </script>
-
-
-    <script language="JavaScript">
-        Webcam.set({
-            width: 300,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 70
-        });
-        //Webcam.attach( '#my_camera' );
-    </script>
-
-
-    <script language="JavaScript">
-        function setup() {
-            // Webcam.reset();
-            // Webcam.attach('#my_camera');
-           
-        }
-    
         function take_snapshot() {
             // // take snapshot and get image data
-            // Webcam.snap(function(data_uri) {
-            //     // display results in page
-            //     $(".image-tag").val(data_uri);
-            //     // document.getElementById('my_camera').innerHTML =
-            //     //     '<img src="' + data_uri + '"/>';
-            //     $("#photo").attr("src", data_uri);
-            //     Webcam.stop();
-            // });
+        
             let picture = webcam.snap();
             document.querySelector('#photo').src = picture;
             $(".image-tag").val(picture);
-            $("#canvas").attr("hidden",true);
+            $("#canvas").attr("hidden", true);
             webcam.stop();
-            $( "#canvas").hide();
-            $( "#webcam").hide();
-            $( "#photo").show();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
         }
-        
+
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
@@ -568,9 +494,79 @@ console.log(err);
                 });
             }
         }
-        //     $('#btnSubmit').click(function(){
-        // $("#input-form :input").prop("disabled", true);
-        //     });
+        $(document).ready(function() {
+            20
+            $("#fileToUpload").change(function(e) {
+          
+                var img = e.target.files[0];
+                22
+                if (!pixelarity.open(img, false, function(res) {
+                        23
+                        $("#photo").attr("src", res);
+                        $(".image-tag").attr("value", res);
+                    }, "jpg", 0.7)) {
+                    25
+                    alert("Whoops! That is not an image!");
+                    26
+                }
+                  
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+               
+            });
+ 
+
+        
+
+            $("#crop").click(function(e) {
+            
+
+                var img = $("#photo").attr("src");
+              
+                console.log(img);
+                if (!pixelarity.open(img, true, function(res) {
+                        23
+                        $("#photo").attr("src", res);
+                        24
+                    }, "jpeg", 0.7)) {
+                    25
+                    alert("Whoops! That is not an image!");
+                    26
+
+                }
+            });
+ 
+
+            $("#opencamera").click(function() {
+                $("#canvas").show();
+                $("#webcam").show();
+                $('#canvas').removeAttr('hidden');
+                $('#webcam').removeAttr('hidden');
+                $("#photo").hide();
+                webcam.start()
+                    .then(result => {
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            });
+          
+        });
+        function generateID() {
+
+        $.ajax({
+        type: 'POST',
+     data: {},
+        url: 'generate_id.php',
+        success: function(data) {
+        $('#entity_no').val(data);
+    }
+});
+}
+window.onload = generateID;
+       
     </script>
 </body>
 

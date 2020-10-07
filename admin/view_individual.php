@@ -100,7 +100,8 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-
+    
+    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
     <style>
         #my_camera {
             width: 320px;
@@ -286,15 +287,9 @@ $title = 'VAMOS | Add Individual';
 
                                         <div class="box-body">
                                             <br>
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-
-                                                <div class="col-md-3">
-
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
-
-                                                </div>
-                                            </div>
+                                            <?php include('photo_template.php'); ?>
+                                            <!-- </form> -->
+                                        </div>
 
                                             <div class="row" align="center">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
@@ -402,8 +397,10 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
+    <script src="photo_template.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->

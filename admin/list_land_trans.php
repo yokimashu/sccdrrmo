@@ -88,9 +88,8 @@ $get_all_landtranspo_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> Date </th>
+                         
                           <th> Entity # </th>
-
                           <th> Username </th>
                           <th> Trans. Type</th>
                           <th> Options</th>
@@ -100,8 +99,9 @@ $get_all_landtranspo_data->execute();
 
                         <?php while ($list_land = $get_all_landtranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
-                            <td><?php echo $list_land['date_reg'];  ?></td>
+                            
                             <td><?php echo $list_land['entity_no'];  ?></td>
+                   
                             <td><?php echo $list_land['username'];  ?></td>
                             <td><?php echo $list_land['trans_type']; ?> </td>
                             <td>
@@ -113,7 +113,7 @@ $get_all_landtranspo_data->execute();
                                 <i class="fa fa-suitcase"></i></button>
 
 
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_land['entity_no'];  ?>">
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/landtranspo.php?entity_no=<?php echo $list_land['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
                               &nbsp;
@@ -279,7 +279,7 @@ $get_all_landtranspo_data->execute();
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
       var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+      window.open("landtranspo.php?entity_no=" + entity_no, '_parent');
     });
   </script>
 </body>
