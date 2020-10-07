@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-
+include('update_individual.php');
 
 
 session_start();
@@ -19,7 +19,7 @@ $now = new DateTime();
 $btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
     $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
 $btnNew = 'hidden';
-
+$img='';
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
 $user_id = $_GET['id'];
@@ -53,7 +53,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-
+$check_update_photo = $get_photo;
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
@@ -341,7 +341,7 @@ $title = 'VAMOS | Add Individual';
 
 
                                             <div class="box-footer" align="center">
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+                                                <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
                                                 <a href="list_individual.php">
                                                     <button type="button" name="cancel" class="btn btn-danger">
@@ -397,6 +397,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <script src="photo_template.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
@@ -441,7 +442,7 @@ $title = 'VAMOS | Add Individual';
     </script> -->
 
 
-    <script language="JavaScript">
+    <!-- <script language="JavaScript">
         Webcam.set({
             width: 320,
             height: 240,
@@ -449,10 +450,10 @@ $title = 'VAMOS | Add Individual';
             jpeg_quality: 100
         });
         //Webcam.attach( '#my_camera' );
-    </script>
+    </script> -->
 
 
-    <script language="JavaScript">
+    <!-- <script language="JavaScript">
         function setup() {
             Webcam.reset();
             Webcam.attach('#my_camera');
@@ -466,7 +467,7 @@ $title = 'VAMOS | Add Individual';
                     '<img src="' + data_uri + '"/>';
             });
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
