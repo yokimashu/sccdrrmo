@@ -67,6 +67,7 @@ $title = 'VAMOS | Land Trans Form';
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
@@ -371,6 +372,7 @@ $title = 'VAMOS | Land Trans Form';
     <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
  <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
+ <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>-->
     <!-- textarea wysihtml style -->
@@ -385,15 +387,20 @@ $title = 'VAMOS | Land Trans Form';
 
 
     <script type="text/javascript">
-        function loadImage() {
-            var input = document.getElementById("fileToUpload");
-            var fReader = new FileReader();
-            fReader.readAsDataURL(input.files[0]);
-            fReader.onloadend = function(event) {
-                var img = document.getElementById("photo");
-                img.src = event.target.result;
-            }
-        }
+    
+    const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        // function loadImage() {
+        //     var input = document.getElementById("fileToUpload");
+        //     var fReader = new FileReader();
+        //     fReader.readAsDataURL(input.files[0]);
+        //     fReader.onloadend = function(event) {
+        //         var img = document.getElementById("photo");
+        //         img.src = event.target.result;
+        //     }
+        // }
         $('.select2').select2();
     </script>
 
@@ -413,37 +420,66 @@ $title = 'VAMOS | Land Trans Form';
     </script>
 
 
-    <script language="JavaScript">
-        Webcam.set({
-            width: 300,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 70
-        });
-        //Webcam.attach( '#my_camera' );
-    </script>
+  
+    <script type="text/javascript">
+      
+        
 
-
-    <script language="JavaScript">
-        function setup() {
-            Webcam.reset();
-            Webcam.attach('#my_camera');
+      function take_snapshot() {
+            // // take snapshot and get image data
+        
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden", true);
+            webcam.stop();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
         }
 
-        function take_snapshot() {
-            // take snapshot and get image data
-            Webcam.snap(function(data_uri) {
-                // display results in page
-                $(".image-tag").val(data_uri);
-                document.getElementById('my_camera').innerHTML =
-                    '<img src="' + data_uri + '"/>';
-            });
-        }
         $('#capture').click(function() {
             $("#fileToUpload").val('');
 
         })
+        $("#opencamera").click(function() {
+                $("#canvas").show();
+                $("#webcam").show();
+                $('#canvas').removeAttr('hidden');
+                $('#webcam').removeAttr('hidden');
+                $("#photo").hide();
+                webcam.start()
+                    .then(result => {
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            });
 
+
+            $(document).ready(function() {
+        
+            $("#fileToUpload").change(function(e) {
+          
+                var img = e.target.files[0];
+            
+                if (!pixelarity.open(img, false, function(res) {
+                       
+                        $("#photo").attr("src", res);
+                        $(".image-tag").attr("value", res);
+                    }, "jpg", 0.7)) {
+                 
+                    alert("Whoops! That is not an image!");
+                   
+                }
+                  
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+               
+            });
+        });
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
@@ -461,6 +497,7 @@ $title = 'VAMOS | Land Trans Form';
                 });
             }
         }
+    
         //     $('#btnSubmit').click(function(){
         // $("#input-form :input").prop("disabled", true);
         //     });
