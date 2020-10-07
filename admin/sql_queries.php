@@ -85,11 +85,7 @@ if (isset($_POST['add_pum'])) {
     ]);
 
     $alert_msg .= ' 
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <i class="fa fa-check"></i>
-                <strong> Success ! </strong> Data Inserted.
-            </div>      
+            c  
         ';
 
     $btnSave = 'disabled';

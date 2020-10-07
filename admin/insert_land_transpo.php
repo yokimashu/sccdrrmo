@@ -96,7 +96,7 @@ if (isset($_POST['insert_land_transpo'])) {
     $insert_land_sql = "INSERT INTO tbl_landtranspo SET 
 
     entity_no           = :entity_no,
-    date_reg            = :dateee,
+    date_register       = :dateee,
     trans_type          = :transtype,
     vehicle_name        = :namee,
     vehicle_no          = :vnumber,
@@ -106,7 +106,7 @@ if (isset($_POST['insert_land_transpo'])) {
     contact_position    = :poss,
     mobile_no           = :mobile,
     telephone_no        = :tel_no,
-    email_address       = :email
+    email             = :email
     -- photo               = :photo
     
     ";
