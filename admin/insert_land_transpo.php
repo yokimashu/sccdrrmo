@@ -26,6 +26,7 @@ if (isset($_POST['insert_land_transpo'])) {
     $tel_no = $_POST['telephone_no'];
     $email_address = $_POST['email'];
     $img = $_POST['image'];
+
         $folderPath = "../flutter/images/";
         $image_parts = explode(";base64,", $img);
         $image_type_aux = explode("image/", $image_parts[0]);
@@ -105,7 +106,7 @@ if (isset($_POST['insert_land_transpo'])) {
     $insert_land_sql = "INSERT INTO tbl_landtranspo SET 
 
    
-    date_reg            = :dateee,
+    date_register       = :dateee,
     entity_no           = :entity_no,
     trans_type          = :transtype,
     vehicle_name        = :namee,
@@ -117,7 +118,7 @@ if (isset($_POST['insert_land_transpo'])) {
     mobile_no           = :mobile,
     telephone_no        = :tel_no,
     email               = :email,
-     photo              = :photo
+    photo              = :photo
     
     ";
 
