@@ -299,8 +299,8 @@ $title = 'VAMOS | Add Individual';
                                                 <div>
 
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
+                                                    <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
+                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"> -->
 
                                                 </div>
                                                 <!-- </form> -->
@@ -399,6 +399,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/select2/select2.full.min.js"></script>
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- <script type="text/javascript" src="../plugins/cameracapture/photo_template.js"></script> -->
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
@@ -467,7 +468,15 @@ $title = 'VAMOS | Add Individual';
                
             });
             
-            
+            $("btnSubmit").click(function(){
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+            title: 'Your work has been saved',
+             showConfirmButton: false,
+             timer: 1500
+})
+            })
 
             $("#crop").click(function(e) {
             
