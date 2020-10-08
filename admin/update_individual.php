@@ -2,8 +2,6 @@
 
 
 include('../config/db_config.php');
-
-$check_update_photo = '';
 if (isset($_POST['update_individual'])) {
 
 
@@ -24,15 +22,10 @@ if (isset($_POST['update_individual'])) {
     $get_telephone_no           = $_POST['telephone_no'];
     $get_email                  = $_POST['email'];
     $img                      =   $_POST['image'];
+  
     $alert_msg = '';
     $alert_msg1 = '';
-    $folderPath = "../flutter/images/";
-    $image_parts = explode(";base64,", $img);
-    $image_type_aux = explode("image/", $image_parts[0]);
-    $image_type = $image_type_aux[1];
-    $image_base64 = base64_decode($image_parts[1]);
-    $fileName = uniqid() . '.jpg';
-
+ 
     $get_username               = $_POST['username'];
     $get_new_password           = $_POST['password'];
     $hashed_password  = password_hash($get_new_password, PASSWORD_DEFAULT);
@@ -136,8 +129,13 @@ if (isset($_POST['update_individual'])) {
             ':password'         => $hashed_password
 
         ]);
-        if($check_update_photo != $fileName){
-            
+        if($img != '' ){
+            $folderPath = "../flutter/images/";
+            $image_parts = explode(";base64,", $img);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = uniqid() . '.jpg';        
             $file = $folderPath . $fileName;
             file_put_contents($file, $image_base64);
 
