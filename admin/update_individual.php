@@ -145,12 +145,12 @@ if (isset($_POST['update_individual'])) {
                                 ':entity' =>$get_entity_no]);
             $get_photo = $fileName;
             $check_update_photo = $fileName;
-        echo "<p>";
-        echo print_r($check_update_photo);
-        echo "</p>";
-        echo "<p>";
-        echo print_r($fileName);
-        echo "</p>";
+        // echo "<p>";
+        // echo print_r($check_update_photo);
+        // echo "</p>";
+        // echo "<p>";
+        // echo print_r($fileName);
+        // echo "</p>";
         };
     }
 
