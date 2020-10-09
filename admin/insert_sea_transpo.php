@@ -95,7 +95,7 @@ if (isset($_POST['insert_sea_transpo'])) {
     $insert_sea_sql = "INSERT INTO tbl_seatranspo SET 
 
         entity_no           = :entity_no,
-        date_reg            = :dateee,
+        date_register       = :dateee,
         trans_type          = :transtype,
         vessel_name         = :vnamee,
         voyage_no           = :vnumber,
@@ -104,7 +104,7 @@ if (isset($_POST['insert_sea_transpo'])) {
         contact_position    = :poss,
         mobile_no           = :mobile,
         telephone_no        = :tel_no,
-        email_add           = :email
+        email          = :email
         -- photo            = :photo
     
     ";

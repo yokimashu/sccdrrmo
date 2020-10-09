@@ -50,6 +50,7 @@ $get_all_history_sql = "Select * FROM
     SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
 inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
 
+<<<<<<< HEAD
 UNION
 
 SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
@@ -89,6 +90,9 @@ inner join tbl_seatranspo s on s.entity_no = t.trace_no  WHERE t.entity_no = '".
 
 WHERE fullname NOT IN (Select fullname from tbl_individual where entity_no = '". $entity_no ."')
 ORDER BY date DESC, time DESC";
+=======
+$get_all_history_sql = "SELECT * from tbl_tracehistory r inner join tbl_individual t on t.entity_no = r.trace_no where  r.entity_no = '" . $entity_no . "'";
+>>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
 $get_all_history_data = $con->prepare($get_all_history_sql);
 $get_all_history_data->execute();
 
@@ -127,7 +131,15 @@ $get_all_history_data->execute();
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual History
+              <br>
 
+
+              <div class=" col-md-2 " style="float:left">
+                <input type="text" readonly class="form-control " style="text-align:center; font-weight:bold" name="entity_no" placeholder="entity_no" value="<?php echo $entity_no; ?>" required>
+
+              </div>
+
+<<<<<<< HEAD
       
                                 
                                             
@@ -142,6 +154,12 @@ $get_all_history_data->execute();
                                 <i class="nav-icon fa fa-print"></i></a>
                            
                      
+=======
+
+
+              <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/individual_history.php?entity_no=<?php echo $entity_no;  ?>">
+                <i class="nav-icon fa fa-print"></i></a>
+>>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
 
               <!-- <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -157,10 +175,8 @@ $get_all_history_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
-                      <div class="col-md-3" id="combo"></div>
-                    </div>
-                    <br>
+
+
 
                     <div class="row">
                                                 <div class="col-md-1"></div>
@@ -193,6 +209,7 @@ $get_all_history_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
+<<<<<<< HEAD
                         
                      
                        
@@ -200,12 +217,22 @@ $get_all_history_data->execute();
                           <th> NAME</th>
                          
                          
+=======
+
+
+
+                          <th> Trace ID</th>
+                          <th> NAME</th>
+
+
+>>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
                           <th> Date </th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($list_history = $get_all_history_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
+<<<<<<< HEAD
                           
                             <td><?php echo $list_history['trace_no'];  ?></td>
                             <td><?php echo $list_history['fullname'];  ?></td>
@@ -214,8 +241,27 @@ $get_all_history_data->execute();
                             <td><?php echo $list_history['date'];  ?></td>
                           
                         
+=======
 
-                            </td>
+                            <td><?php echo $list_history['trace_no'];  ?></td>
+                            <td><?php echo $list_history['fullname'];  ?></td>
+
+
+                            <td><?php echo $list_history['date'];  ?></td>
+
+
+                            <!-- <td>
+                               -->
+                            <!-- <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i>
+
+                                <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a> -->
+                            &nbsp;
+>>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
+
+                            <!-- </td> -->
                           </tr>
                         <?php } ?>
                       </tbody>
@@ -351,6 +397,21 @@ $get_all_history_data->execute();
 
 
 
+<<<<<<< HEAD
+=======
+
+
+    // $('#users tbody').on('click', 'button.printlink', function() {
+    //   // alert ('hello');
+    //   // var row = $(this).closest('tr');
+    //   var table = $('#users').DataTable();
+    //   var data = table.row($(this).parents('tr')).data();
+    //   //  alert (data[0]);
+    //   //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+    //   var entity_no = data[0];
+    //   window.open("individual_history.php?entity_no=" + entity_no + '_parent');
+    // });
+>>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
 
 
     // $('#users tbody').on('click', 'button.printlink', function() {
@@ -365,7 +426,10 @@ $get_all_history_data->execute();
     // });
 
 
+<<<<<<< HEAD
   });
+=======
+>>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
     $(document).ready(function() {
       $('#print').click(function() {
         var entity_no = $('#entity_no').val();

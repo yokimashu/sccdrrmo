@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-
+include('update_individual.php');
 
 
 session_start();
@@ -19,7 +19,7 @@ $now = new DateTime();
 $btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
     $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
 $btnNew = 'hidden';
-
+$img='';
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
 $user_id = $_GET['id'];
@@ -53,7 +53,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-
+$check_update_photo = $get_photo;
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
@@ -100,7 +100,8 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-
+    
+    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
     <style>
         #my_camera {
             width: 320px;
@@ -286,15 +287,9 @@ $title = 'VAMOS | Add Individual';
 
                                         <div class="box-body">
                                             <br>
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-
-                                                <div class="col-md-3">
-
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
-
-                                                </div>
-                                            </div>
+                                            <?php include('photo_template.php'); ?>
+                                            <!-- </form> -->
+                                        </div>
 
                                             <div class="row" align="center">
                                                 <!-- <form method="POST" action="storeImage.php"> -->
@@ -304,8 +299,8 @@ $title = 'VAMOS | Add Individual';
                                                 <div>
 
                                                     <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
+                                                    <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
+                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"> -->
 
                                                 </div>
                                                 <!-- </form> -->
@@ -346,7 +341,7 @@ $title = 'VAMOS | Add Individual';
 
 
                                             <div class="box-footer" align="center">
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
+                                                <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
                                                 <a href="list_individual.php">
                                                     <button type="button" name="cancel" class="btn btn-danger">
@@ -402,8 +397,12 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- <script type="text/javascript" src="../plugins/cameracapture/photo_template.js"></script> -->
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
@@ -416,6 +415,12 @@ $title = 'VAMOS | Add Individual';
 
 
     <script type="text/javascript">
+    
+      const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
         $('.select2').select2();
         $(document).ready(function() {
 
@@ -427,24 +432,90 @@ $title = 'VAMOS | Add Individual';
 
         });
     </script>
-    <!-- 
+    
     <script>
-        function generateID() {
+         function take_snapshot() {
+            // // take snapshot and get image data
+        
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden", true);
+            webcam.stop();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
+        }
+        $(document).ready(function() {
+            
+            $("#fileToUpload").change(function(e) {
+          
+                var img = e.target.files[0];
+                22
+                if (!pixelarity.open(img, false, function(res) {
+                        23
+                        $("#photo").attr("src", res);
+                        $(".image-tag").attr("value", res);
+                    }, "jpg", 0.7)) {
+                    25
+                    alert("Whoops! That is not an image!");
+                    26
+                }
+                  
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+               
+            });
+            
+            $("btnSubmit").click(function(){
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+            title: 'Your work has been saved',
+             showConfirmButton: false,
+             timer: 1500
+})
+            })
 
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
+            $("#crop").click(function(e) {
+            
+
+                var img = $("#photo").attr("src");
+              
+                console.log(img);
+                if (!pixelarity.open(img, true, function(res) {
+                        23
+                        $("#photo").attr("src", res);
+                        24
+                    }, "jpeg", 0.7)) {
+                    25
+                    alert("Whoops! That is not an image!");
+                    26
+
                 }
             });
-        }
-        window.onload = generateID;
-    </script> -->
+ 
+            $("#opencamera").click(function() {
+                $("#canvas").show();
+                $("#webcam").show();
+                $('#canvas').removeAttr('hidden');
+                $('#webcam').removeAttr('hidden');
+                $("#photo").hide();
+                webcam.start()
+                    .then(result => {
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            });
+          
+        });
+    </script>
 
 
-    <script language="JavaScript">
+    <!-- <script language="JavaScript">
         Webcam.set({
             width: 320,
             height: 240,
@@ -452,10 +523,10 @@ $title = 'VAMOS | Add Individual';
             jpeg_quality: 100
         });
         //Webcam.attach( '#my_camera' );
-    </script>
+    </script> -->
 
 
-    <script language="JavaScript">
+    <!-- <script language="JavaScript">
         function setup() {
             Webcam.reset();
             Webcam.attach('#my_camera');
@@ -469,7 +540,7 @@ $title = 'VAMOS | Add Individual';
                     '<img src="' + data_uri + '"/>';
             });
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
