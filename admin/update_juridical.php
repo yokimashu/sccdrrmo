@@ -33,7 +33,7 @@ if (isset($_POST['update_juridical'])) {
     if (empty($get_new_password)) {
 
         $insert_juridical_sql = "UPDATE tbl_juridical SET 
-           date_reg             = :dateee,
+           date_register             = :dateee,
            org_name             = :orgnamee,
            org_type             = :orgtypeee,
            business_nature      = :natureee,
@@ -44,8 +44,8 @@ if (isset($_POST['update_juridical'])) {
            contact_name         = :cname,
            contact_position     = :cposition,
            mobile_no            = :mobilee,
-           telephone_no        = :teleephone,
-           email_address        = :email_add
+           telephone_no         = :teleephone,
+           email                = :email_add
            where entity_no      = :entityNo ";
 
         $update_juridical_data = $con->prepare($insert_juridical_sql);
@@ -72,7 +72,7 @@ if (isset($_POST['update_juridical'])) {
 
 
         $insert_juridical_sql = "UPDATE tbl_juridical SET 
-           date_reg             = :dateee,
+           date_register             = :dateee,
            org_name             = :orgnamee,
            org_type             = :orgtypeee,
            business_nature      = :natureee,
@@ -83,8 +83,8 @@ if (isset($_POST['update_juridical'])) {
            contact_name         = :cname,
            contact_position     = :cposition,
            mobile_no            = :mobilee,
-           telephone_no        = :teleephone,
-           email_address        = :email_add
+           telephone_no         = :teleephone,
+           email                = :email_add
            where entity_no      = :entityNo ";
 
         $update_juridical_data = $con->prepare($insert_juridical_sql);
