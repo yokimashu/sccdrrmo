@@ -98,6 +98,7 @@ $title = 'VAMOS | Add Individual';
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
@@ -339,9 +340,8 @@ $title = 'VAMOS | Add Individual';
                                                 </div>
                                             </div><br>
                                             <div class="form-group has-feedback col-8">
-                                         
-                                            </div>
-
+                                             <?php echo $alert_msg; ?>      
+                                                    </div>
                                             <div class="box-footer" align="center">
                                                 <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
@@ -449,6 +449,20 @@ $title = 'VAMOS | Add Individual';
         }
         $(document).ready(function() {
             
+              //sweet notification
+              $("#btnUpload").click(function(e){
+                e.preventDefault();
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+                })
+
+
+            });
+            //crop image when imported
             $("#fileToUpload").change(function(e) {
           
                 var img = e.target.files[0];
@@ -468,16 +482,16 @@ $title = 'VAMOS | Add Individual';
                 $("#webcam").hide();
                
             });
-            
-            $("btnSubmit").click(function(){
-                Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-            title: 'Your work has been saved',
-             showConfirmButton: false,
-             timer: 1500
-})
-            })
+//             //show notification
+//             $("#btnSubmit").click(function(){
+//                 Swal.fire({
+//                 position: 'top-end',
+//                 icon: 'success',
+//             title: 'Your work has been saved',
+//              showConfirmButton: false,
+//              timer: 1500
+// })
+//             });
             //crop the webcam photo(not working)
             $("#crop").click(function(e) {
             
@@ -496,18 +510,7 @@ $title = 'VAMOS | Add Individual';
 
                 }
             });
-            //sweet notification
-            $("#btnUpload").click(function(){
-                Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-                })
-
-
-            });
+          
 
 
 
