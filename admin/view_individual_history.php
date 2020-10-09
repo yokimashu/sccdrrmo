@@ -23,7 +23,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms = $patient = $person_status = $entity_no = '';
+$symptoms = $patient = $person_status =  $entity_no = $date_from = $date_to = '';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -44,8 +44,51 @@ $entity_no = $_GET['entity_no'];
 // $get_all_history_data = $con->prepare($get_all_history_sql);
 // $get_all_history_data->execute();
 
+// "SELECT * from tbl_tracehistory r inner join tbl_individual t on t.entity_no = r.trace_no where  r.entity_no = '".$entity_no."'";
+$get_all_history_sql = "Select * FROM
+(
+    SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
 
-$get_all_history_sql = "select * from tbl_individual r inner join tbl_tracehistory t on t.entity_no = r.entity_no where r.entity_no = '".$entity_no."'";
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_individual i on i.entity_no = t.trace_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+    
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, j.org_name, CONCAT(j.street, ', ', j.barangay) as details, j.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_juridical j on j.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, j.org_name, CONCAT(j.street, ', ', j.barangay) as details, j.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_juridical j on j.entity_no = t.trace_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, l.vehicle_name, l.plate_no, l.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_landtranspo l on l.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+    
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, l.vehicle_name, l.plate_no, l.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_landtranspo l on l.entity_no = t.trace_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+    
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, s.vessel_name, s.voyage_no, s.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_seatranspo s on s.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+    
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, s.vessel_name, s.voyage_no, s.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_seatranspo s on s.entity_no = t.trace_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+    
+) dum 
+
+WHERE fullname NOT IN (Select fullname from tbl_individual where entity_no = '". $entity_no ."')
+ORDER BY date DESC, time DESC";
 $get_all_history_data = $con->prepare($get_all_history_sql);
 $get_all_history_data->execute();
 
@@ -53,19 +96,6 @@ $get_all_history_data->execute();
 
 
 
-
-// $db = mysqli_connect('localhost', 'root', '1234', 'scc_bac');
-// $get_pr_info = "SELECT * FROM pr_info where pr_info_control_no =  :control ";
-// $get_pr_data = $con->prepare($get_pr_info);
-// $get_pr_data->execute([':control' => $control]);
-// while ($result = $get_pr_data->fetch(PDO::FETCH_ASSOC)) {
-//   $control_no = $result['pr_info_control_no'];
-//   $pr_no = $result['pr_info_no'];
-//   $sai_no = $result['pr_info_sai_no'];
-//   $date_pr = $result['pr_info_date'];
-//   $section = $result['pr_info_section'];
-//   $department = $result['pr_info_dept'];
-// }
 
 
 ?>
@@ -98,8 +128,20 @@ $get_all_history_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual History
 
-            <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+      
+                                
+                                            
+                                                <div class="col-md-2">
+                                                
+                                                    <input type="text"  readyonly class="form-control"  name="entity_no" placeholder="entity_no" value="<?php echo $entity_no;?>" required>
+                                                       </div>
+                
+                    
+
+            <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/individual_history.php?entity_no=<?php echo $entity_no;  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
+                           
+                     
 
               <!-- <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -120,36 +162,58 @@ $get_all_history_data->execute();
                     </div>
                     <br>
 
+                    <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-4">
+                                                    <label>Date From: </label>
+                                                    <div class="input-group date" data-provide="datepicker">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_from" placeholder="Date Process" value="<?php echo $date_from; ?>">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-4">
+                                                    <label>Date To: </label>
+                                                    <div class="input-group date" data-provide="datepicker">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_to" placeholder="Date Process" value="<?php echo $date_to; ?>">
+                                                    
+                                            
+                                                    <button type="submit" <?php echo $btnSearch; ?> name="search_individual" id="btnSubmit" class="btn btn-search">
+                                                    <i class="fa fa-search fa-fw"> </i> </button>
+                                                </div>
+                                                </div>
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
                         
-                          <th> Date </th>
+                     
                        
-                          <th> entity_no</th>
-                          <th> Person Scanned </th>
+                          <th> Trace ID</th>
+                          <th> NAME</th>
                          
-                          <th> Options</th>
+                         
+                          <th> Date </th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($list_history = $get_all_history_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
-                            <td><?php echo $list_history['date'];  ?></td>
-                            <td><?php echo $list_history['entity_no'];  ?></td>
-                            <td><?php echo $list_history['trace_no'];  ?></td>
                           
-                         
-                            <td>
-                              
-                                <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i>
-
-                                <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              </a>
-                              &nbsp;
+                            <td><?php echo $list_history['trace_no'];  ?></td>
+                            <td><?php echo $list_history['fullname'];  ?></td>
+               
+                            
+                            <td><?php echo $list_history['date'];  ?></td>
+                          
+                        
 
                             </td>
                           </tr>
@@ -286,28 +350,31 @@ $get_all_history_data->execute();
 
 
 
-    // $(document).ready(function() {
-    //   $('#print').click(function() {
-    //     var entity_no = $('#entity_no').val();
-    //     console.log(entity_no);
 
-    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
-    //   })
+
+
+    // $('#users tbody').on('click', 'button.printlink', function() {
+    //   // alert ('hello');
+    //   // var row = $(this).closest('tr');
+    //   var table = $('#users').DataTable();
+    //   var data = table.row($(this).parents('tr')).data();
+    //   //  alert (data[0]);
+    //   //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+    //   var entity_no = data[0];
+    //   window.open("individual_history.php?entity_no=" + entity_no + '_parent');
     // });
 
 
+  });
+    $(document).ready(function() {
+      $('#print').click(function() {
+        var entity_no = $('#entity_no').val();
+        console.log(entity_no);
 
-
-    $('#users tbody').on('click', 'button.printlink', function() {
-      // alert ('hello');
-      // var row = $(this).closest('tr');
-      var table = $('#users').DataTable();
-      var data = table.row($(this).parents('tr')).data();
-      //  alert (data[0]);
-      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-      var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
+      })
     });
+
   </script>
 </body>
 

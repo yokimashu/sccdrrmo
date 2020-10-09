@@ -28,7 +28,7 @@ $btnNew = 'hidden';
 
 
 $user_id = $_GET['id'];
-$get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='$user_id'";
+$get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_landtranspo oh ON  oh.entity_no = en.entity_no where oh.entity_no ='$user_id'";
 $get_data_data = $con->prepare($get_data_sql);
 $get_data_data->execute([':id' => $user_id]);
 
@@ -36,15 +36,10 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
 
     $get_entity_no = $result['entity_no'];
-    $get_username = $result['username'];
-    $get_password = $result['password'];
+    // $get_username = $result['username'];
+    // $get_password = $result['password'];
 
     $get_date_register = $result['date_register'];
-
-
-
-
-
 }
 
 
@@ -159,157 +154,19 @@ $title = 'VAMOS | View Land Trans ';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
+                                                    <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $get_entity_no; ?>" required>
                                                 </div>
 
                                             </div></br>
 
 
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
-                                                    <div id="status"></div>
-                                                </div>
-                                            </div></br>
-
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="land_transpo_type" value="<?php echo $transpo; ?>">
-                                                        <option selected="selected">Select Transportation Type</option>
-                                                        <?php while ($get_transpo = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_transpo['transpo_name']; ?>"><?php echo $get_transpo['transpo_name']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="vechicle_name" placeholder="Vehicle Name" value="<?php echo $vehicle_name ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="vehicle_no" placeholder="Vehicle #" value="<?php echo $vehicle_no ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="plate_no" placeholder="Plate #" value="<?php echo $plate_no ?>">
-                                                </div>
-
-
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="route" placeholder="Route / Area of Operation" value="<?php echo $route ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="contact_name" placeholder="Contact Name" value="<?php echo $contact_name ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="contact_position" placeholder="Contact Position" value="<?php echo $contact_position ?>">
-                                                </div>
-                                            </div><br>
-
-                                        </div>
-
-
-                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                    <div class="card col-md-5">
-                                        <div class="card-header">
-                                            <h6> ID PHOTO</h6>
-                                        </div>
-
-                                        <div class="box-body">
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <div class="col-md-3">
-
-                                                    <div stytle="display: table-cell; vertical-align: middle; height: 50px; border: 1px solid red;" id="my_camera" align="center" onClick="setup()"> Click to ACCESS Camera</div><br>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="row" align="center">
-                                                <form method="POST" action="storeImage.php">
-
-                                                    <div class="col-md-3"></div>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <div>
-
-                                                        <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                        <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                        <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()">
-
-                                                    </div>
-                                                </form>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label>CONTACT DETAILS </label>
-
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
-                                                </div>
-                                            </div><br>
 
 
                                             <div class="box-footer" align="center">

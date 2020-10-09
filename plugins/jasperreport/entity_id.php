@@ -11,10 +11,10 @@ include_once("PHPJasperXML.inc.php");
 // $user = 'root';
 // $pass = '1234';
 // $db = 'sccdrrmo';
-$host = "localhost";
+$host = "127.0.0.1";
 $db_name = "sccdrrmo";
 $username = "root";
-$password = "1234";
+$password = "0Fd8xWc1anuE";
 $entity_no = $_GET['entity_no'];
 
 $PHPJasperXML = new PHPJasperXML();

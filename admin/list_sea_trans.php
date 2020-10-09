@@ -34,6 +34,11 @@ $get_all_individual_data = $con->prepare($get_all_individual_sql);
 $get_all_individual_data->execute();
 
 
+$get_all_seatranspo_sql = "SELECT * FROM tbl_seatranspo j inner join tbl_entity e on e.entity_no = j.entity_no ";
+$get_all_seatranspo_data = $con->prepare($get_all_seatranspo_sql);
+$get_all_seatranspo_data->execute();
+
+
 
 ?>
 
@@ -88,18 +93,48 @@ $get_all_individual_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> ID </th>
+                         
+                          <th> Entity # </th>
                           <th> Date </th>
-                          <th> Full Name </th>
-                          <th> Address</th>
-                          <th> Contact No.</th>
+                          <th> Username </th>
+                          <th> Trans. Type</th>
                           <th> Options</th>
                         </tr>
                       </thead>
                       <tbody>
 
+                        <?php while ($list_sea = $get_all_seatranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <tr>
+                           
+                            <td><?php echo $list_sea['entity_no'];  ?></td>
+                            <td><?php echo $list_sea['date_register'];  ?></td>
+                            <td><?php echo $list_sea['username'];  ?></td>
+                            <td><?php echo $list_sea['trans_type']; ?> </td>
+                            <td>
+
+                              <button class="btn btn-success btn-sm" href="view_land_trans.php?&id=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></button>
+
+                              <button class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></button>
+
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/seatranspo.php?entity_no=<?php echo $list_sea['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a>
+                              &nbsp;
+
+                            </td>
+                          </tr>
+                        <?php } ?>
+
+
+
+
+
+
                       </tbody>
                     </table>
+
 
                   </div>
                 </div>
@@ -252,7 +287,7 @@ $get_all_individual_data->execute();
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
       var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+      window.open("seatranspo.php?entity_no=" + entity_no, '_parent');
     });
   </script>
 </body>
