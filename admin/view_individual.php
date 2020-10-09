@@ -19,6 +19,7 @@ $now = new DateTime();
 $btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
     $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
 $btnNew = 'hidden';
+$alert_msg='';
 $img='';
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
@@ -337,8 +338,9 @@ $title = 'VAMOS | Add Individual';
                                                     <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
                                                 </div>
                                             </div><br>
-
-
+                                            <div class="form-group has-feedback col-8">
+                                         
+                                            </div>
 
                                             <div class="box-footer" align="center">
                                                 <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
@@ -379,7 +381,7 @@ $title = 'VAMOS | Add Individual';
     <!-- datepicker -->
     <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- CK Editor -->
-    <script src="../../plugins/ckeditor/ckeditor.js"></script>
+    <!-- <script src="../../plugins/ckeditor/ckeditor.js"></script> -->
     <!-- Bootstrap WYSIHTML5 -->
     <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
@@ -396,6 +398,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
+    <script src="../plugins/select2/select2.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
@@ -421,16 +424,14 @@ $title = 'VAMOS | Add Individual';
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
-        $('.select2').select2();
+    
         $(document).ready(function() {
-
-
 
             $(document).ajaxStart(function() {
                 Pace.restart()
             })
 
-        });
+        });    $('.select2').select2();
     </script>
     
     <script>
@@ -477,7 +478,7 @@ $title = 'VAMOS | Add Individual';
              timer: 1500
 })
             })
-
+            //crop the webcam photo(not working)
             $("#crop").click(function(e) {
             
 
@@ -495,7 +496,22 @@ $title = 'VAMOS | Add Individual';
 
                 }
             });
- 
+            //sweet notification
+            $("#btnUpload").click(function(){
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+                })
+
+
+            });
+
+
+
+            //open the webcam
             $("#opencamera").click(function() {
                 $("#canvas").show();
                 $("#webcam").show();
