@@ -19,6 +19,7 @@ $now = new DateTime();
 $btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
     $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
 $btnNew = 'hidden';
+$alert_msg='';
 $img='';
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
@@ -97,6 +98,7 @@ $title = 'VAMOS | Add Individual';
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
@@ -337,9 +339,9 @@ $title = 'VAMOS | Add Individual';
                                                     <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
                                                 </div>
                                             </div><br>
-
-
-
+                                            <div class="form-group has-feedback col-8">
+                                             <?php echo $alert_msg; ?>      
+                                                    </div>
                                             <div class="box-footer" align="center">
                                                 <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
@@ -379,7 +381,7 @@ $title = 'VAMOS | Add Individual';
     <!-- datepicker -->
     <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- CK Editor -->
-    <script src="../../plugins/ckeditor/ckeditor.js"></script>
+    <!-- <script src="../../plugins/ckeditor/ckeditor.js"></script> -->
     <!-- Bootstrap WYSIHTML5 -->
     <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
@@ -396,6 +398,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
+    <script src="../plugins/select2/select2.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
@@ -421,16 +424,14 @@ $title = 'VAMOS | Add Individual';
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
-        $('.select2').select2();
+    
         $(document).ready(function() {
-
-
 
             $(document).ajaxStart(function() {
                 Pace.restart()
             })
 
-        });
+        });    $('.select2').select2();
     </script>
     
     <script>
@@ -448,6 +449,20 @@ $title = 'VAMOS | Add Individual';
         }
         $(document).ready(function() {
             
+              //sweet notification
+              $("#btnUpload").click(function(e){
+                e.preventDefault();
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+                })
+
+
+            });
+            //crop image when imported
             $("#fileToUpload").change(function(e) {
           
                 var img = e.target.files[0];
@@ -467,17 +482,17 @@ $title = 'VAMOS | Add Individual';
                 $("#webcam").hide();
                
             });
-            
-            $("btnSubmit").click(function(){
-                Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-            title: 'Your work has been saved',
-             showConfirmButton: false,
-             timer: 1500
-})
-            })
-
+//             //show notification
+//             $("#btnSubmit").click(function(){
+//                 Swal.fire({
+//                 position: 'top-end',
+//                 icon: 'success',
+//             title: 'Your work has been saved',
+//              showConfirmButton: false,
+//              timer: 1500
+// })
+//             });
+            //crop the webcam photo(not working)
             $("#crop").click(function(e) {
             
 
@@ -495,7 +510,11 @@ $title = 'VAMOS | Add Individual';
 
                 }
             });
- 
+          
+
+
+
+            //open the webcam
             $("#opencamera").click(function() {
                 $("#canvas").show();
                 $("#webcam").show();
