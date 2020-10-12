@@ -22,7 +22,7 @@ if (isset($_POST['insert_sea_transpo'])) {
 
     $contact_name = $_POST['contact_name'];
     $contact_position = $_POST['contact_position'];
-
+    $img = $_POST['image'];
     $mobile_no = $_POST['mobile_no'];
     $tel_no = $_POST['telephone_no'];
     $email_address = $_POST['email'];
@@ -35,62 +35,17 @@ if (isset($_POST['insert_sea_transpo'])) {
     $type = 'INDIVIDUAL';
     $status = 'ACTIVE';
 
-    // //for photo
-    // $currentDir = getcwd();
-    // $uploadDirectory = "../flutter/images/";
-    // $errors = [];
-    // $img = $_POST['image'];
-    // $fileExtensions = ['png','jpg','jpeg'];
-    // $fileName = $_FILES['myFile']['name'];
-    // $fileSize = $_FILES['myFile']['size'];
-    // $fileTmpName = $_FILES['myFile']['tmp_name'];
-    // $fileType = $_FILES['myFile']['type'];
-    // $target_file = $uploadDirectory . basename($_FILES['myFile']['name']);
-    // $fileExtension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // $uploadPath = $uploadDirectory . $fileName;
-    //     $newfilename = '';
+    //for photo
+     //upload image
 
-    // if ($_FILES['myFile']['name'] == null && $img == null  )
-    //     {  
-    //     $fileName = 'user.jpeg';
-    //     }else  if($_FILES["myFile"]["error"] == 0 ) 
-    //     {
-    //         if (!in_array($fileExtension, $fileExtensions)) {
-    //             $errors[] = "This file extension is not allowed.";
-    //         }
-    //         if (empty($errors)) {
-    //             $dipUpload = move_uploaded_file($fileTmpName, $uploadPath);
-    //         }
-
-    //  $temp = explode(".", $_FILES["myFile"]["name"]);
-    //             //      
-
-
-
-    //             // $fileExtension = strtolower(end(explode('.',$fileName)));
-
-    //     } 
-    //     if ($img != ''){
-
-
-
-    // $folderPath = "../flutter/images/";
-
-    // $image_parts = explode(";base64,", $img);
-    // $image_type_aux = explode("image/", $image_parts[0]);
-    // $image_type = $image_type_aux[1];
-
-    // $image_base64 = base64_decode($image_parts[1]);
-    // $fileName = uniqid() . '.jpeg';
-
-    // $file = $folderPath . $fileName;
-    // file_put_contents($file, $image_base64);
-    //     }
-
-    // print_r($fileName);
-    // if($newfilename != ''){
-    //     $fileName = $newfilename;
-    // }
+     $folderPath = "../flutter/images/";
+     $image_parts = explode(";base64,", $img);
+     $image_type_aux = explode("image/", $image_parts[0]);
+     $image_type = $image_type_aux[1];
+     $image_base64 = base64_decode($image_parts[1]);
+     $fileName = uniqid() . '.jpg';
+     $file = $folderPath . $fileName;
+     file_put_contents($file, $image_base64);
 
     $insert_sea_sql = "INSERT INTO tbl_seatranspo SET 
 
@@ -104,8 +59,8 @@ if (isset($_POST['insert_sea_transpo'])) {
         contact_position    = :poss,
         mobile_no           = :mobile,
         telephone_no        = :tel_no,
-        email          = :email
-        -- photo            = :photo
+        email               = :email,
+        photo               = :photo
     
     ";
 
@@ -122,10 +77,8 @@ if (isset($_POST['insert_sea_transpo'])) {
         ':poss'         => $contact_position,
         ':mobile'       => $mobile_no,
         ':tel_no'       => $tel_no,
-        ':email'        => $email_address
-
-
-        // ':photo'             => $fileName
+        ':email'        => $email_address,
+        ':photo'        => $fileName
 
     ]);
 

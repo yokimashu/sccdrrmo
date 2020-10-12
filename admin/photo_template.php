@@ -1,4 +1,8 @@
-<div class="row col-12">
+                                         <?php if ($get_photo == ''){
+                                             $get_photo = 'user.jpg';
+                                         }?>
+                                         
+                                            <div class="row col-12">
                                             <div class="row">
                                             <!-- <form method="POST" action="storeImage.php"> -->
                                             <div style="margin:auto">
@@ -6,7 +10,6 @@
                                                     <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
                                                     <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
                                                     <audio id="snapSound"  src="audio/snap.wav"  preload="auto"></audio>
-
                                                     <img src="../flutter/images/<?php echo $get_photo?>" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
                                                 </div>
 </div>
