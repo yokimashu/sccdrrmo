@@ -434,19 +434,20 @@ $title = 'VAMOS | Juridical Form';
 
     <script>
         $('.select2').select2();
+        $('#entity_no').val(sessionStorage.getItem("entity_no"));
 
-        function generateID() {
+        // function generateID() {
 
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
-                }
-            });
-        }
-        window.onload = generateID;
+        //     $.ajax({
+        //         type: 'POST',
+        //         data: {},
+        //         url: 'generate_id.php',
+        //         success: function(data) {
+        //             $('#entity_no').val(data);
+        //         }
+        //     });
+        // }
+        // window.onload = generateID;
     </script>
 
 
