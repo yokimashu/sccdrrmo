@@ -29,7 +29,7 @@ if (isset($_POST['insert_individual'])) {
     $telephone_no = $_POST['telephone_no'];
     $barangay = $_POST['barangay'];
     $email = $_POST['email'];
-    $username = $_POST['username'];
+    $user_name = $_POST['username'];
     $hashed_password  = password_hash($entity_no, PASSWORD_DEFAULT);
     $type = 'INDIVIDUAL';
     $status = 'ACTIVE';
@@ -111,7 +111,7 @@ if (isset($_POST['insert_individual'])) {
     $entity_data->execute([
 
         ':entity_no'        => $entity_no,
-        ':username'         => $username,
+        ':username'         => $user_name,
         ':password'         => $hashed_password,
         ':type'             => 'INDIVIDUAL',
         ':status'           => 'ACTIVE'
