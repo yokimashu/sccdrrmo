@@ -1,6 +1,6 @@
 <?php
 
-
+$alert_msg = '';
 include('../config/db_config.php');
 if (isset($_POST['update_individual'])) {
 
@@ -152,13 +152,14 @@ if (isset($_POST['update_individual'])) {
         // echo print_r($fileName);
         // echo "</p>";
         };
+        
+        $alert_msg .= ' 
+        <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <i class="icon fa fa-check"></i>You have successfully deleted the employee.
+        </div>     
+    ';
     }
 
-    $alert_msg .= ' 
-    <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <i class="fa fa-check"></i>
-        <strong> Success ! </strong> Data Updated.
-    </div>      
-';
+  
 }
