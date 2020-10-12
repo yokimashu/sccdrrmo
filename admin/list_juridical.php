@@ -259,6 +259,20 @@ $('#users tbody').on('click', 'button.printlink', function() {
       var entity_no = data[0];
       window.open("juridical_id_new.php?entity_no=" + entity_no, '_parent');
     });
+
+
+    function generateID() {
+
+$.ajax({
+    type: 'POST',
+    data: {},
+    url: 'generate_id.php',
+    success: function(data) {
+        //$('#entity_no').val(data);
+        sessionStorage.setItem("entity_no", data);
+    }
+});
+}
   </script>
 </body>
 
