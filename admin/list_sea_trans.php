@@ -93,15 +93,9 @@ $get_all_seatranspo_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-<<<<<<< HEAD
-                         
-                          <th> Entity # </th>
-                          <th> Date </th>
-=======
                           <th> Date </th>
                           <th> Entity # </th>
 
->>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
                           <th> Username </th>
                           <th> Trans. Type</th>
                           <th> Options</th>
@@ -111,34 +105,19 @@ $get_all_seatranspo_data->execute();
 
                         <?php while ($list_sea = $get_all_seatranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
-<<<<<<< HEAD
-                           
-                            <td><?php echo $list_sea['entity_no'];  ?></td>
-                            <td><?php echo $list_sea['date_register'];  ?></td>
-=======
                             <td><?php echo $list_sea['date_register'];  ?></td>
                             <td><?php echo $list_sea['entity_no'];  ?></td>
->>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
                             <td><?php echo $list_sea['username'];  ?></td>
                             <td><?php echo $list_sea['trans_type']; ?> </td>
                             <td>
 
-<<<<<<< HEAD
-                              <button class="btn btn-success btn-sm" href="view_land_trans.php?&id=<?php echo $list_sea['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></button>
-=======
                               <a class="btn btn-success btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i></a>
->>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
 
                               <button class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_sea['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></button>
 
-<<<<<<< HEAD
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/seatranspo.php?entity_no=<?php echo $list_sea['entity_no'];  ?>">
-=======
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_sea['entity_no'];  ?>">
->>>>>>> 76142e6cc4affee20de36ba481c2a20c9deb39d0
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
                               &nbsp;

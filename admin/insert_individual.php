@@ -118,21 +118,6 @@ if (isset($_POST['insert_individual'])) {
 
     ]);
 
-    // $entity_data = $con->prepare($insert_entity_sql);
-    // $entity_data->execute([
-
-    // ':entity_no'         => $entity_no,
-
-
-
-
-
-
-
-
-
-
-
     $alert_msg .= ' 
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
