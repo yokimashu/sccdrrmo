@@ -3,7 +3,7 @@
 include_once('session.php');
 include('../config/db_config.php');
 include('send_notification.php');
-
+include('user_controls.php');
 // include('session.php');
 
 
@@ -181,29 +181,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
       </ul>
 
-
-
-
-
-
-
-      <!-- <li class="nav-item has-treeview" style="font-size:16px">
-            <a href="" class="nav-link ">
-              <i class="nav-icon fa fa-exchange"></i>
-              <p>
-                REGISTRATION LIST
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-           
-
-       
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              //<?php echo $registration_list ?>
-            </ul> -->
-
-      <li class="nav-item " style="font-size:16px">
         <?php echo $incident_report ?>
 
       <li class="nav-item has-treeview" style="font-size:16px">
@@ -217,10 +194,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         <ul class="nav nav-treeview">
 
           <li class="nav-item">
-            <a href="list_users.php" class="nav-link">
-              <i class="fa fa-minus nav-icon"></i>
-              <p>Users</p>
-            </a>
+          <?php echo $registration_list ?>
           </li>
 
           <li class="nav-item">
