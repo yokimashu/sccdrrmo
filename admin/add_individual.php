@@ -1,27 +1,24 @@
 <?php
 
-include('../config/db_config.php');
-include('insert_individual.php');
-$btn_enabled = 'enabled';
-
 session_start();
-$user_id = $_SESSION['id'];
-
-include('verify_admin.php');
-
-if (!isset($_SESSION['id'])) {
-    header('location:../index.php');
-} else {
-}
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $entity_no = $date_register = $user_name = $firstname = $middlename = $lastname = 
-$birthdate = $age = $gender = $barangay = $street = $city = $province = $mobile_no = $telephone_no = $email = '';
+$entity_no = $date_register = $user_name = $firstname = $middlename = $lastname = $birthdate = $age = $gender = $barangay = $street = $city = $province = $mobile_no = $telephone_no = $email = '';
 
-
+$btnSave = $btnEdit = "";
 $btnNew = 'hidden';
+$btn_enabled = 'enabled';
 
+
+if (!isset($_SESSION['id'])) {
+    header('location:../index.php');
+}
+$user_id = $_SESSION['id'];
+
+include('../config/db_config.php');
+include('insert_individual.php');
+include('verify_admin.php');
 
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
@@ -438,10 +435,10 @@ $title = 'VAMOS | Add Individual';
 <script>
     
 
-    $(function(){
-        $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
-    })
+    // $(function(){
+    //     $('.select2').select2();
+    //     $('#entity_no').val(sessionStorage.getItem("entity_no"));
+    // })
 
     </script>
 
@@ -559,7 +556,8 @@ $title = 'VAMOS | Add Individual';
                     })
             });
 
-          
+            $('.select2').select2();
+            $('#entity_no').val(sessionStorage.getItem("entity_no"));
         });
 
    
