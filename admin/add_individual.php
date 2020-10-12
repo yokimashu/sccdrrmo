@@ -462,7 +462,6 @@ $title = 'VAMOS | Add Individual';
 
 
 
-
     <script language="JavaScript">
         function take_snapshot() {
             // // take snapshot and get image data
@@ -475,8 +474,6 @@ $title = 'VAMOS | Add Individual';
             $("#canvas").hide();
             $("#webcam").hide();
             $("#photo").show();
-
-
 
         }
 
@@ -518,9 +515,6 @@ $title = 'VAMOS | Add Individual';
                 $("#webcam").hide();
 
             });
-
-
-
 
             $("#crop").click(function(e) {
 
