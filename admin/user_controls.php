@@ -1,6 +1,8 @@
 <?php 
  $incident_report  = '';
- $registration_list ='';
+ $registration_list ='';  
+ $get_individual_entity = '';
+       
  //sidebar buttons
 if ($_SESSION['user_type'] == 1) {
     $registration_list =  '<a href="list_users" class="nav-link">
@@ -15,8 +17,9 @@ if ($_SESSION['user_type'] == 1) {
         </p>
         </a>';
 
-// individual form 
-$view_history = '<a class="btn btn-success btn-sm view_history" id = "view_history" >
-<i class="fa fa-suitcase"></i></a>';
+// individual form  
+$view_history = '<a class="btn btn-success btn-sm" id = "view_history" href="view_individual_history.php?&entity_no='.$get_individual_entity.'">
+                                <i class="fa fa-suitcase"></i></a>';
+                               
 }
 ?>

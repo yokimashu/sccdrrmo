@@ -4,13 +4,10 @@ include('../config/db_config.php');
 include('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
-
-include('verify_admin.php');
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
 } else {
 }
-include('verify_admin.php');
 
 
 date_default_timezone_set('Asia/Manila');
@@ -105,10 +102,13 @@ $get_all_individual_data->execute();
                               <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i></a>
 
+                                
+                              <?php if($_SESSION['user_type'] == 1){
+                                //restrict users to view history?>
                               <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>
 
-
+                              <?php }?>
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>

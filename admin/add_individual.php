@@ -561,18 +561,7 @@ $title = 'VAMOS | Add Individual';
         });
 
    
-        // function generateID() {
 
-        //     $.ajax({
-        //         type: 'POST',
-        //         data: {},
-        //         url: 'generate_id.php',
-        //         success: function(data) {
-        //             $('#entity_no').val(data);
-        //         }
-        //     });
-        // }
-        // window.onload = generateID;
     </script>
 </body>
 
