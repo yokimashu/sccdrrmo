@@ -65,7 +65,7 @@ $title = 'VAMOS | Add Individual';
 
     <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
     <!-- <link rel="stylesheet" href="../plugins/pixelarity/jquerysctipttop.css"> -->
-    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+    <!-- <link rel="stylesheet" href="../plugins/toastr/toastr.min.css"> -->
 
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
@@ -278,7 +278,7 @@ $title = 'VAMOS | Add Individual';
 
                                                     <video id="webcam" autoplay playsinline width="450 " height="450" align="center" hidden class="photo  img-thumbnail"></video>
                                                     <canvas id="canvas" class="d-none" hidden width="450" height="450" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
-                                                    <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio>
+                                                    <!-- <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio> -->
 
                                                     <img src="../flutter/images/user.jpg" id="photo" style="height: 320px; width:320px; margin:auto;" class="photo img-thumbnail">
 
@@ -401,22 +401,22 @@ $title = 'VAMOS | Add Individual';
     <!-- Slimscroll -->
     <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.js"></script>
+    <!-- <script src="../plugins/fastclick/fastclick.js"></script> -->
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard.js"></script>
+    <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.js"></script>
+    <!-- <script src="../plugins/datatables/jquery.dataTables.js"></script> -->
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <!-- <script src="../plugins/pixelarity/pixelarity-faceless.js"></script>
     <script src="../plugins/pixelarity/script-faceless.js"></script> -->
     <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
-    <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+    <!-- <script src="../plugins/datatables/dataTables.bootstrap4.js"></script> -->
     <!-- Toastr -->
-    <script src="../plugins/toastr/toastr.min.js"></script>
+    <!-- <script src="../plugins/toastr/toastr.min.js"></script> -->
     <!-- Select2 -->
     <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
@@ -447,8 +447,8 @@ $title = 'VAMOS | Add Individual';
     <script type="text/javascript">
         const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
-        const snapSoundElement = document.getElementById('snapSound');
-        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        // const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement);
 
         function getAge() {
             var dob = document.getElementById('date').value;
@@ -459,6 +459,9 @@ $title = 'VAMOS | Add Individual';
         };
      
     </script>
+
+
+
 
 
 

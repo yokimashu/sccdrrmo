@@ -111,20 +111,12 @@ if (isset($_POST['insert_sea_transpo'])) {
     // ':entity_no'         => $entity_no,
 
 
-
-
-
-
-
-
-
-
-
     $alert_msg .= ' 
-    <div class="new-alert new-alert-success alert-dismissible">
-        <i class="icon fa fa-success"></i>
-        Data Inserted
-    </div>  
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>
+               <strong> Success ! </strong> Data Inserted.
+        </div>    
       ';
 
     $btn_enabled = 'disabled';

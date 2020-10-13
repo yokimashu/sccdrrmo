@@ -91,6 +91,9 @@ $title = 'VAMOS | Sea Trans Form';
         <div class="content-wrapper">
             <div class="content-header"></div>
 
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
 
 
             <section class="content">
@@ -304,7 +307,7 @@ $title = 'VAMOS | Sea Trans Form';
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard.js"></script>
+    <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- DataTables -->
@@ -312,44 +315,42 @@ $title = 'VAMOS | Sea Trans Form';
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
-    <!-- Toastr -->
-    <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Select2 -->
-
+    <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      -->
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
-    <script src="../plugins/select2/select2.full.min.js"></script>
+ 
 
 
     <script type="text/javascript">
         const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
-        const snapSoundElement = document.getElementById('snapSound');
-        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        // const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement);
         $('.select2').select2();
     </script>
 
     <script>
-        function generateID() {
+        // function generateID() {
 
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
-                }
-            });
-        }
-        window.onload = generateID;
+        //     $.ajax({
+        //         type: 'POST',
+        //         data: {},
+        //         url: 'generate_id.php',
+        //         success: function(data) {
+        //             $('#entity_no').val(data);
+        //         }
+        //     });
+        // }
+        // window.onload = generateID;
     </script>
 
     <script language="JavaScript">
@@ -390,7 +391,6 @@ $title = 'VAMOS | Sea Trans Form';
             //crop the webcam photo(not working)
             $("#crop").click(function(e) {
             
-
                 var img = $("#photo").attr("src");
               
                 console.log(img);
@@ -423,7 +423,6 @@ $title = 'VAMOS | Sea Trans Form';
                     })
             });
           
-        });
 
         function checkUsername() {
             var username = $('#username').val();
@@ -442,6 +441,7 @@ $title = 'VAMOS | Sea Trans Form';
                 });
             }
         }
+        $('#entity_no').val(sessionStorage.getItem("entity_no"));
         //     $('#btnSubmit').click(function(){
         // $("#input-form :input").prop("disabled", true);
         //     });
