@@ -433,8 +433,7 @@ $title = 'VAMOS | Juridical Form';
     <script src="../plugins/select2/select2.full.min.js"></script>
 
     <script>
-        $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
+       
 
         // function generateID() {
 
@@ -460,7 +459,8 @@ $title = 'VAMOS | Juridical Form';
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
         $(document).ready(function() {
 
-            $('#entity_no').val(sessionStorage.getItem("entity_no"));
+        $('.select2').select2();
+        $('#entity_no').val(sessionStorage.getItem("entity_no_juridical"));
             //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 

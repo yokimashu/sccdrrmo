@@ -62,7 +62,7 @@ $get_all_individual_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual
 
-              <a href="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;" onClick="generateID()">
+              <a href="add_individual" id ="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;" onClick="generateID()">
                 <i class="nav-icon fa fa-plus-square"></i></a>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -272,6 +272,10 @@ $get_all_individual_data->execute();
       window.open("entity_id.php?entity_no=" + entity_no, '_parent');
     });
 
+   $('#add_individual').click(function(){
+    generateID();
+
+   });
     function generateID() {
 
 $.ajax({
