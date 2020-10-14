@@ -4,15 +4,9 @@ include('../config/db_config.php');
 include('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
-
-include('verify_admin.php');
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
-} else {
-}
-include('verify_admin.php');
-
-
+} 
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
@@ -105,8 +99,12 @@ $get_all_juridical_data->execute();
                               <a class="btn btn-success btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i></a>
 
+                               
+                                <?php if($_SESSION['user_type'] == 1){
+                                    //restrict users to view history?>
                               <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>
+                                <?php }?>
 
 
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
