@@ -65,7 +65,7 @@ $get_all_juridical_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Juridical
 
-              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
+              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success" onClick="generateID()">
                 <i class="nav-icon fa fa-plus-square"></i></a>
 
             </h4>
@@ -269,7 +269,7 @@ $.ajax({
     url: 'generate_id.php',
     success: function(data) {
         //$('#entity_no').val(data);
-        sessionStorage.setItem("entity_no", data);
+        sessionStorage.setItem("entity_no_juridical", data);
     }
 });
 }
