@@ -423,7 +423,7 @@ $title = 'VAMOS | Add Individual';
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      -->
@@ -499,8 +499,8 @@ $title = 'VAMOS | Add Individual';
 
             $(document).ready(function() {
                 $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
-            console.log(sessionStorage.getItem("entity_no"));
+        $('#entity_no').val(sessionStorage.getItem("entity_number"));
+            console.log(sessionStorage.getItem("entity_number"));
             //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 

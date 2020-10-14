@@ -31,12 +31,10 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
     $get_entity_no = $result['entity_no'];
     $get_username = $result['username'];
     $get_password = $result['password'];
-
     $get_date_register = $result['date_register'];
     $get_firstname = $result['firstname'];
     $get_middlename = $result['middlename'];
     $get_lastname = $result['lastname'];
-
     $get_birthdate = $result['birthdate'];
     $get_age = $result['age'];
     $get_gender = $result['gender'];
@@ -479,16 +477,7 @@ $title = 'VAMOS | Add Individual';
                 $("#webcam").hide();
                
             });
-//             //show notification
-//             $("#btnSubmit").click(function(){
-//                 Swal.fire({
-//                 position: 'top-end',
-//                 icon: 'success',
-//             title: 'Your work has been saved',
-//              showConfirmButton: false,
-//              timer: 1500
-// })
-//             });
+
             //crop the webcam photo(not working)
             $("#crop").click(function(e) {
             
@@ -509,8 +498,6 @@ $title = 'VAMOS | Add Individual';
             });
           
 
-
-
             //open the webcam
             $("#opencamera").click(function() {
                 $("#canvas").show();
@@ -530,33 +517,7 @@ $title = 'VAMOS | Add Individual';
         });
     </script>
 
-
-    <!-- <script language="JavaScript">
-        Webcam.set({
-            width: 320,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 100
-        });
-        //Webcam.attach( '#my_camera' );
-    </script> -->
-
-
-    <!-- <script language="JavaScript">
-        function setup() {
-            Webcam.reset();
-            Webcam.attach('#my_camera');
-        }
-
-        function take_snapshot() {
-            // take snapshot and get image data
-            Webcam.snap(function(data_uri) {
-                // display results in page
-                document.getElementById('my_camera').innerHTML =
-                    '<img src="' + data_uri + '"/>';
-            });
-        }
-    </script> -->
+   
 </body>
 
 </html>

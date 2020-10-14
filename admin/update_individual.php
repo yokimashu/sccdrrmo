@@ -21,7 +21,7 @@ if (isset($_POST['update_individual'])) {
     $get_mobile_no              = $_POST['mobile_no'];
     $get_telephone_no           = $_POST['telephone_no'];
     $get_email                  = $_POST['email'];
-    $img                      =   $_POST['image'];
+    $img                        = $_POST['image'];
   
     $alert_msg = '';
     $alert_msg1 = '';

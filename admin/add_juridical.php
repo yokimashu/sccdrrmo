@@ -1,12 +1,13 @@
 <?php
 
 include('../config/db_config.php');
-include('insert_juridical.php');
+
 
 session_start();
 $user_id = $_SESSION['id'];
 
 include('verify_admin.php');
+include('insert_juridical.php');
 
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');

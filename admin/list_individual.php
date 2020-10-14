@@ -274,7 +274,6 @@ $get_all_individual_data->execute();
 
    $('#add_individual').click(function(){
     generateID();
-
    });
     function generateID() {
 
@@ -284,7 +283,7 @@ $.ajax({
     url: 'generate_id.php',
     success: function(data) {
         //$('#entity_no').val(data);
-        sessionStorage.setItem("entity_no", data);
+        sessionStorage.setItem("entity_number", data);
     }
 });
 }

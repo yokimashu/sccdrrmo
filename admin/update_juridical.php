@@ -22,6 +22,7 @@ if (isset($_POST['update_juridical'])) {
     $get_mobile_no              = $_POST['mobile_no'];
     $get_tel_no                 = $_POST['telephone_no'];
     $get_email                  = $_POST['email'];
+    $img                        = $_POST['image'];
     $alert_msg = '';
     $alert_msg1 = '';
 
@@ -124,6 +125,22 @@ if (isset($_POST['update_juridical'])) {
         ]);
     }
 
+    if($img != '' ){
+        $folderPath = "../flutter/images/";
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid() . '.jpg';        
+        $file = $folderPath . $fileName;
+        file_put_contents($file, $image_base64);
+        $update_photo = "update tbl_juridical set photo = :photo where entity_no = :entity";
+        $exe_update= $con->prepare($update_photo);
+        $exe_update->execute([':photo' =>$fileName,
+                            ':entity' =>$get_entity_no]);
+        $get_photo = $fileName;
+        $check_update_photo = $fileName;
+    };
     $alert_msg .= ' 
     <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
