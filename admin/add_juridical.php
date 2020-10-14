@@ -434,7 +434,7 @@ $title = 'VAMOS | Juridical Form';
 
     <script>
         $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
+        $('#entity_no').val(sessionStorage.getItem("entity_no_juridical"));
 
         // function generateID() {
 
