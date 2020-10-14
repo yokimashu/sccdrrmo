@@ -460,7 +460,7 @@ $title = 'VAMOS | Juridical Form';
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
         $(document).ready(function() {
 
-
+            $('#entity_no').val(sessionStorage.getItem("entity_no"));
             //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 

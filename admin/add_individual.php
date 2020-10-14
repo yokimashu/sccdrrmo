@@ -435,10 +435,10 @@ $title = 'VAMOS | Add Individual';
 <script>
     
 
-    // $(function(){
-    //     $('.select2').select2();
-    //     $('#entity_no').val(sessionStorage.getItem("entity_no"));
-    // })
+    $(function(){
+        $('.select2').select2();
+        $('#entity_no').val(sessionStorage.getItem("entity_no"));
+    });
 
     </script>
 
@@ -498,7 +498,7 @@ $title = 'VAMOS | Add Individual';
             }
         }
         $(document).ready(function() {
-            20
+        
             $("#fileToUpload").change(function(e) {
 
                 var img = e.target.files[0];
@@ -553,8 +553,7 @@ $title = 'VAMOS | Add Individual';
                     })
             });
 
-            $('.select2').select2();
-            $('#entity_no').val(sessionStorage.getItem("entity_no"));
+         
         });
 
    

@@ -6,7 +6,6 @@ date_default_timezone_set('Asia/Manila');
 //include('import_pdf.php');
 
 $alert_msg = '';
-$alert_msg1 = '';
 
 
 if (isset($_POST['insert_juridical'])) {
@@ -36,24 +35,16 @@ if (isset($_POST['insert_juridical'])) {
     $hashed_password  = password_hash($entity_no, PASSWORD_DEFAULT);
     // $type = 'JURIDICAL';
     // $status = 'ACTIVE';
+  
 
-    $folderPath = "../flutter/images/";
-    $image_parts = explode(";base64,", $img);
-    $image_type_aux = explode("image/", $image_parts[0]);
-    $image_type = $image_type_aux[1];
-    $image_base64 = base64_decode($image_parts[1]);
-    $fileName = uniqid() . '.jpg';
-    $file = $folderPath . $fileName;
-    file_put_contents($file, $image_base64);
-
-
-
-
-
-
-
-
-
+        $folderPath = "../flutter/images/";
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid() . '.jpg';
+        $file = $folderPath . $fileName;
+        file_put_contents($file, $image_base64);
 
 
     $insert_juridical_sql = "INSERT INTO tbl_juridical SET 
