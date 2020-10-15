@@ -330,30 +330,15 @@ $title = 'VAMOS | Sea Trans Form';
  
 
 
-    <script type="text/javascript">
+    <script language="JavaScript">
+
+
         const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
         // const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement);
         $('.select2').select2();
-    </script>
 
-    <script>
-        // function generateID() {
-
-        //     $.ajax({
-        //         type: 'POST',
-        //         data: {},
-        //         url: 'generate_id.php',
-        //         success: function(data) {
-        //             $('#entity_no').val(data);
-        //         }
-        //     });
-        // }
-        // window.onload = generateID;
-    </script>
-
-    <script language="JavaScript">
 
         function take_snapshot() {
             // // take snapshot and get image data
@@ -367,7 +352,24 @@ $title = 'VAMOS | Sea Trans Form';
             $("#webcam").hide();
             $("#photo").show();
         }
-    
+        $(document).ready(function() {
+
+            
+            $('#username').change(function(){
+            if($('#entity_no').val() == ''){
+            $.ajax({
+            type: 'POST',
+            data: {},
+            url: 'generate_id.php',
+                success: function(data) {
+            //$('#entity_no').val(data);
+            document.getElementById("entity_no").value = data;
+            console.log(data);
+            }
+            });
+            }
+            });
+
             //crop image when imported
             $("#fileToUpload").change(function(e) {
           
@@ -388,6 +390,7 @@ $title = 'VAMOS | Sea Trans Form';
                 $("#webcam").hide();
                
             });
+        });
             //crop the webcam photo(not working)
             $("#crop").click(function(e) {
             
@@ -423,7 +426,6 @@ $title = 'VAMOS | Sea Trans Form';
                     })
             });
           
-
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
@@ -441,10 +443,7 @@ $title = 'VAMOS | Sea Trans Form';
                 });
             }
         }
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
-        //     $('#btnSubmit').click(function(){
-        // $("#input-form :input").prop("disabled", true);
-        //     });
+      
     </script>
 </body>
 

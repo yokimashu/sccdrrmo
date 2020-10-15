@@ -413,7 +413,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <!-- <script src="../plugins/pixelarity/pixelarity-faceless.js"></script>
     <script src="../plugins/pixelarity/script-faceless.js"></script> -->
-    <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
+    <!-- <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script> -->
     <!-- <script src="../plugins/datatables/dataTables.bootstrap4.js"></script> -->
     <!-- Toastr -->
     <!-- <script src="../plugins/toastr/toastr.min.js"></script> -->
@@ -432,20 +432,13 @@ $title = 'VAMOS | Add Individual';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
-<!-- <script>
+
     
 
-    $(function(){
-        
-    });
 
-    </script> -->
-
-
-
-    <script type="text/javascript">
-      
-        function getAge() {
+    <script language="JavaScript">
+    
+    function getAge() {
             var dob = document.getElementById('date').value;
             dob = new Date(dob);
             var today = new Date();
@@ -453,11 +446,6 @@ $title = 'VAMOS | Add Individual';
             document.getElementById('age').value = age;
         };
      
-    </script>
-
-
-
-    <script language="JavaScript">
       const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
         const snapSoundElement = document.getElementById('snapSound');
@@ -477,6 +465,7 @@ $title = 'VAMOS | Add Individual';
 
         }
 
+     
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
@@ -499,8 +488,8 @@ $title = 'VAMOS | Add Individual';
 
             $(document).ready(function() {
                 $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_number"));
-            console.log(sessionStorage.getItem("entity_number"));
+        // $('#entity_no').val(sessionStorage.getItem("entity_number"));
+          
             //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 
@@ -536,6 +525,20 @@ $title = 'VAMOS | Add Individual';
                     })
             });
 
+            $('#username').change(function(){
+            if($('#entity_no').val() == ''){
+            $.ajax({
+            type: 'POST',
+            data: {},
+            url: 'generate_id.php',
+                success: function(data) {
+            //$('#entity_no').val(data);
+            document.getElementById("entity_no").value = data;
+            console.log(data);
+            }
+            });
+            }
+            });
 
         });
    
