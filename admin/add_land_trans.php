@@ -374,9 +374,9 @@ $title = 'VAMOS | Land Trans Form';
  <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
  <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>-->
     <!-- textarea wysihtml style -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      -->
@@ -386,43 +386,16 @@ $title = 'VAMOS | Land Trans Form';
     <script src="../plugins/select2/select2.full.min.js"></script>
 
 
+  
+  
+
     <script type="text/javascript">
-    
-    const webcamElement = document.getElementById('webcam');
+        const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-        // function loadImage() {
-        //     var input = document.getElementById("fileToUpload");
-        //     var fReader = new FileReader();
-        //     fReader.readAsDataURL(input.files[0]);
-        //     fReader.onloadend = function(event) {
-        //         var img = document.getElementById("photo");
-        //         img.src = event.target.result;
-        //     }
-        // }
-        $('.select2').select2();
-    </script>
-
-    <script>
-        function generateID() {
-
-            $.ajax({
-                type: 'POST',
-                data: {},
-                url: 'generate_id.php',
-                success: function(data) {
-                    $('#entity_no').val(data);
-                }
-            });
-        }
-        window.onload = generateID;
-    </script>
-
-
-  
-    <script type="text/javascript">
       
+        $('.select2').select2();
         
 
       function take_snapshot() {
@@ -459,7 +432,24 @@ $title = 'VAMOS | Land Trans Form';
 
 
             $(document).ready(function() {
-        
+
+
+            $('#username').change(function(){
+            if($('#entity_no').val() == ''){
+            $.ajax({
+            type: 'POST',
+            data: {},
+            url: 'generate_id.php',
+                success: function(data) {
+            //$('#entity_no').val(data);
+            document.getElementById("entity_no").value = data;
+            console.log(data);
+            }
+            });
+            }
+            });
+
+            
             $("#fileToUpload").change(function(e) {
           
                 var img = e.target.files[0];
@@ -479,6 +469,9 @@ $title = 'VAMOS | Land Trans Form';
                 $("#webcam").hide();
                
             });
+
+
+
         });
         function checkUsername() {
             var username = $('#username').val();

@@ -14,14 +14,14 @@ $time = date('H:i:s');
 $symptoms = $patient = $person_status = '';
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
-$user_data = $con->prepare($get_user_sql);
-$user_data->execute([':id' => $user_id]);
-while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+// $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+// $user_data = $con->prepare($get_user_sql);
+// $user_data->execute([':id' => $user_id]);
+// while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-  $db_fullname = $result['fullname'];
-}
+//   $db_fullname = $result['fullname'];
+// }
 
 $get_all_juridical_sql = "SELECT * FROM tbl_juridical j inner join tbl_entity e on e.entity_no = j.entity_no order by j.org_name";
 $get_all_juridical_data = $con->prepare($get_all_juridical_sql);
@@ -260,7 +260,6 @@ $('#users tbody').on('click', 'button.printlink', function() {
 
 
     function generateID() {
-
 $.ajax({
     type: 'POST',
     data: {},
