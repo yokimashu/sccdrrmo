@@ -18,7 +18,7 @@ $now = new DateTime();
 
 $btnSave = $btnEdit = $get_entity_no = $alert_msg = $get_username = $get_password = $get_date_register = $get_new_password =
     $get_org_name = $get_org_type = $get_bus_nature = $get_street = $get_barangay = $get_province =
-    $get_contact_name = $get_contact_pos = $get_mobile_no = $get_tel_no = $get_email = $categ =$get_photo = '';
+    $get_contact_name = $get_contact_pos = $get_mobile_no = $get_tel_no = $get_email = $categ = $get_photo = '';
 $btnNew = 'hidden';
 
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
@@ -34,7 +34,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
     $get_entity_no = $result['entity_no'];
     $get_username = $result['username'];
     $get_password = $result['password'];
-    $get_date_register = $result['date_register']; 
+    $get_date_register = $result['date_register'];
     $get_org_name = $result['org_name'];
     $get_org_type = $result['org_type'];
     $get_bus_nature = $result['business_nature'];
@@ -291,66 +291,66 @@ $title = 'VAMOS | Update Juridical';
                                         </div>
 
                                         <div class="box-body">
-                                        <?php include('photo_template.php'); ?>
-                                           
+                                            <?php include('photo_template.php'); ?>
+
                                         </div>
-                                          
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label>CONTACT DETAILS </label>
-
-                                                </div>
-                                            </div><br>
 
 
-
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $get_mobile_no; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $get_tel_no; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="email" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="box-footer" align="center">
-
-
-                                                <button type="submit" <?php echo $btnSave; ?> name="update_juridical" id="btnSubmit" class="btn btn-success">
-                                                    <i class="fa fa-check fa-fw"> </i> </button>
-
-                                                <a href="list_juridical.php">
-                                                    <button type="button" name="cancel" class="btn btn-danger">
-                                                        <i class="fa fa-close fa-fw"> </i> </button>
-                                                </a>
-
-                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                                    <button type="button" name="print" class="btn btn-primary">
-                                                        <i class="nav-icon fa fa-print"> </i> </button>
-                                                </a>
-
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <label>CONTACT DETAILS </label>
 
                                             </div>
+                                        </div><br>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $get_mobile_no; ?>">
+                                            </div>
+                                        </div></br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $get_tel_no; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="email" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="box-footer" align="center">
+
+
+                                            <button type="submit" <?php echo $btnSave; ?> name="update_juridical" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button>
+
+                                            <a href="list_juridical.php">
+                                                <button type="button" name="cancel" class="btn btn-danger">
+                                                    <i class="fa fa-close fa-fw"> </i> </button>
+                                            </a>
+
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                <button type="button" name="print" class="btn btn-primary">
+                                                    <i class="nav-icon fa fa-print"> </i> </button>
+                                            </a>
+
+
                                         </div>
                                     </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -391,7 +391,7 @@ $title = 'VAMOS | Update Juridical';
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
-    <script src="../plugins/select2/select2.full.min.js"></script>
+
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
@@ -402,13 +402,21 @@ $title = 'VAMOS | Update Juridical';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
- 
+
+    <!-- please ipa last ni sa tanan nga script 
+        if mu add sa babaw lang ani para dili mo error ang select2 thanks -->
+    <script src="../plugins/select2/select2.full.min.js"></script>
+
+
+
 
 
     <script type="text/javascript">
         $('.select2').select2();
+
+
         $(document).ready(function() {
-           $(document).ajaxStart(function() {
+            $(document).ajaxStart(function() {
                 Pace.restart()
             })
         });
@@ -430,7 +438,7 @@ $title = 'VAMOS | Update Juridical';
     </script> -->
 
 
-  
+
 
 
     <script language="JavaScript">
@@ -438,9 +446,10 @@ $title = 'VAMOS | Update Juridical';
         const canvasElement = document.getElementById('canvas');
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
         function take_snapshot() {
             // // take snapshot and get image data
-        
+
             let picture = webcam.snap();
             document.querySelector('#photo').src = picture;
             $(".image-tag").val(picture);
@@ -451,23 +460,23 @@ $title = 'VAMOS | Update Juridical';
             $("#photo").show();
         }
         $(document).ready(function() {
-            
-              //sweet notification
-              $("#btnUpload").click(function(e){
+
+            //sweet notification
+            $("#btnUpload").click(function(e) {
                 e.preventDefault();
                 Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
                 })
 
 
             });
             //crop image when imported
             $("#fileToUpload").change(function(e) {
-          
+
                 var img = e.target.files[0];
                 22
                 if (!pixelarity.open(img, false, function(res) {
@@ -479,19 +488,19 @@ $title = 'VAMOS | Update Juridical';
                     alert("Whoops! That is not an image!");
                     26
                 }
-                  
+
                 $("#photo").show();
                 $("#canvas").hide();
                 $("#webcam").hide();
-               
+
             });
 
             //crop the webcam photo(not working)
             $("#crop").click(function(e) {
-            
+
 
                 var img = $("#photo").attr("src");
-              
+
                 console.log(img);
                 if (!pixelarity.open(img, true, function(res) {
                         23
@@ -504,7 +513,7 @@ $title = 'VAMOS | Update Juridical';
 
                 }
             });
-          
+
 
 
 
@@ -523,10 +532,8 @@ $title = 'VAMOS | Update Juridical';
                         console.log(err);
                     })
             });
-          
+
         });
-
-
     </script>
 </body>
 

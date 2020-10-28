@@ -62,7 +62,7 @@ $get_all_individual_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual
 
-              <a href="add_individual" id ="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;" onClick="generateID()">
+              <a href="add_individual" id="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;" onClick="generateID()">
                 <i class="nav-icon fa fa-plus-square"></i></a>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -76,10 +76,10 @@ $get_all_individual_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
-                    <br>
+                    <br> -->
 
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
@@ -102,13 +102,14 @@ $get_all_individual_data->execute();
                               <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i></a>
 
-                                
-                              <?php if($_SESSION['user_type'] == 1){
-                                //restrict users to view history?>
-                              <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></a>
 
-                              <?php }?>
+                              <?php if ($_SESSION['user_type'] == 1) {
+                                //restrict users to view history
+                              ?>
+                                <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a>
+
+                              <?php } ?>
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
@@ -272,22 +273,23 @@ $get_all_individual_data->execute();
       window.open("entity_id.php?entity_no=" + entity_no, '_parent');
     });
 
-   $('#add_individual').click(function(){
-    generateID();
-   });
+    $('#add_individual').click(function() {
+      generateID();
+    });
+
     function generateID() {
 
-$.ajax({
-    type: 'POST',
-    data: {},
-    url: 'generate_id.php',
-    success: function(data) {
-        //$('#entity_no').val(data);
-        sessionStorage.setItem("entity_number", data);
+      $.ajax({
+        type: 'POST',
+        data: {},
+        url: 'generate_id.php',
+        success: function(data) {
+          //$('#entity_no').val(data);
+          sessionStorage.setItem("entity_number", data);
+        }
+      });
     }
-});
-}
-// window.onload = generateID;
+    // window.onload = generateID;
   </script>
 </body>
 

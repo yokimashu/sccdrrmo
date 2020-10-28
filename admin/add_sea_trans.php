@@ -8,7 +8,7 @@ session_start();
 $user_id = $_SESSION['id'];
 
 include('verify_admin.php');
-$img='';
+$img = '';
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
 } else {
@@ -220,63 +220,63 @@ $title = 'VAMOS | Sea Trans Form';
 
                                         <div class="box-body">
 
-                                         <?php include('photo_template.php');?>
-
-                                         
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label>CONTACT DETAILS </label>
-
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="box-footer" align="center">
+                                            <?php include('photo_template.php'); ?>
 
 
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_sea_transpo" id="btnSubmit" class="btn btn-success">
-                                                    <i class="fa fa-check fa-fw"> </i> </button>
-
-                                                <a href="list_sea_trans">
-                                                    <button type="button" name="cancel" class="btn btn-danger">
-                                                        <i class="fa fa-close fa-fw"> </i> </button>
-                                                </a>
-
-                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                                    <button type="button" name="print" class="btn btn-primary">
-                                                        <i class="nav-icon fa fa-print"> </i> </button>
-                                                </a>
-
-
-                                            </div><br>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <label>CONTACT DETAILS </label>
+
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                            </div>
+                                        </div></br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="box-footer" align="center">
+
+
+                                            <button type="submit" <?php echo $btnSave; ?> name="insert_sea_transpo" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button>
+
+                                            <a href="list_sea_trans">
+                                                <button type="button" name="cancel" class="btn btn-danger">
+                                                    <i class="fa fa-close fa-fw"> </i> </button>
+                                            </a>
+
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                <button type="button" name="print" class="btn btn-primary">
+                                                    <i class="nav-icon fa fa-print"> </i> </button>
+                                            </a>
+
+
+                                        </div><br>
                                     </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -315,8 +315,7 @@ $title = 'VAMOS | Sea Trans Form';
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
-    <!-- Select2 -->
-    <script src="../plugins/select2/select2.full.min.js"></script>
+
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
@@ -327,12 +326,11 @@ $title = 'VAMOS | Sea Trans Form';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
- 
 
+    <!-- please ko ipa last ni kay maguba ang select2 sa form thanks.  -->
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
     <script language="JavaScript">
-
-
         const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
         // const snapSoundElement = document.getElementById('snapSound');
@@ -342,7 +340,7 @@ $title = 'VAMOS | Sea Trans Form';
 
         function take_snapshot() {
             // // take snapshot and get image data
-        
+
             let picture = webcam.snap();
             document.querySelector('#photo').src = picture;
             $(".image-tag").val(picture);
@@ -354,25 +352,25 @@ $title = 'VAMOS | Sea Trans Form';
         }
         $(document).ready(function() {
 
-            
-            $('#username').change(function(){
-            if($('#entity_no').val() == ''){
-            $.ajax({
-            type: 'POST',
-            data: {},
-            url: 'generate_id.php',
-                success: function(data) {
-            //$('#entity_no').val(data);
-            document.getElementById("entity_no").value = data;
-            console.log(data);
-            }
-            });
-            }
+
+            $('#username').change(function() {
+                if ($('#entity_no').val() == '') {
+                    $.ajax({
+                        type: 'POST',
+                        data: {},
+                        url: 'generate_id.php',
+                        success: function(data) {
+                            //$('#entity_no').val(data);
+                            document.getElementById("entity_no").value = data;
+                            console.log(data);
+                        }
+                    });
+                }
             });
 
             //crop image when imported
             $("#fileToUpload").change(function(e) {
-          
+
                 var img = e.target.files[0];
                 22
                 if (!pixelarity.open(img, false, function(res) {
@@ -384,48 +382,48 @@ $title = 'VAMOS | Sea Trans Form';
                     alert("Whoops! That is not an image!");
                     26
                 }
-                  
+
                 $("#photo").show();
                 $("#canvas").hide();
                 $("#webcam").hide();
-               
+
             });
         });
-            //crop the webcam photo(not working)
-            $("#crop").click(function(e) {
-            
-                var img = $("#photo").attr("src");
-              
-                console.log(img);
-                if (!pixelarity.open(img, true, function(res) {
-                        23
-                        $("#photo").attr("src", res);
-                        24
-                    }, "jpeg", 0.7)) {
-                    25
-                    alert("Whoops! That is not an image!");
-                    26
+        //crop the webcam photo(not working)
+        $("#crop").click(function(e) {
 
-                }
-            });
-          
+            var img = $("#photo").attr("src");
 
-            //open the webcam
-            $("#opencamera").click(function() {
-                $("#canvas").show();
-                $("#webcam").show();
-                $('#canvas').removeAttr('hidden');
-                $('#webcam').removeAttr('hidden');
-                $("#photo").hide();
-                webcam.start()
-                    .then(result => {
-                        console.log("webcam started");
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            });
-          
+            console.log(img);
+            if (!pixelarity.open(img, true, function(res) {
+                    23
+                    $("#photo").attr("src", res);
+                    24
+                }, "jpeg", 0.7)) {
+                25
+                alert("Whoops! That is not an image!");
+                26
+
+            }
+        });
+
+
+        //open the webcam
+        $("#opencamera").click(function() {
+            $("#canvas").show();
+            $("#webcam").show();
+            $('#canvas').removeAttr('hidden');
+            $('#webcam').removeAttr('hidden');
+            $("#photo").hide();
+            webcam.start()
+                .then(result => {
+                    console.log("webcam started");
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        });
+
         function checkUsername() {
             var username = $('#username').val();
             if (username.length >= 3) {
@@ -443,7 +441,6 @@ $title = 'VAMOS | Sea Trans Form';
                 });
             }
         }
-      
     </script>
 </body>
 

@@ -79,10 +79,10 @@ $get_all_landtranspo_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
-                    <br>
+                    <br> -->
 
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">

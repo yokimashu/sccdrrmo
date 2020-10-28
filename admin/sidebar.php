@@ -59,9 +59,9 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     <!-- <li class="nav-item d-none d-sm-inline-block">
       <a href="../../lockscreen.php" class="nav-link">Lock Screen</a>
     </li> -->
-    <li class="nav-item d-none d-sm-inline-block">
+    <!-- <li class="nav-item d-none d-sm-inline-block">
       <a href="../../index.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
-    </li>
+    </li> -->
   </ul>
 
 
@@ -181,63 +181,67 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
       </ul>
 
-        <?php echo $incident_report ?>
+   
+
+      <li class="nav-item has-treeview" style="font-size:16px">
+        <?php echo $registration_list ?>
+
+      </li>
+
+
+      <li class="nav-item has-treeview" style="font-size:16px">
+
+        <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
+          <i class="fa fa-mobile nav-icon"></i>
+          <p>MOBILE ALERTS</p>
+        </a>
+
+      </li>
+
 
       <li class="nav-item has-treeview" style="font-size:16px">
         <a href="" class="nav-link ">
-          <i class="nav-icon fa fa-list"></i>
+          <i class="nav-icon fa fa-cog"></i>
           <p>
-            SETTINGS
+            PROPERTIES
             <i class="right fa fa-angle-left"></i>
           </p>
         </a>
-        <ul class="nav nav-treeview">
 
+        <ul class="nav nav-treeview">
           <li class="nav-item">
-          <?php echo $registration_list ?>
+            <?php echo $incident_report ?>
           </li>
+
 
           <li class="nav-item">
             <a href="view_all_posts" class="nav-link">
-              <i class="fa fa-minus nav-icon"></i>
+              &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
+
               <span class="badge badge-danger navbar-badge"><?php if ($numberofdraft > 0) {
                                                               echo $numberofdraft;
                                                             } ?></span>
-              <p>View Announcements</p>
+              <p>&nbsp; Post Announcement </p> 
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
-              <i class="fa fa-minus nav-icon"></i>
-              <p>Send Mobile Alerts</p>
-            </a>
-          </li>
 
         </ul>
 
+      </li>
 
-        <!-- <li class="nav-item has-treeview" style="font-size:16px">
-          <a href="#" class="nav-link ">
-            <i class="nav-icon fa fa-cogs"></i>
-            <p>
-              SYSTEM
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Lock Screen</p>
-              </a>
-            <li class="nav-item">
-              <a href="log_out" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Log Out</p>
-              </a>
 
-          </ul> -->
+      <li class="nav-item has-treeview" style="font-size:16px">
+        <a href="../../index.php" class="nav-link">
+          <i class="fa fa-sign-out nav-icon"></i>
+          <p>SIGN OUT</p>
+        </a>
+
+
+      </li>
+
+
+
 
     </nav>
     <!-- /.sidebar-menu -->
