@@ -48,12 +48,12 @@ $entity_no = $_GET['entity_no'];
 $get_all_land_sql = "Select * FROM
 (
     SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
 
 UNION
 
 SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.trace_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+inner join tbl_individual i on i.entity_no = t.trace_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
     
 ) dum 
 
@@ -79,7 +79,7 @@ $get_all_land_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Master Lists Juridical History </title>
+  <title>VAMOS | Land Trans Travel History </title>
   <?php include('header.php'); ?>
 
 
@@ -97,22 +97,22 @@ $get_all_land_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Juridical History
+            <h4> Land Transportation Travel History
 
-      
-                                
-                                            
-                                                <div class="col-md-2">
-                                                
-                                                    <input type="text"  readyonly class="form-control"  name="entity_no" placeholder="entity_no" value="<?php echo $entity_no;?>" required>
-                                                       </div>
-                
-                    
 
-            <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_history.php?entity_no=<?php echo $entity_no;  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                           
-                     
+
+
+              <div class="col-md-2" hidden>
+
+                <input type="text" readyonly class="form-control" name="entity_no" placeholder="entity_no" value="<?php echo $entity_no; ?>" required>
+              </div>
+
+
+
+              <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/land_transpo_history.php?entity_no=<?php echo $entity_no;  ?>">
+                <i class="nav-icon fa fa-print"></i></a>
+
+
 
             </h4>
 
@@ -124,40 +124,36 @@ $get_all_land_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
-                    <br>
+                    <br> -->
 
-                    <div class="row">
-                                                
+
+
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                        
-                     
-                       
+
                           <th> Trace ID</th>
                           <th> NAME</th>
-                         
-                         
                           <th> Date </th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($list_land = $get_all_land_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr align="center">
-                          
+
                             <td><?php echo $list_land['entity_no'];  ?></td>
                             <td><?php echo $list_land['fullname'];  ?></td>
-               
-                            
+
+
                             <td><?php echo $list_land['date'];
-                                     echo "-";
-                                      echo $list_land['time'];    ?></td>
-                          
-                        
+                                echo "-";
+                                echo $list_land['time'];    ?></td>
+
+
 
                             </td>
                           </tr>
@@ -165,8 +161,8 @@ $get_all_land_data->execute();
                       </tbody>
                     </table>
 
+
                   </div>
-                </div>
               </form>
             </div>
           </div>
@@ -320,10 +316,6 @@ $get_all_land_data->execute();
         $('#printlink').attr("href", "../plugins/jasperreport/landtrans_history.php?entity_no=" + entity_no, '_parent');
       })
     });
-
-
- 
-
   </script>
 </body>
 
