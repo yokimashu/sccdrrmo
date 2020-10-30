@@ -14,7 +14,7 @@ if(isset($_GET['entity_no'])){
     {
  $date_reg = $result['date_register'];
 $entity_no = $result['entity_no'];
-$user_name = $result['username'];$
+$user_name = $result['username'];
 $transpo = $result['trans_type'];
 $vehicle_name =$result['vehicle_name'];
 $vehicle_no = $result['vehicle_no'];
@@ -27,7 +27,7 @@ $tel_no = $result['telephone_no'];
 $email_address = $result['email'];
 $get_photo = $result['photo'];
 //    echo "<p>";
-//     echo print_r($photo);
+//     echo print_r($transpo);
 //     echo "</p>";
     }
 }

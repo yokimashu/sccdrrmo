@@ -3,7 +3,6 @@
 include('../config/db_config.php');
 
 $btn_enabled = 'enabled';
-
 session_start();
 $user_id = $_SESSION['id'];
 
@@ -177,9 +176,9 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <select class="form-control select2" id="transpo_type"
-                                                        style="width: 100%;" name="land_transpo_type"
-                                                        >
-                                                        <option selected="selected" value ="<?php $transpo?>"><?php echo $transpo ?></option>
+                                                        style="width: 100%;" name="land_transpo_type" value = <?php $transpo?> >
+                                                        <option selected="selected" value="<?php $transpo;?>">
+                                                            <?php echo $transpo; ?></option>
                                                         <?php while ($get_transpo = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                         <option value="<?php echo $get_transpo['transpo_name']; ?>">
                                                             <?php echo $get_transpo['transpo_name']; ?></option>
@@ -254,7 +253,8 @@ $title = 'VAMOS | Land Trans Form';
                                         </div>
 
                                         <div class="box-body">
-                                            <div class=" col-10 d-flex justify-content-center"  style = "margin:auto;"> <?php include('photo_template.php'); ?></div>
+                                            <div class=" col-10 d-flex justify-content-center" style="margin:auto;">
+                                                <?php include('photo_template.php'); ?></div>
 
                                         </div>
 
@@ -297,7 +297,7 @@ $title = 'VAMOS | Land Trans Form';
                                         <div class="box-footer" align="center">
 
 
-                                            <button type="submit" <?php echo $btnSave; ?> name="insert_land_transpo"
+                                            <button type="submit" <?php echo $btnSave; ?> name="update_landtranspo"
                                                 id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
 
