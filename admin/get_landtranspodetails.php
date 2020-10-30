@@ -25,7 +25,7 @@ $contact_position =$result['contact_position'];
 $mobile_no = $result['mobile_no'];
 $tel_no = $result['telephone_no'];
 $email_address = $result['email'];
-$photo = $result['photo'];
+$get_photo = $result['photo'];
 //    echo "<p>";
 //     echo print_r($photo);
 //     echo "</p>";
