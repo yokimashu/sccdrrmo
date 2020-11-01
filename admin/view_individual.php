@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('update_individual.php');
+
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -18,6 +18,7 @@ $btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date
 $btnNew = 'hidden';
 $alert_msg='';
 $img='';
+include('update_individual.php');
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
 $user_id = $_GET['id'];
@@ -368,7 +369,7 @@ $title = 'VAMOS | Add Individual';
                                             <?php echo $alert_msg; ?>
                                         </div>
                                         <div class="box-footer" align="center">
-                                            <button type="submit" <?php echo $btnSave; ?> name="update_individual"
+                                            <button type="submit" <?php echo $btnSave; ?> name="update_landtranspo"
                                                 id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
                                             <a href="list_individual.php">
