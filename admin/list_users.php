@@ -1,460 +1,294 @@
 <?php
 
-$alert_msg = '';
-
-$button = "update";
-// include('verify_admin.php');
 include('../config/db_config.php');
-include('../insert_user.php');
-include('verify_admin.php');
-// include('sms.php');
-$state = "edit";
+include('sql_queries.php');
+session_start();
+$user_id = $_SESSION['id'];
 
-//deactivate user
-if (isset($_POST['delete'])) {
-  $id = $_POST['user_id'];
-  $sql = "UPDATE tbl_users set status = 'INACTIVE' where id = $id";
-  $set_sql = $con->prepare($sql);
-  $set_sql->execute();
-  $alert_msg .= ' 
-   <div class="alert alert-danger alert-dismissible">
-   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-   <i class="icon fa fa-check"></i>You have successfully deleted the user.
-   </div>     
-';
+include('verify_admin.php');
+if (!isset($_SESSION['id'])) {
+  header('location:../index.php');
+} else {
 }
+include('verify_admin.php');
+
+
+date_default_timezone_set('Asia/Manila');
+$date = date('Y-m-d');
+$time = date('H:i:s');
+
+$symptoms = $patient = $person_status = $entity_no = '';
+
+//fetch user from database
+$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+$user_data = $con->prepare($get_user_sql);
+$user_data->execute([':id' => $user_id]);
+while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+  $db_fullname = $result['fullname'];
+}
+
+$get_all_data_sql = "SELECT * FROM tbl_users u INNER JOIN tbl_account a ON u.`account_type` = a.`objid` WHERE STATUS='ACTIVE'";
+$get_all_data_data = $con->prepare($get_all_data_sql);
+$get_all_data_data->execute();
+
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VAMOS | User Credentials Masterlist </title>
+  <?php include('heading.php'); ?>
 
+
+</head>
 
 <body class="hold-transition sidebar-mini">
-
   <div class="wrapper">
-    <?php include('header.php'); ?>
-    <!-- Left side column. contains the logo and sidebar -->
+
     <?php include('sidebar.php'); ?>
 
-
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <div class="content-header"></div>
 
-
-
       <section class="content">
-
         <div class="card card-info">
-          <div class="card-header">
-            <h4 style="float:left;">USERS LIST</h4>
+          <div class="card-header  text-white bg-success">
+            <h4> User Credentials Masterlist
 
+              <a href="add_user" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a>
+              <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a> -->
+            </h4>
 
           </div>
-          <div class="Ashake form-group has-feedback">
-            <?php echo $alert_msg;
-            //  echo $alert; 
-            ?>
 
-          </div>
           <div class="card-body">
-
             <div class="box box-primary">
-              <form role="form" method="get" action="<?php htmlspecialchars("PHP_SELF"); ?>">
-
+              <form role="form" method="get" action="">
                 <div class="box-body">
 
-                  <table id="users" class="table table-bordered table-striped ">
-                    <thead>
+                  <div class="table-responsive">
+                    <!-- <div class="row">
+                      <div class="col-md-3" id="combo"></div>
+                    </div>
+                    <br> -->
 
 
-                      <th> ID </th>
-                      <th> Full Name </th>
-                      <th> username </th>
-                      <th> Email</th>
-                      <th> Contact No. </th>
-                      <th> Status </th>
-                      <th> Options </th>
+                    <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
+                      <thead align="center">
+                        <tr style="font-size: 1.10rem">
+
+                          <th> ID </th>
+                          <th> Full Name </th>
+                          <th> Username</th>
+                          <th> Department</th>
+                          <th> Account Type</th>
+                          <th> Options</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <?php while ($list_user = $get_all_data_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <tr>
+
+                            <td><?php echo $list_user['id'];  ?></td>
+                            <td><?php echo $list_user['fullname'];  ?></td>
+                            <td><?php echo $list_user['username'];  ?></td>
+
+                            <td><?php echo $list_user['department'];  ?></td>
+                            <td><?php echo $list_user['account_name'];  ?></td>
+
+                            <td>
+
+                              <a class="btn btn-success btn-sm" href="view_user.php?&id=<?php echo $list_user['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a>
+
+                              <!-- <a class="btn btn-success btn-sm" href="view_land_trans.php?&entity_no=<?php echo $list_user['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></a>
+
+                              <a class="btn btn-success btn-sm" href="view_landtrans_history.php?&entity_no=<?php echo $list_user['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></a>
 
 
-                    </thead>
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/landtranspo.php?entity_no=<?php echo $list_user['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a> -->
 
-                    <tbody>
+                              <a href=""> </a>
+                              &nbsp;
 
-                    </tbody>
-                  </table>
+                            </td>
+                          </tr>
+                        <?php } ?>
+
+
+
+
+                      </tbody>
+                    </table>
+
+                  </div>
                 </div>
               </form>
             </div>
-
           </div>
+        </div>
+
       </section>
 
-      <div class="modal fade" id="modal-sms">
-        <div class="modal-dialog " role="document">
-          <div class="modal-content bg-danger">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form role="form" method="post" action="<?php htmlspecialchars("PHP_SELF"); ?>">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="input-group">
-                        Full Name:<input type="text" style="margin-left:10px;" readonly class="form-control" name="personnum" id="person">
-                      </div>
-                      <input type="hidden" id="user_id" readonly class="form-control" name="user_id">
-                    </div>
-                  </div>
 
 
+    </div>
+    <!-- /.content-wrapper -->
+    <?php include('footer.php') ?>
 
-                </div>
-                <div class="modal-footer">
+  </div>
 
-                  <button type="submit" name="delete" class="btn btn-primary">DELETE</button>
-                  <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </form>
+  <div class="modal fade" id="delete_PUMl" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm Delete</h4>
+        </div>
+        <form method="POST" action="">
+          <div class="modal-body">
+            <div class="box-body">
+              <div class="form-group">
+                <label>Delete Record?</label>
+                <input readonly="true" type="text" name="user_id" id="user_id" class="form-control">
+              </div>
             </div>
           </div>
+          <div class="modal-footer">
 
-        </div>
+            <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+            <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
+            <input type="submit" name="delete_pum" class="btn btn-danger" value="Yes">
+          </div>
+        </form>
       </div>
+      <!-- /.modal-content -->
     </div>
-
-
-    <?php include('../adduser_modal.php'); ?>
+    <!-- /.modal-dialog -->
   </div>
 
-  <!-- footer here -->
 
 
 
-  <?php include('footer.php'); ?>
-  </div>
-  <!-- ./wrapper -->
-  <!-- jQuery 3 -->
+
+
+  <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
-  <script src="../plugins/jquery/jquery.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- datepicker -->
   <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-  <!-- PACE -->
-  <script src="../plugins/pace/pace.min.js"></script>
-  <!-- DataTables -->
-  <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="../plugins/datatables/jquery.dataTables.js"></script>
-  <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-  <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+  <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+  <!-- Slimscroll -->
+  <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="../plugins/fastclick/fastclick.js"></script>
   <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.min.js"></script>
+  <script src="../dist/js/adminlte.js"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="../dist/js/pages/dashboard.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../dist/js/demo.js"></script>
+  <!-- DataTables -->
+  <script src="../plugins/datatables/jquery.dataTables.js"></script>
+  <!-- DataTables Bootstrap -->
+  <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+  <!-- Select2 -->
+  <script src="../plugins/select2/select2.full.min.js"></script>
+
   <script>
-    //  $('#users').DataTable({
-    //   'paging'      : true,
-    //   'lengthChange': true,
-    //   'searching'   : true,
-    //   'ordering'    : true,
-    //   'info'        : true,
-    //   'autoWidth'   : true,
-    //   'scrollX'     : true
+    $('#users').DataTable({
+      'paging': true,
+      'lengthChange': true,
+      'searching': true,
+      'ordering': true,
+      'info': true,
+      'autoWidth': true,
+      'autoHeight': true
+      // initComplete: function() {
+      //   this.api().columns([4]).every(function() {
+      //     var column = this;
+      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+      //       .appendTo('#combo')
+      //       .on('change', function() {
+      //         var val = $.fn.dataTable.util.escapeRegex(
+      //           $(this).val()
+      //         );
+      //         column
+      //           .search(val ? '^' + val + '$' : '', true, false)
+      //           .draw();
+      //       });
+      //     column.data().unique().sort().each(function(d, j) {
+      //       select.append('<option value="' + d + '">' + d + '</option>')
+      //     });
+      //   });
+      // }
 
-    // });
+    });
+    $('.select2').select2();
 
-    //            $(document).ready(function() {
-    //               $(document).ajaxStart(function() {
-    //                   Pace.restart()
-    //               })
+    $('#addPUM').on('hidden.bs.modal', function() {
+      $('#addPUM form')[0].reset();
+    });
 
-
-
-
-    //           });
-    // //   $('.approved').click(function(e){
-    //   e.preventDefault();
-    //   $('#approved').modal('show');
-    //   var id = $(this).data('id');
-    //   var name = $(this).data('name');
-    //     $('#userId').val(id);
-    //     $.post("getUserdetail.php",
-    //     {id:id},
-    //     function(response){
-    //       $("#fullname").html(response);
-    //     }
-    //     );
-
-    //  function getDetails(id){
-    //   alert(id);
-    //   alert(name);
-    //   $.ajax({
-    //   type: 'POST',
-    //   url: 'updatecredentials.php',
-    //   data: {id:id},
-    //   dataType: 'json'
-
-    // };
-
-
-
-
-
-    $(document).ready(function() {
-      // var office = $('#department').val();
-
-      function post_notify(message, type) {
-
-        if (type == 'success') {
-
-          $.notify({
-            message: message
-          }, {
-            type: 'success',
-            delay: 10000
-          });
-
-        } else {
-
-          $.notify({
-            message: message
-          }, {
-            type: 'danger',
-            delay: 2000
-          });
-
-        }
-
-      }
-      var dataTable = $('#users').DataTable({
-
-        "page": true,
-        "stateSave": true,
-        "processing": true,
-        "serverSide": true,
-        'scrollX': true,
-        "ajax": {
-          url: "search_user.php", // json datasource
-          type: "post", // method  , by default get
-          error: function() { // error handling
-            $("#users-error").html("");
-            $("#users").append('<tbody class="users-error"><tr>< td colspan="3">No data found in the server</td></tr></tbody>');
-            $("#users_processing").css("display", "none");
-
-          }
-          // error: function (xhr, b, c) {
-          //     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-          // }
-        },
-        "columnDefs":
-
-          [{
-              "width": "30px",
-              "targets": 0
-            },
-            {
-              "width": "150px",
-              "targets": 1
-            },
-            {
-              "width": "200px",
-              "targets": 3
-            },
-            {
-              "width": "120px",
-              "targets": 4
-            },
-            {
-              "width": "90px",
-              "targets": -1,
-              "data": null,
-              "defaultContent": '<button class="btn btn-success btn-sm btn-flat approved" id ="btn">  <i class="fa fa-check"></i></button> <button class="btn btn-danger btn-sm btn-flat " id = "edituser" name = "editu">  <i class="fa fa-edit"></i> </button> <button class="btn btn-warning btn-sm btn-flat" id ="delete">  <i class="fa fa-trash"></i></button> '
-
-
-            }
-          ],
-
+    $(function() {
+      $('[data-toggle="datepicker"]').datepicker({
+        autoHide: true,
+        zIndex: 2048,
       });
-      //         setInterval( function () {
-      //     dataTable.ajax.reload();
-      // }, 10000 ); 
-      $('#users tbody').on('click', '#btn', function() {
-        // $("#users").on("click","button.btn",function(){
-        // $('.approved').on( 'click',function() {
+    });
 
-        var table = $('#users').DataTable();
-        var data = table.row($(this).parents('tr')).data();
+    $(document).on('click', 'button[data-role=confirm_delete]', function(event) {
+      event.preventDefault();
 
-        var id = data[0];
-        $.ajax({
-          type: 'POST',
-          url: 'updatecredentials.php',
-          data: {
-            id: id
-          },
-          dataType: 'json',
-          success: post_notify('User Activated', 'success')
-        })
-        //  table.ajax.reload();
-      });
+      var user_id = ($(this).data('id'));
 
-
-      $('#users tbody').on('click', '#edituser', function() {
-        // $("#users").on("click","button.btn",function(){
-        // $('.approved').on( 'click',function() {
-        event.preventDefault();
-        var table = $('#users').DataTable();
-        var data = table.row($(this).parents('tr')).data();
-
-        var id = data[0];
-        $('#edit').modal('toggle');
-        getRow(id);
-        // console.log(id);
-      });
-      $('#users tbody').on('click', '#delete', function() {
-        // $("#users").on("click","button.btn",function(){
-        // $('.approved').on( 'click',function() {
-        event.preventDefault();
-        var table = $('#users').DataTable();
-        var data = table.row($(this).parents('tr')).data();
-        var id = data[0];
-        var fullname = data[1];
-        $('#modal-sms').modal('toggle');
-        $('#person').val(fullname);
-        $('#user_id').val(id);
-        // getnumber(id);
-        // console.log(id);
-      });
-
-
-
-
-      function getRow(id) {
-        $.ajax({
-          type: "POST",
-          url: 'getUserdetail.php',
-          data: {
-            userId: id
-          },
-
-          success: function(response) {
-            console.log("hello");
-            var result = jQuery.parseJSON(response);
-            $('#user_id_edit').val(id);
-            $('#username').val(result.username);
-            $('#firstname').val(result.firstname);
-            $('#middlename').val(result.middlename);
-            $('#lastname').val(result.lastname);
-            $('#gender').val(result.gender);
-            $('#address').val(result.address);
-            $('#datepicker').val(result.birthdate);
-            $('#email').val(result.email);
-            $('#contactno').val(result.mobileno);
-            $('#usertype').val(result.account_type);
-            // $('#user_id').val(result.id);
-            var img = document.getElementById("profilepic");
-            img.src = '../userimage/' + result.photo;
-            console.log(result.account_type);
-
-          },
-          error: function(xhr, b, c) {
-            console.log("xhr=" + xhr + " b=" + b + " c=" + c);
-          }
-        });
-
-      }
-
-
-      $(document).ready(function() {
-
-        $('#username').keyup(function() {
-          var username = $('#username').val();
-
-          $.ajax({
-            type: "POST",
-            url: "../check_username.php",
-            data: {
-              uname: username
-            },
-            success: function(response) {
-              var result = jQuery.parseJSON(response);
-              if (result.data1 != '') {
-                // $('#username').toggle("tooltip");
-                // $('#username').attr("title","This username is already taken.");
-                $('#checkusername').html('This username is already taken.');
-                $('#save').prop('disabled', true);
-                // console.log(result.data1);
-              } else {
-                if (username != '') {
-                  $('#checkusername').html('This username is available.');
-                  $('#save').prop('disabled', false);
-                }
-              }
-            },
-            error: function(xhr, b, c) {
-              console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-            }
-          })
-          if (username == '') {
-            $('#checkusername').html('');
-            $('#save').prop('disabled', true);
-          }
-
-        })
-
-        $('#email').keyup(function() {
-          var mail = $('#email').val();
-
-          $.ajax({
-            type: "POST",
-            url: "../check_username.php",
-            data: {
-              email: mail
-            },
-            success: function(response) {
-              var result = jQuery.parseJSON(response);
-              if (result.data2 != '') {
-                $('#checkemail').html('This email is already taken.');
-                $('#save').prop('disabled', true);
-                // console.log(result.data1);
-              } else {
-                if (mail != '') {
-                  $('#checkemail').html('This email is available.');
-                  $('#save').prop('disabled', false);
-                }
-              }
-            },
-            error: function(xhr, b, c) {
-              console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-            }
-          })
-          if (mail == '') {
-            $('#checkemail').html('');
-            $('#save').prop('disabled', false);
-          }
-
-
-        })
-
-
-      });
-
+      $('#user_id').val(user_id);
+      $('#delete_PUMl').modal('toggle');
 
     });
 
 
-    function loadImage() {
-      var input = document.getElementById("fileToUpload");
-      var fReader = new FileReader();
-      fReader.readAsDataURL(input.files[0]);
-      fReader.onloadend = function(event) {
-        var img = document.getElementById("profilepic");
-        img.src = event.target.result;
-      }
-    }
+
+    // $(document).ready(function() {
+    //   $('#print').click(function() {
+    //     var entity_no = $('#entity_no').val();
+    //     console.log(entity_no);
+
+    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
+    //   })
+    // });
+
+
+
+
+    $('#users tbody').on('click', 'button.printlink', function() {
+      // alert ('hello');
+      // var row = $(this).closest('tr');
+      var table = $('#users').DataTable();
+      var data = table.row($(this).parents('tr')).data();
+      //  alert (data[0]);
+      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+      var entity_no = data[0];
+      window.open("entity_id.php?entity_no=" + entity_no + '_parent');
+    });
   </script>
 </body>
 

@@ -1,4 +1,53 @@
 <!-- navbar and sidebar -->
+<style>
+  label {
+
+    font-size: 16px;
+    color: green;
+
+  }
+
+  .fas,
+  .icons,
+  #icons {
+    color: black;
+  }
+
+
+
+
+  p {
+    color: green;
+  }
+
+  .sidebar-link:hover,
+  #lightgreen:hover {
+
+    background-color: lightgreen;
+  }
+
+
+  /* .top-link{
+
+  } */
+  .top-link:hover {
+    background-color: green;
+    color: black;
+  }
+
+  #label1::after {
+    content: '';
+    display: block;
+    position: absolute;
+
+    background-color: black;
+    width: 200px;
+    height: 3px;
+
+
+    /* bottom: -3px; */
+  }
+</style>
 <?php
 include_once('session.php');
 include('../config/db_config.php');
@@ -22,12 +71,12 @@ $db_fullname = '';
 $photo = '';
 
 //fetch user from database
-$get_user_sql = " SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,photo FROM tbl_users where id = :id";
+$get_user_sql = " SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname FROM tbl_users where id = :id";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result4 = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result4['fullname'];
-  $photo = $result4['photo'];
+  // $photo = $result4['photo'];
 }
 
 //get all draft from announcement
@@ -53,15 +102,42 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     <li class="nav-item">
       <a href="#" class="nav-link">VAMOS | SYSTEM</a>
     </li>
+
+
+    <li class="nav-item">
+      <a href="index" class="nav-link ">HOME PAGE</a>
+    </li>
+
+
+    <li class="nav-item">
+      <a href="announcement" class="nav-link ">
+        <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
+        <!-- <label href="announcement"> -->
+        ANNOUNCEMENTS
+        <!-- </label> -->
+      </a>
+    </li>
+
+
   </ul>
 
   <ul class="navbar-nav ml-auto">
-    <!-- <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../lockscreen.php" class="nav-link">Lock Screen</a>
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link">Contact Us</a>
     </li> -->
-    <!-- <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../index.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
+
+
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link">About Us</a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">Profile</a>
     </li> -->
+
+
+
+
   </ul>
 
 
@@ -73,7 +149,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 <aside class="main-sidebar sidebar-light-primary elevation-4">
   <!-- Brand Logo -->
   <div class="greenBG">
-    <br>
 
     <!-- <a href="index" class="brand-link">  
       <img src="../dist/img/scdrrmo_logo.png" class="img-circle elevation-2" width="40px">   
@@ -83,14 +158,26 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
     <!-- Sidebar user panel (optional) -->
     <div class="sidebar">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../userimage/<?php echo $photo ?>" class="img-circle elevation-2" alt="User Image">
+      &nbsp; &nbsp; &nbsp; &nbsp;
+      <img src="../dist/img/final_logo.png" width="150px" height="80px">
+
+      <label style="color:white" class="d-block">
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <?php echo $db_fullname ?> </label>
+
+      <!-- <div class="user-panel mt-2 pb-2 mb-2 d-flex"> -->
+      <!-- <div class="image">
+          <img src="../dist/img/vamoslogo-png.png" class="img-circle elevation-2" alt="User Image">
+        </div> -->
+
+      <!-- 
+
+        <div class="info" align="center">
+
         </div>
-        <div class="info">
-          <a style="color:white" href="profile.php" class="d-block"><?php echo $db_fullname ?> </a>
-        </div>
-      </div>
+
+      </div> -->
+
     </div>
 
   </div>
@@ -101,148 +188,180 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-        <li class="nav-item">
-          <a href="index" class="nav-link active">
-            <i class="nav-icon fa fa-th"></i>
-            <p>
-              Dashboard
-
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item " style="font-size:16px">
-          <a href="announcement" class="nav-link ">
-            <i class="nav-icon fa fa-exclamation-circle"></i>
-            <p>
-              ANNOUNCEMENTS
-            </p>
-          </a>
-
-        <li class="nav-item has-treeview" style="font-size:16px">
-          <a href="#" class="nav-link ">
-            <i class="nav-icon fa fa-thermometer-full"></i>
-            <p>
-              COVID-19
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
 
 
 
-            <li class="nav-item">
-              <a href="list_individual" class="nav-link">
-                &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                <p> &nbsp; Individual</p>
-              </a>
-            </li>
-
-
-            <li class="nav-item">
-              <a href="list_juridical" class="nav-link">
-                &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                <p> &nbsp; Juridical</p>
-              </a>
-            </li>
-
-
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-                <p> &nbsp; Transportation</p>
-              </a>
-
-
-              <ul class="nav nav-treeview">
-
-
-                <li class="nav-item">
-                  <a href="list_land_trans" class="nav-link">
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa fa-arrow-right "></i>
-                    <p> &nbsp; Land Trans.</p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="list_sea_trans" class="nav-link">
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa fa-arrow-right "></i>
-                    <p> &nbsp; Sea Trans.</p>
-                  </a>
-                </li>
-
-
-
-              </ul>
-            </li>
-
-        </li>
-
-      </ul>
-
-   
-
-      <li class="nav-item has-treeview" style="font-size:16px">
-        <?php echo $registration_list ?>
-
-      </li>
-
-
-      <li class="nav-item has-treeview" style="font-size:16px">
-
-        <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link">
-          <i class="fa fa-mobile nav-icon"></i>
-          <p>MOBILE ALERTS</p>
-        </a>
-
-      </li>
-
-
-      <li class="nav-item has-treeview" style="font-size:16px">
-        <a href="" class="nav-link ">
-          <i class="nav-icon fa fa-cog"></i>
-          <p>
-            PROPERTIES
-            <i class="right fa fa-angle-left"></i>
-          </p>
-        </a>
-
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <?php echo $incident_report ?>
-          </li>
+        <div>
+          <label id="label1" style="font-size:18px; ">
+            &nbsp;
+            <i class="nav-icon fa fa-address-book icons "></i>
+            &nbsp;
+            ENTITIES
+          </label>
 
 
           <li class="nav-item">
-            <a href="view_all_posts" class="nav-link">
-              &nbsp; &nbsp; &nbsp;<i class="fa fa-share fa-flip-vertical "></i>
-
-              <span class="badge badge-danger navbar-badge"><?php if ($numberofdraft > 0) {
-                                                              echo $numberofdraft;
-                                                            } ?></span>
-              <p>&nbsp; Post Announcement </p> 
+            <a href="list_individual" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fa fa-user icons"></i>
+              <p> &nbsp; Individual</p>
             </a>
           </li>
 
 
-        </ul>
-
-      </li>
-
-
-      <li class="nav-item has-treeview" style="font-size:16px">
-        <a href="../../index.php" class="nav-link">
-          <i class="fa fa-sign-out nav-icon"></i>
-          <p>SIGN OUT</p>
-        </a>
-
-
-      </li>
+          <li class="nav-item">
+            <a href="list_juridical" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fa fa-building icons"></i>
+              <p> &nbsp; Juridical</p>
+            </a>
+          </li>
 
 
 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fa fa-car icons "></i>
+              <p> &nbsp; Transportation</p>
+            </a>
 
+
+            <ul class="nav nav-treeview ">
+
+
+              <li class="nav-item">
+                <a href="list_land_trans" id="lightgreen" class="nav-link ">
+                  &nbsp; &nbsp; &nbsp;
+
+                  <i class=" nav-icon fa fa-motorcycle icons"></i>
+                  <p> &nbsp; Land Trans.</p>
+                </a>
+              </li>
+
+              <li class=" nav-item">
+                <a href="list_sea_trans" id="lightgreen" class="nav-link ">
+                  &nbsp; &nbsp; &nbsp;
+
+                  <i class="nav-icon fa fa-ship icons"></i>
+                  <p> &nbsp; Sea Trans.</p>
+                </a>
+              </li>
+
+
+
+            </ul>
+          </li>
+        </div> <br>
+
+
+
+        <div>
+
+          <label id="label1" style="font-size:18px; ">
+            &nbsp;
+            <i class="nav-icon fa fa-info-circle icons"></i>
+            &nbsp;
+            ABOUT US
+          </label>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fa fa-question icons"></i>
+              <p> &nbsp; Information</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fa fa-download icons"></i>
+              <p> &nbsp; Download App</p>
+            </a>
+          </li>
+
+
+        </div> <br>
+
+
+
+        <div>
+
+          <?php echo $settings; ?>
+          <?php echo $mobile_alert; ?>
+          <?php echo $registration_list; ?>
+          <?php echo $post_announce_last; ?>
+          <?php echo $incident_report ?>
+        </div><br>
+
+        <div>
+
+          <label id="label1" style="font-size:18px; ">
+            &nbsp;
+            <i class="nav-icon fa fa-lock icons"></i>
+            &nbsp;
+            ACCOUNT
+          </label>
+
+
+
+          <li class="nav-item">
+            <a href="edit_profile" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fa fa-pencil-square-o icons"></i>
+              <p> &nbsp; Edit Profile</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="../index" class="nav-link  sidebar-link">
+              &nbsp;
+              <i class="fa fa-sign-out nav-icon icons"></i>
+              <p> &nbsp; Sign Out</p>
+            </a>
+          </li>
+
+
+
+        </div><br>
+
+
+
+
+
+
+
+        <?php echo $break; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <li class="nav-item has-treeview" style="font-size:16px">
+          <a href="../index" class="nav-link">
+            <i class="fa fa-sign-out nav-icon"></i>
+            <p>SIGN OUT</p>
+          </a>
+
+
+        </li> -->
+
+
+
+
+
+      </ul>
     </nav>
     <!-- /.sidebar-menu -->
   </div>

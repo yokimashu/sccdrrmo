@@ -1,8 +1,7 @@
 <head>
     <!-- <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title><?php echo $title; ?></title>
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -27,7 +26,10 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
+
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
+
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
 
     <style>
