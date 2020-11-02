@@ -42,7 +42,7 @@
 
     background-color: black;
     width: 200px;
-    height: 3px;
+    height: 1px;
 
 
     /* bottom: -3px; */
@@ -159,7 +159,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     <!-- Sidebar user panel (optional) -->
     <div class="sidebar">
       &nbsp; &nbsp; &nbsp; &nbsp;
-      <img src="../dist/img/final_logo.png" width="150px" height="80px">
+      <img src="../dist/img/final_logo_white.png" width="150px" height="80px">
 
       <label style="color:white" class="d-block">
         &nbsp; &nbsp; &nbsp; &nbsp;
@@ -267,7 +267,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link sidebar-link">
+            <a href="information" class="nav-link sidebar-link">
               &nbsp;
               <i class="nav-icon fa fa-question icons"></i>
               <p> &nbsp; Information</p>
@@ -276,10 +276,28 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link sidebar-link">
+            <a href="download_app" class="nav-link sidebar-link">
               &nbsp;
               <i class="nav-icon fa fa-download icons"></i>
               <p> &nbsp; Download App</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="how_to_register" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="far fa-id-badge nav-icon icons"></i>
+              <p> &nbsp; How to Register</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="privacy_terms" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-shield-alt nav-icon icons"></i>
+              <p> &nbsp; Data Policy & Terms </p>
             </a>
           </li>
 
