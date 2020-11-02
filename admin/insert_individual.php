@@ -34,7 +34,7 @@ if (isset($_POST['insert_individual'])) {
     $type = 'INDIVIDUAL';
     $status = 'ACTIVE';
     $img = $_POST['image'];
-    $fileName = 'user.jpg';
+    $fileName = 'default.jpg';
 
 
 
