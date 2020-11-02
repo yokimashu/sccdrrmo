@@ -108,8 +108,8 @@ $get_all_landtranspo_data->execute();
 
                           
 
-                                <a class="btn btn-success btn-sm" href="view_landtranspo.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></a>
+                                <a class="btn btn-warning btn-sm" href="view_landtranspo.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
                                 <a class="btn btn-success btn-sm" href="view_landtrans_history.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>

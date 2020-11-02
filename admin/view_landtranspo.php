@@ -42,6 +42,7 @@ $user_name = '';
 $btnNew = 'hidden';
 
 include('get_landtranspodetails.php');
+include('update_landtranspo.php');
 $get_all_category_sql = "SELECT * FROM categ_land_transpo";
 $get_all_category_data = $con->prepare($get_all_category_sql);
 $get_all_category_data->execute();
@@ -104,10 +105,11 @@ $title = 'VAMOS | Land Trans Form';
         <?php include('sidebar.php'); ?>
 
         <div class="content-wrapper">
-            <div class="content-header"></div>
-
-
-
+            <div class="content-header">
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
+            </div>
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
@@ -165,7 +167,7 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
                                                     <input type="text" class="form-control" id="username"
-                                                        name="username" placeholder="Username" onblur="checkUsername()"
+                                                        name="username" placeholder="Username" id ="username"
                                                         value="<?php echo $user_name; ?>" required>
                                                     <div id="status"></div>
                                                 </div>
@@ -378,7 +380,7 @@ $title = 'VAMOS | Land Trans Form';
     const canvasElement = document.getElementById('canvas');
     const snapSoundElement = document.getElementById('snapSound');
     const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-
+    const username = $('#username').val();
     $('.select2').select2();
 
 
@@ -457,7 +459,16 @@ $title = 'VAMOS | Land Trans Form';
 
 
     });
+    $('#username').change(function(){
+        
+        if(username != $('#username').val()){
+            checkUsername();
+        }else{
+            $("#status").html("");
+        }
 
+
+    });
     function checkUsername() {
         var username = $('#username').val();
         if (username.length >= 3) {
