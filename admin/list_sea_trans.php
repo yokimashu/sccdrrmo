@@ -51,7 +51,7 @@ $get_all_seatranspo_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Sea Trans Master List </title>
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -111,8 +111,8 @@ $get_all_seatranspo_data->execute();
                             <td><?php echo $list_sea['trans_type']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <a class="btn btn-warning btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
                               <a class="btn btn-success btn-sm" href="view_seatrans_history.php?&entity_no=<?php echo $list_sea['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>
@@ -240,9 +240,9 @@ $get_all_seatranspo_data->execute();
       }
 
     });
+
+
     $('.select2').select2();
-
-
 
     $('#addPUM').on('hidden.bs.modal', function() {
       $('#addPUM form')[0].reset();

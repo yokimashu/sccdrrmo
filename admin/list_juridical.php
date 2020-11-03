@@ -6,7 +6,7 @@ session_start();
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
-} 
+}
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
@@ -40,7 +40,7 @@ $get_all_juridical_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Master Lists Juridical </title>
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -59,7 +59,7 @@ $get_all_juridical_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Juridical
 
-              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success" onClick="generateID()">
+              <a href="add_juridical" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
 
             </h4>
@@ -96,15 +96,16 @@ $get_all_juridical_data->execute();
                             <td><?php echo $list_juridical['org_name']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <a class="btn btn-warning btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
-                               
-                                <?php if($_SESSION['user_type'] == 1){
-                                    //restrict users to view history?>
-                              <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></a>
-                                <?php }?>
+
+                              <?php if ($_SESSION['user_type'] == 1) {
+                                //restrict users to view history
+                              ?>
+                                <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a>
+                              <?php } ?>
 
 
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
@@ -246,8 +247,8 @@ $get_all_juridical_data->execute();
     });
   </script>
 
-<script>
-$('#users tbody').on('click', 'button.printlink', function() {
+  <script>
+    $('#users tbody').on('click', 'button.printlink', function() {
       // alert ('hello');
       // var row = $(this).closest('tr');
       var table = $('#users').DataTable();
@@ -260,16 +261,16 @@ $('#users tbody').on('click', 'button.printlink', function() {
 
 
     function generateID() {
-$.ajax({
-    type: 'POST',
-    data: {},
-    url: 'generate_id.php',
-    success: function(data) {
-        //$('#entity_no').val(data);
-        sessionStorage.setItem("entity_no_juridical", data);
+      $.ajax({
+        type: 'POST',
+        data: {},
+        url: 'generate_id.php',
+        success: function(data) {
+          //$('#entity_no').val(data);
+          sessionStorage.setItem("entity_no_juridical", data);
+        }
+      });
     }
-});
-}
   </script>
 </body>
 

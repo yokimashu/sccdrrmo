@@ -111,8 +111,8 @@ $get_all_data_data->execute();
 
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_user.php?&id=<?php echo $list_user['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <a class="btn btn-warning btn-sm" href="view_user.php?&id=<?php echo $list_user['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
                               <!-- <a class="btn btn-success btn-sm" href="view_land_trans.php?&entity_no=<?php echo $list_user['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>

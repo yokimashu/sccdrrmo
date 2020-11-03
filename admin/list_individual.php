@@ -43,7 +43,7 @@ $get_all_individual_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Master Lists Individual </title>
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -99,8 +99,8 @@ $get_all_individual_data->execute();
                             <td><?php echo $list_individual['fullname']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <a class="btn btn-warning btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
 
                               <?php if ($_SESSION['user_type'] == 1) {

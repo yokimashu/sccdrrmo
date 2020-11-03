@@ -46,7 +46,7 @@ $get_all_landtranspo_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Land Trans Master List </title>
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -106,12 +106,12 @@ $get_all_landtranspo_data->execute();
                             <td><?php echo $list_landtrans['trans_type']; ?> </td>
                             <td>
 
-                          
 
-                                <a class="btn btn-warning btn-sm" href="view_landtranspo.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
+
+                              <a class="btn btn-warning btn-sm" href="view_landtranspo.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
                                 <i class="fa fa-edit"></i></a>
 
-                                <a class="btn btn-success btn-sm" href="view_landtrans_history.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
+                              <a class="btn btn-success btn-sm" href="view_landtrans_history.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
                                 <i class="fa fa-suitcase"></i></a>
 
 
