@@ -16,25 +16,25 @@ if (!isset($_SESSION['id'])) {
 $now = new DateTime();
 
 
-$btnSave = 
-$btnEdit =
-$alert_msg =
-$date_reg = 
-$entity_no = 
-$transpo =
-$get_transpo = 
-$vehicle_name =
-$vehicle_no = 
-$plate_no = 
-$route = 
-$contact_name =
-$contact_position =
-$mobile_no = 
-$tel_no = 
-$email_address = 
-$get_photo = 
-$img =
-$user_name = '';
+$btnSave =
+    $btnEdit =
+    $alert_msg =
+    $date_reg =
+    $entity_no =
+    $transpo =
+    $get_transpo =
+    $vehicle_name =
+    $vehicle_no =
+    $plate_no =
+    $route =
+    $contact_name =
+    $contact_position =
+    $mobile_no =
+    $tel_no =
+    $email_address =
+    $get_photo =
+    $img =
+    $user_name = '';
 
 
 
@@ -90,12 +90,15 @@ $title = 'VAMOS | Land Trans Form';
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
 
+
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
+
     <style>
-    #my_camera {
-        width: 320px;
-        height: 240px;
-        border: 1px solid black;
-    }
+        #my_camera {
+            width: 320px;
+            height: 240px;
+            border: 1px solid black;
+        }
     </style>
 
 </head>
@@ -106,9 +109,9 @@ $title = 'VAMOS | Land Trans Form';
 
         <div class="content-wrapper">
             <div class="content-header">
-            <div class="float-topright">
-                <?php echo $alert_msg; ?>
-            </div>
+                <div class="float-topright">
+                    <?php echo $alert_msg; ?>
+                </div>
             </div>
             <section class="content">
                 <div class="card">
@@ -119,8 +122,7 @@ $title = 'VAMOS | Land Trans Form';
 
                     <div class="card-body">
 
-                        <form role="form" enctype="multipart/form-data" method="post" id="input-form"
-                            action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
@@ -144,18 +146,13 @@ $title = 'VAMOS | Land Trans Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right"
-                                                            id="datepicker" name="date_register"
-                                                            value=<?php echo $date_reg ?>>
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" value=<?php echo $date_reg ?>>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control"
-                                                        <?php echo $btn_enabled ?> name="entity_no" id="entity_no"
-                                                        placeholder="Entity ID" value="<?php echo $entity_no; ?>"
-                                                        required>
+                                                    <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
 
                                             </div></br>
@@ -166,9 +163,7 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" id="username"
-                                                        name="username" placeholder="Username" id ="username"
-                                                        value="<?php echo $user_name; ?>" required>
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" id="username" value="<?php echo $user_name; ?>" required>
                                                     <div id="status"></div>
                                                 </div>
                                             </div></br>
@@ -177,13 +172,12 @@ $title = 'VAMOS | Land Trans Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <select class="form-control select2" id="transpo_type"
-                                                        style="width: 100%;" name="land_transpo_type" value = <?php $transpo?> >
-                                                        <option selected="selected" value="<?php $transpo;?>">
+                                                    <select class="form-control select2" id="transpo_type" style="width: 100%;" name="land_transpo_type" value=<?php $transpo ?>>
+                                                        <option selected="selected" value="<?php $transpo; ?>">
                                                             <?php echo $transpo; ?></option>
                                                         <?php while ($get_transpo = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $get_transpo['transpo_name']; ?>">
-                                                            <?php echo $get_transpo['transpo_name']; ?></option>
+                                                            <option value="<?php echo $get_transpo['transpo_name']; ?>">
+                                                                <?php echo $get_transpo['transpo_name']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -193,8 +187,7 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="vechicle_name"
-                                                        placeholder="Vehicle Name" value="<?php echo $vehicle_name ?>">
+                                                    <input type="text" class="form-control" name="vechicle_name" placeholder="Vehicle Name" value="<?php echo $vehicle_name ?>">
                                                 </div>
                                             </div></br>
 
@@ -202,16 +195,14 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="vehicle_no"
-                                                        placeholder="Vehicle #" value="<?php echo $vehicle_no ?>">
+                                                    <input type="text" class="form-control" name="vehicle_no" placeholder="Vehicle #" value="<?php echo $vehicle_no ?>">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="plate_no"
-                                                        placeholder="Plate #" value="<?php echo $plate_no ?>">
+                                                    <input type="text" class="form-control" name="plate_no" placeholder="Plate #" value="<?php echo $plate_no ?>">
                                                 </div>
 
 
@@ -221,26 +212,21 @@ $title = 'VAMOS | Land Trans Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="route"
-                                                        placeholder="Route / Area of Operation"
-                                                        value="<?php echo $route ?>">
+                                                    <input type="text" class="form-control" name="route" placeholder="Route / Area of Operation" value="<?php echo $route ?>">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="contact_name"
-                                                        placeholder="Contact Name" value="<?php echo $contact_name ?>">
+                                                    <input type="text" class="form-control" name="contact_name" placeholder="Contact Name" value="<?php echo $contact_name ?>">
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="contact_position"
-                                                        placeholder="Contact Position"
-                                                        value="<?php echo $contact_position ?>">
+                                                    <input type="text" class="form-control" name="contact_position" placeholder="Contact Position" value="<?php echo $contact_position ?>">
                                                 </div>
                                             </div><br>
 
@@ -272,8 +258,7 @@ $title = 'VAMOS | Land Trans Form';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <!-- <label>Street: </label> -->
-                                                <input type="text" class="form-control" name="mobile_no"
-                                                    placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
                                             </div>
                                         </div></br>
 
@@ -281,8 +266,7 @@ $title = 'VAMOS | Land Trans Form';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <!-- <label>Street: </label> -->
-                                                <input type="text" class="form-control" name="telephone_no"
-                                                    placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
+                                                <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $tel_no; ?>">
                                             </div>
                                         </div><br>
 
@@ -290,8 +274,7 @@ $title = 'VAMOS | Land Trans Form';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <!-- <label>Street: </label> -->
-                                                <input type="text" class="form-control" name="email"
-                                                    placeholder="Email Address" value="<?php echo $email_address; ?>">
+                                                <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email_address; ?>">
                                             </div>
                                         </div><br>
 
@@ -299,8 +282,7 @@ $title = 'VAMOS | Land Trans Form';
                                         <div class="box-footer" align="center">
 
 
-                                            <button type="submit" <?php echo $btnSave; ?> name="update_landtranspo"
-                                                id="btnSubmit" class="btn btn-success">
+                                            <button type="submit" <?php echo $btnSave; ?> name="update_landtranspo" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
 
                                             <a href="list_land_trans">
@@ -308,8 +290,7 @@ $title = 'VAMOS | Land Trans Form';
                                                     <i class="fa fa-close fa-fw"> </i> </button>
                                             </a>
 
-                                            <a
-                                                href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                 <button type="button" name="print" class="btn btn-primary">
                                                     <i class="nav-icon fa fa-print"> </i> </button>
                                             </a>
@@ -376,120 +357,121 @@ $title = 'VAMOS | Land Trans Form';
 
 
     <script type="text/javascript">
-    const webcamElement = document.getElementById('webcam');
-    const canvasElement = document.getElementById('canvas');
-    const snapSoundElement = document.getElementById('snapSound');
-    const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-    const username = $('#username').val();
-    $('.select2').select2();
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        const username = $('#username').val();
+        $('.select2').select2();
 
 
-    function take_snapshot() {
-        // // take snapshot and get image data
+        function take_snapshot() {
+            // // take snapshot and get image data
 
-        let picture = webcam.snap();
-        document.querySelector('#photo').src = picture;
-        $(".image-tag").val(picture);
-        $("#canvas").attr("hidden", true);
-        webcam.stop();
-        $("#canvas").hide();
-        $("#webcam").hide();
-        $("#photo").show();
-    }
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden", true);
+            webcam.stop();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
+        }
 
-    $('#capture').click(function() {
-        $("#fileToUpload").val('');
+        $('#capture').click(function() {
+            $("#fileToUpload").val('');
 
-    })
-    $("#opencamera").click(function() {
-        $("#canvas").show();
-        $("#webcam").show();
-        $('#canvas').removeAttr('hidden');
-        $('#webcam').removeAttr('hidden');
-        $("#photo").hide();
-        webcam.start()
-            .then(result => {
-                console.log("webcam started");
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    });
-
-
-    $(document).ready(function() {
+        })
+        $("#opencamera").click(function() {
+            $("#canvas").show();
+            $("#webcam").show();
+            $('#canvas').removeAttr('hidden');
+            $('#webcam').removeAttr('hidden');
+            $("#photo").hide();
+            webcam.start()
+                .then(result => {
+                    console.log("webcam started");
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        });
 
 
+        $(document).ready(function() {
+
+
+            $('#username').change(function() {
+                if ($('#entity_no').val() == '') {
+                    $.ajax({
+                        type: 'POST',
+                        data: {},
+                        url: 'generate_id.php',
+                        success: function(data) {
+                            //$('#entity_no').val(data);
+                            document.getElementById("entity_no").value = data;
+                            console.log(data);
+                        }
+                    });
+                }
+            });
+
+
+            $("#fileToUpload").change(function(e) {
+
+                var img = e.target.files[0];
+
+                if (!pixelarity.open(img, false, function(res) {
+
+                        $("#photo").attr("src", res);
+                        $(".image-tag").attr("value", res);
+                    }, "jpg", 0.7)) {
+
+                    alert("Whoops! That is not an image!");
+
+                }
+
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
+
+            });
+
+
+
+        });
         $('#username').change(function() {
-            if ($('#entity_no').val() == '') {
+
+            if (username != $('#username').val()) {
+                checkUsername();
+            } else {
+                $("#status").html("");
+            }
+
+
+        });
+
+        function checkUsername() {
+            var username = $('#username').val();
+            if (username.length >= 3) {
+                $("#status").html('<img src="loader.gif" /> Checking availability...');
                 $.ajax({
                     type: 'POST',
-                    data: {},
-                    url: 'generate_id.php',
+                    data: {
+                        username: username
+                    },
+                    url: 'check_username.php',
                     success: function(data) {
-                        //$('#entity_no').val(data);
-                        document.getElementById("entity_no").value = data;
-                        console.log(data);
+                        $("#status").html(data);
+
                     }
                 });
             }
-        });
-
-
-        $("#fileToUpload").change(function(e) {
-
-            var img = e.target.files[0];
-
-            if (!pixelarity.open(img, false, function(res) {
-
-                    $("#photo").attr("src", res);
-                    $(".image-tag").attr("value", res);
-                }, "jpg", 0.7)) {
-
-                alert("Whoops! That is not an image!");
-
-            }
-
-            $("#photo").show();
-            $("#canvas").hide();
-            $("#webcam").hide();
-
-        });
-
-
-
-    });
-    $('#username').change(function(){
-        
-        if(username != $('#username').val()){
-            checkUsername();
-        }else{
-            $("#status").html("");
         }
 
-
-    });
-    function checkUsername() {
-        var username = $('#username').val();
-        if (username.length >= 3) {
-            $("#status").html('<img src="loader.gif" /> Checking availability...');
-            $.ajax({
-                type: 'POST',
-                data: {
-                    username: username
-                },
-                url: 'check_username.php',
-                success: function(data) {
-                    $("#status").html(data);
-
-                }
-            });
-        }
-    }
-
-    //     $('#btnSubmit').click(function(){
-    // $("#input-form :input").prop("disabled", true);
-    //     });
+        //     $('#btnSubmit').click(function(){
+        // $("#input-form :input").prop("disabled", true);
+        //     });
     </script>
 </body>
 

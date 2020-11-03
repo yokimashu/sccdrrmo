@@ -96,6 +96,8 @@ $title = 'VAMOS | Update Sea Trans Form';
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
 
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
+
     <style>
         #my_camera {
             width: 320px;
