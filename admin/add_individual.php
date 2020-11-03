@@ -73,19 +73,20 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
 
     <style>
-    #webcam {
-        width: 350px;
-        height: 350px;
-        border: 1px solid black;
-    }
+        #webcam {
+            width: 350px;
+            height: 350px;
+            border: 1px solid black;
+        }
 
-    #photo {
-        display: block;
-        position: relative;
-        margin-top: 40px;
-    }
+        #photo {
+            display: block;
+            position: relative;
+            margin-top: 40px;
+        }
     </style>
 
 </head>
@@ -110,8 +111,7 @@ $title = 'VAMOS | Add Individual';
 
                     <div class="card-body">
 
-                        <form role="form" enctype="multipart/form-data" method="post" id="input-form"
-                            action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
 
                             <div class="box-body">
                                 <div class="row">
@@ -135,18 +135,13 @@ $title = 'VAMOS | Add Individual';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right"
-                                                            id="datepicker" name="date_register"
-                                                            placeholder="Date Process"
-                                                            value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-4">
                                                     <label>Entity ID : </label>
-                                                    <input readonly type="text" class="form-control" name="entity_no"
-                                                        id="entity_no" placeholder="Entity ID"
-                                                        value="<?php echo $entity_no; ?>" required>
+                                                    <input readonly type="text" class="form-control" name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $entity_no; ?>" required>
                                                 </div>
 
 
@@ -156,9 +151,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" id="username"
-                                                        name="username" placeholder="User Name" onblur="checkUsername()"
-                                                        value="<?php echo $user_name; ?>" required>
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="User Name" onblur="checkUsername()" value="<?php echo $user_name; ?>" required>
                                                     <div id="status"></div>
                                                 </div>
                                             </div></br>
@@ -169,9 +162,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="firstname"
-                                                        placeholder="First Name" value="<?php echo $firstname; ?>"
-                                                        required>
+                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $firstname; ?>" required>
                                                 </div>
                                             </div></br>
 
@@ -179,9 +170,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Middle Name:</label> -->
-                                                    <input type="text" class="form-control" name="middlename"
-                                                        placeholder="Middle Name" value="<?php echo $middlename; ?>"
-                                                        required>
+                                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="<?php echo $middlename; ?>" required>
                                                 </div>
                                             </div></br>
 
@@ -189,9 +178,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label> Last Name:</label> -->
-                                                    <input type="text" class="form-control" name="lastname"
-                                                        placeholder="Last Name" value="<?php echo $lastname; ?>"
-                                                        required>
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="<?php echo $lastname; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -200,22 +187,18 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-4">
                                                     <label>Birthdate: </label>
 
-                                                    <input type="date" value="" id="date" name="birthdate"
-                                                        onblur="getAge();" class="form-control pull-right "
-                                                        placeholder="dd/mm/yyyy" />
+                                                    <input type="date" value="" id="date" name="birthdate" onblur="getAge();" class="form-control pull-right " placeholder="dd/mm/yyyy" />
                                                 </div>
 
                                                 <div class="col-md-2">
                                                     <label>Age:</label>
-                                                    <input type="number" id="age" name="age" class="form-control"
-                                                        placeholder="Age" value="<?php echo $age ?>">
+                                                    <input type="number" id="age" name="age" class="form-control" placeholder="Age" value="<?php echo $age ?>">
 
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label>Gender:</label>
-                                                    <select class=" form-control select2" id="gender" name="gender"
-                                                        value="<?php echo $gender; ?>" required>
+                                                    <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>" required>
                                                         <option selected="selected">Select Gender</option>
                                                         <option value="Female">Female</option>
                                                         <option value="Male">Male</option>
@@ -238,9 +221,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="street"
-                                                        placeholder="Street / Lot # / Block #"
-                                                        value="<?php echo $street; ?>" required>
+                                                    <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $street; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -248,13 +229,10 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Barangay: </label> -->
-                                                    <select class="form-control select2" id="barangay"
-                                                        style="width: 100%;" name="barangay"
-                                                        value="<?php echo $barangay; ?>" required>
+                                                    <select class="form-control select2" id="barangay" style="width: 100%;" name="barangay" value="<?php echo $barangay; ?>" required>
                                                         <option selected="selected">Select Barangay</option>
                                                         <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $get_brgy['barangay']; ?>">
-                                                            <?php echo $get_brgy['barangay']; ?></option>
+                                                            <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -264,8 +242,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="city"
-                                                        placeholder="City" value=" <?php echo $city; ?>" required>
+                                                    <input type="text" class="form-control" name="city" placeholder="City" value=" <?php echo $city; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -273,9 +250,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="province"
-                                                        placeholder="Province" value=" <?php echo $province; ?>"
-                                                        required>
+                                                    <input type="text" class="form-control" name="province" placeholder="Province" value=" <?php echo $province; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -302,16 +277,11 @@ $title = 'VAMOS | Add Individual';
                                                 </div> -->
                                                 <div style="margin:auto">
 
-                                                    <video id="webcam" autoplay playsinline width="450 " height="450"
-                                                        align="center" hidden class="photo  img-thumbnail"></video>
-                                                    <canvas id="canvas" class="d-none" hidden width="450" height="450"
-                                                        align="center" onClick="setup()"
-                                                        class="photo  img-thumbnail"></canvas>
+                                                    <video id="webcam" autoplay playsinline width="450 " height="450" align="center" hidden class="photo  img-thumbnail"></video>
+                                                    <canvas id="canvas" class="d-none" hidden width="450" height="450" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
                                                     <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio>
 
-                                                    <img src="../flutter/images/user.jpg" id="photo"
-                                                        style="height: 320px; width:320px; margin:auto;"
-                                                        class="photo img-thumbnail">
+                                                    <img src="../flutter/images/user.jpg" id="photo" style="height: 320px; width:320px; margin:auto;" class="photo img-thumbnail">
 
 
                                                 </div>
@@ -321,36 +291,30 @@ $title = 'VAMOS | Add Individual';
                                         <div class="row">
                                             <!-- <form method="POST" action="storeImage.php"> -->
                                             <div style="margin:auto">
-                                                <div class="col-12"
-                                                    style="margin:auto;margin-top:30px;margin-bottom:30px">
+                                                <div class="col-12" style="margin:auto;margin-top:30px;margin-bottom:30px">
                                                     <span class="align-baseline">
                                                         <input type="hidden" name="image" class="image-tag">
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                        <button type="button" id="opencamera" class="btn btn-warning "
-                                                            value="CAPTURE"><i class="fa fa-camera"></i></button>
-                                                        <button type="button" id="capture"
-                                                            class="btn btn-primary toastsDefaultSuccess" value="CAPTURE"
-                                                            onClick="take_snapshot()"><i
-                                                                class="fa fa-check"></i></button>
+                                                        <button type="button" id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button>
+                                                        <button type="button" id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
 
                                                         <style>
-                                                        input[type="file"] {
-                                                            display: none;
-                                                        }
+                                                            input[type="file"] {
+                                                                display: none;
+                                                            }
 
-                                                        .custom-file-upload {
-                                                            border: 1px solid #ccc;
-                                                            border-radius: 5px;
-                                                            display: inline-block;
-                                                            padding: 7px 12px;
-                                                            cursor: pointer;
-                                                        }
+                                                            .custom-file-upload {
+                                                                border: 1px solid #ccc;
+                                                                border-radius: 5px;
+                                                                display: inline-block;
+                                                                padding: 7px 12px;
+                                                                cursor: pointer;
+                                                            }
                                                         </style>
                                                         <label for="fileToUpload" class="custom-file-upload">
                                                             <i class="fa fa-cloud-upload"></i> Import Image
                                                         </label>
-                                                        <input type="file" id="fileToUpload" name="myFile"
-                                                            class="btn btn-danger custom-file-upload ">
+                                                        <input type="file" id="fileToUpload" name="myFile" class="btn btn-danger custom-file-upload ">
 
                                                     </span>
                                                 </div>
@@ -371,8 +335,7 @@ $title = 'VAMOS | Add Individual';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <!-- <label>Street: </label> -->
-                                                <input type="number" class="form-control" name="mobile_no"
-                                                    placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
+                                                <input type="number" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $mobile_no; ?>">
                                             </div>
                                         </div></br>
 
@@ -380,8 +343,7 @@ $title = 'VAMOS | Add Individual';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <!-- <label>Street: </label> -->
-                                                <input type="number" class="form-control" name="telephone_no"
-                                                    placeholder="Telephone Number" value="<?php echo $telephone_no; ?>">
+                                                <input type="number" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $telephone_no; ?>">
                                             </div>
                                         </div><br>
 
@@ -389,8 +351,7 @@ $title = 'VAMOS | Add Individual';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <!-- <label>Street: </label> -->
-                                                <input type="text" class="form-control" name="email"
-                                                    placeholder="Email Address" value="<?php echo $email; ?>">
+                                                <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $email; ?>">
                                             </div>
                                         </div><br>
 
@@ -398,8 +359,7 @@ $title = 'VAMOS | Add Individual';
                                         <div class="box-footer" align="center">
 
 
-                                            <button type="submit" <?php echo $btnSave; ?> name="insert_individual"
-                                                id="btnSubmit" class="btn btn-success">
+                                            <button type="submit" <?php echo $btnSave; ?> name="insert_individual" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
 
                                             <a href="list_individual.php">
@@ -407,8 +367,7 @@ $title = 'VAMOS | Add Individual';
                                                     <i class="fa fa-close fa-fw"> </i> </button>
                                             </a>
 
-                                            <a
-                                                href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                 <button type="button" name="print" class="btn btn-primary">
                                                     <i class="nav-icon fa fa-print"> </i> </button>
                                             </a>
@@ -479,44 +438,64 @@ $title = 'VAMOS | Add Individual';
 
 
     <script language="JavaScript">
-    function getAge() {
-        var dob = document.getElementById('date').value;
-        dob = new Date(dob);
-        var today = new Date();
-        var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
-        document.getElementById('age').value = age;
-    };
+        function getAge() {
+            var dob = document.getElementById('date').value;
+            dob = new Date(dob);
+            var today = new Date();
+            var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+            document.getElementById('age').value = age;
+        };
 
-    const webcamElement = document.getElementById('webcam');
-    const canvasElement = document.getElementById('canvas');
-    const snapSoundElement = document.getElementById('snapSound');
-    const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
-    function take_snapshot() {
-        // // take snapshot and get image data
+        function take_snapshot() {
+            // // take snapshot and get image data
 
-        let picture = webcam.snap();
-        document.querySelector('#photo').src = picture;
-        $(".image-tag").val(picture);
-        $("#canvas").attr("hidden", true);
-        webcam.stop();
-        $("#canvas").hide();
-        $("#webcam").hide();
-        $("#photo").show();
+            let picture = webcam.snap();
+            document.querySelector('#photo').src = picture;
+            $(".image-tag").val(picture);
+            $("#canvas").attr("hidden", true);
+            webcam.stop();
+            $("#canvas").hide();
+            $("#webcam").hide();
+            $("#photo").show();
 
-        showCropImage(picture);
-    }
+        }
 
-    function showCropImage(picture){
-        
-        $.ajax({
-            type: 'POST',
-            data: {
-                picture: picture
-            },
-            url: 'temp_image.php',
-            success: function(data) {
-                if (!pixelarity.open(data, false, function(res) {
+
+        function checkUsername() {
+            var username = $('#username').val();
+            if (username.length >= 3) {
+                $("#status").html('<img src="loader.gif" /> Checking availability...');
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        username: username
+                    },
+                    url: 'check_username.php',
+                    success: function(data) {
+                        $("#status").html(data);
+
+                    }
+                });
+            }
+        }
+
+
+
+        $(document).ready(function() {
+            $('.select2').select2();
+            // $('#entity_no').val(sessionStorage.getItem("entity_number"));
+
+            //execute the image cropper when the image is imported
+            $("#fileToUpload").change(function(e) {
+
+                var img = e.target.files[0];
+
+                if (!pixelarity.open(img, false, function(res) {
 
                         $("#photo").attr("src", res);
                         $(".image-tag").attr("value", res);
@@ -525,86 +504,43 @@ $title = 'VAMOS | Add Individual';
                     alert("Whoops! That is not an image!");
                 }
 
-                alert(data);
-            }
-        });
+                $("#photo").show();
+                $("#canvas").hide();
+                $("#webcam").hide();
 
-    }
-    function checkUsername() {
-        var username = $('#username').val();
-        if (username.length >= 3) {
-            $("#status").html('<img src="loader.gif" /> Checking availability...');
-            $.ajax({
-                type: 'POST',
-                data: {
-                    username: username
-                },
-                url: 'check_username.php',
-                success: function(data) {
-                    $("#status").html(data);
+            });
+            //open the webcam
+            $("#opencamera").click(function() {
+                $("#canvas").show();
+                $("#webcam").show();
+                $('#canvas').removeAttr('hidden');
+                $('#webcam').removeAttr('hidden');
+                $("#photo").hide();
+                webcam.start()
+                    .then(result => {
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            });
 
+            $('#username').change(function() {
+                if ($('#entity_no').val() == '') {
+                    $.ajax({
+                        type: 'POST',
+                        data: {},
+                        url: 'generate_id.php',
+                        success: function(data) {
+                            //$('#entity_no').val(data);
+                            document.getElementById("entity_no").value = data;
+                            console.log(data);
+                        }
+                    });
                 }
             });
-        }
-    }
-
-
-
-    $(document).ready(function() {
-        $('.select2').select2();
-        // $('#entity_no').val(sessionStorage.getItem("entity_number"));
-
-        //execute the image cropper when the image is imported
-        $("#fileToUpload").change(function(e) {
-
-            var img = e.target.files[0];
-
-            if (!pixelarity.open(img, false, function(res) {
-
-                    $("#photo").attr("src", res);
-                    $(".image-tag").attr("value", res);
-                }, "jpg", 0.7)) {
-
-                alert("Whoops! That is not an image!");
-            }
-
-            $("#photo").show();
-            $("#canvas").hide();
-            $("#webcam").hide();
 
         });
-        //open the webcam
-        $("#opencamera").click(function() {
-            $("#canvas").show();
-            $("#webcam").show();
-            $('#canvas').removeAttr('hidden');
-            $('#webcam').removeAttr('hidden');
-            $("#photo").hide();
-            webcam.start()
-                .then(result => {
-                    console.log("webcam started");
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        });
-
-        $('#username').change(function() {
-            if ($('#entity_no').val() == '') {
-                $.ajax({
-                    type: 'POST',
-                    data: {},
-                    url: 'generate_id.php',
-                    success: function(data) {
-                        //$('#entity_no').val(data);
-                        document.getElementById("entity_no").value = data;
-                        console.log(data);
-                    }
-                });
-            }
-        });
-
-    });
     </script>
 </body>
 

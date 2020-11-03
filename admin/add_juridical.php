@@ -78,6 +78,7 @@ $title = 'VAMOS | Juridical Form';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
 
     <style>
         #webcam {
@@ -433,7 +434,7 @@ $title = 'VAMOS | Juridical Form';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
-   
+
 
 
 
@@ -443,13 +444,13 @@ $title = 'VAMOS | Juridical Form';
         const canvasElement = document.getElementById('canvas');
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-        
-        
-        
+
+
+
         $(document).ready(function() {
 
-        $('.select2').select2();
-    
+            $('.select2').select2();
+
             //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 
@@ -486,19 +487,19 @@ $title = 'VAMOS | Juridical Form';
                     })
             });
 
-            $('#username').change(function(){
-            if($('#entity_no').val() == ''){
-            $.ajax({
-            type: 'POST',
-            data: {},
-            url: 'generate_id.php',
-                success: function(data) {
-            //$('#entity_no').val(data);
-            document.getElementById("entity_no").value = data;
-            console.log(data);
-            }
-            });
-            }
+            $('#username').change(function() {
+                if ($('#entity_no').val() == '') {
+                    $.ajax({
+                        type: 'POST',
+                        data: {},
+                        url: 'generate_id.php',
+                        success: function(data) {
+                            //$('#entity_no').val(data);
+                            document.getElementById("entity_no").value = data;
+                            console.log(data);
+                        }
+                    });
+                }
             });
 
         });
