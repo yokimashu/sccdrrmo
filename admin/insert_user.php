@@ -52,7 +52,7 @@ if (isset($_POST['insert_user'])) {
         ':datee'         => $date_register,
         ':timee'         => $time,
         ':entity_no'     => $entity_no,
-        ':username'         => $username,
+        ':username'         => $user_name,
         ':fullname'         => $fullname,
         ':fnamee'         => $firstname,
         ':mnamee'         => $middlename,
