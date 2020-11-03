@@ -27,7 +27,7 @@ $get_all_published_data->execute();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Announcement</title>
 
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 </head>
 
