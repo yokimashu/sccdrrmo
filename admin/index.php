@@ -44,105 +44,150 @@ $title = 'VAMOS | Dashboard';
     <div class="content-wrapper">
       <div class="content-header"></div>
 
-      <div class="container-fluid">
 
-        <div class="row">
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <a href="list_pum.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
-              <div class="info-box-content">
-                <span class="info-box-text">Individual</span>
-                <span class="info-box-number">
-                  <?php echo $get_all_individual_data->rowCount() ?>
-                </span>
-              </div>
-            </div>
-          </div> <!-- /.col-12 col-sm-6 col-md-3 -->
+      <section class="content">
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
-              <div class="info-box-content">
-                <span class="info-box-text">Juridical</span>
-                <span class="info-box-number">
-                <?php echo $get_all_juridical_data->rowCount() ?>
-                </span>
-              </div>
-            </div>
-</div>
+
+        <div class="container-fluid">
+
+          <div class="row">
 
             <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
-              <div class="info-box-content">
-                <span class="info-box-text">Transportation</span>
-                <span class="info-box-number">
-                  5
-                  <?php echo "<pre";
-                  echo print_r($_SESSION['user_type']);
-                  echo "</pre>";
-                  ?>
-                </span>
+              <div class="info-box mb-3">
+                <a href="list_pum.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
+                <div class="info-box-content">
+                  <span class="info-box-text">Individual</span>
+                  <span class="info-box-number">
+                    <?php echo $get_all_individual_data->rowCount() ?>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
+                <div class="info-box-content">
+                  <span class="info-box-text">Juridical</span>
+                  <span class="info-box-number">
+                    <?php echo $get_all_juridical_data->rowCount() ?>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
+                <div class="info-box-content">
+                  <span class="info-box-text">Transportation</span>
+                  <span class="info-box-number">
+                    5
+                    <?php echo "<pre";
+                    echo print_r($_SESSION['user_type']);
+                    echo "</pre>";
+                    ?>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix hidden-md-up"></div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <a href="#" class="info-box-icon bg-danger elevation-1"><span><i class="fa fa-male"></i></span></a>
+                <div class="info-box-content">
+                  <span class="info-box-text">Positive Cases</span>
+                  <span class="info-box-number">
+                    0
+                  </span>
+                </div>
               </div>
             </div>
 
 
-           
 
-          </div> <!-- /.col-12 col-sm-6 col-md-3 -->
 
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <a href="#" class="info-box-icon bg-danger elevation-1"><span><i class="fa fa-male"></i></span></a>
-              <div class="info-box-content">
-                <span class="info-box-text">Positive Cases</span>
-                <span class="info-box-number">
-                  0
-                </span>
+
+
+          </div>
+
+
+          <!-- <div class="row">
+            <div class="row">
+              <div class="col-6">
+                <div id="curve_chart" style="width: 500; height: 300px"></div>
               </div>
             </div>
-          </div> <!-- /.col-12 col-sm-6 col-md-3 -->
+          </div> -->
 
-         
 
-        </div><!-- end row -->
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-8">
-            <div class="float">
-              <div id="display_update"></div>
+
+
+          <!-- <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <div class="float">
+                <div id="display_update"></div>
+              </div>
+
             </div>
+          </div> -->
 
-          </div>
-        </div><!-- end row -->
-        <div class="row">
-          <div class="col-6">
-            <div id="curve_chart" style="width: 500; height: 300px"></div>
-          </div>
 
-          <div class="col-6">
-            <div id="chart_div" style="width: 500; height: 300px"></div>
+
+
+
+          <!-- <div class="row">
+            <div class="col-6">
+              <div id="piechart" style="width: 500; height: 300px"></div>
+            </div>
+          </div> -->
+
+        </div><br>
+
+
+
+        <div class="card">
+          <div class="card-body">
+            <div class="box box-primary ">
+              <div class="box-body">
+
+
+
+                <div id="chart_div" style="padding-left:10px; width: 200; height: 600px"> </div>
+
+
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-6">
-            <div id="piechart" style="width: 500; height: 300px"></div>
-          </div>
-
-        </div>
-      </div><!-- end container-fluid -->
 
 
-    </div><!-- /.content-wrapper -->
+
+
+
+
+
+
+      </section>
+
+      <br><br>
+
+
+
+    </div>
 
     <?php include('footer.php') ?>
+  </div>
 
-  </div> <!-- /.wrapper -->
+
+
+
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
@@ -195,45 +240,46 @@ $title = 'VAMOS | Dashboard';
 
     $(document).ready(function() {
 
-      google.charts.load('current', {
-        'packages': ['corechart']
-      });
-      google.charts.setOnLoadCallback(drawChart);
+      // google.charts.load('current', {
+      //   'packages': ['corechart']
+      // });
+      // google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+      // function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Suspect', 'Probable', 'Confirment', "Death", "Recovered"],
-          <?php
+      //   var data = google.visualization.arrayToDataTable([
+      //     ['Year', 'Suspect', 'Probable', 'Confirment', "Death", "Recovered"],
+      //     <?php
 
-          $sql = "Select *,DATE_FORMAT(date,'%b-%d') as datefilter from tbl_covid ";
-          $get_sql = $con->prepare($sql);
-          $get_sql->execute();
-          while ($result = $get_sql->fetch(PDO::FETCH_ASSOC)) {
-            $pum = $result['pum'];
-            $pui = $result['pui'];
-            $positive = $result['positive'];
-            $death = $result['death'];
-            $recovery = $result['recovery'];
-            $date = $result['datefilter'];
-            echo "['" . $date . "'," . $pum . "," . $pui . "," . $positive . "," . $death . "," . $recovery . "],";
-          }
-          ?>
+              //     $sql = "Select *,DATE_FORMAT(date,'%b-%d') as datefilter from tbl_covid ";
+              //     $get_sql = $con->prepare($sql);
+              //     $get_sql->execute();
+              //     while ($result = $get_sql->fetch(PDO::FETCH_ASSOC)) {
+              //       $pum = $result['pum'];
+              //       $pui = $result['pui'];
+              //       $positive = $result['positive'];
+              //       $death = $result['death'];
+              //       $recovery = $result['recovery'];
+              //       $date = $result['datefilter'];
+              //       echo "['" . $date . "'," . $pum . "," . $pui . "," . $positive . "," . $death . "," . $recovery . "],";
+              //     }
+              //     
+              ?>
 
-        ]);
+      //   ]);
 
-        var options = {
-          title: 'COVID-19 REPORT',
-          curveType: 'function',
-          legend: {
-            position: 'bottom'
-          }
-        };
+      //   var options = {
+      //     title: 'COVID-19 REPORT',
+      //     curveType: 'function',
+      //     legend: {
+      //       position: 'bottom'
+      //     }
+      //   };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+      //   var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-        chart.draw(data, options);
-      }
+      //   chart.draw(data, options);
+      // }
 
       google.charts.load('current', {
         packages: ['corechart', 'bar']
@@ -242,17 +288,58 @@ $title = 'VAMOS | Dashboard';
 
       function drawMaterial() {
         var data = google.visualization.arrayToDataTable([
-          ['Date', 'Male', 'Female'],
+          ['Date', 'BARANGAY I', 'BARANGAY II', 'BARANGAY III', 'BARANGAY IV', 'BARANGAY V', 'BARANGAY VI', 'BAGONBON', 'BULUANGAN', 'CODCOD', 'ERMITA', 'GUADALUPE', 'NATABAN', 'PALAMPAS', 'PROSPERIDAD', 'PUNAO', 'QUEZON', 'RIZAL', 'SAN JUAN'],
 
           <?php
-          $GET_GENDER = "select date_format(date_report,'%b-%d') as date_report,(Select count(gender)from tbl_pum where gender = 'Male')as Male,(Select count(gender)from tbl_pum where gender = 'Female')as Female from tbl_pum group by date_report";
-          $prepare_gender = $con->prepare($GET_GENDER);
-          $prepare_gender->execute();
-          while ($get_sex = $prepare_gender->fetch(PDO::FETCH_ASSOC)) {
-            $datefilter = $get_sex['date_report'];
-            $male = $get_sex['Male'];
-            $female = $get_sex['Female'];
-            echo "['" . $datefilter . "'," . $male . "," . $female . "],";
+          $GET_BRGY = "SELECT DISTINCT
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BARANGAY I') AS BARANGAYI,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BARANGAY II' ) AS BARANGAYII,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BARANGAY III' ) AS BARANGAYIII,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BARANGAY IV' ) AS BARANGAYIV,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BARANGAY V' ) AS BARANGAYV,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BARANGAY VI' ) AS BARANGAYVI,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BAGONBON' ) AS BAGONBON,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'BULUANGAN' ) AS BULUANGAN,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'CODCOD' ) AS CODCOD,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'ERMITA' ) AS ERMITA,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'GUADALUPE' ) AS GUADALUPE,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'NATABAN' ) AS NATABAN,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'PALAMPAS' ) AS PALAMPAS,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'PROSPERIDAD' ) AS PROSPERIDAD,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'PUNAO' ) AS PUNAO,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'QUEZON' ) AS QUEZON,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'RIZAL' ) AS RIZAL,
+          (SELECT COUNT(barangay) FROM tbl_positive WHERE barangay = 'SAN JUAN' ) AS SANJUAN
+          FROM tbl_positive GROUP BY barangay;
+          ";
+          $prepare_brgy = $con->prepare($GET_BRGY);
+          $prepare_brgy->execute();
+          while ($get_brgy = $prepare_brgy->fetch(PDO::FETCH_ASSOC)) {
+
+            $brgy1 = $get_brgy['BARANGAYI'];
+            $brgy2 = $get_brgy['BARANGAYII'];
+            $brgy3 = $get_brgy['BARANGAYIII'];
+            $brgy4 = $get_brgy['BARANGAYIV'];
+            $brgy5 = $get_brgy['BARANGAYV'];
+            $brgy6 = $get_brgy['BARANGAYVI'];
+            $bagonbon = $get_brgy['BAGONBON'];
+            $buluangan = $get_brgy['BULUANGAN'];
+            $codcod = $get_brgy['CODCOD'];
+            $ermita = $get_brgy['ERMITA'];
+            $guadalupe = $get_brgy['GUADALUPE'];
+            $nataban = $get_brgy['NATABAN'];
+            $palampas = $get_brgy['PALAMPAS'];
+            $prosperidad = $get_brgy['PROSPERIDAD'];
+            $punao = $get_brgy['PUNAO'];
+            $quezon = $get_brgy['QUEZON'];
+            $rizal = $get_brgy['RIZAL'];
+            $sanjuan = $get_brgy['SANJUAN'];
+
+
+            echo "['Based on Barangay'," . $brgy1 . "," . $brgy2 . "," . $brgy3 . "," . $brgy4 . ",
+            " . $brgy5 . "," . $brgy6 . "," . $bagonbon . "," . $buluangan . "," . $codcod . "
+            ," . $ermita . "," . $guadalupe . "," . $nataban . "," . $palampas . "," . $prosperidad . "
+            ," . $punao . "," . $quezon . "," . $rizal . "," . $sanjuan . "],";
           }
 
           ?>
@@ -262,16 +349,16 @@ $title = 'VAMOS | Dashboard';
 
         var materialOptions = {
           chart: {
-            title: 'Confirmed Cases by Gender'
+            title: 'Number of Covid-19 Positive Cases'
           },
           hAxis: {
-            title: 'Total Population',
+            title: 'Total Cases',
             minValue: 0,
           },
           vAxis: {
-            title: 'Date'
+            title: 'Barangay'
           },
-          bars: 'horizontal'
+          bars: 'vertical'
         };
         var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
         materialChart.draw(data, materialOptions);
@@ -282,32 +369,67 @@ $title = 'VAMOS | Dashboard';
       });
       google.charts.setOnLoadCallback(drawPie);
 
-      function drawPie() {
+      // function drawPie() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Incidents', 'Total Incidents'],
-          <?php
-          $incident = "select type ,count(type) as count , (Select Count(objid) from tbl_incident) as total from tbl_incident GROUP BY type order by type";
-          $prepare = $con->prepare($incident);
-          $prepare->execute();
-          while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
-            $type =  $incident_result['type'];
-            $count = $incident_result['count'];
-            $total = $incident_result['total'];
-            echo "['" . $type . "'," . $count . "],";
-          }
-          ?>
+      //   var data = google.visualization.arrayToDataTable([
+      //     ['Person', 'Entity'],
+      //     <?php
+              //     $incident = "SELECT barangay, COUNT(entity_no) AS registered,(SELECT COUNT(entity_no) FROM tbl_individual) AS total FROM tbl_individual GROUP BY barangay; 
+              //     ";
+              //     $prepare = $con->prepare($incident);
+              //     $prepare->execute();
+              //     while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
+              //       $type =  $incident_result['barangay'];
+              //       $count = $incident_result['registered'];
+              //       $total = $incident_result['total'];
+              //       echo "['" . $type . "'," . $count . "],";
+              //     }
+              //     
+              ?>
 
-        ]);
+      //   ]);
 
-        var options = {
-          title: 'Incidents Reported Total: <?php echo $total ?>'
-        };
+      //   var options = {
+      //     title: 'Total Registered Entity: <?php echo $total ?>'
+      //   };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      //   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
-      }
+      //   chart.draw(data, options);
+      // }
+
+
+      //       function drawPie() {
+
+      // var data = google.visualization.arrayToDataTable([
+      //   ['Person', 'Entity'],
+      //   <?php
+            //   $incident = "SELECT barangay, COUNT(barangay) AS positive,(SELECT COUNT(barangay) FROM tbl_positive) AS total FROM tbl_positive GROUP BY barangay; 
+            //   ";
+            //   $prepare = $con->prepare($incident);
+            //   $prepare->execute();
+            //   while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
+            //     $type =  $incident_result['barangay'];
+            //     $count = $incident_result['positive'];
+            //     $total = $incident_result['total'];
+            //     echo "['" . $type . "'," . $count . "],";
+            //   }
+            //   
+            ?>
+
+      // ]);
+
+      // var options = {
+      //   title: 'Total Positive Cases: <?php echo $total ?>'
+      // };
+
+      // var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      // chart.draw(data, options);
+      // }
+
+
+
 
     });
   </script>
