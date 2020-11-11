@@ -342,7 +342,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
       var date_to  = $('#dteto').val();
         console.log(entity_no); 
         var param = "entity_no="+entity_no+"&datefrom="+date_from+"&dateto="+date_to+"";
-        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + param, '_parent');
+        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
       })
 
   </script>
