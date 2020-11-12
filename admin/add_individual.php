@@ -73,6 +73,7 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
 
     <style>
         #webcam {
@@ -192,12 +193,12 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-2">
                                                     <label>Age:</label>
                                                     <input type="number" id="age" name="age" class="form-control" placeholder="Age" value="<?php echo $age ?>">
-                                                   
+
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label>Gender:</label>
-                                                    <select class=" form-control select2"  id="gender" name="gender" value="<?php echo $gender; ?>" required>
+                                                    <select class=" form-control select2" id="gender" name="gender" value="<?php echo $gender; ?>" required>
                                                         <option selected="selected">Select Gender</option>
                                                         <option value="Female">Female</option>
                                                         <option value="Male">Male</option>
@@ -249,7 +250,7 @@ $title = 'VAMOS | Add Individual';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control"  name="province" placeholder="Province" value=" <?php echo $province; ?>" required>
+                                                    <input type="text" class="form-control" name="province" placeholder="Province" value=" <?php echo $province; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -278,7 +279,7 @@ $title = 'VAMOS | Add Individual';
 
                                                     <video id="webcam" autoplay playsinline width="450 " height="450" align="center" hidden class="photo  img-thumbnail"></video>
                                                     <canvas id="canvas" class="d-none" hidden width="450" height="450" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
-                                                    <!-- <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio> -->
+                                                    <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio>
 
                                                     <img src="../flutter/images/user.jpg" id="photo" style="height: 320px; width:320px; margin:auto;" class="photo img-thumbnail">
 
@@ -295,8 +296,8 @@ $title = 'VAMOS | Add Individual';
                                                         <input type="hidden" name="image" class="image-tag">
                                                         <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                                                         <button type="button" id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button>
-                                                        <button type="button"  id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
-               
+                                                        <button type="button" id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button>
+
                                                         <style>
                                                             input[type="file"] {
                                                                 display: none;
@@ -413,7 +414,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <!-- <script src="../plugins/pixelarity/pixelarity-faceless.js"></script>
     <script src="../plugins/pixelarity/script-faceless.js"></script> -->
-    <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script>
+    <!-- <script src="../plugins/pixelarity/jquery.3.4.1.min.js"></script> -->
     <!-- <script src="../plugins/datatables/dataTables.bootstrap4.js"></script> -->
     <!-- Toastr -->
     <!-- <script src="../plugins/toastr/toastr.min.js"></script> -->
@@ -421,9 +422,9 @@ $title = 'VAMOS | Add Individual';
     <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
     <!-- textarea wysihtml style -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      -->
@@ -432,24 +433,11 @@ $title = 'VAMOS | Add Individual';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
-<script>
-    
-
-    $(function(){
-        $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
-    });
-
-    </script>
 
 
 
-    <script type="text/javascript">
-        const webcamElement = document.getElementById('webcam');
-        const canvasElement = document.getElementById('canvas');
-        // const snapSoundElement = document.getElementById('snapSound');
-        const webcam = new Webcam(webcamElement, 'user', canvasElement);
 
+    <script language="JavaScript">
         function getAge() {
             var dob = document.getElementById('date').value;
             dob = new Date(dob);
@@ -457,15 +445,12 @@ $title = 'VAMOS | Add Individual';
             var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
             document.getElementById('age').value = age;
         };
-     
-    </script>
 
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
-
-
-
-
-    <script language="JavaScript">
         function take_snapshot() {
             // // take snapshot and get image data
 
@@ -479,6 +464,7 @@ $title = 'VAMOS | Add Individual';
             $("#photo").show();
 
         }
+
 
         function checkUsername() {
             var username = $('#username').val();
@@ -497,20 +483,25 @@ $title = 'VAMOS | Add Individual';
                 });
             }
         }
+
+
+
         $(document).ready(function() {
-        
+            $('.select2').select2();
+            // $('#entity_no').val(sessionStorage.getItem("entity_number"));
+
+            //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 
                 var img = e.target.files[0];
-                22
+
                 if (!pixelarity.open(img, false, function(res) {
-                        23
+
                         $("#photo").attr("src", res);
                         $(".image-tag").attr("value", res);
                     }, "jpg", 0.7)) {
-                    25
+
                     alert("Whoops! That is not an image!");
-                    26
                 }
 
                 $("#photo").show();
@@ -518,26 +509,7 @@ $title = 'VAMOS | Add Individual';
                 $("#webcam").hide();
 
             });
-
-            $("#crop").click(function(e) {
-
-
-                var img = $("#photo").attr("src");
-
-                console.log(img);
-                if (!pixelarity.open(img, true, function(res) {
-                        23
-                        $("#photo").attr("src", res);
-                        24
-                    }, "jpeg", 0.7)) {
-                    25
-                    alert("Whoops! That is not an image!");
-                    26
-
-                }
-            });
-
-
+            //open the webcam
             $("#opencamera").click(function() {
                 $("#canvas").show();
                 $("#webcam").show();
@@ -553,11 +525,22 @@ $title = 'VAMOS | Add Individual';
                     })
             });
 
-         
+            $('#username').change(function() {
+                if ($('#entity_no').val() == '') {
+                    $.ajax({
+                        type: 'POST',
+                        data: {},
+                        url: 'generate_id.php',
+                        success: function(data) {
+                            //$('#entity_no').val(data);
+                            document.getElementById("entity_no").value = data;
+                            console.log(data);
+                        }
+                    });
+                }
+            });
+
         });
-
-   
-
     </script>
 </body>
 

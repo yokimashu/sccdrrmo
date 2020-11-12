@@ -51,7 +51,7 @@ $get_all_seatranspo_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Sea Trans Master List </title>
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -84,17 +84,17 @@ $get_all_seatranspo_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
-                    <br>
+                    <br> -->
 
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> Date </th>
-                          <th> Entity # </th>
+
+                          <th> Entity No. </th>
 
                           <th> Username </th>
                           <th> Trans. Type</th>
@@ -105,19 +105,20 @@ $get_all_seatranspo_data->execute();
 
                         <?php while ($list_sea = $get_all_seatranspo_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
-                            <td><?php echo $list_sea['date_register'];  ?></td>
+
                             <td><?php echo $list_sea['entity_no'];  ?></td>
                             <td><?php echo $list_sea['username'];  ?></td>
                             <td><?php echo $list_sea['trans_type']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <a class="btn btn-warning btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
-                              <button class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_sea['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></button>
+                              <a class="btn btn-success btn-sm" href="view_seatrans_history.php?&entity_no=<?php echo $list_sea['entity_no']; ?> ">
+                                <i class="fa fa-suitcase"></i></a>
 
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_sea['entity_no'];  ?>">
+
+                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/seatranspo.php?entity_no=<?php echo $list_sea['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
                               &nbsp;
@@ -218,25 +219,25 @@ $get_all_seatranspo_data->execute();
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true
-      // initComplete: function() {
-      //   this.api().columns([4]).every(function() {
-      //     var column = this;
-      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-      //       .appendTo('#combo')
-      //       .on('change', function() {
-      //         var val = $.fn.dataTable.util.escapeRegex(
-      //           $(this).val()
-      //         );
-      //         column
-      //           .search(val ? '^' + val + '$' : '', true, false)
-      //           .draw();
-      //       });
-      //     column.data().unique().sort().each(function(d, j) {
-      //       select.append('<option value="' + d + '">' + d + '</option>')
-      //     });
-      //   });
-      // }
+      'autoHeight': true,
+      initComplete: function() {
+        this.api().columns([4]).every(function() {
+          var column = this;
+          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+            .appendTo('#combo')
+            .on('change', function() {
+              var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+              );
+              column
+                .search(val ? '^' + val + '$' : '', true, false)
+                .draw();
+            });
+          column.data().unique().sort().each(function(d, j) {
+            select.append('<option value="' + d + '">' + d + '</option>')
+          });
+        });
+      }
 
     });
 
@@ -286,7 +287,7 @@ $get_all_seatranspo_data->execute();
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
       var entity_no = data[0];
-      window.open("seatranspo.php?entity_no=" + entity_no, '_parent');
+      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
     });
   </script>
 </body>

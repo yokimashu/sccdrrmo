@@ -1,12 +1,13 @@
 <?php
 
 include('../config/db_config.php');
-include('insert_juridical.php');
+
 
 session_start();
 $user_id = $_SESSION['id'];
 
 include('verify_admin.php');
+include('insert_juridical.php');
 
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
@@ -77,6 +78,7 @@ $title = 'VAMOS | Juridical Form';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
 
     <style>
         #webcam {
@@ -423,7 +425,7 @@ $title = 'VAMOS | Juridical Form';
     <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
     <!-- textarea wysihtml style -->
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      -->
@@ -432,23 +434,7 @@ $title = 'VAMOS | Juridical Form';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
-    <script>
-        $('.select2').select2();
-        $('#entity_no').val(sessionStorage.getItem("entity_no"));
 
-        // function generateID() {
-
-        //     $.ajax({
-        //         type: 'POST',
-        //         data: {},
-        //         url: 'generate_id.php',
-        //         success: function(data) {
-        //             $('#entity_no').val(data);
-        //         }
-        //     });
-        // }
-        // window.onload = generateID;
-    </script>
 
 
 
@@ -458,9 +444,13 @@ $title = 'VAMOS | Juridical Form';
         const canvasElement = document.getElementById('canvas');
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
+
+
         $(document).ready(function() {
 
-            $('#entity_no').val(sessionStorage.getItem("entity_no"));
+            $('.select2').select2();
+
             //execute the image cropper when the image is imported
             $("#fileToUpload").change(function(e) {
 
@@ -497,6 +487,20 @@ $title = 'VAMOS | Juridical Form';
                     })
             });
 
+            $('#username').change(function() {
+                if ($('#entity_no').val() == '') {
+                    $.ajax({
+                        type: 'POST',
+                        data: {},
+                        url: 'generate_id.php',
+                        success: function(data) {
+                            //$('#entity_no').val(data);
+                            document.getElementById("entity_no").value = data;
+                            console.log(data);
+                        }
+                    });
+                }
+            });
 
         });
 

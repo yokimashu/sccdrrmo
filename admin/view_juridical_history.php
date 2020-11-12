@@ -23,7 +23,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms = $patient = $person_status =  $entity_no = $date_from = $date_to = '';
+$symptoms = $patient = $person_status =  $entity_no = $business_nature = $fullname = $barangay = $mobile_no = $date_from = $date_to = '';
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -35,7 +35,32 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
+
+
+
+
+
+
 $entity_no = $_GET['entity_no'];
+
+$get_data_sql = "SELECT * FROM  tbl_juridical oh where entity_no ='$entity_no'";
+$get_data_data = $con->prepare($get_data_sql);
+$get_data_data->execute([':id' => $entity_no]);
+
+while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+
+  $business_nature = $result['business_nature'];
+  $street = $result['street'];
+  $org_name = $result['org_name'];
+  $org_type = $result['org_type'];
+  $barangay = $result['barangay'];
+  $city = $result['city'];
+  $province = $result['province'];
+  $mobile_no = $result['mobile_no'];
+}
+
+
+
 // $entity_no = '';
 
 
@@ -48,16 +73,16 @@ $entity_no = $_GET['entity_no'];
 $get_all_juridical_sql = "Select * FROM
 (
     SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
 
 UNION
 
 SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.trace_no  WHERE t.entity_no = '". $entity_no ."' or t.trace_no = '". $entity_no ."'
+inner join tbl_individual i on i.entity_no = t.trace_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
     
 ) dum 
 
-WHERE fullname NOT IN (Select org_name from tbl_juridical where entity_no = '". $entity_no ."')
+WHERE fullname NOT IN (Select org_name from tbl_juridical where entity_no = '" . $entity_no . "')
 ORDER BY date DESC, time DESC";
 $get_all_juridical_data = $con->prepare($get_all_juridical_sql);
 $get_all_juridical_data->execute();
@@ -78,8 +103,8 @@ $get_all_juridical_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Master Lists Juridical History </title>
-  <?php include('header.php'); ?>
+  <title>VAMOS | Juridical Travel History </title>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -96,22 +121,26 @@ $get_all_juridical_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Juridical History
+            <h4>  Juridical Travel History
 
-      
-                                
-                                            
-                                                <div class="col-md-2">
-                                                
-                                                    <input type="text"  readyonly class="form-control"  name="entity_no" placeholder="entity_no" value="<?php echo $entity_no;?>" required>
-                                                       </div>
-                
-                    
 
-            <a class="btn btn-danger btn-sm" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_history.php?entity_no=<?php echo $entity_no;  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                           
-                     
+
+
+              <div class="col-md-10" hidden>
+                <input type="text" readonly class="form-control" name="entity_no" placeholder="entity_no" value="ID: <?php echo $entity_no; ?>" required>
+                <input type="text" readonly class="form-control" name="org_name" placeholder="fullname" value="ORGANIZATIONAL NAME: <?php echo $org_name; ?>" required>
+                <input type="text" readonly class="form-control" name="business_nature" placeholder="business_nature" value="BUSINESS NATURE: <?php echo $business_nature; ?> " required>
+                <input type="text" readonly class="form-control" name="street" placeholder="street" value="ADDRESS: <?php echo $street; ?>" required>
+                <input type="text" readonly class="form-control" name="barangay" placeholder="barangay" value="BARANGAY: <?php echo $barangay; ?>" required>
+                <input type="text" readonly class="form-control" name="mobile_no" placeholder="mobile_no" value="CONTACT No.: <?php echo $mobile_no; ?>" required>
+              </div>
+
+
+
+              <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_history.php?entity_no=<?php echo $entity_no; ?>&org_name=<?php echo $org_name; ?>&business_nature=<?php echo $business_nature; ?>&street=<?php echo $street; ?>&mobile_no=<?php echo $mobile_no; ?>">
+                <i class="nav-icon fa fa-print"></i></a>
+
+
 
             </h4>
 
@@ -123,49 +152,56 @@ $get_all_juridical_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
-                    <br>
+                    <br> -->
 
-                    <div class="row">
-                                                
+                  
 
-                    <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
-                      <thead align="center">
-                        <tr style="font-size: 1.10rem">
-                        
-                     
-                       
-                          <th> Trace ID</th>
-                          <th> NAME</th>
-                         
-                         
-                          <th> Date </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr align="center">
-                          
-                            <td><?php echo $list_juridical['entity_no'];  ?></td>
-                            <td><?php echo $list_juridical['fullname'];  ?></td>
-               
-                            
-                            <td><?php echo $list_juridical['date'];
-                                     echo "-";
-                                      echo $list_juridical['time'];    ?></td>
-                          
-                        
 
-                            </td>
+                      <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
+                        <thead align="center">
+                          <tr style="font-size: 1.10rem">
+
+
+
+                            <th> Trace ID</th>
+                            <th> Date / Time</th>
+                            <th> NAME</th>
+                            <th> Details </th>
+                            <th> Contact No. </th>
+
+
+
                           </tr>
-                        <?php } ?>
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                            <tr align="center">
 
+                              <td><?php echo $list_juridical['entity_no'];  ?></td>
+                              <td><?php echo $list_juridical['date'];
+                                  echo " / ";
+                                  echo $list_juridical['time'];    ?></td>
+
+                              <td><?php echo $list_juridical['fullname'];  ?></td>
+                              <td><?php echo $list_juridical['details'];  ?></td>
+                              <td><?php echo $list_juridical['mobile_no'];  ?></td>
+
+
+
+
+
+
+                             
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                      </table>
+
+                   
                   </div>
-                </div>
               </form>
             </div>
           </div>
@@ -319,10 +355,6 @@ $get_all_juridical_data->execute();
         $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
       })
     });
-
-
- 
-
   </script>
 </body>
 

@@ -13,11 +13,11 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
-$btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
+$btnSave = $btnEdit = $get_entity_no = $get_username = $get_password = $get_new_password = $get_date_register = $get_firstname = $get_middlename = $get_lastname = $get_birthdate =
     $get_age = $get_gender = $get_street =  $get_city =  $get_province =  $get_mobile_no =  $get_telephone_no =  $get_barangay =  $get_email = '';
 $btnNew = 'hidden';
-$alert_msg='';
-$img='';
+$alert_msg = '';
+$img = '';
 //SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no ='CVDDJV6238'
 
 $user_id = $_GET['id'];
@@ -31,12 +31,10 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
     $get_entity_no = $result['entity_no'];
     $get_username = $result['username'];
     $get_password = $result['password'];
-
     $get_date_register = $result['date_register'];
     $get_firstname = $result['firstname'];
     $get_middlename = $result['middlename'];
     $get_lastname = $result['lastname'];
-
     $get_birthdate = $result['birthdate'];
     $get_age = $result['age'];
     $get_gender = $result['gender'];
@@ -58,7 +56,7 @@ $get_all_brgy_data->execute();
 
 
 
-$title = 'VAMOS | Add Individual';
+$title = 'VAMOS | Update Individual Form';
 
 
 ?>
@@ -99,8 +97,12 @@ $title = 'VAMOS | Add Individual';
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
-    
+
     <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
+
+
+
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
     <style>
         #my_camera {
             width: 320px;
@@ -290,82 +292,82 @@ $title = 'VAMOS | Add Individual';
                                             <!-- </form> -->
                                         </div>
 
-                                            <div class="row" align="center">
-                                                <!-- <form method="POST" action="storeImage.php"> -->
+                                        <div class="row" align="center">
+                                            <!-- <form method="POST" action="storeImage.php"> -->
 
-                                                <div class="col-md-3"></div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <div>
+                                            <div class="col-md-3"></div>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div>
 
-                                                    <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                    <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
+                                                <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
+                                                <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
                                                     <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"> -->
 
-                                                </div>
-                                                <!-- </form> -->
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label>CONTACT DETAILS </label>
-
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $get_mobile_no; ?>">
-                                                </div>
-                                            </div></br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $get_telephone_no; ?>">
-                                                </div>
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
-                                                </div>
-                                            </div><br>
-                                            <div class="form-group has-feedback col-8">
-                                             <?php echo $alert_msg; ?>      
-                                                    </div>
-                                            <div class="box-footer" align="center">
-                                                <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
-                                                    <i class="fa fa-check fa-fw"> </i> </button>
-                                                <a href="list_individual.php">
-                                                    <button type="button" name="cancel" class="btn btn-danger">
-                                                        <i class="fa fa-close fa-fw"> </i> </button>
-                                                </a>
-                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                                    <button type="button" name="print" class="btn btn-primary">
-                                                        <i class="nav-icon fa fa-print"> </i> </button>
-                                                </a>
                                             </div>
+                                            <!-- </form> -->
+                                        </div><br>
 
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <label>CONTACT DETAILS </label>
 
+                                            </div>
+                                        </div><br>
 
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" class="form-control" name="mobile_no" placeholder="Mobile Number" value="<?php echo $get_mobile_no; ?>">
+                                            </div>
+                                        </div></br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" class="form-control" name="telephone_no" placeholder="Telephone Number" value="<?php echo $get_telephone_no; ?>">
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <!-- <label>Street: </label> -->
+                                                <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
+                                            </div>
+                                        </div><br>
+                                        <div class="form-group has-feedback col-8">
+                                            <?php echo $alert_msg; ?>
                                         </div>
-                                    </div>
+                                        <div class="box-footer" align="center">
+                                            <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button>
+                                            <a href="list_individual.php">
+                                                <button type="button" name="cancel" class="btn btn-danger">
+                                                    <i class="fa fa-close fa-fw"> </i> </button>
+                                            </a>
+                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                <button type="button" name="print" class="btn btn-primary">
+                                                    <i class="nav-icon fa fa-print"> </i> </button>
+                                            </a>
+                                        </div>
+
+
+
+                                    </div> <br><br>
                                 </div>
                             </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
-            </section>
         </div>
+        </section>
+    </div>
 
 
-        <?php include('footer.php') ?>
+    <?php include('footer.php') ?>
 
     </div>
 
@@ -395,8 +397,7 @@ $title = 'VAMOS | Add Individual';
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
-    <script src="../plugins/select2/select2.js"></script>
-    <script src="../plugins/select2/select2.full.min.js"></script>
+
     <script src="../plugins/pixelarity/pixelarity-face.js"></script>
     <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -411,30 +412,31 @@ $title = 'VAMOS | Add Individual';
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
 
-
+    <script src="../plugins/select2/select2.js"></script>
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script type="text/javascript">
-    
-      const webcamElement = document.getElementById('webcam');
+        const webcamElement = document.getElementById('webcam');
         const canvasElement = document.getElementById('canvas');
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
 
-    
+
         $(document).ready(function() {
 
             $(document).ajaxStart(function() {
                 Pace.restart()
             })
 
-        });    $('.select2').select2();
+        });
+        $('.select2').select2();
     </script>
-    
+
     <script>
-         function take_snapshot() {
+        function take_snapshot() {
             // // take snapshot and get image data
-        
+
             let picture = webcam.snap();
             document.querySelector('#photo').src = picture;
             $(".image-tag").val(picture);
@@ -445,23 +447,23 @@ $title = 'VAMOS | Add Individual';
             $("#photo").show();
         }
         $(document).ready(function() {
-            
-              //sweet notification
-              $("#btnUpload").click(function(e){
+
+            //sweet notification
+            $("#btnUpload").click(function(e) {
                 e.preventDefault();
                 Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
                 })
 
 
             });
             //crop image when imported
             $("#fileToUpload").change(function(e) {
-          
+
                 var img = e.target.files[0];
                 22
                 if (!pixelarity.open(img, false, function(res) {
@@ -473,28 +475,19 @@ $title = 'VAMOS | Add Individual';
                     alert("Whoops! That is not an image!");
                     26
                 }
-                  
+
                 $("#photo").show();
                 $("#canvas").hide();
                 $("#webcam").hide();
-               
+
             });
-//             //show notification
-//             $("#btnSubmit").click(function(){
-//                 Swal.fire({
-//                 position: 'top-end',
-//                 icon: 'success',
-//             title: 'Your work has been saved',
-//              showConfirmButton: false,
-//              timer: 1500
-// })
-//             });
+
             //crop the webcam photo(not working)
             $("#crop").click(function(e) {
-            
+
 
                 var img = $("#photo").attr("src");
-              
+
                 console.log(img);
                 if (!pixelarity.open(img, true, function(res) {
                         23
@@ -507,8 +500,6 @@ $title = 'VAMOS | Add Individual';
 
                 }
             });
-          
-
 
 
             //open the webcam
@@ -526,37 +517,11 @@ $title = 'VAMOS | Add Individual';
                         console.log(err);
                     })
             });
-          
+
         });
     </script>
 
 
-    <!-- <script language="JavaScript">
-        Webcam.set({
-            width: 320,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 100
-        });
-        //Webcam.attach( '#my_camera' );
-    </script> -->
-
-
-    <!-- <script language="JavaScript">
-        function setup() {
-            Webcam.reset();
-            Webcam.attach('#my_camera');
-        }
-
-        function take_snapshot() {
-            // take snapshot and get image data
-            Webcam.snap(function(data_uri) {
-                // display results in page
-                document.getElementById('my_camera').innerHTML =
-                    '<img src="' + data_uri + '"/>';
-            });
-        }
-    </script> -->
 </body>
 
 </html>

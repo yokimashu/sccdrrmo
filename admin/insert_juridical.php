@@ -1,12 +1,8 @@
 <?php
 
-include('../config/db_config.php');
-
 date_default_timezone_set('Asia/Manila');
 //include('import_pdf.php');
-
 $alert_msg = '';
-
 
 if (isset($_POST['insert_juridical'])) {
 
@@ -63,9 +59,7 @@ if (isset($_POST['insert_juridical'])) {
         mobile_no           = :mobile_no,
         telephone_no        = :telephone_no,
         email               = :email_address,
-        photo               = :photo
-      
-        
+        photo               = :photo 
         ";
 
     $juridical_data = $con->prepare($insert_juridical_sql);
@@ -85,7 +79,7 @@ if (isset($_POST['insert_juridical'])) {
         ':mobile_no'         => $mobile_no,
         ':telephone_no'      => $telephone_no,
         ':email_address'     => $email_address,
-        ':photo'            => $fileName
+        ':photo'            =>  $fileName
 
     ]);
 

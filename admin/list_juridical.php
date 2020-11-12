@@ -6,7 +6,7 @@ session_start();
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
-} 
+}
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
@@ -14,14 +14,14 @@ $time = date('H:i:s');
 $symptoms = $patient = $person_status = '';
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
-$user_data = $con->prepare($get_user_sql);
-$user_data->execute([':id' => $user_id]);
-while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+// $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+// $user_data = $con->prepare($get_user_sql);
+// $user_data->execute([':id' => $user_id]);
+// while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-  $db_fullname = $result['fullname'];
-}
+//   $db_fullname = $result['fullname'];
+// }
 
 $get_all_juridical_sql = "SELECT * FROM tbl_juridical j inner join tbl_entity e on e.entity_no = j.entity_no order by j.org_name";
 $get_all_juridical_data = $con->prepare($get_all_juridical_sql);
@@ -40,7 +40,7 @@ $get_all_juridical_data->execute();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VAMOS | Master Lists Juridical </title>
-  <?php include('header.php'); ?>
+  <?php include('heading.php'); ?>
 
 
 </head>
@@ -72,10 +72,10 @@ $get_all_juridical_data->execute();
                 <div class="box-body">
 
                   <div class="table-responsive">
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
-                    <br>
+                    <br> -->
 
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
@@ -96,15 +96,16 @@ $get_all_juridical_data->execute();
                             <td><?php echo $list_juridical['org_name']; ?> </td>
                             <td>
 
-                              <a class="btn btn-success btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
+                              <a class="btn btn-warning btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
 
-                               
-                                <?php if($_SESSION['user_type'] == 1){
-                                    //restrict users to view history?>
-                              <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></a>
-                                <?php }?>
+
+                              <?php if ($_SESSION['user_type'] == 1) {
+                                //restrict users to view history
+                              ?>
+                                <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a>
+                              <?php } ?>
 
 
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
@@ -246,8 +247,8 @@ $get_all_juridical_data->execute();
     });
   </script>
 
-<script>
-$('#users tbody').on('click', 'button.printlink', function() {
+  <script>
+    $('#users tbody').on('click', 'button.printlink', function() {
       // alert ('hello');
       // var row = $(this).closest('tr');
       var table = $('#users').DataTable();
@@ -260,17 +261,16 @@ $('#users tbody').on('click', 'button.printlink', function() {
 
 
     function generateID() {
-
-$.ajax({
-    type: 'POST',
-    data: {},
-    url: 'generate_id.php',
-    success: function(data) {
-        //$('#entity_no').val(data);
-        sessionStorage.setItem("entity_no", data);
+      $.ajax({
+        type: 'POST',
+        data: {},
+        url: 'generate_id.php',
+        success: function(data) {
+          //$('#entity_no').val(data);
+          sessionStorage.setItem("entity_no_juridical", data);
+        }
+      });
     }
-});
-}
   </script>
 </body>
 
