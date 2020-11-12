@@ -11,10 +11,17 @@ include_once("PHPJasperXML.inc.php");
 // $user = 'root';
 // $pass = '1234';
 // $db = 'sccdrrmo';
-$host = "127.0.0.1";
+
+$host = "localhost";
 $db_name = "sccdrrmo";
 $username = "root";
-$password = "0Fd8xWc1anuE";
+$password = "1234";
+
+
+// $host = "127.0.0.1";
+// $db_name = "sccdrrmo";
+// $username = "root";
+// $password = "0Fd8xWc1anuE";
 $entity_no = $_GET['entity_no'];
 $date_from =   date('Y-m-d', strtotime($_GET['datefrom']));
 $date_to =  date('Y-m-d', strtotime($_GET['dateto']));

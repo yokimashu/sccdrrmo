@@ -22,6 +22,7 @@ if (!isset($_SESSION['id'])) {
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
+$now = new DateTime();
 
 $symptoms = $patient = $person_status =  $entity_no  =  $address  =
   $contact_number  = $fullname = $date_from = $date_to = $street = $mobile_no = '';
@@ -70,6 +71,9 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
+
+
+
 ?>
 
 
@@ -104,10 +108,10 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
               <div class="col-md-7" hidden>
 
-                <input type="hidden" readonly class="form-control" name="entity_no"  placeholder="entity_no" value="ID:  <?php echo $entity_no; ?>" required>
-                <input type="hidden" readonly class="form-control" name="fullname" placeholder="fullname" value="NAME:  <?php echo $fullname; ?>" required>
-                <input type="hidden" readonly class="form-control" name="street" placeholder="address" value="ADDRESS:  <?php echo $street; ?>" required>
-                <input type="hidden" readonly class="form-control" name="mobile_no" placeholder="contact_number" value="CONTACT No.:  <?php echo $mobile_no; ?>" required>
+                <input type="hidden" readonly class="form-control" name="entity_no"  placeholder="entity_no" value=" <?php echo $entity_no; ?>" required>
+                <input type="hidden" readonly class="form-control" name="fullname" id = "fullname" placeholder="fullname" value=" <?php echo $fullname; ?>" required>
+                <input type="hidden" readonly class="form-control" name="street" id = "street" placeholder="address" value=" <?php echo $street; ?>" required>
+                <input type="hidden" readonly class="form-control" name="mobile_no" id = "mobile_no"  placeholder="contact_number" value=" <?php echo $mobile_no; ?>" required>
               </div>
 
 
@@ -124,7 +128,17 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
 
+
+
+
+
+
+
+
+
           </div>
+
+
 
 
           <div class="card-body">
@@ -156,6 +170,52 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
                       <div class="col-md-3" id="combo"></div>
                     </div>
                     <br> -->
+
+                    <div class="row">
+                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                        <label>From:</label>
+                      </div>
+                      <div class="col-md-2">
+
+                        <div class="form-group">
+                          <div class="input-group date" data-provide="datepicker">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="date_from" placeholder="Date Created" value="<?php echo
+                                                                                                                                                    $now->format('m/d/Y');; ?>">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-1" style="text-align: right;padding-top: 5px;">
+                        <label>To:</label>
+                      </div>
+                      <div class="col-md-2">
+
+                        <div class="form-group">
+                          <div class="input-group date" data-provide="datepicker">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="date_to" placeholder="Date Created" value="<?php echo
+                                                                                                                                                  $now->format('m/d/Y');; ?>">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-1"></div>
+                      <div class="col-md-3">
+                        <input type="submit" onclick="this.form.submit(); this.disabled=true;" name="update_print" class="btn btn-success" value="FILTER">
+                      </div>
+
+
+
+
+
+
+                    </div>
 
 
 
@@ -258,25 +318,25 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true
-      // initComplete: function() {
-      //   this.api().columns([4]).every(function() {
-      //     var column = this;
-      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-      //       .appendTo('#combo')
-      //       .on('change', function() {
-      //         var val = $.fn.dataTable.util.escapeRegex(
-      //           $(this).val()
-      //         );
-      //         column
-      //           .search(val ? '^' + val + '$' : '', true, false)
-      //           .draw();
-      //       });
-      //     column.data().unique().sort().each(function(d, j) {
-      //       select.append('<option value="' + d + '">' + d + '</option>')
-      //     });
-      //   });
-      // }
+      'autoHeight': true,
+      initComplete: function() {
+        this.api().columns([4]).every(function() {
+          var column = this;
+          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+            .appendTo('#combo')
+            .on('change', function() {
+              var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+              );
+              column
+                .search(val ? '^' + val + '$' : '', true, false)
+                .draw();
+            });
+          column.data().unique().sort().each(function(d, j) {
+            select.append('<option value="' + d + '">' + d + '</option>')
+          });
+        });
+      }
 
     });
     $('.select2').select2();
@@ -339,9 +399,12 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
       $('#printlink').click(function() {
         var entity_no = $('#person_entity').val();
         var date_from  = $('#dtefrom').val();
-      var date_to  = $('#dteto').val();
+        var date_to  = $('#dteto').val();
+        var fullname  = $('#fullname').val();
+        var street  = $('#street').val();
+        var mobile_no  = $('#mobile_no').val();
         console.log(entity_no); 
-        var param = "entity_no="+entity_no+"&datefrom="+date_from+"&dateto="+date_to+"";
+        var param = "entity_no="+entity_no+"&fullname="+fullname+"&street="+street+"&mobile_no="+mobile_no+"&datefrom="+date_from+"&dateto="+date_to+"";
         $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
       })
 

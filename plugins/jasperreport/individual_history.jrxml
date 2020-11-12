@@ -11,9 +11,14 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="178"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="fullname" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="street" class="java.lang.String"/>
+	<parameter name="mobile_no" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[Select * FROM
 (
@@ -92,7 +97,7 @@ ORDER BY date DESC, time DESC]]>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="144" splitType="Stretch">
+		<band height="158" splitType="Stretch">
 			<staticText>
 				<reportElement x="9" y="19" width="915" height="28" uuid="a2c3e4d0-846c-4760-86a8-a1e35b15f589"/>
 				<textElement textAlignment="Center">
@@ -114,16 +119,6 @@ ORDER BY date DESC, time DESC]]>
 				</textElement>
 				<text><![CDATA[CITY OF SAN CARLOS]]></text>
 			</staticText>
-			<image onErrorType="Blank">
-				<reportElement x="320" y="13" width="55" height="51" uuid="6549113e-8f96-4599-8b5d-ce2681b5618f"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="0.0"/>
-				</box>
-				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/LOGO-png.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="9" y="76" width="915" height="30" uuid="fe7599d0-703f-4124-800f-38fed004653b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -132,20 +127,74 @@ ORDER BY date DESC, time DESC]]>
 				<text><![CDATA[INDIVIDUAL HISTORY DETAILS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="779" y="101" width="33" height="20" uuid="ff4496ac-d700-4e9a-b9b9-1ab6016d521a"/>
+				<reportElement x="801" y="109" width="47" height="20" uuid="ff4496ac-d700-4e9a-b9b9-1ab6016d521a"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Date:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="779" y="121" width="33" height="20" uuid="3e29d949-3fb0-4bef-a4e2-df75728cd3b1"/>
-				<text><![CDATA[ID:]]></text>
+				<reportElement x="12" y="111" width="55" height="20" uuid="3e29d949-3fb0-4bef-a4e2-df75728cd3b1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID       :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="812" y="101" width="112" height="31" uuid="7da4550b-2b72-4276-b468-1f76472f5541"/>
+				<reportElement x="848" y="110" width="76" height="31" uuid="7da4550b-2b72-4276-b468-1f76472f5541"/>
+				<textElement verticalAlignment="Top">
+					<font isUnderline="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="812" y="121" width="112" height="23" uuid="f0bb65a0-2c0f-4b37-9eda-10f7911e487b"/>
+				<reportElement x="55" y="112" width="265" height="23" uuid="f0bb65a0-2c0f-4b37-9eda-10f7911e487b"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="130" width="44" height="20" uuid="226c9de5-df3d-4112-a96c-e53b07be6d8c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="109" width="90" height="20" uuid="09b5287d-8512-41d4-9ea3-a9ca4b4a8b7b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address       :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="132" width="265" height="20" uuid="9ef5c856-6918-4ff8-ab37-7cbf85a49406"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fullname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="130" width="90" height="20" uuid="57b62695-1245-4aed-9fba-3eb0de749186"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact No. :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="392" y="110" width="351" height="20" uuid="d98573f0-e848-4abb-b372-d5b0ecb210b1"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="131" width="240" height="20" uuid="a2ea3503-414c-4aaa-a22c-67a61b8e7a92"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mobile_no}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -232,9 +281,9 @@ ORDER BY date DESC, time DESC]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="32" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="9" y="0" width="75" height="32" uuid="4c115651-1c60-46de-a0d5-4a5f49bfa987">
+				<reportElement positionType="Float" x="9" y="0" width="75" height="22" uuid="4c115651-1c60-46de-a0d5-4a5f49bfa987">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box>
@@ -248,8 +297,8 @@ ORDER BY date DESC, time DESC]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="84" y="0" width="72" height="32" uuid="a4f8ed0b-19a4-4801-a9ce-64076258e2a3">
+			<textField isStretchWithOverflow="true" pattern="h.mm a" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="84" y="0" width="72" height="22" uuid="a4f8ed0b-19a4-4801-a9ce-64076258e2a3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box>
@@ -264,7 +313,7 @@ ORDER BY date DESC, time DESC]]>
 				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="156" y="0" width="90" height="32" uuid="f7137a24-9675-46db-abec-54e0c38bb6f5">
+				<reportElement positionType="Float" x="156" y="0" width="90" height="22" uuid="f7137a24-9675-46db-abec-54e0c38bb6f5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box>
@@ -279,7 +328,7 @@ ORDER BY date DESC, time DESC]]>
 				<textFieldExpression><![CDATA[$F{trace_no}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement isPrintRepeatedValues="false" x="246" y="0" width="297" height="32" isPrintWhenDetailOverflows="true" uuid="5094cfbe-ff80-41fd-805b-1c1ed59c7f43">
+				<reportElement isPrintRepeatedValues="false" x="246" y="0" width="297" height="22" isPrintWhenDetailOverflows="true" uuid="5094cfbe-ff80-41fd-805b-1c1ed59c7f43">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box topPadding="0">
@@ -294,7 +343,7 @@ ORDER BY date DESC, time DESC]]>
 				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="543" y="0" width="252" height="32" isPrintWhenDetailOverflows="true" uuid="af5705d0-05b5-470f-b067-e56c50ca6efd">
+				<reportElement positionType="Float" x="543" y="0" width="252" height="22" isPrintWhenDetailOverflows="true" uuid="af5705d0-05b5-470f-b067-e56c50ca6efd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box>
@@ -309,7 +358,7 @@ ORDER BY date DESC, time DESC]]>
 				<textFieldExpression><![CDATA[$F{details}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="795" y="0" width="129" height="32" isPrintWhenDetailOverflows="true" uuid="ed9bf50e-9f02-46a2-8a6a-9bdd0113c350">
+				<reportElement positionType="Float" x="795" y="0" width="129" height="22" isPrintWhenDetailOverflows="true" uuid="ed9bf50e-9f02-46a2-8a6a-9bdd0113c350">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box>
