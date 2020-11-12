@@ -29,6 +29,7 @@
 
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
 
+
     <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
 
     <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>

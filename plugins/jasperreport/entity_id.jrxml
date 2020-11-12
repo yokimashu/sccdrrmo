@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.8.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
-<!-- 2020-09-29T20:22:14 -->
+<!-- 2020-10-29T20:03:10 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entity_id" language="javascript" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8b35d81-fbfe-4639-a04a-fd350f424dec">
 	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
@@ -152,7 +152,7 @@
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="25" y="72" width="148" height="20" uuid="94c9547e-ba33-4ff0-8f4d-f30e024e0443"/>
+				<reportElement x="25" y="66" width="148" height="20" uuid="94c9547e-ba33-4ff0-8f4d-f30e024e0443"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -180,8 +180,8 @@
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<image onErrorType="Blank">
-				<reportElement x="30" y="98" width="70" height="68" uuid="c19430bc-26de-485a-9bbf-4418f28ccd3e"/>
+			<image scaleImage="RetainShape" rotation="None" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="36" y="90" width="60" height="76" uuid="c19430bc-26de-485a-9bbf-4418f28ccd3e"/>
 				<box>
 					<topPen lineWidth="3.0"/>
 					<leftPen lineWidth="3.0"/>

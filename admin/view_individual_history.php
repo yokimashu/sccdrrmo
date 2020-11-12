@@ -22,6 +22,7 @@ if (!isset($_SESSION['id'])) {
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
+$now = new DateTime();
 
 $symptoms = $patient = $person_status =  $entity_no  =  $address  =
   $contact_number  = $fullname = $date_from = $date_to = $street = $mobile_no = '';
@@ -105,10 +106,13 @@ inner join tbl_seatranspo s on s.entity_no = t.trace_no  WHERE t.entity_no = '" 
     
 ) dum 
 
-WHERE fullname NOT IN (Select fullname from tbl_individual where entity_no = '" . $entity_no . "')
+WHERE fullname NOT IN (Select fullname from tbl_individual where entity_no = '" . $entity_no . "') AN
 ORDER BY date DESC, time DESC";
 $get_all_history_data = $con->prepare($get_all_history_sql);
 $get_all_history_data->execute();
+
+
+
 
 
 
@@ -170,7 +174,17 @@ $get_all_history_data->execute();
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
 
+
+
+
+
+
+
+
+
           </div>
+
+
 
 
           <div class="card-body">
@@ -183,6 +197,52 @@ $get_all_history_data->execute();
                       <div class="col-md-3" id="combo"></div>
                     </div>
                     <br> -->
+
+                    <div class="row">
+                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
+                        <label>From:</label>
+                      </div>
+                      <div class="col-md-2">
+
+                        <div class="form-group">
+                          <div class="input-group date" data-provide="datepicker">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="date_from" placeholder="Date Created" value="<?php echo
+                                                                                                                                                    $now->format('m/d/Y');; ?>">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-1" style="text-align: right;padding-top: 5px;">
+                        <label>To:</label>
+                      </div>
+                      <div class="col-md-2">
+
+                        <div class="form-group">
+                          <div class="input-group date" data-provide="datepicker">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="date_to" placeholder="Date Created" value="<?php echo
+                                                                                                                                                  $now->format('m/d/Y');; ?>">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-1"></div>
+                      <div class="col-md-3">
+                        <input type="submit" onclick="this.form.submit(); this.disabled=true;" name="update_print" class="btn btn-success" value="FILTER">
+                      </div>
+
+
+
+
+
+
+                    </div>
 
 
 
@@ -303,25 +363,25 @@ $get_all_history_data->execute();
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true
-      // initComplete: function() {
-      //   this.api().columns([4]).every(function() {
-      //     var column = this;
-      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-      //       .appendTo('#combo')
-      //       .on('change', function() {
-      //         var val = $.fn.dataTable.util.escapeRegex(
-      //           $(this).val()
-      //         );
-      //         column
-      //           .search(val ? '^' + val + '$' : '', true, false)
-      //           .draw();
-      //       });
-      //     column.data().unique().sort().each(function(d, j) {
-      //       select.append('<option value="' + d + '">' + d + '</option>')
-      //     });
-      //   });
-      // }
+      'autoHeight': true,
+      initComplete: function() {
+        this.api().columns([4]).every(function() {
+          var column = this;
+          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+            .appendTo('#combo')
+            .on('change', function() {
+              var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+              );
+              column
+                .search(val ? '^' + val + '$' : '', true, false)
+                .draw();
+            });
+          column.data().unique().sort().each(function(d, j) {
+            select.append('<option value="' + d + '">' + d + '</option>')
+          });
+        });
+      }
 
     });
     $('.select2').select2();

@@ -16,6 +16,10 @@ if (!isset($_SESSION['id'])) {
 
 $now = new DateTime();
 
+
+
+
+
 $btnSave = $btnEdit =  $entity_no = $date_register = $alert_msg = $btn_enabled = $org_type = $org_name = $nature = $street = $user_name =
     $barangay = $city = $province = $contact_person = $contact_position = $mobile_no = $tel_no = $email_address = '';
 $btnNew = 'hidden';
