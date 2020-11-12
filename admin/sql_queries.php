@@ -232,6 +232,30 @@ if (isset($_POST['add_pum'])) {
     $delete_symp_data->execute([':id' => $delete_sym_id]);
 
     header('location: list_symptoms.php');
+} else if (isset($_POST['delete_individual'])) {
+
+    $id = $_POST['entity_no'];
+    $get_id_sql = "SELECT * FROM tbl_individual WHERE entity_no = :id";
+    $get_id_data = $con->prepare($get_id_sql);
+    $get_id_data->execute([':id' => $id]);
+    while ($result2 = $get_id_data->fetch(PDO::FETCH_ASSOC)) {
+        $photo    = $result2['photo'];
+    }
+
+    // --- delete image in the file directory
+    unlink('../flutter/images/' . $photo);
+
+    $delete_indv_id = $_POST['entity_no'];
+    $delete_indv_sql = "DELETE from tbl_individual WHERE entity_no = :id ";
+    $delete_indv_data = $con->prepare($delete_indv_sql);
+    $delete_indv_data->execute([':id' => $delete_indv_id]);
+
+    $delete_entity_id = $_POST['entity_no'];
+    $delete_entity_sql = "DELETE from tbl_entity WHERE entity_no = :id ";
+    $delete_entity_data = $con->prepare($delete_entity_sql);
+    $delete_entity_data->execute([':id' => $delete_entity_id]);
+
+    header('location: list_individual.php');
 } else if (isset($_POST['delete_pum'])) {
 
     $delete_pum_id = $_POST['user_id'];
