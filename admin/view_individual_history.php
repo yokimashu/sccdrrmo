@@ -63,52 +63,6 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 // $get_all_history_data->execute();
 
 // "SELECT * from tbl_tracehistory r inner join tbl_individual t on t.entity_no = r.trace_no where  r.entity_no = '".$entity_no."'";
-$get_all_history_sql = "Select * FROM
-(
-    SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.trace_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-    
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, j.org_name, CONCAT(j.street, ', ', j.barangay) as details, j.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_juridical j on j.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, j.org_name, CONCAT(j.street, ', ', j.barangay) as details, j.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_juridical j on j.entity_no = t.trace_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, l.vehicle_name, l.plate_no, l.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_landtranspo l on l.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-    
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, l.vehicle_name, l.plate_no, l.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_landtranspo l on l.entity_no = t.trace_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-    
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, s.vessel_name, s.voyage_no, s.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_seatranspo s on s.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-    
-UNION
-
-SELECT date, time, t.entity_no, t.trace_no, s.vessel_name, s.voyage_no, s.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_seatranspo s on s.entity_no = t.trace_no  WHERE t.entity_no = '" . $entity_no . "' or t.trace_no = '" . $entity_no . "'
-    
-) dum 
-
-WHERE fullname NOT IN (Select fullname from tbl_individual where entity_no = '" . $entity_no . "')
-ORDER BY date DESC, time DESC";
-$get_all_history_data = $con->prepare($get_all_history_sql);
-$get_all_history_data->execute();
 
 
 
@@ -148,10 +102,9 @@ $get_all_history_data->execute();
 
 
 
-
               <div class="col-md-7" hidden>
 
-                <input type="hidden" readonly class="form-control" name="entity_no" placeholder="entity_no" value="ID:  <?php echo $entity_no; ?>" required>
+                <input type="hidden" readonly class="form-control" name="entity_no"  placeholder="entity_no" value="ID:  <?php echo $entity_no; ?>" required>
                 <input type="hidden" readonly class="form-control" name="fullname" placeholder="fullname" value="NAME:  <?php echo $fullname; ?>" required>
                 <input type="hidden" readonly class="form-control" name="street" placeholder="address" value="ADDRESS:  <?php echo $street; ?>" required>
                 <input type="hidden" readonly class="form-control" name="mobile_no" placeholder="contact_number" value="CONTACT No.:  <?php echo $mobile_no; ?>" required>
@@ -159,7 +112,8 @@ $get_all_history_data->execute();
 
 
 
-              <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/individual_history.php?entity_no=<?php echo $entity_no; ?>&fullname=<?php echo $fullname; ?>&street=<?php echo $street; ?>&mobile_no=<?php echo $mobile_no; ?>">
+              <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/individual_history.php?entity_no=<?php echo $entity_no; ?>&datefrom=<?php echo $date_from; ?>&dateto=<?php echo $date_to; ?>">
+               
                 <i class="nav-icon fa fa-print"></i></a>
 
 
@@ -175,9 +129,28 @@ $get_all_history_data->execute();
 
           <div class="card-body">
             <div class="box box-primary">
-              <form role="form" method="get" action="">
+              <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
                 <div class="box-body">
+            <div class = "row">
+            <div class = "col-12"style = "margin-bottom:30px;padding:auto;">
+            <div class="input-group date">
+                           <label style="padding-right:10px;padding-left: 10px">From:  </label> 
+                             <div  style = "padding-right:10px" class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                             </div>
+                    <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"  value = "<?php echo $date_from;?>">
 
+                    <label style="padding-right:10px">To:</label>
+                            <div style = "padding-right:10px" class="input-group-addon">
+                                 <i class="fa fa-calendar"></i>
+                            </div>
+           <input type="text" style = "margin-right:50px;" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $date_to;?>">
+      
+          <button id = "view_person_history" onClick = "loadhistory()" class = "btn btn-success"><i class = "fa fa-search"></i></button> 
+          <input type = "hidden" id = "person_entity" value= "<?php echo $entity_no;?>">
+              </div>
+            </div>
+            </div>
                   <div class="table-responsive">
                     <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
@@ -186,10 +159,9 @@ $get_all_history_data->execute();
 
 
 
-
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                        <tr style="font-size: 1.10rem">
+                      
 
 
                           <th> Trace ID</th>
@@ -197,26 +169,9 @@ $get_all_history_data->execute();
                           <th> NAME</th>
                           <th> Details </th>
                           <th> Contact No. </th>
-                        </tr>
                       </thead>
-                      <tbody>
-                        <?php while ($list_history = $get_all_history_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr align="center">
-
-                            <td><?php echo $list_history['entity_no'];  ?></td>
-                            <td><?php echo $list_history['date'];
-                                echo " / ";
-                                echo $list_history['time'];    ?></td>
-
-                            <td><?php echo $list_history['fullname'];  ?></td>
-                            <td><?php echo $list_history['details'];  ?></td>
-                            <td><?php echo $list_history['mobile_no'];  ?></td>
-
-
-
-
-                          </tr>
-                        <?php } ?>
+                      <tbody id = "history_table">                             
+                    
                       </tbody>
                     </table>
 
@@ -347,9 +302,25 @@ $get_all_history_data->execute();
 
     });
 
+    function loadhistory(){
+       event.preventDefault();
+    var entity_no  = $('#person_entity').val();
+      var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
 
-
-
+    $('#history_table').load("load_history.php",{
+    entity_no:  entity_no,
+    date_from :  date_from,
+    date_to :    date_to},
+    function(response, status, xhr) {
+  if (status == "error") {
+      alert(msg + xhr.status + " " + xhr.statusText);
+      console.log(msg + xhr.status + " " + xhr.statusText);
+      console.log("xhr=" + xhr.responseText );
+    }
+    });
+    }
+ 
 
 
     // $('#users tbody').on('click', 'button.printlink', function() {
@@ -365,14 +336,15 @@ $get_all_history_data->execute();
 
 
 
-    $(document).ready(function() {
-      $('#print').click(function() {
-        var entity_no = $('#entity_no').val();
-        console.log(entity_no);
-
-        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
+      $('#printlink').click(function() {
+        var entity_no = $('#person_entity').val();
+        var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
+        console.log(entity_no); 
+        var param = "entity_no="+entity_no+"&datefrom="+date_from+"&dateto="+date_to+"";
+        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
       })
-    });
+
   </script>
 </body>
 
