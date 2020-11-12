@@ -158,6 +158,9 @@ if (isset($_POST['signin'])) {
 
       </form>
     </div><!-- /.login-box-body -->
+    <div class="login-logo">
+      <a href="http://34.92.117.58/sccdrrmo/downloads/app-release.apk"><img src="dist/img/downloadbuttonandroid.png" width="200px"></a>
+    </div>
 
   </div><!-- /.login-box -->
 </body>
