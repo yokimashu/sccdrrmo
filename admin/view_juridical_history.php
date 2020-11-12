@@ -150,7 +150,26 @@ $get_all_juridical_data->execute();
             <div class="box box-primary">
               <form role="form" method="get" action="">
                 <div class="box-body">
+                <div class = "row">
+            <div class = "col-12"style = "margin-bottom:30px;padding:auto;">
+            <div class="input-group date">
+                           <label style="padding-right:10px;padding-left: 10px">From:  </label> 
+                             <div  style = "padding-right:10px" class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                             </div>
+                    <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"  value = "<?php echo $date_from;?>">
 
+                    <label style="padding-right:10px">To:</label>
+                            <div style = "padding-right:10px" class="input-group-addon">
+                                 <i class="fa fa-calendar"></i>
+                            </div>
+           <input type="text" style = "margin-right:50px;" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $date_to;?>">
+      
+          <button id = "view_person_history" onClick = "loadhistory()" class = "btn btn-success"><i class = "fa fa-search"></i></button> 
+          <input type = "hidden" id = "person_entity" value= "<?php echo $entity_no;?>">
+              </div>
+            </div>
+            </div>
                   <div class="table-responsive">
                     <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
@@ -162,7 +181,7 @@ $get_all_juridical_data->execute();
 
                       <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                         <thead align="center">
-                          <tr style="font-size: 1.10rem">
+              
 
 
 
@@ -174,29 +193,10 @@ $get_all_juridical_data->execute();
 
 
 
-                          </tr>
+                   
                         </thead>
-                        <tbody>
-                          <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                            <tr align="center">
-
-                              <td><?php echo $list_juridical['entity_no'];  ?></td>
-                              <td><?php echo $list_juridical['date'];
-                                  echo " / ";
-                                  echo $list_juridical['time'];    ?></td>
-
-                              <td><?php echo $list_juridical['fullname'];  ?></td>
-                              <td><?php echo $list_juridical['details'];  ?></td>
-                              <td><?php echo $list_juridical['mobile_no'];  ?></td>
-
-
-
-
-
-
-                             
-                            </tr>
-                          <?php } ?>
+                        <tbody id = "history_table">
+                         
                         </tbody>
                       </table>
 
@@ -355,6 +355,25 @@ $get_all_juridical_data->execute();
         $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
       })
     });
+
+    function loadhistory(){
+       event.preventDefault();
+    var entity_no  = $('#person_entity').val();
+      var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
+
+    $('#history_table').load("load_juridical_history.php",{
+    entity_no:  entity_no,
+    date_from :  date_from,
+    date_to :    date_to},
+    function(response, status, xhr) {
+  if (status == "error") {
+      alert(msg + xhr.status + " " + xhr.statusText);
+      console.log(msg + xhr.status + " " + xhr.statusText);
+      console.log("xhr=" + xhr.responseText );
+    }
+    });
+    }
   </script>
 </body>
 
