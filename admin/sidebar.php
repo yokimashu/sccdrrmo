@@ -209,6 +209,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
 
 
+
           <li class="nav-item">
             <a href="list_juridical" class="nav-link sidebar-link">
               &nbsp;
@@ -254,6 +255,40 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
         </div> <br>
 
+        <div>
+
+          <?php echo $covid_case; ?>
+
+
+
+          <?php echo $covid_positive ?>
+
+
+          <?php echo $covid_contact ?>
+
+
+
+
+
+        </div> <br>
+
+        <div>
+          <label id="label1" style="font-size:18px; ">
+            &nbsp;
+            <i class="nav-icon fa fa-folder icons "></i>
+            &nbsp;
+            TRACERS FORM
+          </label>
+
+
+          <?php echo $infection; ?>
+          <?php echo $contacts; ?>
+          <?php echo  $positive_form ?>
+
+
+
+        </div> <br>
+
 
 
         <div>
@@ -297,7 +332,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             <a href="privacy_terms" class="nav-link sidebar-link">
               &nbsp;
               <i class="fas fa-shield-alt nav-icon icons"></i>
-              <p> &nbsp; Data Policy & Terms </p>
+              <p> &nbsp; Data Policy </p>
             </a>
           </li>
 

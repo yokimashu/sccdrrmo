@@ -18,8 +18,15 @@ $settings = ' ';
 $announce = ' ';
 $numberofdraft = ' ';
 $post_last = ' ';
-$breal =' ';
+$breal = ' ';
 
+
+$infection = '';
+$contacts = '';
+$covid_case = ' ';
+$covid_positive = ' ';
+$covid_contact = ' ';
+$positive_form = '';
 
 
 
@@ -54,12 +61,66 @@ if ($_SESSION['user_type'] == 1) {
         </a>
         </li>';
 
+
+  $infection =
+    '
+  <li class="nav-item">
+  <a href="https://forms.gle/hPFdN8XDr9VpSYYt7" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-file-alt"></i>
+
+    <p> &nbsp; Sources of Infection</p>
+  </a>
+</li>';
+
+  $contacts =
+    '
+      <li class="nav-item">
+      <a href="https://forms.gle/7uxgB4rvGU6ZMDdx6" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-file-alt"></i>
+
+        <p> &nbsp; Close Contacts</p>
+      </a>
+    </li>';
+
+  $covid_case = '     <label id="label1" style="font-size:18px; ">
+    &nbsp;
+    <i class="nav-icon fas fa-briefcase-medical icons "></i>
+    &nbsp;
+    COVID-19 CASES
+  </label>';
+
+
+
+
+
+  $positive_form = ' <li class="nav-item">
+  <a href="add_positive_case" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-file-alt"></i>
+
+    <p> &nbsp; Sources of Infection</p>
+  </a>
+</li>';
+
+
+
   // individual form  
   $view_history = '
     <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
     <i class="fa fa-suitcase"></i>
   </a>';
 
+
+
+  $covid_contact = '    <li class="nav-item">
+            <a href="list_contact" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="nav-icon fas fa-people-arrows icons"></i>
+              <p> &nbsp; Close Contacts </p>
+            </a>
+          </li>';
 
   $settings = '  <label id="label1" style="font-size:18px; ">
                         &nbsp;
@@ -78,6 +139,18 @@ if ($_SESSION['user_type'] == 1) {
                                 </a>
 
                             </li>';
+
+
+  $covid_positive = ' 
+  <li class="nav-item">
+<a href="list_positive_cases" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-user-plus icons"></i>
+  <p> &nbsp; COVID Positive </p>
+</a>
+</li> ';
+
+
 
 
 
@@ -106,6 +179,113 @@ if ($_SESSION['user_type'] == 1) {
   }
 
 
+
+
+  $break = '<br><br><br><br>';
+}
+
+
+
+
+
+
+if ($_SESSION['user_type'] == 3) {
+
+  $infection =
+    '
+  <li class="nav-item">
+  <a href="https://forms.gle/hPFdN8XDr9VpSYYt7" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-file-alt"></i>
+
+    <p> &nbsp; Sources of Infection</p>
+  </a>
+</li>';
+
+  $contacts =
+    '
+      <li class="nav-item">
+      <a href="https://forms.gle/7uxgB4rvGU6ZMDdx6" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-file-alt"></i>  
+
+        <p> &nbsp; Close Contacts</p>
+      </a>
+    </li>';
+
+
+
+
+
+  $view_history = '
+    <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
+    <i class="fa fa-suitcase"></i>
+  </a>';
+
+  $break = '<br><br><br><br>';
+}
+
+if ($_SESSION['user_type'] == 4) {
+
+  $infection =
+    '
+      <li class="nav-item">
+      <a href="https://forms.gle/hPFdN8XDr9VpSYYt7" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-file-alt"></i>
+    
+        <p> &nbsp; Sources of Infection</p>
+      </a>
+    </li>';
+
+  $contacts =
+    '
+          <li class="nav-item">
+          <a href="https://forms.gle/7uxgB4rvGU6ZMDdx6" class="nav-link sidebar-link">
+            &nbsp;
+            <i class="nav-icon fas fa-file-alt"></i>  
+    
+            <p> &nbsp; Close Contacts</p>
+          </a>
+        </li>';
+
+
+  $view_history = '
+        <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
+        <i class="fa fa-suitcase"></i>
+      </a>';
+
+  $positive_form = ' <li class="nav-item">
+      <a href="add_positive_case" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-file-alt"></i>
+    
+        <p> &nbsp; Add Positive Case</p>
+      </a>
+    </li>';
+
+  $covid_case = '     <label id="label1" style="font-size:18px; ">
+   &nbsp;
+    <i class="nav-icon fas fa-briefcase-medical icons "></i>
+    &nbsp;
+    COVID-19 CASES
+  </label>';
+
+  $covid_positive = ' <li class="nav-item">
+  <a href="list_positive_cases" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-user-plus icons"></i>
+    <p> &nbsp; COVID Positive </p>
+  </a>
+  </li> ';
+
+  $covid_contact = '    <li class="nav-item">
+                <a href="list_contact" class="nav-link sidebar-link">
+                  &nbsp;
+                  <i class="nav-icon fas fa-people-arrows icons"></i>
+                  <p> &nbsp; Close Contacts </p>
+                </a>
+              </li>';
 
 
   $break = '<br><br><br><br>';
