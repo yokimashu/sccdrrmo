@@ -55,7 +55,7 @@ $title = 'VAMOS | Dashboard';
 
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box mb-3">
-                <a href="list_pum.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
+                <a href="list_individual.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
                 <div class="info-box-content">
                   <span class="info-box-text">Individual</span>
                   <span class="info-box-number">
@@ -67,7 +67,7 @@ $title = 'VAMOS | Dashboard';
 
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box mb-3">
-                <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
+                <a href="list_juridical.php" class="info-box-icon bg-orange elevation-1"><span><i class="fa fa-male"></i></span></a>
                 <div class="info-box-content">
                   <span class="info-box-text">Juridical</span>
                   <span class="info-box-number">

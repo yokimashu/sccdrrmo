@@ -74,8 +74,7 @@ if ($result == 0) {
 
         $entity_count = $check_entity_data->rowCount();
 
-        if ($entity_count == 0) {
-        } else {
+        if ($entity_count != 0) {
             generateEntityID();
         }
     }
@@ -87,7 +86,7 @@ if ($result == 0) {
     $path = "images/";
     $fileTmpName = $_FILES['photo']['tmp_name'];
     $temp = explode('.', $_FILES['photo']['name']);
-    $newfilename = round(microtime(true)) . '.' . end($temp);
+    $newfilename = round(microtime(true)) . $org_name . '.' . end($temp);
     $uploadPath = $path . $newfilename;
 
     // --- uplaod photo

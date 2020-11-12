@@ -72,7 +72,7 @@ $get_all_individual_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> Master Lists Individual
 
-              <a href="add_individual" id="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;" onClick="generateID()">
+              <a href="add_individual" id="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
@@ -112,16 +112,20 @@ $get_all_individual_data->execute();
                                 //restrict users to view history
                               ?>
 
-                                <a class="btn btn-warning btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?> ">
-                                  <i class="fa fa-edit"></i></a>
+                              <a class="btn btn-outline-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?>" data-placement="top" title="Edit Individual">
+                                <i class="fa fa-edit"></i></a>
 
-                              <?php } ?>
+                              <a class="btn btn-outline-success btn-sm" target="blank" id="printlink" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>" data-placement="top" title="Print ID">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a>
 
                               <?php if ($_SESSION['user_type'] == 1) {
                                 //restrict users to view history
                               ?>
-                                <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
-                                  <i class="fa fa-suitcase"></i></a>
+                                <a class="btn btn-outline-warning btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?>" data-placement="top" title="View History">
+                                  <i class="fa fa-search"></i></a>
+
+                                <button class="btn btn-danger delete btn-sm" data-id="<?php echo $list_individual["entity_no"]; ?>" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
 
                               <?php } ?> <?php if ($_SESSION['user_type'] == 3) {
                                             //restrict users to view history
@@ -131,9 +135,6 @@ $get_all_individual_data->execute();
 
                               <?php } ?>
 
-
-                              <a class=" btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
 
                               &nbsp;
 
@@ -152,22 +153,35 @@ $get_all_individual_data->execute();
         <br>
       </section>
 
+    </div><!-- /.content-wrapper -->
 
+    <div class="modal fade" id="delete_individual" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Confirm Delete</h4>
+          </div>
+          <form method="POST" action="">
+            <div class="modal-body">
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Delete Record?</label>
+                  <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+              <input type="submit" name="delete_individual" class="btn btn-danger" value="Yes">
+            </div>
+          </form>
+        </div>
+      </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
 
-    </div>
-    <!-- /.content-wrapper -->
     <?php include('footer.php') ?>
 
-  </div>
-
-
-
-
-
-
-
-
-
+  </div><!-- /.wrapper -->
 
 
 
@@ -218,25 +232,71 @@ $get_all_individual_data->execute();
       'searching': true,
       'ordering': true,
       'info': true,
-      'autoWidth': true
+      'autoWidth': true,
+      'autoHeight': true
+    });
+    // $('#users').DataTable({
+    //   'paging': true,
+    //   'lengthChange': true,
+    //   'searching': true,
+    //   'ordering': true,
+    //   'info': true,
+    //   'autoWidth': true,
+    //   'autoHeight': true,
+    //   initComplete: function() {
+    //     this.api().columns([4]).every(function() {
+    //       var column = this;
+    //       var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+    //         .appendTo('#combo')
+    //         .on('change', function() {
+    //           var val = $.fn.dataTable.util.escapeRegex(
+    //             $(this).val()
+    //           );
+    //           column
+    //             .search(val ? '^' + val + '$' : '', true, false)
+    //             .draw();
+    //         });
+    //       column.data().unique().sort().each(function(d, j) {
+    //         select.append('<option value="' + d + '">' + d + '</option>')
+    //       });
+    //     });
+    //   }
+
+    // });
+
+    $(function() {
+      $(document).on('click', '.delete', function(e) {
+        e.preventDefault();
+        $('#delete_individual').modal('show');
+        var id = $(this).data('id');
+        $('#entity_no').val(id);
+      });
     });
 
+    // $(document).on('click', 'button[data-role=individual_delete]', function(event) {
+    //   event.preventDefault();
+
+    //   var entity_no = ($(this).data('id'));
+
+    //   $('#entity_no').val(entity_no);
+    //   $('#delete_individual').modal('show');
+
+    // });
+
+    // $('.select2').select2();
+
+    // $('#addPUM').on('hidden.bs.modal', function() {
+    //   $('#addPUM form')[0].reset();
+    // });
+
+    // $(function() {
+    //   $('[data-toggle="datepicker"]').datepicker({
+    //     autoHide: true,
+    //     zIndex: 2048,
+    //   });
+    // });
 
 
-
-    $(document).on('click', 'button[data-role=confirm_show]', function(event) {
-      event.preventDefault();
-
-      var user_id = ($(this).data('id'));
-
-
-      $('#show_control').val(user_id);
-
-
-
-      $('#controlmodal').modal('toggle');
-
-    });
 
 
     $('.select2').select2();
@@ -264,33 +324,33 @@ $get_all_individual_data->execute();
 
 
 
-    $('#users tbody').on('click', 'button.printlink', function() {
-      // alert ('hello');
-      // var row = $(this).closest('tr');
-      var table = $('#users').DataTable();
-      var data = table.row($(this).parents('tr')).data();
-      //  alert (data[0]);
-      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-      var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
-    });
+    // $('#users tbody').on('click', 'button.printlink', function() {
+    //   // alert ('hello');
+    //   // var row = $(this).closest('tr');
+    //   var table = $('#users').DataTable();
+    //   var data = table.row($(this).parents('tr')).data();
+    //   //  alert (data[0]);
+    //   //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+    //   var entity_no = data[0];
+    //   window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+    // });
 
-    $('#add_individual').click(function() {
-      generateID();
-    });
+    // $('#add_individual').click(function() {
+    //   generateID();
+    // });
 
-    function generateID() {
+    // function generateID() {
 
-      $.ajax({
-        type: 'POST',
-        data: {},
-        url: 'generate_id.php',
-        success: function(data) {
-          //$('#entity_no').val(data);
-          sessionStorage.setItem("entity_number", data);
-        }
-      });
-    }
+    //   $.ajax({
+    //     type: 'POST',
+    //     data: {},
+    //     url: 'generate_id.php',
+    //     success: function(data) {
+    //       //$('#entity_no').val(data);
+    //       sessionStorage.setItem("entity_number", data);
+    //     }
+    //   });
+    // }
     // window.onload = generateID;
   </script>
 </body>
