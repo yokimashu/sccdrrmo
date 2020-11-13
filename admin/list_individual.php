@@ -88,44 +88,21 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                        <tr style="font-size: 1.10rem">
+                      
                           <th> ID </th>
                           <th> Username </th>
                           <th> Full Name </th>
                           <th> Options</th>
-                        </tr>
+                    
                       </thead>
                       <tbody>
                   
-                          <tr>
-                          
-
-                              <a class="btn btn-outline-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?>" data-placement="top" title="Edit Individual">
-                                <i class="fa fa-edit"></i></a>
-
-                              <a class="btn btn-outline-success btn-sm" target="blank" id="printlink" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>" data-placement="top" title="Print ID">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              </a>
-
-                              <?php if ($_SESSION['user_type'] == 1) {
-                                //restrict users to view history
-                              ?>
-                                <a class="btn btn-outline-warning btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?>" data-placement="top" title="View History">
-                                  <i class="fa fa-search"></i></a>
-
-                                <button class="btn btn-danger delete btn-sm" data-id="<?php echo $list_individual["entity_no"]; ?>" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
-
-                              <?php }?>
-
-
-                              &nbsp;
-
-                           
-                          </tr>
+                         
+                        
                        
                       </tbody>
                     </table>
-                        <input type = "text" id = "accountType" value = "<?php echo $accountType;?>">
+                        <input type = "hidden" readonly id = "accountType" value = "<?php echo $accountType;?>">
                   </div>
                 </div>
               </form>
