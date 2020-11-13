@@ -264,14 +264,7 @@ function checkDelete (){
 
     });
 
-    $("#users tbody").on("click", "#viewHistory", function () {
-      event.preventDefault();
-      var currow = $(this).closest("tr");
-      var entity = currow.find("td:eq(0)").text();
-      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("view_individual_history.php?&entity_no="+ entity, '_parent');
 
-    });
     // $('#users').DataTable({
     //   'paging': true,
     //   'lengthChange': true,
