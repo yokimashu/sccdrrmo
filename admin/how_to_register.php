@@ -112,7 +112,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
         <div class="content-wrapper">
             <div class="content-header"></div>
 
-
+            <!-- ENTITIES -->
             <section class="content">
                 <div class="card">
                     <div class="card-header bg-success text-white">
@@ -263,6 +263,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
             </section>
 
+            <!-- INDIVIDUAL -->
             <section class="content">
                 <div class="card">
                     <div class="card-header bg-success text-white">
@@ -282,14 +283,231 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
                                             <img src="../dist/img/one.png" id="number">
                                             &nbsp;&nbsp;
-                                            I click ang REGISTER ug pilion ang INDIVIDUAL
+                                            I click ang <i>REGISTER</i> ug pilion ang <i>INDIVIDUAL</i>.
                                         </p><br>
 
                                         <p id="information">
                                             <img src="../dist/img/two.png" id="number">
-                                            Palihog i LOCK usa ang <i> "AUTO ROTATE"</i> sa inyung devices. Makita sa
-                                            control center. Iclick <img src="../dist/img/profile-icon.png" id="icon">
+                                            &nbsp;&nbsp;
+                                            Palihug i LOCK usa ang <i> "AUTO ROTATE"</i> sa inyung devices. <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Makita ni siya sa control center. Iclick ang para ma open
+                                            <img src="../dist/img/profile-icon.png" id="icon">
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            ang camera ug pagkuha ug hulagway nga wala naka face mask
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            ug face shield.
+                                        </p><br>
+                                        <p id="information">
+                                            <img src="../dist/img/three.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug i fill-out ang mga kinahanglan nga impormasyon. <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Importante kaayo ang inyuhang ihatag ug sakto ng personal
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            details mao kay kini ang gamiton para sa contact tracing.
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/four.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug sa pag-usisa ang impormasyon na imu gi hatag. <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Magpabiling luwas ang imong datos subay sa
+                                            <i>RA 10173</i> o <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            ang <i>"Data Privacy Act"</i>.
+
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/five.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihog sa pagbasa sa <i>Terms of Service</i> og ang
+                                            <i>Privacy Policy</i>
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            para mahibal-an kung giunsa namo pag kolekta, proseso ug
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            protekta sa inyung impormasyon. I check ang box kung ikaw
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            naka-uyon sa among pamaagi.
+                                        </p> <br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/six.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug isigurado nang pagkonektar sa internet pamaagi sa
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            wifi or data ang imong phone ug i click ang <i>REGISTER</i> button.
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            May mensahe ka nga ma kita kung nagmalampuson ang pag
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            rehistro sa imong personal account.
+                                        </p> <br>
+
+                                    </div>
+
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                                    <div class="col-md-4">
+                                        <img src="../dist/img/reg_indiivdual.png" alt="" id="hand-login">
+
+                                        <br>
+                                        <p>
+                                            &nbsp;&nbsp;&nbsp;
+                                            Please like our facebook page for more updates: <br>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <a href="https://www.facebook.com/lgusccno.itcso" id="fbpage" target="_blank">
+                                                <label>https://facebook.com/lgusccno.itcso</label>
+                                            </a>
                                         </p>
+                                    </div>
+                                </div>
+                                <br><br>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- JURIDICAL -->
+            <section class="content">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h4>HOW TO REGISTER AS JURIDICAL?</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="box-body">
+                            <div class="card">
+                                <br>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-7">
+                                        <p id="information">
+                                            <img src="../dist/img/one.png" id="number">
+                                            &nbsp;&nbsp;
+                                            I click ang <i>REGISTER </i>
+                                            ug pilion ang <i>JURIDICAL</i>.
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/two.png" id="number">
+                                            &nbsp;&nbsp;
+                                            I click ang <img src="../dist/img/profile-icon.png" id="icon">
+                                            para ma open ang image gallery ug pilion ang
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            logo sa inyung organisasyon.
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/three.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug i fill-up ang mga kinahanglan nga impormasyon.
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Importante kaayo ang inyuhang i hatag ang sakto nga personal
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            details kay mao kani ang gamiton para sa contact tracing. Para sa
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            <i>BUSINESS NATURE</i>, pilia lang ang <i>NOT APPLICABLE</i> kung wala
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            ma rehistro nga business ang inyong organisasyon.
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/four.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug sa pag-usisa ang impormasyon na imu gi hatag. <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Magpabiling luwas ang imong datos subay sa
+                                            <i>RA 10173</i> o <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            ang <i>"Data Privacy Act"</i>.
+
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/five.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihog sa pagbasa sa <i>Terms of Service</i> og ang
+                                            <i>Privacy Policy</i>
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            para mahibal-an kung giunsa namo pag kolekta, proseso ug
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            protekta sa inyung impormasyon. I check ang box kung ikaw
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            naka-uyon sa among pamaagi.
+                                        </p> <br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/six.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug isigurado nang pagkonektar sa internet pamaagi sa
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            wifi or data ang imong phone ug i click ang <i>REGISTER</i> button.
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            May mensahe ka nga ma kita kung nagmalampuson ang pag
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            rehistro sa imong account.
+                                        </p> <br>
 
 
 
@@ -301,7 +519,153 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
                                     <div class="col-md-4">
-                                        <img src="../dist/img/REGISTRATION.png" alt="" id="hand-login">
+                                        <img src="../dist/img/reg_juridical.png" alt="" id="hand-login">
+
+                                        <br>
+                                        <p>
+                                            &nbsp;&nbsp;&nbsp;
+                                            Please like our facebook page for more updates: <br>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <a href="https://www.facebook.com/lgusccno.itcso" id="fbpage" target="_blank">
+                                                <label>https://facebook.com/lgusccno.itcso</label>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <br><br>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TRANSPORTATION -->
+            <section class="content">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h4>HOW TO REGISTER AS TRANSPORTATION?</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="box-body">
+                            <div class="card">
+                                <br>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-7">
+                                        <p id="information">
+
+                                            <img src="../dist/img/one.png" id="number">
+                                            &nbsp;&nbsp;
+                                            I click ang <i>REGISTER</i> ug pilion ang
+                                            <i>TRANSPORTATION</i>.
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/two.png" id="number">
+                                            &nbsp;&nbsp;
+                                            I click ang <img src="../dist/img/profile-icon.png" id="icon">
+                                            para ma open ang image gallery ug pilion ang
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            logo o picture sa inyung transportasyon.
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/three.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug i fill-out an mga kinahanglan nga impormasyon.
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Importante kaayo nga inyuhang i hatag ang sakto nga details
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            kay mao ang gamiton para sa contact tracing. Para sa
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            <i>TRANSPORTATION TYPE</i>, pilia lang kung
+                                            <i>LAND</i> or <i>SEA</i>
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;Transportation.
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/four.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug sa pag-usisa ang impormasyon na imu gi hatag. <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            Magpabiling luwas ang imong datos subay sa
+                                            <i>RA 10173</i> o <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            ang <i>"Data Privacy Act"</i>.
+
+
+                                        </p><br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/five.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihog sa pagbasa sa <i>Terms of Service</i> og ang
+                                            <i>Privacy Policy</i>
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            para mahibal-an kung giunsa namo pag kolekta, proseso ug
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            protekta sa inyung impormasyon. I check ang box kung ikaw
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            naka-uyon sa among pamaagi.
+                                        </p> <br>
+
+                                        <p id="information">
+                                            <img src="../dist/img/six.png" id="number">
+                                            &nbsp;&nbsp;
+                                            Palihug isigurado nang pagkonektar sa internet pamaagi sa
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            wifi or data ang imong phone ug i click ang <i>REGISTER</i> button.
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            May mensahe ka nga ma kita kung nagmalampuson ang pag
+                                            <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                            &nbsp;
+                                            rehistro sa imong account.
+                                        </p> <br>
+
+
+
+
+
+
+                                    </div>
+
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                                    <div class="col-md-4">
+                                        <img src="../dist/img/reg_transportation.png" alt="" id="hand-login">
 
                                         <br>
                                         <p>

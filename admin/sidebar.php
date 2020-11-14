@@ -272,22 +272,17 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
         </div> <br>
 
-        <div>
-          <label id="label1" style="font-size:18px; ">
-            &nbsp;
-            <i class="nav-icon fa fa-folder icons "></i>
-            &nbsp;
-            TRACERS FORM
-          </label>
 
 
-          <?php echo $infection; ?>
-          <?php echo $contacts; ?>
-          <?php echo  $positive_form ?>
+        <?php echo $label_tracer; ?>
+
+        <?php echo $infection; ?>
+        <?php echo $contacts; ?>
+        <?php echo  $add_contact_case ?>
 
 
 
-        </div> <br>
+
 
 
 
@@ -319,6 +314,9 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
 
 
+
+
+
           <li class="nav-item">
             <a href="how_to_register" class="nav-link sidebar-link">
               &nbsp;
@@ -327,12 +325,20 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="scan_qrcode" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-qrcode icons nav-icon"></i>
+              <p> &nbsp; Scan QR Code</p>
+            </a>
+          </li>
+
 
           <li class="nav-item">
             <a href="privacy_terms" class="nav-link sidebar-link">
               &nbsp;
-              <i class="fas fa-shield-alt nav-icon icons"></i>
-              <p> &nbsp; Data Policy </p>
+              <i class="fas fa-database nav-icon icons"></i>
+              <p> &nbsp; Privacy Policy </p>
             </a>
           </li>
 
