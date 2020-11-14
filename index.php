@@ -36,6 +36,7 @@ if (isset($_POST['signin'])) {
         session_start();
         $_SESSION['id'] = $result['id'];
         $_SESSION['user_type'] = $result['account_type'];
+        $_SESSION['department'] = $result['department'];
         // if ($result['account_type'] == 1) {
 
         header('location: admin'); //location is folder
