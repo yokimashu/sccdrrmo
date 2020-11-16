@@ -358,7 +358,7 @@ $get_all_juridical_data->execute();
         var mobile_no  = $('#mobile_no').val();
         console.log(entity_no); 
         var param = "entity_no="+entity_no+"&fullname="+fullname+"&street="+street+"&business_nature="+busNature+"&mobile_no="+mobile_no+"&datefrom="+date_from+"&dateto="+date_to+"";
-        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
+        $('#printlink').attr("href", "../plugins/jasperreport/juridical_history.php?" + param, '_parent');
     });
 
     function loadhistory(){
