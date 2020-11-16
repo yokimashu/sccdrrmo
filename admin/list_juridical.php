@@ -195,39 +195,39 @@ $get_all_juridical_data->execute();
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-    $('#users').DataTable({
-      'paging': true,
-      'lengthChange': true,
-      'searching': true,
-      'ordering': true,
-      'info': true,
-      'autoWidth': true,
-      'autoHeight': true,
-      initComplete: function() {
-        this.api().columns([4]).every(function() {
-          var column = this;
-          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-            .appendTo('#combo')
-            .on('change', function() {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-              );
-              column
-                .search(val ? '^' + val + '$' : '', true, false)
-                .draw();
-            });
-          column.data().unique().sort().each(function(d, j) {
-            select.append('<option value="' + d + '">' + d + '</option>')
-          });
-        });
-      }
+    // $('#users').DataTable({
+    //   'paging': true,
+    //   'lengthChange': true,
+    //   'searching': true,
+    //   'ordering': true,
+    //   'info': true,
+    //   'autoWidth': true,
+    //   'autoHeight': true,
+    //   initComplete: function() {
+    //     this.api().columns([4]).every(function() {
+    //       var column = this;
+    //       var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+    //         .appendTo('#combo')
+    //         .on('change', function() {
+    //           var val = $.fn.dataTable.util.escapeRegex(
+    //             $(this).val()
+    //           );
+    //           column
+    //             .search(val ? '^' + val + '$' : '', true, false)
+    //             .draw();
+    //         });
+    //       column.data().unique().sort().each(function(d, j) {
+    //         select.append('<option value="' + d + '">' + d + '</option>')
+    //       });
+    //     });
+    //   }
 
-    });
+    // });
     $('.select2').select2();
 
-    $('#addPUM').on('hidden.bs.modal', function() {
-      $('#addPUM form')[0].reset();
-    });
+    // $('#addPUM').on('hidden.bs.modal', function() {
+    //   $('#addPUM form')[0].reset();
+    // });
 
     $(function() {
       $('[data-toggle="datepicker"]').datepicker({

@@ -13,8 +13,7 @@ if (!isset($_SESSION['id'])) {
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
-
-$symptoms = $patient = $person_status = $entity_no = '';
+$symptoms = $patient = $person_status = $entity_no =$department= '';
 // $entity_no = '';
 //fetch user from database
 $accountType = '';
@@ -23,9 +22,10 @@ $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
-
+  
   $db_fullname = $result['fullname'];
   $accountType = $result['account_type'];
+  $department = $result['account_type'];
 }
 
 // $get_all_individual_sql = "SELECT * FROM tbl_individual i inner join tbl_entity e on e.entity_no = i.entity_no order by i.lastname ASC ";
@@ -181,6 +181,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     //   'autoWidth': true,
     //   'autoHeight': true
     // });
+    var department = "<?php echo $department;?>";
 function checkViewHistory (){
   accountType = $('#accountType').val();
   if (accountType == 1 ) {

@@ -1,7 +1,13 @@
 <?php
 include('../config/db_config.php');
-
-
+session_start();
+$userDepartment = $_SESSION['department'];
+$filterBrgy =   '';
+if($_SESSION['user_type'] == 1){
+    $filterBrgy = '';
+}else{
+    $filterBrgy = "WHERE barangay = '".$userDepartment."'";
+}
 $columns= array( 
     // datatable column index  => database column name
         0 =>  'entity_no', 
@@ -18,8 +24,8 @@ $requestData= $_REQUEST;
 $getAllIndividual = "SELECT e.entity_no,
                      username,
                      fullname FROM tbl_individual e 
-                    inner join tbl_entity i on e.entity_no = i.entity_no
-                    ORDER BY e.date_register DESC LIMIT ".$requestData['start']." ,".$requestData['length']."  ";
+                    inner join tbl_entity i on e.entity_no = i.entity_no ".$filterBrgy."
+                     ORDER BY e.date_register DESC LIMIT ".$requestData['start']." ,".$requestData['length']."  ";
 
 $getIndividualData = $con->prepare($getAllIndividual);
 $getIndividualData->execute();                   
