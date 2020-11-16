@@ -127,12 +127,12 @@ $get_all_juridical_data->execute();
 
 
               <div class="col-md-10" hidden>
-                <input type="text" readonly class="form-control" name="entity_no" placeholder="entity_no" value="ID: <?php echo $entity_no; ?>" required>
-                <input type="text" readonly class="form-control" name="org_name" placeholder="fullname" value="ORGANIZATIONAL NAME: <?php echo $org_name; ?>" required>
-                <input type="text" readonly class="form-control" name="business_nature" placeholder="business_nature" value="BUSINESS NATURE: <?php echo $business_nature; ?> " required>
-                <input type="text" readonly class="form-control" name="street" placeholder="street" value="ADDRESS: <?php echo $street; ?>" required>
-                <input type="text" readonly class="form-control" name="barangay" placeholder="barangay" value="BARANGAY: <?php echo $barangay; ?>" required>
-                <input type="text" readonly class="form-control" name="mobile_no" placeholder="mobile_no" value="CONTACT No.: <?php echo $mobile_no; ?>" required>
+                <input type="text" readonly class="form-control" name="entity_no" id = "entity_no" placeholder="entity_no" value=" <?php echo $entity_no; ?>" required>
+                <input type="text" readonly class="form-control" name="org_name" id = "org_name" placeholder="fullname" value="<?php echo $org_name; ?>" required>
+                <input type="text" readonly class="form-control" name="business_nature" id = "business_nature" placeholder="business_nature" value="<?php echo $business_nature; ?> " required>
+                <input type="text" readonly class="form-control" name="street" placeholder="street" id ="street" value=" <?php echo $street; ?>" required>
+                <input type="text" readonly class="form-control" name="barangay" id = "barangay" placeholder="barangay" value="<?php echo $barangay; ?>" required>
+                <input type="text" readonly class="form-control" name="mobile_no" id = "mobile_no" placeholder="mobile_no" value=" <?php echo $mobile_no; ?>" required>
               </div>
 
 
@@ -347,13 +347,18 @@ $get_all_juridical_data->execute();
     // });
 
 
-    $(document).ready(function() {
-      $('#print').click(function() {
-        var entity_no = $('#entity_no').val();
-        console.log(entity_no);
-
-        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
-      })
+   
+      $('#printlink').click(function() {
+      var entity_no = $('#person_entity').val();
+        var date_from  = $('#dtefrom').val();
+        var date_to  = $('#dteto').val();
+        var fullname  = $('#org_name').val();
+        var busNature  = $('#business_nature').val();
+        var street  = $('#street').val();
+        var mobile_no  = $('#mobile_no').val();
+        console.log(entity_no); 
+        var param = "entity_no="+entity_no+"&fullname="+fullname+"&street="+street+"&business_nature="+busNature+"&mobile_no="+mobile_no+"&datefrom="+date_from+"&dateto="+date_to+"";
+        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
     });
 
     function loadhistory(){
