@@ -13,7 +13,8 @@ if (!isset($_SESSION['id'])) {
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
-$symptoms = $patient = $person_status = $entity_no =$department= '';
+
+$symptoms = $patient = $person_status = $entity_no = '';
 // $entity_no = '';
 //fetch user from database
 $accountType = '';
@@ -22,10 +23,9 @@ $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
-  
+
   $db_fullname = $result['fullname'];
   $accountType = $result['account_type'];
-  $department = $result['account_type'];
 }
 
 // $get_all_individual_sql = "SELECT * FROM tbl_individual i inner join tbl_entity e on e.entity_no = i.entity_no order by i.lastname ASC ";
@@ -88,21 +88,21 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                      
-                          <th> ID </th>
-                          <th> Username </th>
-                          <th> Full Name </th>
-                          <th> Options</th>
-                    
+
+                        <th> ID </th>
+                        <th> Username </th>
+                        <th> Full Name </th>
+                        <th> Options</th>
+
                       </thead>
                       <tbody>
-                  
-                         
-                        
-                       
+
+
+
+
                       </tbody>
                     </table>
-                        <input type = "hidden" readonly id = "accountType" value = "<?php echo $accountType;?>">
+                    <input type="hidden" readonly id="accountType" value="<?php echo $accountType; ?>">
                   </div>
                 </div>
               </form>
@@ -171,7 +171,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-
     // $('#users').DataTable({
     //   'paging': true,
     //   'lengthChange': true,
@@ -181,28 +180,28 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     //   'autoWidth': true,
     //   'autoHeight': true
     // });
-    var department = "<?php echo $department;?>";
-function checkViewHistory (){
-  accountType = $('#accountType').val();
-  if (accountType == 1 ) {
-    return ' <button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
-  }else if (accountType == 3){
-    return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
+    function checkViewHistory() {
+      accountType = $('#accountType').val();
+      if (accountType == 1) {
+        return ' <button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
+      } else if (accountType == 3) {
+        return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
 
-  }else{
-    return '';
-  }
+      } else {
+        return '';
+      }
 
-}
-function checkDelete (){
-  accountType = $('#accountType').val();
-  if (accountType == 1 ) {
-    return '<button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>';
-  }else {
-    return '';
-  }
+    }
 
-}
+    function checkDelete() {
+      accountType = $('#accountType').val();
+      if (accountType == 1) {
+        return '<button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>';
+      } else {
+        return '';
+      }
+
+    }
     var dataTable = $('#users').DataTable({
 
       page: true,
@@ -211,34 +210,33 @@ function checkDelete (){
       serverSide: true,
       scrollX: false,
       ajax: {
-      url:"search_individual.php",
-      type:"post",
-      error: function (xhr, b, c) {
-      console.log(
-        "xhr=" +
-          xhr.responseText +
-          " b=" +
-          b.responseText +
-          " c=" +
-          c.responseText
-      );
-  }
-  }, columnDefs: [
-    {
-      width: "159px",
-      targets: -1,
-      data: null,
-      defaultContent:
-        '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>'+
-        '<button class="btn btn-outline-success btn-sm"  style = "margin-right:10px;" id="printlink"  data-placement="top" title="Print ID">  <i class="nav-icon fa fa-print"></i></button> ' +  checkViewHistory () + checkDelete ()
-        
-    ,
-    },
-    
-  ],
+        url: "search_individual.php",
+        type: "post",
+        error: function(xhr, b, c) {
+          console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+          );
+        }
+      },
+      columnDefs: [{
+          width: "159px",
+          targets: -1,
+          data: null,
+          defaultContent: '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>' +
+            '<button class="btn btn-outline-success btn-sm"  style = "margin-right:10px;" id="printlink"  data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></button> ' + checkViewHistory() + checkDelete()
+
+            ,
+        },
+
+      ],
     });
 
-    $("#users tbody").on("click", "#viewIndividual", function () {
+    $("#users tbody").on("click", "#viewIndividual", function() {
       event.preventDefault();
       var currow = $(this).closest("tr");
       var entity = currow.find("td:eq(0)").text();
@@ -247,21 +245,21 @@ function checkDelete (){
 
     });
 
-    $("#users tbody").on("click", "#printlink", function () {
+    $("#users tbody").on("click", "#printlink", function() {
       event.preventDefault();
       var currow = $(this).closest("tr");
       var entity = currow.find("td:eq(0)").text();
       // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("../plugins/jasperreport/entity_id.php?entity_no="+ entity, '_parent');
+      window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
 
     });
 
-    $("#users tbody").on("click", "#viewHistory", function () {
+    $("#users tbody").on("click", "#viewHistory", function() {
       event.preventDefault();
       var currow = $(this).closest("tr");
       var entity = currow.find("td:eq(0)").text();
       // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("view_individual_history.php?&entity_no="+ entity, '_parent');
+      window.open("view_individual_history.php?&entity_no=" + entity, '_parent');
 
     });
 
@@ -300,7 +298,7 @@ function checkDelete (){
         e.preventDefault();
 
         var currow = $(this).closest("tr");
-       var entity = currow.find("td:eq(0)").text();
+        var entity = currow.find("td:eq(0)").text();
         $('#delete_individual').modal('show');
         $('#entity_no').val(entity);
       });
