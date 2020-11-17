@@ -49,7 +49,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$check_update_photo = $get_photo;
+// $check_update_photo = $get_photo;
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
@@ -297,23 +297,9 @@ $title = 'VAMOS | Update Individual Form';
                                             <br>
 
                                             <?php include('template_individual.php'); ?>
+
                                             <!-- </form> -->
                                         </div>
-
-                                        <div class="row" align="center">
-                                            <!-- <form method="POST" action="storeImage.php"> -->
-
-                                            <div class="col-md-3"></div>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <div>
-
-                                                <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"> -->
-
-                                            </div>
-                                            <!-- </form> -->
-                                        </div><br>
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
@@ -356,10 +342,10 @@ $title = 'VAMOS | Update Individual Form';
                                                 <button type="button" name="cancel" class="btn btn-danger">
                                                     <i class="fa fa-close fa-fw"> </i> </button>
                                             </a>
-                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                            <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                 <button type="button" name="print" class="btn btn-primary">
                                                     <i class="nav-icon fa fa-print"> </i> </button>
-                                            </a>
+                                            </a> -->
                                         </div><br><br>
 
 
@@ -382,47 +368,7 @@ $title = 'VAMOS | Update Individual Form';
 
 
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- datepicker -->
-    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-    <!-- CK Editor -->
-    <!-- <script src="../../plugins/ckeditor/ckeditor.js"></script> -->
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.js"></script>
-    <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Select2 -->
-
-    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
-    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <!-- <script type="text/javascript" src="../plugins/cameracapture/photo_template.js"></script> -->
-    <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
-    <!-- textarea wysihtml style -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     -->
-
-    <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-
-    <script src="../plugins/select2/select2.js"></script>
-    <script src="../plugins/select2/select2.full.min.js"></script>
+    <?php include('scripts.php') ?>
 
 
     <script type="text/javascript">

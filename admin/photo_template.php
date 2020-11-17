@@ -27,7 +27,7 @@ $img = '';
     <div style="margin:auto">
         <div class="col-12" style="margin:auto;margin-top:30px;margin-bottom:30px">
             <span class="align-baseline">
-                <!-- <input type="hidden" name="image" class="image-tag" value=<?php echo $img; ?>> -->
+                <input type="hidden" name="image" class="image-tag" value=<?php echo $img; ?>>
                 <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
                 <!-- <button type="button" id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button> -->
                 <!-- <button type="button" id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button> -->
