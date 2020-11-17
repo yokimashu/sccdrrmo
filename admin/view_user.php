@@ -217,7 +217,7 @@ $get_all_account_data->execute();
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" value="<?php echo $get_firstname; ?>" required>
+                                                <input type="text" class="form-control" name="first_name" style=" text-transform: uppercase;" id="first_name" placeholder="First Name" value="<?php echo $get_firstname; ?>" required>
                                             </div>
 
 
@@ -236,7 +236,7 @@ $get_all_account_data->execute();
                                             &nbsp;&nbsp;&nbsp;
 
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" name="middle_name" id="middle_name" placeholder="Middle Name (Ex: 'A')" value="<?php echo $get_middlename; ?>" required>
+                                                <input type="text" class="form-control" name="middle_name" style=" text-transform: uppercase;" id="middle_name" placeholder="Middle Name (Ex: 'A')" value="<?php echo $get_middlename; ?>" required>
                                             </div>
                                         </div><br>
 
@@ -251,7 +251,7 @@ $get_all_account_data->execute();
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" value="<?php echo $get_lastname; ?>" required>
+                                                <input type="text" class="form-control" name="last_name" style=" text-transform: uppercase;" id="last_name" placeholder="Last Name" value="<?php echo $get_lastname; ?>" required>
                                             </div>
                                         </div><br>
 
