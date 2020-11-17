@@ -136,15 +136,20 @@ $title = 'VAMOS | Update Individual Form';
                             <div class="box-body">
                                 <div class="row">
 
-                                    <div class="m-1 pb-1"> </div>
+                                    <div class="m-3 pb-3"> </div>
                                     <div class="card col-md-6">
 
                                         <div class=" card-header">
                                             <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
 
+
+
                                         <div class="box-body">
                                             <br>
+
+
+
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-lg-4">
@@ -189,7 +194,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $get_firstname; ?>">
+                                                    <input type="text" class="form-control" style=" text-transform: uppercase;" name="firstname" placeholder="First Name" value="<?php echo $get_firstname; ?>">
                                                 </div>
                                             </div></br>
 
@@ -241,7 +246,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street; ?>">
+                                                    <input type="text" class="form-control" style=" text-transform: uppercase;" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street; ?>">
                                                 </div>
                                             </div><br>
 
@@ -263,7 +268,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="city" placeholder="City" value="<?php echo $get_city; ?>">
+                                                    <input type="text" class="form-control" name="city" style=" text-transform: uppercase;" placeholder="City" value="<?php echo $get_city; ?>">
                                                 </div>
                                             </div><br>
 
@@ -271,7 +276,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="province" placeholder="Province" value="<?php echo $get_province; ?>">
+                                                    <input type="text" class="form-control" style=" text-transform: uppercase;" name="province" placeholder="Province" value="<?php echo $get_province; ?>">
                                                 </div>
                                             </div><br>
 
@@ -281,14 +286,17 @@ $title = 'VAMOS | Update Individual Form';
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+
                                     <div class="card col-md-5">
                                         <div class="card-header">
                                             <h6><strong> ID PHOTO </strong></h6>
                                         </div>
 
+
                                         <div class="box-body">
                                             <br>
-                                            <?php include('photo_template.php'); ?>
+
+                                            <?php include('template_individual.php'); ?>
                                             <!-- </form> -->
                                         </div>
 
@@ -352,22 +360,23 @@ $title = 'VAMOS | Update Individual Form';
                                                 <button type="button" name="print" class="btn btn-primary">
                                                     <i class="nav-icon fa fa-print"> </i> </button>
                                             </a>
-                                        </div>
+                                        </div><br><br>
 
 
 
                                     </div> <br><br>
                                 </div>
                             </div>
+
+                        </form>
                     </div>
-                    </form>
                 </div>
+            </section>
+            <br><br>
         </div>
-        </section>
-    </div>
 
 
-    <?php include('footer.php') ?>
+        <?php include('footer.php') ?>
 
     </div>
 

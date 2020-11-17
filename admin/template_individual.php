@@ -13,17 +13,25 @@ $img = '';
 } ?>
 
 <div class="row col-12">
-    <div class="row">
-        <!-- <form method="POST" action="storeImage.php"> -->
+    <div class="row" style="padding-left:20px">
+        <!-- <form method=" POST" action="storeImage.php"> -->
         <br>
-        <div style="margin:auto; padding-left:12px">
-
+        <div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;
+            <!-- 
             <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
-            <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
+            <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas> -->
             <!-- <audio id="snapSound"  src="audio/snap.wav"  preload="auto"></audio> -->
-            <img src="../flutter/images/<?php echo $get_photo ?>" id="photo" style="height: 300px; width:500px;margin:auto;" class="photo img-thumbnail">
+            <img src="../flutter/images/<?php echo $get_photo ?>" id="photo" style="height: 300px; width:300px;margin:auto;" class="photo img-thumbnail">
         </div>
     </div>
+
+</div>
+
+<div class="row">
     <div style="margin:auto">
         <div class="col-12" style="margin:auto;margin-top:30px;margin-bottom:30px">
             <span class="align-baseline">
@@ -53,3 +61,4 @@ $img = '';
             </span>
         </div>
     </div>
+</div>
