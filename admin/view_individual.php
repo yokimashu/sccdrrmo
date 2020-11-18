@@ -119,7 +119,9 @@ include('update_individual.php');
 
         <div class="content-wrapper">
             <div class="content-header"></div>
-
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
 
 
             <section class="content">
@@ -332,9 +334,7 @@ include('update_individual.php');
                                                 <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
                                             </div>
                                         </div><br>
-                                        <div class="form-group has-feedback col-8">
-                                            <?php echo $alert_msg; ?>
-                                        </div>
+                                    
                                         <div class="box-footer" align="center">
                                             <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
