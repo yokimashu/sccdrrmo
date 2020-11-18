@@ -4,7 +4,7 @@ $alert_msg = '';
 include('../config/db_config.php');
 if (isset($_POST['update_individual'])) {
 
-
+  
 
     $get_date_register          = date('Y-m-d', strtotime($_POST['date_register']));
     $get_entity_no              = $_POST['entity_no'];
@@ -133,6 +133,10 @@ if (isset($_POST['update_individual'])) {
 
 
     if ($img != '') {
+        // echo "<p>";
+        // echo print_r($get_photo);
+        // echo "</p>";
+        unlink('../flutter/images/' . $get_photo);
         $folderPath = "../flutter/images/";
         $image_parts = explode(";base64,", $img);
         $image_type_aux = explode("image/", $image_parts[0]);

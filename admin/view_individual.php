@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('update_individual.php');
+
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -58,7 +58,7 @@ $get_all_brgy_data->execute();
 
 $title = 'VAMOS | Update Individual Form';
 
-
+include('update_individual.php');
 ?>
 
 
