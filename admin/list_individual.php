@@ -228,7 +228,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
           targets: -1,
           data: null,
           defaultContent: '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>' +
-            '<button class="btn btn-outline-success btn-sm"  style = "margin-right:10px;" id="printlink"  data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></button> ' + checkViewHistory() + checkDelete()
+            '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/entity_id.php?entity_no=" data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></a> ' + checkViewHistory() + checkDelete()
 
             ,
         },
@@ -246,11 +246,11 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     });
 
     $("#users tbody").on("click", "#printlink", function() {
-      event.preventDefault();
+      // event.preventDefault();
       var currow = $(this).closest("tr");
       var entity = currow.find("td:eq(0)").text();
-      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+      $('.printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
 
     });
 
