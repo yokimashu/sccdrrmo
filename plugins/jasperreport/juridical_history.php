@@ -26,11 +26,18 @@ $xml = $PHPJasperXML->load_xml_file("juridical_history.jrxml");
 // $PHPJasperXML->sql = "SELECT r.trace_no,r.date,t.fullname from tbl_tracehistory r inner join tbl_individual t on t.entity_no = r.trace_no where  r.entity_no ='" . $entity_no . "'";
 
 $PHPJasperXML->sql = "Select * FROM
-
+(
     SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
-inner join tbl_individual i on i.entity_no = t.entity_no  WHERE t.entity_no = '" . $entity_no . "' AND t.date between '".$date_from."' and '".$date_to."' or t.trace_no = '" . $entity_no . "' AND t.date between '".$date_from."' and '".$date_to."'
+inner join tbl_individual i on i.entity_no = t.entity_no WHERE t.entity_no = '" . $entity_no . "' AND t.date between '".$date_from."' and '".$date_to."' or t.trace_no = '" . $entity_no . "' AND t.date between '".$date_from."' and '".$date_to."'
 
- WHERE fullname NOT IN (Select org_name from tbl_juridical where entity_no = '". $entity_no ."')
+UNION
+
+SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
+inner join tbl_individual i on i.entity_no = t.trace_no WHERE t.entity_no = '" . $entity_no . "' AND t.date between '".$date_from."' and '".$date_to."' or t.trace_no = '" . $entity_no . "' AND t.date between '".$date_from."' and '".$date_to."'
+
+) dum
+
+WHERE fullname NOT IN (Select org_name from tbl_juridical)
 ORDER BY date DESC, time DESC";
 
 $PHPJasperXML->transferDBtoArray($host, $username, $password, $db_name);
