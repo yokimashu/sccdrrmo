@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('update_individual.php');
+
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -58,7 +58,7 @@ $get_all_brgy_data->execute();
 
 $title = 'VAMOS | Update Individual Form';
 
-
+include('update_individual.php');
 ?>
 
 
@@ -119,7 +119,9 @@ $title = 'VAMOS | Update Individual Form';
 
         <div class="content-wrapper">
             <div class="content-header"></div>
-
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
 
 
             <section class="content">
@@ -158,7 +160,7 @@ $title = 'VAMOS | Update Individual Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
+                                                        <input type="text" class="form-control pull-right" readonly id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
                                                     </div>
                                                 </div>
 
@@ -174,7 +176,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="username" placeholder="User Name" value="<?php echo $get_username; ?>">
+                                                    <input type="text" class="form-control" readonly name="username" placeholder="User Name" value="<?php echo $get_username; ?>">
                                                 </div>
                                             </div></br>
 
@@ -332,9 +334,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
                                             </div>
                                         </div><br>
-                                        <div class="form-group has-feedback col-8">
-                                            <?php echo $alert_msg; ?>
-                                        </div>
+
                                         <div class="box-footer" align="center">
                                             <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
