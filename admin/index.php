@@ -136,26 +136,75 @@ $title = 'VAMOS | Dashboard';
             </div>
           </div>
         </div> -->
+      </section>
 
 
+      <!-- individual content graphs -->
+      <section class="content">
 
         <div class="card">
+          <div class="card-header bg-success text-white">
+            <h4>
+              INDIVIDUAL
+            </h4>
+          </div>
+
           <div class="card-body">
-            <div class="box box-primary ">
-              <div class="box-body">
-                <div id="chart_div" style="padding-left:10px; width: 200; height: 700px"> </div>
+
+            <!-- monthly of individual registered -->
+            <div class="card">
+              <div class="card-body">
+                <div class="box box-primary ">
+                  <div class="box-body">
+                    <div id="chart_div2" style="padding-left:10px; width: 200; height: 700px"> </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+
+            <!-- registered individual by barangay -->
+            <div class="card">
+              <div class="card-body">
+                <div class="box box-primary ">
+                  <div class="box-body">
+                    <div id="chart_div" style="padding-left:10px; width: 200; height: 750px"> </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+
+
           </div>
         </div>
+      </section>
+
+      <br>
 
 
+      <!-- juridical content graphs -->
+      <section class="content">
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            <h4>
+              JURIDICAL
+            </h4>
+          </div>
+
+          <div class="card-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="box box-primary ">
+                  <div class="box-body">
+                    <div id="chart_div3" style="padding-left:10px; width: 200; height: 700px"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-
-
-
-
+          </div>
+        </div>
 
       </section>
 
@@ -173,8 +222,7 @@ $title = 'VAMOS | Dashboard';
 
 
   <!-- jQuery -->
-  <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
+  <script src=" ../plugins/jquery/jquery.min.js"> </script> <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- datepicker -->
   <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -268,11 +316,11 @@ $title = 'VAMOS | Dashboard';
       google.charts.load('current', {
         packages: ['corechart', 'bar']
       });
-      google.charts.setOnLoadCallback(drawMaterial);
+      google.charts.setOnLoadCallback(drawMaterial1);
 
-      function drawMaterial() {
+      function drawMaterial1() {
         var data = google.visualization.arrayToDataTable([
-          ['total', 'BARANGAY I', 'BARANGAY II', 'BARANGAY III', 'BARANGAY IV', 'BARANGAY V', 'BARANGAY VI', 'BAGONBON', 'BULUANGAN', 'CODCOD', 'ERMITA', 'GUADALUPE', 'NATABAN', 'PALAMPAS', 'PROSPERIDAD', 'PUNAO', 'QUEZON', 'RIZAL', 'SAN JUAN'],
+          ['total', 'BARANGAY I', 'BARANGAY II', 'BARANGAY III', 'BARANGAY IV', 'BARANGAY V', 'BARANGAY VI', 'BAGONBON', 'BULUANGAN', 'CODCOD', 'ERMITA', 'GUADALUPE', 'NATABAN', 'PALAMPAS', 'PROSPERIDAD', 'PUNAO', 'QUEZON', 'RIZAL', 'SAN JUAN', 'OTHERS'],
 
           <?php
           $GET_BRGY = "SELECT DISTINCT
@@ -293,7 +341,8 @@ $title = 'VAMOS | Dashboard';
                   (SELECT COUNT(barangay) FROM tbl_individual WHERE barangay = 'PUNAO' ) AS PUNAO,
                   (SELECT COUNT(barangay) FROM tbl_individual WHERE barangay = 'QUEZON' ) AS QUEZON,
                   (SELECT COUNT(barangay) FROM tbl_individual WHERE barangay = 'RIZAL' ) AS RIZAL,
-                  (SELECT COUNT(barangay) FROM tbl_individual WHERE barangay = 'SAN JUAN' ) AS SANJUAN
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE barangay = 'SAN JUAN' ) AS SANJUAN,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE barangay = 'Others' ) AS OTHERS
              
                   FROM tbl_individual GROUP BY barangay;
                   ";
@@ -319,6 +368,7 @@ $title = 'VAMOS | Dashboard';
             $quezon = $get_brgy['QUEZON'];
             $rizal = $get_brgy['RIZAL'];
             $sanjuan = $get_brgy['SANJUAN'];
+            $others = $get_brgy['OTHERS'];
             $totalcases = $get_total['total'];
 
 
@@ -326,7 +376,7 @@ $title = 'VAMOS | Dashboard';
             echo "['Based on Barangay'," . $brgy1 .  "," . $brgy2 . "," . $brgy3 . "," . $brgy4 . ",
                     " . $brgy5 . "," . $brgy6 . "," . $bagonbon . "," . $buluangan . "," . $codcod . "
                     ," . $ermita . "," . $guadalupe . "," . $nataban . "," . $palampas . "," . $prosperidad . "
-                    ," . $punao . "," . $quezon . "," . $rizal . "," . $sanjuan . "]";
+                    ," . $punao . "," . $quezon . "," . $rizal . "," . $sanjuan . "," . $others . "]";
           }
 
 
@@ -350,6 +400,163 @@ $title = 'VAMOS | Dashboard';
           bars: 'vertical'
         };
         var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+        materialChart.draw(data, materialOptions);
+      }
+
+
+      google.charts.load('current', {
+        packages: ['corechart', 'bar']
+      });
+      google.charts.setOnLoadCallback(drawMaterial3);
+
+      function drawMaterial3() {
+        var data = google.visualization.arrayToDataTable([
+          ['total', 'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'],
+
+          <?php
+          $GET_MONTH = "SELECT DISTINCT
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-01-01' AND '2020-01-31') AS JANUARY,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-02-01' AND '2020-02-31') AS FEBRUARY,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-03-01' AND '2020-03-31') AS MARCH,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-04-01' AND '2020-04-31') AS APRIL,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-05-01' AND '2020-05-31') AS MAY,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-06-01' AND '2020-06-31') AS JUNE,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-07-01' AND '2020-07-31') AS JULY,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-08-01' AND '2020-08-31') AS AUGUST,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-09-01' AND '2020-09-31') AS SEPTEMBER,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-10-01' AND '2020-10-31') AS OCTOBER,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-11-01' AND '2020-11-31') AS NOVEMBER,
+                  (SELECT COUNT(barangay) FROM tbl_individual WHERE date_register BETWEEN '2020-12-01' AND '2020-12-31') AS DECEMBER
+                  
+                 
+             
+                  FROM tbl_individual GROUP BY date_register;
+                  ";
+          $prepare_month = $con->prepare($GET_MONTH);
+          $prepare_month->execute();
+          while ($get_month = $prepare_month->fetch(PDO::FETCH_ASSOC)) {
+
+            $jan = $get_month['JANUARY'];
+            $feb = $get_month['FEBRUARY'];
+            $march = $get_month['MARCH'];
+            $april = $get_month['APRIL'];
+            $may = $get_month['MAY'];
+            $june = $get_month['JUNE'];
+            $july = $get_month['JULY'];
+            $august = $get_month['AUGUST'];
+            $september = $get_month['SEPTEMBER'];
+            $october = $get_month['OCTOBER'];
+            $november = $get_month['NOVEMBER'];
+            $december = $get_month['DECEMBER'];
+
+
+
+
+            echo "['Based on Month'," . $jan .  "," . $feb . "," . $march . "," . $april . ",
+                    " . $may . "," . $june . "," . $july . "," . $august . "," . $september . "
+                    ," . $october . "," . $november . "," . $december . "]";
+          }
+
+
+
+          ?>
+
+
+        ]);
+
+        var materialOptions = {
+          chart: {
+            title: 'Monthly Registered Individual ',
+          },
+          hAxis: {
+            title: 'Total Cases',
+            minValue: 0,
+          },
+          vAxis: {
+            title: 'Month Of'
+          },
+          bars: 'vertical'
+        };
+        var materialChart = new google.charts.Bar(document.getElementById('chart_div2'));
+        materialChart.draw(data, materialOptions);
+      }
+
+
+
+
+
+      google.charts.load('current', {
+        packages: ['corechart', 'bar']
+      });
+      google.charts.setOnLoadCallback(drawMaterial);
+
+
+      function drawMaterial() {
+        var data = google.visualization.arrayToDataTable([
+          ['total', 'GOVERNMENT', 'CORPORATION', 'COOPERATIVE', 'ASSOCIATION', 'RELIGIOUS', 'FOUNDATION', 'PARTNERSHIP', 'SCHOOL', 'NGO', 'BUSINESS', 'HOUSEHOLD'],
+
+          <?php
+          $GET_ORGTYPE = "SELECT DISTINCT
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Corporation') AS CORPORATION,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Cooperative' ) AS COOPERATIVE,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Association' ) AS ASSOCIATION,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Religious' ) AS RELIGIOUS,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Foundation' ) AS FOUNDATION,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Partnership' ) AS PARTNERSHIP,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Government' ) AS GOVERNMENT,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'School' ) AS SCHOOL,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'NGO' ) AS NGO,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Business' ) AS BUSINESS,
+                  (SELECT COUNT(org_type) FROM tbl_juridical WHERE org_type = 'Household' ) AS HOUSEHOLD
+    
+             
+                  FROM tbl_juridical GROUP BY org_type;
+                  ";
+          $prepare_orgtype = $con->prepare($GET_ORGTYPE);
+          $prepare_orgtype->execute();
+          while ($get_orgtype = $prepare_orgtype->fetch(PDO::FETCH_ASSOC)) {
+
+            $CORPORATION = $get_orgtype['CORPORATION'];
+            $COOPERATIVE = $get_orgtype['COOPERATIVE'];
+            $ASSOCIATION = $get_orgtype['ASSOCIATION'];
+            $RELIGIOUS = $get_orgtype['RELIGIOUS'];
+            $FOUNDATION = $get_orgtype['FOUNDATION'];
+            $PARTNERSHIP = $get_orgtype['PARTNERSHIP'];
+            $GOVERNMENT = $get_orgtype['GOVERNMENT'];
+            $SCHOOL = $get_orgtype['SCHOOL'];
+            $NGO = $get_orgtype['NGO'];
+            $BUSINESS = $get_orgtype['BUSINESS'];
+            $HOUSEHOLD = $get_orgtype['HOUSEHOLD'];
+
+
+
+
+            echo "['Based on Juridical'," . $CORPORATION .  "," . $COOPERATIVE . "," . $ASSOCIATION . "," . $RELIGIOUS . ",
+                    " . $FOUNDATION . "," . $PARTNERSHIP . "," . $GOVERNMENT . "," . $SCHOOL . "," . $NGO . "
+                    ," . $BUSINESS . "," . $HOUSEHOLD . "]";
+          }
+
+
+
+          ?>
+
+
+        ]);
+
+        var materialOptions = {
+          chart: {
+            title: 'Registered Juridical',
+          },
+          hAxis: {
+            title: 'Total Cases',
+            minValue: 0,
+          },
+          vAxis: {
+            title: 'JURIDICAL'
+          },
+          bars: 'vertical'
+        };
+        var materialChart = new google.charts.Bar(document.getElementById('chart_div3'));
         materialChart.draw(data, materialOptions);
       }
 
