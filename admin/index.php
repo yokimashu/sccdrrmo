@@ -169,16 +169,6 @@ $title = 'VAMOS | Dashboard';
 
           <div class="card-body">
 
-            <!-- monthly of individual registered -->
-            <div class="card">
-              <div class="card-body">
-                <div class="box box-primary ">
-                  <div class="box-body">
-                    <div id="chart_div2" style="padding-left:10px; width: 200; height: 700px"> </div>
-                  </div>
-                </div>
-              </div>
-            </div><br>
 
             <!-- registered individual by barangay -->
             <div class="card">
@@ -189,7 +179,21 @@ $title = 'VAMOS | Dashboard';
                   </div>
                 </div>
               </div>
+            </div><br>
+
+
+            <!-- monthly of individual registered -->
+            <div class="card">
+              <div class="card-body">
+                <div class="box box-primary ">
+                  <div class="box-body">
+                    <div id="chart_div2" style="padding-left:10px; width: 200; height: 700px"> </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+
 
 
 
