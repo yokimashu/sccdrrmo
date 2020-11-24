@@ -20,6 +20,16 @@ $get_all_juridical_data->execute();
 
 
 
+$get_all_seatrans_sql = "SELECT * FROM tbl_seatranspo ";
+$get_all_seatrans_data = $con->prepare($get_all_seatrans_sql);
+$get_all_seatrans_data->execute();
+
+$get_all_landtrans_sql = "SELECT * FROM tbl_landtranspo ";
+$get_all_landtrans_data = $con->prepare($get_all_landtrans_sql);
+$get_all_landtrans_data->execute();
+
+
+
 $title = 'VAMOS | Dashboard';
 ?>
 
@@ -53,7 +63,7 @@ $title = 'VAMOS | Dashboard';
 
           <div class="row">
 
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-12 col-sm-6 col-md-2">
               <div class="info-box mb-3">
                 <a href="list_pum.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
                 <div class="info-box-content">
@@ -65,7 +75,7 @@ $title = 'VAMOS | Dashboard';
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-12 col-sm-6 col-md-2">
               <div class="info-box mb-3">
                 <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
                 <div class="info-box-content">
@@ -77,25 +87,33 @@ $title = 'VAMOS | Dashboard';
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-12 col-sm-6 col-md-2">
               <div class="info-box mb-3">
                 <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
                 <div class="info-box-content">
-                  <span class="info-box-text">Transportation</span>
+                  <span class="info-box-text">Land Trans</span>
                   <span class="info-box-number">
-                    5
-                    <?php echo "<pre";
-                    echo print_r($_SESSION['user_type']);
-                    echo "</pre>";
-                    ?>
+                    <?php echo $get_all_landtrans_data->rowCount() ?>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-2">
+              <div class="info-box mb-3">
+                <a class="info-box-icon bg-orange elevation-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><i class="fa fa-male"></i></span></a>
+                <div class="info-box-content">
+                  <span class="info-box-text">Sea Trans</span>
+                  <span class="info-box-number">
+                    <?php echo $get_all_seatrans_data->rowCount() ?>
                   </span>
                 </div>
               </div>
             </div>
 
             <div class="clearfix hidden-md-up"></div>
-
-            <div class="col-12 col-sm-6 col-md-3">
+            <!-- 
+            <div class="col-12 col-sm-6 col-md-2">
               <div class="info-box mb-3">
                 <a href="#" class="info-box-icon bg-danger elevation-1"><span><i class="fa fa-male"></i></span></a>
                 <div class="info-box-content">
@@ -105,7 +123,7 @@ $title = 'VAMOS | Dashboard';
                   </span>
                 </div>
               </div>
-            </div>
+            </div> -->
 
 
 
