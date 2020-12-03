@@ -371,7 +371,7 @@ $get_all_health_data->execute();
      autoclose: true
    });
 
-   $("#btnSubbmit").attr("disabled", true);
+   $("#btnSubmit").attr("disabled", true);
    $(".select2").attr("disabled", true);
 
    $(document).ready(function(){

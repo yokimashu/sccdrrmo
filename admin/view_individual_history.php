@@ -171,53 +171,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
                     </div>
                     <br> -->
 
-                    <div class="row">
-                      <div class="col-md-2" style="text-align: right;padding-top: 5px;">
-                        <label>From:</label>
-                      </div>
-                      <div class="col-md-2">
-
-                        <div class="form-group">
-                          <div class="input-group date" data-provide="datepicker">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" name="date_from" placeholder="Date Created" value="<?php echo
-                                                                                                                                                    $now->format('m/d/Y');; ?>">
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                        <label>To:</label>
-                      </div>
-                      <div class="col-md-2">
-
-                        <div class="form-group">
-                          <div class="input-group date" data-provide="datepicker">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" name="date_to" placeholder="Date Created" value="<?php echo
-                                                                                                                                                  $now->format('m/d/Y');; ?>">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-1"></div>
-                      <div class="col-md-3">
-                        <input type="submit" onclick="this.form.submit(); this.disabled=true;" name="update_print" class="btn btn-success" value="FILTER">
-                      </div>
-
-
-
-
-
-
-                    </div>
-
-
+      
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">

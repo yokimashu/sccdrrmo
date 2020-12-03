@@ -127,12 +127,12 @@ $get_all_juridical_data->execute();
 
 
               <div class="col-md-10" hidden>
-                <input type="text" readonly class="form-control" name="entity_no" placeholder="entity_no" value="ID: <?php echo $entity_no; ?>" required>
-                <input type="text" readonly class="form-control" name="org_name" placeholder="fullname" value="ORGANIZATIONAL NAME: <?php echo $org_name; ?>" required>
-                <input type="text" readonly class="form-control" name="business_nature" placeholder="business_nature" value="BUSINESS NATURE: <?php echo $business_nature; ?> " required>
-                <input type="text" readonly class="form-control" name="street" placeholder="street" value="ADDRESS: <?php echo $street; ?>" required>
-                <input type="text" readonly class="form-control" name="barangay" placeholder="barangay" value="BARANGAY: <?php echo $barangay; ?>" required>
-                <input type="text" readonly class="form-control" name="mobile_no" placeholder="mobile_no" value="CONTACT No.: <?php echo $mobile_no; ?>" required>
+                <input type="text" readonly class="form-control" name="entity_no" id = "entity_no" placeholder="entity_no" value=" <?php echo $entity_no; ?>" required>
+                <input type="text" readonly class="form-control" name="org_name" id = "org_name" placeholder="fullname" value="<?php echo $org_name; ?>" required>
+                <input type="text" readonly class="form-control" name="business_nature" id = "business_nature" placeholder="business_nature" value="<?php echo $business_nature; ?> " required>
+                <input type="text" readonly class="form-control" name="street" placeholder="street" id ="street" value=" <?php echo $street; ?>" required>
+                <input type="text" readonly class="form-control" name="barangay" id = "barangay" placeholder="barangay" value="<?php echo $barangay; ?>" required>
+                <input type="text" readonly class="form-control" name="mobile_no" id = "mobile_no" placeholder="mobile_no" value=" <?php echo $mobile_no; ?>" required>
               </div>
 
 
@@ -150,7 +150,26 @@ $get_all_juridical_data->execute();
             <div class="box box-primary">
               <form role="form" method="get" action="">
                 <div class="box-body">
+                <div class = "row">
+            <div class = "col-12"style = "margin-bottom:30px;padding:auto;">
+            <div class="input-group date">
+                           <label style="padding-right:10px;padding-left: 10px">From:  </label> 
+                             <div  style = "padding-right:10px" class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                             </div>
+                    <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"  value = "<?php echo $date_from;?>">
 
+                    <label style="padding-right:10px">To:</label>
+                            <div style = "padding-right:10px" class="input-group-addon">
+                                 <i class="fa fa-calendar"></i>
+                            </div>
+           <input type="text" style = "margin-right:50px;" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $date_to;?>">
+      
+          <button id = "view_person_history" onClick = "loadhistory()" class = "btn btn-success"><i class = "fa fa-search"></i></button> 
+          <input type = "hidden" id = "person_entity" value= "<?php echo $entity_no;?>">
+              </div>
+            </div>
+            </div>
                   <div class="table-responsive">
                     <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
@@ -162,7 +181,7 @@ $get_all_juridical_data->execute();
 
                       <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                         <thead align="center">
-                          <tr style="font-size: 1.10rem">
+              
 
 
 
@@ -174,29 +193,10 @@ $get_all_juridical_data->execute();
 
 
 
-                          </tr>
+                   
                         </thead>
-                        <tbody>
-                          <?php while ($list_juridical = $get_all_juridical_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                            <tr align="center">
-
-                              <td><?php echo $list_juridical['entity_no'];  ?></td>
-                              <td><?php echo $list_juridical['date'];
-                                  echo " / ";
-                                  echo $list_juridical['time'];    ?></td>
-
-                              <td><?php echo $list_juridical['fullname'];  ?></td>
-                              <td><?php echo $list_juridical['details'];  ?></td>
-                              <td><?php echo $list_juridical['mobile_no'];  ?></td>
-
-
-
-
-
-
-                             
-                            </tr>
-                          <?php } ?>
+                        <tbody id = "history_table">
+                         
                         </tbody>
                       </table>
 
@@ -347,14 +347,38 @@ $get_all_juridical_data->execute();
     // });
 
 
-    $(document).ready(function() {
-      $('#print').click(function() {
-        var entity_no = $('#entity_no').val();
-        console.log(entity_no);
-
-        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?entity_no=" + entity_no, '_parent');
-      })
+   
+      $('#printlink').click(function() {
+      var entity_no = $('#person_entity').val();
+        var date_from  = $('#dtefrom').val();
+        var date_to  = $('#dteto').val();
+        var fullname  = $('#org_name').val();
+        var busNature  = $('#business_nature').val();
+        var street  = $('#street').val();
+        var mobile_no  = $('#mobile_no').val();
+        console.log(entity_no); 
+        var param = "entity_no="+entity_no+"&fullname="+fullname+"&street="+street+"&business_nature="+busNature+"&mobile_no="+mobile_no+"&datefrom="+date_from+"&dateto="+date_to+"";
+        $('#printlink').attr("href", "../plugins/jasperreport/juridical_history.php?" + param, '_parent');
     });
+
+    function loadhistory(){
+       event.preventDefault();
+    var entity_no  = $('#person_entity').val();
+      var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
+
+    $('#history_table').load("load_juridical_history.php",{
+    entity_no:  entity_no,
+    date_from :  date_from,
+    date_to :    date_to},
+    function(response, status, xhr) {
+  if (status == "error") {
+      alert(msg + xhr.status + " " + xhr.statusText);
+      console.log(msg + xhr.status + " " + xhr.statusText);
+      console.log("xhr=" + xhr.responseText );
+    }
+    });
+    }
   </script>
 </body>
 
