@@ -255,6 +255,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
         </div> <br>
 
+
         <div>
 
           <?php echo $covid_case; ?>
@@ -272,23 +273,37 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
         </div> <br>
 
+
+
+        <?php echo $label_tracer; ?>
+
+        <?php echo $infection; ?>
+        <?php echo $contacts; ?>
+        <?php echo  $add_contact_case ?>
+
+
+
+
+
+
         <div>
           <label id="label1" style="font-size:18px; ">
             &nbsp;
-            <i class="nav-icon fa fa-folder icons "></i>
+            <i class="fas fa-print nav-icon icons"></i>
             &nbsp;
-            TRACERS FORM
+            REPORT
           </label>
+          <li class="nav-item">
+            <a href="print_individual" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-qrcode icons nav-icon"></i>
+              <p> &nbsp; Print QR</p>
+            </a>
+          </li>
 
 
-          <?php echo $infection; ?>
-          <?php echo $contacts; ?>
-          <?php echo  $positive_form ?>
 
-
-
-        </div> <br>
-
+        </div><br>
 
 
         <div>
@@ -319,6 +334,9 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
 
 
+
+
+
           <li class="nav-item">
             <a href="how_to_register" class="nav-link sidebar-link">
               &nbsp;
@@ -327,14 +345,31 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="scan_qrcode" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-qrcode icons nav-icon"></i>
+              <p> &nbsp; Scan QR Code</p>
+            </a>
+          </li>
+
 
           <li class="nav-item">
             <a href="privacy_terms" class="nav-link sidebar-link">
               &nbsp;
-              <i class="fas fa-shield-alt nav-icon icons"></i>
-              <p> &nbsp; Data Policy </p>
+              <i class="fas fa-database nav-icon icons"></i>
+              <p> &nbsp; Privacy Policy </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="print_individual" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-qrcode icons nav-icon"></i>
+              <p> &nbsp; Print</p>
+            </a>
+          </li>
+          
 
 
         </div> <br>
@@ -342,6 +377,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
         <div>
+
 
           <?php echo $settings; ?>
           <?php echo $mobile_alert; ?>
