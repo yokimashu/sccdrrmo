@@ -25,11 +25,7 @@
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
-
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
-
-    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
 
     <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="../plugins/datatables/jquery.dataTables.css"> -->
@@ -41,13 +37,6 @@
             width: 320px;
             height: 240px;
             border: 1px solid black;
-        }
-
-
-        #photo {
-            display: block;
-            position: relative;
-            margin-top: 40px;
         }
     </style>
 
