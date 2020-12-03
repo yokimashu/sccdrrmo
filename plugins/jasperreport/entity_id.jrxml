@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.8.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
-<!-- 2020-09-29T20:22:14 -->
+<!-- 2020-11-13T13:34:12 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entity_id" language="javascript" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8b35d81-fbfe-4639-a04a-fd350f424dec">
 	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
@@ -138,7 +138,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="400">
+		<band height="462">
 			<rectangle>
 				<reportElement x="14" y="13" width="171" height="251" uuid="5c939d51-0462-4833-90cd-b88ff5b3f20d"/>
 				<graphicElement>
@@ -152,20 +152,12 @@
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="25" y="72" width="148" height="20" uuid="94c9547e-ba33-4ff0-8f4d-f30e024e0443"/>
+				<reportElement x="25" y="66" width="148" height="20" uuid="94c9547e-ba33-4ff0-8f4d-f30e024e0443"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="90" y="90" width="87" height="80" uuid="9c39f67b-a76a-46e3-bd9f-90b01e310744">
-					<property name="com.jaspersoft.studio.unit.margin" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" margin="1" qrVersion="2">
-					<jr:codeExpression><![CDATA[$F{entity_no}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
 			<textField isBlankWhenNull="true">
 				<reportElement x="24" y="180" width="149" height="20" uuid="e772f05b-2c4b-4061-9822-8221b8f9c0a1"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="2" rightPadding="0"/>
@@ -180,16 +172,6 @@
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<image onErrorType="Blank">
-				<reportElement x="30" y="98" width="70" height="68" uuid="c19430bc-26de-485a-9bbf-4418f28ccd3e"/>
-				<box>
-					<topPen lineWidth="3.0"/>
-					<leftPen lineWidth="3.0"/>
-					<bottomPen lineWidth="3.0"/>
-					<rightPen lineWidth="3.0"/>
-				</box>
-				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/images/"+$F{photo}+""]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="25" y="32" width="148" height="20" uuid="db144fa5-c7f7-4bd6-8b35-3a1ad5a4b179"/>
 				<textElement textAlignment="Center">
@@ -211,38 +193,56 @@
 				</textElement>
 				<text><![CDATA[CITY OF SAN CARLOS]]></text>
 			</staticText>
-			<image>
-				<reportElement x="28" y="32" width="25" height="25" uuid="7b9088de-8242-4417-96e0-5989bd95394a"/>
-				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/LOGO-png.png"]]></imageExpression>
-			</image>
-			<textField>
-				<reportElement x="24" y="200" width="149" height="12" uuid="a65d562e-c889-4c38-b64c-753ed943457e"/>
-				<textElement textAlignment="Center">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="25" y="209" width="148" height="24" isPrintWhenDetailOverflows="true" uuid="a65d562e-c889-4c38-b64c-753ed943457e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8" isUnderline="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{street}+",  "+$F{barangay}+" "]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="25" y="209" width="148" height="20" uuid="54298da8-bce8-4eb9-9b6f-ae2eaa23e10b"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="25" y="240" width="148" height="16" uuid="45d88d26-c42f-4f1f-afab-a7fb2b6a49ca"/>
 				<textElement textAlignment="Center">
-					<font size="8" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[Address]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="25" y="224" width="148" height="19" uuid="45d88d26-c42f-4f1f-afab-a7fb2b6a49ca"/>
-				<textElement textAlignment="Center">
-					<font isUnderline="true"/>
+					<font size="8" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mobile_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="25" y="234" width="148" height="20" uuid="54f6abee-a57e-4908-866e-46edabf22a9b"/>
+				<reportElement x="25" y="231" width="148" height="20" uuid="54f6abee-a57e-4908-866e-46edabf22a9b"/>
 				<textElement textAlignment="Center">
 					<font size="8" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Contact No.]]></text>
+				<text><![CDATA[Contact No.:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="25" y="200" width="148" height="20" uuid="6ca070f0-e65e-4741-9fd3-957e7e1b6c0b"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="90" y="90" width="87" height="80" uuid="0f4872a7-2acd-4432-88af-61266df78355">
+					<property name="com.jaspersoft.studio.unit.margin" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" margin="1" qrVersion="2">
+					<jr:codeExpression><![CDATA[$F{entity_no}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<image scaleImage="RetainShape" rotation="None" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="36" y="90" width="60" height="76" uuid="ea6ff3d5-3b96-4c48-b631-792ef2bc48f1"/>
+				<box>
+					<topPen lineWidth="3.0"/>
+					<leftPen lineWidth="3.0"/>
+					<bottomPen lineWidth="3.0"/>
+					<rightPen lineWidth="3.0"/>
+				</box>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/images/"+$F{photo}+""]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="28" y="32" width="25" height="25" uuid="a6f4c163-0b5d-4dbd-8afd-54f1dc030c5d"/>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/LOGO-png.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

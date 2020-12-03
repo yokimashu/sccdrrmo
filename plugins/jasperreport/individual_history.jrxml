@@ -12,7 +12,7 @@
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="475"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="fullname" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -214,7 +214,7 @@ ORDER BY date DESC, time DESC]]>
 				<text><![CDATA[DATE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="246" y="0" width="297" height="23" uuid="5f82d8a2-e22e-4588-bc47-2a6b68ff96cc"/>
+				<reportElement x="246" y="0" width="341" height="23" uuid="5f82d8a2-e22e-4588-bc47-2a6b68ff96cc"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -227,7 +227,7 @@ ORDER BY date DESC, time DESC]]>
 				<text><![CDATA[NAME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="543" y="0" width="252" height="23" uuid="9cf6c9c2-3245-4707-91bf-59f9f19c8ae9"/>
+				<reportElement x="587" y="0" width="208" height="23" uuid="9cf6c9c2-3245-4707-91bf-59f9f19c8ae9"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -328,7 +328,7 @@ ORDER BY date DESC, time DESC]]>
 				<textFieldExpression><![CDATA[$F{trace_no}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement isPrintRepeatedValues="false" x="246" y="0" width="297" height="22" isPrintWhenDetailOverflows="true" uuid="5094cfbe-ff80-41fd-805b-1c1ed59c7f43">
+				<reportElement isPrintRepeatedValues="false" x="246" y="0" width="341" height="22" isPrintWhenDetailOverflows="true" uuid="5094cfbe-ff80-41fd-805b-1c1ed59c7f43">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box topPadding="0">
@@ -343,7 +343,7 @@ ORDER BY date DESC, time DESC]]>
 				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="543" y="0" width="252" height="22" isPrintWhenDetailOverflows="true" uuid="af5705d0-05b5-470f-b067-e56c50ca6efd">
+				<reportElement positionType="Float" x="587" y="0" width="208" height="22" isPrintWhenDetailOverflows="true" uuid="af5705d0-05b5-470f-b067-e56c50ca6efd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9662ce9-271e-471e-8309-5e38ab72ead1"/>
 				</reportElement>
 				<box>
