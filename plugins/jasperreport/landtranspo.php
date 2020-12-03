@@ -14,7 +14,7 @@ include_once("PHPJasperXML.inc.php");
 $host = "127.0.0.1";
 $db_name = "sccdrrmo";
 $username = "root";
-$password = "0Fd8xWc1anuE";
+$password = "I0nvNUWNXoYI";
 $entity_no = $_GET['entity_no'];
 
 $PHPJasperXML = new PHPJasperXML();

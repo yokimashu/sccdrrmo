@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('update_individual.php');
+
 
 session_start();
 $user_id = $_SESSION['id'];
@@ -49,7 +49,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-$check_update_photo = $get_photo;
+// $check_update_photo = $get_photo;
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
 $get_all_brgy_data->execute();
@@ -58,7 +58,7 @@ $get_all_brgy_data->execute();
 
 $title = 'VAMOS | Update Individual Form';
 
-
+include('update_individual.php');
 ?>
 
 
@@ -119,7 +119,9 @@ $title = 'VAMOS | Update Individual Form';
 
         <div class="content-wrapper">
             <div class="content-header"></div>
-
+            <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
 
 
             <section class="content">
@@ -136,15 +138,20 @@ $title = 'VAMOS | Update Individual Form';
                             <div class="box-body">
                                 <div class="row">
 
-                                    <div class="m-1 pb-1"> </div>
+                                    <div class="m-3 pb-3"> </div>
                                     <div class="card col-md-6">
 
                                         <div class=" card-header">
                                             <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
 
+
+
                                         <div class="box-body">
                                             <br>
+
+
+
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-lg-4">
@@ -153,7 +160,7 @@ $title = 'VAMOS | Update Individual Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
+                                                        <input type="text" class="form-control pull-right" readonly id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
                                                     </div>
                                                 </div>
 
@@ -169,7 +176,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="username" placeholder="User Name" value="<?php echo $get_username; ?>">
+                                                    <input type="text" class="form-control" readonly name="username" placeholder="User Name" value="<?php echo $get_username; ?>">
                                                 </div>
                                             </div></br>
 
@@ -189,7 +196,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
-                                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="<?php echo $get_firstname; ?>">
+                                                    <input type="text" class="form-control" style=" text-transform: uppercase;" name="firstname" placeholder="First Name" value="<?php echo $get_firstname; ?>">
                                                 </div>
                                             </div></br>
 
@@ -241,7 +248,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street; ?>">
+                                                    <input type="text" class="form-control" style=" text-transform: uppercase;" name="street" placeholder="Street / Lot # / Block #" value="<?php echo $get_street; ?>">
                                                 </div>
                                             </div><br>
 
@@ -263,7 +270,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="city" placeholder="City" value="<?php echo $get_city; ?>">
+                                                    <input type="text" class="form-control" name="city" style=" text-transform: uppercase;" placeholder="City" value="<?php echo $get_city; ?>">
                                                 </div>
                                             </div><br>
 
@@ -271,7 +278,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" class="form-control" name="province" placeholder="Province" value="<?php echo $get_province; ?>">
+                                                    <input type="text" class="form-control" style=" text-transform: uppercase;" name="province" placeholder="Province" value="<?php echo $get_province; ?>">
                                                 </div>
                                             </div><br>
 
@@ -281,31 +288,20 @@ $title = 'VAMOS | Update Individual Form';
 
                                     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+
                                     <div class="card col-md-5">
                                         <div class="card-header">
                                             <h6><strong> ID PHOTO </strong></h6>
                                         </div>
 
+
                                         <div class="box-body">
                                             <br>
-                                            <?php include('photo_template.php'); ?>
+
+                                            <?php include('template_individual.php'); ?>
+
                                             <!-- </form> -->
                                         </div>
-
-                                        <div class="row" align="center">
-                                            <!-- <form method="POST" action="storeImage.php"> -->
-
-                                            <div class="col-md-3"></div>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <div>
-
-                                                <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-                                                <!-- <input type="button" class="btn btn-primary" value="CAPTURE" onClick="take_snapshot()">
-                                                    <input type="button" class="btn btn-danger" value="IMPORT" onClick="take_snapshot()"> -->
-
-                                            </div>
-                                            <!-- </form> -->
-                                        </div><br>
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
@@ -338,9 +334,7 @@ $title = 'VAMOS | Update Individual Form';
                                                 <input type="text" class="form-control" name="email" placeholder="Email Address" value="<?php echo $get_email; ?>">
                                             </div>
                                         </div><br>
-                                        <div class="form-group has-feedback col-8">
-                                            <?php echo $alert_msg; ?>
-                                        </div>
+
                                         <div class="box-footer" align="center">
                                             <button type="submit" <?php echo $btnSave; ?> name="update_individual" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
@@ -348,72 +342,33 @@ $title = 'VAMOS | Update Individual Form';
                                                 <button type="button" name="cancel" class="btn btn-danger">
                                                     <i class="fa fa-close fa-fw"> </i> </button>
                                             </a>
-                                            <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                            <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                 <button type="button" name="print" class="btn btn-primary">
                                                     <i class="nav-icon fa fa-print"> </i> </button>
-                                            </a>
-                                        </div>
+                                            </a> -->
+                                        </div><br><br>
 
 
 
                                     </div> <br><br>
                                 </div>
                             </div>
+
+                        </form>
                     </div>
-                    </form>
                 </div>
+            </section>
+            <br><br>
         </div>
-        </section>
-    </div>
 
 
-    <?php include('footer.php') ?>
+        <?php include('footer.php') ?>
 
     </div>
 
 
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- datepicker -->
-    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-    <!-- CK Editor -->
-    <!-- <script src="../../plugins/ckeditor/ckeditor.js"></script> -->
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.js"></script>
-    <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Select2 -->
-
-    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
-    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <!-- <script type="text/javascript" src="../plugins/cameracapture/photo_template.js"></script> -->
-    <!-- <script src="../plugins/webcamjs/webcam.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script> -->
-    <!-- textarea wysihtml style -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <!-- <script src="jpeg_camera/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     -->
-
-    <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-
-    <script src="../plugins/select2/select2.js"></script>
-    <script src="../plugins/select2/select2.full.min.js"></script>
+    <?php include('scripts.php') ?>
 
 
     <script type="text/javascript">

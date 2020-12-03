@@ -2,7 +2,9 @@
 
 date_default_timezone_set('Asia/Manila');
 //include('import_pdf.php');
+
 $alert_msg = '';
+
 
 if (isset($_POST['insert_juridical'])) {
 
