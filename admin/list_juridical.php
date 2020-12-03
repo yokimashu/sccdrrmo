@@ -83,7 +83,8 @@ $get_all_juridical_data->execute();
                         <tr style="font-size: 1.10rem">
                           <th> ID </th>
                           <th> Username</th>
-                          <th> Full Name </th>
+                          <th> Establishment </th>
+                          <th> Org Type</th>
                           <th> Options </th>
 
                         </tr>
@@ -94,6 +95,7 @@ $get_all_juridical_data->execute();
                             <td><?php echo $list_juridical['entity_no'];  ?></td>
                             <td><?php echo $list_juridical['username'];  ?></td>
                             <td><?php echo $list_juridical['org_name']; ?> </td>
+                            <td><?php echo $list_juridical['org_type']; ?> </td>
                             <td>
 
                               <a class="btn btn-warning btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
@@ -105,12 +107,24 @@ $get_all_juridical_data->execute();
                               ?>
                                 <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
                                   <i class="fa fa-suitcase"></i></a>
+
+
                               <?php } ?>
 
 
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
+
+                              <!-- <?php if ($_SESSION['user_type'] == 1) {
+                                      //restrict users to view history
+                                    ?>
+                                <button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
+
+
+                              <?php } ?> -->
+
+
                               &nbsp;
 
                             </td>
@@ -127,6 +141,7 @@ $get_all_juridical_data->execute();
         </div>
 
       </section>
+      <br>
 
 
 

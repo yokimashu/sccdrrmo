@@ -255,7 +255,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
         </div> <br>
 
-        
 
         <div>
 
@@ -286,6 +285,25 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
+
+        <div>
+          <label id="label1" style="font-size:18px; ">
+            &nbsp;
+            <i class="fas fa-print nav-icon icons"></i>
+            &nbsp;
+            REPORT
+          </label>
+          <li class="nav-item">
+            <a href="print_individual" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-qrcode icons nav-icon"></i>
+              <p> &nbsp; Print QR</p>
+            </a>
+          </li>
+
+
+
+        </div><br>
 
 
         <div>
@@ -360,7 +378,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
         <div>
 
-      
 
           <?php echo $settings; ?>
           <?php echo $mobile_alert; ?>

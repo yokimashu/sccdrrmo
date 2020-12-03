@@ -4,7 +4,7 @@ $alert_msg = '';
 include('../config/db_config.php');
 if (isset($_POST['update_individual'])) {
 
-
+  
 
     $get_date_register          = date('Y-m-d', strtotime($_POST['date_register']));
     $get_entity_no              = $_POST['entity_no'];
@@ -22,10 +22,10 @@ if (isset($_POST['update_individual'])) {
     $get_telephone_no           = $_POST['telephone_no'];
     $get_email                  = $_POST['email'];
     $img                        = $_POST['image'];
-  
+
     $alert_msg = '';
     $alert_msg1 = '';
- 
+
     $get_username               = $_POST['username'];
     $get_new_password           = $_POST['password'];
     $hashed_password  = password_hash($get_new_password, PASSWORD_DEFAULT);
@@ -70,7 +70,7 @@ if (isset($_POST['update_individual'])) {
             ':mobile'                   => $get_mobile_no,
             ':telephone'                => $get_telephone_no,
             ':email'                    => $get_email
-           
+
         ]);
     } else {
 
@@ -111,7 +111,7 @@ if (isset($_POST['update_individual'])) {
             ':mobile'                   => $get_mobile_no,
             ':telephone'                => $get_telephone_no,
             ':email'                    => $get_email
-           
+
         ]);
 
 
@@ -129,37 +129,44 @@ if (isset($_POST['update_individual'])) {
             ':password'         => $hashed_password
 
         ]);
-        if($img != '' ){
-            $folderPath = "../flutter/images/";
-            $image_parts = explode(";base64,", $img);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            $fileName = uniqid() . '.jpg';        
-            $file = $folderPath . $fileName;
-            file_put_contents($file, $image_base64);
+    }
 
-            $update_photo = "update tbl_individual set photo = :photo where entity_no = :entity";
-            $exe_update= $con->prepare($update_photo);
-            $exe_update->execute([':photo' =>$fileName,
-                                ':entity' =>$get_entity_no]);
-            $get_photo = $fileName;
-            $check_update_photo = $fileName;
+
+    if ($img != '') {
+        // echo "<p>";
+        // echo print_r($get_photo);
+        // echo "</p>";
+        unlink('../flutter/images/' . $get_photo);
+        $folderPath = "../flutter/images/";
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid() . '.jpg';
+        $file = $folderPath . $fileName;
+        file_put_contents($file, $image_base64);
+
+        $update_photo = "update tbl_individual set photo = :photo where entity_no = :entity";
+        $exe_update = $con->prepare($update_photo);
+        $exe_update->execute([
+            ':photo' => $fileName,
+            ':entity' => $get_entity_no
+        ]);
+        $get_photo = $fileName;
+        $check_update_photo = $fileName;
         // echo "<p>";
         // echo print_r($check_update_photo);
         // echo "</p>";
         // echo "<p>";
         // echo print_r($fileName);
         // echo "</p>";
-        };
-        
-        $alert_msg .= ' 
-        <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <i class="icon fa fa-check"></i>You have successfully deleted the employee.
-        </div>     
-    ';
-    }
+    };
 
-  
+    $alert_msg .= ' 
+    <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <i class="fa fa-check"></i>
+        <strong> Success ! </strong> Data Inserted.
+</div>    
+    ';
 }

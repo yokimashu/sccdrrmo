@@ -15,8 +15,9 @@ $date = date('Y-m-d');
 $time = date('H:i:s');
 
 $symptoms = $patient = $person_status = $entity_no = '';
-
+// $entity_no = '';
 //fetch user from database
+$accountType = '';
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
@@ -24,12 +25,15 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
   $db_fullname = $result['fullname'];
+  $accountType = $result['account_type'];
 }
 
-$get_all_individual_sql = "SELECT * FROM tbl_individual i inner join tbl_entity e on e.entity_no = i.entity_no order by i.lastname ASC ";
-$get_all_individual_data = $con->prepare($get_all_individual_sql);
-$get_all_individual_data->execute();
-
+// $get_all_individual_sql = "SELECT * FROM tbl_individual i inner join tbl_entity e on e.entity_no = i.entity_no order by i.lastname ASC ";
+// $get_all_individual_data = $con->prepare($get_all_individual_sql);
+// $get_all_individual_data->execute();
+// while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)){
+//   $entity_no =  $list_individual['entity_no'];
+// }
 
 
 ?>
@@ -84,47 +88,21 @@ $get_all_individual_data->execute();
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                        <tr style="font-size: 1.10rem">
-                          <th> ID </th>
-                          <th> Username </th>
-                          <th> Full Name </th>
-                          <th> Options</th>
-                        </tr>
+
+                        <th> ID </th>
+                        <th> Username </th>
+                        <th> Full Name </th>
+                        <th> Options</th>
+
                       </thead>
                       <tbody>
-                        <?php while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <tr>
-                            <td><?php echo $list_individual['entity_no'];  ?></td>
-                            <td><?php echo $list_individual['username'];  ?></td>
-                            <td><?php echo $list_individual['fullname']; ?> </td>
-                            <td>
-
-                              <a class="btn btn-outline-success btn-sm" href="view_individual.php?&id=<?php echo $list_individual['entity_no']; ?>" data-placement="top" title="Edit Individual">
-                                <i class="fa fa-edit"></i></a>
-
-                              <a class="btn btn-outline-success btn-sm" target="blank" id="printlink" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>" data-placement="top" title="Print ID">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              </a>
-
-                              <?php if ($_SESSION['user_type'] == 1) {
-                                //restrict users to view history
-                              ?>
-                                <a class="btn btn-outline-warning btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?>" data-placement="top" title="View History">
-                                  <i class="fa fa-search"></i></a>
-
-                                <button class="btn btn-danger delete btn-sm" data-id="<?php echo $list_individual["entity_no"]; ?>" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
-
-                              <?php } ?>
 
 
-                              &nbsp;
 
-                            </td>
-                          </tr>
-                        <?php } ?>
+
                       </tbody>
                     </table>
-
+                    <input type="hidden" readonly id="accountType" value="<?php echo $accountType; ?>">
                   </div>
                 </div>
               </form>
@@ -193,15 +171,99 @@ $get_all_individual_data->execute();
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-    $('#users').DataTable({
-      'paging': true,
-      'lengthChange': true,
-      'searching': true,
-      'ordering': true,
-      'info': true,
-      'autoWidth': true,
-      'autoHeight': true
+    // $('#users').DataTable({
+    //   'paging': true,
+    //   'lengthChange': true,
+    //   'searching': true,
+    //   'ordering': true,
+    //   'info': true,
+    //   'autoWidth': true,
+    //   'autoHeight': true
+    // });
+    function checkViewHistory() {
+      accountType = $('#accountType').val();
+      if (accountType == 1) {
+        return ' <button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
+      } else if (accountType == 3) {
+        return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
+
+      } else {
+        return '';
+      }
+
+    }
+
+    function checkDelete() {
+      accountType = $('#accountType').val();
+      if (accountType == 1) {
+        return '<button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>';
+      } else {
+        return '';
+      }
+
+    }
+    var dataTable = $('#users').DataTable({
+
+      page: true,
+      stateSave: true,
+      processing: true,
+      serverSide: true,
+      scrollX: false,
+      ajax: {
+        url: "search_individual.php",
+        type: "post",
+        error: function(xhr, b, c) {
+          console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+          );
+        }
+      },
+      columnDefs: [{
+          width: "159px",
+          targets: -1,
+          data: null,
+          defaultContent: '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>' +
+            '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/entity_id.php?entity_no=" data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></a> ' + checkViewHistory() + checkDelete()
+
+            ,
+        },
+
+      ],
     });
+
+    $("#users tbody").on("click", "#viewIndividual", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity = currow.find("td:eq(0)").text();
+      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
+      window.open("view_individual.php?&id=" + entity, '_parent');
+
+    });
+
+    $("#users tbody").on("click", "#printlink", function() {
+      // event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity = currow.find("td:eq(0)").text();
+      $('.printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+
+    });
+
+    $("#users tbody").on("click", "#viewHistory", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity = currow.find("td:eq(0)").text();
+      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
+      window.open("view_individual_history.php?&entity_no=" + entity, '_parent');
+
+    });
+
+
     // $('#users').DataTable({
     //   'paging': true,
     //   'lengthChange': true,
@@ -234,9 +296,11 @@ $get_all_individual_data->execute();
     $(function() {
       $(document).on('click', '.delete', function(e) {
         e.preventDefault();
+
+        var currow = $(this).closest("tr");
+        var entity = currow.find("td:eq(0)").text();
         $('#delete_individual').modal('show');
-        var id = $(this).data('id');
-        $('#entity_no').val(id);
+        $('#entity_no').val(entity);
       });
     });
 

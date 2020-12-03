@@ -39,6 +39,12 @@
         color: green;
     }
 
+    #list-privacy {
+        padding-left: 70px;
+        font-size: 20px;
+        color: green;
+    }
+
     th,
     td {
         padding: 15px;
@@ -75,10 +81,35 @@
             juridical and transportation, for the monitoring of their activities for easier and faster contact tracing.
             <br><br>
 
+            Keeping track of citizens’ whereabouts is important in fighting against coronavirus. So whenever you go out in public places such
+            as malls, markets, offices, churches, schools, government offices and other buildings or establishments, please make sure to use your
+            VAMOS mobile application or ID to record your activities. VAMOS helps the government track people in close contact with suspected patients.
+            Here are some of the objectives in using the app: <br>
+
+
+
+            <ol id="list-privacy">
+                <li>To keep an eye on citizens’ whereabouts;</li>
+                <li>To ensure people follow quarantine protocols;</li>
+                <li>To avoid long queues;</li>
+                <li>To help students, workers and residents stay safe;</li>
+                <li>To make it safer for customers to dine-in; </li>
+                <li>To collect medical information; </li>
+                <li>To enlighten people on their likelihood of infection;</li>
+                <li>To register visitors’ from neighboring towns and cities;</li>
+                <li>To track the movement of residents;</li>
+                <li>To encourage people to use digital tools.</li>
+            </ol>
+
+
+
+
             It is your right as data subjects to be informed how we process your personal information.
             This Privacy Policy applies to all entities who register via the mobile application.
             VAMOS deserves the right to update this policy from time to time.
-            <br><br><br>
+            <br><br>
+
+
 
 
 
