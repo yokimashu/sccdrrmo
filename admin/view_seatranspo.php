@@ -7,7 +7,7 @@ $btn_enabled = 'enabled';
 session_start();
 $user_id = $_SESSION['id'];
 
-include('verify_admin.php');
+// include('verify_admin.php');
 
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
@@ -337,10 +337,10 @@ $title = 'VAMOS | Update Sea Trans Form';
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
 
-                                                <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                     <button type="button" name="print" class="btn btn-primary">
                                                         <i class="nav-icon fa fa-print"> </i> </button>
-                                                </a>
+                                                </a> -->
 
 
                                             </div><br>
@@ -352,7 +352,7 @@ $title = 'VAMOS | Update Sea Trans Form';
                     </div>
                 </div>
             </section>
-
+            <br>
 
         </div>
 

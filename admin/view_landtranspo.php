@@ -289,11 +289,11 @@ $title = 'VAMOS | Land Trans Form';
                                                 <button type="button" name="cancel" class="btn btn-danger">
                                                     <i class="fa fa-close fa-fw"> </i> </button>
                                             </a>
-
+<!-- 
                                             <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                 <button type="button" name="print" class="btn btn-primary">
                                                     <i class="nav-icon fa fa-print"> </i> </button>
-                                            </a>
+                                            </a> -->
 
 
                                         </div><br>
