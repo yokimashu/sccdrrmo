@@ -6,7 +6,7 @@ $btn_enabled = 'enabled';
 session_start();
 $user_id = $_SESSION['id'];
 
-include('verify_admin.php');
+// include('verify_admin.php');
 
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
@@ -303,6 +303,7 @@ $title = 'VAMOS | Land Trans Form';
                     </div>
                 </div>
             </section>
+            <br>
         </div>
 
 
