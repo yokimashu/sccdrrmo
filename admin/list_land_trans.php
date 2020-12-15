@@ -149,7 +149,7 @@ $get_all_landtranspo_data->execute();
         </div>
 
       </section>
-
+      <br>
 
 
     </div>
