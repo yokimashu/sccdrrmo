@@ -11,21 +11,21 @@ $numberofrecords = 10;
 
 // $mysqli = new mysqli($servername, $username, $password, $dbname);
 // $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
-if (!isset($_POST['searchTerm'])){
-    $stmt = $con->prepare("SELECT * FROM tbl_individual order by lastname LIMIT :limit");
-    $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
-    $stmt->execute();
-    $usersList = $stmt->fetchAll();
-    // $fetchData = mysqli_query($con,  "SELECT * FROM tbl_documents order by docno LIMIT 10" );
-}else{
-    $search = $_POST['searchTerm'];
+if (!isset($_POST['searchTerm'])) {
+  $stmt = $con->prepare("SELECT * FROM tbl_individual order by lastname LIMIT :limit");
+  $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
+  $stmt->execute();
+  $usersList = $stmt->fetchAll();
+  // $fetchData = mysqli_query($con,  "SELECT * FROM tbl_documents order by docno LIMIT 10" );
+} else {
+  $search = $_POST['searchTerm'];
 
-    $stmt = $con->prepare("SELECT * FROM tbl_individual where fullname like :name order by lastname LIMIT :limit");
-    $stmt->bindValue(':name', '%'.$search.'%', PDO::PARAM_STR);
-    $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
-    $stmt->execute();
-    $usersList = $stmt->fetchAll(); 
-    // $fetchData = mysqli_query($con,  "SELECT * FROM tbl_documents where docno like '%".$_GET['q']."%' order by docno LIMIT 10" );
+  $stmt = $con->prepare("SELECT * FROM tbl_individual where fullname like :name order by lastname LIMIT :limit");
+  $stmt->bindValue(':name', '%' . $search . '%', PDO::PARAM_STR);
+  $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
+  $stmt->execute();
+  $usersList = $stmt->fetchAll();
+  // $fetchData = mysqli_query($con,  "SELECT * FROM tbl_documents where docno like '%".$_GET['q']."%' order by docno LIMIT 10" );
 }
 
 // $sql = "SELECT * FROM tbl_documents where docno like '%".$_GET['q']."%' order by docno LIMIT 10";
@@ -36,24 +36,24 @@ if (!isset($_POST['searchTerm'])){
 // $json = [];
 
 $response = array();
-  // while ($row = $result->fetch_assoc()){
-  //   $json[] = ['docno'=>$result['docno'];
-  //   }
+// while ($row = $result->fetch_assoc()){
+//   $json[] = ['docno'=>$result['docno'];
+//   }
 
-  foreach ($usersList as $user){
-    $response[] = array(
-      "id" =>$user['entity_no'],
-      "text" =>$user['fullname']
-    );
-
-  }
-  // while ($row = $mysqli_fetch_array($fetchData)){
-  //     $data[] = array("docno"=>$row['docno']);
+foreach ($usersList as $user) {
+  $response[] = array(
+    "id" => $user['entity_no'],
+    "text" => $user['fullname'],
 
 
-    echo json_encode($response);
-    exit();
+
+  );
+}
+// while ($row = $mysqli_fetch_array($fetchData)){
+//     $data[] = array("docno"=>$row['docno']);
+
+
+echo json_encode($response);
+exit();
     
     // die();
-    
-?>
