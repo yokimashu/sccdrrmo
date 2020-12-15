@@ -148,7 +148,7 @@ $get_all_seatranspo_data->execute();
         </div>
 
       </section>
-
+      <br>
 
 
     </div>
