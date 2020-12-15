@@ -108,16 +108,16 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
               <div class="col-md-7" hidden>
 
-                <input type="hidden" readonly class="form-control" name="entity_no"  placeholder="entity_no" value=" <?php echo $entity_no; ?>" required>
-                <input type="hidden" readonly class="form-control" name="fullname" id = "fullname" placeholder="fullname" value=" <?php echo $fullname; ?>" required>
-                <input type="hidden" readonly class="form-control" name="street" id = "street" placeholder="address" value=" <?php echo $street; ?>" required>
-                <input type="hidden" readonly class="form-control" name="mobile_no" id = "mobile_no"  placeholder="contact_number" value=" <?php echo $mobile_no; ?>" required>
+                <input type="hidden" readonly class="form-control" name="entity_no" placeholder="entity_no" value=" <?php echo $entity_no; ?>" required>
+                <input type="hidden" readonly class="form-control" name="fullname" id="fullname" placeholder="fullname" value=" <?php echo $fullname; ?>" required>
+                <input type="hidden" readonly class="form-control" name="street" id="street" placeholder="address" value=" <?php echo $street; ?>" required>
+                <input type="hidden" readonly class="form-control" name="mobile_no" id="mobile_no" placeholder="contact_number" value=" <?php echo $mobile_no; ?>" required>
               </div>
 
 
 
               <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/individual_history.php?entity_no=<?php echo $entity_no; ?>&datefrom=<?php echo $date_from; ?>&dateto=<?php echo $date_to; ?>">
-               
+
                 <i class="nav-icon fa fa-print"></i></a>
 
 
@@ -143,49 +143,49 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
           <div class="card-body">
             <div class="box box-primary">
-              <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
+              <form role="form" method="POST" action="<?php htmlspecialchars("PHP_SELF"); ?>">
                 <div class="box-body">
-            <div class = "row">
-            <div class = "col-12"style = "margin-bottom:30px;padding:auto;">
-            <div class="input-group date">
-                           <label style="padding-right:10px;padding-left: 10px">From:  </label> 
-                             <div  style = "padding-right:10px" class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                             </div>
-                    <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"  value = "<?php echo $date_from;?>">
+                  <div class="row">
+                    <div class="col-12" style="margin-bottom:30px;padding:auto;">
+                      <div class="input-group date">
+                        <label style="padding-right:10px;padding-left: 10px">From: </label>
+                        <div style="padding-right:10px" class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input style="margin-right:10px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" value="<?php echo $date_from; ?>">
 
-                    <label style="padding-right:10px">To:</label>
-                            <div style = "padding-right:10px" class="input-group-addon">
-                                 <i class="fa fa-calendar"></i>
-                            </div>
-           <input type="text" style = "margin-right:50px;" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $date_to;?>">
-      
-          <button id = "view_person_history" onClick = "loadhistory()" class = "btn btn-success"><i class = "fa fa-search"></i></button> 
-          <input type = "hidden" id = "person_entity" value= "<?php echo $entity_no;?>">
-              </div>
-            </div>
-            </div>
+                        <label style="padding-right:10px">To:</label>
+                        <div style="padding-right:10px" class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" style="margin-right:50px;" class="form-control col-3 " data-provide="datepicker" autocomplete="off" name="dateto" id="dteto" value="<?php echo $date_to; ?>">
+
+                        <button id="view_person_history" onClick="loadhistory()" class="btn btn-success"><i class="fa fa-search"></i></button>
+                        <input type="hidden" id="person_entity" value="<?php echo $entity_no; ?>">
+                      </div>
+                    </div>
+                  </div>
                   <div class="table-responsive">
                     <!-- <div class="row">
                       <div class="col-md-3" id="combo"></div>
                     </div>
                     <br> -->
 
-      
+
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                      
 
 
-                          <th> Trace ID</th>
-                          <th> Date/Time</th>
-                          <th> NAME</th>
-                          <th> Details </th>
-                          <th> Contact No. </th>
+
+                        <th> Trace ID</th>
+                        <th> Date/Time</th>
+                        <th> NAME</th>
+                        <th> Details </th>
+                        <th> Contact No. </th>
                       </thead>
-                      <tbody id = "history_table">                             
-                    
+                      <tbody id="history_table">
+
                       </tbody>
                     </table>
 
@@ -316,25 +316,26 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
     });
 
-    function loadhistory(){
-       event.preventDefault();
-    var entity_no  = $('#person_entity').val();
-      var date_from  = $('#dtefrom').val();
-      var date_to  = $('#dteto').val();
+    function loadhistory() {
+      event.preventDefault();
+      var entity_no = $('#person_entity').val();
+      var date_from = $('#dtefrom').val();
+      var date_to = $('#dteto').val();
 
-    $('#history_table').load("load_history.php",{
-    entity_no:  entity_no,
-    date_from :  date_from,
-    date_to :    date_to},
-    function(response, status, xhr) {
-  if (status == "error") {
-      alert(msg + xhr.status + " " + xhr.statusText);
-      console.log(msg + xhr.status + " " + xhr.statusText);
-      console.log("xhr=" + xhr.responseText );
+      $('#history_table').load("load_history.php", {
+          entity_no: entity_no,
+          date_from: date_from,
+          date_to: date_to
+        },
+        function(response, status, xhr) {
+          if (status == "error") {
+            alert(msg + xhr.status + " " + xhr.statusText);
+            console.log(msg + xhr.status + " " + xhr.statusText);
+            console.log("xhr=" + xhr.responseText);
+          }
+        });
     }
-    });
-    }
- 
+
 
 
     // $('#users tbody').on('click', 'button.printlink', function() {
@@ -350,18 +351,17 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
-      $('#printlink').click(function() {
-        var entity_no = $('#person_entity').val();
-        var date_from  = $('#dtefrom').val();
-        var date_to  = $('#dteto').val();
-        var fullname  = $('#fullname').val();
-        var street  = $('#street').val();
-        var mobile_no  = $('#mobile_no').val();
-        console.log(entity_no); 
-        var param = "entity_no="+entity_no+"&fullname="+fullname+"&street="+street+"&mobile_no="+mobile_no+"&datefrom="+date_from+"&dateto="+date_to+"";
-        $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
-      })
-
+    $('#printlink').click(function() {
+      var entity_no = $('#person_entity').val();
+      var date_from = $('#dtefrom').val();
+      var date_to = $('#dteto').val();
+      var fullname = $('#fullname').val();
+      var street = $('#street').val();
+      var mobile_no = $('#mobile_no').val();
+      console.log(entity_no);
+      var param = "entity_no=" + entity_no + "&fullname=" + fullname + "&street=" + street + "&mobile_no=" + mobile_no + "&datefrom=" + date_from + "&dateto=" + date_to + "";
+      $('#printlink').attr("href", "../plugins/jasperreport/individual_history.php?" + param, '_parent');
+    })
   </script>
 </body>
 
