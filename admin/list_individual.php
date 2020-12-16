@@ -224,7 +224,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
         }
       },
       columnDefs: [{
-          width: "159px",
+          width: "160px",
           targets: -1,
           data: null,
           defaultContent: '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>' +
@@ -245,7 +245,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
     });
 
-    $("#users tbody").on("click", "#printlink", function() {
+    $("#users tbody").on("click", ".printlink", function() {
       // event.preventDefault();
       var currow = $(this).closest("tr");
       var entity = currow.find("td:eq(0)").text();

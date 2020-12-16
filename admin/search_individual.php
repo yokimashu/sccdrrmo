@@ -47,26 +47,27 @@ $getAllIndividual = "SELECT e.entity_no,
                     inner join tbl_entity i on e.entity_no = i.entity_no where ";
              
      if( !empty($requestData['search']['value']) ) {
-        $getAllIndividual.=" (e.firstname LIKE '%".$requestData['search']['value']."%'";
+        $getAllIndividual.=" (firstname LIKE '%".$requestData['search']['value']."%'";
         $getAllIndividual.=" OR e.entity_no LIKE '%".$requestData['search']['value']."%' ";
+        $getAllIndividual.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR middlename LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR lastname LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR street LIKE '%".$requestData['search']['value']."%' ";
-        $getAllIndividual.=" OR e.city LIKE '%".$requestData['search']['value']."%' ";
+        $getAllIndividual.=" OR city LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR province LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR mobile_no LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR telephone_no LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR email LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR username LIKE '%".$requestData['search']['value']."%') ";
-
-        $getAllIndividual.=" ORDER BY date_register DESC LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+        $getAllIndividual.=" ORDER BY date_register DESC LIMIT ".$requestData['start'].",".$requestData['length']." ";
         $getIndividualData = $con->prepare($getAllIndividual);
         $getIndividualData->execute(); 
 
-        $countfilter = "SELECT COUNT(e.entity_no) as id from tbl_individual e inner join tbl_entity i on e.entity_no = i.entity_no  where";
+     $countfilter = "SELECT COUNT(e.entity_no) as id from tbl_individual e inner join tbl_entity i on e.entity_no = i.entity_no  where";
        $countfilter.=" (firstname LIKE '%".$requestData['search']['value']."%'";
        $countfilter.=" OR e.entity_no LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR middlename LIKE '%".$requestData['search']['value']."%' ";
+       $countfilter.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR lastname LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR street LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR city LIKE '%".$requestData['search']['value']."%' ";

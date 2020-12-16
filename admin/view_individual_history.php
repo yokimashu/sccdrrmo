@@ -160,7 +160,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
                             </div>
            <input type="text" style = "margin-right:50px;" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $date_to;?>">
       
-          <button id = "view_person_history" onClick = "loadhistory()" class = "btn btn-success"><i class = "fa fa-search"></i></button> 
+          <button id = "view_person_history" onClick = "" class = "btn btn-success"><i class = "fa fa-search"></i></button> 
           <input type = "hidden" id = "person_entity" value= "<?php echo $entity_no;?>">
               </div>
             </div>
@@ -173,7 +173,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
       
 
-                    <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
+                    <table style="overflow-x: auto; font-size:13px; " id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                       
 
@@ -265,7 +265,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-    $('#users').DataTable({
+     var dataTable = $('#users').DataTable({
       'paging': true,
       'lengthChange': true,
       'searching': true,
@@ -333,8 +333,45 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
       console.log("xhr=" + xhr.responseText );
     }
     });
+   
+    
     }
- 
+ $('#view_person_history').click(function(){
+   event.preventDefault();
+   console.log('search_history');
+   var entity_no  = $('#person_entity').val();
+      var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
+
+  var dataTable = $('#users').DataTable({
+  destroy:true,
+  page:true,
+  stateSave: true,
+  processing: true,
+  serverSide: true,
+  scrollX: false,
+      ajax: {
+        url: "search_history.php",
+        type: "post",
+        data:{
+          entity_no:entity_no,
+          date_from:date_from,
+          date_to:date_to
+        },
+        error: function(xhr, b, c) {
+          console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+          );
+        }
+      },    
+  })
+
+ });
 
 
     // $('#users tbody').on('click', 'button.printlink', function() {
