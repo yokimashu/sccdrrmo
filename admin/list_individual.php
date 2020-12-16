@@ -111,6 +111,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
         </div>
 
       </section>
+      <br><br>
 
     </div><!-- /.content-wrapper -->
 

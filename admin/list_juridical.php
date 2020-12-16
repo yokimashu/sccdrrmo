@@ -94,7 +94,7 @@ $get_all_juridical_data->execute();
                           <tr>
                             <td><?php echo $list_juridical['entity_no'];  ?></td>
                             <td><?php echo $list_juridical['username'];  ?></td>
-                            <td><?php echo $list_juridical['org_name']; ?> </td>
+                            <td><?php echo ucwords(strtoupper($list_juridical['org_name'])); ?> </td>
                             <td><?php echo $list_juridical['org_type']; ?> </td>
                             <td>
 

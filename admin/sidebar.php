@@ -256,7 +256,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         </div> <br>
 
 
-
         <div>
 
           <?php echo $covid_case; ?>
@@ -363,13 +362,21 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="print_individual" class="nav-link sidebar-link">
+              &nbsp;
+              <i class="fas fa-qrcode icons nav-icon"></i>
+              <p> &nbsp; Print</p>
+            </a>
+          </li>
+          
+
 
         </div> <br>
 
 
 
         <div>
-
 
 
           <?php echo $settings; ?>

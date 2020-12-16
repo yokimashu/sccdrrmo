@@ -95,7 +95,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                   <form role="form" method="post" action="update_symptoms.php">
                     
                     <div class="box-body">
-                        
+                      
                           <div class="row"> 
                             <div class="col-md-4" style="text-align: right;padding-top: 5px;">
                               <label>ID No:</label>
@@ -110,7 +110,7 @@ $get_fullname = $get_symptoms = $get_status= '';
                               <label>Symptoms:</label>
                             </div>
                             <div class="col-md-3" >
-                              <input type="text" readonly align="center" class="form-control"  name="symptoms[]" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
+                              <input type="text" readonly align="center" class="form-control"  name="symptoms" placeholder="Symptoms" value="<?php echo $get_symptoms;?>" required>
                             </div>
                           </div><br>
                           

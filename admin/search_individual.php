@@ -76,11 +76,11 @@ $getAllIndividual = "SELECT e.entity_no,
        $countfilter.=" OR telephone_no LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR email LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR username LIKE '%".$requestData['search']['value']."%') ";
-       $countfilter.="LIMIT ".$requestData['start']." ,".$requestData['length']." " ;
+       $countfilter.="LIMIT ".$requestData['length']." " ;
 
         $getrecordstmt = $con->prepare($countfilter);
         $getrecordstmt->execute() or die("search_individual.php");
-        $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
+        $getrecord1 = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
         $totalData = $getrecord['id'];
         $totalFiltered = $totalData;
      }
@@ -92,7 +92,7 @@ $getAllIndividual = "SELECT e.entity_no,
 
 	$nestedData[] = $row["entity_no"];
 	$nestedData[] = $row["username"];
-	$nestedData[] = $row["fullname"];
+	$nestedData[] = ucwords(strtolower($row["fullname"]));
 	$data[] = $nestedData;
 }
         $json_data = array(

@@ -12,8 +12,14 @@
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="44"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="fullname" class="java.lang.String"/>
+	<parameter name="entity_no" class="java.lang.String"/>
+	<parameter name="street" class="java.lang.String"/>
+	<parameter name="mobile_no" class="java.lang.String"/>
+	<parameter name="datefrom" class="java.lang.String"/>
+	<parameter name="dateto" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[Select * FROM
 
@@ -25,9 +31,9 @@ UNION
 SELECT date, time, t.entity_no, t.trace_no, i.fullname, CONCAT(i.street, ', ', i.barangay) as details, i.mobile_no FROM `tbl_tracehistory` t
 inner join tbl_individual i on i.entity_no = t.trace_no
 
+) dum
 
-
-WHERE fullname NOT IN (Select org_name from tbl_juridical)
+WHERE fullname NOT IN (Select org_name from tbl_juridical
 ORDER BY date DESC, time DESC]]>
 	</queryString>
 	<field name="date" class="java.lang.String">
@@ -62,7 +68,7 @@ ORDER BY date DESC, time DESC]]>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="144" splitType="Stretch">
+		<band height="153" splitType="Stretch">
 			<staticText>
 				<reportElement x="9" y="19" width="915" height="28" uuid="a2c3e4d0-846c-4760-86a8-a1e35b15f589"/>
 				<textElement textAlignment="Center">
@@ -102,20 +108,52 @@ ORDER BY date DESC, time DESC]]>
 				<text><![CDATA[JURIDICAL HISTORY DETAILS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="778" y="101" width="34" height="20" uuid="ff4496ac-d700-4e9a-b9b9-1ab6016d521a"/>
-				<text><![CDATA[Date:]]></text>
+				<reportElement x="746" y="113" width="68" height="20" uuid="ff4496ac-d700-4e9a-b9b9-1ab6016d521a"/>
+				<text><![CDATA[DATE FROM:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="778" y="121" width="34" height="20" uuid="3e29d949-3fb0-4bef-a4e2-df75728cd3b1"/>
+				<reportElement x="746" y="133" width="68" height="20" uuid="3e29d949-3fb0-4bef-a4e2-df75728cd3b1"/>
+				<text><![CDATA[DATE TO :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="133" width="239" height="20" uuid="e88b0749-f576-4bbc-a9d7-99cb1b9f09d0"/>
+				<textFieldExpression><![CDATA[$P{fullname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="133" width="40" height="20" uuid="2634f3f8-2547-4e42-b0e8-894fc5d92c75"/>
+				<text><![CDATA[NAME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="113" width="40" height="20" uuid="6640e514-fc0b-4c95-ab29-160bcf698a65"/>
 				<text><![CDATA[ID:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="812" y="101" width="112" height="31" uuid="7da4550b-2b72-4276-b468-1f76472f5541"/>
-				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+				<reportElement x="50" y="113" width="239" height="20" uuid="d570911e-60c8-4cff-b74a-57fb4104a013"/>
+				<textFieldExpression><![CDATA[$P{entity_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="112" width="59" height="20" uuid="1774a11e-8bbe-4e4a-bb6c-8082ee553202"/>
+				<text><![CDATA[ADDRESS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="112" width="285" height="20" uuid="dee037dd-4aa8-4112-a8cc-2fd3faae2fb7"/>
+				<textFieldExpression><![CDATA[$P{street}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="132" width="89" height="20" uuid="3a98740a-700a-4dd9-8ecc-ec6352942fd8"/>
+				<text><![CDATA[CONTACT No.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="464" y="133" width="255" height="20" uuid="0e45c33c-feaf-45f1-bf9d-e09489259d49"/>
+				<textFieldExpression><![CDATA[$P{mobile_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="812" y="121" width="112" height="23" uuid="f0bb65a0-2c0f-4b37-9eda-10f7911e487b"/>
-				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
+				<reportElement x="814" y="113" width="110" height="20" uuid="4f6e05d6-3cf2-499a-9964-7f06611e9312"/>
+				<textFieldExpression><![CDATA[$P{datefrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="814" y="132" width="110" height="20" uuid="5de9c24a-e051-4ea5-9d91-599f95f38aba"/>
+				<textFieldExpression><![CDATA[$P{dateto}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

@@ -7,8 +7,9 @@ if (session_status() == PHP_SESSION_NONE) {
 // echo "<p>";
 // print_r($_SESSION['user_type']);
 // echo "</p>";
-if($_SESSION['user_type'] != 1){
+if($_SESSION['user_type'] == 2){
     header('location: index');
+ 
 }
 
 ?>

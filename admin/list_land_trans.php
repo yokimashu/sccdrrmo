@@ -5,12 +5,12 @@ include('sql_queries.php');
 session_start();
 $user_id = $_SESSION['id'];
 
-include('verify_admin.php');
+
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
 } else {
 }
-include('verify_admin.php');
+// include('verify_admin.php');
 
 
 date_default_timezone_set('Asia/Manila');
@@ -111,8 +111,17 @@ $get_all_landtranspo_data->execute();
                               <a class="btn btn-warning btn-sm" href="view_landtranspo.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
                                 <i class="fa fa-edit"></i></a>
 
-                              <a class="btn btn-success btn-sm" href="view_landtrans_history.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
-                                <i class="fa fa-suitcase"></i></a>
+
+
+                              <?php if ($_SESSION['user_type'] == 1) {
+                                //restrict users to view history
+                              ?>
+
+                                <a class="btn btn-success btn-sm" href="view_landtrans_history.php?&entity_no=<?php echo $list_landtrans['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a>
+
+                              <?php } ?>
+
 
 
                               <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/landtranspo.php?entity_no=<?php echo $list_landtrans['entity_no'];  ?>">
@@ -140,7 +149,7 @@ $get_all_landtranspo_data->execute();
         </div>
 
       </section>
-
+      <br>
 
 
     </div>

@@ -89,140 +89,136 @@ $stmt->execute();
   <div class="content-wrapper" align="center">
     <div class="content-header"></div>
 
-    <section class="content" >
-                        <div class="row">
-                          <div class="col-md-8">
-                            <iframe height="100%" width="100%" frameborder="0" src = "https://maps.google.com/maps?q=<?= $latitude ?>,<?= $longitude ?>&hl=es;z=14&amp;output=embed"></iframe>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="card">
-                            
-                              <img class="img-fluid" src="<?php echo (empty($image)) ? '../dist/img/scdrrmo_logo.png' : '../mobile/images/'.$image ; ?>">
-                            </div>
-                          </div>
-                         </div>
-                         <br>
+   <section class="content" >
 
-        <div class="card card-outline card-info"  >
-         
-                <div class="card-header ">
-                  <h6>INCIDENT DETAILS</h6>
-                </div>
+   <div class="container-fluid">
 
-                <div class="card-body">
-
-            
-            <div class="box">
-                          
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>ID No:</label>
-                            </div>
-                            <div class="col-md-3" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="objid" id ="objid" placeholder="ID NO" value="<?php echo $get_objid;?>" required>
-                            </div>
-                          </div><br>
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Date:</label>
-                            </div>
-                            <div class="col-md-2" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="date" placeholder="Date" value="<?php echo $get_date;?>" required>
-                            </div>
-                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                              <label>Time:</label>
-                            </div>
-                            <div class="col-md-2">
-                            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="time" placeholder="Time" value="<?php echo $get_time;?>" required>     
-                            </div>
-                          </div><br>
-
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Type:</label>
-                            </div>
-                            <div class="col-md-2" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="type" placeholder="Type" value="<?php echo $get_type;?>" required>
-                            </div>
-                            <div class="col-md-1" style="text-align: right;padding-top: 5px;">
-                              <label>Serevity:</label>
-                            </div>
-                            <div class="col-md-2" >
-                            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="severity" placeholder="Serivity" value="<?php echo $get_severity;?>" required>     
-                            </div>
-                          </div><br>
-
-
-
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Name:</label>
-                            </div>
-                            <div class="col-md-5" >
-                              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="name" placeholder="Name" value="<?php echo $get_name;?>" required>
-                            </div>
-                          </div><br>
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                              <label>Mobile Number:</label>
-                            </div>
-                            <div class="col-md-5" >
-                              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="mobileno" placeholder="Mobile Number" value="<?php echo $get_mobileno;?>" required>
-                            </div>
-                          </div><br>
-
-                          <div class="row"> 
-                            <div class="col-md-4" style="text-align: right;padding-top: 5px;">
-                 
-                              <label>Details of Incident:</label>
-                              </div>
-                              <div class="col-md-5" >
-                              <textarea readonly class="form-control" row="10"  name="topic" placeholder="Details of Incident" required><?php echo $get_details;?></textarea>
+		<div class="col-md-12">
+			
+     <div class="card card-outline card-info"  >
                      
-                              </div>
-                          </div><br>
-                               
-                          <!-- /.box-body -->
-                          <div class="box-footer" >
-                              <a href="list_incident.php">
-                                <button type="button" name="cancel" class="btn btn-danger">       
-                                CLOSE </button>
-                              </a>
-                          </div>
+      <div class="card-header ">
+        <div class="card-tools">
+              <div class="pull-right">
+                <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+        </div> <!-- /.card-tools -->
+        <h6>INCIDENT DETAILS</h6>
+      </div> <!-- /.card-header -->
+      <div class="card-body">
+       <div class="row">
 
-                    </div>
-                  
-                  </form>
-                </div>
-              <!-- /.box -->
-        </div>
+        <div class="col-md-8">
+        
+          <div class="row"> 
+            <div class="col-4" style="text-align: right;padding-top: 5px;">
+              <label>ID No:</label>
+            </div>
+            <div class="col-3" >
+              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="objid" id ="objid" placeholder="ID NO" value="<?php echo $get_objid;?>" required>
+            </div>
+          </div><br>
+
+          <div class="row"> 
+            <div class="col-4" style="text-align: right;padding-top: 5px;">
+              <label>Date:</label>
+            </div>
+            <div class="col-2" >
+              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="date" placeholder="Date" value="<?php echo $get_date;?>" required>
+            </div>
+            <div class="col-1" style="text-align: right;padding-top: 5px;">
+              <label>Time:</label>
+            </div>
+            <div class="col-2">
+            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="time" placeholder="Time" value="<?php echo $get_time;?>" required>     
+            </div>
+          </div><br>
+
+          <div class="row"> 
+            <div class="col-4" style="text-align: right;padding-top: 5px;">
+              <label>Type:</label>
+            </div>
+            <div class="col-2" >
+              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="type" placeholder="Type" value="<?php echo $get_type;?>" required>
+            </div>
+            <div class="col-1" style="text-align: right;padding-top: 5px;">
+              <label>Serevity:</label>
+            </div>
+            <div class="col-2" >
+            <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="severity" placeholder="Serivity" value="<?php echo $get_severity;?>" required>     
+            </div>
+          </div><br>
+
+          <div class="row"> 
+            <div class="col-4" style="text-align: right;padding-top: 5px;">
+              <label>Name:</label>
+            </div>
+            <div class="col-5" >
+              <input type="text" readonly class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="name" placeholder="Name" value="<?php echo $get_name;?>" required>
+            </div>
+          </div><br>
+
+          <div class="row"> 
+            <div class="col-4" style="text-align: right;padding-top: 5px;">
+              <label>Mobile Number:</label>
+            </div>
+            <div class="col-5" >
+              <input type="text" readonly  class="form-control" onkeyup="this.value = this.value.toUpperCase();" name="mobileno" placeholder="Mobile Number" value="<?php echo $get_mobileno;?>" required>
+            </div>
+          </div><br>
+
+          <div class="row"> 
+            <div class="col-4" style="text-align: right;padding-top: 5px;">
+              <label>Details of Incident:</label>
+              </div>
+              <div class="col-5" >
+              <textarea readonly class="form-control" row="10"  name="topic" placeholder="Details of Incident" required><?php echo $get_details;?></textarea>
+              </div>
+          </div><br>
+
+				</div> <!-- /.col-md-9 -->
+        
+				<div class="col-md-4">
        
+            <img class="img-fluid mx-auto d-block" width="100%" src="<?php echo (empty($image)) ? '../dist/img/scdrrmo_logo.png' : '../mobile/images/'.$image ; ?>">
+      
+        </div> <!-- /.col-md-3 -->
+       </div> <!-- /.row -->
+      </div> <!-- /.card-body -->
+     </div> <!-- /.card -->
+      
+			<div class="row">
+				<div class="col-md-12">
+        
+          <iframe height="800px" width="100%" frameborder="0" src = "https://maps.google.com/maps?q=<?= $latitude ?>,<?= $longitude ?>&hl=es;z=14&amp;output=embed"></iframe>
+            
+        </div> <!-- /.col-md-12 -->
+			</div> <!-- /.row -->
 
-    </section>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-footer" >
+                <a href="list_incident.php">
+                  <button type="button" name="cancel" class="btn btn-danger">       
+                  CLOSE </button>
+                </a>
+          </div> <!-- /.card-footer -->
+        </div> <!-- /.col-md-12 -->
+	  	</div> <!-- /.row -->
+  	</div> <!-- /.col-md-12 -->
+
+   </div> <!-- /.container-fluid -->
+
+   </section>
     
-
-  </div>
-  <!-- /.content-wrapper -->
+  </div> <!-- /.content-wrapper -->
+  
   
  <?php 
 
  include('footer.php')?>
 
-</div>
-
-<!-- add pum modal -->
-
-
-
-
-
-
-
-
+</div> <!-- /.wrapper -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>

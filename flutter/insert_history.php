@@ -8,7 +8,7 @@ $entityNo = $_POST["entity_no"];
 $traceNo = $_POST["trace_no"];
 
 $newdate = date("Y-m-d", strtotime($datetime));
-$newtime = date("h:i:s", strtotime($datetime));
+$newtime = date("H:i:s", strtotime($datetime));
 
 
 // - - - INSERT  History - - - / /

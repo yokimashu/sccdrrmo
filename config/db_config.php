@@ -4,7 +4,7 @@
 $host = "localhost";
 $db_name = "sccdrrmo";
 $username = "root";
-$password = "1234";
+$password = "";
 
 //server local port
 // $host = "127.0.0.1:3307";
