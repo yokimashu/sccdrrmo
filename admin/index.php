@@ -18,8 +18,6 @@ $get_all_juridical_sql = "SELECT * FROM tbl_juridical";
 $get_all_juridical_data = $con->prepare($get_all_juridical_sql);
 $get_all_juridical_data->execute();
 
-
-
 $get_all_seatrans_sql = "SELECT * FROM tbl_seatranspo ";
 $get_all_seatrans_data = $con->prepare($get_all_seatrans_sql);
 $get_all_seatrans_data->execute();
@@ -64,238 +62,200 @@ $title = 'VAMOS | Dashboard';
     <div class="content-wrapper">
       <div class="content-header"></div>
 
-
-
-
       <!-- individual content graphs -->
       <section class="content">
 
+        <div class="container-fluid">
+          <div class="card">
 
+            <div class="card-header bg-success text-white">
+              <h6>
+                COVID-19
+              </h6>
+            </div>
+            <div class="card-body">
 
-
-
-        <div class="row">
-
-          &nbsp;
-          <div class="content col-md-9">
-            <div class="card">
-              <div class="card-header bg-success text-white">
-                <h4>
-                  INDIVIDUAL
-                </h4>
-              </div>
-
-              <div class="card-body">
-
-
-                <!-- registered individual by barangay -->
-                <div class="card">
-                  <div class="card-body">
-                    <div class="box box-primary ">
-                      <div class="box-body">
-                        <div id="chart_div" style="padding-left:10px; width: 200; height: 750px"> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div><br>
-
-
-                <!-- monthly of individual registered -->
-                <div class="card">
-                  <div class="card-body">
-                    <div class="box box-primary ">
-                      <div class="box-body">
-                        <div id="chart_div2" style="padding-left:10px; width: 200; height: 700px"> </div>
-                      </div>
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box mb-3">
+                    <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-hospital-user"></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">ACTIVE CASE</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_active_data->rowCount() ?>
+                      </span>
                     </div>
                   </div>
                 </div>
 
 
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box mb-3">
+                    <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-bed"></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">RECOVERED</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_recovered_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="clearfix hidden-md-up"></div>
 
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box mb-3">
+                    <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-book-dead"></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">DIED</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_dead_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
 
               </div>
-            </div>
 
+
+
+            </div>
           </div>
-          &nbsp;&nbsp;
-          <div class="content  ">
 
-            <div class="card">
+          <div class="card">
 
-              <div class="card-header bg-success text-white">
-                <h5>
-                  COVID-19
-                </h5>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-hospital-user"></i></span></a>
-                      <div class="info-box-content">
-                        <span class="info-box-text">ACTIVE CASE</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_active_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-bed"></i></span></a>
-                      <div class="info-box-content">
-                        <span class="info-box-text">RECOVERED</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_recovered_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="clearfix hidden-md-up"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-book-dead"></i></span></a>
-                      <div class="info-box-content">
-                        <span class="info-box-text">DEATH</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_dead_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </div>
+            <div class="card-header bg-success text-white">
+              <h6>
+                ENTITIES
+              </h6>
             </div>
 
+            <div class="card-body">
 
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <a href="list_individual.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Individual</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_individual_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="card">
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <a href="list_juridical.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-building"></i></span></a>
 
-              <div class="card-header bg-success text-white">
-                <h5>
-                  ENTITIES
-                </h5>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Juridical</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_juridical_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <a href="list_land_trans.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-motorcycle"></i></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Land Trans</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_landtrans_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <a href="list_sea_trans" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-ship"></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Sea Trans</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_seatrans_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <div class="card-body">
-
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="list_individual.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
-                      <div class="info-box-content">
-                        <span class="info-box-text">Individual</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_individual_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="list_juridical.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-building"></i></span></a>
-
-                      <div class="info-box-content">
-                        <span class="info-box-text">Juridical</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_juridical_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="list_land_trans.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-motorcycle"></i></i></span></a>
-                      <div class="info-box-content">
-                        <span class="info-box-text">Land Trans</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_landtrans_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-md-12">
-                    <div class="info-box mb-3">
-                      <a href="list_sea_trans" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-ship"></i></span></a>
-                      <div class="info-box-content">
-                        <span class="info-box-text">Sea Trans</span>
-                        <span class="info-box-number">
-                          <?php echo $get_all_seatrans_data->rowCount() ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="clearfix hidden-md-up"></div>
-                </div>
-
-              </div>
-
 
             </div>
-
-
-
-
 
 
           </div>
-
-
-
-
-
-
-
-
-
         </div>
-        <div class="row">
-          <div class="content col-md-12">
-            <div class="card">
-              <div class="card-header bg-success text-white">
-                <h4>
-                  JURIDICAL
-                </h4>
-              </div>
 
-              <div class="card-body">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="box box-primary ">
-                      <div class="box-body">
-                        <div id="chart_div3" style="padding-left:10px; width: 200; height: 700px"> </div>
-                      </div>
+        <div class="content ">
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                INDIVIDUAL
+              </h4>
+            </div>
+
+            <div class="card-body">
+
+
+              <!-- registered individual by barangay -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                      <div id="chart_div" style="padding-left:10px; width: 200; height: 750px"> </div>
                     </div>
                   </div>
                 </div>
+              </div><br>
 
 
+              <!-- monthly of individual registered -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                      <div id="chart_div2" style="padding-left:10px; width: 200; height: 700px"> </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+
+
+
+
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                JURIDICAL
+              </h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                      <div id="chart_div3" style="padding-left:10px; width: 200; height: 700px"> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
           </div>
         </div>
+
       </section>
 
 
