@@ -103,8 +103,7 @@ $get_new_submission_record->execute();
                             <td><?php echo $list_sea['entity_no'];  ?></td>
                             <td><?php echo $list_sea['fullname']; ?> </td>
                             <td>
-
-                              <a class="btn btn-warning btn-sm" href="view_seatranspo.php?&id=<?php echo $list_sea['entity_no']; ?> ">
+                              <button class="btn btn-warning btn-sm" id = "verify" >
                                 <i class="fa fa-edit"></i></a>
                     </td>
                           </tr>
@@ -128,7 +127,7 @@ $get_new_submission_record->execute();
 
       </section>
       <br>
-
+      <?php include('user_verification_modal.php');?>
 
     </div>
     <!-- /.content-wrapper -->
@@ -136,34 +135,8 @@ $get_new_submission_record->execute();
 
   </div>
 
-  <div class="modal fade" id="delete_PUMl" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Confirm Delete</h4>
-        </div>
-        <form method="POST" action="">
-          <div class="modal-body">
-            <div class="box-body">
-              <div class="form-group">
-                <label>Delete Record?</label>
-                <input readonly="true" type="text" name="user_id" id="user_id" class="form-control">
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-
-            <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-            <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-            <input type="submit" name="delete_pum" class="btn btn-danger" value="Yes">
-          </div>
-        </form>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-
+  
+  
 
 
 
@@ -195,82 +168,37 @@ $get_new_submission_record->execute();
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-    $('#users').DataTable({
+  loadSubmit();
+ function loadSubmit(){
+  
+  $('#users').DataTable({
+    'stateSave':true,
+      'destroy':true,
       'paging': true,
       'lengthChange': true,
       'searching': true,
       'ordering': true,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true,
-      initComplete: function() {
-        this.api().columns([4]).every(function() {
-          var column = this;
-          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-            .appendTo('#combo')
-            .on('change', function() {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-              );
-              column
-                .search(val ? '^' + val + '$' : '', true, false)
-                .draw();
-            });
-          column.data().unique().sort().each(function(d, j) {
-            select.append('<option value="' + d + '">' + d + '</option>')
-          });
-        });
-      }
+      'autoHeight': true
+    })
 
-    });
+ }
+   
 
 
-    $('.select2').select2();
-
-    $('#addPUM').on('hidden.bs.modal', function() {
-      $('#addPUM form')[0].reset();
-    });
-
-    $(function() {
-      $('[data-toggle="datepicker"]').datepicker({
-        autoHide: true,
-        zIndex: 2048,
-      });
-    });
-
-    $(document).on('click', 'button[data-role=confirm_delete]', function(event) {
-      event.preventDefault();
-
-      var user_id = ($(this).data('id'));
-
-      $('#user_id').val(user_id);
-      $('#delete_PUMl').modal('toggle');
-
-    });
-
-
-
-    // $(document).ready(function() {
-    //   $('#print').click(function() {
-    //     var entity_no = $('#entity_no').val();
-    //     console.log(entity_no);
-
-    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
-    //   })
-    // });
-
-
-
-
-    $('#users tbody').on('click', 'button.printlink', function() {
+    $('#users tbody').on('click', '#verify', function(e) {
       // alert ('hello');
       // var row = $(this).closest('tr');
+      event.preventDefault();
       var table = $('#users').DataTable();
       var data = table.row($(this).parents('tr')).data();
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
       var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+      // alert(entity_no);
+
+      $('#verify_modal').modal('toggle');
     });
   </script>
 </body>
