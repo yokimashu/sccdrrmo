@@ -6,29 +6,26 @@ session_start();
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
-} else {
 }
-
-
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms = $patient = $person_status = $entity_no = '';
+$symptoms = $patient = $person_status = '';
 
 //fetch user from database
-$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
-$user_data = $con->prepare($get_user_sql);
-$user_data->execute([':id' => $user_id]);
-while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+// $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+// $user_data = $con->prepare($get_user_sql);
+// $user_data->execute([':id' => $user_id]);
+// while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-  $db_fullname = $result['fullname'];
-}
+//   $db_fullname = $result['fullname'];
+// }
 
-$get_all_positive_sql = "SELECT * FROM tbl_positive order by timestamp DESC ";
-$get_all_positive_data = $con->prepare($get_all_positive_sql);
-$get_all_positive_data->execute();
+$get_all_contact_sql = "SELECT * FROM tbl_closecontact ORDER BY objid  DESC";
+$get_all_contact_data = $con->prepare($get_all_contact_sql);
+$get_all_contact_data->execute();
 
 
 
@@ -42,7 +39,7 @@ $get_all_positive_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | COVID POSITIVE CASES </title>
+  <title>VAMOS | Master Lists Sources of Infection </title>
   <?php include('heading.php'); ?>
 
 
@@ -60,19 +57,11 @@ $get_all_positive_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> COVID POSITIVE CASES
+            <h4> Master Lists Close Contact
 
-              <a href="https://docs.google.com/forms/d/14jZ9lnKL7cdvc1JjhWIV49qinoXivfLcJzpCUqR8IAw/edit?gxids=7757#responses" style="float:right;" type="button"> View Summary
-              </a>
-              <br>
-              <br>
+              <a href="add_contact_case" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
+                <i class="nav-icon fa fa-plus-square"></i></a>
 
-              <a href="https://docs.google.com/spreadsheets/d/1To5G2UGFsf2QcJlLMV7z465Gzef_suicarwsfDOi9co/edit#gid=1984005694" style="float:right;" type="button"> View Responses
-              </a>
-
-
-              <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
-                <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
 
           </div>
@@ -92,45 +81,60 @@ $get_all_positive_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> DATE/TIME </th>
-                          <th> INVESTIGATOR/TRACER </th>
-                          <th> BRGY CONTACT TRACER </th>
-                          <th> NAME</th>
-                          <th> BARANGAY</th>
+                          <th> DATE & TIME </th>
+                          <th> TRACER NAME</th>
+                          <th> PATIENT ID </th>
+                          <th> PATIENT NAME </th>
+                          <th> STATUS </th>
+                          <!-- <th></th> -->
+
+                          <th>OPTIONS</th>
+
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while ($list_positive = $get_all_positive_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <?php while ($list_contact = $get_all_contact_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
-                            <td><?php echo $list_positive['timestamp'];  ?></td>
-                            <td><?php echo $list_positive['name_investigator'];  ?></td>
-                            <td><?php echo $list_positive['name_brgy_contact_tracer']; ?> </td>
-                            <td><?php echo $list_positive['name_index_case']; ?> </td>
-                            <td><?php echo $list_positive['barangay']; ?> </td>
-                            <!-- <td>
+                            <td><?php echo $list_contact['date_register'];
+                                echo " / ";
+                                echo   $list_contact['time_register']; ?></td>
+                            <td><?php echo $list_contact['tracer_name']; ?> </td>
+                            <td><?php echo $list_contact['patient_id']; ?> </td>
+                            <td><?php echo $list_contact['patient_fullname']; ?></td>
+                            <td><?php echo $list_contact['status']; ?></td>
 
-                            <?php if ($_SESSION['user_type'] == 1) {
-                              //restrict users to view history
-                            ?>
+                            <td>
 
-                              <a class="btn btn-warning btn-sm" href="view_individual.php?&id=<?php echo $list_positive['entity_no']; ?> ">
+                              <a class="btn btn-warning btn-sm" href="view_positive_case.php?&id=<?php echo $list_infection['patient_no']; ?> ">
                                 <i class="fa fa-edit"></i></a>
 
-                                <?php } ?>
 
                               <?php if ($_SESSION['user_type'] == 1) {
                                 //restrict users to view history
                               ?>
-                                <a class="btn btn-success btn-sm" href="view_individual_history.php?&entity_no=<?php echo $list_individual['entity_no']; ?> ">
-                                  <i class="fa fa-suitcase"></i></a>
+                                <!-- <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_infection['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a> -->
+
 
                               <?php } ?>
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $list_individual['entity_no'];  ?>">
+
+
+                              <!-- <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_infection['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
-                              </a>
+                              </a> -->
+
+                              <!-- <?php if ($_SESSION['user_type'] == 1) {
+                                      //restrict users to view history
+                                    ?>
+                                <button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
+
+
+                              <?php } ?> -->
+
+
                               &nbsp;
 
-                            </td> -->
+                            </td>
                           </tr>
                         <?php } ?>
                       </tbody>
@@ -141,7 +145,7 @@ $get_all_positive_data->execute();
               </form>
             </div>
           </div>
-
+        </div>
 
       </section>
       <br>
@@ -217,7 +221,7 @@ $get_all_positive_data->execute();
       'paging': true,
       'lengthChange': true,
       'searching': true,
-      'ordering': true,
+      'ordering': false,
       'info': true,
       'autoWidth': true,
       'autoHeight': true,
@@ -263,21 +267,9 @@ $get_all_positive_data->execute();
       $('#delete_PUMl').modal('toggle');
 
     });
+  </script>
 
-
-
-    // $(document).ready(function() {
-    //   $('#print').click(function() {
-    //     var entity_no = $('#entity_no').val();
-    //     console.log(entity_no);
-
-    //     $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity_no, '_parent');
-    //   })
-    // });
-
-
-
-
+  <script>
     $('#users tbody').on('click', 'button.printlink', function() {
       // alert ('hello');
       // var row = $(this).closest('tr');
@@ -286,26 +278,21 @@ $get_all_positive_data->execute();
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
       var entity_no = data[0];
-      window.open("entity_id.php?entity_no=" + entity_no, '_parent');
+      window.open("juridical_id_new.php?entity_no=" + entity_no, '_parent');
     });
 
-    $('#add_individual').click(function() {
-      generateID();
-    });
 
     function generateID() {
-
       $.ajax({
         type: 'POST',
         data: {},
         url: 'generate_id.php',
         success: function(data) {
           //$('#entity_no').val(data);
-          sessionStorage.setItem("entity_number", data);
+          sessionStorage.setItem("entity_no_juridical", data);
         }
       });
     }
-    // window.onload = generateID;
   </script>
 </body>
 
