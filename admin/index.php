@@ -38,6 +38,10 @@ $get_all_dead_sql = "SELECT * FROM tbl_sources_infection where status='DIED' ";
 $get_all_dead_data = $con->prepare($get_all_dead_sql);
 $get_all_dead_data->execute();
 
+
+$get_all_submission = "SELECT * FROM tbl_verification where status='NEW SUBMISSION' ";
+$get_all_submission_data = $con->prepare($get_all_submission);
+$get_all_submission_data->execute();
 $title = 'VAMOS | Dashboard';
 ?>
 
@@ -179,6 +183,18 @@ $title = 'VAMOS | Dashboard';
                       <span class="info-box-text">Sea Trans</span>
                       <span class="info-box-number">
                         <?php echo $get_all_seatrans_data->rowCount() ?>
+                      </span>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-user"></i></span></a>
+                    <div class="info-box-content">
+                      <span class="info-box-text">User Verification</span>
+                      <span class="info-box-number">
+                        <?php echo $get_all_submission_data->rowCount() ?>
                       </span>
                     </div>
                   </div>

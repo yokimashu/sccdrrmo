@@ -173,7 +173,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
-                    <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
+                    <table style="overflow-x: auto; font-size:13px; " id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
 
 
@@ -265,7 +265,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-    $('#users').DataTable({
+     var dataTable = $('#users').DataTable({
       'paging': true,
       'lengthChange': true,
       'searching': true,
@@ -316,6 +316,62 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
     });
 
+    function loadhistory(){
+       event.preventDefault();
+    var entity_no  = $('#person_entity').val();
+      var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
+
+    $('#history_table').load("load_history.php",{
+    entity_no:  entity_no,
+    date_from :  date_from,
+    date_to :    date_to},
+    function(response, status, xhr) {
+  if (status == "error") {
+      alert(msg + xhr.status + " " + xhr.statusText);
+      console.log(msg + xhr.status + " " + xhr.statusText);
+      console.log("xhr=" + xhr.responseText );
+    }
+    });
+   
+    
+    }
+ $('#view_person_history').click(function(){
+   event.preventDefault();
+   console.log('search_history');
+   var entity_no  = $('#person_entity').val();
+      var date_from  = $('#dtefrom').val();
+      var date_to  = $('#dteto').val();
+
+  var dataTable = $('#users').DataTable({
+  destroy:true,
+  page:true,
+  stateSave: true,
+  processing: true,
+  serverSide: true,
+  scrollX: false,
+      ajax: {
+        url: "search_history.php",
+        type: "post",
+        data:{
+          entity_no:entity_no,
+          date_from:date_from,
+          date_to:date_to
+        },
+        error: function(xhr, b, c) {
+          console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+          );
+        }
+      },    
+  })
+
+ });
     function loadhistory() {
       event.preventDefault();
       var entity_no = $('#person_entity').val();
