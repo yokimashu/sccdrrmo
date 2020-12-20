@@ -26,7 +26,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_positive_sql = "SELECT * FROM tbl_positive order by timestamp DESC ";
+$get_all_positive_sql = "SELECT * FROM tbl_sources_infection order by time_register DESC ";
 $get_all_positive_data = $con->prepare($get_all_positive_sql);
 $get_all_positive_data->execute();
 
@@ -62,15 +62,15 @@ $get_all_positive_data->execute();
           <div class="card-header  text-white bg-success">
             <h4> COVID POSITIVE CASES
 
-              <a href="https://docs.google.com/forms/d/14jZ9lnKL7cdvc1JjhWIV49qinoXivfLcJzpCUqR8IAw/edit?gxids=7757#responses" style="float:right;" type="button"> View Summary
+            <a href="https://docs.google.com/forms/d/14jZ9lnKL7cdvc1JjhWIV49qinoXivfLcJzpCUqR8IAw/edit?gxids=7757#responses" style="float:right;" type="button"> View Summary
               </a>
               <br>
               <br>
 
-              <a href="https://docs.google.com/spreadsheets/d/1To5G2UGFsf2QcJlLMV7z465Gzef_suicarwsfDOi9co/edit#gid=1984005694" style="float:right;" type="button"> View Responses
+            <a href="https://docs.google.com/spreadsheets/d/1To5G2UGFsf2QcJlLMV7z465Gzef_suicarwsfDOi9co/edit#gid=1984005694" style="float:right;" type="button"> View Responses
               </a>
-
-
+       
+ 
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
@@ -93,25 +93,26 @@ $get_all_positive_data->execute();
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
                           <th> DATE/TIME </th>
-                          <th> INVESTIGATOR/TRACER </th>
-                          <th> BRGY CONTACT TRACER </th>
-                          <th> NAME</th>
+                          <th> PATIENT No. </th>
+                          <th> PATIENT NAME</th>
                           <th> BARANGAY</th>
+                          <th> REMARKS</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($list_positive = $get_all_positive_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
-                            <td><?php echo $list_positive['timestamp'];  ?></td>
-                            <td><?php echo $list_positive['name_investigator'];  ?></td>
-                            <td><?php echo $list_positive['name_brgy_contact_tracer']; ?> </td>
-                            <td><?php echo $list_positive['name_index_case']; ?> </td>
+                            <td><?php echo $list_positive['time_register . date_register'];  ?></td>
+                            <td><?php echo $list_positive['patient_no'];  ?></td>
+                            <td><?php echo $list_positive['patient_fullname']; ?> </td>
                             <td><?php echo $list_positive['barangay']; ?> </td>
+                            <td><?php echo $list_positive['remarks']; ?> </td>
+                           
                             <!-- <td>
 
                             <?php if ($_SESSION['user_type'] == 1) {
-                              //restrict users to view history
-                            ?>
+                                //restrict users to view history
+                              ?>
 
                               <a class="btn btn-warning btn-sm" href="view_individual.php?&id=<?php echo $list_positive['entity_no']; ?> ">
                                 <i class="fa fa-edit"></i></a>
@@ -141,10 +142,9 @@ $get_all_positive_data->execute();
               </form>
             </div>
           </div>
-
+       
 
       </section>
-      <br>
 
 
 

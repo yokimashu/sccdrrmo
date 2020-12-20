@@ -57,8 +57,7 @@ $get_all_contact_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Master Lists Close Contact
-
+            <h4> Close Contact Masterlists
               <a href="add_contact_case" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
 
@@ -105,8 +104,8 @@ $get_all_contact_data->execute();
 
                             <td>
 
-                              <a class="btn btn-warning btn-sm" href="view_positive_case.php?&id=<?php echo $list_infection['patient_no']; ?> ">
-                                <i class="fa fa-edit"></i></a>
+                              <!-- <a class="btn btn-warning btn-sm" href="view_positive_case.php?&id=<?php echo $list_infection['patient_no']; ?> ">
+                                <i class="fa fa-edit"></i></a> -->
 
 
                               <?php if ($_SESSION['user_type'] == 1) {
@@ -224,32 +223,29 @@ $get_all_contact_data->execute();
       'ordering': false,
       'info': true,
       'autoWidth': true,
-      'autoHeight': true,
-      initComplete: function() {
-        this.api().columns([4]).every(function() {
-          var column = this;
-          var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-            .appendTo('#combo')
-            .on('change', function() {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-              );
-              column
-                .search(val ? '^' + val + '$' : '', true, false)
-                .draw();
-            });
-          column.data().unique().sort().each(function(d, j) {
-            select.append('<option value="' + d + '">' + d + '</option>')
-          });
-        });
-      }
+      'autoHeight': true
+      // initComplete: function() {
+      //   this.api().columns([4]).every(function() {
+      //     var column = this;
+      //     var select = $('<select class="form-control select2"><option value="">show all</option></select>')
+      //       .appendTo('#combo')
+      //       .on('change', function() {
+      //         var val = $.fn.dataTable.util.escapeRegex(
+      //           $(this).val()
+      //         );
+      //         column
+      //           .search(val ? '^' + val + '$' : '', true, false)
+      //           .draw();
+      //       });
+      //     column.data().unique().sort().each(function(d, j) {
+      //       select.append('<option value="' + d + '">' + d + '</option>')
+      //     });
+      //   });
+      // }
 
     });
     $('.select2').select2();
 
-    $('#addPUM').on('hidden.bs.modal', function() {
-      $('#addPUM form')[0].reset();
-    });
 
     $(function() {
       $('[data-toggle="datepicker"]').datepicker({
@@ -269,31 +265,7 @@ $get_all_contact_data->execute();
     });
   </script>
 
-  <script>
-    $('#users tbody').on('click', 'button.printlink', function() {
-      // alert ('hello');
-      // var row = $(this).closest('tr');
-      var table = $('#users').DataTable();
-      var data = table.row($(this).parents('tr')).data();
-      //  alert (data[0]);
-      //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-      var entity_no = data[0];
-      window.open("juridical_id_new.php?entity_no=" + entity_no, '_parent');
-    });
 
-
-    function generateID() {
-      $.ajax({
-        type: 'POST',
-        data: {},
-        url: 'generate_id.php',
-        success: function(data) {
-          //$('#entity_no').val(data);
-          sessionStorage.setItem("entity_no_juridical", data);
-        }
-      });
-    }
-  </script>
 </body>
 
 </html>
