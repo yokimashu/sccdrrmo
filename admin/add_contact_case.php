@@ -1044,7 +1044,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                     <!-- HISTORY INDIVIDUAL -->
                                     <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
-                                        <!-- <div>
+                                        <div>
 
 
 
@@ -1102,7 +1102,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
 
 
 
