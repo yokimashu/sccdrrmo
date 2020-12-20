@@ -144,6 +144,8 @@ $get_new_submission_record->execute();
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
+  <!-- <script src="../plugins/jquery/jquery.js"></script> -->
+
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- datepicker -->
@@ -187,18 +189,39 @@ $get_new_submission_record->execute();
    
 
 
-    $('#users tbody').on('click', '#verify', function(e) {
+    $('#users tbody').on('click', '#verify', function() {
       // alert ('hello');
       // var row = $(this).closest('tr');
       event.preventDefault();
       var table = $('#users').DataTable();
-      var data = table.row($(this).parents('tr')).data();
+     var currow=  $(this).closest('tr');
+      var col1 = currow.find('td:eq(0)').text();
       //  alert (data[0]);
       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
-      var entity_no = data[0];
+      // var entity_no = data[0];
       // alert(entity_no);
 
       $('#verify_modal').modal('toggle');
+      console.log(col1);
+      $.ajax({
+        url:'get_verification_info.php',
+        type:'POST',
+        data:{entityno:col1},
+        success: function(response){
+          var result = jQuery.parseJSON(response);
+          $('#username').val(result.username);
+          // $('#fname').val(result.firstname);
+          // $('#username').val(result.username);
+          // $('#username').val(result.username);
+          // $('#username').val(result.username);  
+          // $('#username').val(result.username);
+          // $('#username').val(result.username);
+        },
+        error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+      });
     });
   </script>
 </body>
