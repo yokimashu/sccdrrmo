@@ -2,9 +2,10 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
+include('approve_application.php');
 session_start();
 $user_id = $_SESSION['id'];
-
+$entity_no = '';
 // include('verify_admin.php');
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
@@ -144,7 +145,7 @@ $get_new_submission_record->execute();
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- <script src="../plugins/jquery/jquery.js"></script> -->
+  <script src="../plugins/jquery/jquery.js"></script>
 
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -170,8 +171,9 @@ $get_new_submission_record->execute();
   <script src="../plugins/select2/select2.full.min.js"></script>
 
   <script>
-  loadSubmit();
- function loadSubmit(){
+  var entityglobal = '';
+
+
   
   $('#users').DataTable({
     'stateSave':true,
@@ -185,7 +187,7 @@ $get_new_submission_record->execute();
       'autoHeight': true
     })
 
- }
+
    
 
 
@@ -202,20 +204,24 @@ $get_new_submission_record->execute();
       // alert(entity_no);
 
       $('#verify_modal').modal('toggle');
-      console.log(col1);
+     
       $.ajax({
         url:'get_verification_info.php',
         type:'POST',
         data:{entityno:col1},
         success: function(response){
           var result = jQuery.parseJSON(response);
-          $('#username').val(result.username);
-          // $('#fname').val(result.firstname);
-          // $('#username').val(result.username);
-          // $('#username').val(result.username);
-          // $('#username').val(result.username);  
-          // $('#username').val(result.username);
-          // $('#username').val(result.username);
+          $('#entityno').val(result.entityno);      
+          $('#username').val(result.username);      
+          $('#fname').val(result.firstname);
+          $('#mname').val(result.middlename);
+          $('#lname').val(result.lastname);
+          $('#gender').val(result.gender);  
+          $('#bday').val(result.birthdate);
+          $('#brgy').val(result.barangay);
+          $('#contacts').val(result.mobile);
+          $('#userimage').attr("src",'../flutter/images/'+result.userphoto);
+          $('#userverification').attr("src",'../flutter/images/'+result.verifyphoto);
         },
         error: function (xhr, b, c) {
      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
@@ -223,6 +229,25 @@ $get_new_submission_record->execute();
 
       });
     });
+    // $('#approve').click(function(){
+    //   event.preventDefault();
+    //   var entity = $('#entityno').val();
+    //   console.log(entity);
+    // //   var table = $('#users').DataTable();
+    // //  var currow=  $(this).closest('tr');
+    // //   var col1 = currow.find('td:eq(0)').text();
+    //   $.ajax({
+    //     url:'approve_application.php',
+    //     data:{entityno:entity},
+    //     method: 'POST',
+    //     dataType:'JSON',
+    //     error: function (xhr, b, c) {
+    //  console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+    //    }
+
+    //   });
+    //   $('#users').dataTable().fnDraw();
+    // })
   </script>
 </body>
 
