@@ -1,5 +1,5 @@
 <?php
-
+$alert_msg = '';
 include('../config/db_config.php');
 include('sql_queries.php');
 include('approve_application.php');
@@ -61,7 +61,9 @@ $get_new_submission_record->execute();
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <div class="content-header"></div>
-
+      <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
