@@ -256,35 +256,11 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         </div> <br>
 
 
-        <div>
-
-          <?php echo $covid_case; ?>
-
-
-
-          <?php echo $covid_positive ?>
-
-
-          <?php echo $covid_contact ?>
-
-
-
-
-
-        </div> <br>
-
-
-
-        <?php echo $label_tracer; ?>
-
-        <?php echo $infection; ?>
-        <?php echo $contacts; ?>
-        <?php echo  $add_contact_case ?>
-
-
-
-
-
+        <!-- masterlist of covid-19 -->
+        <?php echo $label_covid_case; ?>
+        <?php echo $list_close_contact ?>
+        <?php echo $list_positive_case ?>
+        <!-- end of masterlist of covid-19 -->
 
         <div>
           <label id="label1" style="font-size:18px; ">
@@ -297,11 +273,10 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             <a href="print_individual" class="nav-link sidebar-link">
               &nbsp;
               <i class="fas fa-qrcode icons nav-icon"></i>
-              <p> &nbsp; Print QR</p>
+              <p> &nbsp; Multiple QR</p>
             </a>
           </li>
-
-
+          
 
         </div><br>
 
@@ -362,16 +337,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="print_individual" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="fas fa-qrcode icons nav-icon"></i>
-              <p> &nbsp; Print</p>
-            </a>
-          </li>
-          
-
-
+       
         </div> <br>
 
 

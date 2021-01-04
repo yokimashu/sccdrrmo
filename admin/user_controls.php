@@ -20,14 +20,18 @@ $numberofdraft = ' ';
 $post_last = ' ';
 $break = ' ';
 
-$label_tracer = ' ';
-$infection = '';
-$contacts = '';
-$covid_case = ' ';
-$covid_positive = ' ';
-$covid_contact = ' ';
-$add_contact_case = ' ';
 
+
+
+
+// masterlist 
+$label_covid_case = ' ';
+$list_close_contact = ' ';
+$list_positive_case = ' ';
+
+//google forms
+$label_tracer = ' ';
+$add_positive_case = ' ';
 
 
 $get_all_draft_sql = "SELECT * FROM tbl_announcement WHERE status = 'draft'";
@@ -39,15 +43,59 @@ $numberofdraft = $get_all_draft_data->rowCount();
 
 //sidebar buttons
 if ($_SESSION['user_type'] == 1) {
-  $registration_list =
-    '<li class="nav-item">
-          <a href="list_users" class="nav-link sidebar-link">
-            &nbsp; 
 
-            <i class="nav-icon fa fa-users icons"></i>
-            <p> &nbsp; User Credentials</p>
-          </a>
-    </li>';
+  // individual form  
+  $view_history =
+    '   <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
+        <i class="fa fa-suitcase"></i>
+      </a>';
+
+
+  // masterlist of covid-19
+  $label_covid_case =
+    '  <div>
+    <label id="label1" style="font-size:18px; ">
+          &nbsp;
+          <i class="nav-icon fas fa-briefcase-medical icons "></i>
+          &nbsp;
+          COVID-19 CASES
+       </label>';
+
+
+
+
+  $list_close_contact = '
+       <li class="nav-item">
+         <a href="list_close_contact" class="nav-link sidebar-link">
+           &nbsp;
+           <i class="nav-icon fas fa-file-alt icons"></i>
+           <p> &nbsp; Close Contacts </p>
+         </a>
+       </li>';
+
+
+  $list_positive_case =
+    '<li class="nav-item">
+        <a href="list_sources_infection" class="nav-link sidebar-link">
+          &nbsp;
+          <i class="nav-icon fas fa-file-alt icons"></i>
+          <p> &nbsp; Confirmed Case </p>
+        </a>
+    </li></div> <br> ';
+  //end of masterlist of tracer 
+
+
+
+
+
+
+  // SETTINGS MENU
+  $settings = '  <label id="label1" style="font-size:18px; ">
+      &nbsp;
+      <i class="nav-icon fa fa-cogs icons"></i>
+      &nbsp;
+      SETTINGS
+  </label>';
 
   $incident_report =
     ' <li class="nav-item">
@@ -61,106 +109,27 @@ if ($_SESSION['user_type'] == 1) {
       </li>';
 
 
-  $infection =
+  $registration_list =
     '<li class="nav-item">
-      <a href="https://forms.gle/hPFdN8XDr9VpSYYt7" class="nav-link sidebar-link">
-        &nbsp;
-        <i class="nav-icon fas fa-file-alt"></i>
-
-        <p> &nbsp; Sources of Infection</p>
-      </a>
-    </li>';
-
-  $contacts =
-    '<li class="nav-item">
-        <a href="https://forms.gle/7uxgB4rvGU6ZMDdx6" class="nav-link sidebar-link">
-          &nbsp;
-          <i class="nav-icon fas fa-file-alt"></i>
-
-          <p> &nbsp; Close Contacts</p>
-        </a>
+            <a href="list_users" class="nav-link sidebar-link">
+              &nbsp; 
+  
+              <i class="nav-icon fa fa-users icons"></i>
+              <p> &nbsp; User Credentials</p>
+            </a>
       </li>';
 
-  $covid_case =
-    '<label id="label1" style="font-size:18px; ">
-        &nbsp;
-        <i class="nav-icon fas fa-briefcase-medical icons "></i>
-        &nbsp;
-        COVID-19 CASES
-     </label>';
-
-
-
-
-
-
-
-
-  // individual form  
-  $view_history =
-    '   <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
-        <i class="fa fa-suitcase"></i>
-      </a>';
-
-
-
-  $covid_contact =
-    '<li class="nav-item">
-            <a href="list_contact" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fas fa-people-arrows icons"></i>
-              <p> &nbsp; Close Contacts </p>
-            </a>
-    </li>';
-
-
-  $add_contact_case = '    <li class="nav-item">
-          <a href="add_contact_case" class="nav-link sidebar-link">
-            &nbsp;
-            <i class="nav-icon fas fa-people-arrows icons"></i>
-            <p> &nbsp; Close Contact Form </p>
-          </a>
-        </li> </div></br>';
-
-  $settings = '  <label id="label1" style="font-size:18px; ">
-                        &nbsp;
-                        <i class="nav-icon fa fa-cogs icons"></i>
-                        &nbsp;
-                        SETTINGS
-                    </label>';
 
 
   $mobile_alert =  '    <li class="nav-item ">
 
-                                <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link sidebar-link">
-                                &nbsp; 
-                                <i class="fa fa-bell-o nav-icon icons" ></i>
-                                <p>&nbsp; Mobile Alert</p>
-                                </a>
+              <a href="#addnew" data-toggle="modal" data-target="#push_notify" class="nav-link sidebar-link">
+              &nbsp; 
+              <i class="fa fa-bell-o nav-icon icons" ></i>
+              <p>&nbsp; Mobile Alert</p>
+              </a>
 
-                            </li>';
-
-
-  $covid_positive =
-    ' <li class="nav-item">
-        <a href="list_positive_cases" class="nav-link sidebar-link">
-          &nbsp;
-          <i class="nav-icon fas fa-user-plus icons"></i>
-          <p> &nbsp; COVID Positive </p>
-        </a>
-        </li> ';
-
-
-
-  $label_tracer = '  <div>    <label id="label1" style="font-size:18px; ">
-              &nbsp;
-              <i class="nav-icon fa fa-folder icons "></i>
-              &nbsp;
-              TRACERS FORM
-              </label>';
-
-
-
+          </li>';
 
   $post_announce = '
                             <li class="nav-item">
@@ -190,67 +159,15 @@ if ($_SESSION['user_type'] == 1) {
   $break = '<br><br><br><br>';
 }
 
+// register account
 if ($_SESSION['user_type'] == 2) {
   $break = '<br><br><br><br>';
 }
 
-//CONTACT TRACER FORM
-
+//contact tracer account
 if ($_SESSION['user_type'] == 3) {
 
-  $label_tracer = '  <div>    <label id="label1" style="font-size:18px; ">
-&nbsp;
-<i class="nav-icon fa fa-folder icons "></i>
-&nbsp;
-TRACERS FORM
-</label>';
 
-  $infection =
-    '
-  <li class="nav-item">
-  <a href="https://forms.gle/hPFdN8XDr9VpSYYt7" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-file-alt"></i>
-
-    <p> &nbsp; Sources of Infection</p>
-  </a>
-</li>';
-
-  $contacts =
-    '
-      <li class="nav-item">
-      <a href="https://forms.gle/7uxgB4rvGU6ZMDdx6" class="nav-link sidebar-link">
-        &nbsp;
-        <i class="nav-icon fas fa-file-alt"></i>  
-
-        <p> &nbsp; Close Contacts</p>
-      </a>
-    </li>     </div> <br>';
-
-
-
-  $covid_case = '     <label id="label1" style="font-size:18px; ">
-  &nbsp;
-   <i class="nav-icon fas fa-briefcase-medical icons "></i>
-   &nbsp;
-   COVID-19 CASES
- </label>';
-
-  $covid_positive = ' <li class="nav-item">
- <a href="list_positive_cases" class="nav-link sidebar-link">
-   &nbsp;
-   <i class="nav-icon fas fa-user-plus icons"></i>
-   <p> &nbsp; COVID Positive </p>
- </a>
- </li> ';
-
-  $covid_contact = '    <li class="nav-item">
-               <a href="list_contact" class="nav-link sidebar-link">
-                 &nbsp;
-                 <i class="nav-icon fas fa-people-arrows icons"></i>
-                 <p> &nbsp; Close Contacts </p>
-               </a>
-             </li>';
 
 
 
@@ -261,6 +178,40 @@ TRACERS FORM
     <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
     <i class="fa fa-suitcase"></i>
   </a>';
+
+
+  $break = '<br><br><br><br>';
+}
+
+if ($_SESSION['user_type'] == 4) {
+
+  $label_covid_case =
+    '<label id="label1" style="font-size:18px; ">
+        &nbsp;
+        <i class="nav-icon fas fa-briefcase-medical icons "></i>
+        &nbsp;
+        COVID-19 CASES
+     </label>';
+
+
+  // $list_close_contact = '
+  //    <li class="nav-item">
+  //      <a href="list_close_contact  " class="nav-link sidebar-link">
+  //        &nbsp;
+  //        <i class="nav-icon fas fa-file-alt icons"></i>
+  //        <p> Close Contacts </p>
+  //      </a>
+  //    </li>';
+
+  $list_positive_case =
+    '<li class="nav-item">
+      <a href="list_sources_infection" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-file-alt icons"></i>
+        <p> Confirmed Case </p>
+      </a>
+    </li> <br>';
+
 
 
   $break = '<br><br><br><br>';
