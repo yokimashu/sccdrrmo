@@ -9,77 +9,92 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
                             <div class="col-6">
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Entity No:</span>
+                                    </div>
+                                    <input type="text" class="form-control" name = "entityno" readonly id = "entityno" aria-label="Username"
+                                        aria-describedby="basic-addon1">
+                                </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Username</span>
+                                        <span class="input-group-text" id="basic-addon1">Username:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "username" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "username" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">First Name</span>
+                                        <span class="input-group-text" id="basic-addon1">First Name:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "fname" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "fname" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Middle Name</span>
+                                        <span class="input-group-text" id="basic-addon1">Middle Name:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "mname" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "mname" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Last Name</span>
+                                        <span class="input-group-text" id="basic-addon1">Last Name:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "lname" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "lname" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Gender</span>
+                                        <span class="input-group-text" id="basic-addon1">Gender:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "gender" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "gender" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Birth Date</span>
+                                        <span class="input-group-text" id="basic-addon1">Birth Date:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "bday" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "bday" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Barangay</span>
+                                        <span class="input-group-text" id="basic-addon1">Barangay:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "username" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "brgy" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Contact No.</span>
+                                        <span class="input-group-text" id="basic-addon1">Contact No.:</span>
                                     </div>
-                                    <input type="text" class="form-control" id = "contacts" aria-label="Username"
+                                    <input type="text" class="form-control" readonly id = "contacts" aria-label="Username"
+                                        aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Remarks:</span>
+                                    </div>
+                                    <input type="text" class="form-control" name = "remarks" id = "remarks" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
 
                             </div>
                             <div class ="col-6">
-                            <img src="..." class="img-fluid" id = "userimage" alt="Responsive image">      
-                            <img src="..." class="img-fluid" id = "userverification" alt="Responsive image">      
+                            <img src="..." class="img-fluid rounded image" id = "userimage" alt="Responsive image">      
+                            <img src="..." class="img-fluid rounded image" id = "userverification" alt="Responsive image">      
                             
                             </div>
                         </div>
@@ -89,9 +104,10 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                    <input type="submit"  id = "deny" name = "deny" class="btn btn-danger pull-left bg-olive" value = "DENY">
                     <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-                    <input type="submit" name="delete_pum" class="btn btn-danger" value="Yes">
+                    <input type="submit"  id = "approve" name="approve" class="btn btn-primary"  value="APPROVE">
+                    <input type="button" class="btn btn-default" dadata-dismiss="modal" data-dismiss="modal" value="CANCEL">
                 </div>
             </form>
         </div>
@@ -99,3 +115,12 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+<style>
+.image{
+margin-left:50px;
+margin-right:60px;
+height: 300px;
+width:300px;
+}
+</style>
