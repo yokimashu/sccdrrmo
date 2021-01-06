@@ -146,6 +146,7 @@ $get_all_data_data->execute();
         </div>
 
       </section>
+      <br><br>
 
 
 

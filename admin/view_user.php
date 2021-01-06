@@ -302,6 +302,7 @@ $get_all_account_data->execute();
                     </div>
                 </div>
             </section>
+            <br><br>
         </div>
 
         <?php include('footer.php') ?>
