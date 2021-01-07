@@ -1,6 +1,6 @@
 <div class="modal fade  bd-example-modal-lg" id="verify_modal" role="dialog" data-backdrop="static"
     data-keyboard="false">
-    <div class="modal-dialog modal-lg" style="">
+    <div class="modal-dialog modal-lg" >
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Verify User</h4>
