@@ -83,7 +83,7 @@
                                     <input type="text" class="form-control" readonly id = "contacts" aria-label="Username"
                                         aria-describedby="basic-addon1">
                                 </div>
-
+                                <input type = "text" hidden id = "photolink" name = "photolink">
 
                             </div>
                             <div class ="col-6">
