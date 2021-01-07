@@ -69,8 +69,8 @@ $get_new_submission_record->execute();
           <div class="card-header  text-white bg-success">
             <h4> User Verification
 
-              <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
-                <i class="nav-icon fa fa-plus-square"></i></a>
+              <!-- <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a> -->
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
@@ -222,8 +222,9 @@ $get_new_submission_record->execute();
           $('#bday').val(result.birthdate);
           $('#brgy').val(result.barangay);
           $('#contacts').val(result.mobile);
+          $('#photolink').val(result.verifyphoto);
           $('#userimage').attr("src",'../flutter/images/'+result.userphoto);
-          $('#userverification').attr("src",'../flutter/images/'+result.verifyphoto);
+          $('#userverification').attr("src",'../flutter/verification_images/'+result.verifyphoto);
         },
         error: function (xhr, b, c) {
      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
