@@ -65,7 +65,8 @@ if (isset($_POST['deny'])) {
     $reason_remarks = $_POST['remarks'];
 
 
-    $message = 'Good day! Your account was disapproved, kindly check and upload necesarry requirements! REMARKS: ' . $reason_remarks;
+
+    $message = "Good day! Your account was disapproved, kindly check and upload necesarry requirements! \r\n\r\nREMARKS:  " . $reason_remarks;
     date_default_timezone_set('Asia/Manila');
     $time = date('H:i:s');
     $title = 'VAMOS ACCOUNT VERIFICATION';
