@@ -209,6 +209,8 @@ $get_new_submission_record->execute();
      
       $.ajax({
         url:'get_verification_info.php',
+
+        
         type:'POST',
         data:{entityno:col1},
         success: function(response){
@@ -223,6 +225,7 @@ $get_new_submission_record->execute();
           $('#brgy').val(result.barangay);
           $('#contacts').val(result.mobile);
           $('#photolink').val(result.verifyphoto);
+
           $('#userimage').attr("src",'../flutter/images/'+result.userphoto);
           $('#userverification').attr("src",'../flutter/verification_images/'+result.verifyphoto);
         },

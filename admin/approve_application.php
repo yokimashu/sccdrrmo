@@ -62,13 +62,15 @@ if (isset($_POST['deny'])) {
     // $remarks = $_POST['remarks'];
     $entity_no = $_POST['entityno'];
     $photolink = $_POST['photolink'];
+    $reason_remarks = $_POST['remarks'];
 
-    $message = 'Good day! Your account was disapproved, kindly check and upload necesarry requirements! ';
+
+    $message = 'Good day! Your account was disapproved, kindly check and upload necesarry requirements! REMARKS: ' . $reason_remarks;
     date_default_timezone_set('Asia/Manila');
     $time = date('H:i:s');
     $title = 'VAMOS ACCOUNT VERIFICATION';
 
-    $sql = "UPDATE tbl_verification set  remarks = 'Your account was disapproved, kindly check and upload necesarry requirements! ', status = 'DENIED' where entity_no = :entity";
+    $sql = "UPDATE tbl_verification set  remarks = 'Your account was disapproved, kindly check and upload necesarry requirements! REMARKS: $reason_remarks ' , status = 'DENIED' where entity_no = :entity";
     $exe_sql = $con->prepare($sql);
     $exe_sql->execute([':entity' => $entity_no]);
 
