@@ -65,7 +65,7 @@ if (isset($_POST['deny'])) {
 
     $message = 'Good day! Your account was disapproved, kindly check and upload necesarry requirements! ';
     date_default_timezone_set('Asia/Manila');
-    $time = date(' H:i:s');
+    $time = date('H:i:s');
     $title = 'VAMOS ACCOUNT VERIFICATION';
 
     $sql = "UPDATE tbl_verification set  remarks = 'Your account was disapproved, kindly check and upload necesarry requirements! ', status = 'DENIED' where entity_no = :entity";
