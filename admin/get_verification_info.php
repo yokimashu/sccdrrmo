@@ -16,7 +16,7 @@ $entity_no = $_POST['entityno'];
     $sql = "SELECT e.username , i.firstname,i.middlename,i.lastname,i.gender,i.birthdate, 
             i.barangay,i.mobile_no, i.photo as iphoto, v.photo as vphoto FROM tbl_individual i inner join tbl_entity e on 
              i.entity_no = e. entity_no inner join tbl_verification v on i.entity_no = v.entity_no  
-             WHERE i.entity_no = :entity LIMIT 1"; 
+             WHERE v.entity_no = :entity and v.status = 'NEW SUBMISSION' LIMIT 1"; 
 
 $exe_sql = $con->prepare($sql);
 $exe_sql->execute([':entity' => $entity_no]);

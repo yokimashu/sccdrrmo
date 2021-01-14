@@ -106,8 +106,8 @@ $get_new_submission_record->execute();
                             <td><?php echo $list_sea['entity_no'];  ?></td>
                             <td><?php echo $list_sea['fullname']; ?> </td>
                             <td>
-                              <button class="btn btn-warning btn-sm" id = "verify" >
-                                <i class="fa fa-edit"></i></a>
+                              <button class="btn btn-warning btn-sm" id = "verify" data-toggle="modal">
+                                <i class="fa fa-edit"></i></button>
                     </td>
                           </tr>
                         <?php } ?>
@@ -130,7 +130,8 @@ $get_new_submission_record->execute();
 
       </section>
       <br>
-      <?php include('user_verification_modal.php');?>
+      <?php include('user_verification_modal.php');
+      include('enlarge_photo.php');?>
 
     </div>
     <!-- /.content-wrapper -->
@@ -171,6 +172,13 @@ $get_new_submission_record->execute();
   <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
   <!-- Select2 -->
   <script src="../plugins/select2/select2.full.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+	<!-- <script src="../plugins/zoomimage2/js/BUP.js" ></script> -->
+  <!-- <script src="../plugins/zoomimage2/jquery.zoom.js" ></script> -->
+  <!-- <script src="../plugins/zoomimage2/lightense.js" ></script>
+  <script src="../plugins/zoomimage2/lightense.min.js" ></script> -->
+  <!-- <script src="../plugins/zoomimage2/jquery.zoom.min.js" ></script> -->
+<!-- <script src="../plugins/zoomimage/js/jquery.jqZoom.js"></script> -->
 
   <script>
   var entityglobal = '';
@@ -187,7 +195,7 @@ $get_new_submission_record->execute();
       'info': true,
       'autoWidth': true,
       'autoHeight': true
-    })
+    });
 
 
    
@@ -222,8 +230,10 @@ $get_new_submission_record->execute();
           $('#bday').val(result.birthdate);
           $('#brgy').val(result.barangay);
           $('#contacts').val(result.mobile);
+          $('#photolink').val(result.verifyphoto);
           $('#userimage').attr("src",'../flutter/images/'+result.userphoto);
-          $('#userverification').attr("src",'../flutter/images/'+result.verifyphoto);
+          $('#userverification').attr("src",'../flutter/verification_images/'+result.verifyphoto);
+          $('#enlarge').attr("src",'../flutter/verification_images/'+result.verifyphoto);
         },
         error: function (xhr, b, c) {
      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
@@ -231,6 +241,70 @@ $get_new_submission_record->execute();
 
       });
     });
+    // $(function() {
+  //     $("#userverification").jqZoom({
+  //     selectorWidth: 30,
+  //    selectorHeight: 30,
+  //    viewerWidth: 400,
+  //    viewerHeight: 300
+  // });
+
+// $('[data-toggle="modal"]').hover(function() {
+//   var modalId = $(this).data('target');
+//   $('#verify_modal').modal('show');
+//   event.preventDefault();
+//       var table = $('#users').DataTable();
+//      var currow=  $(this).closest('tr');
+//       var col1 = currow.find('td:eq(0)').text();
+//       //  alert (data[0]);
+//       //  var data = $('#users').DataTable().row('.selected').data(); //table.row(row).data().docno;
+//       // var entity_no = data[0];
+//       // alert(entity_no);
+
+//       $('#verify_modal').modal('toggle');
+     
+//       $.ajax({
+//         url:'get_verification_info.php',
+//         type:'POST',
+//         data:{entityno:col1},
+//         success: function(response){
+//           var result = jQuery.parseJSON(response);
+//           $('#entityno').val(result.entityno);      
+//           $('#username').val(result.username);      
+//           $('#fname').val(result.firstname);
+//           $('#mname').val(result.middlename);
+//           $('#lname').val(result.lastname);
+//           $('#gender').val(result.gender);  
+//           $('#bday').val(result.birthdate);
+//           $('#brgy').val(result.barangay);
+//           $('#contacts').val(result.mobile);
+//           $('#photolink').val(result.verifyphoto);
+//           $('#userimage').attr("src",'../flutter/images/'+result.userphoto);
+//           $('#userverification').attr("src",'../flutter/verification_images/'+result.verifyphoto);
+//           $('#enlarge').attr("src",'../flutter/verification_images/'+result.verifyphoto);
+//         },
+//         error: function (xhr, b, c) {
+//      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+//        }
+
+//       });
+// });
+
+// });
+
+$('#userverification').click(function(){
+
+  $('#enlarge_modal').modal('toggle');
+  console.log('enlarge');
+});
+
+$('#enlarge_cancel').click(function(){
+
+$('#enlarge_modal').modal('hide');
+console.log('hide');
+});
+
+
     // $('#approve').click(function(){
     //   event.preventDefault();
     //   var entity = $('#entityno').val();
@@ -250,6 +324,76 @@ $get_new_submission_record->execute();
     //   });
     //   $('#users').dataTable().fnDraw();
     // })
+  </script>
+  <script type="text/javascript">
+
+  // $('img.userverification')
+  //   .wrap('<span style="display:inline-block"></span>')
+  //   .css('display', 'block')
+  //   .parent()
+  //   .zoom();
+//   window.addEventListener('load', function () {
+//   var el = document.querySelectorAll('img.lightense');
+//   Lightense(el);
+  
+// }, false);
+  // Lightense("img:not(.no-lightense),.lightense", {
+
+  //     // Example: Event Hooks
+  //     beforeShow(config) {
+  //       var beforeShowAttr = config.target.getAttribute("before-show-alert");
+  //       beforeShowAttr && alert(beforeShowAttr);
+  //     },
+  //     afterShow(config) {
+  //       var afterShowAttr = config.target.getAttribute("after-show-alert");
+  //       afterShowAttr && alert(afterShowAttr);
+  //     },
+  //     beforeHide(config) {
+  //       var beforeHideMessage = config.target.getAttribute("before-hide-alert");
+  //       beforeHideMessage && alert(beforeHideMessage);
+  //     },
+  //     afterHide(config) {
+  //       var afterHideMessage = config.target.getAttribute("after-hide-alert");
+  //       afterHideMessage && alert(afterHideMessage);
+  //     }
+  //   }); 
+  // }
+  // , false);
+  // document.addEventListener("DOMContentLoaded", function(e) {
+  //   function createDom(type, cssClass) {
+  //     var div = document.createElement(type);
+  //     div.className = cssClass;
+  //     return div;
+  //   }
+
+  //   var thumb = document.querySelector(".lightense-lazy");
+  //   var original = new Image();
+
+  //   // Init wrapper
+  //   var wrap = createDom("div", "lightense-lazy-wrap");
+  //   thumb.parentNode.insertBefore(wrap, thumb);
+  //   wrap.appendChild(thumb);
+
+  //   // Wrap thumbnail
+  //   var thumbWrap = createDom("div", "lightense-lazy-thumb");
+  //   thumbWrap.appendChild(thumb);
+  //   wrap.appendChild(thumbWrap);
+
+  //   // Wrap original
+  //   var originalWrap = createDom("div", "lightense-lazy-large");
+  //   original.src = thumb.dataset.original;
+  //   originalWrap.appendChild(original);
+  //   wrap.appendChild(originalWrap);
+
+  //   // Load original image
+  //   original.addEventListener(
+  //     "load",
+  //     function() {
+  //       wrap.classList.add("on");
+  //     },
+  //     false
+  //   );
+  // });
   </script>
 </body>
 
