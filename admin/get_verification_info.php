@@ -35,6 +35,7 @@ while($result = $exe_sql->fetch(PDO::FETCH_ASSOC)) {
     $mobile= $result['mobile_no'];
     $userphoto= $result['iphoto'];
     $verifyphoto= $result['vphoto'];
+    
 }
 
 

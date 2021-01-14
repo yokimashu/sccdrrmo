@@ -69,8 +69,8 @@ $get_new_submission_record->execute();
           <div class="card-header  text-white bg-success">
             <h4> User Verification
 
-              <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
-                <i class="nav-icon fa fa-plus-square"></i></a>
+              <!-- <a href="add_sea_trans" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
+                <i class="nav-icon fa fa-plus-square"></i></a> -->
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
@@ -217,6 +217,8 @@ $get_new_submission_record->execute();
      
       $.ajax({
         url:'get_verification_info.php',
+
+        
         type:'POST',
         data:{entityno:col1},
         success: function(response){
