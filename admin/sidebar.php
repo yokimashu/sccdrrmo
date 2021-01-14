@@ -109,14 +109,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     </li>
 
 
-    <li class="nav-item">
-      <a href="announcement" class="nav-link ">
-        <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
-        <!-- <label href="announcement"> -->
-        ANNOUNCEMENTS
-        <!-- </label> -->
-      </a>
-    </li>
+ 
+
 
 
   </ul>
@@ -135,7 +129,14 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <a href="#" class="nav-link">Profile</a>
     </li> -->
 
-
+    <li class="nav-item" align="right">
+      <a href="announcement" class="nav-link ">
+        <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
+        <!-- <label href="announcement"> -->
+        ANNOUNCEMENTS
+        <!-- </label> -->
+      </a>
+    </li>
 
 
   </ul>
@@ -276,7 +277,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               <p> &nbsp; Multiple QR</p>
             </a>
           </li>
-          
+
 
         </div><br>
 
@@ -337,7 +338,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             </a>
           </li>
 
-       
+
         </div> <br>
 
 
@@ -350,6 +351,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $registration_list; ?>
           <?php echo $post_announce_last; ?>
           <?php echo $incident_report ?>
+          <?php echo $send_message ?>
+
         </div><br>
 
         <div>
