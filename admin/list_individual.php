@@ -188,6 +188,10 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
       } else if (accountType == 3) {
         return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
 
+      } 
+      else if (accountType == 4) {
+        return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
+
       } else {
         return '';
       }

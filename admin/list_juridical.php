@@ -98,31 +98,55 @@ $get_all_juridical_data->execute();
                             <td><?php echo $list_juridical['org_type']; ?> </td>
                             <td>
 
-                              <a class="btn btn-warning btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
-                                <i class="fa fa-edit"></i></a>
+                            
 
 
                               <?php if ($_SESSION['user_type'] == 1) {
                                 //restrict users to view history
                               ?>
+                                <a class="btn btn-warning btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
                                 <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
                                   <i class="fa fa-suitcase"></i></a>
 
-
-                              <?php } ?>
-
-
-                              <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
+                                  <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
                                 <i class="nav-icon fa fa-print"></i></a>
                               </a>
 
-                              <!-- <?php if ($_SESSION['user_type'] == 1) {
+                              <?php } ?>
+
+                              <?php if ($_SESSION['user_type'] == 2) {
+                                //restrict users to view history
+                              ?>
+                                <a class="btn btn-warning btn-sm" href="view_juridical.php?&id=<?php echo $list_juridical['entity_no']; ?> ">
+                                <i class="fa fa-edit"></i></a>
+                              
+                                  <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_juridical['entity_no'];  ?>">
+                                <i class="nav-icon fa fa-print"></i></a>
+                              </a>
+
+                              <?php } ?>
+
+                              <?php if ($_SESSION['user_type'] == 3) {
+                                //restrict users to view history
+                              ?>
+                               
+                                <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a>
+                         
+
+                              <?php } ?>     
+
+
+                       <?php if ($_SESSION['user_type'] == 4) {
                                       //restrict users to view history
                                     ?>
-                                <button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
+                                  <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_juridical['entity_no']; ?> ">
+                                  <i class="fa fa-suitcase"></i></a>
 
 
-                              <?php } ?> -->
+
+                              <?php } ?> 
 
 
                               &nbsp;
