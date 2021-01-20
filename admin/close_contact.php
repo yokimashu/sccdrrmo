@@ -31,6 +31,9 @@ if (isset($_POST['entity_no'])) {
 
         $entity_no =  $result['entity_no'];
         $fullname =  $result['fullname'];
+        $firstname  =   $result['firstname'];
+        $middlename  =   $result['middlename'];
+        $lastname  =   $result['lastname'];
         $birthdate = $result['birthdate'];
         $province = $result['province'];
         $street =  $result['street'];
@@ -52,6 +55,9 @@ if (isset($_POST['entity_no'])) {
         'data5' => $age,
         'data6' => $gender,
         'data7' => $mobile_no,
+        'data8' => $firstname,
+        'data9' => $middlename,
+        'data10' => $lastname,
 
 
         'message' => 'success'

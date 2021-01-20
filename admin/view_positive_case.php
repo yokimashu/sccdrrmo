@@ -8,14 +8,12 @@ session_start();
 $now = new DateTime();
 $time = date(' H:i');
 
-
 $entity_no = ' ';
 
-$btnSave = $btnEdit = $patient_no = $date_from = $date_to = '';
+$btnSave = $btnEdit = $patient_no = $date_from = $date_to =  '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $time = date('H:i:s');
-
 
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
@@ -26,10 +24,72 @@ $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
-
-
     $tracer_fullname = $result['fullname'];
 }
+
+$get_date_reg = $get_time_reg = $remarks = $get_patient_no = $get_tracername = $get_tracerbrgy = $get_closecontact =
+    $get_index_no = $get_indexname = $get_indexrelate = $get_indexdate = $get_patient_entityno = $get_patient_firstname =
+    $get_patient_firstname = $get_patient_middlename = $get_patient_lastname = $get_patient_birthdate =  $get_patient_age =
+    $get_patient_gender = $get_patient_street = $get_patient_city = $get_patient_origin = $get_patient_province =
+    $get_patient_admission = $get_patient_date_admin = $get_patient_mobileno = $get_patient_bloodtype = $get_patient_civilstat  =
+    $get_patient_nationality = $get_patient_occupation = $get_patient_workplace = $get_patient_member = $get_health_comorbidities =
+    $get_health_symptoms = $get_date_swab = $get_date_released = $get_date_recovered = $get_date_died = $get_health_swabbing =
+    $get_health_comorbidities = $get_quarantine_started = $get_quatantine_ended = $get_health_quarantine  = $get_status = ' ';
+
+
+
+$user_id = $_GET['id'];
+$get_data_sql = "SELECT * FROM  tbl_sources_infection where patient_no ='$user_id'";
+$get_data_data = $con->prepare($get_data_sql);
+$get_data_data->execute([':id' => $user_id]);
+
+while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+    $get_date_reg               =   $result['date_register'];
+    $get_time_reg               =   $result['time_register'];
+    $get_remarks                =   $result['remarks'];
+    $get_patient_no             =   $result['patient_no'];
+    $get_tracername             =   $result['tracer_fullname'];
+    $get_tracerbrgy             =   $result['tracer_brgy'];
+    $get_closecontact           =   $result['close_contact'];
+    $get_index_no               =   $result['index_entityNo'];
+    $get_indexname              =   $result['index_name'];
+    $get_indexrelate            =   $result['index_relation'];
+    $get_indexdate              =   $result['index_date'];
+    $get_patient_entityno       =   $result['patient_entityno'];
+    $get_patient_fullname       =   $result['patient_fullname'];
+    $get_patient_firstname      =   $result['patient_firstname'];
+    $get_patient_middlename     =   $result['patient_middlename'];
+    $get_patient_lastname       =   $result['patient_lastname'];
+    $get_patient_birthdate      =   $result['patient_birthdate'];
+    $get_patient_age            =   $result['patient_age'];
+    $get_patient_gender         =   $result['patient_gender'];
+    $get_patient_street         =   $result['patient_street'];
+    $get_patient_city           =   $result['patient_city'];
+    $get_patient_province       =   $result['patient_province'];
+    $get_patient_origin         =   $result['patient_origin'];
+    $get_patient_admission      =   $result['patient_admission'];
+    $get_patient_date_admin     =   $result['date_admission'];
+    $get_patient_mobileno       =   $result['patient_mobileno'];
+    $get_patient_bloodtype      =   $result['patient_bloodtype'];
+    $get_patient_civilstat      =   $result['patient_civilstat'];
+    $get_patient_nationality    =   $result['patient_nationality'];
+    $get_patient_occupation     =   $result['patient_occupation'];
+    $get_patient_workplace      =   $result['patient_workplace'];
+    $get_patient_member         =   $result['patient_member'];
+    $get_health_comorbidities   =   $result['health_comorbidities'];
+    $get_health_symptoms        =   $result['health_symptoms'];
+    $get_date_swab              =   $result['date_swab'];
+    $get_date_released          =   $result['date_released'];
+    $get_date_recovered         =   $result['date_recovered'];
+    $get_date_died              =   $result['date_died'];
+    $get_health_swabbing        =   $result['health_swabbing'];
+    $get_health_comorbidities   =   $result['health_comorbidities'];
+    $get_quarantine_started     =   $result['quarantine_started'];
+    $get_quatantine_ended       =   $result['quarantine_ended'];
+    $get_health_quarantine      =   $result['health_quarantine'];
+    $get_status                 =   $result['status'];
+}
+
 
 
 
@@ -55,22 +115,17 @@ $get_all_admission_sql = "SELECT * FROM place_admission";
 $get_all_admission_data = $con->prepare($get_all_admission_sql);
 $get_all_admission_data->execute();
 
-
 $get_all_symptoms_sql = "SELECT * FROM signs_symptoms";
 $get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
 $get_all_symptoms_data->execute();
-
 
 $get_all_typequarantine_sql = "SELECT * FROM type_quarantine ";
 $get_all_typequarantine_data = $con->prepare($get_all_typequarantine_sql);
 $get_all_typequarantine_data->execute();
 
-
-
 $province = 'NEGROS OCCIDENTAL ';
 $city = 'SAN CARLOS CITY';
 $nationality = ' FILIPINO';
-
 
 $title = 'VAMOS | COVID-19 Patient Form';
 
@@ -192,14 +247,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" style="width: 90%;" readonly id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input type="text" class="form-control pull-right" style="width: 90%;" readonly id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_reg ?>">
                                                     </div>
                                                 </div>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                                 <div class="col-md-2">
                                                     <label> Time Registered:</label>
-                                                    <input readonly type="text" class="form-control" name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>" required>
+                                                    <input readonly type="text" class="form-control" name="time" id="time" placeholder="Time Registered" value="<?php echo $get_time_reg; ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -207,13 +262,13 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
                                                     <label>Name of Investigator: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" class="form-control" name="contact_tracer" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" id="contact_tracer" placeholder="Investigator's Name" value="<?php echo $db_fullname ?>" required>
+                                                    <input type="text" class="form-control" name="contact_tracer" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" id="contact_tracer" placeholder="Investigator's Name" value="<?php echo $get_tracername ?>" required>
                                                     <span id="asstdname"> &nbsp;&nbsp;<i>Name of Contact Tracer</i></span>
                                                 </div>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <div class="col-md-3">
                                                     <label for="">Name of Brgy Contact Tracer: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="brgy_contacttracer" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" id="brgy_contacttracer" placeholder="Name of Brgy Contact Tracer" required>
+                                                    <input type="text" class="form-control" name="brgy_contacttracer" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" id="brgy_contacttracer" placeholder="Name of Brgy Contact Tracer" value="<?php echo $get_tracerbrgy ?>" required>
                                                     <span id="asstdname"> &nbsp; &nbsp;<i>Please put NONE if no Brgy CT assisted</i></span>
                                                 </div>
 
@@ -221,8 +276,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label for="">Close Contact?: &nbsp;&nbsp; <span id="required">*</span></label>
                                                     <select class=" form-control select2" style="width: 100%;" id="close_contact" name="close_contact" required>
                                                         <option selected="selected">Please select</option>
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
+                                                        <option <?php if ($get_closecontact == 'Yes') echo 'selected'; ?> value="Yes">Yes </option>
+                                                        <option <?php if ($get_closecontact == 'No') echo 'selected'; ?> value="No">No </option>
                                                     </select>
                                                 </div>
 
@@ -234,12 +289,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     </div>
 
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                        <div>
+                                        <!-- <div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-5">
                                                     <label> Select Individual: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class="form-control select2" style="width: 100%;" id="index_info" name="index_info" value="<?php echo $entity_no ?>">
+                                                    <select class="form-control select2" style="width: 100%;" id="index_name" name=" index_name" value="<?php echo $entity_no ?>">
                                                         <option>Select Individual</option>
                                                     </select>
                                                 </div>
@@ -255,11 +310,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-2">
-                                                    <input type="text" class="form-control" readonly id="index_entity" name="index_entity" placeholder="Index Entity #" required>
+                                                    <input type="text" class="form-control" readonly id="index_entity" name="index_entity" placeholder="Index Entity #" value="<?php echo $get_index_no ?>" required>
                                                 </div>
 
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="index_case" name="index_case" placeholder="Index Case Name" required>
+                                                    <input type="text" class="form-control" id="index_case" name="index_case" placeholder="Index Case Name" value="<?php echo $get_indexname ?>" required>
                                                 </div>
                                             </div><br>
 
@@ -270,24 +325,24 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-1"> </div>
                                                 <div class="col-md-5">
                                                     <label>If YES, what is your RELATIONSHIP of Index Case: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" class="form-control" id="index_relation" name="index_relation" placeholder="Relationship of Index Case" required>
+                                                    <input type="text" class="form-control" id="index_relation" name="index_relation" placeholder="Relationship of Index Case" value="<?php echo $get_indexrelate ?>" required>
                                                 </div>
                                             </div><br>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-5">
                                                     <label for="">If YES, when was the LAST DAY OF EXPOSURE TO THE CONFIRMED CASE? &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="date" id="date_exposure" name="date_exposure" style="width: 100%;" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo $now->format('Y-m-d'); ?>" />
+                                                    <input type="date" id="date_exposure" name="date_exposure" style="width: 100%;" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo $get_indexdate; ?>" />
 
                                                 </div>
 
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-                                        <!-- <div>
+                                        <div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
@@ -295,6 +350,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <select class="form-control select2" style="width: 90%;" id="entity1" name=" entity_no" value="">
                                                         <option>Select Individual</option>
                                                     </select>
+                                                    <span> </span>
                                                 </div>
                                             </div><br>
 
@@ -303,11 +359,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                 <div class="col-md-3">
                                                     <label for="">Entity ID: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" readonly class="form-control" id="entity_no1" name="entity_no1" placeholder="Entity Number" required>
+                                                    <input type="text" readonly class="form-control" id="entity_no1" name="entity_no1" placeholder="Entity Number" value=" <?php echo $get_patient_entityno ?>" required>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="">Patient #: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" readonly name="patient_no" id="patient_no" placeholder="Patient #" value="<?php echo $patient_no ?>" required>
+                                                    <input type="text" class="form-control" readonly name="patient_no" id="patient_no" placeholder="Patient #" value="<?php echo $get_patient_no ?>" required>
                                                 </div>
 
 
@@ -430,11 +486,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 </div>
 
                                             </div>
-                                        </div> -->
+                                        </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="nav-health" role="tabpanel" aria-labelledby="nav-health-tab">
-                                        <!-- <div>
+                                        <div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-9">
@@ -539,12 +595,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             </div><br>
 
 
-                                        </div> -->
+                                        </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="nav-travel" role="tabpanel" aria-labelledby="nav-travel-tab">
-                                        <!-- <div>
-         
+                                        <div>
+                                            <!-- domestic and international -->
 
                                             <div class="card-body">
                                                 <div class="box box-primary">
@@ -597,7 +653,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <div class="box-footer" align="center">
 
 
@@ -661,80 +717,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
     <script>
-        $(function() {
-            $('#index_info').select2({
-                ajax: {
-                    url: "individual_query_patient", // json datasource
-                    type: "post",
-                    dataType: 'json',
-                    delay: 250,
-                    data: function(params) {
-                        return {
-                            searchTerm: params.term
-                        };
-                    },
-
-                    processResults: function(response) {
-                        return {
-                            results: response
-
-
-                        };
-                    },
-                    cache: true,
-                    error: function(xhr, b, c) {
-                        console.log(
-                            "xhr=" +
-                            xhr.responseText +
-                            " b=" +
-                            b.responseText +
-                            " c=" +
-                            c.responseText
-                        );
-                    }
-                }
-
-            });
-        });
-
-
-
-        $('#index_name').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'index_individual.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#index_entity').val(result.data);
-                    $('#index_case').val(result.data1);
-
-                },
-
-
-            });
-        });
-
-
-
-
-
-
         $('#entity1').on('change', function() {
             var entity_no = this.value;
             console.log(entity_no);
@@ -780,6 +762,36 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
         });
 
+        $('#index_name').on('change', function() {
+            var entity_no = this.value;
+            console.log(entity_no);
+            $.ajax({
+                type: "POST",
+                url: 'index_individual.php',
+                data: {
+                    entity_no: entity_no
+                },
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                },
+                success: function(response) {
+                    var result = jQuery.parseJSON(response);
+                    console.log('response from server', result);
+                    $('#index_entity').val(result.data);
+                    $('#index_case').val(result.data1);
+
+                },
+
+
+            });
+        });
 
 
         $(function() {
@@ -819,6 +831,39 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         );
                     }
                 }
+            });
+            $('#index_name').select2({
+                ajax: {
+                    url: "individual_query_patient", // json datasource
+                    type: "post",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            searchTerm: params.term
+                        };
+                    },
+
+                    processResults: function(response) {
+                        return {
+                            results: response
+
+
+                        };
+                    },
+                    cache: true,
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    }
+                }
+
             });
 
         });

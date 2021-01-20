@@ -31,9 +31,7 @@ if (isset($_POST['entity_no'])) {
 
         $entity_no =  $result['entity_no'];
         $fullname =  $result['fullname'];
-        $firstname =  $result['firstname'];
-        $middlename =  $result['middlename'];
-        $lastname =  $result['lastname'];
+  
         $birthdate = $result['birthdate'];
         $province = $result['province'];
         $street =  $result['street'];

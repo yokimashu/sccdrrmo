@@ -14,6 +14,7 @@ $get_individual_entity = '';
 $mobile_alert = '';
 $post_announce = ' ';
 $post_announce_last = ' ';
+$send_message = ' ';
 $settings = ' ';
 $announce = ' ';
 $numberofdraft = ' ';
@@ -61,6 +62,14 @@ if ($_SESSION['user_type'] == 1) {
           COVID-19 CASES
        </label>';
 
+
+  $send_message = '<li class="nav-item">
+       <a href="send_message.php" class="nav-link sidebar-link">
+         &nbsp;
+         <i class="nav-icon fas fa-file-alt icons"></i>
+         <p> &nbsp; Send Message </p>
+       </a>
+     </li>';
 
 
 

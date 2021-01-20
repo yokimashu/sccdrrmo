@@ -22,6 +22,12 @@ $get_all_submission = "SELECT * FROM tbl_verification where status='NEW SUBMISSI
 $get_all_submission_data = $con->prepare($get_all_submission);
 $get_all_submission_data->execute();
 
+
+$get_all_verified = "SELECT * FROM tbl_verification where status='VERIFIED' ";
+$get_all_verified_data = $con->prepare($get_all_verified);
+$get_all_verified_data->execute();
+
+
 $get_all_seatrans_sql = "SELECT * FROM tbl_seatranspo ";
 $get_all_seatrans_data = $con->prepare($get_all_seatrans_sql);
 $get_all_seatrans_data->execute();
@@ -55,6 +61,27 @@ $title = 'VAMOS | Dashboard';
 
   <?php include('heading.php'); ?>
 
+  <style>
+    .field_set {
+      border-color: green;
+      border-style: solid;
+    }
+
+    #fieldset {
+      color: #31A231;
+      width: 10%;
+      padding: 5px 10px;
+
+    }
+
+    #fieldset_verify {
+      color: #31A231;
+      width: 15%;
+      padding: 5px 10px;
+
+    }
+  </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -73,140 +100,178 @@ $title = 'VAMOS | Dashboard';
           <div class="card">
 
             <div class="card-header bg-success text-white">
-              <h6>
-                COVID-19
-              </h6>
+              <h4>
+                DASHBOARD
+              </h4>
             </div>
             <div class="card-body">
 
-              <div class="row">
-                <div class="col-12 col-sm-6 col-md-4">
-                  <div class="info-box mb-3">
-                    <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-hospital-user"></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">ACTIVE CASE</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_active_data->rowCount() ?>
-                      </span>
+              <div class="col-md-12">
+
+                <div class="row">
+                  <fieldset class="form-control field_set">
+                    <legend id="fieldset">
+                      <h5>COVID-19</h5>
+                    </legend>
+
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1">
+                            <span><i class="fas fa-hospital-user"></i></span>
+                          </a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">ACTIVE CASE</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_active_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-bed"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">RECOVERED</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_recovered_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="clearfix hidden-md-up"></div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-book-dead"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">DIED</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_dead_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+
+                  </fieldset>
+                </div>
+                <br>
+
+                <div class="row">
+                  <fieldset class="form-control field_set">
+                    <legend id="fieldset">
+                      <h5> ENTITIES</h5>
+                    </legend>
+
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_individual.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Individual</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_individual_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_juridical.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-building"></i></span></a>
+
+                          <div class="info-box-content">
+                            <span class="info-box-text">Juridical</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_juridical_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_land_trans.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-motorcycle"></i></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Land Trans</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_landtrans_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_sea_trans" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-ship"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Sea Trans</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_seatrans_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </fieldset>
+
+
+                </div>
+                <br>
+
+                <div class="row">
+
+                  <fieldset class="form-control field_set ">
+                    <legend id="fieldset_verify">
+                      <h5> VERIFICATION</h5>
+                    </legend>
+
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-user-check"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">User Verification</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_submission_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-check-double"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Verified Users</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_verified_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </fieldset>
+
+
+
                 </div>
 
 
-                <div class="col-12 col-sm-6 col-md-4">
-                  <div class="info-box mb-3">
-                    <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-bed"></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">RECOVERED</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_recovered_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
 
-                <div class="clearfix hidden-md-up"></div>
 
-                <div class="col-12 col-sm-6 col-md-4">
-                  <div class="info-box mb-3">
-                    <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-book-dead"></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">DIED</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_dead_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              <div class="row">
-
-              </div>
-
-
 
             </div>
           </div>
 
-          <div class="card">
 
-            <div class="card-header bg-success text-white">
-              <h6>
-                ENTITIES
-              </h6>
-            </div>
-
-            <div class="card-body">
-
-              <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <a href="list_individual.php" class="info-box-icon bg-warning elevation-1"><span><i class="fa fa-male"></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Individual</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_individual_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <a href="list_juridical.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-building"></i></span></a>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">Juridical</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_juridical_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <a href="list_land_trans.php" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-motorcycle"></i></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Land Trans</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_landtrans_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <a href="list_sea_trans" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-ship"></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Sea Trans</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_seatrans_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-user-check"></i></span></a>
-                    <div class="info-box-content">
-                      <span class="info-box-text">User Verification</span>
-                      <span class="info-box-number">
-                        <?php echo $get_all_submission_data->rowCount() ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-
-          </div>
         </div>
 
         <div class="content ">
@@ -232,7 +297,7 @@ $title = 'VAMOS | Dashboard';
               </div><br>
 
 
-              <!-- monthly of individual registered -->
+
               <div class="card">
                 <div class="card-body">
                   <div class="box box-primary ">
