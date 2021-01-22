@@ -28,6 +28,10 @@ $get_all_verified_data = $con->prepare($get_all_verified);
 $get_all_verified_data->execute();
 
 
+$get_all_denied = "SELECT * FROM tbl_verification where status='DENIED' ";
+$get_all_denied_data = $con->prepare($get_all_denied);
+$get_all_denied_data->execute();
+
 $get_all_seatrans_sql = "SELECT * FROM tbl_seatranspo ";
 $get_all_seatrans_data = $con->prepare($get_all_seatrans_sql);
 $get_all_seatrans_data->execute();
@@ -250,6 +254,18 @@ $title = 'VAMOS | Dashboard';
                             <span class="info-box-text">Verified Users</span>
                             <span class="info-box-number">
                               <?php echo $get_all_verified_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                          <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-times-circle"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Denied Users</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_denied_data->rowCount() ?>
                             </span>
                           </div>
                         </div>
