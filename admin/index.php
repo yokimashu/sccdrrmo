@@ -249,7 +249,7 @@ $title = 'VAMOS | Dashboard';
 
                       <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                          <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-check-double"></i></span></a>
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-check-double"></i></span></a>
                           <div class="info-box-content">
                             <span class="info-box-text">Verified Users</span>
                             <span class="info-box-number">
@@ -261,7 +261,7 @@ $title = 'VAMOS | Dashboard';
 
                       <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                          <a href="list_verification" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-times-circle"></i></span></a>
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span><i class="fas fa-times-circle"></i></span></a>
                           <div class="info-box-content">
                             <span class="info-box-text">Denied Users</span>
                             <span class="info-box-number">
