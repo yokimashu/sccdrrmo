@@ -39,7 +39,7 @@ $requestData= $_REQUEST;
 // getting total number records without any search
 
 $sql = "SELECT CONCAT(firstname,' ',LEFT(middlename, 1),'. ',lastname) as fullname,id,username, email, mobileno, status  FROM tbl_users ";
-$sql.="where status != 'INACTIVE'  ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.="where status != 'INACTIVE'  ORDER BY id DESC  LIMIT 1000 ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -74,7 +74,7 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
 
 
 // $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-$sql.="   ORDER BY id DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.="   ORDER BY id DESC  LIMIT 100  ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $totalData = $get_user_data->fetch(PDOStatement::rowCount);
@@ -95,7 +95,7 @@ $get_user_data->execute();
     $countfilter.=" OR account_type LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR status LIKE '%".$requestData['search']['value']."%' )";
 
-$countfilter.="LIMIT ".$requestData['start']." ,".$requestData['length']." " ;//count all rows w/ filter
+$countfilter.="LIMIT 100 " ;//count all rows w/ filter
 $getrecordstmt = $con->prepare($countfilter);
 $getrecordstmt->execute() or die("search_user.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
