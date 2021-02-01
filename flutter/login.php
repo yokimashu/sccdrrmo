@@ -21,56 +21,48 @@ if ($username_data->rowCount() > 0) {
         //hash the $u_pass and compared to $hashed_password
         if (password_verify($password, $hash_password)) {
 
-            if ($status == 'ACTIVE') {
 
-                if ($type == 'INDIVIDUAL') {
 
-                    //retrieve data from individual and enitity
-                    $get_individual_sql = "SELECT * FROM tbl_individual i INNER JOIN tbl_entity e ON e.entity_no = i.entity_no  WHERE e.entity_no = :entity_no";
-                    $get_individual_data = $con->prepare($get_individual_sql);
-                    $get_individual_data->execute([':entity_no' => $entity_no]);
-                    while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
-                        $all = $result2;
-                    }
-                    echo json_encode($all);
+            if ($type == 'INDIVIDUAL') {
 
-                } elseif ($type == 'JURIDICAL') {
-                    
-                    //retrieve data from juridical and enitity
-                    $get_individual_sql = "SELECT * FROM tbl_juridical j INNER JOIN tbl_entity e ON e.entity_no = j.entity_no  WHERE e.entity_no = :entity_no";
-                    $get_individual_data = $con->prepare($get_individual_sql);
-                    $get_individual_data->execute([':entity_no' => $entity_no]);
-                    while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
-                        $all = $result2;
-                    }
-                    echo json_encode($all);
-                    
-                } elseif ($type == 'LAND TRANSPORTATION') {
-                    
-                    //retrieve data from land transportation and enitity
-                    $get_individual_sql = "SELECT * FROM tbl_landtranspo l INNER JOIN tbl_entity e ON e.entity_no = l.entity_no  WHERE e.entity_no = :entity_no";
-                    $get_individual_data = $con->prepare($get_individual_sql);
-                    $get_individual_data->execute([':entity_no' => $entity_no]);
-                    while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
-                        $all = $result2;
-                    }
-                    echo json_encode($all);
-                    
-                } elseif ($type == 'SEA TRANSPORTATION') {
-                    
-                    //retrieve data from sea transportation and enitity
-                    $get_individual_sql = "SELECT * FROM tbl_seatranspo s INNER JOIN tbl_entity e ON e.entity_no = s.entity_no  WHERE e.entity_no = :entity_no";
-                    $get_individual_data = $con->prepare($get_individual_sql);
-                    $get_individual_data->execute([':entity_no' => $entity_no]);
-                    while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
-                        $all = $result2;
-                    }
-                    echo json_encode($all);
-                    
+                //retrieve data from individual and enitity
+                $get_individual_sql = "SELECT * FROM tbl_individual i INNER JOIN tbl_entity e ON e.entity_no = i.entity_no  WHERE e.entity_no = :entity_no";
+                $get_individual_data = $con->prepare($get_individual_sql);
+                $get_individual_data->execute([':entity_no' => $entity_no]);
+                while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
+                    $all = $result2;
                 }
-            } else {
+                echo json_encode($all);
+            } elseif ($type == 'JURIDICAL') {
 
-                echo json_encode('Your account is not activated!');
+                //retrieve data from juridical and enitity
+                $get_individual_sql = "SELECT * FROM tbl_juridical j INNER JOIN tbl_entity e ON e.entity_no = j.entity_no  WHERE e.entity_no = :entity_no";
+                $get_individual_data = $con->prepare($get_individual_sql);
+                $get_individual_data->execute([':entity_no' => $entity_no]);
+                while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
+                    $all = $result2;
+                }
+                echo json_encode($all);
+            } elseif ($type == 'LAND TRANSPORTATION') {
+
+                //retrieve data from land transportation and enitity
+                $get_individual_sql = "SELECT * FROM tbl_landtranspo l INNER JOIN tbl_entity e ON e.entity_no = l.entity_no  WHERE e.entity_no = :entity_no";
+                $get_individual_data = $con->prepare($get_individual_sql);
+                $get_individual_data->execute([':entity_no' => $entity_no]);
+                while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
+                    $all = $result2;
+                }
+                echo json_encode($all);
+            } elseif ($type == 'SEA TRANSPORTATION') {
+
+                //retrieve data from sea transportation and enitity
+                $get_individual_sql = "SELECT * FROM tbl_seatranspo s INNER JOIN tbl_entity e ON e.entity_no = s.entity_no  WHERE e.entity_no = :entity_no";
+                $get_individual_data = $con->prepare($get_individual_sql);
+                $get_individual_data->execute([':entity_no' => $entity_no]);
+                while ($result2 = $get_individual_data->fetch(PDO::FETCH_ASSOC)) {
+                    $all = $result2;
+                }
+                echo json_encode($all);
             }
         } else {
 

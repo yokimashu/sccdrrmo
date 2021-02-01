@@ -4,7 +4,7 @@ include "dbconfig.php";
 
 $entity_no = $_POST['entity_no'];
 
-$sql = "SELECT count(*) FROM tbl_notification WHERE entity_no = ?";
+$sql = "SELECT count(*) FROM tbl_notification WHERE status = 'UNREAD' AND entity_no = ?";
 $result = $con->prepare($sql);
 $result->execute([$entity_no]);
 $number_of_rows = $result->fetchColumn();
