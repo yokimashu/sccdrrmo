@@ -103,10 +103,10 @@ $get_all_vaccine_data->execute();
 
                             <td>
 
-                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>
+                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
 
-                              <a class="btn btn-success btn-sm" href="view_close_contact.php?&id=<?php echo $list_contact['objid']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a> -->
+                              <a class="btn btn-warning btn-sm" href="view_vaccine_profile.php?&id=<?php echo $list_vaccine['entity_no']; ?> ">
+                                <i class="nav-icon fa fa-folder-open-o" aria-hidden="true"></i></a>
 
                               <a class="btn btn-outline-success btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?>" data-placement="top" target="_blank" title="Report Close Contact">
                                 <i class="nav-icon fa fa-print"></i></a>
