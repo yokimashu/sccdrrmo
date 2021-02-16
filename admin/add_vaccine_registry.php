@@ -454,9 +454,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label for="">Complete Address:</label>
                                                 </div>
 
-                                                <div class="col-md-3">
-                                                    <textarea class="form-control" style="width:100% " name="emp_address" id="emp_address" rows="5" placeholder="Street / Lot # / Block # / Barangay / City / Province">
-                                                    </textarea>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control" style="width:100%;" name="emp_address" id="emp_address" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Lot # / Block # / Barangay / City / Province">
+                                                    
                                                 </div>
 
                                             </div><br>
@@ -543,7 +543,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
 
-                                                <div class="col-md-2">
+                                                    <div class="col-md-2">
                                                     <label>With Comorbidities?</label>
                                                 </div>
                                             </div>
