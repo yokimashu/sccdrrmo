@@ -23,11 +23,13 @@ if (isset($_POST['insert_vaccine'])) {
     $city           = $_POST['city'];
     $province       = $_POST['province'];
 
-    //vaccine profile
+    // vaccine profile
     $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
     $time           = $_POST['time'];
     $category       = $_POST['category'];
-    $category_id     = $_POST['idno'];
+    $category_id     = $_POST['category_id'];
+
+    $idnumber       = $_POST['idno'];
     $entityno        = $_POST['entity_number'];
     $philhealth      = $_POST['philhealth_id'];
     $civil_stat      = $_POST['civil_status'];
@@ -52,7 +54,7 @@ if (isset($_POST['insert_vaccine'])) {
 
     $patient_diagnose   = $_POST['patient_diagnose'];
     $date_positive      = date('Y-m-d', strtotime($_POST['date_positive']));
-    $name_infection     = $_POST['name_allergy'];
+    $name_infection     = $_POST['name_infection'];
     $consentation        = $_POST['consentation'];
 
 
@@ -62,6 +64,7 @@ if (isset($_POST['insert_vaccine'])) {
             time_reg     = :time_regg,
             Category     = :categ,
             CategoryID   = :categ_id,
+            IDNumber     = :idnooo,
             PhilHealthID = :philhealth,
             Civil_status = :civil,
             Suffix       = :suffix,
@@ -86,13 +89,14 @@ if (isset($_POST['insert_vaccine'])) {
         ";
     $vaccine_data = $con->prepare($insert_vaccine_sql);
     $vaccine_data->execute([
-        ':entityno'          => $entityno,
-        ':datereg'         => $date_reg,
+        ':entityno'         => $entityno,
+        ':datereg'          => $date_reg,
         ':time_regg'        => $time,
         ':categ'            => $category,
         ':categ_id'         => $category_id,
+        ':idnooo'           => $idnumber,
         ':philhealth'       => $philhealth,
-        ':civil'             => $civil_stat,
+        ':civil'            => $civil_stat,
         ':suffix'           => $suffix,
 
         ':emp_stat'     => $emp_status,
