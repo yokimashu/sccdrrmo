@@ -155,8 +155,15 @@
                 </tr>
                 <tr>
                     <td class="taaaaa">Camera</td>
-                    <!-- <td width="30%" height="20%" align="center">CAMERA </td> -->
+
                     <td class="taaaaa">Intended for <br> QR Code Scanning</td>
+
+
+                </tr>
+                <tr>
+                    <td class="taaaaa">Gallery</td>
+                    <!-- <td width="30%" height="20%" align="center">CAMERA </td> -->
+                    <td class="taaaaa">Intended for uploading <br> photo for profile pictures</td>
                     <!-- <td width="30%" height="80%" align="center">Intended for <br> QR Code Scanning </td> -->
 
                 </tr>
