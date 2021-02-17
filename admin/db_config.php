@@ -1,10 +1,10 @@
 <?php
 
 //local
-// $host = "localhost";
-// $db_name = "sccdrrmo";
-// $username = "root";
-// $password = "1234";
+$host = "localhost";
+$db_name = "sccdrrmo";
+$username = "root";
+$password = "1234";
 
 //server local port
 // $host = "127.0.0.1:3307";
@@ -12,11 +12,15 @@
 // $username = "root";
 // $password = "5zAhx4Et37Wr";
 
+<<<<<<< HEAD
+// //server
+=======
 //server
-$host = "127.0.0.1";
-$db_name = "sccdrrmo";
-$username = "root";
-$password = "0Fd8xWc1anuE";
+>>>>>>> 9392c83c7bc8ae2f9d50ef7a2f54809108a279cd
+// $host = "127.0.0.1";
+// $db_name = "sccdrrmo";
+// $username = "root";
+// $password = "0Fd8xWc1anuE";
 
 try {
     //database connection
@@ -25,3 +29,4 @@ try {
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //"nakasulod sa internet";
 
+}

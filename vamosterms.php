@@ -23,6 +23,8 @@
         font-size: 30px;
     }
 
+
+
     table,
     th,
     td {
@@ -37,6 +39,11 @@
     #list-office {
         font-size: 20px;
         color: green;
+    }
+
+    .taaaaa {
+        height: 150px;
+        text-align: center;
     }
 
     #list-privacy {
@@ -88,52 +95,99 @@
 
 
 
-            <ol id="list-privacy">
-                <li>To keep an eye on citizens’ whereabouts;</li>
-                <li>To ensure people follow quarantine protocols;</li>
-                <li>To avoid long queues;</li>
-                <li>To help students, workers and residents stay safe;</li>
-                <li>To make it safer for customers to dine-in; </li>
-                <li>To collect medical information; </li>
-                <li>To enlighten people on their likelihood of infection;</li>
-                <li>To register visitors’ from neighboring towns and cities;</li>
-                <li>To track the movement of residents;</li>
-                <li>To encourage people to use digital tools.</li>
-            </ol>
+        <ol id="list-privacy">
+            <li>To keep an eye on citizens’ whereabouts;</li>
+            <li>To ensure people follow quarantine protocols;</li>
+            <li>To avoid long queues;</li>
+            <li>To help students, workers and residents stay safe;</li>
+            <li>To make it safer for customers to dine-in; </li>
+            <li>To collect medical information; </li>
+            <li>To enlighten people on their likelihood of infection;</li>
+            <li>To register visitors’ from neighboring towns and cities;</li>
+            <li>To track the movement of residents;</li>
+            <li>To encourage people to use digital tools.</li>
+        </ol>
 
 
 
 
-            It is your right as data subjects to be informed how we process your personal information.
-            This Privacy Policy applies to all entities who register via the mobile application.
-            VAMOS deserves the right to update this policy from time to time.
-            <br><br>
+        It is your right as data subjects to be informed how we process your personal information.
+        This Privacy Policy applies to all entities who register via the mobile application.
+        VAMOS deserves the right to update this policy from time to time.
+        <br><br>
 
 
 
 
 
 
-            <b class="label ">OUR PRIVACY NOTICE</b>
-            <br><br>
+        <b class="label ">OUR PRIVACY NOTICE</b>
+        <br><br>
 
 
-            VAMOS collects the following information from you when you submit to us your personal data record as seen in the
-            registration form you have completed.
-            <br><br>
+        VAMOS collects the following information from you when you submit to us your personal data record as seen in the
+        registration form you have completed.
+        <br><br>
 
-            The platform shall collect personal and sensitive personal information to ensure proper selection, management
-            and deployment of staff. This platform shall collect the following:
-            <br><br>
+        The platform shall collect personal and sensitive personal information to ensure proper selection, management
+        and deployment of staff. This platform shall collect the following:
+        <br><br>
+
+
+
 
         </p>
 
+
+
+
         <p class="content">
+
+            <b> <u> APPLICATION PERMISSIONS </u></b>
+            <br>
+        </p>
+
+        <div class="col-md-10 ">
+            <table width="100%">
+                <tr>
+                    <th width="30%">APPLICATION</th>
+                    <th width="30%">USAGE FUNCTION</th>
+                </tr>
+                <tr>
+                    <td class="taaaaa">Camera</td>
+                    <!-- <td width="30%" height="20%" align="center">CAMERA </td> -->
+                    <td class="taaaaa">Intended for <br> QR Code Scanning</td>
+                    <!-- <td width="30%" height="80%" align="center">Intended for <br> QR Code Scanning </td> -->
+
+                </tr>
+
+                <tr>
+                    <td class="taaaaa">Gallery</td>
+                    <!-- <td width="30%" height="20%" align="center">CAMERA </td> -->
+                    <td class="taaaaa">Intended for uploading <br> photo for profile pictures</td>
+                    <!-- <td width="30%" height="80%" align="center">Intended for <br> QR Code Scanning </td> -->
+
+                </tr>
+
+
+
+            </table>
+
+
+
+
+        </div>
+
+
+
+        <br><br><br>
+
+        <p class=" content">
 
             <b> <u> FOR INDIVIDUAL </u></b>
             <br>
         </p>
-        <div class="col-md-10 specs">
+        <div class="col-md-10">
 
             <table>
                 <tr>

@@ -14,7 +14,6 @@ $get_individual_entity = '';
 $mobile_alert = '';
 $post_announce = ' ';
 $post_announce_last = ' ';
-$send_message = ' ';
 $settings = ' ';
 $announce = ' ';
 $numberofdraft = ' ';
@@ -25,10 +24,15 @@ $break = ' ';
 
 
 
+
 // masterlist 
 $label_covid_case = ' ';
+$label_masterlist = '';
+$masterlist_symptoms = '';
+$list_vaccine = '';
 $list_close_contact = ' ';
 $list_positive_case = ' ';
+$single_break = ' ';
 
 //google forms
 $label_tracer = ' ';
@@ -52,9 +56,48 @@ if ($_SESSION['user_type'] == 1) {
       </a>';
 
 
+
+
+  // masterlist
+  $label_masterlist = '
+     
+        <label id="label1" style="font-size:18px; ">
+            &nbsp;
+            <i class="nav-icon fas fa-clipboard-list icons"></i>
+        
+            &nbsp;
+            MASTERLIST
+        </label>
+      ';
+
+  $masterlist_symptoms = '
+    <li class="nav-item">
+      <a href="list_symptoms" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-head-side-cough icons"></i>
+        <p>&nbsp; Signs & Symptoms </p>
+      </a>
+    </li>
+    ';
+
+  // end of masterlist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // masterlist of covid-19
   $label_covid_case =
-    '  <div>
+    '  
     <label id="label1" style="font-size:18px; ">
           &nbsp;
           <i class="nav-icon fas fa-briefcase-medical icons "></i>
@@ -63,13 +106,13 @@ if ($_SESSION['user_type'] == 1) {
        </label>';
 
 
-  $send_message = '<li class="nav-item">
-       <a href="send_message.php" class="nav-link sidebar-link">
-         &nbsp;
-         <i class="nav-icon fas fa-file-alt icons"></i>
-         <p> &nbsp; Send Message </p>
-       </a>
-     </li>';
+  $list_vaccine = '<li class="nav-item">
+  <a href="list_vaccine_profile" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> COVID Vaccine </p>
+  </a>
+</li> ';
 
 
 
@@ -77,8 +120,8 @@ if ($_SESSION['user_type'] == 1) {
        <li class="nav-item">
          <a href="list_close_contact" class="nav-link sidebar-link">
            &nbsp;
-           <i class="nav-icon fas fa-file-alt icons"></i>
-           <p> &nbsp; Close Contacts </p>
+           <i class="nav-icon fas fa-id-card-alt icons"></i>
+           <p> Close Contacts </p>
          </a>
        </li>';
 
@@ -87,10 +130,11 @@ if ($_SESSION['user_type'] == 1) {
     '<li class="nav-item">
         <a href="list_sources_infection" class="nav-link sidebar-link">
           &nbsp;
-          <i class="nav-icon fas fa-file-alt icons"></i>
-          <p> &nbsp; Confirmed Case </p>
+          <i class="nav-icon fas fa-check-square icons"></i>
+
+          <p> Confirmed Case </p>
         </a>
-    </li></div> <br> ';
+    </li> ';
   //end of masterlist of tracer 
 
 
@@ -157,6 +201,7 @@ if ($_SESSION['user_type'] == 1) {
 
 
 
+  $single_break = '<br> ';
 
   if ($numberofdraft > 0) {
     $post_announce_last = $post_announce . " " . $numberofdraft . " " . $post_last;
@@ -178,7 +223,7 @@ if ($_SESSION['user_type'] == 3) {
 
 
 
-
+  $single_break = '<br> ';
 
 
 
@@ -192,10 +237,15 @@ if ($_SESSION['user_type'] == 3) {
   $break = '<br><br><br><br>';
 }
 
+
+
+
+// CHO account
 if ($_SESSION['user_type'] == 4) {
 
   $label_covid_case =
-    '<label id="label1" style="font-size:18px; ">
+    '  
+  <label id="label1" style="font-size:18px; ">
         &nbsp;
         <i class="nav-icon fas fa-briefcase-medical icons "></i>
         &nbsp;
@@ -203,25 +253,36 @@ if ($_SESSION['user_type'] == 4) {
      </label>';
 
 
-  // $list_close_contact = '
-  //    <li class="nav-item">
-  //      <a href="list_close_contact  " class="nav-link sidebar-link">
-  //        &nbsp;
-  //        <i class="nav-icon fas fa-file-alt icons"></i>
-  //        <p> Close Contacts </p>
-  //      </a>
-  //    </li>';
+  $list_vaccine = '<li class="nav-item">
+<a href="list_vaccine_profile" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> COVID Vaccine </p>
+</a>
+</li> ';
+
+
+
+  $list_close_contact = '
+     <li class="nav-item">
+       <a href="list_close_contact" class="nav-link sidebar-link">
+         &nbsp;
+         <i class="nav-icon fas fa-id-card-alt icons"></i>
+         <p> Close Contacts </p>
+       </a>
+     </li>';
+
 
   $list_positive_case =
     '<li class="nav-item">
       <a href="list_sources_infection" class="nav-link sidebar-link">
         &nbsp;
-        <i class="nav-icon fas fa-file-alt icons"></i>
+        <i class="nav-icon fas fa-check-square icons"></i>
+
         <p> Confirmed Case </p>
       </a>
-    </li> <br>';
-
-
+  </li> ';
+  $single_break = '<br> ';
 
   $break = '<br><br><br><br>';
 }

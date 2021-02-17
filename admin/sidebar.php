@@ -110,8 +110,14 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     </li>
 
 
- 
-
+    <li class="nav-item">
+      <a href="announcement" class="nav-link ">
+        <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
+        <!-- <label href="announcement"> -->
+        ANNOUNCEMENTS
+        <!-- </label> -->
+      </a>
+    </li>
 
 
   </ul>
@@ -175,6 +181,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         <!-- </label> -->
       </a>
     </li>
+
+
 
 
   </ul>
@@ -294,11 +302,17 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
         </div> <br>
 
+        <!-- <?php echo $label_masterlist; ?> -->
+        <!-- <?php echo $masterlist_symptoms; ?> -->
+        <!-- <?php echo $single_break; ?> -->
 
         <!-- masterlist of covid-19 -->
         <?php echo $label_covid_case; ?>
         <?php echo $list_close_contact ?>
         <?php echo $list_positive_case ?>
+        <?php echo $list_vaccine; ?>
+        <?php echo $single_break; ?>
+
         <!-- end of masterlist of covid-19 -->
 
         <div>
@@ -389,8 +403,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $registration_list; ?>
           <?php echo $post_announce_last; ?>
           <?php echo $incident_report ?>
-          <?php echo $send_message ?>
-
         </div><br>
 
         <div>

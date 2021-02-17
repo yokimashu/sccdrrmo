@@ -185,6 +185,38 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
                                 </p>
 
 
+                                <p id="information">
+                                    &nbsp; &nbsp;
+                                    <b> <u> FOR INDIVIDUAL </u></b>
+                                    <br>
+                                </p>
+
+
+                                <div class="col-md-10 specs">
+
+
+                                    <table width="100%">
+                                        <tr>
+                                            <th width="30%">APPLICATION</th>
+                                            <th width="30%">USAGE FUNCTION</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="taaaaa">Camera</td>
+                                            <!-- <td width="30%" height="20%" align="center">CAMERA </td> -->
+                                            <td class="taaaaa">Intended for <br> QR Code Scanning</td>
+                                            <!-- <td width="30%" height="80%" align="center">Intended for <br> QR Code Scanning </td> -->
+                                        </tr>
+                                        <tr>
+                                            <td class="taaaaa">Gallery</td>
+                                            <!-- <td width="30%" height="20%" align="center">CAMERA </td> -->
+                                            <td class="taaaaa">Intended for uploading <br> photo for profile pictures</td>
+                                            <!-- <td width="30%" height="80%" align="center">Intended for <br> QR Code Scanning </td> -->
+
+                                        </tr>
+
+                                    </table>
+                                </div><br>
+
 
 
                                 <p id="information">
