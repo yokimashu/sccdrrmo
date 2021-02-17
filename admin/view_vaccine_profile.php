@@ -11,7 +11,7 @@ $time = date(' H:i');
 
 $entity_no = ' ';
 
-$btnSave = $btnEdit = $pregstatus = $wallergy = $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent = '';
+$btnSave = $btnEdit = $get_contact_no = $get_street = $get_barangay = $get_city = $get_province = $get_birthdate = $get_gender = $get_fname = $get_mname = $get_lname = $get_entityno = $get_datecreated = $get_timereg = $get_category = $get_categoryid = $get_idnumber = $get_philhealth = $get_sufiix = $get_civil_status = $get_employed = $get_profession = $get_directcovid = $get_employername = $get_employeraddress = $get_employercontact = $get_pregstatus = $get_wallergy = $get_allergy = $get_wcomorbidities = $get_comorbidity = $get_covidhistory = $get_coviddate = $get_covidclass = $get_consent = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $time = date('H:i:s');
@@ -81,6 +81,50 @@ $nationality = ' FILIPINO';
 
 
 $title = 'VAMOS | COVID-19 Patient Form';
+
+if (isset($_GET['id'])) {
+    $get_entityno = $_GET['id'];
+
+    $get_vaccineProfile_sql = "SELECT * FROM tbl_vaccine_profile t INNER JOIN tbl_individual i ON t.entity_no = i.entity_no WHERE t.entity_no = '$get_entityno'";
+    $vaccineprofile_data = $con->prepare($get_vaccineProfile_sql);
+    $vaccineprofile_data->execute([':id' => $get_entityno]);
+    while ($result = $vaccineprofile_data->fetch(PDO::FETCH_ASSOC)) {
+        $get_entityno       = $result['entity_no'];
+        $get_datecreated    = $result['datecreate'];
+        $get_timereg        = $result['time_reg'];
+        $get_category       = $result['Category'];
+        $get_categoryid     = $result['CategoryID'];
+        $get_fname          = $result['firstname'];
+        $get_mname          = $result['middlename'];
+        $get_lname          = $result['lastname'];
+        $get_gender         = $result['gender'];
+        $get_birthdate      = $result['birthdate'];
+        $get_street         = $result['street'];
+        $get_barangay       = $result['barangay'];
+        $get_city           = $result['city'];
+        $get_province       = $result['province'];
+        $get_contact_no     = $result['mobile_no'];
+        // $get_idnumber       = $result['IDNumber'];
+        $get_philhealth     = $result['PhilHealthID'];
+        $get_suffix         = $result['Suffix'];
+        $get_civil_status   = $result['Civil_status'];
+        $get_employed      = $result['Employed'];
+        $get_profession     = $result['Profession'];
+        $get_directcovid    = $result['Direct_covid'];
+        $get_employername   = $result['Employer_name'];
+        $get_employeraddress = $result['Employer_address'];
+        $get_employercontact = $result['Employer_contact_no'];
+        $get_pregstatus     = $result['Preg_status'];
+        $get_wallergy       = $result['W_allergy'];
+        $get_allergy        = $result['Allergy'];
+        $get_wcomorbidities = $result['W_comorbidities'];
+        $get_comorbidity    = $result['Comorbidity'];
+        $get_covidhistory   = $result['covid_history'];
+        $get_coviddate      = $result['covid_date'];
+        $get_covidclass     = $result['covid_classification'];
+        $get_consent        = $result['consent'];
+    }
+}
 
 
 ?>
@@ -205,7 +249,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_datecreated; ?>">
                                                     </div>
                                                 </div>
 
@@ -213,29 +257,21 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label> Time Registered:</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input readonly type="text" class="form-control" style="text-align:center;" name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>" required>
+                                                    <input readonly type="text" class="form-control" style="text-align:center;" name="time" id="time" placeholder="Time Registered" value="<?php echo $get_timereg; ?>" required>
                                                 </div>
                                             </div><br>
 
                                             <div class="row">
+
                                                 <div class="col-md-2" align="right">
                                                     <label>Select Individual : </label>
                                                 </div>
 
-                                                <div class="col-md-3">
+                                                <div class="col-md-8">
                                                     <select class="form-control select2" style="width: 100%;" id="entity1" name=" entity_no" value="">
                                                         <option>Select Individual</option>
                                                     </select>
                                                 </div>
-
-                                                <div class="col-md-2" align="right">
-                                                    <label>Entity # : </label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity #">
-                                                </div>
-
-
                                             </div><br>
 
                                             <div class="row">
@@ -243,10 +279,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label for="">Category of the Target <br> Eligible Population:</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control select2" style="width:100%;" name="category" id="category">
+                                                    <select class="form-control select2" style="width:100%;" name="category" id="category" value="<?php echo $get_category; ?>">
                                                         <option selected="selected">Select Category</option>
-                                                        <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_category['idno']; ?>"><?php echo $get_category['category']; ?></option>
+                                                        <?php while ($get_ctgry = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_category == $get_ctgry['idno']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_ctgry['idno']; ?>"><?php echo $get_ctgry['category']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -254,17 +291,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-2" align="right">
                                                     <label for="">ID Number depending on the category type:</label>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
-                                                        <option>Select Category ID</option>
-                                                        <?php while ($get_category_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_category_id['idno']; ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
+                                                        <option selected="selected">Select ID</option>
+                                                        <?php while ($get_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_categoryid == $get_id['idno']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_id['idno']; ?>"><?php echo $get_id['categ_id_type']; ?></option>
                                                         <?php } ?>
                                                     </select>
-
-
                                                 </div>
-
+                                                <div class="col-md-1">
+                                                    <input type="text" readonly class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID #" value=" ">
+                                                </div>
 
 
                                             </div><br>
@@ -276,16 +314,17 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                                 <div class="col-md-2" align="right">
+                                                    <label>Entity # : </label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity #" value="<?php echo $get_entityno; ?>">
+                                                </div>
+
+                                                <div class="col-md-2" align="right">
                                                     <label>Philhealth ID : </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="philhealth_id" name="philhealth_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Philhealth Id">
-                                                </div>
-                                                <div class="col-md-2" align="right">
-                                                    <label>ID Number: </label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number">
+                                                    <input type="text" class="form-control" id="philhealth_id" name="philhealth_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Philhealth Id" value="<?php echo $get_philhealth; ?>">
                                                 </div>
                                             </div><br>
 
@@ -295,14 +334,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label>Lastname : </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="lastname" name="lastname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Lastname">
+                                                    <input type="text" class="form-control" id="lastname" name="lastname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Lastname" value="<?php echo $get_lname; ?>">
                                                 </div>
 
                                                 <div class="col-md-2" align="right">
                                                     <label>Gender: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">
+                                                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender" value="<?php echo $get_gender; ?>">
                                                 </div>
                                             </div><br>
 
@@ -311,14 +350,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label>Firstname: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="firstname" name="firstname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Firstname">
+                                                    <input type="text" class="form-control" id="firstname" name="firstname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Firstname" value="<?php echo $get_fname; ?>">
                                                 </div>
 
                                                 <div class="col-md-2" align="right">
                                                     <label>Birthdate: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="date" class="form-control" id="birthdate" name="birthdate">
+                                                    <input type="date" class="form-control" id="birthdate" name="birthdate" value="<?php echo $get_birthdate; ?>">
                                                 </div>
                                             </div><br>
 
@@ -327,7 +366,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label>Middlename: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="middlename" name="middlename" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Middlename">
+                                                    <input type="text" class="form-control" id="middlename" name="middlename" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Middlename" value="<?php echo $get_mname; ?>">
                                                 </div>
                                                 <div class="col-md-2" align="right">
                                                     <label>Civil Status: </label>
@@ -335,10 +374,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-3">
                                                     <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
                                                         <option>Select Civil Status</option>
-                                                        <?php while ($get_civilstatus = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_civilstatus['idno']; ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
+                                                        <?php while ($get_civil = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_civil_status == $get_civil['idno']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_civil['idno']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
                                                         <?php } ?>
-
                                                     </select>
                                                 </div>
                                             </div><br>
@@ -348,14 +387,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label>Suffix: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="suffix" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" name="suffix" placeholder="Suffix">
+                                                    <input type="text" class="form-control" id="suffix" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" name="suffix" placeholder="Suffix" value="<?php echo $get_suffix; ?>">
                                                 </div>
 
                                                 <div class="col-md-2" align="right">
                                                     <label>Contact No: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
+                                                    <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number" value="<?php echo $get_contact_no; ?>">
                                                 </div>
                                             </div><br>
 
@@ -368,13 +407,13 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <input type="text" class=" form-control" name="street" id="street" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Block # / Lot #    ">
+                                                    <input type="text" class=" form-control" name="street" id="street" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Block # / Lot #    " value="<?php echo $get_street; ?>">
 
                                                 </div>
 
                                                 <div class="col-md-4">
 
-                                                    <input type="text" class="form-control" id="barangay" name="barangay" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Barangay">
+                                                    <input type="text" class="form-control" id="barangay" name="barangay" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Barangay" value="<?php echo $get_barangay; ?>">
 
 
                                                 </div>
@@ -385,10 +424,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <div class="row">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="city" placeholder="City" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $city ?>">
+                                                    <input type="text" class="form-control" name="city" placeholder="City" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $get_city ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" class="form-control" name="province" placeholder="Province" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $province ?>">
+                                                    <input type="text" class="form-control" name="province" placeholder="Province" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $get_province ?>">
                                                 </div>
                                             </div><br>
 
@@ -407,8 +446,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-3">
                                                     <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
                                                         <option value="">Select Employment Status</option>
-                                                        <?php while ($get_employment = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_employment['idno']; ?>"><?php echo $get_employment['status']; ?></option>
+                                                        <?php while ($get_emp_status = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_employed == $get_emp_status['idno']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_emp_status['idno']; ?>"><?php echo $get_emp_status['status']; ?></option>
                                                         <?php } ?>
 
                                                     </select>
@@ -421,8 +461,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-3">
                                                     <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
                                                         <option selected value="">Select Profession</option>
-                                                        <?php while ($get_profession = $get_all_profession_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_profession['idno']; ?>"><?php echo $get_profession['profession']; ?></option>
+                                                        <?php while ($get_prof = $get_all_profession_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_profession == $get_prof['idno']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_prof['idno']; ?>"><?php echo $get_prof['profession']; ?></option>
                                                         <?php } ?>
                                                     </select>
 
@@ -436,14 +477,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <label>Name of Employer : </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employeer">
+                                                    <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employeer" value="<?php echo $get_employername; ?>">
                                                 </div>
 
                                                 <div class="col-md-2" align="right">
                                                     <label>Contact Number: </label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="number" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number">
+                                                    <input type="number" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number" value="<?php echo $get_employercontact; ?>">
                                                 </div>
                                             </div> <br>
 
@@ -453,12 +494,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <div class="col-md-3" align="right">
                                                     <label for="">Complete Address:</label>
                                                 </div>
-
-                                                <div class="col-md-7">
-                                                    <input type="text" class="form-control" style="width:100%;" name="emp_address" id="emp_address" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Lot # / Block # / Barangay / City / Province">
-                                                    
+                                                <div class="col-md-3">
+                                                    <textarea class="form-control" style="width:100% " name="emp_address" id="emp_address" rows="5" placeholder="Street / Lot # / Block # / Barangay / City / Province" value="<?php echo $get_employeraddress; ?>">
+                                                    </textarea>
                                                 </div>
-
                                             </div><br>
 
                                         </div>
@@ -468,26 +507,25 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div>
 
 
-
+                               
                                             <div class="row">
-
                                                 <div class="col-md-3" align="right">
                                                     <label> If female, pregnancy status?</label>
                                                 </div>
-
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 &nbsp;
                                                 <div class="col-md-3">
-                                                    <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status">
-                                                        <option selected value=""> Select pregnancy status </option>
-                                                        <option value="01">Pregnant</option>
-                                                        <option value="02">Not Pregnant</option>
+                                                    <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status" value="<?php echo $get_pregstatus ?>">
+                                                        <option>Select pregnancy status...</option>
+                                                        <option <?php if ($get_pregstatus == '01') echo 'selected'; ?> value="Pregnant">Pregnant </option>
+                                                        <option <?php if ($get_pregstatus == '02') echo 'selected'; ?> value="Not Pregnant">Not Pregnant </option>
                                                     </select>
-
                                                 </div>
                                             </div><br>
+                                         
+
 
 
 
@@ -501,10 +539,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <div class="row">
                                                 <div class="col-md-1"> </div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control select2 " name="with_allergy" id="with_allergy" style="width:100%">
-                                                        <option selected value="">Do you have allergy?</option>
-                                                        <option value="01">Yes</option>
-                                                        <option value="02">None</option>
+                                                    <select class="form-control select2 " name="with_allergy" id="with_allergy" style="width:100%" value="<?php echo $get_wallergy; ?>">
+                                                        <option>Do you have allergy?</option>
+                                                        <option <?php if ($get_wallergy == '01') echo 'selected'; ?> value="01">Yes </option>
+                                                        <option <?php if ($get_wallergy == '02') echo 'selected'; ?> value="02">None</option>
                                                     </select>
                                                 </div>
                                             </div><br>
@@ -523,39 +561,31 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="col-md-1"></div>
 
                                                     <div class="col-md-4">
-                                                        <select name="name_allergy" id="name_allergy" style="width:100%" class="form-control select2">
-                                                            <option value="">Select Name of Allergy</option>
-
-                                                            <?php while ($get_allergy = $get_all_allergy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                <option value="<?php echo $get_allergy['idno']; ?>"><?php echo $get_allergy['allergy']; ?></option>
+                                                        <select name="name_allergy" id="name_allergy" style="width:100%" class="form-control select2" value="">
+                                                            <option selected value="">Select Name of Allergy</option>
+                                                            <?php while ($get_allrgy = $get_all_allergy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                <?php $selected = ($get_allergy == $get_allrgy['idno']) ? 'selected' : ''; ?>
+                                                                <option <?= $selected; ?> value="<?php echo $get_allrgy['idno']; ?>"><?php echo $get_allrgy['allergy']; ?></option>
                                                             <?php } ?>
-
                                                         </select>
-
-
                                                     </div>
                                                 </div><br>
-
-
-
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
 
-                                                    <div class="col-md-2">
+                                                <div class="col-md-2">
                                                     <label>With Comorbidities?</label>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                        <option selected value="">Do you have comorbidites?</option>
-                                                        <option value="01">Yes</option>
-                                                        <option value="02">None</option>
+                                                    <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities" value="<?php echo $get_wcomorbidities; ?>">
+                                                        <option>Do you have comorbidities?</option>
+                                                        <option <?php if ($get_wcomorbidities == '01') echo 'selected'; ?> value="01">Yes </option>
+                                                        <option <?php if ($get_wcomorbidities == '02') echo 'selected'; ?> value="02">None</option>
                                                     </select>
 
                                                 </div>
@@ -568,15 +598,13 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="col-md-2">
                                                         <label>Name of Comorbidity?</label>
                                                     </div>
-
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-4">
-                                                        <select class="form-control select2" multiple="" name="name_comorbidities[]" style="width:100%" id="name_comorbidities">
+                                                        <select class="form-control select2" multiple="" name="name_comorbidities[]" style="width:100%" id="name_comorbidities" value ="">
                                                             <option value="">Name of Comorbidites</option>
-
                                                             <?php while ($get_comorbidity = $get_all_comorbidites_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                 <option value="<?php echo $get_comorbidity['idno']; ?>"><?php echo $get_comorbidity['comorbidity']; ?></option>
                                                             <?php } ?>
@@ -603,10 +631,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose">
-                                                        <option selected value="">Please select</option>
-                                                        <option value="01">Yes</option>
-                                                        <option value="02">No</option>
+                                                    <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value = "<?php echo $get_covidhistory; ?>">
+                                                    <option>Please select</option>
+                                                        <option <?php if ($get_covidhistory == '01') echo 'selected'; ?> value="01">Yes </option>
+                                                        <option <?php if ($get_covidhistory == '02') echo 'selected'; ?> value="02">No</option>
                                                     </select>
                                                 </div>
                                             </div><br>
@@ -618,7 +646,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-3">
                                                         <label>Date of first positive result/ specimen collection? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                        <input type="date" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" />
+                                                        <input type="date" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" value = "<?php echo $get_coviddate; ?>"/>
                                                     </div>
                                                 </div><br>
 
@@ -632,7 +660,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="col-md-1"></div>
 
                                                     <div class="col-md-4">
-                                                        <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
+                                                        <select name="name_allergy" id="name_allergy" style="width:100%" class="form-control select2">
                                                             <option value="">Classification of Allergy</option>
                                                             <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                 <option value="<?php echo $get_infection['idno']; ?>"><?php echo $get_infection['classification']; ?></option>
@@ -660,11 +688,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control select2" style="width:100%" name="consentation" id="consentation">
-                                                        <option selected value="">Please select</option>
-                                                        <option value="01">Yes</option>
-                                                        <option value="02">No</option>
-                                                        <option value="03">Unknown</option>
+                                                    <select class="form-control select2" style="width:100%" name="consentation" id="consentation" value = "<?php echo $get_consent; ?>">
+                                                    <option>Please select</option>
+                                                        <option <?php if ($get_consent == '01') echo 'selected'; ?> value="01">Yes </option>
+                                                        <option <?php if ($get_consent == '02') echo 'selected'; ?> value="02">No</option>
+                                                        <option <?php if ($get_consent == '03') echo 'selected'; ?> value="03">Unknown</option>
 
                                                     </select>
 
@@ -762,6 +790,76 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
     <script>
+        $("#category_id").select2({
+            //  minimumInputLength: 3,
+            // placeholder: "hello",
+            ajax: {
+                url: "categoryid_query", // json datasource
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term
+                    };
+                },
+
+                processResults: function(response) {
+                    return {
+                        results: response
+
+
+                    };
+                },
+                cache: true,
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                }
+            }
+        });
+        $('#category_id').on('change', function() {
+            var idno = this.value;
+            console.log(idno);
+            $.ajax({
+                type: "POST",
+                url: 'category_id.php',
+                data: {
+                    idno: idno
+                },
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                },
+                success: function(response) {
+                    var result = jQuery.parseJSON(response);
+                    console.log('response from server', result);
+                    $('#idno').val(result.data);
+                    $('#categ_id_type').val(result.data1);
+
+
+
+
+
+
+
+                },
+
+
+            });
+        });
         $(function() {
 
             $("#entity1").select2({
@@ -879,7 +977,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
         });
         $('#gender').change(function() {
             var option = $('#gender').val();
-            if (option == "01") {
+            if (option == "Male") {
                 $('#pregnant').prop("hidden", false);
 
 
