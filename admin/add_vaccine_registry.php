@@ -174,14 +174,21 @@ $title = 'VAMOS | COVID-19 Patient Form';
         #fieldset-category {
             color: #31A231;
             width: 12%;
-            padding: 5px 10px;
+            padding: 5px 15px;
+
+        }
+
+        #fieldset-medical {
+            color: #31A231;
+            width: 23%;
+            padding: 5px 15px;
 
         }
 
         #fieldset-basicinfo {
             color: #31A231;
             width: 20%;
-            padding: 5px 10px;
+            padding: 5px 15px;
 
         }
 
@@ -339,7 +346,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-3">
 
                                             <label>Extension name: </label>
-
                                             <input type="text" class="form-control" id="suffix" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" name="suffix" placeholder="Extension name">
 
                                         </div>
@@ -349,6 +355,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-md-3">
                                             <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
                                             <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">
+                                            <select name="" id="">
+                                                <option>female</option>
+                                                <option>male</option>
+                                                <option>not to disclose</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-sm-3">
@@ -371,8 +382,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
                                         </div>
                                     </div><br>
-
-
 
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -397,10 +406,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         </div>
                                     </div><br>
                                 </fieldset><br>
+                                <!-- end of basic information -->
 
 
 
-
+                                <!-- address -->
                                 <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
@@ -439,8 +449,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     </div><br>
 
                                 </fieldset><br>
+                                <!-- end of address -->
 
 
+                                <!--  employer -->
                                 <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
@@ -474,6 +486,39 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     </div><br>
 
                                 </fieldset><br>
+                                <!-- end of employer fieldset -->
+
+
+                                <!-- medical conditions -->
+                                <fieldset class="form-control field_set">
+                                    <legend id="fieldset-medical">
+                                        <h5>MEDICAL CONDITIONS</h5>
+                                    </legend>
+                                    <div class="row">
+
+                                        <div class="col-md-3" align="right">
+                                            <label> If female, pregnancy status?</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        &nbsp;
+                                        <div class="col-md-3">
+                                            <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status">
+                                                <option selected value=""> Select pregnancy status </option>
+                                                <option value="01">Pregnant</option>
+                                                <option value="02">Not Pregnant</option>
+                                            </select>
+
+                                        </div>
+                                    </div><br>
+
+
+                                </fieldset><br>
+                                <!-- end of medical conditions -->
+
+
 
 
 
