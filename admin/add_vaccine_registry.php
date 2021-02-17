@@ -78,6 +78,7 @@ $get_all_infection_data->execute();
 $province = 'NEGROS OCCIDENTAL ';
 $city = 'SAN CARLOS CITY';
 $nationality = ' FILIPINO';
+$region = 'WESTERN VISAYAS';
 
 
 $title = 'VAMOS | COVID-19 Patient Form';
@@ -156,6 +157,48 @@ $title = 'VAMOS | COVID-19 Patient Form';
         #asstdname {
             font-size: 12px;
         }
+
+        .field_set {
+            border-color: green;
+            border-style: solid;
+
+        }
+
+        #fieldset {
+            color: #31A231;
+            width: 10%;
+            padding: 5px 10px;
+
+        }
+
+        #fieldset-category {
+            color: #31A231;
+            width: 12%;
+            padding: 5px 10px;
+
+        }
+
+        #fieldset-basicinfo {
+            color: #31A231;
+            width: 20%;
+            padding: 5px 10px;
+
+        }
+
+        #fieldset_verify {
+            color: #31A231;
+            width: 15%;
+            padding: 5px 10px;
+
+        }
+
+        #required {
+            color: red;
+        }
+
+        #asstdname {
+            font-size: 12px;
+        }
     </style>
 
 </head>
@@ -182,16 +225,255 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         <div class="box-body">
                             <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php">
 
+                                <div class="row" hidden>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2">
+                                        <label>Date Registered: </label>
+                                        <div class="input-group date" data-provide="datepicker">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-2">
+                                        <label> Time Registered:</label>
+                                        <input readonly type="text" class="form-control" style="text-align:center;" name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>" required>
+                                    </div>
+
+                                </div>
+
+                                <!-- category -->
+                                <fieldset class="form-control field_set">
+                                    <legend id="fieldset-category">
+                                        <h5>CATEGORY</h5>
+                                    </legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" name="category" id="category">
+                                                <option selected="selected">Select Category</option>
+                                                <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_category['idno']; ?>"><?php echo $get_category['category']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <label for="">Type of ID:&nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
+                                                <option>Select Category ID</option>
+                                                <?php while ($get_category_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_category_id['idno']; ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number">
+                                        </div>
 
 
 
-                            
+                                    </div><br>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>Philhealth ID : &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <input type="text" class="form-control" id="philhealth_id" name="philhealth_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Philhealth ID">
+                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if no PhilHealth ID #</i></span>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label>PWD ID : </label>
+                                            <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID">
+                                        </div>
+
+                                    </div><br>
+                                </fieldset><br>
+
+                                <!-- basic information -->
+                                <fieldset class="form-control field_set">
+                                    <legend id="fieldset-basicinfo">
+                                        <h5>BASIC INFORMATION</h5>
+                                    </legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <label>Select Individual: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control select2" style="width: 100%;" id="entity1" name=" entity_no" value="">
+                                                <option>Select Individual</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number">
+                                        </div>
+
+                                    </div><br>
+
+
+                                    <div class="row">
+
+                                        <div class="col-sm-3">
+                                            <label>First name: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class="form-control" id="firstname" name="firstname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="First name">
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label>Middle name: </label>
+                                            <input type="text" class="form-control" id="middlename" name="middlename" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Middle name">
+
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label>Last name : &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <input type="text" class="form-control" id="lastname" name="lastname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Last name">
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <label>Extension name: </label>
+
+                                            <input type="text" class="form-control" id="suffix" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" name="suffix" placeholder="Extension name">
+
+                                        </div>
+                                    </div><br>
+
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label>Birthdate: &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <input type="date" class="form-control" id="birthdate" name="birthdate">
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label>Civil Status: </label>
+                                            <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
+                                                <option>Select Civil Status</option>
+                                                <?php while ($get_civilstatus = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_civilstatus['idno']; ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
+                                                <?php } ?>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label>Contact No: &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
+                                        </div>
+                                    </div><br>
+
+
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
+                                                <option value="">Government Employed</option>
+                                                <?php while ($get_employment = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_employment['idno']; ?>"><?php echo $get_employment['status']; ?></option>
+                                                <?php } ?>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Profession :&nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
+                                                <option selected value="">Select Profession</option>
+                                                <?php while ($get_profession = $get_all_profession_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_profession['idno']; ?>"><?php echo $get_profession['profession']; ?></option>
+                                                <?php } ?>
+                                            </select>
+
+                                        </div>
+                                    </div><br>
+                                </fieldset><br>
 
 
 
 
+                                <fieldset class="form-control field_set">
+
+                                    <legend id="fieldset-category">
+                                        <h5>ADDRESS</h5>
+                                    </legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label>Region :&nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" readonly class="form-control" placeholder="Contact Number" value="<?php echo $region ?>">
 
 
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Province :&nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" readonly class="form-control" name="province" placeholder="Province" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $province ?>">
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <label>City / Municipality :&nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class="form-control" name="city" placeholder="City" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $city ?>">
+                                        </div>
+
+                                    </div><br>
+                                    <div class="row">
+
+                                        <div class="col-sm-4">
+                                            <label>Barangay: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class="form-control" id="barangay" name="barangay" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Barangay">
+                                        </div>
+
+                                        <div class="col-sm-8">
+                                            <label for="">Complete Address: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class=" form-control" name="street" id="street" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Block # / Lot #    ">
+                                        </div>
+                                    </div><br>
+
+                                </fieldset><br>
+
+
+                                <fieldset class="form-control field_set">
+
+                                    <legend id="fieldset-category">
+                                        <h5>EMPLOYER</h5>
+                                    </legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>Employer Name: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employeer">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Employer Address: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="text" class="form-control" name="emp_address" id="emp_address" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Lot # / Block # ">
+
+                                        </div>
+
+
+                                    </div> <br>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>LGU: &nbsp;&nbsp; <span id="required">*</span> </label>
+
+                                            <input type="text" class="form-control" name="emp_lgu" id="emp_lgu" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="LGU">
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Contact Number: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="number" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number">
+                                        </div>
+                                    </div><br>
+
+                                </fieldset><br>
 
 
 
@@ -202,16 +484,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                     <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
-                                        <i class="fa fa-check fa-fw"> </i> </button>
+                                        <!-- <i class="fa fa-check fa-fw"> </i> -->
+                                        <h4>Submit Form</h4>
+                                    </button>
 
-                                    <a href="list_vaccine_profile">
+                                    <!-- <a href="list_vaccine_profile">
                                         <button type="button" name="cancel" class="btn btn-danger">
                                             <i class="fa fa-close fa-fw"> </i> </button>
-                                    </a>
+                                    </a> -->
 
                                     <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                        <button type="button" name="print" class="btn btn-primary">
-                                            <i class="nav-icon fa fa-print"> </i> </button>
+                                    <button type="button" name="print" class="btn btn-primary">
+                                        <i class="nav-icon fa fa-print"> </i> </button>
                                     </a> -->
 
 
