@@ -39,8 +39,21 @@ if (isset($_POST['insert_vaccine'])) {
         $barangay = "_64524012_BARANGAY_III_(POB.)";
     } elseif ($_POST['barangay'] == 'Barangay IV') {
         $barangay = "_64524013_BARANGAY_IV_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay V') {
+        $barangay = "_64524014_BARANGAY_V_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay VI') {
+        $barangay = "_64524015_BARANGAY_VI_(POB.)";
+    } elseif ($_POST['barangay'] == 'Bagonbon'){
+        $barangay = "_64524001_BAGONBON";
+    } elseif ($_POST['barangay'] == 'Buluangan'){
+        $barangay = "_64524002_BULUANGAN";
+    } elseif ($_POST['barangay'] == 'Buluangan'){
     }
 
+
+
+
+    
     $city           = "_64524_SAN_CARLOS_CITY";
     $province       = "_0645_NEGROS_OCCIDENTAL";
 
