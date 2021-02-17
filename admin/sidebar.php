@@ -53,6 +53,7 @@ include_once('session.php');
 include('../config/db_config.php');
 include('send_notification.php');
 include('user_controls.php');
+include ('unread_messages.php');
 // include('session.php');
 
 
@@ -128,7 +129,44 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     <li class="nav-item">
       <a href="#" class="nav-link">Profile</a>
     </li> -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge"><?php echo $unread_messages;?></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+           <?php while($result = $pre_message->fetch(PDO::FETCH_ASSOC)){
+    $entity = $result['sender'];
+    $photo = $result['photo'];
+    $notif = $result['notif_objid'];
+    $fullname =$result['fullname'];
+    $message = $result['message'];
+    $date = $result['date'];
+    $time = $result['time'];
+  ?>
 
+            <div class="media">
+              <img src="../flutter/images/<?php echo $photo?>"  alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+               
+                  <?php echo $fullname;?>
+               
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                 <a href = "view_message_thread.php?&id=<?php echo $entity;?>&notif=<?php echo $notif; ?>&img=<?php echo $photo;?>">
+                <p class="text-sm"><?php echo  $entity; ?></p>
+                </a>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i><?php echo $date.'/'.$time ?></p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <?php } ?>
     <li class="nav-item" align="right">
       <a href="announcement" class="nav-link ">
         <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
