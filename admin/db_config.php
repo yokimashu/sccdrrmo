@@ -12,7 +12,11 @@ $password = "1234";
 // $username = "root";
 // $password = "5zAhx4Et37Wr";
 
+<<<<<<< HEAD
+// //server
+=======
 //server
+>>>>>>> 9392c83c7bc8ae2f9d50ef7a2f54809108a279cd
 // $host = "127.0.0.1";
 // $db_name = "sccdrrmo";
 // $username = "root";

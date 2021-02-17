@@ -14,14 +14,51 @@ if (isset($_POST['insert_vaccine'])) {
     $lastname       = $_POST['lastname'];
     $firstname      = $_POST['firstname'];
     $middlename     = $_POST['middlename'];
-    $gender         = $_POST['gender'];
+
+    //for gender
+    if ($_POST['gender'] == 'female') {
+        $gender     = "01_Female";
+    } elseif ($_POST['gender'] == 'male') {
+        $gender     = "02_Male";
+    } else {
+        $gender     = "03_Not to disclose";
+    }
+
     $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
     $suffix         = $_POST['suffix'];
     $contactno      = $_POST['contact_no'];
     $street         = $_POST['street'];
-    $barangay       = $_POST['barangay'];
-    $city           = $_POST['city'];
-    $province       = $_POST['province'];
+
+
+    //for bararangay 
+    if ($_POST['barangay'] == 'Barangay I') {
+        $barangay = "_64524010_BARANGAY_I_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay II') {
+        $barangay = "_64524011_BARANGAY_II_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay III') {
+        $barangay = "_64524012_BARANGAY_III_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay IV') {
+        $barangay = "_64524013_BARANGAY_IV_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay V') {
+        $barangay = "_64524014_BARANGAY_V_(POB.)";
+    } elseif ($_POST['barangay'] == 'Barangay VI') {
+        $barangay = "_64524015_BARANGAY_VI_(POB.)";
+    } elseif ($_POST['barangay'] == 'Bagonbon'){
+        $barangay = "_64524001_BAGONBON";
+    } elseif ($_POST['barangay'] == 'Buluangan'){
+        $barangay = "_64524002_BULUANGAN";
+    } elseif ($_POST['barangay'] == 'Buluangan'){
+    }
+
+
+
+
+    
+    $city           = "_64524_SAN_CARLOS_CITY";
+    $province       = "_0645_NEGROS_OCCIDENTAL";
+
+
+    $region         = "WesternVisayas";
 
     // vaccine profile
     $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
@@ -58,32 +95,56 @@ if (isset($_POST['insert_vaccine'])) {
     $consentation        = $_POST['consentation'];
 
 
-    $insert_vaccine_sql = "INSERT INTO tbl_vaccine_profile SET 
-            entity_no    = :entityno,
-            datecreate   = :datereg,
-            time_reg     = :time_regg,
-            Category     = :categ,
-            CategoryID   = :categ_id,
-            IDNumber     = :idnooo,
-            PhilHealthID = :philhealth,
-            Civil_status = :civil,
-            Suffix       = :suffix,
-
-            Employed     = :emp_stat,
-            Profession   = :profee,
-            Employer_name = :emp_name,
-            Employer_address =:emp_add,
-            Employer_contact_no =:emp_contact,
-            
-            Preg_status     = :preg_stat,
-            W_allergy       = :with_allergy,
-            Allergy         = :allergyyy,
-            W_comorbidities = :with_comorbodities,
-            comorbidity     = :comorbodityyy,
-            covid_history   = :history,
-            covid_date      = :date_history,
+    $insert_vaccine_sql = "INSERT INTO tbl_vaccine SET 
+            entity_no               = :entityno,
+            datecreate              = :datereg,
+            time_reg                = :time_regg,
+            Category                = :categ,
+            CategoryID              = :categ_id,
+            CategoryIDnumber        = :idnooo,
+            PhilHealthID            = :philhealth,
+            PWD_ID                  = :pwd,
+            Lastname                = :lastname,
+            Firstname               = :firstname,
+            Middlename              = :middlename,
+            Suffix                  = :suffix,
+            Contact_no              = :contacno,
+            Full_address            = :fulladdress,
+            Region                  = :region,
+            Province                = :province,
+            MunCity                 = :muncity,
+            Barangay                = :brgy,
+            Sex                     = :gender,
+            Birthdate_              = :birthdate
+            Civilstatus             = :civil,
+            Employed                = :emp_stat,
+            Direct_covid            = :direct_covid,
+            Profession              = :profee,
+            Employer_name           = :emp_name,
+            Employer_LGU            = :emp_lgu,
+            Employer_address        = :emp_add,
+            Employer_contact_no.    = :emp_contact,
+            Preg_status             = :preg_stat,
+            Allergy_01              = :allergy1,
+            Allergy_02              = :allergy2,
+            Allergy_03              = :allergy3,
+            Allergy_04              = :allergy4,
+            Allergy_05              = :allergy5,
+            Allergy_06              = :allergy6,
+            Allergy_07              = :allergy7,
+            W_comorbidities         = :with_comorbodities,
+            Comorbidity_01          = :com1,
+            Comorbidity_02          = :com2,
+            Comorbidity_03          = :com3,
+            Comorbidity_04          = :com4,
+            Comorbidity_05          = :com5,
+            Comorbidity_06          = :com6,
+            Comorbidity_07          = :com7,
+            Comorbidity_08          = :com8,
+            covid_history           = :history,
+            covid_date              = :date_history,
             covid_classification    = :infection,
-            consent         = :consents
+            Consent                 = :consents
 
 
         ";
@@ -96,8 +157,24 @@ if (isset($_POST['insert_vaccine'])) {
         ':categ_id'         => $category_id,
         ':idnooo'           => $idnumber,
         ':philhealth'       => $philhealth,
-        ':civil'            => $civil_stat,
+        ':pwd'              => $pwd,
+        ':lastname'         => $lastname,
+        ':firstname'        => $firstname,
+        ':middlename'       => $middlename,
         ':suffix'           => $suffix,
+        ':contacno'         => $contactno,
+        ':fulladdress'      => $street,
+        ':region'           => $region,
+        ':province'         => $province,
+        ':muncity'          => $city,
+        ':brgy'             => $barangay,
+
+
+
+
+
+        ':civil'            => $civil_stat,
+
 
         ':emp_stat'     => $emp_status,
         ':profee'       => $profession,
