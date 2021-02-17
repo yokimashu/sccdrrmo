@@ -47,9 +47,26 @@ if (isset($_POST['insert_vaccine'])) {
         $barangay = "_64524001_BAGONBON";
     } elseif ($_POST['barangay'] == 'Buluangan'){
         $barangay = "_64524002_BULUANGAN";
-    } elseif ($_POST['barangay'] == 'Buluangan'){
-    }
-
+    } elseif ($_POST['barangay'] == 'Codcod'){
+        $barangay = "_64524004_CODCOD";
+    } elseif ($_POST['barangay'] == 'Ermita'){
+        $barangay = "_64524005_ERMITA";
+    } elseif ($_POST['barangay'] == 'Guadalupe'){
+        $barangay = "_64524006_GUADALUPE";
+    } elseif ($_POST['barangay'] == 'Nataban'){
+        $barangay = "_64524008_NATABAN";
+    } elseif ($_POST['barangay'] == 'Palampas'){
+        $barangay = "_64524009_PALAMPAS";
+    } elseif ($_POST['barangay'] == 'Prosperidad'){
+        $barangay = "_64524016_PROSPERIDAD";
+    } elseif ($_POST['barangay'] == 'Punao'){
+        $barangay = "_64524017_PUNAO";
+    } elseif ($_POST['barangay'] == 'Quezon'){
+        $barangay = "_64524018_QUEZON";
+    } elseif ($_POST['barangay'] == 'Rizal'){
+        $barangay = "_64524019_RIZAL";
+    } elseif ($_POST['barangay'] == 'San Juan'){
+        $barangay = "_64524020_SAN_JUAN";
 
 
 
@@ -169,27 +186,61 @@ if (isset($_POST['insert_vaccine'])) {
         ':muncity'          => $city,
         ':brgy'             => $barangay,
 
-
-
-
-
+        ':gender'           => $gender,
+        ':birthdate'        => $birthdate,
         ':civil'            => $civil_stat,
-
-
-        ':emp_stat'     => $emp_status,
-        ':profee'       => $profession,
-        ':emp_name'     => $name_emp,
-        ':emp_add'      => $emp_address,
-        ':emp_contact'  => $emp_contact,
-        ':preg_stat'    => $preg_status,
-        ':with_allergy' => $with_allergy,
-        ':allergyyy'    => $name_allergy,
+        ':emp_stat'         => $emp_status,
+        ':direct_covid'     => $direct_covid,//
+        ':profee'           => $profession,
+        ':emp_name'         => $emp_name,
+        ':emp_lgu'          => $emp_lgu,//
+        ':emp_add'          => $emp_address,
+        ':emp_contact'      => $emp_contact,
+        ':preg_stat'        => $preg_status,
+        ':allergy1'         => $allergy1,//
+        ':allergy2'         => $allergy1,//
+        ':allergy3'         => $allergy1,//
+        ':allergy4'         => $allergy1,//
+        ':allergy5'         => $allergy1,//
+        ':allergy6'         => $allergy1,//
+        ':allergy7'         => $allergy1,//
+        ':allergy8'         => $allergy1,//
         ':with_comorbodities'   => $with_comorbidities,
-        ':comorbodityyy'    => $name_comorbidities,
-        ':history'      => $patient_diagnose,
-        ':date_history' => $date_positive,
-        ':infection'    => $name_infection,
-        ':consents'     => $consentation
+        ':com1'             => $d,//
+        ':com2'             => $com1,//
+        ':com3'             => $com2,//
+        ':com4'             => $barangay,//
+        ':com5'             => $barangay,//
+        ':com6'             => $barangay,//
+        ':com7'             => $barangay,//
+        ':com8'             => $barangay,//
+        ':history'          => $history,//
+        ':date_history'     => $date_history,
+        ':infection'        => $name_infection,
+        ':consent'          => $consentation,
+        
+        
+
+
+
+
+        // ':civil'            => $civil_stat,
+
+
+        // ':emp_stat'     => $emp_status,
+        // ':profee'       => $profession,
+        // ':emp_name'     => $name_emp,
+        // ':emp_add'      => $emp_address,
+        // ':emp_contact'  => $emp_contact,
+        // ':preg_stat'    => $preg_status,
+        // ':with_allergy' => $with_allergy,
+        // ':allergyyy'    => $name_allergy,
+        // ':with_comorbodities'   => $with_comorbidities,
+        // ':comorbodityyy'    => $name_comorbidities,
+        // ':history'      => $patient_diagnose,
+        // ':date_history' => $date_positive,
+        // ':infection'    => $name_infection,
+        // ':consents'     => $consentation
 
     ]);
 
