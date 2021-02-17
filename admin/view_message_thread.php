@@ -10,7 +10,7 @@ if (!isset($_SESSION['id'])) {
 date_default_timezone_set('Asia/Manila');
 $entity_no = $_GET['id'];
 $notif = $_GET['notif'];
-$photo = $_GET['img'];
+$photo = preg_replace("/[%]/", "", $_GET['img']);
 $message = '';
 $sender ='';
 $date = '';
@@ -49,9 +49,10 @@ $get_messages->execute([':notif_objid' => $notif]);
       <section class="content">
         
 
-    <div class ="card card-prirary cardutline direct-chat direct-chat-primary" >     
-  <div class="card-header">
-    <h3 class="card-title">Direct Chat</h3>
+    <div class ="card card-primary cardutline direct-chat direct-chat-success" style = "height:700px;">     
+  <div class="card-header greenBG">
+  <img class="direct-chat-img" src="../flutter/images/<?php echo $photo;?>" alt="message user image" style = "margin-right:30px;">
+    <h3 class="card-title"><?php echo $entity_no?></h3>
     <div class="card-tools">
       <span data-toggle="tooltip" title="3 New Messages" class="badge badge-light">3</span>
       <button type="button" class="btn btn-tool" data-widget="collapse">
@@ -65,9 +66,9 @@ $get_messages->execute([':notif_objid' => $notif]);
     </div>
   </div>
   <!-- /.card-header -->
-  <div class="card-body" >
+  <div class="card-body " style = "height:500px;" >
     <!-- Conversations are loaded here -->
-    <div class="direct-chat-messages">
+    <div class="direct-chat-messages " style = "height:700px;">
     <?php while($result = $get_messages->fetch(PDO::FETCH_ASSOC)){
         $message = $result['message'];
         $date = $result['date'];
@@ -77,7 +78,7 @@ $get_messages->execute([':notif_objid' => $notif]);
         ?>
   
       <!-- Message. Default to the left -->
-      <div class="direct-chat-msg">
+      <div class="direct-chat-msg" >
         <div class="direct-chat-infos clearfix">
           <span class="direct-chat-name float-left"><?php echo $entity_no;?></span>
           <span class="direct-chat-timestamp float-right"><?php echo $date.'/'.$time?></span>
