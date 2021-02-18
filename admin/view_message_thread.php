@@ -10,7 +10,7 @@ if (!isset($_SESSION['id'])) {
 date_default_timezone_set('Asia/Manila');
 $entity_no = $_GET['id'];
 $notif = $_GET['notif'];
-$photo = preg_replace("/[%]/", "", $_GET['img']);
+$photo = $_GET['img'];
 $message = '';
 $sender ='';
 $date = '';
@@ -68,7 +68,7 @@ $get_messages->execute([':notif_objid' => $notif]);
   <!-- /.card-header -->
   <div class="card-body " style = "height:500px;" >
     <!-- Conversations are loaded here -->
-    <div class="direct-chat-messages " style = "height:700px;">
+   
     <?php while($result = $get_messages->fetch(PDO::FETCH_ASSOC)){
         $message = $result['message'];
         $date = $result['date'];
@@ -113,20 +113,20 @@ $get_messages->execute([':notif_objid' => $notif]);
       <!-- /.direct-chat-msg -->
       <!-- Message. Default to the left -->
      
-    </div>
+
     <!--/.direct-chat-messages-->
     <!-- Contacts are loaded here -->
 
     <!-- /.direct-chat-pane -->
-  </div>
+
  
   <!-- /.card-body -->
   <div class="card-footer">
-    <form action="#" method="post">
+    <form action="<?php  htmlspecialchars("PHP_SELF"); ?>" method="post">
       <div class="input-group">
         <input type="text" name="message" placeholder="Type Message ..." class="form-control">
         <span class="input-group-append">
-          <button type="button" class="btn btn-primary">Send</button>
+          <button type="submit"  name = "send_message" class="btn btn-primary">Send</button>
         </span>
       </div>
     </form>
