@@ -207,6 +207,15 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
       }
 
     }
+    function checkmessage() {
+      accountType = $('#accountType').val();
+      if (accountType == 1) {
+        return '<button class="btn btn-warning message btn-sm" data-placement="top" title="Messages"><i class="fa fa-envelope-open-o"></i></button>';
+      } else {
+        return '';
+      }
+
+    }
     var dataTable = $('#users').DataTable({
 
       page: true,
@@ -233,12 +242,21 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
           targets: -1,
           data: null,
           defaultContent: '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>' +
-            '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/entity_id.php?entity_no=" data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></a> ' + checkViewHistory() + checkDelete()
+            '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/entity_id.php?entity_no=" data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></a> ' + checkViewHistory() + checkDelete()+ checkmessage()
 
             ,
         },
 
       ],
+    });
+
+    $("#users tbody").on("click", ".message", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity = currow.find("td:eq(0)").text();
+      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
+      window.open("view_individual.php?&id=" + entity, '_parent');
+
     });
 
     $("#users tbody").on("click", "#viewIndividual", function() {
@@ -249,7 +267,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
       window.open("view_individual.php?&id=" + entity, '_parent');
 
     });
-
     $("#users tbody").on("click", ".printlink", function() {
       // event.preventDefault();
       var currow = $(this).closest("tr");

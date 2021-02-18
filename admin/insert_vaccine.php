@@ -9,90 +9,128 @@ $alert_msg = '';
 
 if (isset($_POST['insert_vaccine'])) {
 
-
-    // individual must updated
-    $lastname       = $_POST['lastname'];
-    $firstname      = $_POST['firstname'];
-    $middlename     = $_POST['middlename'];
-
-    //for gender
-    if ($_POST['gender'] == 'female') {
-        $gender     = "01_Female";
-    } elseif ($_POST['gender'] == 'male') {
-        $gender     = "02_Male";
-    } else {
-        $gender     = "03_Not to disclose";
-    }
-
-    $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
-    $suffix         = $_POST['suffix'];
-    $contactno      = $_POST['contact_no'];
-    $street         = $_POST['street'];
-
-
-    //for bararangay 
-    if ($_POST['barangay'] == 'Barangay I') {
-        $barangay = "_64524010_BARANGAY_I_(POB.)";
-    } elseif ($_POST['barangay'] == 'Barangay II') {
-        $barangay = "_64524011_BARANGAY_II_(POB.)";
-    } elseif ($_POST['barangay'] == 'Barangay III') {
-        $barangay = "_64524012_BARANGAY_III_(POB.)";
-    } elseif ($_POST['barangay'] == 'Barangay IV') {
-        $barangay = "_64524013_BARANGAY_IV_(POB.)";
-    } elseif ($_POST['barangay'] == 'Barangay V') {
-        $barangay = "_64524014_BARANGAY_V_(POB.)";
-    } elseif ($_POST['barangay'] == 'Barangay VI') {
-        $barangay = "_64524015_BARANGAY_VI_(POB.)";
-    } elseif ($_POST['barangay'] == 'Bagonbon'){
-        $barangay = "_64524001_BAGONBON";
-    } elseif ($_POST['barangay'] == 'Buluangan'){
-        $barangay = "_64524002_BULUANGAN";
-    } elseif ($_POST['barangay'] == 'Buluangan'){
-    }
-
-
-
-
     
-    $city           = "_64524_SAN_CARLOS_CITY";
-    $province       = "_0645_NEGROS_OCCIDENTAL";
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
 
-
-    $region         = "WesternVisayas";
-
-    // vaccine profile
+    // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
     $time           = $_POST['time'];
     $category       = $_POST['category'];
-    $category_id     = $_POST['category_id'];
-
+    $category_id    = $_POST['category_id'];
     $idnumber       = $_POST['idno'];
-    $entityno        = $_POST['entity_number'];
-    $philhealth      = $_POST['philhealth_id'];
-    $civil_stat      = $_POST['civil_status'];
+    $philhealth     = $_POST['philhealth_id'];
+    $pwd            = $_POST['pwd_id'];
 
+    //basic information
+    $entityno        = $_POST['entity_number'];
+    $lastname       = $_POST['lastname'];
+    $firstname      = $_POST['firstname'];
+    $middlename     = $_POST['middlename'];
+    $suffix         = $_POST['suffix'];
+    $gender         = $_POST['gender'];
+    //for gender
+    // if ($_POST['gender'] == 'female') {
+    //     $gender     = "01_Female";
+    // } elseif ($_POST['gender'] == 'male') {
+    //     $gender     = "02_Male";
+    // } else {
+    //     $gender     = "03_Not to disclose";
+    // }
+
+
+    $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
+    $civil_stat      = $_POST['civil_status'];
+    $contactno      = $_POST['contact_no'];
     $emp_status     = $_POST['emp_status'];
     $profession     = $_POST['profession'];
+
+    //full address
+    $region         = "WesternVisayas";
+    $province       = "_0645_NEGROS_OCCIDENTAL";
+    $city           = "_64524_SAN_CARLOS_CITY";
+    // $barangay       = $_POST['barangay'];
+
+  //for bararangay 
+  if ($_POST['barangay'] == 'Barangay I') {
+    $barangay = "_64524010_BARANGAY_I_(POB.)";
+} elseif ($_POST['barangay'] == 'Barangay II') {
+    $barangay = "_64524011_BARANGAY_II_(POB.)";
+} elseif ($_POST['barangay'] == 'Barangay III') {
+    $barangay = "_64524012_BARANGAY_III_(POB.)";
+} elseif ($_POST['barangay'] == 'Barangay IV') {
+    $barangay = "_64524013_BARANGAY_IV_(POB.)";
+} elseif ($_POST['barangay'] == 'Barangay V') {
+    $barangay = "_64524014_BARANGAY_V_(POB.)";
+} elseif ($_POST['barangay'] == 'Barangay VI') {
+    $barangay = "_64524015_BARANGAY_VI_(POB.)";
+} elseif ($_POST['barangay'] == 'Bagonbon'){
+    $barangay = "_64524001_BAGONBON";
+} elseif ($_POST['barangay'] == 'Buluangan'){
+    $barangay = "_64524002_BULUANGAN";
+} elseif ($_POST['barangay'] == 'Codcod'){
+    $barangay = "_64524004_CODCOD";
+} elseif ($_POST['barangay'] == 'Ermita'){
+    $barangay = "_64524005_ERMITA";
+} elseif ($_POST['barangay'] == 'Guadalupe'){
+    $barangay = "_64524006_GUADALUPE";
+} elseif ($_POST['barangay'] == 'Nataban'){
+    $barangay = "_64524008_NATABAN";
+} elseif ($_POST['barangay'] == 'Palampas'){
+    $barangay = "_64524009_PALAMPAS";
+} elseif ($_POST['barangay'] == 'Prosperidad'){
+    $barangay = "_64524016_PROSPERIDAD";
+} elseif ($_POST['barangay'] == 'Punao'){
+    $barangay = "_64524017_PUNAO";
+} elseif ($_POST['barangay']== 'Quezon'){
+    $barangay = "_64524018_QUEZON";
+} elseif ($_POST['barangay'] == 'Rizal'){
+    $barangay = "_64524019_RIZAL";
+} elseif ($_POST['barangay'] == 'San Juan'){
+    $barangay = "_64524020_SAN_JUAN";
+}
+    $street         = $_POST['street'];
+
+    //employer
     $name_emp       = $_POST['name_employeer'];
-    $emp_contact     = $_POST['emp_contact'];
-    $emp_address    = $_POST['emp_address'];
+    $emp_contact    = $_POST['emp_contact'];
+    $emp_address    = $_POST['emp_address'];    
+    $emp_lgu        = $_POST['emp_lgu'];
 
-
+    //medical conditions
     $preg_status    = $_POST['preg_status'];
     $with_allergy   = $_POST['with_allergy'];
-    $name_allergy   = $_POST['name_allergy'];
     $with_comorbidities = $_POST['with_commorbidities'];
+    $name_allergy   = $_POST['name_allergy'];
+    $interact       = $_post['interact_patient'];    
+    $consent        = $_POST['electronic_consent'];
 
-    if (empty($_POST['name_comorbidities'])) {
-        $name_comorbidities = '';
-    } else {
-        $name_comorbidities =  implode(",", $_POST['name_comorbidities']);
-    }
-
-    $patient_diagnose   = $_POST['patient_diagnose'];
+    //covid history
+    $patient_diagnose= $_POST['patient_diagnose'];
     $date_positive      = date('Y-m-d', strtotime($_POST['date_positive']));
     $name_infection     = $_POST['name_infection'];
-    $consentation        = $_POST['consentation'];
+
+    //classification of allergy
+    $drug           = $_POST['allergy_drug'];
+    $food           = $_POST['allergy_food'];
+    $insect         = $_POST['allergy_insect'];
+    $latex          = $_POST['allergy_latex'];
+    $mold           = $_POST['allergy_mold'];
+    $pet            = $_POST['allergy_pet'];
+    $pollen         = $_POST['allergy_pollen'];
+    $vaccine        = $_POST['allergy_vaccine'];
+
+    //classification of comorbidity
+    $hypertension   = $_POST['como_hypertension'];
+    $heart          = $_POST['como_heart'];
+    $kidney         = $_POST['como_kidney'];
+    $diabetes       = $_POST['como_diabetes'];
+    $asthma         = $_POST['como_asthma'];
+    $immuno         = $_POST['como_immunodeficiency'];
+    $cancer         = $_POST['como_cancer'];
+    $other          = $_POST['como_other'];
+
 
 
     $insert_vaccine_sql = "INSERT INTO tbl_vaccine SET 
@@ -115,7 +153,7 @@ if (isset($_POST['insert_vaccine'])) {
             MunCity                 = :muncity,
             Barangay                = :brgy,
             Sex                     = :gender,
-            Birthdate_              = :birthdate
+            Birthdate_              = :birthdate,
             Civilstatus             = :civil,
             Employed                = :emp_stat,
             Direct_covid            = :direct_covid,
@@ -144,10 +182,9 @@ if (isset($_POST['insert_vaccine'])) {
             covid_history           = :history,
             covid_date              = :date_history,
             covid_classification    = :infection,
-            Consent                 = :consents
-
-
+            Consent                 = :consent
         ";
+
     $vaccine_data = $con->prepare($insert_vaccine_sql);
     $vaccine_data->execute([
         ':entityno'         => $entityno,
@@ -168,28 +205,39 @@ if (isset($_POST['insert_vaccine'])) {
         ':province'         => $province,
         ':muncity'          => $city,
         ':brgy'             => $barangay,
-
-
-
-
-
+        ':gender'           => $gender,
+        ':birthdate'        => $birthdate,
         ':civil'            => $civil_stat,
-
-
-        ':emp_stat'     => $emp_status,
-        ':profee'       => $profession,
-        ':emp_name'     => $name_emp,
-        ':emp_add'      => $emp_address,
-        ':emp_contact'  => $emp_contact,
-        ':preg_stat'    => $preg_status,
-        ':with_allergy' => $with_allergy,
-        ':allergyyy'    => $name_allergy,
+        ':emp_stat'         => $emp_status,
+        ':direct_covid'     => $direct_covid,
+        ':profee'           => $profession,
+        ':emp_name'         => $emp_name,
+        ':emp_lgu'          => $emp_lgu,
+        ':emp_add'          => $emp_address,
+        ':emp_contact'      => $emp_contact,
+        ':preg_stat'        => $preg_status,
+        ':allergy1'         => $drug,
+        ':allergy2'         => $food,
+        ':allergy3'         => $insect,
+        ':allergy4'         => $latex,
+        ':allergy5'         => $mold,
+        ':allergy6'         => $pet,
+        ':allergy7'         => $pollen,
+        ':allergy8'         => $vaccine,
         ':with_comorbodities'   => $with_comorbidities,
-        ':comorbodityyy'    => $name_comorbidities,
-        ':history'      => $patient_diagnose,
-        ':date_history' => $date_positive,
-        ':infection'    => $name_infection,
-        ':consents'     => $consentation
+        ':com1'             => $hypertension,
+        ':com2'             => $heart,
+        ':com3'             => $kidney,
+        ':com4'             => $diabetes,
+        ':com5'             => $asthma,
+        ':com6'             => $immuno,
+        ':com7'             => $cancer,
+        ':com8'             => $other,
+        ':history'          => $$patient_diagnose,
+        ':date_history'     => $date_positive,
+        ':infection'        => $name_infection,
+        ':consent'          => $consent,
+
 
     ]);
 
@@ -198,7 +246,7 @@ if (isset($_POST['insert_vaccine'])) {
         firstname       = :fname,
         middlename      = :mname,
         lastname        = :lname,
-        gender          = :gender,
+        -- gender          = :gender,
         birthdate       = :bdate,
         street          = :street,
         barangay        = :brgy,
@@ -214,7 +262,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':fname'        => $firstname,
         ':mname'        => $middlename,
         ':lname'        => $lastname,
-        ':gender'       => $gender,
+        // ':gender'       => $gender,
         ':bdate'        => $birthdate,
         ':street'       => $street,
         ':brgy'         => $barangay,
