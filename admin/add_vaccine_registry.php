@@ -381,7 +381,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
                                                 <option>Select Civil Status</option>
                                                 <?php while ($get_civilstatus = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_civilstatus['idno'].'_'.$get_civilstatus['name_civilsatus']; ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
+                                                    <option value="<?php echo $get_civilstatus['idno'].'_'.$get_civilstatus['objid']; ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
                                                 <?php } ?>
 
                                             </select>
