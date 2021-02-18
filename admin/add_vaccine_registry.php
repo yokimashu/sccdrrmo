@@ -274,7 +274,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <option value="<?php echo $get_category['idno'].'_'.$get_category['category']; ?>"><?php echo $get_category['category']; ?></option>
                                                 <?php } ?>
                                             </select>
-                                        </div>
+                                        </div> 
 
 
                                         <div class="col-sm-4">
@@ -721,7 +721,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Immunodefiency state</label>
-                                            <select name="como_immunodefiency" id="como_immunodefiency" style="width:100%" class="form-control ">
+                                            <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
                                                 <option value="01_Yes">Yes</option>
                                                 <option selected value="02_No">No</option>
                                             </select>

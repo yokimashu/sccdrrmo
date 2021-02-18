@@ -53,47 +53,47 @@ if (isset($_POST['insert_vaccine'])) {
     // $barangay       = $_POST['barangay'];
 
   //for bararangay 
-  if ($_POST['barangay'] == 'Barangay I') {
+  if ($_POST['barangay'] = 'Barangay I') {
     $barangay = "_64524010_BARANGAY_I_(POB.)";
-} elseif ($_POST['barangay'] == 'Barangay II') {
+} elseif ($_POST['barangay'] = 'Barangay II') {
     $barangay = "_64524011_BARANGAY_II_(POB.)";
-} elseif ($_POST['barangay'] == 'Barangay III') {
+} elseif ($_POST['barangay'] = 'Barangay III') {
     $barangay = "_64524012_BARANGAY_III_(POB.)";
-} elseif ($_POST['barangay'] == 'Barangay IV') {
+} elseif ($_POST['barangay'] = 'Barangay IV') {
     $barangay = "_64524013_BARANGAY_IV_(POB.)";
-} elseif ($_POST['barangay'] == 'Barangay V') {
+} elseif ($_POST['barangay'] = 'Barangay V') {
     $barangay = "_64524014_BARANGAY_V_(POB.)";
-} elseif ($_POST['barangay'] == 'Barangay VI') {
+} elseif ($_POST['barangay'] = 'Barangay VI') {
     $barangay = "_64524015_BARANGAY_VI_(POB.)";
-} elseif ($_POST['barangay'] == 'Bagonbon'){
+} elseif ($_POST['barangay'] = 'Bagonbon'){
     $barangay = "_64524001_BAGONBON";
-} elseif ($_POST['barangay'] == 'Buluangan'){
+} elseif ($_POST['barangay'] = 'Buluangan'){
     $barangay = "_64524002_BULUANGAN";
-} elseif ($_POST['barangay'] == 'Codcod'){
+} elseif ($_POST['barangay'] = 'Codcod'){
     $barangay = "_64524004_CODCOD";
-} elseif ($_POST['barangay'] == 'Ermita'){
+} elseif ($_POST['barangay'] = 'Ermita'){
     $barangay = "_64524005_ERMITA";
-} elseif ($_POST['barangay'] == 'Guadalupe'){
+} elseif ($_POST['barangay'] = 'Guadalupe'){
     $barangay = "_64524006_GUADALUPE";
-} elseif ($_POST['barangay'] == 'Nataban'){
+} elseif ($_POST['barangay'] = 'Nataban'){
     $barangay = "_64524008_NATABAN";
-} elseif ($_POST['barangay'] == 'Palampas'){
+} elseif ($_POST['barangay'] = 'Palampas'){
     $barangay = "_64524009_PALAMPAS";
-} elseif ($_POST['barangay'] == 'Prosperidad'){
+} elseif ($_POST['barangay'] = 'Prosperidad'){
     $barangay = "_64524016_PROSPERIDAD";
-} elseif ($_POST['barangay'] == 'Punao'){
+} elseif ($_POST['barangay'] = 'Punao'){
     $barangay = "_64524017_PUNAO";
-} elseif ($_POST['barangay']== 'Quezon'){
+} elseif ($_POST['barangay'] = 'Quezon'){
     $barangay = "_64524018_QUEZON";
-} elseif ($_POST['barangay'] == 'Rizal'){
+} elseif ($_POST['barangay'] = 'Rizal'){
     $barangay = "_64524019_RIZAL";
-} elseif ($_POST['barangay'] == 'San Juan'){
+} elseif ($_POST['barangay'] = 'San Juan'){
     $barangay = "_64524020_SAN_JUAN";
 }
     $street         = $_POST['street'];
 
     //employer
-    $name_emp       = $_POST['name_employeer'];
+    $emp_name       = $_POST['name_employeer'];
     $emp_contact    = $_POST['emp_contact'];
     $emp_address    = $_POST['emp_address'];    
     $emp_lgu        = $_POST['emp_lgu'];
@@ -102,8 +102,8 @@ if (isset($_POST['insert_vaccine'])) {
     $preg_status    = $_POST['preg_status'];
     $with_allergy   = $_POST['with_allergy'];
     $with_comorbidities = $_POST['with_commorbidities'];
-    $name_allergy   = $_POST['name_allergy'];
-    $interact       = $_post['interact_patient'];    
+    // $name_allergy   = $_POST['name_allergy'];
+    $direct_covid    = $_POST['interact_patient'];    
     $consent        = $_POST['electronic_consent'];
 
     //covid history
@@ -161,7 +161,7 @@ if (isset($_POST['insert_vaccine'])) {
             Employer_name           = :emp_name,
             Employer_LGU            = :emp_lgu,
             Employer_address        = :emp_add,
-            Employer_contact_no.    = :emp_contact,
+            Employer_contact_no    = :emp_contact,
             Preg_status             = :preg_stat,
             Allergy_01              = :allergy1,
             Allergy_02              = :allergy2,
@@ -170,6 +170,7 @@ if (isset($_POST['insert_vaccine'])) {
             Allergy_05              = :allergy5,
             Allergy_06              = :allergy6,
             Allergy_07              = :allergy7,
+            Allergy_08              = :allergy8,
             W_comorbidities         = :with_comorbodities,
             Comorbidity_01          = :com1,
             Comorbidity_02          = :com2,
@@ -233,10 +234,10 @@ if (isset($_POST['insert_vaccine'])) {
         ':com6'             => $immuno,
         ':com7'             => $cancer,
         ':com8'             => $other,
-        ':history'          => $$patient_diagnose,
+        ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
-        ':consent'          => $consent,
+        ':consent'          => $consent
 
 
     ]);
