@@ -111,7 +111,7 @@ $get_all_vaccine_data->execute();
 
                             <td><?php echo $list_vaccine['entity_no']; ?> </td>
                             <td><?php echo $list_vaccine['datecreate']; ?> </td>
-                            <td><?php echo   $list_vaccine['Lastname'] . ',' . ' ' . $list_vaccine['Firstname'] . ' ' . $list_vaccine['Middlename']; ?></td>
+                            <td><?php echo $list_vaccine['Lastname'] . ',' . ' ' . $list_vaccine['Firstname'] . ' ' . $list_vaccine['Middlename']; ?></td>
                             <td><?php echo $list_vaccine['Sex']; ?> </td>
                             <td><?php echo $list_vaccine['Birthdate_']; ?> </td>
                             <td><?php echo $list_vaccine['Full_address']; ?> </td>
@@ -127,7 +127,10 @@ $get_all_vaccine_data->execute();
 
                             <td>
 
-                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
+                             <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
+
+                             <a class="btn btn-success btn-sm" href="view_vaccine_profile_two.php?&id=<?php echo $list_contact['objid']; ?> ">
+                              <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>
 
                               <a class="btn btn-outline-success btn-sm" href="view_vaccine_profile_two.php?&id=<?php echo $list_vaccine['entity_no']; ?> ">
                                 <i class="fa fa-folder-open-o"></i></a>
