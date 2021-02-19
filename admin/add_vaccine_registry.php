@@ -2,19 +2,25 @@
 
 
 include('../config/db_config.php');
-include('insert_vaccine.php');
+// include('insert_vaccine.php');
 session_start();
 
-$now = new DateTime();
-$time = date(' H:i');
 
+// date_default_timezone_set('Asia/Manila');
+// 
+// date_default_timezone_set("America/New_York");
+// echo "The time is " . date("h:i:sa");
+$now = new DateTime();
+// $time = date('H:i');
+
+// $time = date("h:i:sa");
 
 $entity_no = ' ';
 
 $btnSave = $btnEdit = $pregstatus = $wallergy = $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
-$time = date('H:i:s');
+
 
 
 if (!isset($_SESSION['id'])) {
@@ -237,7 +243,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                     <div class="card-body">
                         <div class="box-body">
-                            <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                            <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php">
 
                                 <div class="row" hidden>
                                     <div class="col-md-1"></div>
@@ -252,10 +258,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     </div>
 
 
-                                    <div class="col-md-2">
-                                        <label> Time Registered:</label>
-                                        <input readonly type="text" class="form-control" style="text-align:center;" name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>" required>
-                                    </div>
 
                                 </div>
 
@@ -271,18 +273,17 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <select class="form-control select2" style="width: 100%;" name="category" id="category">
                                                 <option selected="selected">Select Category</option>
                                                 <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_category['idno'].'_'.$get_category['category']; ?>"><?php echo $get_category['category']; ?></option>
+                                                    <option value="<?php echo $get_category['idno'] . '_' . $get_category['category']; ?>"><?php echo $get_category['category']; ?></option>
                                                 <?php } ?>
                                             </select>
-                                        </div> 
-
+                                        </div>
 
                                         <div class="col-sm-4">
                                             <label for="">Type of ID:&nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
                                                 <option>Select Category ID</option>
                                                 <?php while ($get_category_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_category_id['idno'].'_'.$get_category_id['categ_id_type']; ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
+                                                    <option value="<?php echo $get_category_id['idno'] . '_' . $get_category_id['categ_id_type']; ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -381,7 +382,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
                                                 <option>Select Civil Status</option>
                                                 <?php while ($get_civilstatus = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_civilstatus['idno'].'_'.$get_civilstatus['objid']; ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
+                                                    <option value="<?php echo $get_civilstatus['idno'] . '_' . $get_civilstatus['objid']; ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
                                                 <?php } ?>
 
                                             </select>
@@ -398,7 +399,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
                                                 <option value="">Please select...</option>
                                                 <?php while ($get_employment = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_employment['idno'].'_'.$get_employment['status']; ?>"><?php echo $get_employment['status']; ?></option>
+                                                    <option value="<?php echo $get_employment['idno'] . '_' . $get_employment['status']; ?>"><?php echo $get_employment['status']; ?></option>
                                                 <?php } ?>
 
                                             </select>
@@ -408,7 +409,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
                                                 <option selected value="">Select Profession</option>
                                                 <?php while ($get_profession = $get_all_profession_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_profession['idno'].'_'.$get_profession['profession']; ?>"><?php echo $get_profession['profession']; ?></option>
+                                                    <option value="<?php echo $get_profession['idno'] . '_' . $get_profession['profession']; ?>"><?php echo $get_profession['profession']; ?></option>
                                                 <?php } ?>
                                             </select>
 
@@ -447,7 +448,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                         <div class="col-sm-4">
                                             <label>Barangay: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="text" class="form-control" id="barangay" name="barangay" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Barangay">
+                                            <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Barangay">
                                         </div>
 
                                         <div class="col-sm-8">
@@ -544,15 +545,15 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-6">
                                             <label>Directly in interaction with COVID patient &nbsp;&nbsp; <span id="required">*</span> </label>
                                             <select class="form-control" name="interact_patient" id="interact_patient">
-                                                <option selected value="01_Yes">Yes</option>
-                                                <option value="02_No">No</option>
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
                                             <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
                                             <select class="form-control" name="electronic_consent" id="electronic_consent">
-                                                <option selected value="01_Yes">Yes</option>
-                                                <option value="02_No">No</option>
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
                                             </select>
                                         </div>
                                     </div><br>
@@ -588,7 +589,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
                                                 <option value="">Classification of Infection</option>
                                                 <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_infection['idno'].'_'.$get_infection['classification']; ?>"><?php echo $get_infection['classification']; ?></option>
+                                                    <option value="<?php echo $get_infection['idno'] . '_' . $get_infection['classification']; ?>"><?php echo $get_infection['classification']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -803,24 +804,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
-    <?php
 
-    if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
-
-    ?>
-        <script>
-            swal({
-                title: "<?php echo $_SESSION['status'] ?>",
-                // text: "You clicked the button!",
-                icon: "<?php echo $_SESSION['status_code'] ?>",
-                button: "OK. Done!",
-            });
-        </script>
-
-    <?php
-        unset($_SESSION['status']);
-    }
-    ?>
 
 
     <script language="JavaScript">

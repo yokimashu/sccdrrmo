@@ -5,18 +5,19 @@ include('../config/db_config.php');
 
 session_start();
 date_default_timezone_set('Asia/Manila');
+
 $alert_msg = '';
 
 if (isset($_POST['insert_vaccine'])) {
 
-    
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
 
     // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
-    $time           = $_POST['time'];
+    $time           = date("h:i:s a");
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $idnumber       = $_POST['idno'];
@@ -52,50 +53,50 @@ if (isset($_POST['insert_vaccine'])) {
     $city           = "_64524_SAN_CARLOS_CITY";
     $barangay       = $_POST['barangay'];
 
-  //for bararangay 
-  if ($barangay == 'Barangay I') {
-    $barangay1 = "_64524010_BARANGAY_I_(POB.)";
-} elseif ($barangay == 'Barangay II') {
-    $barangay1 = "_64524011_BARANGAY_II_(POB.)";
-} elseif ($barangay == 'Barangay III') {
-    $barangay1 = "_64524012_BARANGAY_III_(POB.)";
-} elseif ($barangay == 'Barangay IV') {
-    $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
-} elseif ($barangay == 'Barangay V') {
-    $barangay1 = "_64524014_BARANGAY_V_(POB.)";
-} elseif ($barangay == 'Barangay VI') {
-    $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
-} elseif ($barangay == 'Bagonbon'){
-    $barangay1 = "_64524001_BAGONBON";
-} elseif ($barangay == 'Buluangan'){
-    $barangay1 = "_64524002_BULUANGAN";
-} elseif ($barangay == 'Codcod'){
-    $barangay1 = "_64524004_CODCOD";
-} elseif ($barangay == 'Ermita'){
-    $barangay1 = "_64524005_ERMITA";
-} elseif ($barangay == 'Guadalupe'){
-    $barangay1 = "_64524006_GUADALUPE";
-} elseif ($barangay == 'Nataban'){
-    $barangay1 = "_64524008_NATABAN";
-} elseif ($barangay == 'Palampas'){
-    $barangay1 = "_64524009_PALAMPAS";
-} elseif ($barangay == 'Prosperidad'){
-    $barangay1 = "_64524016_PROSPERIDAD";
-} elseif ($barangay == 'Punao'){
-    $barangay1 = "_64524017_PUNAO";
-} elseif ($barangay == 'Quezon'){
-    $barangay1 = "_64524018_QUEZON";
-} elseif ($barangay == 'Rizal'){
-    $barangay1 = "_64524019_RIZAL";
-} elseif ($barangay == 'San Juan'){
-    $barangay1 = "_64524020_SAN_JUAN";
-}
+    //for bararangay 
+    if ($barangay == 'Barangay I') {
+        $barangay1 = "_64524010_BARANGAY_I_(POB.)";
+    } elseif ($barangay == 'Barangay II') {
+        $barangay1 = "_64524011_BARANGAY_II_(POB.)";
+    } elseif ($barangay == 'Barangay III') {
+        $barangay1 = "_64524012_BARANGAY_III_(POB.)";
+    } elseif ($barangay == 'Barangay IV') {
+        $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
+    } elseif ($barangay == 'Barangay V') {
+        $barangay1 = "_64524014_BARANGAY_V_(POB.)";
+    } elseif ($barangay == 'Barangay VI') {
+        $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
+    } elseif ($barangay == 'Bagonbon') {
+        $barangay1 = "_64524001_BAGONBON";
+    } elseif ($barangay == 'Buluangan') {
+        $barangay1 = "_64524002_BULUANGAN";
+    } elseif ($barangay == 'Codcod') {
+        $barangay1 = "_64524004_CODCOD";
+    } elseif ($barangay == 'Ermita') {
+        $barangay1 = "_64524005_ERMITA";
+    } elseif ($barangay == 'Guadalupe') {
+        $barangay1 = "_64524006_GUADALUPE";
+    } elseif ($barangay == 'Nataban') {
+        $barangay1 = "_64524008_NATABAN";
+    } elseif ($barangay == 'Palampas') {
+        $barangay1 = "_64524009_PALAMPAS";
+    } elseif ($barangay == 'Prosperidad') {
+        $barangay1 = "_64524016_PROSPERIDAD";
+    } elseif ($barangay == 'Punao') {
+        $barangay1 = "_64524017_PUNAO";
+    } elseif ($barangay == 'Quezon') {
+        $barangay1 = "_64524018_QUEZON";
+    } elseif ($barangay == 'Rizal') {
+        $barangay1 = "_64524019_RIZAL";
+    } elseif ($barangay == 'San Juan') {
+        $barangay1 = "_64524020_SAN_JUAN";
+    }
     $street         = $_POST['street'];
-    $fulladdress    = $street .', '. $barangay;
+    $fulladdress    = $street . ', ' . $barangay;
     //employer
     $emp_name       = $_POST['name_employeer'];
     $emp_contact    = $_POST['emp_contact'];
-    $emp_address    = $_POST['emp_address'];    
+    $emp_address    = $_POST['emp_address'];
     $emp_lgu        = $_POST['emp_lgu'];
 
     //medical conditions
@@ -103,20 +104,20 @@ if (isset($_POST['insert_vaccine'])) {
     $with_allergy   = $_POST['with_allergy'];
     $with_comorbidities = $_POST['with_commorbidities'];
     // $name_allergy   = $_POST['name_allergy'];
-    $direct_covid    = $_POST['interact_patient'];    
+    $direct_covid    = $_POST['interact_patient'];
     $consent        = $_POST['electronic_consent'];
 
     //covid history
-    $patient_diagnose= $_POST['patient_diagnose'];
-    if(!empty($_POST['date_positive'])) {
+    $patient_diagnose = $_POST['patient_diagnose'];
+    if (!empty($_POST['date_positive'])) {
         $date_positive      = date('Y-m-d', strtotime($_POST['date_positive']));
-    }else{
+    } else {
         $date_positive     = date('Y-m-d', strtotime('0000-00-00'));
     }
 
-    if(!empty($_POST['name_infection'])) {
+    if (!empty($_POST['name_infection'])) {
         $name_infection     = $_POST['name_infection'];
-    }else{
+    } else {
         $name_infection = 'NONE';
     }
 
@@ -289,11 +290,11 @@ if (isset($_POST['insert_vaccine'])) {
         $_SESSION['status'] = "Registered Succesfully!";
         $_SESSION['status_code'] = "success";
 
-        header('location: add_vaccine_registry.php');
+        header('location: list_vaccine_profile.php');
     } else {
         $_SESSION['status'] = "Not successfully registered!";
         $_SESSION['status_code'] = "error";
 
-        header('location: add_vaccine_registry.php');
+        header('location: list_vaccine_profile.php');
     }
 }

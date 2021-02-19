@@ -2,8 +2,10 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
-// include('update_status.php');
+include('update_status.php');
+
 session_start();
+
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
   header('location:../index.php');
@@ -24,7 +26,9 @@ $symptoms = $patient = $person_status = '';
 //   $db_fullname = $result['fullname'];
 // }
 
-$get_all_vaccine_sql = "SELECT * FROM tbl_vaccine_profile t inner join tbl_individual r on r.entity_no = t.entity_no";
+$get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
+
+// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
 $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
 $get_all_vaccine_data->execute();
 
@@ -83,12 +87,21 @@ $get_all_vaccine_data->execute();
                         <tr style="font-size: 1.10rem">
 
                           <th> Entity_no </th>
-                          <th> DATE </th>
-                          <th> FULLNAME </th>
+                          <th> Date Create</th>
+                          <th> Full Name </th>
+                          <th> Gender </th>
+                          <th> Date of Birth </th>
+                          <th> Address </th>
+                          <th> Barangay </th>
+                          <th> Municipality </th>
+                          <th> Province </th>
+                          <th> Region </th>
+                          <th> Employed </th>
 
 
+                          <th> Covid History </th>
 
-                          <th>OPTIONS</th>
+                          <th>Options</th>
 
                         </tr>
                       </thead>
@@ -98,15 +111,26 @@ $get_all_vaccine_data->execute();
 
                             <td><?php echo $list_vaccine['entity_no']; ?> </td>
                             <td><?php echo $list_vaccine['datecreate']; ?> </td>
-                            <td><?php echo   $list_vaccine['fullname']; ?></td>
+                            <td><?php echo   $list_vaccine['Lastname'] . ',' . ' ' . $list_vaccine['Firstname'] . ' ' . $list_vaccine['Middlename']; ?></td>
+                            <td><?php echo $list_vaccine['Sex']; ?> </td>
+                            <td><?php echo $list_vaccine['Birthdate_']; ?> </td>
+                            <td><?php echo $list_vaccine['Full_address']; ?> </td>
+                            <td><?php echo $list_vaccine['Barangay']; ?> </td>
+                            <td><?php echo $list_vaccine['MunCity']; ?> </td>
+                            <td><?php echo $list_vaccine['Province']; ?> </td>
+                            <td><?php echo $list_vaccine['Region']; ?> </td>
+                            <td><?php echo $list_vaccine['Employed']; ?> </td>
+                            <td><?php echo $list_vaccine['covid_history']; ?> </td>
+
+
 
 
                             <td>
 
-                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
+                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>
 
-                              <a class="btn btn-warning btn-sm" href="view_vaccine_profile.php?&id=<?php echo $list_vaccine['entity_no']; ?> ">
-                                <i class="nav-icon fa fa-folder-open-o" aria-hidden="true"></i></a>
+                              <a class="btn btn-success btn-sm" href="view_close_contact.php?&id=<?php echo $list_contact['objid']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a> -->
 
                               <a class="btn btn-outline-success btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?>" data-placement="top" target="_blank" title="Report Close Contact">
                                 <i class="nav-icon fa fa-print"></i></a>
@@ -267,8 +291,30 @@ $get_all_vaccine_data->execute();
   <script src="../plugins/datatables/jquery.dataTables.js"></script>
   <!-- DataTables Bootstrap -->
   <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+
+  <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
   <!-- Select2 -->
   <script src="../plugins/select2/select2.full.min.js"></script>
+
+  <?php
+
+  if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+
+  ?>
+    <script>
+      swal({
+        title: "<?php echo $_SESSION['status'] ?>",
+        // text: "You clicked the button!",
+        icon: "<?php echo $_SESSION['status_code'] ?>",
+        button: "OK. Done!",
+      });
+    </script>
+
+  <?php
+    unset($_SESSION['status']);
+  }
+  ?>
 
   <script>
     $('#users').DataTable({
