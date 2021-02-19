@@ -91,7 +91,7 @@ if (isset($_POST['insert_vaccine'])) {
     } elseif ($barangay == 'SAN JUAN') {
         $barangay1 = "_64524020_SAN_JUAN";
     }
-    
+
     $street         = $_POST['street'];
     $fulladdress    = $street . ', ' . $barangay;
     //employer
@@ -174,6 +174,7 @@ if (isset($_POST['insert_vaccine'])) {
             Employer_address        = :emp_add,
             Employer_contact_no    = :emp_contact,
             Preg_status             = :preg_stat,
+            W_allergy               = :with_allergy,
             Allergy_01              = :allergy1,
             Allergy_02              = :allergy2,
             Allergy_03              = :allergy3,
@@ -228,6 +229,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':emp_add'          => $emp_address,
         ':emp_contact'      => $emp_contact,
         ':preg_stat'        => $preg_status,
+        ':with_allergy'     => $with_allergy,
         ':allergy1'         => $drug,
         ':allergy2'         => $food,
         ':allergy3'         => $insect,
