@@ -84,9 +84,10 @@ $region = 'WESTERN VISAYAS';
 $title = 'VAMOS | COVID-19 Update Patient Form';
 
 if (isset($_GET['id'])) {
+
     $get_entityno = $_GET['id'];
 
-    $get_vaccineProfile_sql = "SELECT * FROM tbl_vaccine_profile t INNER JOIN tbl_individual i ON t.entity_no = i.entity_no WHERE t.entity_no = '$get_entityno'";
+    $get_vaccineProfile_sql = "SELECT * FROM tbl_vaccine WHERE entity_no = '$get_entityno'";
     $vaccineprofile_data = $con->prepare($get_vaccineProfile_sql);
     $vaccineprofile_data->execute([':id' => $get_entityno]);
     while ($result = $vaccineprofile_data->fetch(PDO::FETCH_ASSOC)) {
@@ -95,35 +96,35 @@ if (isset($_GET['id'])) {
         $get_timereg        = $result['time_reg'];
         $get_category       = $result['Category'];
         $get_categoryid     = $result['CategoryID'];
-        $get_fname          = $result['firstname'];
-        $get_mname          = $result['middlename'];
-        $get_lname          = $result['lastname'];
-        $get_gender         = $result['gender'];
-        $get_birthdate      = $result['birthdate'];
-        $get_street         = $result['street'];
-        $get_barangay       = $result['barangay'];
-        $get_city           = $result['city'];
-        $get_province       = $result['province'];
-        $get_contact_no     = $result['mobile_no'];
+        $get_fname          = $result['Firstname'];
+        $get_mname          = $result['Middlename'];
+        $get_lname          = $result['Lastname'];
+        $get_gender         = $result['Sex'];
+        $get_birthdate      = $result['Birthdate_'];
+        // $get_street         = $result['Street'];
+        $get_barangay       = $result['Barangay'];
+        // $get_city           = $result['City'];
+        $get_province       = $result['Province'];
+        $get_contact_no     = $result['Contact_no'];
         // $get_idnumber       = $result['IDNumber'];
-        $get_philhealth     = $result['PhilHealthID'];
-        $get_suffix         = $result['Suffix'];
-        $get_civil_status   = $result['Civil_status'];
-        $get_employed      = $result['Employed'];
-        $get_profession     = $result['Profession'];
-        $get_directcovid    = $result['Direct_covid'];
-        $get_employername   = $result['Employer_name'];
-        $get_employeraddress = $result['Employer_address'];
-        $get_employercontact = $result['Employer_contact_no'];
-        $get_pregstatus     = $result['Preg_status'];
-        $get_wallergy       = $result['W_allergy'];
-        $get_allergy        = $result['Allergy'];
-        $get_wcomorbidities = $result['W_comorbidities'];
-        $get_comorbidity    = $result['Comorbidity'];
-        $get_covidhistory   = $result['covid_history'];
-        $get_coviddate      = $result['covid_date'];
-        $get_covidclass     = $result['covid_classification'];
-        $get_consent        = $result['consent'];
+        // $get_philhealth     = $result['PhilHealthID'];
+        // $get_suffix         = $result['Suffix'];
+        // $get_civil_status   = $result['Civil_status'];
+        // $get_employed      = $result['Employed'];
+        // $get_profession     = $result['Profession'];
+        // $get_directcovid    = $result['Direct_covid'];
+        // $get_employername   = $result['Employer_name'];
+        // $get_employeraddress = $result['Employer_address'];
+        // $get_employercontact = $result['Employer_contact_no'];
+        // $get_pregstatus     = $result['Preg_status'];
+        // $get_wallergy       = $result['W_allergy'];
+        // $get_allergy        = $result['Allergy'];
+        // $get_wcomorbidities = $result['W_comorbidities'];
+        // $get_comorbidity    = $result['Comorbidity'];
+        // $get_covidhistory   = $result['covid_history'];
+        // $get_coviddate      = $result['covid_date'];
+        // $get_covidclass     = $result['covid_classification'];
+        // $get_consent        = $result['consent'];
     }
 }
 
@@ -301,8 +302,8 @@ if (isset($_GET['id'])) {
                                             <select class="form-control select2" style="width: 100%;" name="category" id="category">
                                                 <option selected="selected">Select Category</option>
                                                 <?php while ($get_ctgry = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <?php $selected = ($get_category == $get_ctgry['idno']) ? 'selected' : ''; ?>
-                                                    <option <?= $selected; ?> value="<?php echo $get_ctgry['idno']; ?>"><?php echo $get_ctgry['category']; ?></option>
+                                                    <?php $selected = ($get_category == $get_ctgry['description']) ? 'selected' : ''; ?>
+                                                    <option <?= $selected; ?> value="<?php echo $get_ctgry['description']; ?>"><?php echo $get_ctgry['category']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -314,7 +315,7 @@ if (isset($_GET['id'])) {
                                                 <option>Select Category ID</option>
                                                 <?php while ($get_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <?php $selected = ($get_categoryid == $get_id['idno']) ? 'selected' : ''; ?>
-                                                    <option <?= $selected; ?> value="<?php echo $get_id['idno']; ?>"><?php echo $get_id['categ_id_type']; ?></option>
+                                                    <option <?= $selected; ?> value="<?php echo $get_id['description']; ?>"><?php echo $get_id['categ_id_type']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -405,8 +406,8 @@ if (isset($_GET['id'])) {
                                             <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
                                                 <option>Select Civil Status</option>
                                                 <?php while ($get_civil = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <?php $selected = ($get_civil_status == $get_civil['idno']) ? 'selected' : ''; ?>
-                                                    <option <?= $selected; ?> value="<?php echo $get_civil['idno']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
+                                                    <?php $selected = ($get_civil_status == $get_civil['description']) ? 'selected' : ''; ?>
+                                                    <option <?= $selected; ?> value="<?php echo $get_civil['description']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
                                                 <?php } ?>
 
                                             </select>
@@ -425,8 +426,8 @@ if (isset($_GET['id'])) {
                                             <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
                                                 <option value="">Select Employment</option>
                                                 <?php while ($get_emp_status = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <?php $selected = ($get_employed == $get_emp_status['idno']) ? 'selected' : ''; ?>
-                                                    <option <?= $selected; ?> value="<?php echo $get_emp_status['idno']; ?>"><?php echo $get_emp_status['status']; ?></option>
+                                                    <?php $selected = ($get_employed == $get_emp_status['description']) ? 'selected' : ''; ?>
+                                                    <option <?= $selected; ?> value="<?php echo $get_emp_status['description']; ?>"><?php echo $get_emp_status['status']; ?></option>
                                                 <?php } ?>
 
                                             </select>
@@ -448,7 +449,7 @@ if (isset($_GET['id'])) {
 
 
 
-                                <fieldset class="form-control field_set">
+                                <!-- <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
                                         <h5>ADDRESS</h5>
@@ -485,10 +486,10 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div><br>
 
-                                </fieldset><br>
+                                </fieldset><br> -->
 
 
-                                <fieldset class="form-control field_set">
+                                <!-- <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
                                         <h5>EMPLOYER</h5>
@@ -520,9 +521,9 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div><br>
 
-                                </fieldset><br>
+                                </fieldset><br> -->
 
-                                <fieldset class="form-control field_set">
+                                <!-- <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
                                         <h5>MEDICAL CONDITIONS</h5>
@@ -576,7 +577,7 @@ if (isset($_GET['id'])) {
                                         </div>
 
                                         <div class="col-md-6">
-                                        <label for="">Provided Electronic Informed Consent</label>
+                                            <label for="">Provided Electronic Informed Consent</label>
                                             <select class="form-control select2" style="width:100%" name="consentation" id="consentation" value="<?php echo $get_consent; ?>">
                                                 <option>Please select</option>
                                                 <option <?php if ($get_consent == '01') echo 'selected'; ?> value="01">Yes </option>
@@ -586,10 +587,11 @@ if (isset($_GET['id'])) {
                                             </select>
 
                                         </div>
-                                        </div><br>
+                                    </div><br>
 
-                                    </div>
-                                </fieldset><br>
+
+
+                                </fieldset><br> -->
 
 
 
