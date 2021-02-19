@@ -51,46 +51,47 @@ if (isset($_POST['insert_vaccine'])) {
     $region         = "WesternVisayas";
     $province       = "_0645_NEGROS_OCCIDENTAL";
     $city           = "_64524_SAN_CARLOS_CITY";
-    $barangay       = $_POST['barangay'];
+    $barangay       = strtoupper($_POST['barangay']);
 
     //for bararangay 
-    if ($barangay == 'Barangay I') {
+    if ($barangay == 'BARANGAY I') {
         $barangay1 = "_64524010_BARANGAY_I_(POB.)";
-    } elseif ($barangay == 'Barangay II') {
+    } elseif ($barangay == 'BARANGAY II') {
         $barangay1 = "_64524011_BARANGAY_II_(POB.)";
-    } elseif ($barangay == 'Barangay III') {
+    } elseif ($barangay == 'BARANGAY III') {
         $barangay1 = "_64524012_BARANGAY_III_(POB.)";
-    } elseif ($barangay == 'Barangay IV') {
+    } elseif ($barangay == 'BARANGAY IV') {
         $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
-    } elseif ($barangay == 'Barangay V') {
+    } elseif ($barangay == 'BARANGAY V') {
         $barangay1 = "_64524014_BARANGAY_V_(POB.)";
-    } elseif ($barangay == 'Barangay VI') {
+    } elseif ($barangay == 'BARANGAY VI') {
         $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
-    } elseif ($barangay == 'Bagonbon') {
+    } elseif ($barangay == 'BAGONBON') {
         $barangay1 = "_64524001_BAGONBON";
-    } elseif ($barangay == 'Buluangan') {
+    } elseif ($barangay == 'BULUANGAN') {
         $barangay1 = "_64524002_BULUANGAN";
-    } elseif ($barangay == 'Codcod') {
+    } elseif ($barangay == 'CODCOD') {
         $barangay1 = "_64524004_CODCOD";
-    } elseif ($barangay == 'Ermita') {
+    } elseif ($barangay == 'ERMITA') {
         $barangay1 = "_64524005_ERMITA";
-    } elseif ($barangay == 'Guadalupe') {
+    } elseif ($barangay == 'GUADALUPE') {
         $barangay1 = "_64524006_GUADALUPE";
-    } elseif ($barangay == 'Nataban') {
+    } elseif ($barangay == 'NATABAN') {
         $barangay1 = "_64524008_NATABAN";
-    } elseif ($barangay == 'Palampas') {
+    } elseif ($barangay == 'PALAMPAS') {
         $barangay1 = "_64524009_PALAMPAS";
-    } elseif ($barangay == 'Prosperidad') {
+    } elseif ($barangay == 'PROSPERIDAD') {
         $barangay1 = "_64524016_PROSPERIDAD";
-    } elseif ($barangay == 'Punao') {
+    } elseif ($barangay == 'PUNAO') {
         $barangay1 = "_64524017_PUNAO";
-    } elseif ($barangay == 'Quezon') {
+    } elseif ($barangay == 'QUEZON') {
         $barangay1 = "_64524018_QUEZON";
-    } elseif ($barangay == 'Rizal') {
+    } elseif ($barangay == 'RIZAL') {
         $barangay1 = "_64524019_RIZAL";
-    } elseif ($barangay == 'San Juan') {
+    } elseif ($barangay == 'SAN JUAN') {
         $barangay1 = "_64524020_SAN_JUAN";
     }
+    
     $street         = $_POST['street'];
     $fulladdress    = $street . ', ' . $barangay;
     //employer
