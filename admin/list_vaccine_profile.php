@@ -127,17 +127,22 @@ $get_all_vaccine_data->execute();
 
                             <td>
 
-                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>
+                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
 
-                              <a class="btn btn-success btn-sm" href="view_close_contact.php?&id=<?php echo $list_contact['objid']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a> -->
+                              <a class="btn btn-outline-success btn-sm" href="view_vaccine_profile_two.php?&id=<?php echo $list_vaccine['entity_no']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a>
 
-                              <a class="btn btn-outline-success btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?>" data-placement="top" target="_blank" title="Report Close Contact">
+                              <a class="btn btn-outline-warning btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?>" data-placement="top" target="_blank" title="Report Close Contact">
                                 <i class="nav-icon fa fa-print"></i></a>
 
 
+
+
+
                               <!-- <button class="btn btn-danger delete btn-sm" id="delete_record" data-placement="top" title="Delete Record"><i class="fa fa-trash-o"></i></button> -->
-                              <!-- <button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button> -->
+                              <!-- <button class="btn btn-outline-info btn-sm editIndividual" style="margin-right:10px;" id="viewIndividual" data-placement="top" title="Edit Individual">
+                                <i class="fa fa-folder"></i>
+                              </button> -->
 
                               <!--                           
                                 <button class="btn btn-warning btn-sm"  data-placement="top" title="UPDATE"> <i class="fa fa-edit"></i></button> -->
