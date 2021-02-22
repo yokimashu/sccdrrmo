@@ -352,8 +352,8 @@ $get_all_vaccine_data->execute();
           width: "160px",
           targets: -1,
           data: null,
-          defaultContent: '<button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button>' +
-            '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/entity_id.php?entity_no=" data-placement="top" target="_blank" title="Print ID">  <i class="nav-icon fa fa-print"></i></a>' 
+          defaultContent: '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
+            '<a class="btn btn-success btn-sm" href="view_vaccine_profile_two.php?&id= ' 
             
            
             ,
