@@ -335,7 +335,7 @@ $get_all_vaccine_data->execute();
       serverSide: true,
       scrollX: false,
       ajax: {
-        url: "seach_vaccine.php",
+        url: "search_vaccine.php",
         type: "post",
         error: function (xhr, b, c) {
           console.log(
@@ -352,11 +352,8 @@ $get_all_vaccine_data->execute();
           width: "160px",
           targets: -1,
           data: null,
-          defaultContent: '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
-            '<a class="btn btn-success btn-sm" href="view_vaccine_profile_two.php?&id= ' 
-            
-           
-            ,
+          defaultContent: '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'         
+         
         },
 
       ],

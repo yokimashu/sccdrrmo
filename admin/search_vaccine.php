@@ -23,30 +23,36 @@ $requestData= $_REQUEST;
 
  $columns= array( 
 // datatable column index  => database column name
-	0 =>'id', 
-	1 => 'fullname',
-	2 => 'username',
-	3 => 'email',
-	4 => 'mobileno',
-  	5 => 'status'
+	0 =>'entity_no', 
+	1 => 'datecreate',
+	2 => 'fullname',
+	3 => 'gender',
+	4 => 'birthdate',
+  	5 => 'street',
+	  6 => 'barangay',
+	  7 => 'MunCity',
+	  8 => 'province',
+	  9 => 'Region',
+	  10 => 'Employed',
+	  11 => 'covid_history'
 	
 
-
+	
 );
 
 
 
 // getting total number records without any search
 
-$sql = "SELECT * FROM tbl_vaccine v inner join tbl_individual  i on v.entity_no = i.entity_no ORDER BY idno DESC";
+$sql = "SELECT * FROM tbl_vaccine v inner join tbl_individual i on v.entity_no = i.entity_no ORDER BY idno DESC";
 $get_user_data = $con->prepare($sql);
-$get_user_data->execute();
+$get_user_data->execute() or die("search_vaccine.php");
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 // PDOStatement::rowCount
 
 $countnofilter= "SELECT COUNT(entity_no) as id from tbl_vaccine"; //count all rows w/o filter
 $getrecordstmt = $con->prepare($countnofilter);
-$getrecordstmt->execute() or die("seach_vaccine.php");
+$getrecordstmt->execute() or die("search_vaccine.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
 $totalData = $getrecord['id'];
 // $totalData = mysqli_num_rows($query);
@@ -56,7 +62,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 $sql = "SELECT * FROM tbl_vaccine v inner join tbl_individual  i on v.entity_no = i.entity_no where ";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-	$sql.="  (v.entity_no LIKE '%".$requestData['search']['value']."%' ";
+	$sql.="  (entity_no LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";    
 	$sql.=" OR datecreate LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR Category LIKE '%".$requestData['search']['value']."%' ";
@@ -90,7 +96,7 @@ $get_user_data->execute();
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 
 	$countfilter= "SELECT COUNT(v.entity_no) as id  from tbl_vaccine v inner join tbl_individual  i on v.entity_no = i.entity_no  where ";
-	$countfilter.="  (v.entity_no LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.="  (entity_no LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";    
 	$countfilter.=" OR datecreate LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR Category LIKE '%".$requestData['search']['value']."%' ";
