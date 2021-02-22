@@ -46,7 +46,7 @@ $requestData= $_REQUEST;
 
 $sql = "SELECT * FROM tbl_vaccine v inner join tbl_individual i on v.entity_no = i.entity_no ORDER BY idno DESC";
 $get_user_data = $con->prepare($sql);
-$get_user_data->execute() or die("search_vaccine.php");
+$get_user_data->execute()or die("search_vaccine.php");
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 // PDOStatement::rowCount
 

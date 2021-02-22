@@ -85,7 +85,7 @@ $get_all_vaccine_data->execute();
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                        <tr style="font-size: 1.10rem">
+                     
 
                           <th> Entity_no </th>
                           <th> Date Create</th>
@@ -101,7 +101,7 @@ $get_all_vaccine_data->execute();
                           <th> Covid History </th>
                           <th>Options</th>
 
-                        </tr>
+            
                       </thead>
                       <tbody>
 
@@ -358,6 +358,8 @@ $get_all_vaccine_data->execute();
 
       ],
     });
+
+
     $("#users tbody").on("click", ".printlink", function () {
       // event.preventDefault();
       var currow = $(this).closest("tr");
