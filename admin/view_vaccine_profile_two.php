@@ -325,7 +325,7 @@ if (isset($_GET['id'])) {
                         <div class="box-body">
                             <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_vaccine.php">
 
-                                <div class="row">
+                                <div class="row" hidden>
                                     <div class="col-md-1"></div>
                                     <div class="col-md-2">
                                         <label>Date Registered: </label>
