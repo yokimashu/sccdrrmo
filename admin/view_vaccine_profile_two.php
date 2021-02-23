@@ -11,7 +11,18 @@ $time = date(' H:i');
 
 $entity_no = ' ';
 
-$btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_barangay = $get_city = $get_province = $get_birthdate = $get_gender = $get_fname = $get_mname = $get_lname = $get_entityno = $get_datecreated = $get_timereg = $get_category = $get_categoryid = $get_idnumber = $get_philhealth = $get_sufiix = $get_civil_status = $get_employed = $get_profession = $get_directcovid = $get_employername = $get_employeraddress = $get_employercontact = $get_pregstatus = $get_wallergy = $get_allergy = $get_wcomorbidities = $get_comorbidity = $get_covidhistory = $get_coviddate = $get_covidclass = $get_consent = '';
+$btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_barangay = $get_city =
+    $get_pwdID = $get_region = $get_employerlgu =   $get_province = $get_birthdate = $get_gender = $get_fname =
+    $get_mname = $get_lname = $get_entityno =   $get_datecreated = $get_timereg = $get_category = $get_categoryid =
+    $get_categnumber = $get_philhealth = $get_sufiix = $get_civil_status = $get_employed = $get_profession =
+    $get_directcovid =  $get_employername = $get_employeraddress = $get_employercontact = $get_pregstatus =
+    $get_wallergy = $get_allergy01 = $get_allergy02 = $get_allergy03 = $get_allergy04 =
+    $get_allergy05 = $get_allergy06 = $get_allergy07 = $get_allergy08 =
+    $get_wcomorbidities = $get_comorbidity01 = $get_comorbidity02 = $get_comorbidity03 = $get_comorbidity04 =
+    $get_comorbidity05 = $get_comorbidity06 = $get_comorbidity07 = $get_comorbidity08 =
+
+
+    $get_covidhistory = $get_coviddate = $get_covidclass = $get_consent = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $time = date('H:i:s');
@@ -75,8 +86,8 @@ $get_all_infection_sql = "SELECT * FROM tbl_infection";
 $get_all_infection_data = $con->prepare($get_all_infection_sql);
 $get_all_infection_data->execute();
 
-$province = 'NEGROS OCCIDENTAL ';
-$city = 'SAN CARLOS CITY';
+// $province = 'NEGROS OCCIDENTAL ';
+// $city = 'SAN CARLOS CITY';
 $nationality = ' FILIPINO';
 $region = 'WESTERN VISAYAS';
 
@@ -96,35 +107,62 @@ if (isset($_GET['id'])) {
         $get_timereg        = $result['time_reg'];
         $get_category       = $result['Category'];
         $get_categoryid     = $result['CategoryID'];
+        $get_categoryno     = $result['CategoryIDnumber'];
+        $get_categnumber     = $result['CategoryIDnumber'];
+        $get_philhealth     = $result['PhilHealthID'];
+        $get_pwdID          = $result['PWD_ID'];
+        $get_lname          = $result['Lastname'];
         $get_fname          = $result['Firstname'];
         $get_mname          = $result['Middlename'];
-        $get_lname          = $result['Lastname'];
+        $get_suffix         = $result['Suffix'];
+        $get_contact_no     = $result['Contact_no'];
         $get_gender         = $result['Sex'];
         $get_birthdate      = $result['Birthdate_'];
-        // $get_street         = $result['Street'];
+        $get_civil_status   = $result['Civilstatus'];
+        $get_employed      = $result['Employed'];
+        $get_profession     = $result['Profession'];
         $get_barangay       = $result['Barangay'];
-        // $get_city           = $result['City'];
         $get_province       = $result['Province'];
-        $get_contact_no     = $result['Contact_no'];
-        // $get_idnumber       = $result['IDNumber'];
-        // $get_philhealth     = $result['PhilHealthID'];
-        // $get_suffix         = $result['Suffix'];
-        // $get_civil_status   = $result['Civil_status'];
-        // $get_employed      = $result['Employed'];
-        // $get_profession     = $result['Profession'];
+        $get_region         = $result['Region'];
+        $get_street         = $result['Full_address'];
+        $get_city           = $result['MunCity'];
+
+
         // $get_directcovid    = $result['Direct_covid'];
-        // $get_employername   = $result['Employer_name'];
-        // $get_employeraddress = $result['Employer_address'];
-        // $get_employercontact = $result['Employer_contact_no'];
-        // $get_pregstatus     = $result['Preg_status'];
-        // $get_wallergy       = $result['W_allergy'];
-        // $get_allergy        = $result['Allergy'];
-        // $get_wcomorbidities = $result['W_comorbidities'];
-        // $get_comorbidity    = $result['Comorbidity'];
-        // $get_covidhistory   = $result['covid_history'];
-        // $get_coviddate      = $result['covid_date'];
-        // $get_covidclass     = $result['covid_classification'];
-        // $get_consent        = $result['consent'];
+        $get_employername   = $result['Employer_name'];
+        $get_employeraddress = $result['Employer_address'];
+        $get_employercontact = $result['Employer_contact_no'];
+        $get_employerlgu    = $result['Employer_LGU'];
+        $get_pregstatus     = $result['Preg_status'];
+        $get_wallergy       = $result['W_allergy'];
+        $get_wcomorbidities = $result['W_comorbidities'];
+
+        // name of allergies
+        $get_allergy01      = $result['Allergy_01'];
+        $get_allergy02      = $result['Allergy_02'];
+        $get_allergy03      = $result['Allergy_03'];
+        $get_allergy04      = $result['Allergy_04'];
+        $get_allergy05      = $result['Allergy_05'];
+        $get_allergy06      = $result['Allergy_06'];
+        $get_allergy07      = $result['Allergy_07'];
+        $get_allergy08      = $result['Allergy_08'];
+
+        // name of comorbidities
+        $get_comorbidity01  =  $result['Comorbidity_01'];
+        $get_comorbidity02  =  $result['Comorbidity_02'];
+        $get_comorbidity03  =  $result['Comorbidity_03'];
+        $get_comorbidity04  =  $result['Comorbidity_04'];
+        $get_comorbidity05  =  $result['Comorbidity_05'];
+        $get_comorbidity06  =  $result['Comorbidity_06'];
+        $get_comorbidity07  =  $result['Comorbidity_07'];
+        $get_comorbidity08  =  $result['Comorbidity_08'];
+
+
+        $get_covidhistory   = $result['covid_history'];
+        $get_directcovid    = $result['Direct_covid'];
+        $get_coviddate      = $result['covid_date'];
+        $get_covidclass     = $result['covid_classification'];
+        $get_consent        = $result['Consent'];
     }
 }
 
@@ -209,6 +247,13 @@ if (isset($_GET['id'])) {
 
         }
 
+        #fieldset-medical {
+            color: #31A231;
+            width: 23%;
+            padding: 5px 15px;
+
+        }
+
         #fieldset {
             color: #31A231;
             width: 10%;
@@ -216,12 +261,15 @@ if (isset($_GET['id'])) {
 
         }
 
+
+
         #fieldset-category {
             color: #31A231;
             width: 12%;
-            padding: 5px 10px;
+            padding: 5px 15px;
 
         }
+
 
         #fieldset-basicinfo {
             color: #31A231;
@@ -237,7 +285,14 @@ if (isset($_GET['id'])) {
 
         }
 
-        #required {
+        #fieldset-comorbidity {
+            color: #31A231;
+            width: 18%;
+            padding: 5px 15px;
+
+        }
+
+        v #required {
             color: red;
         }
 
@@ -268,9 +323,9 @@ if (isset($_GET['id'])) {
 
                     <div class="card-body">
                         <div class="box-body">
-                            <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php">
+                            <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_vaccine.php">
 
-                                <div class="row" hidden>
+                                <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-2">
                                         <label>Date Registered: </label>
@@ -278,14 +333,14 @@ if (isset($_GET['id'])) {
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_datecreated; ?>">
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-2">
                                         <label> Time Registered:</label>
-                                        <input readonly type="text" class="form-control" style="text-align:center;" name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>" required>
+                                        <input readonly type="text" class="form-control" style="text-align:center;" name="time" id="time" placeholder="Time Registered" value="<?php echo $get_timereg; ?>" required>
                                     </div>
 
                                 </div>
@@ -314,7 +369,7 @@ if (isset($_GET['id'])) {
                                             <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
                                                 <option>Select Category ID</option>
                                                 <?php while ($get_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <?php $selected = ($get_categoryid == $get_id['idno']) ? 'selected' : ''; ?>
+                                                    <?php $selected = ($get_categoryid == $get_id['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_id['description']; ?>"><?php echo $get_id['categ_id_type']; ?></option>
                                                 <?php } ?>
                                             </select>
@@ -323,7 +378,7 @@ if (isset($_GET['id'])) {
 
                                         <div class="col-sm-4">
                                             <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number">
+                                            <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number" value="<?php echo $get_categoryno ?>">
                                         </div>
 
 
@@ -339,7 +394,7 @@ if (isset($_GET['id'])) {
 
                                         <div class="col-sm-6">
                                             <label>PWD ID : </label>
-                                            <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID">
+                                            <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID" value="<?php echo $get_pwdID ?>">
                                         </div>
 
                                     </div><br>
@@ -352,14 +407,9 @@ if (isset($_GET['id'])) {
                                     </legend>
 
                                     <div class="row">
-                                        <div class="col-sm-7">
-                                            <label>Select Individual: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control select2" style="width: 100%;" id="entity1" name=" entity_no" value="">
-                                                <option>Select Individual</option>
-                                            </select>
-                                        </div>
 
-                                        <div class="col-sm-5">
+
+                                        <div class="col-sm-3">
                                             <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
                                             <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number" value="<?php echo $get_entityno; ?>">
                                         </div>
@@ -393,7 +443,14 @@ if (isset($_GET['id'])) {
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender" value="<?php echo $get_gender; ?>">
+                                            <select class="form-control select2" style="width:100%" id="gender" name="gender" placeholder="Gender" value="">
+                                                <option <?php if ($get_gender == ' ') echo 'selected'; ?>>Select Gender</option>
+                                                <option <?php if ($get_gender == '01_Female') echo 'selected'; ?> value="01_Female">Female </option>
+                                                <option <?php if ($get_gender == '02_Male') echo 'selected'; ?> value="02_Male">Male </option>
+                                                <option <?php if ($get_gender == '03_Not_to_disclose') echo 'selected'; ?> value="03_Not_to_disclose">No to disclose</option>
+                                            </select>
+
+
                                         </div>
 
                                         <div class="col-sm-3">
@@ -409,7 +466,6 @@ if (isset($_GET['id'])) {
                                                     <?php $selected = ($get_civil_status == $get_civil['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_civil['description']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
                                                 <?php } ?>
-
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
@@ -437,8 +493,8 @@ if (isset($_GET['id'])) {
                                             <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
                                                 <option selected value="">Select Profession</option>
                                                 <?php while ($get_prof = $get_all_profession_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <?php $selected = ($get_profession == $get_prof['idno']) ? 'selected' : ''; ?>
-                                                    <option <?= $selected; ?> value="<?php echo $get_prof['idno']; ?>"><?php echo $get_prof['profession']; ?></option>
+                                                    <?php $selected = ($get_profession == $get_prof['description']) ? 'selected' : ''; ?>
+                                                    <option <?= $selected; ?> value="<?php echo $get_prof['description']; ?>"><?php echo $get_prof['profession']; ?></option>
                                                 <?php } ?>
                                             </select>
 
@@ -446,10 +502,8 @@ if (isset($_GET['id'])) {
                                     </div><br>
                                 </fieldset><br>
 
-
-
-
-                                <!-- <fieldset class="form-control field_set">
+                                <!-- address -->
+                                <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
                                         <h5>ADDRESS</h5>
@@ -458,18 +512,18 @@ if (isset($_GET['id'])) {
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <label>Region :&nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="text" readonly class="form-control" placeholder="Contact Number" value="<?php echo $region ?>">
+                                            <input type="text" readonly class="form-control" placeholder="Contact Number" value="<?php echo $get_region ?>">
 
 
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Province :&nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="text" readonly class="form-control" name="province" placeholder="Province" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $province ?>">
+                                            <input type="text" readonly class="form-control" name="province" placeholder="Province" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $get_province ?>">
                                         </div>
 
                                         <div class="col-sm-4">
                                             <label>City / Municipality :&nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="text" class="form-control" name="city" placeholder="City" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $city ?>">
+                                            <input type="text" class="form-control" name="city" placeholder="City" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value="<?php echo $get_city ?>">
                                         </div>
 
                                     </div><br>
@@ -486,10 +540,10 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div><br>
 
-                                </fieldset><br> -->
+                                </fieldset><br>
 
-
-                                <!-- <fieldset class="form-control field_set">
+                                <!-- employer -->
+                                <fieldset class="form-control field_set">
 
                                     <legend id="fieldset-category">
                                         <h5>EMPLOYER</h5>
@@ -512,7 +566,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-sm-6">
                                             <label>LGU: &nbsp;&nbsp; <span id="required">*</span> </label>
 
-                                            <input type="text" class="form-control" name="emp_lgu" id="emp_lgu" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="LGU">
+                                            <input type="text" class="form-control" name="emp_lgu" id="emp_lgu" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="LGU" value="<?php echo $get_employerlgu ?>">
 
                                         </div>
                                         <div class="col-sm-6">
@@ -521,11 +575,12 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div><br>
 
-                                </fieldset><br> -->
+                                </fieldset><br>
 
-                                <!-- <fieldset class="form-control field_set">
+                                <!-- medical conditions -->
+                                <fieldset class="form-control field_set">
 
-                                    <legend id="fieldset-category">
+                                    <legend id="fieldset-medical">
                                         <h5>MEDICAL CONDITIONS</h5>
                                     </legend>
                                     <div class="row">
@@ -533,8 +588,8 @@ if (isset($_GET['id'])) {
                                             <label> If female, pregnancy status?</label>
                                             <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status" value="<?php echo $get_pregstatus ?>">
                                                 <option>Select pregnancy status...</option>
-                                                <option <?php if ($get_pregstatus == '01') echo 'selected'; ?> value="Pregnant">Pregnant </option>
-                                                <option <?php if ($get_pregstatus == '02') echo 'selected'; ?> value="Not Pregnant">Not Pregnant </option>
+                                                <option <?php if ($get_pregstatus == '01_Pregnant') echo 'selected'; ?> value="01_Pregnant">Pregnant </option>
+                                                <option <?php if ($get_pregstatus == '02_Not_Pregnant') echo 'selected'; ?> value="02_Not_Pregnant">Not Pregnant </option>
                                             </select>
                                         </div>
 
@@ -542,8 +597,8 @@ if (isset($_GET['id'])) {
                                             <label>With Allergy? </label>
                                             <select class="form-control select2 " name="with_allergy" id="with_allergy" style="width:100%" value="<?php echo $get_wallergy; ?>">
                                                 <option>Do you have allergy?</option>
-                                                <option <?php if ($get_wallergy == '01') echo 'selected'; ?> value="01">Yes </option>
-                                                <option <?php if ($get_wallergy == '02') echo 'selected'; ?> value="02">None</option>
+                                                <option <?php if ($get_wallergy == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                <option <?php if ($get_wallergy == '02_None') echo 'selected'; ?> value="02_None">None</option>
                                             </select>
                                         </div>
 
@@ -551,8 +606,8 @@ if (isset($_GET['id'])) {
                                             <label>With Comorbidities?</label>
                                             <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities" value="<?php echo $get_wcomorbidities; ?>">
                                                 <option>Do you have comorbidities?</option>
-                                                <option <?php if ($get_wcomorbidities == '01') echo 'selected'; ?> value="01">Yes </option>
-                                                <option <?php if ($get_wcomorbidities == '02') echo 'selected'; ?> value="02">None</option>
+                                                <option <?php if ($get_wcomorbidities == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                <option <?php if ($get_wcomorbidities == '02_None') echo 'selected'; ?> value="02_None">None</option>
                                             </select>
                                         </div>
 
@@ -560,8 +615,8 @@ if (isset($_GET['id'])) {
                                             <label>Covid History &nbsp;&nbsp; <span id="required">*</span> </label>
                                             <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value="<?php echo $get_covidhistory; ?>">
                                                 <option>Please select</option>
-                                                <option <?php if ($get_covidhistory == '01') echo 'selected'; ?> value="01">Yes </option>
-                                                <option <?php if ($get_covidhistory == '02') echo 'selected'; ?> value="02">No</option>
+                                                <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                <option <?php if ($get_covidhistory == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                             </select>
                                         </div>
                                     </div><br>
@@ -569,20 +624,19 @@ if (isset($_GET['id'])) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Direct interaction with COVID Patient &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value="<?php echo $get_covidhistory; ?>">
+                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_covidhistory; ?>">
                                                 <option>Choose here</option>
-                                                <option <?php if ($get_covidhistory == '01') echo 'selected'; ?> value="01">Yes </option>
-                                                <option <?php if ($get_covidhistory == '02') echo 'selected'; ?> value="02">No</option>
+                                                <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                <option <?php if ($get_covidhistory == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                             </select>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label for="">Provided Electronic Informed Consent</label>
+                                            <label for="">Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width:100%" name="consentation" id="consentation" value="<?php echo $get_consent; ?>">
                                                 <option>Please select</option>
-                                                <option <?php if ($get_consent == '01') echo 'selected'; ?> value="01">Yes </option>
-                                                <option <?php if ($get_consent == '02') echo 'selected'; ?> value="02">No</option>
-                                                <option <?php if ($get_consent == '03') echo 'selected'; ?> value="03">Unknown</option>
+                                                <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
 
                                             </select>
 
@@ -591,7 +645,251 @@ if (isset($_GET['id'])) {
 
 
 
-                                </fieldset><br> -->
+                                </fieldset><br>
+
+
+
+                                <!-- covid history -->
+                                <?php if ($get_covidhistory == '01_Yes') { ?>
+                                    <fieldset class="form-control field_set" id="yes-diagnose">
+                                        <legend id="fieldset-comorbidity">
+                                            <h5>COVID HISTORY</h5>
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-7">
+                                                <label>Date of first positive result /specimen collection? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Classification of infection?</label>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <input type="date" style="width:100%" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" value="<?php echo $get_coviddate ?>" />
+                                            </div>
+                                            <div class="col-sm-4"></div>
+
+                                            <div class="col-sm-3">
+                                                <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
+                                                    <option value="">Classification of Infection</option>
+                                                    <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <?php $selected = ($get_covidclass == $get_infection['description']) ? 'selected' : ''; ?>
+                                                        <option <?= $selected; ?> value="<?php echo $get_infection['description']; ?>"><?php echo $get_infection['classification']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div><br>
+                                    </fieldset><br>
+
+                                <?php } else { ?>
+
+                                    <fieldset class="form-control field_set" hidden id="yes-diagnose">
+                                        <legend id="fieldset-comorbidity">
+                                            <h5>COVID HISTORY</h5>
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-7">
+                                                <label>Date of first positive result /specimen collection? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Classification of infection?</label>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <input type="date" style="width:100%" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" value="<?php echo $get_coviddate ?>" />
+                                            </div>
+                                            <div class="col-sm-4"></div>
+
+                                            <div class="col-sm-3">
+                                                <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
+                                                    <option value="">Classification of Infection</option>
+                                                    <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <?php $selected = ($get_covidclass == $get_infection['description']) ? 'selected' : ''; ?>
+                                                        <option <?= $selected; ?> value="<?php echo $get_infection['description']; ?>"><?php echo $get_infection['classification']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div><br>
+                                    </fieldset><br>
+                                <?php } ?>
+
+
+
+                                <!-- end of covid history -->
+
+
+                                <!-- list of allergy -->
+                                <?php if ($get_wallergy == '01_Yes') { ?>
+
+                                    <fieldset class="form-control field_set" id="yes-allergy">
+                                        <legend id="fieldset-category">
+                                            <h5>ALLERGY</h5>
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label>Drug</label>
+                                                <select name="allergy_drug" id="allergy_drug" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Food</label>
+                                                <select name="allergy_food" id="allergy_food" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Insect</label>
+                                                <select name="allergy_insect" id="allergy_insect" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Latex</label>
+                                                <select name="allergy_latex" id="allergy_latex" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label>Mold</label>
+                                                <select name="allergy_mold" id="allergy_mold" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Pet</label>
+                                                <select name="allergy_pet" id="allergy_pet" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Pollen</label>
+                                                <select name="allergy_pollen" id="allergy_pollen" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Vaccine and related products</label>
+                                                <select name="allergy_vaccine" id="allergy_vaccine" style="width:100%" class="form-control ">
+                                                    <option <?php if ($get_allergy08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                    <option <?php if ($get_allergy08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                </select>
+                                            </div>
+
+                                        </div><br>
+
+
+
+
+                                    </fieldset><br>
+                                <?php } ?>
+
+
+
+                                <!-- end of list allergy -->
+
+
+                                <!-- list of comorbidity -->
+
+                                <?php if ($get_wcomorbidities == '01_Yes') { ?>
+                                    <fieldset class="form-control field_set" id="yes-comordities">
+                                        <legend id="fieldset-comorbidity">
+                                            <h5>COMORBIDITY</h5>
+                                        </legend>
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label>Hypertension</label>
+                                                <select name="como_hypertension" id="como_hypertension" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Heart disease</label>
+                                                <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Kidney disease</label>
+                                                <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Diabetes mellitus</label>
+                                                <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label>Bronchial Asthma</label>
+                                                <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Immunodefiency state</label>
+                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Cancer</label>
+                                                <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Other</label>
+                                                <select name="como_other" id="como_other" style="width:100%" class="form-control ">
+                                                    <option value="01_Yes">Yes</option>
+                                                    <option selected value="02_No">No</option>
+                                                </select>
+                                            </div>
+
+                                        </div><br>
+
+                                    </fieldset><br>
+                                <?php } else { ?>
+
+                                <?php } ?>
+                                <!-- end list of comorbidity -->
+
+
+
+
+
 
 
 
@@ -601,9 +899,9 @@ if (isset($_GET['id'])) {
                                 <div class="box-footer" align="center">
 
 
-                                    <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
+                                    <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
                                         <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                        <h4>Update</h4>
+                                        <h4>Update Form</h4>
                                     </button>
 
                                     <!-- <a href="list_vaccine_profile">
@@ -688,82 +986,82 @@ if (isset($_GET['id'])) {
 
 
     <script>
-        $(function() {
+        // $(function() {
 
-            $("#entity1").select2({
-                //  minimumInputLength: 3,
-                // placeholder: "hello",
-                ajax: {
-                    url: "individual_query_patient", // json datasource
-                    type: "post",
-                    dataType: 'json',
-                    delay: 250,
-                    data: function(params) {
-                        return {
-                            searchTerm: params.term
-                        };
-                    },
+        //     $("#entity1").select2({
+        //         //  minimumInputLength: 3,
+        //         // placeholder: "hello",
+        //         ajax: {
+        //             url: "individual_query_patient", // json datasource
+        //             type: "post",
+        //             dataType: 'json',
+        //             delay: 250,
+        //             data: function(params) {
+        //                 return {
+        //                     searchTerm: params.term
+        //                 };
+        //             },
 
-                    processResults: function(response) {
-                        return {
-                            results: response
+        //             processResults: function(response) {
+        //                 return {
+        //                     results: response
 
 
-                        };
-                    },
-                    cache: true,
-                    error: function(xhr, b, c) {
-                        console.log(
-                            "xhr=" +
-                            xhr.responseText +
-                            " b=" +
-                            b.responseText +
-                            " c=" +
-                            c.responseText
-                        );
-                    }
-                }
-            });
+        //                 };
+        //             },
+        //             cache: true,
+        //             error: function(xhr, b, c) {
+        //                 console.log(
+        //                     "xhr=" +
+        //                     xhr.responseText +
+        //                     " b=" +
+        //                     b.responseText +
+        //                     " c=" +
+        //                     c.responseText
+        //                 );
+        //             }
+        //         }
+        //     });
 
-            $('#entity1').on('change', function() {
-                var entity_no = this.value;
-                console.log(entity_no);
-                $.ajax({
-                    type: "POST",
-                    url: 'profile_vaccine.php',
-                    data: {
-                        entity_no: entity_no
-                    },
-                    error: function(xhr, b, c) {
-                        console.log(
-                            "xhr=" +
-                            xhr.responseText +
-                            " b=" +
-                            b.responseText +
-                            " c=" +
-                            c.responseText
-                        );
-                    },
-                    success: function(response) {
-                        var result = jQuery.parseJSON(response);
-                        console.log('response from server', result);
-                        $('#entity_number').val(result.data);
-                        $('#fullname').val(result.data1);
-                        $('#firstname').val(result.data2);
-                        $('#middlename').val(result.data3);
-                        $('#lastname').val(result.data4);
-                        $('#birthdate').val(result.data5);
-                        $('#street').val(result.data7);
-                        $('#barangay').val(result.data8);
-                        $('#age').val(result.data9);
-                        $('#gender').val(result.data10);
-                        $('#contact_no').val(result.data12);
-                    },
-                });
+        //     $('#entity1').on('change', function() {
+        //         var entity_no = this.value;
+        //         console.log(entity_no);
+        //         $.ajax({
+        //             type: "POST",
+        //             url: 'profile_vaccine.php',
+        //             data: {
+        //                 entity_no: entity_no
+        //             },
+        //             error: function(xhr, b, c) {
+        //                 console.log(
+        //                     "xhr=" +
+        //                     xhr.responseText +
+        //                     " b=" +
+        //                     b.responseText +
+        //                     " c=" +
+        //                     c.responseText
+        //                 );
+        //             },
+        //             success: function(response) {
+        //                 var result = jQuery.parseJSON(response);
+        //                 console.log('response from server', result);
+        //                 $('#entity_number').val(result.data);
+        //                 $('#fullname').val(result.data1);
+        //                 $('#firstname').val(result.data2);
+        //                 $('#middlename').val(result.data3);
+        //                 $('#lastname').val(result.data4);
+        //                 $('#birthdate').val(result.data5);
+        //                 $('#street').val(result.data7);
+        //                 $('#barangay').val(result.data8);
+        //                 $('#age').val(result.data9);
+        //                 $('#gender').val(result.data10);
+        //                 $('#contact_no').val(result.data12);
+        //             },
+        //         });
 
-            });
+        //     });
 
-        });
+        // });
 
         $(function() {
 
@@ -805,7 +1103,7 @@ if (isset($_GET['id'])) {
         });
         $('#gender').change(function() {
             var option = $('#gender').val();
-            if (option == "01") {
+            if (option == "01_Pregnant") {
                 $('#pregnant').prop("hidden", false);
 
 
@@ -823,7 +1121,7 @@ if (isset($_GET['id'])) {
 
         $('#with_allergy').change(function() {
             var option = $('#with_allergy').val();
-            if (option == "01") {
+            if (option == "01_Yes") {
                 $('#yes-allergy').prop("hidden", false);
 
 
@@ -840,7 +1138,7 @@ if (isset($_GET['id'])) {
 
         $('#with_commorbidities').change(function() {
             var option = $('#with_commorbidities').val();
-            if (option == "01") {
+            if (option == "01_Yes") {
                 $('#yes-comordities').prop("hidden", false);
 
 
@@ -857,7 +1155,7 @@ if (isset($_GET['id'])) {
 
         $('#patient_diagnose').change(function() {
             var option = $('#patient_diagnose').val();
-            if (option == "01") {
+            if (option == "01_Yes") {
                 $('#yes-diagnose').prop("hidden", false);
 
 

@@ -63,8 +63,7 @@ $get_all_vaccine_data->execute();
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
             <h4> Vaccine Masterlists
-              <a href="add_vaccine_registry" style="float:right;" type="button"
-                class="btn btn-success bg-gradient-success">
+              <a href="add_vaccine_registry" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
 
             </h4>
@@ -83,66 +82,29 @@ $get_all_vaccine_data->execute();
                     <br> -->
 
 
-                    <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
+                    <table id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                     
 
-                          <th> Entity_no </th>
-                          <th> Date Create</th>
-                          <th> Full Name </th>
-                          <th> Gender </th>
-                          <th> Date of Birth </th>
-                          <th> Address </th>
-                          <th> Barangay </th>
-                          <th> Municipality </th>
-                          <th> Province </th>
-                          <th> Region </th>
-                          <th> Employed </th>
-                          <th> Covid History </th>
-                          <th>Options</th>
 
-            
+                        <th> Entity_no </th>
+                        <th> Date Create</th>
+                        <th> Full Name </th>
+                        <th> Gender </th>
+                        <th> Date of Birth </th>
+                        <th> Address </th>
+                        <th> Barangay </th>
+                        <th> Municipality </th>
+                        <th> Province </th>
+                        <th> Region </th>
+                        <th> Employed </th>
+                        <th> Covid History </th>
+                        <th>Options</th>
+
+
                       </thead>
                       <tbody>
 
 
-
-                  
-
-
-                        <!-- <td> -->
-
-                        <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
-
-                        <!-- <a class="btn btn-success btn-sm" href="view_vaccine_profile_two.php?&id=<?php echo $list_contact['objid']; ?> ">
-                              <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>
-
-                              <a class="btn btn-outline-success btn-sm" href="view_vaccine_profile_two.php?&id=<?php echo $list_vaccine['entity_no']; ?> ">
-                                <i class="fa fa-folder-open-o"></i></a>
-
-                              <a class="btn btn-outline-warning btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?>" data-placement="top" target="_blank" title="Report Close Contact">
-                                <i class="nav-icon fa fa-print"></i></a> -->
-
-
-
-
-
-                        <!-- <button class="btn btn-danger delete btn-sm" id="delete_record" data-placement="top" title="Delete Record"><i class="fa fa-trash-o"></i></button> -->
-                        <!-- <button class="btn btn-outline-info btn-sm editIndividual" style="margin-right:10px;" id="viewIndividual" data-placement="top" title="Edit Individual">
-                                <i class="fa fa-folder"></i>
-                              </button> -->
-
-                        <!--                           
-                                <button class="btn btn-warning btn-sm"  data-placement="top" title="UPDATE"> <i class="fa fa-edit"></i></button> -->
-
-
-
-
-
-                        <!-- &nbsp; -->
-
-                        <!-- </td>
-                          </tr> -->
 
                       </tbody>
                     </table>
@@ -181,8 +143,7 @@ $get_all_vaccine_data->execute();
             <div class="box-body-lg-50">
               <div class="form-group">
                 <label>ID:</label>
-                <input readonly="true" type="text" name="objid" id="objid" class="form-control"
-                  value="<?php echo $objid; ?>" required>
+                <input readonly="true" type="text" name="objid" id="objid" class="form-control" value="<?php echo $objid; ?>" required>
 
 
               </div>
@@ -198,12 +159,9 @@ $get_all_vaccine_data->execute();
               </div> -->
               <label for="">STATUS:</label>
               <br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "PENDING") echo "checked"; ?>
-                value="PENDING">PENDING<br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "POSITIVE") echo "checked"; ?>
-                value="POSITIVE">POSITIVE<br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "NEGATIVE") echo "checked"; ?>
-                value="NEGATIVE">NEGATIVE<br>
+              <input type="radio" name="status" <?php if (isset($status) && $status == "PENDING") echo "checked"; ?> value="PENDING">PENDING<br>
+              <input type="radio" name="status" <?php if (isset($status) && $status == "POSITIVE") echo "checked"; ?> value="POSITIVE">POSITIVE<br>
+              <input type="radio" name="status" <?php if (isset($status) && $status == "NEGATIVE") echo "checked"; ?> value="NEGATIVE">NEGATIVE<br>
 
 
             </div>
@@ -242,8 +200,7 @@ $get_all_vaccine_data->execute();
               <div class="form-group">
                 <label>Delete Record?</label>
 
-                <input readonly="true" type="text" name="objid_closecontact" id="objid_closecontact"
-                  class="form-control">
+                <input readonly="true" type="text" name="objid_closecontact" id="objid_closecontact" class="form-control">
               </div>
 
 
@@ -300,14 +257,14 @@ $get_all_vaccine_data->execute();
   if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
 
   ?>
-  <script>
-    swal({
-      title: "<?php echo $_SESSION['status'] ?>",
-      // text: "You clicked the button!",
-      icon: "<?php echo $_SESSION['status_code'] ?>",
-      button: "OK. Done!",
-    });
-  </script>
+    <script>
+      swal({
+        title: "<?php echo $_SESSION['status'] ?>",
+        // text: "You clicked the button!",
+        icon: "<?php echo $_SESSION['status_code'] ?>",
+        button: "OK. Done!",
+      });
+    </script>
 
   <?php
     unset($_SESSION['status']);
@@ -326,7 +283,7 @@ $get_all_vaccine_data->execute();
 
 
     // });
-   
+
     var dataTable = $('#users').DataTable({
 
       page: true,
@@ -334,10 +291,11 @@ $get_all_vaccine_data->execute();
       processing: true,
       serverSide: true,
       scrollX: false,
+
       ajax: {
         url: "search_vaccine.php",
         type: "post",
-        error: function (xhr, b, c) {
+        error: function(xhr, b, c) {
           console.log(
             "xhr=" +
             xhr.responseText +
@@ -352,26 +310,26 @@ $get_all_vaccine_data->execute();
           width: "160px",
           targets: -1,
           data: null,
-          defaultContent: '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'         
-         
+          defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'
+
         },
 
       ],
     });
 
 
-    $("#users tbody").on("click", ".printlink", function () {
+    $("#users tbody").on("click", ".printlink", function() {
       // event.preventDefault();
       var currow = $(this).closest("tr");
       var entity_no = currow.find("td:eq(0)").text();
 
-      $('.printlink').attr("href", "../plugins/jasperreport/vaccineform.php?entity_no=" + entity_no, '_parent');
+      $('.printlink').attr("href", "view_vaccine_profile_two.php?id=" + entity_no, '_parent');
 
 
     });
 
 
-    $("#users tbody").on("click", "#modal", function () {
+    $("#users tbody").on("click", "#modal", function() {
       event.preventDefault();
       var currow = $(this).closest("tr");
 
@@ -390,8 +348,8 @@ $get_all_vaccine_data->execute();
 
 
 
-    $(function () {
-      $(document).on('click', '.delete', function (e) {
+    $(function() {
+      $(document).on('click', '.delete', function(e) {
         e.preventDefault();
 
         var currow = $(this).closest("tr");
@@ -408,14 +366,14 @@ $get_all_vaccine_data->execute();
     $('.select2').select2();
 
 
-    $(function () {
+    $(function() {
       $('[data-toggle="datepicker"]').datepicker({
         autoHide: true,
         zIndex: 2048,
       });
     });
 
-    $(document).on('click', 'button[data-role=confirm_delete]', function (event) {
+    $(document).on('click', 'button[data-role=confirm_delete]', function(event) {
       event.preventDefault();
 
       var user_id = ($(this).data('id'));
