@@ -265,9 +265,9 @@ if (isset($_POST['update_vaccine'])) {
         -- gender          = :gender,
         birthdate       = :bdate,
         street          = :street,
-        barangay        = :brgy,
-        province        = :province,
-        city            = :city,
+        -- barangay        = :brgy,
+        -- province        = :province,
+        -- city            = :city,
         mobile_no       = :contact
         where entity_no = :entityNo ";
 
@@ -281,9 +281,9 @@ if (isset($_POST['update_vaccine'])) {
         // ':gender'       => $gender,
         ':bdate'        => $birthdate,
         ':street'       => $street,
-        ':brgy'         => $barangay,
-        ':province'     => $province,
-        ':city'         => $city,
+        // ':brgy'         => $barangay,
+        // ':province'     => $province,
+        // ':city'         => $city,
         ':contact'      => $contactno
 
     ]);
