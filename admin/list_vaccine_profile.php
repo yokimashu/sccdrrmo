@@ -87,17 +87,17 @@ $get_all_vaccine_data->execute();
 
 
                         <th> Entity_no </th>
-                        <th> Date Create</th>
-                        <th> Full Name </th>
+                        <th> Category</th>
+                        <th width="300px"> Full Name </th>
                         <th> Gender </th>
                         <th> Date of Birth </th>
                         <th> Address </th>
-                        <th> Barangay </th>
-                        <th> Municipality </th>
+                        <!-- <th> Barangay </th> -->
+                        <!-- <th> Municipality </th>
                         <th> Province </th>
                         <th> Region </th>
                         <th> Employed </th>
-                        <th> Covid History </th>
+                        <th> Covid History </th> -->
                         <th>Options</th>
 
 
@@ -307,7 +307,7 @@ $get_all_vaccine_data->execute();
         }
       },
       columnDefs: [{
-          width: "160px",
+          width: "100px",
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'
