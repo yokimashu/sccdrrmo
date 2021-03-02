@@ -275,7 +275,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-4">
                                             <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                                                <option selected="selected">Select Category</option>
+                                                <option value=" " selected>Select Category</option>
                                                 <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <option value="<?php echo $get_category['description'] ?>"><?php echo $get_category['category']; ?></option>
                                                 <?php } ?>
@@ -285,7 +285,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-4">
                                             <label for="">Type of ID:&nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
-                                                <option>Select Category ID</option>
+                                                <option value=" " selected>Select Category ID</option>
                                                 <?php while ($get_category_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <option value="<?php echo $get_category_id['description'] ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
                                                 <?php } ?>
@@ -294,7 +294,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-4">
                                             <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
-                                                <option>Select Health Worker</option>
+                                                <option value=" " selected>Select Health Worker</option>
                                                 <?php while ($get_healthworkers = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <option value="<?php echo $get_healthworkers['idno'] ?>"><?php echo $get_healthworkers['description']; ?></option>
                                                 <?php } ?>
@@ -382,7 +382,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
                                             <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
                                             <select class="form-control select2" id="gender" name="gender">
-                                                <option selected value="">Select gender</option>
+                                                <option selected value=" ">Select gender</option>
                                                 <option value="01_Female">Female</option>
                                                 <option value="02_Male">Male</option>
                                                 <option value="03_Not to disclose"> Not to Disclose</option>
@@ -397,7 +397,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-3">
                                             <label>Civil Status: </label>
                                             <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
-                                                <option>Select Civil Status</option>
+                                                <option value=" " selected>Select Civil Status</option>
                                                 <?php while ($get_civilstatus = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <option value="<?php echo $get_civilstatus['description'] ?>"><?php echo $get_civilstatus['name_civilstatus']; ?></option>
                                                 <?php } ?>
@@ -524,7 +524,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-3">
                                             <label> If female, pregnancy status?</label>
                                             <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status">
-                                                <option selected value=""> Select pregnancy status </option>
+                                                <option value=" " selected> Select pregnancy status </option>
                                                 <option value="01_Pregnant">Pregnant</option>
                                                 <option value="02_Not_Pregnant">Not Pregnant</option>
                                             </select>
@@ -603,7 +603,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                         <div class="col-sm-3">
                                             <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
-                                                <option value="">Classification of Infection</option>
+                                                <option value=" " selected>Classification of Infection</option>
                                                 <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <option value="<?php echo $get_infection['description'] ?>"><?php echo $get_infection['classification']; ?></option>
                                                 <?php } ?>
