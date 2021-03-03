@@ -128,7 +128,6 @@ if (isset($_GET['id'])) {
         $get_city           = $result['MunCity'];
 
 
-        // $get_directcovid    = $result['Direct_covid'];
         $get_employername   = $result['Employer_name'];
         $get_employeraddress = $result['Employer_address'];
         $get_employercontact = $result['Employer_contact_no'];
@@ -624,10 +623,10 @@ if (isset($_GET['id'])) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Direct interaction with COVID Patient &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_covidhistory; ?>">
+                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
                                                 <option>Choose here</option>
-                                                <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                <option <?php if ($get_covidhistory == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                <option <?php if ($get_directcovid == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                <option <?php if ($get_directcovid == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                             </select>
                                         </div>
 
