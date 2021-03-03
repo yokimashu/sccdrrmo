@@ -82,6 +82,10 @@ $get_all_comorbidities_sql = "SELECT * FROM tbl_comorbidity";
 $get_all_comorbidites_data = $con->prepare($get_all_comorbidities_sql);
 $get_all_comorbidites_data->execute();
 
+$get_all_healthworkers_sql = "SELECT * FROM tbl_health_workers";
+$get_all_healthworkers_data = $con->prepare($get_all_healthworkers_sql);
+$get_all_healthworkers_data->execute();
+
 $get_all_infection_sql = "SELECT * FROM tbl_infection";
 $get_all_infection_data = $con->prepare($get_all_infection_sql);
 $get_all_infection_data->execute();
@@ -108,7 +112,7 @@ if (isset($_GET['id'])) {
         $get_category       = $result['Category'];
         $get_categoryid     = $result['CategoryID'];
         $get_categoryno     = $result['CategoryIDnumber'];
-        $get_categnumber     = $result['CategoryIDnumber'];
+        $get_healthworker   = $result['HealthWorker'];
         $get_philhealth     = $result['PhilHealthID'];
         $get_pwdID          = $result['PWD_ID'];
         $get_lname          = $result['Lastname'];
@@ -354,7 +358,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-sm-4">
                                             <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                                                <option selected="selected">Select Category</option>
+                                                <option value=" " selected>Select Category</option>
                                                 <?php while ($get_ctgry = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <?php $selected = ($get_category == $get_ctgry['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_ctgry['description']; ?>"><?php echo $get_ctgry['category']; ?></option>
@@ -366,7 +370,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-sm-4">
                                             <label for="">Type of ID:&nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
-                                                <option>Select Category ID</option>
+                                                <option value=" " selected>Select Category ID</option>
                                                 <?php while ($get_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <?php $selected = ($get_categoryid == $get_id['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_id['description']; ?>"><?php echo $get_id['categ_id_type']; ?></option>
@@ -374,24 +378,36 @@ if (isset($_GET['id'])) {
                                             </select>
                                         </div>
 
-
                                         <div class="col-sm-4">
-                                            <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number" value="<?php echo $get_categoryno ?>">
+                                            <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
+                                                <option value=" " selected>Select Health Worker</option>
+                                                <?php while ($get_health = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <?php $selected = ($get_healthworker == $get_health['idno']) ? 'selected' : ''; ?>
+                                                    <option <?= $selected; ?> value="<?php echo $get_health['idno']; ?>"><?php echo $get_health['description']; ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
+
+
+
 
 
 
                                     </div><br>
 
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
+                                            <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number" value="<?php echo $get_categoryno ?>">
+                                        </div>
+                                        <div class="col-sm-4">
                                             <label>Philhealth ID : &nbsp;&nbsp; <span id="required">*</span></label>
                                             <input type="text" class="form-control" id="philhealth_id" name="philhealth_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Philhealth ID" value="<?php echo $get_philhealth; ?>">
                                             <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if no PhilHealth ID #</i></span>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <label>PWD ID : </label>
                                             <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID" value="<?php echo $get_pwdID ?>">
                                         </div>
@@ -460,7 +476,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-sm-3">
                                             <label>Civil Status: </label>
                                             <select class="form-control select2" style="width: 100%;" name="civil_status" id="civil_status">
-                                                <option>Select Civil Status</option>
+                                                <option selected value=" ">Select Civil Status</option>
                                                 <?php while ($get_civil = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <?php $selected = ($get_civil_status == $get_civil['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_civil['description']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
@@ -479,7 +495,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-sm-6">
                                             <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
-                                                <option value="">Select Employment</option>
+                                                <option selected value=" ">Select Employment</option>
                                                 <?php while ($get_emp_status = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <?php $selected = ($get_employed == $get_emp_status['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_emp_status['description']; ?>"><?php echo $get_emp_status['status']; ?></option>
@@ -490,7 +506,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-sm-6">
                                             <label>Profession :&nbsp;&nbsp; <span id="required">*</span> </label>
                                             <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
-                                                <option selected value="">Select Profession</option>
+                                                <option selected value=" ">Select Profession</option>
                                                 <?php while ($get_prof = $get_all_profession_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <?php $selected = ($get_profession == $get_prof['description']) ? 'selected' : ''; ?>
                                                     <option <?= $selected; ?> value="<?php echo $get_prof['description']; ?>"><?php echo $get_prof['profession']; ?></option>
@@ -674,7 +690,7 @@ if (isset($_GET['id'])) {
 
                                             <div class="col-sm-3">
                                                 <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
-                                                    <option value="">Classification of Infection</option>
+                                                    <option value=" " selected>Classification of Infection</option>
                                                     <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                         <?php $selected = ($get_covidclass == $get_infection['description']) ? 'selected' : ''; ?>
                                                         <option <?= $selected; ?> value="<?php echo $get_infection['description']; ?>"><?php echo $get_infection['classification']; ?></option>
@@ -684,42 +700,10 @@ if (isset($_GET['id'])) {
                                         </div><br>
                                     </fieldset><br>
 
-                                <?php } else { ?>
-
-                                    <fieldset class="form-control field_set" hidden id="yes-diagnose">
-                                        <legend id="fieldset-comorbidity">
-                                            <h5>COVID HISTORY</h5>
-                                        </legend>
-                                        <div class="row">
-                                            <div class="col-sm-7">
-                                                <label>Date of first positive result /specimen collection? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <label>Classification of infection?</label>
-
-                                            </div>
-
-                                        </div>
+                                <?php }  ?>
 
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <input type="date" style="width:100%" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" value="<?php echo $get_coviddate ?>" />
-                                            </div>
-                                            <div class="col-sm-4"></div>
 
-                                            <div class="col-sm-3">
-                                                <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
-                                                    <option value="">Classification of Infection</option>
-                                                    <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <?php $selected = ($get_covidclass == $get_infection['description']) ? 'selected' : ''; ?>
-                                                        <option <?= $selected; ?> value="<?php echo $get_infection['description']; ?>"><?php echo $get_infection['classification']; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div><br>
-                                    </fieldset><br>
-                                <?php } ?>
 
 
 

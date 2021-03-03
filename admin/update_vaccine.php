@@ -21,6 +21,7 @@ if (isset($_POST['update_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $idnumber       = $_POST['idno'];
+    $healthworker   = $_POST['health_worker'];
     $philhealth     = $_POST['philhealth_id'];
     $pwd            = $_POST['pwd_id'];
 
@@ -151,6 +152,7 @@ if (isset($_POST['update_vaccine'])) {
             Category                = :categ,
             CategoryID              = :categ_id,
             CategoryIDnumber        = :idnooo,
+            HealthWorker            = :healthworker,
             PhilHealthID            = :philhealth,
             PWD_ID                  = :pwd,
             Lastname                = :lastname,
@@ -207,6 +209,7 @@ if (isset($_POST['update_vaccine'])) {
         ':time_regg'        => $time,
         ':categ'            => $category,
         ':categ_id'         => $category_id,
+        ':healthworker'     => $healthworker,
         ':idnooo'           => $idnumber,
         ':philhealth'       => $philhealth,
         ':pwd'              => $pwd,

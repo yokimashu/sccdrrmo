@@ -51,7 +51,7 @@ $get_user_data->execute() or die("search_vaccine.php");
 // PDOStatement::rowCount
 
 $countnofilter = "SELECT COUNT(entity_no) as id from tbl_vaccine";
- //count all rows w/o filter
+//count all rows w/o filter
 $getrecordstmt = $con->prepare($countnofilter);
 $getrecordstmt->execute() or die("search_vaccine.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
@@ -64,19 +64,19 @@ $sql = "SELECT * FROM tbl_vaccine where ";
 
 if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql .= "  (entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR datecreate LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR Category LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Firstname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Middlename LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Lastname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Sex LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR Full_address LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
+	$sql .= " OR Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
+	// $sql .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
+	// $sql .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $sql .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $sql .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $sql .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $sql .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
 
 	// $query=mysqli_query($conn, $sql) or die("search_user.php");
 
@@ -91,19 +91,19 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 
 	$countfilter = "SELECT COUNT(entity_no) as id from tbl_vaccine where ";
 	$countfilter .= "(entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR datecreate LIKE '%" . $requestData['search']['value'] . "%' ";
+	$countfilter .= " OR Category LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Firstname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Middlename LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Lastname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Sex LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR Full_address LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
+	$countfilter .= " OR Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
+	// $countfilter .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
+	// $countfilter .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $countfilter .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $countfilter .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $countfilter .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
+	// $countfilter .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
 
 	$countfilter .= " order by idno LIMIT " . $requestData['start'] . "," . $requestData['length'] . " "; //count all rows w/ filter
 	$getrecordstmt = $con->prepare($countfilter);
@@ -118,17 +118,17 @@ while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 	$nestedData = array();
 
 	$nestedData[] = $row["entity_no"];
-	$nestedData[] = $row["datecreate"];
-	$nestedData[] = $row["Firstname"];
+	$nestedData[] = $row["Category"];
+	$nestedData[] = strtoupper($row["Firstname"] . ' ' . $row["Middlename"] . ' ' . $row["Lastname"]);
 	$nestedData[] = $row["Sex"];
 	$nestedData[] = $row["Birthdate_"];
-	$nestedData[] = $row["Full_address"];
-	$nestedData[] = $row["Barangay"];
-	$nestedData[] = $row["MunCity"];
-	$nestedData[] = $row["Province"];
-	$nestedData[] = $row["Region"];
-	$nestedData[] = $row["Employed"];
-	$nestedData[] = $row["covid_history"];
+	$nestedData[] = strtoupper($row["Full_address"]);
+	// $nestedData[] = $row["Barangay"];
+	// $nestedData[] = $row["MunCity"];
+	// $nestedData[] = $row["Province"];
+	// $nestedData[] = $row["Region"];
+	// $nestedData[] = $row["Employed"];
+	// $nestedData[] = $row["covid_history"];
 	$data[] = $nestedData;
 }
 
