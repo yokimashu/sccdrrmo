@@ -103,6 +103,30 @@ $get_all_vaccine_data->execute();
 
                       </thead>
                       <tbody>
+<<<<<<< Updated upstream
+=======
+                        <?php while ($list_vaccine = $get_all_vaccine_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <tr>
+
+                            <td><?php echo $list_vaccine['entity_no']; ?> </td>
+                            <td><?php echo $list_vaccine['datecreate']; ?> </td>
+                            <td><?php echo   $list_vaccine['fullname']; ?></td>
+
+
+                            <td>
+
+                              <!-- <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a> -->
+
+                              <a class="btn btn-warning btn-sm" href="view_vaccine_profile_two.php?&id=<?php echo $list_vaccine['entity_no']; ?> ">
+                                <i class="nav-icon fa fa-folder-open-o" aria-hidden="true"></i></a>
+
+                              <a class="btn btn-outline-success btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?>" data-placement="top" target="_blank" title="Report Close Contact">
+                                <i class="nav-icon fa fa-print"></i></a>
+
+
+                              <!-- <button class="btn btn-danger delete btn-sm" id="delete_record" data-placement="top" title="Delete Record"><i class="fa fa-trash-o"></i></button> -->
+                              <!-- <button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button> -->
+>>>>>>> Stashed changes
 
 
 

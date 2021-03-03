@@ -106,7 +106,7 @@ if (isset($_POST['update_vaccine'])) {
     $with_comorbidities = $_POST['with_commorbidities'];
     $name_allergy   = $_POST['name_allergy'];
     $direct_covid    = $_POST['interact_patient'];
-    $consent        = $_POST['electronic_consent'];
+    $consent        = $_POST['consentation'];
 
     //covid history
     $patient_diagnose = $_POST['patient_diagnose'];
@@ -196,7 +196,7 @@ if (isset($_POST['update_vaccine'])) {
             covid_date              = :date_history,
             covid_classification    = :infection,
             Consent                 = :consent
-            where entity_no     = :entityno
+            where entity_no         = :entityno
     
         ";
 
