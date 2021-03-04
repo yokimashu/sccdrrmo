@@ -152,7 +152,7 @@ if (isset($_POST['signin'])) {
         <div class="row" align="center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!-- <a href="#addnew" data-toggle="modal" style="color:white;" data-backdrop="static" class="btn btn-primary pull-left">Sign Up</a> -->
-            <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
+            <input type="submit"  class="btn btn-success pull-right" name="signin" value="Sign In">
           </div>
         </div>
 
@@ -176,6 +176,8 @@ if (isset($_POST['signin'])) {
 
 
 <script>
+
+
   function loadImage() {
     var input = document.getElementById("fileToUpload");
     var fReader = new FileReader();
