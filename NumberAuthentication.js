@@ -15,7 +15,7 @@ function phoneAuth() {
         window.confirmationResult=confirmationResult;
         coderesult=confirmationResult;
         console.log(coderesult);
-        alert("Message sent");
+        // alert("Message sent");
         window.open("verify.php",'_parent');   
     }).catch(function (error) {
         alert(error.message);
@@ -24,7 +24,8 @@ function phoneAuth() {
 function codeverify() {
     var code=document.getElementById('verificationCode').value;
     coderesult.confirm(code).then(function (result) {
-        alert("Successfully registered");
+        // alert("Successfully registered");
+        window.open("admin/index.php")
         var user=result.user;
         console.log(user);
     }).catch(function (error) {
