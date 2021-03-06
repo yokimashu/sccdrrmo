@@ -24,8 +24,7 @@ function phoneAuth() {
 function codeverify() {
     var code=document.getElementById('verificationCode').value;
     coderesult.confirm(code).then(function (result) {
-        // alert("Successfully registered");
-        window.open("admin/index.php")
+        window.open("send_code.php",'_parent');   
         var user=result.user;
         console.log(user);
     }).catch(function (error) {

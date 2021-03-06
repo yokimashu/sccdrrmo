@@ -80,7 +80,7 @@ if (isset($_POST['signin'])) {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Lockscreen</title>
+  <title>VAMOS| Vaccine Registration System</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
@@ -99,7 +99,7 @@ if (isset($_POST['signin'])) {
   <!-- Automatic element centering -->
   <div class="lockscreen-wrapper">
     <div class="lockscreen-logo">
-      <a href="../../index2.html"><b>Vaccine</b>Registry</a>
+      <a href="../../index2.html"><b>Vaccine Registry </b>System</a>
     </div>
     <!-- User name -->
     <!-- <div class="lockscreen-name">John Doe</div> -->
@@ -117,7 +117,7 @@ if (isset($_POST['signin'])) {
         <?php echo $alert_msg; ?>
         <div class="input-group">
           <input type="text" class="form-control" name="entity_no" placeholder="VAMOS ID Number">
-          <div id="firebaseui-auth-container"></div>
+          
           <div class="input-group-append">
             <button type="submit" name="signin" id="signin" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
           </div>
