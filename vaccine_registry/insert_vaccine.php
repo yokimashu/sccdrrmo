@@ -22,16 +22,31 @@ if (isset($_POST['insert_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
-    $idnumber       = $_POST['idno'];
-    $philhealth     = $_POST['philhealth_id'];
-    $pwd            = $_POST['pwd_id'];
+    if ($_POST['idno'] != '') {
+        $idnumber = $_POST['idno'];
+    } else {
+        $idnumber = 'N/A';
+    }
+
+    if ($_POST['philhealth_id'] != '') {
+        $philhealth = $_POST['philhealth_id'];
+    } else {
+        $philhealth = 'N/A';
+    }
+
+    if ($_POST['pwd_id'] != '') {
+        $pwd = $_POST['pwd_id'];
+    } else {
+        $pwd = 'N/A';
+    }
+
 
     //basic information
     $entityno        = $_POST['entity_number'];
-    $lastname       = $_POST['lastname'];
-    $firstname      = $_POST['firstname'];
-    $middlename     = $_POST['middlename'];
-    $suffix         = $_POST['suffix'];
+    $lastname       = strtoupper($_POST['lastname']);
+    $firstname      = strtoupper($_POST['firstname']);
+    $middlename     = strtoupper($_POST['middlename']);
+    $suffix         = strtoupper($_POST['suffix']);
     $gender         = $_POST['gender'];
     //for gender
     // if ($_POST['gender'] == 'female') {
@@ -95,23 +110,69 @@ if (isset($_POST['insert_vaccine'])) {
     }
 
     $street         = $_POST['street'];
-    $fulladdress    = $street . ', ' . $barangay;
+    $fulladdress    = strtoupper($street . ', ' . $barangay);
     //employer
-    $emp_name       = $_POST['name_employeer'];
-    $emp_contact    = $_POST['emp_contact'];
-    $emp_address    = $_POST['emp_address'];
+
+    if ($_POST['name_employeer'] != '') {
+        $emp_name       = strtoupper($_POST['name_employeer']);
+    } else {
+        $emp_name = 'N/A';
+    }
+
+    if ($_POST['emp_contact'] != ''){
+        $emp_contact    = $_POST['emp_contact'];
+    } else {
+        $emp_contact = 'N/A';
+    }
+   
+    if ($_POST['emp_address'] != ''){
+        $emp_address    = strtoupper($_POST['emp_address']);
+    }else{
+        $emp_address = 'N/A';
+    }
+  
     $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
-    $preg_status    = $_POST['preg_status'];
-    $with_allergy   = $_POST['with_allergy'];
-    $with_comorbidities = $_POST['with_commorbidities'];
+    if ($_POST['preg_status'] != 'Select pregnancy status...') {
+        $preg_status    = $_POST['preg_status'];
+    } else {
+        $preg_status = '02_Not_Pregnant';
+    }
+
+    if ($_POST['with_allergy'] != 'Do you have allergy?') {
+        $with_allergy   = $_POST['with_allergy'];
+    } else {
+        $with_allergy = '02_No';
+    }
+
+    if ($_POST['with_commorbidities'] != 'Do you have comorbidities?') {
+        $with_comorbidities = $_POST['with_commorbidities'];
+    } else {
+        $with_comorbidities = '02_No';
+    }
     // $name_allergy   = $_POST['name_allergy'];
-    $direct_covid    = $_POST['interact_patient'];
-    $consent        = $_POST['electronic_consent'];
+    if ($_POST['interact_patient'] != 'Choose here') {
+        $direct_covid    = $_POST['interact_patient'];
+    } else {
+        $direct_covid = '02_No';
+    }
+
+    if ($_POST['electronic_consent'] != 'Please select') {
+        $consent        = $_POST['electronic_consent'];
+    } else {
+        $consent        = '03_Unknown';
+    }
+
 
     //covid history
-    $patient_diagnose = $_POST['patient_diagnose'];
+    if ($_POST['patient_diagnose'] != 'Please select') {
+        $patient_diagnose = $_POST['patient_diagnose'];
+    } else {
+        $patient_diagnose = '02_No';
+    }
+
+
     if (!empty($_POST['date_positive'])) {
         $date_positive      = date('Y-m-d', strtotime($_POST['date_positive']));
     } else {
@@ -124,8 +185,8 @@ if (isset($_POST['insert_vaccine'])) {
         $name_infection = 'NONE';
     }
 
-     //classification of allergy
-     if ($with_allergy == "02_No") {
+    //classification of allergy
+    if ($with_allergy == "02_No") {
         $drug           = "02_No";
         $food           = "02_No";
         $insect         = "02_No";
@@ -288,7 +349,6 @@ if (isset($_POST['insert_vaccine'])) {
 
 
         ]);
-        
     } else {
 
         $insert_vaccine_sql = "INSERT INTO tbl_vaccine SET 
@@ -412,12 +472,12 @@ if (isset($_POST['insert_vaccine'])) {
         middlename      = :mname,
         lastname        = :lname,
         -- gender          = :gender,
-        birthdate       = :bdate,
-        street          = :street,
+        birthdate       = :bdate
+        -- street          = :street,
         -- barangay        = :brgy,
         -- province        = :province,
         -- city            = :city,
-        mobile_no       = :contact
+        -- mobile_no       = :contact
         where entity_no = :entityNo ";
 
     $update_individual_data = $con->prepare($update_individual_sql);
@@ -428,12 +488,12 @@ if (isset($_POST['insert_vaccine'])) {
         ':mname'        => $middlename,
         ':lname'        => $lastname,
         // ':gender'       => $gender,
-        ':bdate'        => $birthdate,
-        ':street'       => $street,
+        ':bdate'        => $birthdate
+        // ':street'       => $street,
         // ':brgy'         => $barangay,
         // ':province'     => $province,
         // ':city'         => $city,
-        ':contact'      => $contactno
+        // ':contact'      => $contactno
 
     ]);
 

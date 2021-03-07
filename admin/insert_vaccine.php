@@ -10,10 +10,141 @@ $alert_msg = '';
 
 if (isset($_POST['insert_vaccine'])) {
 
+    
+
 
     // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
+
+    // category
+    // $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
+    // $time           = date("h:i:s a");
+    // $category       = $_POST['category'];
+    // $category_id    = $_POST['category_id'];
+    // $healthworker   = $_POST['health_worker'];
+    // $idnumber       = $_POST['idno'];
+    // $philhealth     = $_POST['philhealth_id'];
+    // $pwd            = $_POST['pwd_id'];
+
+    // //basic information
+    // $entityno        = $_POST['entity_number'];
+    // $lastname       = $_POST['lastname'];
+    // $firstname      = $_POST['firstname'];
+    // $middlename     = $_POST['middlename'];
+    // $suffix         = $_POST['suffix'];
+    // $gender         = $_POST['gender'];
+    // //for gender
+    // // if ($_POST['gender'] == 'female') {
+    // //     $gender     = "01_Female";
+    // // } elseif ($_POST['gender'] == 'male') {
+    // //     $gender     = "02_Male";
+    // // } else {
+    // //     $gender     = "03_Not to disclose";
+    // // }
+
+
+    // $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
+    // $civil_stat      = $_POST['civil_status'];
+    // $contactno      = $_POST['contact_no'];
+    // $emp_status     = $_POST['emp_status'];
+    // $profession     = $_POST['profession'];
+
+    // //full address
+    // $region         = "WesternVisayas";
+    // $province       = "_0645_NEGROS_OCCIDENTAL";
+    // $city           = "_64524_SAN_CARLOS_CITY";
+    // $barangay       = strtoupper($_POST['barangay']);
+
+    // //for bararangay 
+    // if ($barangay == 'BARANGAY I') {
+    //     $barangay1 = "_64524010_BARANGAY_I_(POB.)";
+    // } elseif ($barangay == 'BARANGAY II') {
+    //     $barangay1 = "_64524011_BARANGAY_II_(POB.)";
+    // } elseif ($barangay == 'BARANGAY III') {
+    //     $barangay1 = "_64524012_BARANGAY_III_(POB.)";
+    // } elseif ($barangay == 'BARANGAY IV') {
+    //     $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
+    // } elseif ($barangay == 'BARANGAY V') {
+    //     $barangay1 = "_64524014_BARANGAY_V_(POB.)";
+    // } elseif ($barangay == 'BARANGAY VI') {
+    //     $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
+    // } elseif ($barangay == 'BAGONBON') {
+    //     $barangay1 = "_64524001_BAGONBON";
+    // } elseif ($barangay == 'BULUANGAN') {
+    //     $barangay1 = "_64524002_BULUANGAN";
+    // } elseif ($barangay == 'CODCOD') {
+    //     $barangay1 = "_64524004_CODCOD";
+    // } elseif ($barangay == 'ERMITA') {
+    //     $barangay1 = "_64524005_ERMITA";
+    // } elseif ($barangay == 'GUADALUPE') {
+    //     $barangay1 = "_64524006_GUADALUPE";
+    // } elseif ($barangay == 'NATABAN') {
+    //     $barangay1 = "_64524008_NATABAN";
+    // } elseif ($barangay == 'PALAMPAS') {
+    //     $barangay1 = "_64524009_PALAMPAS";
+    // } elseif ($barangay == 'PROSPERIDAD') {
+    //     $barangay1 = "_64524016_PROSPERIDAD";
+    // } elseif ($barangay == 'PUNAO') {
+    //     $barangay1 = "_64524017_PUNAO";
+    // } elseif ($barangay == 'QUEZON') {
+    //     $barangay1 = "_64524018_QUEZON";
+    // } elseif ($barangay == 'RIZAL') {
+    //     $barangay1 = "_64524019_RIZAL";
+    // } elseif ($barangay == 'SAN JUAN') {
+    //     $barangay1 = "_64524020_SAN_JUAN";
+    // }
+
+    // $street         = $_POST['street'];
+    // $fulladdress    = $street . ', ' . $barangay;
+    // //employer
+    // $emp_name       = $_POST['name_employeer'];
+    // $emp_contact    = $_POST['emp_contact'];
+    // $emp_address    = $_POST['emp_address'];
+    // $emp_lgu        = "_64524_SAN_CARLOS_CITY";
+
+    // //medical conditions
+    // $preg_status    = $_POST['preg_status'];
+    // $with_allergy   = $_POST['with_allergy'];
+    // $with_comorbidities = $_POST['with_commorbidities'];
+    // // $name_allergy   = $_POST['name_allergy'];
+    // $direct_covid    = $_POST['interact_patient'];
+    // $consent        = $_POST['electronic_consent'];
+
+    // //covid history
+    // $patient_diagnose = $_POST['patient_diagnose'];
+    // if (!empty($_POST['date_positive'])) {
+    //     $date_positive      = date('Y-m-d', strtotime($_POST['date_positive']));
+    // } else {
+    //     $date_positive     = date('Y-m-d', strtotime('0000-00-00'));
+    // }
+
+    // if (!empty($_POST['name_infection'])) {
+    //     $name_infection     = $_POST['name_infection'];
+    // } else {
+    //     $name_infection = 'NONE';
+    // }
+
+    // //classification of allergy
+    // $drug           = $_POST['allergy_drug'];
+    // $food           = $_POST['allergy_food'];
+    // $insect         = $_POST['allergy_insect'];
+    // $latex          = $_POST['allergy_latex'];
+    // $mold           = $_POST['allergy_mold'];
+    // $pet            = $_POST['allergy_pet'];
+    // $pollen         = $_POST['allergy_pollen'];
+    // $vaccine        = $_POST['allergy_vaccine'];
+
+    // //classification of comorbidity
+    // $hypertension   = $_POST['como_hypertension'];
+    // $heart          = $_POST['como_heart'];
+    // $kidney         = $_POST['como_kidney'];
+    // $diabetes       = $_POST['como_diabetes'];
+    // $asthma         = $_POST['como_asthma'];
+    // $immuno         = $_POST['como_immunodeficiency'];
+    // $cancer         = $_POST['como_cancer'];
+    // $other          = $_POST['como_other'];
+
 
     // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
@@ -21,16 +152,31 @@ if (isset($_POST['insert_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
-    $idnumber       = $_POST['idno'];
-    $philhealth     = $_POST['philhealth_id'];
-    $pwd            = $_POST['pwd_id'];
+    if ($_POST['idno'] != '') {
+        $idnumber = $_POST['idno'];
+    } else {
+        $idnumber = 'N/A';
+    }
+
+    if ($_POST['philhealth_id'] != '') {
+        $philhealth = $_POST['philhealth_id'];
+    } else {
+        $philhealth = 'N/A';
+    }
+
+    if ($_POST['pwd_id'] != '') {
+        $pwd = $_POST['pwd_id'];
+    } else {
+        $pwd = 'N/A';
+    }
+
 
     //basic information
     $entityno        = $_POST['entity_number'];
-    $lastname       = $_POST['lastname'];
-    $firstname      = $_POST['firstname'];
-    $middlename     = $_POST['middlename'];
-    $suffix         = $_POST['suffix'];
+    $lastname       = strtoupper($_POST['lastname']);
+    $firstname      = strtoupper($_POST['firstname']);
+    $middlename     = strtoupper($_POST['middlename']);
+    $suffix         = strtoupper($_POST['suffix']);
     $gender         = $_POST['gender'];
     //for gender
     // if ($_POST['gender'] == 'female') {
@@ -94,54 +240,122 @@ if (isset($_POST['insert_vaccine'])) {
     }
 
     $street         = $_POST['street'];
-    $fulladdress    = $street . ', ' . $barangay;
+    $fulladdress    = strtoupper($street . ', ' . $barangay);
     //employer
-    $emp_name       = $_POST['name_employeer'];
-    $emp_contact    = $_POST['emp_contact'];
-    $emp_address    = $_POST['emp_address'];
+
+    if ($_POST['name_employeer'] != '') {
+        $emp_name       = strtoupper($_POST['name_employeer']);
+    } else {
+        $emp_name = 'N/A';
+    }
+
+    if ($_POST['emp_contact'] != ''){
+        $emp_contact    = $_POST['emp_contact'];
+    } else {
+        $emp_contact = 'N/A';
+    }
+   
+    if ($_POST['emp_address'] != ''){
+        $emp_address    = strtoupper($_POST['emp_address']);
+    }else{
+        $emp_address = 'N/A';
+    }
+  
     $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
-    $preg_status    = $_POST['preg_status'];
-    $with_allergy   = $_POST['with_allergy'];
-    $with_comorbidities = $_POST['with_commorbidities'];
+    if ($_POST['preg_status'] != 'Select pregnancy status...') {
+        $preg_status    = $_POST['preg_status'];
+    } else {
+        $preg_status = '02_Not_Pregnant';
+    }
+
+    if ($_POST['with_allergy'] != 'Do you have allergy?') {
+        $with_allergy   = $_POST['with_allergy'];
+    } else {
+        $with_allergy = '02_No';
+    }
+
+    if ($_POST['with_commorbidities'] != 'Do you have comorbidities?') {
+        $with_comorbidities = $_POST['with_commorbidities'];
+    } else {
+        $with_comorbidities = '02_No';
+    }
     // $name_allergy   = $_POST['name_allergy'];
-    $direct_covid    = $_POST['interact_patient'];
-    $consent        = $_POST['electronic_consent'];
+    if ($_POST['interact_patient'] != 'Choose here') {
+        $direct_covid    = $_POST['interact_patient'];
+    } else {
+        $direct_covid = '02_No';
+    }
+
+    if ($_POST['electronic_consent'] != 'Please select') {
+        $consent        = $_POST['electronic_consent'];
+    } else {
+        $consent        = '03_Unknown';
+    }
+
 
     //covid history
-    $patient_diagnose = $_POST['patient_diagnose'];
+    if ($_POST['patient_diagnose'] != 'Please select') {
+        $patient_diagnose = $_POST['patient_diagnose'];
+    } else {
+        $patient_diagnose = '02_No';
+    }
+
+
     if (!empty($_POST['date_positive'])) {
         $date_positive      = date('Y-m-d', strtotime($_POST['date_positive']));
     } else {
         $date_positive     = date('Y-m-d', strtotime('0000-00-00'));
     }
 
-    if (!empty($_POST['name_infection'])) {
+    if ($_POST['name_infection'] != 'Classification of Infection') {
         $name_infection     = $_POST['name_infection'];
     } else {
         $name_infection = 'NONE';
     }
 
     //classification of allergy
-    $drug           = $_POST['allergy_drug'];
-    $food           = $_POST['allergy_food'];
-    $insect         = $_POST['allergy_insect'];
-    $latex          = $_POST['allergy_latex'];
-    $mold           = $_POST['allergy_mold'];
-    $pet            = $_POST['allergy_pet'];
-    $pollen         = $_POST['allergy_pollen'];
-    $vaccine        = $_POST['allergy_vaccine'];
-
+    if ($with_allergy == "02_No") {
+        $drug           = "02_No";
+        $food           = "02_No";
+        $insect         = "02_No";
+        $latex          = "02_No";
+        $mold           = "02_No";
+        $pet            = "02_No";
+        $pollen         = "02_No";
+        $vaccine        = "02_No";
+    } else {
+        $drug           = $_POST['allergy_drug'];
+        $food           = $_POST['allergy_food'];
+        $insect         = $_POST['allergy_insect'];
+        $latex          = $_POST['allergy_latex'];
+        $mold           = $_POST['allergy_mold'];
+        $pet            = $_POST['allergy_pet'];
+        $pollen         = $_POST['allergy_pollen'];
+        $vaccine        = $_POST['allergy_vaccine'];
+    }
     //classification of comorbidity
-    $hypertension   = $_POST['como_hypertension'];
-    $heart          = $_POST['como_heart'];
-    $kidney         = $_POST['como_kidney'];
-    $diabetes       = $_POST['como_diabetes'];
-    $asthma         = $_POST['como_asthma'];
-    $immuno         = $_POST['como_immunodeficiency'];
-    $cancer         = $_POST['como_cancer'];
-    $other          = $_POST['como_other'];
+
+    if ($with_comorbidities == "02_No") {
+        $hypertension   = "02_No";
+        $heart          = "02_No";
+        $kidney         = "02_No";
+        $diabetes       = "02_No";
+        $asthma         = "02_No";
+        $immuno         = "02_No";
+        $cancer         = "02_No";
+        $other          = "02_No";
+    } else {
+        $hypertension   = $_POST['como_hypertension'];
+        $heart          = $_POST['como_heart'];
+        $kidney         = $_POST['como_kidney'];
+        $diabetes       = $_POST['como_diabetes'];
+        $asthma         = $_POST['como_asthma'];
+        $immuno         = $_POST['como_immunodeficiency'];
+        $cancer         = $_POST['como_cancer'];
+        $other          = $_POST['como_other'];
+    }
 
 
 
@@ -197,7 +411,8 @@ if (isset($_POST['insert_vaccine'])) {
             covid_history           = :history,
             covid_date              = :date_history,
             covid_classification    = :infection,
-            Consent                 = :consent
+            Consent                 = :consent,
+            status                  = 'NEW'
         ";
 
     $vaccine_data = $con->prepare($insert_vaccine_sql);
@@ -264,12 +479,12 @@ if (isset($_POST['insert_vaccine'])) {
         middlename      = :mname,
         lastname        = :lname,
         -- gender          = :gender,
-        birthdate       = :bdate,
-        street          = :street,
+        birthdate       = :bdate
+        -- street          = :street,
         -- barangay        = :brgy,
         -- province        = :province,
         -- city            = :city,
-        mobile_no       = :contact
+        -- mobile_no       = :contact
         where entity_no = :entityNo ";
 
     $update_individual_data = $con->prepare($update_individual_sql);
@@ -280,12 +495,12 @@ if (isset($_POST['insert_vaccine'])) {
         ':mname'        => $middlename,
         ':lname'        => $lastname,
         // ':gender'       => $gender,
-        ':bdate'        => $birthdate,
-        ':street'       => $street,
+        ':bdate'        => $birthdate
+        // ':street'       => $street,
         // ':brgy'         => $barangay,
         // ':province'     => $province,
         // ':city'         => $city,
-        ':contact'      => $contactno
+        // ':contact'      => $contactno
 
     ]);
 

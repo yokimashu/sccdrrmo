@@ -99,7 +99,7 @@ if (isset($_POST['signin'])) {
   <!-- Automatic element centering -->
   <div class="lockscreen-wrapper">
     <div class="lockscreen-logo">
-      <a href="../../index2.html"><b>Vaccine Registry </b>System</a>
+      <a href=""><b>Vaccine Registry </b>System</a>
     </div>
     <!-- User name -->
     <!-- <div class="lockscreen-name">John Doe</div> -->
@@ -108,7 +108,7 @@ if (isset($_POST['signin'])) {
     <div class="lockscreen-item">
       <!-- lockscreen image -->
       <div class="lockscreen-image">
-        <img src="dist/img/scclogo.png">
+        <img src="dist/img/logoscc.png">
       </div>
       <!-- /.lockscreen-image -->
 

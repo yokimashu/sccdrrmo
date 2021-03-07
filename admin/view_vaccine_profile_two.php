@@ -670,7 +670,7 @@ if (isset($_GET['id'])) {
 
                                         <div class="col-md-6">
                                             <label for="">Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span></label>
-                                            <select class="form-control select2" style="width:100%" name="consentation" id="consentation" value="<?php echo $get_consent; ?>">
+                                            <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
                                                 <option>Please select</option>
                                                 <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                 <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>

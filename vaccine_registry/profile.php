@@ -357,6 +357,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
     #asstdname {
       font-size: 12px;
     }
+
+    .vertical-center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    
   </style>
 
 </head>
@@ -655,11 +665,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                       </div>
 
                       <?php if ($get_healthworker != ' ') { ?>
-                        <div class="col-sm-4" id="healthworker" >
+                        <div class="col-sm-4" id="healthworker">
                         <?php } else { ?>
                           <div class="col-sm-4" id="healthworker" hidden>
                           <?php } ?>
-                          
+
                           <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
                           <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
                             <option value=" " selected>Select Health Worker</option>
@@ -669,7 +679,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                             <?php } ?>
                           </select>
                           </div>
-                        
+
 
                         </div><br>
 
@@ -677,6 +687,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                           <div class="col-sm-4">
                             <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
                             <input type="text" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number" value="<?php echo $get_categoryno ?>">
+                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
                           </div>
                           <div class="col-sm-4">
                             <label>Philhealth ID : &nbsp;&nbsp; <span id="required">*</span></label>
@@ -687,6 +698,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                           <div class="col-sm-4">
                             <label>PWD ID : </label>
                             <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID" value="<?php echo $get_pwdID ?>">
+                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
                           </div>
 
                         </div><br>
@@ -796,11 +808,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         <div class="col-sm-6">
                           <label>Employer Name: &nbsp;&nbsp; <span id="required">*</span> </label>
                           <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employer" value="<?php echo $get_employername; ?>">
+                          <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
                         </div>
                         <div class="col-sm-6">
                           <label>Employer Address: &nbsp;&nbsp; <span id="required">*</span> </label>
                           <input type="text" class="form-control" name="emp_address" id="emp_address" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Lot # / Block # " value="<?php echo $get_employeraddress; ?>">
-
+                          <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
                         </div>
 
 
@@ -815,7 +828,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                         <div class="col-sm-6">
                           <label>Contact Number: &nbsp;&nbsp; <span id="required">*</span> </label>
-                          <input type="number" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number" value="<?php echo $get_employercontact; ?>">
+                          <input type="text" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number" value="<?php echo $get_employercontact; ?>">
+                          <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
                         </div>
                       </div><br>
 
