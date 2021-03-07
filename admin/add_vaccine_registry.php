@@ -946,7 +946,15 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         $('#street').val(result.data7);
                         $('#barangay').val(result.data8);
                         $('#age').val(result.data9);
-                        // $('#gender').val(result.data10);
+                        
+                        var gender = result.data10;
+
+                        if (gender == 'Female'){
+                            $("#gender").select2("val", "01_Female");
+                        }else if (gender == 'Male'){
+                            $("#gender").select2("val", "02_Male");
+                        }
+
                         $('#contact_no').val(result.data12);
                         $('#tphoto').attr("src", "../flutter/images/" + result.data13);
                     },
