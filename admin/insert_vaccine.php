@@ -99,7 +99,7 @@ if (isset($_POST['insert_vaccine'])) {
     $emp_name       = $_POST['name_employeer'];
     $emp_contact    = $_POST['emp_contact'];
     $emp_address    = $_POST['emp_address'];
-    $emp_lgu        = $_POST['emp_lgu'];
+    $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
     $preg_status    = $_POST['preg_status'];
@@ -287,6 +287,17 @@ if (isset($_POST['insert_vaccine'])) {
         // ':city'         => $city,
         ':contact'      => $contactno
 
+    ]);
+
+    $update_individual_sql = "UPDATE tbl_entity SET 
+    status          = :status
+    
+    where entity_no = :entityNo ";
+
+    $update_individual_data = $con->prepare($update_individual_sql);
+    $update_individual_data->execute([
+        ':entityNo'     => $entityno,
+        ':status'       => 'VERIFIED'
     ]);
 
 

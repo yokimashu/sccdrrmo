@@ -433,6 +433,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <?php } ?>
                                             </select>
                                         </div>
+                                        
                                         <div class="col-sm-4" id="healthworker" >
                                             <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
                                             <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
