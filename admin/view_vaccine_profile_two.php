@@ -679,6 +679,26 @@ if (isset($_GET['id'])) {
                                             </select>
 
                                         </div>
+
+                                        <div class="col-sm-6">
+                                            <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control" name="sinovac" id="sinovac">
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
+                                                <option selected value="03_Unknown">Unknown</option>
+                                            </select>
+                                        </div>
+                                    </div><br>
+
+                                    <div class="col-sm-6">
+                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control" name="astrazeneca" id="astrazeneca">
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
+                                                <option selected value="03_Unknown">Unknown</option>
+                                            </select>
+                                        </div>
+                                    </div><br>
                                     </div><br>
 
 

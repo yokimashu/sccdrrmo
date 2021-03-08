@@ -267,11 +267,17 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
       <!-- basic information -->
-      <fieldset class="form-control field_set">
+      <!-- <fieldset class="form-control field_set">
                                     <legend id="fieldset-basicinfo">
                                         <h5>BASIC INFORMATION</h5>
-                                    </legend>
+                                    </legend> -->
+                                    <div class="card card-success card-outline">
+                      <div class="card-header">
 
+                      <h5 class="m-0">BASIC INFORMATION</h5>
+                      </div>
+                      <!-- </legend> -->
+                      <div class="card-body">
 
                                     <canvas id="canvas" class="d-none" hidden width="100" height="100" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
 
@@ -380,16 +386,25 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             </select>
 
                                         </div>
-                                    </div><br>
-                                </fieldset><br>
+                                    </div>
+                                                </div>
+                                <!-- </fieldset><br> -->
 
 
                                 <!-- category -->
-                                <fieldset class="form-control field_set">
+                                <!-- <fieldset class="form-control field_set">
                                     <legend id="fieldset-category">
                                         <h5>CATEGORY</h5>
-                                    </legend>
+                                    </legend> -->
+                                    <div class="card card-success card-outline">
+                  <div class="card-header">
+                    <!-- <fieldset class="form-control field_set">
+                                    <legend id="fieldset-category"> -->
 
+                    <h5 class="m-0">CATEGORY</h5>
+                  </div>
+                  <!-- </legend> -->
+                  <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
@@ -608,17 +623,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <option selected value="02_No">No</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control" name="electronic_consent" id="electronic_consent">
-                                                <option value="01_Yes">Yes</option>
-                                                <option selected value="02_No">No</option>
-                                                <option selected value="03_Unknown">Unknown</option>
-                                            </select>
-                                        </div>
                                     </div><br>
-
-                                </fieldset><br>
+                                </fieldset>
                                 <!-- end of medical conditions -->
 
 
@@ -806,7 +812,39 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                 </fieldset><br>
                                 <!-- end of form choices comorbidities -->
+                                <fieldset class="form-control field_set">
+                                    <legend id="fieldset-medical">
+                                        <h5>CONSENT</h5>
+                                    </legend>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control" name="electronic_consent" id="electronic_consent">
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
+                                                <option selected value="03_Unknown">Unknown</option>
+                                            </select>
+                                        </div>
 
+                                        <div class="col-sm-6">
+                                            <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control" name="sinovac" id="sinovac">
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
+                                                <option selected value="03_Unknown">Unknown</option>
+                                            </select>
+                                        </div>
+                                  
+                                    <div class="col-sm-6">
+                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control" name="astrazeneca" id="astrazeneca">
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
+                                                <option selected value="03_Unknown">Unknown</option>
+                                            </select>
+                                        </div>
+                                    </div><br>
+                                </fieldset>
 
                                 <div class="box-footer" align="center">
                                     <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">

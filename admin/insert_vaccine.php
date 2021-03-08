@@ -295,6 +295,19 @@ if (isset($_POST['insert_vaccine'])) {
     }
 
 
+    if ($_POST['sinovac'] != 'Please select') {
+        $sinovac        = $_POST['sinovac'];
+    } else {
+        $sinovac        = '03_Unknown';
+    }
+
+
+    if ($_POST['astrazeneca'] != 'Please select') {
+        $astrazeneca        = $_POST['astrazeneca'];
+    } else {
+        $astrazeneca        = '03_Unknown';
+    }
+
     //covid history
     if ($_POST['patient_diagnose'] != 'Please select') {
         $patient_diagnose = $_POST['patient_diagnose'];
@@ -412,7 +425,9 @@ if (isset($_POST['insert_vaccine'])) {
             covid_date              = :date_history,
             covid_classification    = :infection,
             Consent                 = :consent,
-            status                  = 'NEW'
+            status                  = 'NEW',
+            sinovac                 = :sinovac,
+            astrazeneca             = :astrazeneca
         ";
 
     $vaccine_data = $con->prepare($insert_vaccine_sql);
@@ -468,7 +483,9 @@ if (isset($_POST['insert_vaccine'])) {
         ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
-        ':consent'          => $consent
+        ':consent'          => $consent,
+        ':sinovac'          => $sinovac,
+        ':astrazeneca'      => $astrazeneca
 
 
     ]);
