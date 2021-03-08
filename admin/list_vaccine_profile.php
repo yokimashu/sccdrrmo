@@ -334,23 +334,36 @@ $get_all_vaccine_data->execute();
           width: "100px",
           targets: -1,
           data: null,
-          defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'
-
+          defaultContent: 
+          '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'+
+         
+          '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> '
+      ,
         },
 
       ],
     });
 
 
-    $("#users tbody").on("click", ".printlink", function() {
+    $("#users tbody").on("click", ".printlink1", function() {
       // event.preventDefault();
       var currow = $(this).closest("tr");
       var entity_no = currow.find("td:eq(0)").text();
 
-      $('.printlink').attr("href", "view_vaccine_profile_two.php?id=" + entity_no, '_parent');
+      $('.printlink1').attr("href", "view_vaccine_profile_two.php?id=" + entity_no, '_parent');
 
 
     });
+
+    $("#users tbody").on("click", ".printlink", function() {
+      // event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity = currow.find("td:eq(0)").text();
+      $('.printlink').attr("href", "../plugins/jasperreport/vaccineform.php?entity_no=" + entity, '_parent');
+      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+
+    });
+
 
 
     $("#users tbody").on("click", "#modal", function() {
