@@ -11,7 +11,7 @@ $time = date(' H:i');
 
 $entity_no = ' ';
 
-$btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_barangay = $get_city =
+$btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_barangay = $get_city = $alert_msg =
     $get_pwdID = $get_region = $get_employerlgu =   $get_province = $get_birthdate = $get_gender = $get_fname =
     $get_mname = $get_lname = $get_entityno =   $get_datecreated = $get_timereg = $get_category = $get_categoryid =
     $get_categnumber = $get_philhealth = $get_sufiix = $get_civil_status = $get_employed = $get_profession =
@@ -339,8 +339,8 @@ if (isset($_GET['id'])) {
 
                 </div><!-- /.container-fluid -->
             </section>
-       
-            
+
+
             <section class="content">
 
                 <!-- <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php"> -->
@@ -366,17 +366,6 @@ if (isset($_GET['id'])) {
 
                                     <p class="text-muted text-center"><?php echo $get_entity_no; ?></p>
 
-                                    <!-- <ul class="list-group list-group-unbordered mb-3">
-              <li class="list-group-item">
-                <b>Followers</b> <a class="float-right">1,322</a>
-              </li>
-              <li class="list-group-item">
-                <b>Following</b> <a class="float-right">543</a>
-              </li>
-              <li class="list-group-item">
-                <b>Friends</b> <a class="float-right">13,287</a>
-              </li>
-            </ul> -->
 
                                     <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
                                 </div>
@@ -396,7 +385,7 @@ if (isset($_GET['id'])) {
 
                                     <strong><i class="fa fa-calendar"></i> Age</strong>
                                     <p class="text-muted">
-                                    <?php echo $get_age; ?></p>
+                                        <?php echo $get_age; ?></p>
                                     <hr>
 
                                     <strong><i class="fa fa-envelope"></i> E-mail Address</strong>
@@ -426,19 +415,19 @@ if (isset($_GET['id'])) {
 
                                     <strong><i class="fa fa-calendar"></i> Print VAMOS ID</strong>
                                     <p class="text-muted">
-                                  
-                                    <hr>
 
-                                    <strong><i class="fa fa-envelope"></i> Print Vaccination Form</strong>
+                                        <hr>
+
+                                        <strong><i class="fa fa-envelope"></i> Print Vaccination Form</strong>
 
                                     <p class="text-muted">
-                                    
-                                    <hr>
+
+                                        <hr>
 
 
-                                    <strong><i class="fa fa-pencil mr-1"></i> Print Vaccination Card </span></strong>
+                                        <strong><i class="fa fa-pencil mr-1"></i> Print Vaccination Card </span></strong>
                                     <p class="text-muted">
-                                   
+
                                     </p>
                                     <hr>
 
@@ -446,10 +435,10 @@ if (isset($_GET['id'])) {
 
                                 <!-- /.card-body -->
                             </div>
-                       <!-- /.card -->
+                            <!-- /.card -->
                         </div>
 
-                    
+
                         <!-- /.col -->
                         <div class="col-md-9">
                             <?php echo $alert_msg; ?>
@@ -489,8 +478,6 @@ if (isset($_GET['id'])) {
                                                 <!-- category -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
-                                                        <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
 
                                                         <h5 class="m-0">BASIC INFORMATION</h5>
@@ -499,12 +486,6 @@ if (isset($_GET['id'])) {
                                                     <div class="card-body">
 
                                                         <div class="row">
-                                                            <!-- <div class="col-sm-7">
-                      <label>Select Individual: &nbsp;&nbsp; <span id="required">*</span> </label>
-                      <select class="form-control select2" style="width: 100%;" id="entity1" name=" entity_no" value="">
-                        <option>Select Individual</option>
-                      </select>
-                    </div> -->
 
                                                             <div hidden class="col-sm-5">
                                                                 <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
@@ -541,13 +522,6 @@ if (isset($_GET['id'])) {
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
-                                                                <!-- <select class="form-control select2" id="gender" name="gender">
-                            <option selected value=" ">Select gender</option>
-                            <option value="01_Female">Female</option>
-                            <option value="02_Male">Male</option>
-                            <option value="03_Not to disclose"> Not to Disclose</option>
-                          </select> -->
                                                                 <select class="form-control select2" style="width:100%" id="gender" name="gender" placeholder="Gender" value="">
                                                                     <option <?php if ($get_gender == ' ') echo 'selected'; ?>>Select Gender</option>
                                                                     <option <?php if ($get_gender == '01_Female' || $get_gender == "Female") echo 'selected'; ?> value="01_Female">Female </option>
@@ -588,8 +562,6 @@ if (isset($_GET['id'])) {
                                         <!-- category -->
                                         <div class="card card-success card-outline">
                                             <div class="card-header">
-                                                <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
                                                 <h5 class="m-0">CATEGORY</h5>
                                             </div>
@@ -678,8 +650,6 @@ if (isset($_GET['id'])) {
                                             <!-- address -->
                                             <div class="card card-success card-outline">
                                                 <div class="card-header">
-                                                    <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
                                                     <h5 class="m-0">ADDRESS</h5>
                                                 </div>
@@ -727,8 +697,6 @@ if (isset($_GET['id'])) {
                                             <!--  employer -->
                                             <div class="card card-success card-outline">
                                                 <div class="card-header">
-                                                    <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
                                                     <h5 class="m-0">EMPLOYMENT</h5>
                                                 </div>
@@ -802,8 +770,6 @@ if (isset($_GET['id'])) {
                                             <!-- medical conditions -->
                                             <div class="card card-success card-outline">
                                                 <div class="card-header">
-                                                    <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
                                                     <h5 class="m-0">MEDICAL CONDITION</h5>
                                                 </div>
@@ -867,17 +833,10 @@ if (isset($_GET['id'])) {
                                             <!-- kung yes ang covid history -->
                                             <?php if ($get_covidhistory == '01_Yes') { ?>
                                                 <div class="card card-success card-outline" id="yes-diagnose">
-                                                <?php } else { ?>
-                                                    <div class="card card-success card-outline" hidden id="yes-diagnose">
-                                                    <?php } ?>
-
                                                     <div class="card-header">
-                                                        <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
                                                         <h5 class="m-0">COVID HISTORY</h5>
                                                     </div>
-                                                    <!-- </legend> -->
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-7">
@@ -907,519 +866,511 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                         </div><br>
                                                     </div>
+                                                </div>
+                                            <?php } ?>
+
+
+                                            <!-- </legend> -->
+
+                                        </div>
+
+                                        <!-- end of yes form sa covid history -->
+
+                                        <?php if ($get_wallergy == '01_Yes') { ?>
+                                            <div class="card card-success card-outline" id="yes-allergy">
+                                                <div class="card-header">
+
+                                                    <h5 class="m-0">ALLERGIES</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Drug</label>
+                                                            <select name="allergy_drug" id="allergy_drug" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Food</label>
+                                                            <select name="allergy_food" id="allergy_food" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Insect</label>
+                                                            <select name="allergy_insect" id="allergy_insect" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Latex</label>
+                                                            <select name="allergy_latex" id="allergy_latex" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Mold</label>
+                                                            <select name="allergy_mold" id="allergy_mold" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Pet</label>
+                                                            <select name="allergy_pet" id="allergy_pet" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Pollen</label>
+                                                            <select name="allergy_pollen" id="allergy_pollen" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Vaccine and related products</label>
+                                                            <select name="allergy_vaccine" id="allergy_vaccine" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div><br>
+
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+
+
+                                        <!-- </legend> -->
+
+
+
+
+                                        <!-- end of list allergy -->
+
+
+
+                                        <?php if ($get_wcomorbidities == '01_Yes') { ?>
+                                            <!-- if yes kung with comorbidities -->
+                                            <div class="card card-success card-outline" id="yes-comordities">
+                                                <div class="card-header">
+
+                                                    <h5 class="m-0">COMORBIDITIES</h5>
+                                                </div>
+                                                <div class="card-body">
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Hypertension</label>
+                                                            <select name="como_hypertension" id="como_hypertension" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity01 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Heart disease</label>
+                                                            <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity02 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Kidney disease</label>
+                                                            <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity03 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Diabetes mellitus</label>
+                                                            <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Bronchial Asthma</label>
+                                                            <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Immunodefiency state</label>
+                                                            <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Cancer</label>
+                                                            <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Other</label>
+                                                            <select name="como_other" id="como_other" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity08 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+                                                </div>
+                                            </div>
+                                        <?php }?>
+
+
+
+                                        <!-- end of form choices comorbidities -->
+
+
+                                        <div class="card card-success card-outline">
+                                            <div class="card-header">
+
+                                                <h5 class="m-0">CONSENT</h5>
+                                            </div>
+                                            <!-- </legend> -->
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="">Are you willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
+                                                            <option>Please select</option>
+                                                            <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                            <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                        </select>
+
                                                     </div>
 
-                                                    <!-- end of yes form sa covid history -->
+                                                    <div class="col-sm-6">
+                                                        <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <select class="form-control select2" name="sinovac" id="sinovac">
+                                                            <option>Please select</option>
+                                                            <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                            <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                        </select>
+                                                    </div>
+                                                </div><br>
 
-                                                    <?php if ($get_wallergy == '01_Yes') { ?>
-                                                        <div class="card card-success card-outline" id="yes-allergy">
-                                                        <?php } else { ?>
-                                                            <!-- if yes kung naay allergy -->
-                                                            <div class="card card-success card-outline" hidden id="yes-allergy">
-                                                            <?php } ?>
-
-                                                            <div class="card-header">
-                                                                <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
-
-                                                                <h5 class="m-0">ALLERGIES</h5>
-                                                            </div>
-                                                            <!-- </legend> -->
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
-                                                                        <label>Drug</label>
-                                                                        <select name="allergy_drug" id="allergy_drug" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <label>Food</label>
-                                                                        <select name="allergy_food" id="allergy_food" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <label>Insect</label>
-                                                                        <select name="allergy_insect" id="allergy_insect" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <label>Latex</label>
-                                                                        <select name="allergy_latex" id="allergy_latex" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div><br>
-
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
-                                                                        <label>Mold</label>
-                                                                        <select name="allergy_mold" id="allergy_mold" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <label>Pet</label>
-                                                                        <select name="allergy_pet" id="allergy_pet" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <label>Pollen</label>
-                                                                        <select name="allergy_pollen" id="allergy_pollen" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <label>Vaccine and related products</label>
-                                                                        <select name="allergy_vaccine" id="allergy_vaccine" style="width:100%" class="form-control ">
-                                                                            <option value="02_No"> Choose here</option>
-                                                                            <option <?php if ($get_allergy08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                            <option <?php if ($get_allergy08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                </div><br>
-
-                                                            </div>
-                                                            </div>
+                                                <div class="col-sm-6">
+                                                    <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                    <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                                        <option>Please select</option>
+                                                        <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                        <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                        <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                    </select>
+                                                </div>
+                                            </div><br>
+                                        </div>
 
 
 
-                                                            <!-- end of list allergy -->
+                                        <div class="box-footer" align="center">
 
 
+                                            <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
+                                                <!-- <i class="fa fa-check fa-fw"> </i> -->
+                                                <h4>Update Form</h4>
+                                            </button>
 
-                                                            <?php if ($get_wcomorbidities == '01_Yes') { ?>
-                                                                <!-- if yes kung with comorbidities -->
-                                                                <div class="card card-success card-outline" id="yes-comordities">
-                                                                <?php } else { ?>
-                                                                    <div class="card card-success card-outline" hidden id="yes-comordities">
-                                                                    <?php } ?>
-
-                                                                    <div class="card-header">
-                                                                        <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
-
-                                                                        <h5 class="m-0">COMORBIDITIES</h5>
-                                                                    </div>
-                                                                    <!-- </legend> -->
-                                                                    <div class="card-body">
-
-                                                                        <div class="row">
-                                                                            <div class="col-sm-3">
-                                                                                <label>Hypertension</label>
-                                                                                <select name="como_hypertension" id="como_hypertension" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity01 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-sm-3">
-                                                                                <label>Heart disease</label>
-                                                                                <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity02 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-sm-3">
-                                                                                <label>Kidney disease</label>
-                                                                                <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity03 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-sm-3">
-                                                                                <label>Diabetes mellitus</label>
-                                                                                <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                        </div><br>
-
-                                                                        <div class="row">
-                                                                            <div class="col-sm-3">
-                                                                                <label>Bronchial Asthma</label>
-                                                                                <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-sm-3">
-                                                                                <label>Immunodefiency state</label>
-                                                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-sm-3">
-                                                                                <label>Cancer</label>
-                                                                                <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-sm-3">
-                                                                                <label>Other</label>
-                                                                                <select name="como_other" id="como_other" style="width:100%" class="form-control ">
-                                                                                    <option value="02_No"> Choose here</option>
-                                                                                    <option <?php if ($get_comorbidity08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_comorbidity08 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                        </div><br>
-
-
-                                                                    </div>
-                                                                    </div>
-
-                                                                    <!-- end of form choices comorbidities -->
-
-
-                                                                    <div class="card card-success card-outline">
-                                                                        <div class="card-header">
-                                                                            <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
-
-                                                                            <h5 class="m-0">CONSENT</h5>
-                                                                        </div>
-                                                                        <!-- </legend> -->
-                                                                        <div class="card-body">
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label for="">Are you willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                                <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
-                                                                                    <option>Please select</option>
-                                                                                    <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                                    <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
-                                                                                </select>
-
-                                                                            </div>
-
-                                                                            <div class="col-sm-6">
-                                                                                <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                                <select class="form-control select2" name="sinovac" id="sinovac">
-                                                                                    <option>Please select</option>
-                                                                                    <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                                    <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div><br>
-
-                                                                        <div class="col-sm-6">
-                                                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                            <select class="form-control select2" name="astrazeneca" id="astrazeneca">
-                                                                            <option>Please select</option>
-                                                                                    <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                    <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                                    <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div><br>
-                                                                </div>
-
-
-
-                                                                <div class="box-footer" align="center">
-
-
-                                                                    <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
-                                                                        <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                                                        <h4>Update Form</h4>
-                                                                    </button>
-
-                                                                    <!-- <a href="list_vaccine_profile">
+                                            <!-- <a href="list_vaccine_profile">
                                         <button type="button" name="cancel" class="btn btn-danger">
                                             <i class="fa fa-close fa-fw"> </i> </button>
                                     </a> -->
 
-                                                                    <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                            <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                     <button type="button" name="print" class="btn btn-primary">
                                         <i class="nav-icon fa fa-print"> </i> </button>
                                     </a> -->
 
 
-                                                                </div><br>
-                                                        </div>
-                                                </div>
-                                        </div>
+                                        </div><br>
                                     </div>
-
-                                    </form>
-
-
-
-
-                            </section>
-                            <br>
+                                </div>
                         </div>
-
-
-                        <?php include('footer.php') ?>
-
                     </div>
 
-
-
-                    <!-- jQuery -->
-                    <script src="../plugins/jquery/jquery.min.js"></script>
-                    <!-- Bootstrap 4 -->
-                    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-                    <!-- datepicker -->
-                    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-                    <!-- CK Editor -->
-                    <script src="../plugins/ckeditor/ckeditor.js"></script>
-                    <!-- Bootstrap WYSIHTML5 -->
-                    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-                    <!-- Slimscroll -->
-                    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-                    <script src="../dist/js/adminlte.js"></script>
-                    <script src="../dist/js/demo.js"></script>
-                    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
-                    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
-
-                    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
-
-                    <script src="../plugins/select2/select2.full.min.js"></script>
-
-                    <?php
-
-                    if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
-
-                    ?>
-                        <script>
-                            swal({
-                                title: "<?php echo $_SESSION['status'] ?>",
-                                // text: "You clicked the button!",
-                                icon: "<?php echo $_SESSION['status_code'] ?>",
-                                button: "OK. Done!",
-                            });
-                        </script>
-
-                    <?php
-                        unset($_SESSION['status']);
-                    }
-                    ?>
-
-
-                    <script language="JavaScript">
-                        $('.select2').select2();
-
-
-                        $("#name_comorbidities").select2({
-                            theme: "classic"
-                        });
-                    </script>
-
-
-                    <script>
-                        // $(function() {
-
-                        //     $("#entity1").select2({
-                        //         //  minimumInputLength: 3,
-                        //         // placeholder: "hello",
-                        //         ajax: {
-                        //             url: "individual_query_patient", // json datasource
-                        //             type: "post",
-                        //             dataType: 'json',
-                        //             delay: 250,
-                        //             data: function(params) {
-                        //                 return {
-                        //                     searchTerm: params.term
-                        //                 };
-                        //             },
-
-                        //             processResults: function(response) {
-                        //                 return {
-                        //                     results: response
-
-
-                        //                 };
-                        //             },
-                        //             cache: true,
-                        //             error: function(xhr, b, c) {
-                        //                 console.log(
-                        //                     "xhr=" +
-                        //                     xhr.responseText +
-                        //                     " b=" +
-                        //                     b.responseText +
-                        //                     " c=" +
-                        //                     c.responseText
-                        //                 );
-                        //             }
-                        //         }
-                        //     });
-
-                        //     $('#entity1').on('change', function() {
-                        //         var entity_no = this.value;
-                        //         console.log(entity_no);
-                        //         $.ajax({
-                        //             type: "POST",
-                        //             url: 'profile_vaccine.php',
-                        //             data: {
-                        //                 entity_no: entity_no
-                        //             },
-                        //             error: function(xhr, b, c) {
-                        //                 console.log(
-                        //                     "xhr=" +
-                        //                     xhr.responseText +
-                        //                     " b=" +
-                        //                     b.responseText +
-                        //                     " c=" +
-                        //                     c.responseText
-                        //                 );
-                        //             },
-                        //             success: function(response) {
-                        //                 var result = jQuery.parseJSON(response);
-                        //                 console.log('response from server', result);
-                        //                 $('#entity_number').val(result.data);
-                        //                 $('#fullname').val(result.data1);
-                        //                 $('#firstname').val(result.data2);
-                        //                 $('#middlename').val(result.data3);
-                        //                 $('#lastname').val(result.data4);
-                        //                 $('#birthdate').val(result.data5);
-                        //                 $('#street').val(result.data7);
-                        //                 $('#barangay').val(result.data8);
-                        //                 $('#age').val(result.data9);
-                        //                 $('#gender').val(result.data10);
-                        //                 $('#contact_no').val(result.data12);
-                        //             },
-                        //         });
-
-                        //     });
-
-                        // });
-
-                        $(function() {
-
-                            // $("#category_id").select2({
-                            //     //  minimumInputLength: 3,
-                            //     // placeholder: "hello",
-                            //     ajax: {
-                            //         url: "individual_query_patient", // json datasource
-                            //         type: "post",
-                            //         dataType: 'json',
-                            //         delay: 250,
-                            //         data: function(params) {
-                            //             return {
-                            //                 searchTerm: params.term
-                            //             };
-                            //         },
-
-                            //         processResults: function(response) {
-                            //             return {
-                            //                 results: response
-
-
-                            //             };
-                            //         },
-                            //         cache: true,
-                            //         error: function(xhr, b, c) {
-                            //             console.log(
-                            //                 "xhr=" +
-                            //                 xhr.responseText +
-                            //                 " b=" +
-                            //                 b.responseText +
-                            //                 " c=" +
-                            //                 c.responseText
-                            //             );
-                            //         }
-                            //     }
-                            // });
-
-                        });
-
-                        // $('#gender').change(function() {
-                        //     var option = $('#gender').val();
-                        //     if (option == "Male") {
-                        //         $('#pregnant').select2("val","02_Not_Pregnant")
-
-                        //     }
-
-                        //     console.log("test");
-                        // });
+                </div>
 
 
 
-                        $('#with_allergy').change(function() {
-                            var option = $('#with_allergy').val();
-                            if (option == "01_Yes") {
-                                $('#yes-allergy').prop("hidden", false);
+
+            </section>
+            <br>
+        </div>
+
+
+        <?php include('footer.php') ?>
+
+    </div>
 
 
 
-                            } else {
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- datepicker -->
+    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- CK Editor -->
+    <script src="../plugins/ckeditor/ckeditor.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="../dist/js/adminlte.js"></script>
+    <script src="../dist/js/demo.js"></script>
+    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
 
-                                $('#yes-allergy').prop("hidden", true);
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
 
-                            }
+    <script src="../plugins/select2/select2.full.min.js"></script>
 
-                            console.log("test");
-                        });
+    <?php
 
+    if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
 
-                        $('#with_commorbidities').change(function() {
-                            var option = $('#with_commorbidities').val();
-                            if (option == "01_Yes") {
-                                $('#yes-comordities').prop("hidden", false);
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status'] ?>",
+                // text: "You clicked the button!",
+                icon: "<?php echo $_SESSION['status_code'] ?>",
+                button: "OK. Done!",
+            });
+        </script>
 
-
-
-                            } else {
-
-                                $('#yes-comordities').prop("hidden", true);
-
-                            }
-
-                            console.log("test");
-                        });
-
-
-                        $('#patient_diagnose').change(function() {
-                            var option = $('#patient_diagnose').val();
-                            if (option == "01_Yes") {
-                                $('#yes-diagnose').prop("hidden", false);
+    <?php
+        unset($_SESSION['status']);
+    }
+    ?>
 
 
+    <script language="JavaScript">
+        $('.select2').select2();
 
-                            } else {
 
-                                $('#yes-diagnose').prop("hidden", true);
+        $("#name_comorbidities").select2({
+            theme: "classic"
+        });
+    </script>
 
-                            }
 
-                            console.log("test");
-                        });
-                    </script>
+    <script>
+        // $(function() {
+
+        //     $("#entity1").select2({
+        //         //  minimumInputLength: 3,
+        //         // placeholder: "hello",
+        //         ajax: {
+        //             url: "individual_query_patient", // json datasource
+        //             type: "post",
+        //             dataType: 'json',
+        //             delay: 250,
+        //             data: function(params) {
+        //                 return {
+        //                     searchTerm: params.term
+        //                 };
+        //             },
+
+        //             processResults: function(response) {
+        //                 return {
+        //                     results: response
+
+
+        //                 };
+        //             },
+        //             cache: true,
+        //             error: function(xhr, b, c) {
+        //                 console.log(
+        //                     "xhr=" +
+        //                     xhr.responseText +
+        //                     " b=" +
+        //                     b.responseText +
+        //                     " c=" +
+        //                     c.responseText
+        //                 );
+        //             }
+        //         }
+        //     });
+
+        //     $('#entity1').on('change', function() {
+        //         var entity_no = this.value;
+        //         console.log(entity_no);
+        //         $.ajax({
+        //             type: "POST",
+        //             url: 'profile_vaccine.php',
+        //             data: {
+        //                 entity_no: entity_no
+        //             },
+        //             error: function(xhr, b, c) {
+        //                 console.log(
+        //                     "xhr=" +
+        //                     xhr.responseText +
+        //                     " b=" +
+        //                     b.responseText +
+        //                     " c=" +
+        //                     c.responseText
+        //                 );
+        //             },
+        //             success: function(response) {
+        //                 var result = jQuery.parseJSON(response);
+        //                 console.log('response from server', result);
+        //                 $('#entity_number').val(result.data);
+        //                 $('#fullname').val(result.data1);
+        //                 $('#firstname').val(result.data2);
+        //                 $('#middlename').val(result.data3);
+        //                 $('#lastname').val(result.data4);
+        //                 $('#birthdate').val(result.data5);
+        //                 $('#street').val(result.data7);
+        //                 $('#barangay').val(result.data8);
+        //                 $('#age').val(result.data9);
+        //                 $('#gender').val(result.data10);
+        //                 $('#contact_no').val(result.data12);
+        //             },
+        //         });
+
+        //     });
+
+        // });
+
+        $(function() {
+
+            // $("#category_id").select2({
+            //     //  minimumInputLength: 3,
+            //     // placeholder: "hello",
+            //     ajax: {
+            //         url: "individual_query_patient", // json datasource
+            //         type: "post",
+            //         dataType: 'json',
+            //         delay: 250,
+            //         data: function(params) {
+            //             return {
+            //                 searchTerm: params.term
+            //             };
+            //         },
+
+            //         processResults: function(response) {
+            //             return {
+            //                 results: response
+
+
+            //             };
+            //         },
+            //         cache: true,
+            //         error: function(xhr, b, c) {
+            //             console.log(
+            //                 "xhr=" +
+            //                 xhr.responseText +
+            //                 " b=" +
+            //                 b.responseText +
+            //                 " c=" +
+            //                 c.responseText
+            //             );
+            //         }
+            //     }
+            // });
+
+        });
+
+        // $('#gender').change(function() {
+        //     var option = $('#gender').val();
+        //     if (option == "Male") {
+        //         $('#pregnant').select2("val","02_Not_Pregnant")
+
+        //     }
+
+        //     console.log("test");
+        // });
+
+
+
+        $('#with_allergy').change(function() {
+            var option = $('#with_allergy').val();
+            if (option == "01_Yes") {
+                $('#yes-allergy').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#yes-allergy').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+        $('#with_commorbidities').change(function() {
+            var option = $('#with_commorbidities').val();
+            if (option == "01_Yes") {
+                $('#yes-comordities').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#yes-comordities').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+        $('#patient_diagnose').change(function() {
+            var option = $('#patient_diagnose').val();
+            if (option == "01_Yes") {
+                $('#yes-diagnose').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#yes-diagnose').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+    </script>
 
 
 </body>
