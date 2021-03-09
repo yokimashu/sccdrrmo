@@ -124,6 +124,7 @@ if (isset($_POST['update_vaccine'])) {
     $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
+
     if ($_POST['preg_status'] != 'Select pregnancy status...') {
         $preg_status    = $_POST['preg_status'];
     } else {
