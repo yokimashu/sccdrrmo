@@ -20,7 +20,7 @@ $entity_no = ' ';
 $btnSave = $btnEdit = $pregstatus = $wallergy = $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
-$img = '';
+
 
 
 if (!isset($_SESSION['id'])) {
@@ -91,7 +91,7 @@ $nationality = ' FILIPINO';
 $region = 'WESTERN VISAYAS';
 
 
-$title = 'VAMOS | COVID-19 Patient Form';
+$title = 'VAMOS | Assessment Form';
 
 
 ?>
@@ -242,7 +242,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 <div class="card">
 
                     <div class="card-header bg-success text-white">
-                        <h4>New Vaccine Record</h4>
+                        <h4>New Assessment Form</h4>
                     </div>
 
                     <div class="card-body">
@@ -265,34 +265,78 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                 </div>
 
+                                <!-- category -->
+                                <fieldset class="form-control field_set">
+                                    <legend id="fieldset-category">
+                                        <h5>CATEGORY</h5>
+                                    </legend>
 
-      <!-- basic information -->
-      <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-basicinfo">
-                                        <h5>BASIC INFORMATION</h5>
-                                    </legend> -->
-                                    <div class="card card-success card-outline">
-                      <div class="card-header">
-
-                      <h5 class="m-0">BASIC INFORMATION</h5>
-                      </div>
-                      <!-- </legend> -->
-                      <div class="card-body">
-
-                                    <canvas id="canvas" class="d-none" hidden width="100" height="100" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
-
-                                    <img src="../flutter/images/<?php echo $photo; ?>" id="tphoto" style="height: 200px; width:200px;margin:auto;" class="photo img-thumbnail">
-
-                                    <div style="margin:auto">
-                                        <div class="col-12" style="margin:auto;margin-top:30px;">
-                                     
-                                                <input type="hidden" name="image" class="image-tag" value=<?php echo $img; ?>>
-
-
-                                        
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" name="category" id="category">
+                                                <option value=" " selected>Select Category</option>
+                                                <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_category['description'] ?>"><?php echo $get_category['category']; ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
 
-                                    </div>
+                                        <div class="col-sm-4">
+                                            <label for="">Type of ID:&nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
+                                                <option value=" " selected>Select Category ID</option>
+                                                <?php while ($get_category_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_category_id['description'] ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
+                                                <option value=" " selected>Select Health Worker</option>
+                                                <?php while ($get_healthworkers = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option value="<?php echo $get_healthworkers['idno'] ?>"><?php echo $get_healthworkers['description']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+
+
+
+
+
+
+                                    </div><br>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <input type="number" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number">
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <label>Philhealth ID : &nbsp;&nbsp; <span id="required">*</span></label>
+                                            <input type="text" class="form-control" id="philhealth_id" name="philhealth_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Philhealth ID">
+                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if no PhilHealth ID #</i></span>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <label>PWD ID : </label>
+                                            <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID">
+                                        </div>
+
+                                    </div><br>
+                                </fieldset><br>
+
+
+                                <!-- basic information -->
+                                <fieldset class="form-control field_set">
+                                    <legend id="fieldset-basicinfo">
+                                        <h5>BASIC INFORMATION</h5>
+                                    </legend>
+
                                     <div class="row">
                                         <div class="col-sm-7">
                                             <label>Select Individual: &nbsp;&nbsp; <span id="required">*</span> </label>
@@ -386,110 +430,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             </select>
 
                                         </div>
-                                    </div>
-                                                </div>
-                                <!-- </fieldset><br> -->
-
-
-                                <!-- category -->
-                                <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category">
-                                        <h5>CATEGORY</h5>
-                                    </legend> -->
-                                    <div class="card card-success card-outline">
-                  <div class="card-header">
-                    <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
-
-                    <h5 class="m-0">CATEGORY</h5>
-                  </div>
-                  <!-- </legend> -->
-                  <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
-                                            <!-- <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                                                <option value=" " selected>Select Category</option>
-                                                <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_category['description'] ?>"><?php echo $get_category['category']; ?></option>
-                                                <?php } ?>
-                                            </select> -->
-
-                                            <select class="form-control select2" style="width:100%" name="category" id="category">
-                                                <option value=" " selected> Select Category </option>
-                                                <option value="01_Health_Care_Worker">Health Care Worker</option>
-                                                <option value="02_Senior_Citizen">Senior Citizen</option>
-                                                <option value="03_Indigent">Indigent</option>
-                                                <option value="04_Uniformed_Personnel">Uniformed_Personnel</option>
-                                                <option value="05_Essential_Worker">Essential_Worker</option>
-                                                <option value="06_Other">Other</option>
-
-                                            </select>
-
-                                          
-                                        </div>
-
-                                        <div class="col-sm-2" id="indigent" hidden>     
-                                            <label> Indigent or not?</label>
-                                            <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
-                                                <option value=" " selected> Select status </option>
-                                                <option value="01_Indigent">Indigent</option>
-                                                <option value="02_Not_Indigent">Not Indigent</option>
-                                            </select>
-
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label for="">Type of ID:&nbsp;&nbsp; <span id="required">*</span></label>
-                                            <select class="form-control select2" style="width: 100%;" id="category_id" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category_id" value="">
-                                                <option value=" " selected>Select Category ID</option>
-                                                <?php while ($get_category_id = $get_all_category_id_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_category_id['description'] ?>"><?php echo $get_category_id['categ_id_type']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-4" id="healthworker" >
-                                            <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
-                                            <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
-                                                <option value=" " selected>Select Health Worker</option>
-                                                <?php while ($get_healthworkers = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_healthworkers['idno'] ?>"><?php echo $get_healthworkers['description']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-
-
-
-
-
-
-
-                                    </div><br>
-
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <input type="text" class="form-control" id="idno" name="idno" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="ID Number">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label>Philhealth ID : &nbsp;&nbsp; <span id="required">*</span></label>
-                                            <input type="text" class="form-control" id="philhealth_id" name="philhealth_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Philhealth ID">
-                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if no PhilHealth ID #</i></span>
-                                        </div>
-
-
-                                        <div class="col-sm-4">
-                                            <label>PWD ID : </label>
-                                            <input type="text" class="form-control" id="pwd_id" name="pwd_id" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="PWD ID">
-                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if no PWD ID #</i></span>
-                                        </div>
-
                                     </div><br>
                                 </fieldset><br>
-
-
-                          
                                 <!-- end of basic information -->
 
 
@@ -582,7 +524,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="col-sm-3">
                                             <label> If female, pregnancy status?</label>
                                             <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status">
-                                                <option selected> Select pregnancy status... </option>
+                                                <option value=" " selected> Select pregnancy status </option>
                                                 <option value="01_Pregnant">Pregnant</option>
                                                 <option value="02_Not_Pregnant">Not Pregnant</option>
                                             </select>
@@ -593,7 +535,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <label>With Allergy? </label>
                                             <select class="form-control  " name="with_allergy" id="with_allergy" style="width:100%">
                                                 <option value="01_Yes">Yes</option>
-                                                <option selected value="02_No">None</option>
+                                                <option selected value="02_None">None</option>
                                             </select>
                                         </div>
 
@@ -623,8 +565,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <option selected value="02_No">No</option>
                                             </select>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
+                                            <select class="form-control" name="electronic_consent" id="electronic_consent">
+                                                <option value="01_Yes">Yes</option>
+                                                <option selected value="02_No">No</option>
+                                            </select>
+                                        </div>
                                     </div><br>
-                                </fieldset>
+
+                                </fieldset><br>
                                 <!-- end of medical conditions -->
 
 
@@ -653,7 +603,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                         <div class="col-sm-3">
                                             <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
-                                                <option selected>Classification of Infection</option>
+                                                <option value=" " selected>Classification of Infection</option>
                                                 <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                     <option value="<?php echo $get_infection['description'] ?>"><?php echo $get_infection['classification']; ?></option>
                                                 <?php } ?>
@@ -812,39 +762,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                 </fieldset><br>
                                 <!-- end of form choices comorbidities -->
-                                <fieldset class="form-control field_set">
-                                    <legend id="fieldset-medical">
-                                        <h5>CONSENT</h5>
-                                    </legend>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control" name="electronic_consent" id="electronic_consent">
-                                                <option value="01_Yes">Yes</option>
-                                                <option selected value="02_No">No</option>
-                                                <option selected value="03_Unknown">Unknown</option>
-                                            </select>
-                                        </div>
 
-                                        <div class="col-sm-6">
-                                            <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control" name="sinovac" id="sinovac">
-                                                <option value="01_Yes">Yes</option>
-                                                <option selected value="02_No">No</option>
-                                                <option selected value="03_Unknown">Unknown</option>
-                                            </select>
-                                        </div>
-                                  
-                                    <div class="col-sm-6">
-                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                            <select class="form-control" name="astrazeneca" id="astrazeneca">
-                                                <option value="01_Yes">Yes</option>
-                                                <option selected value="02_No">No</option>
-                                                <option selected value="03_Unknown">Unknown</option>
-                                            </select>
-                                        </div>
-                                    </div><br>
-                                </fieldset>
 
                                 <div class="box-footer" align="center">
                                     <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
@@ -922,7 +840,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 //  minimumInputLength: 3,
                 // placeholder: "hello",
                 ajax: {
-                    url: "individual_query_patient", // json datasource
+                    url: "vaccine_query_patient.php", // json datasource
                     type: "post",
                     dataType: 'json',
                     delay: 250,
@@ -984,17 +902,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         $('#street').val(result.data7);
                         $('#barangay').val(result.data8);
                         $('#age').val(result.data9);
-                        
-                        var gender = result.data10;
-
-                        if (gender == 'Female'){
-                            $("#gender").select2("val", "01_Female");
-                        }else if (gender == 'Male'){
-                            $("#gender").select2("val", "02_Male");
-                        }
-
+                        // $('#gender').val(result.data10);
                         $('#contact_no').val(result.data12);
-                        $('#tphoto').attr("src", "../flutter/images/" + result.data13);
                     },
                 });
 
@@ -1055,84 +964,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
             console.log("test");
         });
-
-
-        $('#category').change(function() {
-            var option = $('#category').val();
-            //if Senior_Citizen is Selected
-            if (option == "02_Senior_Citizen") {
-                $('#indigent').prop("hidden", false);
-                $('#healthworker').prop("hidden", true);
-        
-
-            }
-       
-             //if Health_Care_Worker is Selected
-            if (option == "01_Health_Care_Worker") {
-                $('#healthworker').prop("hidden", false);
-                $('#indigent').prop("hidden", true);
-        
-
-            }
-      
-                        //if 03_Indigent is Selected
-            if (option == "03_Indigent") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
-        
-
-
-            }
-            //if 04_Uniformed_Personnel is Selected
-            if (option == "04_Uniformed_Personnel") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
-        
-
-
-            }
-
-                    //if 05_Essential_Worker is Selected
-                    if (option == "05_Essential_Worker") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
-        
-
-
-            }
-
-                       //if 06_Other is Selected
-                       if (option == "06_Other") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
-        
-
-
-            }
-
- 
-          
-
-
-            console.log("test");
-        });
-
-        // $('#category').change(function() {
-        //     var option = $('#healthworker').val();
-        //     if (option == "01_Health_Care_Worker") {
-        //         $('#healthworker').prop("hidden", false);
-        
-
-
-        //     } else {
-
-        //         $('#healthworker').prop("hidden", true);
-        //         $('#indigent').prop("hidden", true);
-
-        //     }
-
-        //     console.log("test");
-        // });
 
 
 
