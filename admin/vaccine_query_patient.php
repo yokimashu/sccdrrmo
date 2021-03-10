@@ -12,7 +12,7 @@ $numberofrecords = 10;
 // $mysqli = new mysqli($servername, $username, $password, $dbname);
 // $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
 if (!isset($_POST['searchTerm'])) {
-  $stmt = $con->prepare("SELECT * FROM tbl_vaccine  where Consent='01_Yes' LIMIT :limit");
+  $stmt = $con->prepare("SELECT * FROM tbl_vaccine LIMIT :limit");
   $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
   $stmt->execute();
   $usersList = $stmt->fetchAll();
@@ -20,7 +20,7 @@ if (!isset($_POST['searchTerm'])) {
 } else {
   $search = $_POST['searchTerm'];
 
-  $stmt = $con->prepare("SELECT * FROM tbl_vaccine where Consent = '01_Yes' like :name  LIMIT :limit");
+  $stmt = $con->prepare("SELECT * FROM tbl_vaccine like :name  LIMIT :limit");
   $stmt->bindValue(':name', '%' . $search . '%', PDO::PARAM_STR);
   $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
   $stmt->execute();

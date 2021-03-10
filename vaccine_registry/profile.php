@@ -87,6 +87,8 @@ if ($get_data_data->rowCount() > 0) {
     $get_coviddate      = $result['covid_date'];
     $get_covidclass     = $result['covid_classification'];
     $get_consent        = $result['Consent'];
+    $get_sinovac        = $result['sinovac'];
+    $get_astrazeneca    = $result['astrazeneca'];
   }
 
   $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
@@ -365,8 +367,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
-
-    
   </style>
 
 </head>
@@ -524,6 +524,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         </div>
                       </div>
                     </div>
+
+
                     <div class="card card-success card-outline">
                       <div class="card-header">
                         <!-- <fieldset class="form-control field_set">
@@ -708,12 +710,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                   </div>
 
 
-
-
-
-
-
-
                   <!-- address -->
                   <div class="card card-success card-outline">
                     <div class="card-header">
@@ -880,7 +876,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         </div>
 
                         <div class="col-md-3">
-                          <label>Covid History &nbsp;&nbsp; <span id="required">*</span> </label>
+                          <label>Covid History? &nbsp;&nbsp; <span id="required">*</span> </label>
                           <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value="<?php echo $get_covidhistory; ?>">
                             <option>Please select</option>
                             <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
@@ -1158,37 +1154,56 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                       <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                       <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                       <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
-
                                     </select>
+                                  </div>
 
+                                  <div class="col-sm-6">
+                                    <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                    <select class="form-control select2" name="sinovac" id="sinovac">
+                                      <option>Please select</option>
+                                      <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                      <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                      <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                    </select>
                                   </div>
                                 </div><br>
-                              </div>
 
-                              <div class="box-footer" align="center">
-                                <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
-                                  <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                  <h4>Submit Form</h4>
-                                </button>
+                                <div class="col-sm-6">
+                                  <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                  <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                    <option>Please select</option>
+                                    <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                    <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                    <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                  </select>
+                                </div>
+                              </div><br>
+                            </div>
 
-                                <!-- <a href="list_vaccine_profile">
+                            <div class="box-footer" align="center">
+                              <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
+                                <!-- <i class="fa fa-check fa-fw"> </i> -->
+                                <h4>Submit Form</h4>
+                              </button>
+
+                              <!-- <a href="list_vaccine_profile">
                                         <button type="button" name="cancel" class="btn btn-danger">
                                             <i class="fa fa-close fa-fw"> </i> </button>
                                     </a> -->
 
-                                <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                              <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                     <button type="button" name="print" class="btn btn-primary">
                                         <i class="nav-icon fa fa-print"> </i> </button>
                                     </a> -->
 
-                              </div><br>
+                            </div><br>
 
-                            </div>
                         </div>
                     </div>
-
                 </div>
-                </form>
+
+              </div>
+              </form>
 
 
           </section>

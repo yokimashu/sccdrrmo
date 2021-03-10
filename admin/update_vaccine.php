@@ -15,6 +15,39 @@ if (isset($_POST['update_vaccine'])) {
     // print_r($_POST);
     // echo "</pre>";
 
+    // category
+    $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
+    $time           = date("h:i:s a");
+    $category       = $_POST['category'];
+    $category_id    = $_POST['category_id'];
+    $healthworker   = $_POST['health_worker'];
+    if ($_POST['idno'] != '') {
+        $idnumber = $_POST['idno'];
+    } else {
+        $idnumber = 'N/A';
+    }
+
+    if ($_POST['philhealth_id'] != '') {
+        $philhealth = $_POST['philhealth_id'];
+    } else {
+        $philhealth = 'N/A';
+    }
+
+    if ($_POST['pwd_id'] != '') {
+        $pwd = $_POST['pwd_id'];
+    } else {
+        $pwd = 'N/A';
+    }
+
+
+    //basic information
+    $entityno        = $_POST['entity_number'];
+    $lastname       = strtoupper($_POST['lastname']);
+    $firstname      = strtoupper($_POST['firstname']);
+    $middlename     = strtoupper($_POST['middlename']);
+    $suffix         = strtoupper($_POST['suffix']);
+    $gender         = $_POST['gender'];
+
     $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
     $civil_stat      = $_POST['civil_status'];
     $contactno      = $_POST['contact_no'];
@@ -91,6 +124,7 @@ if (isset($_POST['update_vaccine'])) {
     $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
+
     if ($_POST['preg_status'] != 'Select pregnancy status...') {
         $preg_status    = $_POST['preg_status'];
     } else {
@@ -366,12 +400,12 @@ if (isset($_POST['update_vaccine'])) {
 
     if ($vaccine_data && $update_individual_data) {
 
-        $_SESSION['status'] = "Update Succes!";
+        $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";
 
         header('location: list_vaccine_profile.php');
     } else {
-        $_SESSION['status'] = "Update uns !";
+        $_SESSION['status'] = "Update Unsuccessful!";
         $_SESSION['status_code'] = "error";
 
         header('location: list_vaccine_profile.php');
