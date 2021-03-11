@@ -108,7 +108,6 @@ $lgu = 'SAN CARLOS CITY';
 
 $title = 'VAMOS | COVID-19 Patient Form';
 
-
 ?>
 
 

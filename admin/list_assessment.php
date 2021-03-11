@@ -27,8 +27,6 @@ $symptoms = $patient = $person_status = '';
 // }
 
 $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
-
-// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
 $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
 $get_all_vaccine_data->execute();
 
@@ -62,10 +60,7 @@ $get_all_vaccine_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Assessment Masterlists
-              <a href="add_assessment" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
-                <i class="nav-icon fa fa-plus-square"></i></a>
-
+            <h4> Assessment Masterlist
             </h4>
 
           </div>
@@ -272,61 +267,61 @@ $get_all_vaccine_data->execute();
   ?>
 
   <script>
-    $('#users').DataTable({
-      'paging': true,
-      'lengthChange': true,
-      'searching': true,
-      'ordering': false,
-      'info': true,
-      'autoWidth': true,
-      'autoHeight': true
+    // $('#users').DataTable({
+    //   'paging': true,
+    //   'lengthChange': true,
+    //   'searching': true,
+    //   'ordering': false,
+    //   'info': true,
+    //   'autoWidth': true,
+    //   'autoHeight': true
+
+
+    // });
+
+    var dataTable = $('#users').DataTable({
+
+      page: true,
+      stateSave: true,
+      processing: true,
+      serverSide: true,
+      scrollX: false,
+
+      ajax: {
+        url: "search_vaccine_vas.php",
+        type: "post",
+        error: function(xhr, b, c) {
+          console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+          );
+        }
+      },
+      columnDefs: [{
+          width: "100px",
+          targets: -1,
+          data: null,
+          defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE RECORD"> <i class="fa fa-edit"></i></a>'
+
+        },
+
+      ],
+    });
+
+
+    $("#users tbody").on("click", ".printlink", function() {
+      // event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity_no = currow.find("td:eq(0)").text();
+
+      $('.printlink').attr("href", "add_assessment.php?id=" + entity_no, '_parent');
 
 
     });
-
-    // var dataTable = $('#users').DataTable({
-
-    //   page: true,
-    //   stateSave: true,
-    //   processing: true,
-    //   serverSide: true,
-    //   scrollX: false,
-
-    //   ajax: {
-    //     url: "search_vaccine.php",
-    //     type: "post",
-    //     error: function(xhr, b, c) {
-    //       console.log(
-    //         "xhr=" +
-    //         xhr.responseText +
-    //         " b=" +
-    //         b.responseText +
-    //         " c=" +
-    //         c.responseText
-    //       );
-    //     }
-    //   },
-    //   columnDefs: [{
-    //       width: "100px",
-    //       targets: -1,
-    //       data: null,
-    //       defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'
-
-    //     },
-
-    //   ],
-    // });
-
-
-    // $("#users tbody").on("click", ".printlink", function() {
-    //   // event.preventDefault();
-    //   var currow = $(this).closest("tr");
-    //   var entity_no = currow.find("td:eq(0)").text();
-
-    //   $('.printlink').attr("href", "view_vaccine_profile_two.php?id=" + entity_no, '_parent');
-
-
-    // });
 
 
     // $("#users tbody").on("click", "#modal", function() {
