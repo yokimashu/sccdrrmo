@@ -407,7 +407,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                                 </div>
-                                                <input type="text" name="" id="" value=" <?php echo $tracer_fullname ?>">
+                                                <input type="text" hidden name="encoder_fullname" id="encoder_fullname" value=" <?php echo $tracer_fullname ?>">
 
 
                                                 <div class="card card-success card-outline">
@@ -1200,7 +1200,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                         var gender = result.data10;
 
-                        if (gender == 'Female') {
+                        if (gender == 'Female') {   
                             $("#gender").select2("val", "01_Female");
                             $('#preg_status').select2("val", "Select pregnancy status...")
                         } else if (gender == 'Male') {

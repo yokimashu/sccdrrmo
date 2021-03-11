@@ -152,6 +152,8 @@ if (isset($_POST['insert_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
+    $indigent       = $_POST['indigent'];
+
     if ($_POST['idno'] != '') {
         $idnumber = $_POST['idno'];
     } else {
@@ -181,14 +183,15 @@ if (isset($_POST['insert_vaccine'])) {
     $age            = $_POST['age'];
 
     $gender         = $_POST['gender'];
+
     //for gender
-    // if ($_POST['gender'] == 'female') {
-    //     $gender     = "01_Female";
-    // } elseif ($_POST['gender'] == 'male') {
-    //     $gender     = "02_Male";
-    // } else {
-    //     $gender     = "03_Not to disclose";
-    // }
+    if ($_POST['gender'] == '01_Female') {
+        $gender1     = "Female";
+    } elseif ($_POST['gender'] == '02_Male') {
+        $gender1     = "Male";
+    } else {
+        $gender1     = "03_Not to disclose";
+    }
 
 
     $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
@@ -196,6 +199,7 @@ if (isset($_POST['insert_vaccine'])) {
     $contactno      = $_POST['contact_no'];
     $emp_status     = $_POST['emp_status'];
     $profession     = $_POST['profession'];
+    $tracer_fullname = strtoupper($_POST['encoder_fullname']);
 
     //full address
     $region         = "WesternVisayas";
@@ -371,6 +375,7 @@ if (isset($_POST['insert_vaccine'])) {
             CategoryIDnumber        = :idnooo,
             PhilHealthID            = :philhealth,
             HealthWorker            = :healthworker,
+            Indigent                = :indigents,
             PWD_ID                  = :pwd,
             Lastname                = :lastname,
             Firstname               = :firstname,
@@ -415,6 +420,7 @@ if (isset($_POST['insert_vaccine'])) {
             covid_date              = :date_history,
             covid_classification    = :infection,
             Consent                 = :consent,
+            username                = :user,
             status                  = 'NEW'
         ";
 
@@ -427,6 +433,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':categ_id'         => $category_id,
         ':idnooo'           => $idnumber,
         ':healthworker'     => $healthworker,
+        ':indigents'        => $indigent,
         ':philhealth'       => $philhealth,
         ':pwd'              => $pwd,
         ':lastname'         => $lastname,
@@ -471,7 +478,8 @@ if (isset($_POST['insert_vaccine'])) {
         ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
-        ':consent'          => $consent
+        ':consent'          => $consent,
+        ':user'             => $tracer_fullname
 
 
     ]);
@@ -566,7 +574,7 @@ if (isset($_POST['insert_vaccine'])) {
             ':lastname'          => $lastname,
             ':fullname'          => $fullname,
             ':age'               => $age,
-            ':gender'            => $gender,
+            ':gender'            => $gender1,
             ':mobile_no'         => $contactno,
             ':barangay'          => $barangay,
             ':birthdate'         => $birthdate,
