@@ -35,7 +35,11 @@ if (isset($_POST['signin'])) {
         session_start();
         $_SESSION['id'] = $result['entity_no'];
         $phonenumber = $result['mobile_no'];
+        if (ltrim($phonenumber,$phonenumber[0]) == '0'){
         $_SESSION['phone'] = '+63'.ltrim($phonenumber,$phonenumber[0]);
+        }else{
+        $_SESSION['phone'] = '+63'.$phonenumber;
+        }
         // $_SESSION['user_type'] = $result['account_type'];
         // if ($result['account_type'] == 1) {
 

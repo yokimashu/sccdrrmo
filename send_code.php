@@ -88,7 +88,7 @@ $phonenumber = $_SESSION['phone'];
       <form class="lockscreen-credentials">
         <?php echo $alert_msg; ?>
         <div class="input-group">
-          <input type="text" style="background-color:beige" class="form-control" id="number" value="<?php echo $phonenumber; ?>">
+          <input readonly type="text" style="background-color:beige" class="form-control" id="number" value="<?php echo $phonenumber; ?>">
           <div class="input-group-append">
             <button type="button" id="send" class="btn primary" style="color: #FFFFFF; background-color:green" onclick="phoneAuth();"> SendCode</button>
 

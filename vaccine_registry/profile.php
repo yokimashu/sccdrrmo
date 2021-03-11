@@ -483,7 +483,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
               <div class="card-header bg-success text-white">
                 <?php if ($registered == 1) { ?>
-                  <h4>Update Vaccine Record
+                  <h4>Update Record
 
                     <a href="log_out.php" style="float:right;" type="button" class="btn btn-danger bg-gradient-danger" title="Sign Out">
                       <i class="nav-icon fa fa-sign-out"></i></a>
@@ -1147,6 +1147,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                 </div>
                                 <!-- </legend> -->
                                 <div class="card-body">
+                                <div class="row">
                                   <div class="col-md-6">
                                     <label for="">Are you willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span></label>
                                     <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">

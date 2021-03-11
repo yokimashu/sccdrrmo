@@ -1065,7 +1065,7 @@ if (isset($_GET['id'])) {
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <label for="">Are you willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <label for="">Provided Electronic Informed Consent?  &nbsp;&nbsp; <span id="required">*</span></label>
                                                         <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
                                                             <option>Please select</option>
                                                             <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
