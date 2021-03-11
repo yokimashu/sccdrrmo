@@ -10,7 +10,7 @@ $alert_msg = '';
 
 if (isset($_POST['insert_vaccine'])) {
 
-    
+
 
 
     // echo "<pre>";
@@ -177,6 +177,9 @@ if (isset($_POST['insert_vaccine'])) {
     $firstname      = strtoupper($_POST['firstname']);
     $middlename     = strtoupper($_POST['middlename']);
     $suffix         = strtoupper($_POST['suffix']);
+    $fullname       = strtoupper($_POST['firstname'] . ' ' . $_POST['middlename'] . ' ' . $_POST['lastname']);
+    $age            = $_POST['age'];
+
     $gender         = $_POST['gender'];
     //for gender
     // if ($_POST['gender'] == 'female') {
@@ -189,7 +192,7 @@ if (isset($_POST['insert_vaccine'])) {
 
 
     $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
-    $civil_stat      = $_POST['civil_status'];
+    $civil_stat     = $_POST['civil_status'];
     $contactno      = $_POST['contact_no'];
     $emp_status     = $_POST['emp_status'];
     $profession     = $_POST['profession'];
@@ -249,18 +252,18 @@ if (isset($_POST['insert_vaccine'])) {
         $emp_name = 'N/A';
     }
 
-    if ($_POST['emp_contact'] != ''){
+    if ($_POST['emp_contact'] != '') {
         $emp_contact    = $_POST['emp_contact'];
     } else {
         $emp_contact = 'N/A';
     }
-   
-    if ($_POST['emp_address'] != ''){
+
+    if ($_POST['emp_address'] != '') {
         $emp_address    = strtoupper($_POST['emp_address']);
-    }else{
+    } else {
         $emp_address = 'N/A';
     }
-  
+
     $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
@@ -294,19 +297,6 @@ if (isset($_POST['insert_vaccine'])) {
         $consent        = '03_Unknown';
     }
 
-
-    if ($_POST['sinovac'] != 'Please select') {
-        $sinovac        = $_POST['sinovac'];
-    } else {
-        $sinovac        = '03_Unknown';
-    }
-
-
-    if ($_POST['astrazeneca'] != 'Please select') {
-        $astrazeneca        = $_POST['astrazeneca'];
-    } else {
-        $astrazeneca        = '03_Unknown';
-    }
 
     //covid history
     if ($_POST['patient_diagnose'] != 'Please select') {
@@ -425,9 +415,7 @@ if (isset($_POST['insert_vaccine'])) {
             covid_date              = :date_history,
             covid_classification    = :infection,
             Consent                 = :consent,
-            status                  = 'NEW',
-            sinovac                 = :sinovac,
-            astrazeneca             = :astrazeneca
+            status                  = 'NEW'
         ";
 
     $vaccine_data = $con->prepare($insert_vaccine_sql);
@@ -483,14 +471,17 @@ if (isset($_POST['insert_vaccine'])) {
         ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
-        ':consent'          => $consent,
-        ':sinovac'          => $sinovac,
-        ':astrazeneca'      => $astrazeneca
+        ':consent'          => $consent
 
 
     ]);
 
-    $update_individual_sql = "UPDATE tbl_individual SET 
+    $get_data_sql = "SELECT * FROM  tbl_individual where entity_no = :id";
+    $get_data_data = $con->prepare($get_data_sql);
+    $get_data_data->execute([':id' => $entityno]);
+    if ($get_data_data->rowCount() > 0) {
+
+        $update_individual_sql = "UPDATE tbl_individual SET 
         fullname        = :fullname,
         firstname       = :fname,
         middlename      = :mname,
@@ -504,37 +495,115 @@ if (isset($_POST['insert_vaccine'])) {
         -- mobile_no       = :contact
         where entity_no = :entityNo ";
 
-    $update_individual_data = $con->prepare($update_individual_sql);
-    $update_individual_data->execute([
-        ':entityNo'     => $entityno,
-        ':fullname'     => $firstname . ' ' . $middlename . ' ' . $lastname,
-        ':fname'        => $firstname,
-        ':mname'        => $middlename,
-        ':lname'        => $lastname,
-        // ':gender'       => $gender,
-        ':bdate'        => $birthdate
-        // ':street'       => $street,
-        // ':brgy'         => $barangay,
-        // ':province'     => $province,
-        // ':city'         => $city,
-        // ':contact'      => $contactno
+        $update_individual_data = $con->prepare($update_individual_sql);
+        $update_individual_data->execute([
+            ':entityNo'     => $entityno,
+            ':fullname'     => $firstname . ' ' . $middlename . ' ' . $lastname,
+            ':fname'        => $firstname,
+            ':mname'        => $middlename,
+            ':lname'        => $lastname,
+            // ':gender'       => $gender,
+            ':bdate'        => $birthdate
+            // ':street'       => $street,
+            // ':brgy'         => $barangay,
+            // ':province'     => $province,
+            // ':city'         => $city,
+            // ':contact'      => $contactno
 
-    ]);
+        ]);
 
-    $update_individual_sql = "UPDATE tbl_entity SET 
-    status          = :status
-    
-    where entity_no = :entityNo ";
+        $update_entityno_sql = "UPDATE tbl_entity SET 
+                status          = :status
+                
+                where entity_no = :entityNo ";
 
-    $update_individual_data = $con->prepare($update_individual_sql);
-    $update_individual_data->execute([
-        ':entityNo'     => $entityno,
-        ':status'       => 'VERIFIED'
-    ]);
+        $update_entityno_data = $con->prepare($update_entityno_sql);
+        $update_entityno_data->execute([
+            ':entityNo'     => $entityno,
+            ':status'       => 'VERIFIED'
+        ]);
+    } else {
+
+        $alert_msg = ' ';
+        //insert to tbl_individual
+
+        $user_name = $_POST['lastname'] . ' ' . $_POST['birthdate'];
+        $hashed_password  = password_hash($entityno, PASSWORD_DEFAULT);
+        $type = 'INDIVIDUAL';
+        $status = 'VERIFIED';
+        $fileName = 'default.jpg';
+
+        //upload image
+
+        $insert_individual_sql = "INSERT INTO tbl_individual SET 
+        
+            entity_no        = :entity_no,
+            date_register    = :date_register,
+            firstname        = :firstname,
+            middlename       = :middlename,
+            lastname         = :lastname,
+            fullname         = :fullname,
+            mobile_no        = :mobile_no,
+            telephone_no     = '-',
+            email            = '-',
+            gender           = :gender,
+            birthdate        = :birthdate,
+            age              = :age,
+            street           = :street,
+            barangay         = :barangay,
+            city             = :city,
+            province         = :province,  
+            photo            = :photo
+        
+        ";
+
+        $individual_data = $con->prepare($insert_individual_sql);
+        $individual_data->execute([
+            ':entity_no'         => $entityno,
+            ':date_register'     => $date_reg,
+            ':firstname'         => $firstname,
+            ':middlename'        => $middlename,
+            ':lastname'          => $lastname,
+            ':fullname'          => $fullname,
+            ':age'               => $age,
+            ':gender'            => $gender,
+            ':mobile_no'         => $contactno,
+            ':barangay'          => $barangay,
+            ':birthdate'         => $birthdate,
+            ':street'            => $street,
+            ':city'              => 'SAN CARLOS CITY',
+            ':province'          => 'NEGROS OCCIDENTAL',
+            ':photo'             => $fileName
+
+        ]);
 
 
 
-    if ($vaccine_data && $update_individual_data) {
+        //INSERT ENTITY TABLE
+
+        $insert_entity_sql = "INSERT INTO tbl_entity SET 
+            entity_no           = :entity_no,
+            username            = :username,
+            password            = :password,
+            type                = :type,
+            status              = :status";
+
+
+        $insert_entity_data = $con->prepare($insert_entity_sql);
+        $insert_entity_data->execute([
+
+            ':entity_no'        => $entityno,
+            ':username'         => $user_name,
+            ':password'         => $hashed_password,
+            ':type'             => 'INDIVIDUAL',
+            ':status'           => 'VERIFIED'
+
+        ]);
+    }
+
+
+
+    if ($vaccine_data && $get_data_data) {
 
         $_SESSION['status'] = "Registered Succesfully!";
         $_SESSION['status_code'] = "success";

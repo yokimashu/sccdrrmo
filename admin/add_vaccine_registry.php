@@ -16,7 +16,7 @@ $now = new DateTime();
 // $time = date("h:i:sa");
 
 $entity_no = ' ';
-
+$get_firstname = $get_middlename = $get_lastname = $get_entity_no = $get_email = $get_status = ' ';
 $btnSave = $btnEdit = $pregstatus = $wallergy = $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
@@ -64,6 +64,10 @@ $get_all_employment_data->execute();
 $get_all_profession_sql = "SELECT * FROM tbl_profession";
 $get_all_profession_data = $con->prepare($get_all_profession_sql);
 $get_all_profession_data->execute();
+
+$get_all_brgy_sql = "SELECT * FROM tbl_barangay";
+$get_all_brgy_data = $con->prepare($get_all_brgy_sql);
+$get_all_brgy_data->execute();
 
 $get_all_gender_sql = "SELECT * FROM tbl_gender";
 $get_all_gender_data = $con->prepare($get_all_gender_sql);
@@ -224,6 +228,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
         #asstdname {
             font-size: 12px;
         }
+
+        #card-print {
+            color: black;
+        }
+
+        #card-print:hover {
+            color: #6495ED;
+        }
     </style>
 
 </head>
@@ -233,13 +245,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
         <?php include('sidebar.php'); ?>
 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-
-                </div><!-- /.container-fluid -->
-            </section>
-
+            <div class="content-header"></div>
 
 
             <!-- Main content -->
@@ -269,16 +275,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     <p class="text-muted text-center"><?php echo $get_entity_no; ?></p>
 
                                     <!-- <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Followers</b> <a class="float-right">1,322</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Following</b> <a class="float-right">543</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Friends</b> <a class="float-right">13,287</a>
-                  </li>
-                </ul> -->
+                                        <li class="list-group-item">
+                                            <b>Followers</b> <a class="float-right">1,322</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Following</b> <a class="float-right">543</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Friends</b> <a class="float-right">13,287</a>
+                                        </li>
+                                        </ul> -->
 
                                     <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
                                 </div>
@@ -295,22 +301,69 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-
-                                    <strong><i class="fa fa-calendar"></i> Age</strong>
-                                    <p class="text-muted">
-                                    <div id="age"> </div>
-                                    <hr>
-
                                     <strong><i class="fa fa-envelope"></i> E-mail Address</strong>
 
                                     <p class="text-muted">
-                                        <?php echo $get_email; ?></p>
+                                    <div>
+                                        <input id="email-add" style="font-size:15px; width:80%;" class="form-control" readonly placeholder="Email Address">
+                                    </div>
+
                                     <hr>
+                                    </p>
 
 
                                     <strong><i class="fa fa-pencil mr-1"></i> Account Status <span id="required">*</span></strong>
                                     <p class="text-muted">
-                                        <?php echo $get_status; ?></p>
+                                    <div>
+                                        <input id="acct-stat" style="font-size:15px; width:80%;" class="form-control" readonly placeholder="Account Status">
+                                    </div>
+                                    <?php echo $get_status; ?></p>
+                                    </p>
+                                    <hr>
+
+                                </div>
+
+                                <!-- /.card-body -->
+                            </div>
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">Actions</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+
+                                    <p class="text-muted">
+
+                                        <strong><i class="fa fa-calendar mr-1"></i>
+                                            <a id="card-print" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> ">
+                                                Print VAMOS ID</a>
+                                        </strong>
+                                    </p>
+
+
+                                    <p class="text-muted">
+
+                                        <hr>
+
+                                        <strong><i class="fa fa-envelope mr-1"></i>
+
+                                            Print Vaccination Form
+
+                                        </strong>
+                                    </p>
+
+                                    <p class="text-muted">
+
+                                        <hr>
+
+
+                                        <strong><i class="fa fa-pencil mr-1"></i>
+                                            <a id="card-print" href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> ">
+                                                Print Vaccination Card
+                                            </a>
+
+                                        </strong>
+
                                     </p>
                                     <hr>
 
@@ -324,9 +377,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         <div class="col-md-9">
 
                             <!-- 
-            <div class="float-topright">
-                <?php echo $alert_msg; ?>
-            </div> -->
+                            <div class="float-topright">
+                                <?php echo $alert_msg; ?>
+                            </div> -->
 
                             <section class="content">
                                 <div class="card">
@@ -354,13 +407,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                                 </div>
+                                                <input type="text" name="" id="" value=" <?php echo $tracer_fullname ?>">
 
 
-                                                <!-- basic information -->
-                                                <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-basicinfo">
-                                        <h5>BASIC INFORMATION</h5>
-                                    </legend> -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
 
@@ -424,7 +473,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-3">
                                                                 <label>Birthdate: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <input type="date" class="form-control" id="birthdate" name="birthdate">
+                                                                <input type="date" class="form-control pull-right" onblur="getAge();" placeholder="dd/mm/yyyy" id="birthdate" name="birthdate" />
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label>Age:</label>
+                                                                <input type="number" id="age" name="age" class="form-control pull-right" placeholder="0">
+
                                                             </div>
 
                                                             <div class="col-sm-3">
@@ -437,6 +491,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                 </select>
                                                             </div>
+
+                                                        </div><br>
+                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Contact No: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
@@ -449,7 +506,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                 <!-- </fieldset><br> -->
 
 
-
+                                                <!-- category card -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
 
@@ -461,11 +518,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-4">
                                                                 <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <!-- <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                                                <option value=" " selected>Select Category</option>
-                                                <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_category['description'] ?>"><?php echo $get_category['category']; ?></option>
-                                                <?php } ?>
-                                            </select> -->
+                                                                    <option value=" " selected>Select Category</option>
+                                                                    <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                        <option value="<?php echo $get_category['description'] ?>"><?php echo $get_category['category']; ?></option>
+                                                                    <?php } ?>
+                                                                </select> -->
 
                                                                 <select class="form-control select2" style="width:100%" name="category" id="category">
                                                                     <option value=" " selected> Select Category </option>
@@ -481,7 +538,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             </div>
 
-                                                            <div class="col-sm-2" id="indigent" hidden>
+                                                            <div class="col-sm-4" id="indigent" hidden>
                                                                 <label> Indigent or not?</label>
                                                                 <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
                                                                     <option value=" " selected> Select status </option>
@@ -534,17 +591,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div><br>
                                                     </div>
                                                 </div>
+                                                <!-- end of category card -->
 
-
-
-                                                <!-- end of basic information -->
-
-
-                                                <!-- address -->
+                                                <!-- address card -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
-                                                        <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
+
 
                                                         <h5 class="m-0">ADDRESS</h5>
                                                     </div>
@@ -573,7 +625,15 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-4">
                                                                 <label>Barangay: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <input type="text" class="form-control" id="barangay" name="barangay" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Barangay">
+
+                                                                <select class="form-control select2" id="barangay" name="barangay">
+                                                                    <option selected="selected">Select Barangay</option>
+                                                                    <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                        <option value="<?php echo $get_brgy['barangay']; ?>"><?php echo $get_brgy['barangay']; ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+
+                                                                <!-- <input type="text" class="form-control" id="barangay" name="barangay" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Barangay"> -->
                                                             </div>
 
                                                             <div class="col-sm-8">
@@ -584,23 +644,15 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                     </div>
                                                 </div>
-
-                                                <!-- </fieldset><br> -->
                                                 <!-- end of address -->
 
-
-                                                <!--  employer -->
+                                                <!-- start of employer  -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
-                                                        <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
-
                                                         <h5 class="m-0">EMPLOYMENT</h5>
                                                     </div>
                                                     <!-- </legend> -->
                                                     <div class="card-body">
-
-
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
@@ -651,21 +703,20 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <input type="number" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number">
                                                             </div>
                                                         </div><br>
-
                                                     </div>
-                                                </div>
-                                                <!-- end of employer fieldset -->
 
+
+
+                                                </div>
+                                                <!-- end of employer  -->
 
                                                 <!-- medical conditions -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
-                                                        <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
 
                                                         <h5 class="m-0">MEDICAL CONDITION</h5>
                                                     </div>
-                                                    <!-- </legend> -->
+
                                                     <div class="card-body">
                                                         <div class="row">
 
@@ -719,10 +770,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div><br>
                                                 </div>
-
-                                                <!-- </fieldset> -->
                                                 <!-- end of medical conditions -->
 
 
@@ -739,9 +788,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <label>Classification of infection?</label>
-
                                                             </div>
-
                                                         </div>
 
 
@@ -763,8 +810,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     </div>
                                                 </div>
                                                 <!-- end of yes form sa covid history -->
-
-
 
                                                 <!-- if yes kung naay allergy -->
                                                 <div class="card card-success card-outline" hidden id="yes-allergy">
@@ -836,18 +881,13 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div><br>
                                                     </div>
                                                 </div>
-
-
-
-
                                                 <!-- end sa choices sa form sa allergies -->
-
 
                                                 <!-- if yes kung with comorbidities -->
                                                 <div class="card card-success card-outline" hidden id="yes-comordities">
                                                     <div class="card-header">
                                                         <!-- <fieldset class="form-control field_set">
-                                    <legend id="fieldset-category"> -->
+                                                            <legend id="fieldset-category"> -->
 
                                                         <h5 class="m-0">COMORBIDITIES</h5>
                                                     </div>
@@ -920,8 +960,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     </div>
                                                 </div>
 
-
-                                                <!-- end of form choices comorbidities -->
+                                                <!-- end of form choices consent -->
                                                 <div class="card card-success card-outline">
                                                     <div class="card-header">
 
@@ -960,6 +999,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div>
                                                     </div><br>
                                                 </div>
+                                                <!-- end sa choices sa form sa consent -->
+
 
                                                 <div class="box-footer" align="center">
                                                     <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
@@ -968,33 +1009,33 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     </button>
 
                                                     <!-- <a href="list_vaccine_profile">
-                                        <button type="button" name="cancel" class="btn btn-danger">
-                                            <i class="fa fa-close fa-fw"> </i> </button>
-                                    </a> -->
+                                                            <button type="button" name="cancel" class="btn btn-danger">
+                                                                <i class="fa fa-close fa-fw"> </i> </button>
+                                                        </a> -->
 
                                                     <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
-                                    <button type="button" name="print" class="btn btn-primary">
-                                        <i class="nav-icon fa fa-print"> </i> </button>
-                                    </a> -->
+                                                        <button type="button" name="print" class="btn btn-primary">
+                                                            <i class="nav-icon fa fa-print"> </i> </button>
+                                                        </a> -->
 
                                                 </div><br>
+                                            </form>
                                         </div>
+
+
+
                                     </div>
                                 </div>
+
+
+                            </section>
                         </div>
-
-                        </form>
-                        <!-- </div>
                     </div>
-
-                </div> -->
+                </div>
             </section>
-            <br>
+            <br><br>
         </div>
-
-
-        <?php include('footer.php') ?>
-
+        <?php include('footer.php'); ?>
     </div>
 
 
@@ -1020,6 +1061,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
     <script src="../plugins/select2/select2.full.min.js"></script>
 
+    <script>
+        function getAge() {
+            var dob = document.getElementById('birthdate').value;
+            dob = new Date(dob);
+            var today = new Date();
+            var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+            document.getElementById('age').value = age;
+            // alert('hello');
+        };
+    </script>
 
 
 
@@ -1101,7 +1152,51 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         $('#birthdate').val(result.data5);
                         $('#street').val(result.data7);
                         $('#barangay').val(result.data8);
+                        var brgy = result.data8.toUpperCase();
+
+                        if (brgy == 'BARANGAY I') {
+                            $("#barangay").select2("val", "Barangay I");
+                        } else if (brgy == 'BARANGAY II') {
+                            $("#barangay").select2("val", "Barangay II");
+                        } else if (brgy == 'BARANGAY III') {
+                            $("#barangay").select2("val", "Barangay III");
+                        } else if (brgy == 'BARANGAY IV') {
+                            $("#barangay").select2("val", "Barangay IV");
+                        } else if (brgy == 'BARANGAY V') {
+                            $("#barangay").select2("val", "Barangay V");
+                        } else if (brgy == 'BARANGAY VI') {
+                            $("#barangay").select2("val", "Barangay VI");
+                        } else if (brgy == 'BAGONBON') {
+                            $("#barangay").select2("val", "Bagonbon");
+                        } else if (brgy == 'BULUANGAN') {
+                            $("#barangay").select2("val", "Buluangan");
+                        } else if (brgy == 'CODCOD') {
+                            $("#barangay").select2("val", "Codcod");
+                        } else if (brgy == 'ERMITA') {
+                            $("#barangay").select2("val", "Ermita");
+                        } else if (brgy == 'GUADALUPE') {
+                            $("#barangay").select2("val", "Guadalupe");
+                        } else if (brgy == 'NATABAN') {
+                            $("#barangay").select2("val", "Nataban");
+                        } else if (brgy == 'PALAMPAS') {
+                            $("#barangay").select2("val", "Palampas");
+                        } else if (brgy == 'PROSPERIDAD') {
+                            $("#barangay").select2("val", "Prosperidad");
+                        } else if (brgy == 'PUNAO') {
+                            $("#barangay").select2("val", "Punao");
+                        } else if (brgy == 'QUEZON') {
+                            $("#barangay").select2("val", "Quezon");
+                        } else if (brgy == 'RIZAL') {
+                            $("#barangay").select2("val", "Rizal");
+                        } else if (brgy == 'SAN JUAN') {
+                            $("#barangay").select2("val", "San Juan");
+                        }
+
+
                         $('#age').val(result.data9);
+                        $('#email-add').val(result.data14);
+                        $('#acct-stat').val(result.data15);
+
 
                         var gender = result.data10;
 
@@ -1170,6 +1265,23 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
         //     console.log("test");
         // });
+
+
+        $('#category').change(function() {
+            if ($('#entity_number').val() == '') {
+                $.ajax({
+                    type: 'POST',
+                    data: {},
+                    url: 'generate_id.php',
+                    success: function(data) {
+                        //$('#entity_no').val(data);
+                        document.getElementById("entity_number").value = data;
+                        console.log(data);
+                    }
+                });
+            }
+        });
+
 
 
 
