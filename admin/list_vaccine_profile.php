@@ -2,7 +2,7 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
-include('update_status.php');
+include('update_vas.php');
 
 session_start();
 
@@ -130,10 +130,10 @@ $get_all_vaccine_data->execute();
 
 
   <div class="modal fade" id="modalupdate" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">UPDATE STATUS</h4>
+          <h4 class="modal-title">FORWARD TO VAS LIST</h4>
         </div>
 
 
@@ -142,8 +142,17 @@ $get_all_vaccine_data->execute();
           <div class="modal-body">
             <div class="box-body-lg-50">
               <div class="form-group">
-                <label>ID:</label>
-                <input readonly="true" type="text" name="objid" id="objid" class="form-control" value="<?php echo $objid; ?>" required>
+                <label>VAMOS ID: </label>
+                <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+
+             
+                  <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class = "form-control" pull-right value="<?php echo date("y/m/d") ?>" required>
+             
+                <!-- <label>Time Registered:
+                <input readonly="true" readonly type="text" name="time_registered" id="time_registered" class = "form-control" pull-right value="<?php echo date("H:i") ?>" required>
+                </label>  -->
+                <label>Remarks: </label>
+                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
 
 
               </div>
@@ -157,18 +166,14 @@ $get_all_vaccine_data->execute();
                   <option value="PENDING">PENDING</option>
                 </select>
               </div> -->
-              <label for="">STATUS:</label>
-              <br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "PENDING") echo "checked"; ?> value="PENDING">PENDING<br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "POSITIVE") echo "checked"; ?> value="POSITIVE">POSITIVE<br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "NEGATIVE") echo "checked"; ?> value="NEGATIVE">NEGATIVE<br>
-
+              <!-- <label for="">MOVE TO VAST LIST:</label>
+              <br> -->
 
             </div>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-              <input type="submit" name="update_status" class="btn btn-danger" value="SAVE">
+              <input type="submit" name="update_vas" class="btn btn-danger" value="SAVE">
 
               <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button> -->
@@ -310,11 +315,9 @@ $get_all_vaccine_data->execute();
           width: "100px",
           targets: -1,
           data: null,
-          defaultContent: 
-          '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>'+
-         
-          '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> '
-      ,
+          defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
+            '<a class="btn btn-warning btn-sm modalupdate" style="margin-right:10px;" id="modal" data-placement="top" title="FORWARD TO VAS"> VAS',
+          // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
         },
 
       ],
@@ -331,6 +334,23 @@ $get_all_vaccine_data->execute();
 
     });
 
+    $("#users tbody").on("click", "#modal", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+
+      var entity_no = currow.find("td:eq(0)").text();
+
+
+
+
+      console.log("test");
+      $('#modalupdate').modal('show');
+      $('#entity_no').val(entity_no);
+
+
+
+    });
+
     $("#users tbody").on("click", ".printlink", function() {
       // event.preventDefault();
       var currow = $(this).closest("tr");
@@ -342,22 +362,22 @@ $get_all_vaccine_data->execute();
 
 
 
-    $("#users tbody").on("click", "#modal", function() {
-      event.preventDefault();
-      var currow = $(this).closest("tr");
+    // $("#users tbody").on("click", "#modal", function() {
+    //   event.preventDefault();
+    //   var currow = $(this).closest("tr");
 
-      var objid = currow.find("td:eq(0)").text();
-
-
-
-
-      console.log("test");
-      $('#modalupdate').modal('show');
-      $('#objid').val(objid);
+    //   var objid = currow.find("td:eq(0)").text();
 
 
 
-    });
+
+    //   console.log("test");
+    //   $('#modalupdate').modal('show');
+    //   $('#objid').val(objid);
+
+
+
+    // });
 
 
 

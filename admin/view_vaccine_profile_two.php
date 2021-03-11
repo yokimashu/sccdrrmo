@@ -316,12 +316,21 @@ if (isset($_GET['id'])) {
 
         }
 
-        v #required {
+         #required {
             color: red;
         }
 
         #asstdname {
             font-size: 12px;
+        }
+
+        .btn1 {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
         }
     </style>
 
@@ -413,24 +422,33 @@ if (isset($_GET['id'])) {
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <strong><i class="fa fa-calendar"></i> Print VAMOS ID</strong>
-                                    <p class="text-muted">
-
-                                        <hr>
-
-                                        <strong><i class="fa fa-envelope"></i> Print Vaccination Form</strong>
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a> </strong>
 
                                     <p class="text-muted">
 
                                         <hr>
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
 
 
-                                        <strong><i class="fa fa-pencil mr-1"></i> Print Vaccination Card </span></strong>
                                     <p class="text-muted">
 
                                         <hr>
 
-                                    <strong><i class="fas fa-share"></i><a href="list_assessment.php"> Move to VAS </span></a></strong>
+
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccination Card"> Print Vaccination Card </a> </strong>
+
+
+                                    <p class="text-muted">
+
+                                    </p>
+
+
+                                    <hr>
+
+
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="update_assessment.php?entity_no=<?php echo $entity_no; ?> "> View VAS </a> </strong>
+
+
                                     <p class="text-muted">
 
                                     </p>
@@ -1053,7 +1071,7 @@ if (isset($_GET['id'])) {
                                                     </div><br>
                                                 </div>
                                             </div>
-                                        <?php }?>
+                                        <?php } ?>
 
 
 
@@ -1070,7 +1088,7 @@ if (isset($_GET['id'])) {
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <label for="">Provided Electronic Informed Consent?  &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <label for="">Provided Electronic Informed Consent? &nbsp;&nbsp; <span id="required">*</span></label>
                                                         <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
                                                             <option>Please select</option>
                                                             <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
