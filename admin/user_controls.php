@@ -31,6 +31,7 @@ $label_masterlist = '';
 $masterlist_symptoms = '';
 $list_vaccine = '';
 $list_vaccine_report = ' ';
+$list_vaccine_report_no = ' ';
 
 $list_close_contact = ' ';
 $list_positive_case = ' ';
@@ -103,8 +104,8 @@ if ($_SESSION['user_type'] == 1) {
 
 
 
- 
-   $list_vaccine = '<li class="nav-item">
+
+  $list_vaccine = '<li class="nav-item">
    <a href="list_vaccine_profile" class="nav-link sidebar-link">
      &nbsp;
      <i class="nav-icon fas fa-syringe icons"></i>
@@ -112,7 +113,7 @@ if ($_SESSION['user_type'] == 1) {
    </a>
  </li> ';
 
- $list_assessment = '<li class="nav-item">
+  $list_assessment = '<li class="nav-item">
  <a href="list_assessment" class="nav-link sidebar-link">
    &nbsp;
    <i class="nav-icon fas fa-hands-helping icons"></i>
@@ -168,7 +169,15 @@ if ($_SESSION['user_type'] == 1) {
 <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
   &nbsp;
   <i class="nav-icon fas fa-syringe icons"></i>
-  <p> ELIGIBLE POPULATION </p>
+  <p> Eligible Population </p>
+</a>
+</li> ';
+
+  $list_vaccine_report_no = '<li class="nav-item">
+<a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> All Population </p>
 </a>
 </li> ';
 
@@ -317,19 +326,60 @@ if ($_SESSION['user_type'] == 4) {
   //end of masterlist of tracer 
 
 
+  // vaccination masterlist
+  $label_vaccination =
+    '  
+  <label id="label1" style="font-size:18px; ">
+      &nbsp;
+      <i class="nav-icon fas fa-briefcase-medical icons "></i>
+      &nbsp;
+       VACCINATION
+   </label>';
 
 
 
-  // report for vaccine
-  $list_vaccine_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> ELIGIBLE POPULATION </p>
-</a>
+
+
+  $list_vaccine = '<li class="nav-item">
+   <a href="list_vaccine_profile" class="nav-link sidebar-link">
+     &nbsp;
+     <i class="nav-icon fas fa-syringe icons"></i>
+     <p> Registration </p>
+   </a>
+ </li> ';
+
+  $list_assessment = '<li class="nav-item">
+ <a href="list_assessment" class="nav-link sidebar-link">
+   &nbsp;
+   <i class="nav-icon fas fa-hands-helping icons"></i>
+
+   <p> Assessment </p>
+ </a>
 </li> ';
 
-  // end report for vaccine 
+  // end of masterlist vaccination
+
+
+
+
+
+  // start of vaccine report
+  $list_vaccine_report = '<li class="nav-item">
+  <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Eligible Population </p>
+  </a>
+  </li> ';
+
+  $list_vaccine_report_no = '<li class="nav-item">
+  <a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> All Population </p>
+  </a>
+  </li> ';
+  // end of report
 
   $single_break = '<br> ';
 
