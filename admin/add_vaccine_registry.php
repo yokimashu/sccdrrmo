@@ -301,11 +301,22 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
+
+                                    <strong><i class="fa fa-id-badge"></i> Age</strong>
+
+                                    <p class="text-muted">
+                                    <div>
+                                        <input id="age" name="age" style="font-size:15px; width:90%;" class="form-control" readonly placeholder="Email Address">
+                                    </div>
+                                    </p>
+
+                                    <hr>
+
                                     <strong><i class="fa fa-envelope"></i> E-mail Address</strong>
 
                                     <p class="text-muted">
                                     <div>
-                                        <input id="email-add" style="font-size:15px; width:80%;" class="form-control" readonly placeholder="Email Address">
+                                        <input id="email-add" style="font-size:15px; width:90%;" class="form-control" readonly placeholder="Email Address">
                                     </div>
 
                                     <hr>
@@ -315,7 +326,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     <strong><i class="fa fa-pencil mr-1"></i> Account Status <span id="required">*</span></strong>
                                     <p class="text-muted">
                                     <div>
-                                        <input id="acct-stat" style="font-size:15px; width:80%;" class="form-control" readonly placeholder="Account Status">
+                                        <input id="acct-stat" style="font-size:15px; width:90%;" class="form-control" readonly placeholder="Account Status">
                                     </div>
                                     <?php echo $get_status; ?></p>
                                     </p>
@@ -475,11 +486,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <label>Birthdate: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="date" class="form-control pull-right" onblur="getAge();" placeholder="dd/mm/yyyy" id="birthdate" name="birthdate" />
                                                             </div>
-                                                            <div class="col-md-3">
-                                                                <label>Age:</label>
-                                                                <input type="number" id="age" name="age" class="form-control pull-right" placeholder="0">
-
-                                                            </div>
+                                                         
 
                                                             <div class="col-sm-3">
                                                                 <label>Civil Status: <span id="required">*</span></label>
@@ -491,14 +498,13 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                 </select>
                                                             </div>
-
-                                                        </div><br>
-                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Contact No: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
                                                             </div>
+
                                                         </div><br>
+                                             
 
 
                                                     </div>
@@ -1200,7 +1206,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                         var gender = result.data10;
 
-                        if (gender == 'Female') {   
+                        if (gender == 'Female') {
                             $("#gender").select2("val", "01_Female");
                             $('#preg_status').select2("val", "Select pregnancy status...")
                         } else if (gender == 'Male') {
