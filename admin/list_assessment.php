@@ -88,12 +88,12 @@ $get_all_vaccine_data->execute();
 
                         <th> Entity_no </th>
                         <th> Category</th>
-                        <th width="300px"> Full Name </th>
+                        <th width="500px"> Full Name </th>
                         <th> Gender </th>
-                        <th> Date of Birth </th>
+                        <!-- <th> Date of Birth </th>
                         <th> Address </th>
-                        <!-- <th> Barangay </th> -->
-                        <!-- <th> Municipality </th>
+                        <th> Barangay </th>
+                        <th> Municipality </th>
                         <th> Province </th>
                         <th> Region </th>
                         <th> Employed </th>
@@ -272,17 +272,17 @@ $get_all_vaccine_data->execute();
   ?>
 
   <script>
-    // $('#users').DataTable({
-    //   'paging': true,
-    //   'lengthChange': true,
-    //   'searching': true,
-    //   'ordering': false,
-    //   'info': true,
-    //   'autoWidth': true,
-    //   'autoHeight': true
+    $('#users').DataTable({
+      'paging': true,
+      'lengthChange': true,
+      'searching': true,
+      'ordering': false,
+      'info': true,
+      'autoWidth': true,
+      'autoHeight': true
 
 
-    // });
+    });
 
     // var dataTable = $('#users').DataTable({
 

@@ -428,6 +428,11 @@ if (isset($_GET['id'])) {
                                         <strong><i class="fa fa-pencil mr-1"></i> Print Vaccination Card </span></strong>
                                     <p class="text-muted">
 
+                                        <hr>
+
+                                    <strong><i class="fas fa-share"></i><a href="list_assessment.php"> Move to VAS </span></a></strong>
+                                    <p class="text-muted">
+
                                     </p>
                                     <hr>
 
