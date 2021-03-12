@@ -40,6 +40,7 @@ $single_break = ' ';
 
 $label_vaccination = ' ';
 $list_assessment = ' ';
+$list_bakuna_center = ' ';
 
 
 //google forms
@@ -119,6 +120,15 @@ if ($_SESSION['user_type'] == 1) {
    <i class="nav-icon fas fa-hands-helping icons"></i>
 
    <p> Assessment </p>
+ </a>
+</li> ';
+
+  $list_bakuna_center = '<li class="nav-item">
+ <a href="list_bakuna_center" class="nav-link sidebar-link">
+   &nbsp;
+   <i class="nav-icon fas fa-hospital-o icons"></i>
+
+   <p> Bakuna Center </p>
  </a>
 </li> ';
 
