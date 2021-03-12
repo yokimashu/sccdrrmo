@@ -1083,8 +1083,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         <div class="row">
                                                                             <div class="">
                                                                                 <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify all that apply</label>
-                                                                                <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="list_symptoms[]" placeholder="Select Symptoms" required value = "<?php echo $specify_symptoms; ?>">
-                                                                                    <?php while ($get_complications = $get_all_complications_data->fetch(PDO::FETCH_ASSOC)) { ?>>
+                                                                                <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="list_symptoms[]" placeholder="Select Symptoms" required >
                                                                                     <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                                         <option value="<?php echo $get_symptoms['idno']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
                                                                                     <?php } ?>
@@ -1174,7 +1173,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                             <div class="col-md-6">
                                                                                 <label for="">Profession of Vaccinator: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                                <input type="text" class="form-control" name="vaccinator_profession" id="vaccinator_profession" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $profession_vaccinator; ?>">
+                                                                                <input type="text" class="form-control" name="profession_vaccinator" id="profession_vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $profession_vaccinator; ?>">
                                                                             </div>
                                                                         </div><br>
 
@@ -1387,7 +1386,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                         <div class="col-md-6">
                                                             <label for="">Reason for refusal</label>
-                                                            <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="" required value="<?php echo $refusal; ?>">
+                                                            <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="Select Complications" required value="<?php echo $refusal; ?>">
                                                                 <?php while ($get_reason = $get_all_reason_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option value="<?php echo $get_reason['idno']; ?>"><?php echo $get_reason['reason']; ?></option>
                                                                 <?php } ?>
@@ -1420,7 +1419,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="row">
                                                     <div class="col-md-6">
                                                             <label for="">Deferral</label>
-                                                            <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="Select Complications" required value="<?php echo $deferral; ?>">
+                                                            <select class="form-control select2" id="deferral" style="width: 100%;" name="deferral" placeholder="Select Complications" required value="<?php echo $deferral; ?>">
                                                                 <?php while ($get_deferral = $get_all_deferral_sql->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option value="<?php echo $get_deferral['idno']; ?>"><?php echo $get_deferral['deferral']; ?></option>
                                                                 <?php } ?>
