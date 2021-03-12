@@ -17,10 +17,17 @@ $now = new DateTime();
 
 $entity_no = ' ';
 
-$btnSave = $btnEdit = $pregstatus = $wallergy = $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent = '';
+$btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $get_photo =
+    $get_firstname = $get_middlename = $get_lastname = $get_suffix = $pregstatus = $wallergy =
+    $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent =
+    $refusal = $age_16 = $allergy_PEG = $allergic_reaction = $no_food_allergy = $monitor_patient = $bleeding_history = $yes_bleeding_history=
+    $manifest_symptoms = $specify_symptoms = $no_exposure = $no_treated = $no_received_vaccine = $no_received_antibodies = $pregnant_semester=
+    $no_illness = $specify_illness = $medical_clearance = $deferral = $vaccination_date = $vaccine_manufacturer = $batch_number = $lot_number=
+    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $img = '';
+$alert_msg = '';
 
 
 if (!isset($_SESSION['id'])) {
@@ -37,11 +44,11 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $tracer_fullname = $result['fullname'];
 }
 
-if (isset($_GET['entity_no'])) {
+if (isset($_GET['id'])) {
 
-    $entity_no = $_GET['entity_no'];
+    $entity_no = $_GET['id'];
     $get_photo_individual = '';
-    $get_vaccineProfile_sql = "SELECT * FROM tbl_vaccine WHERE entity_no = :id";
+    $get_vaccineProfile_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no WHERE a.entity_no = :id";
     $vaccineprofile_data = $con->prepare($get_vaccineProfile_sql);
     $vaccineprofile_data->execute([':id' => $entity_no]);
     while ($result = $vaccineprofile_data->fetch(PDO::FETCH_ASSOC)) {
@@ -185,6 +192,10 @@ $get_all_symptoms_data->execute();
 $get_all_reason_sql = "SELECT * FROM tbl_reason";
 $get_all_reason_data = $con->prepare($get_all_reason_sql);
 $get_all_reason_data->execute();
+
+$get_all_deferral_sql = "SELECT * FROM tbl_deferral";
+$get_all_deferral_sql = $con->prepare($get_all_deferral_sql);
+$get_all_deferral_sql->execute();
 
 
 
@@ -366,7 +377,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <img class="profile-user-img img-fluid img-circle" src="../flutter/images/<?php echo $get_photo ?>" id="tphoto">
                                     </div>
 
-                                    <h2 class="profile-username text-center"><?php echo $get_firstname . ' ' . $get_middlename[0] . '.' . ' ' . $get_lastname . ' ' . $get_suffix; ?></h2>
+                                    <h2 class="profile-username text-center"><?php echo $get_firstname . ' ' . $get_middlename . '.' . ' ' . $get_lastname . ' ' . $get_suffix; ?></h2>
 
                                     <p class="text-muted text-center"><?php echo $get_entity_no; ?></p>
 
@@ -382,14 +393,29 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                             <div class="card card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">About Me</h3>
+                                    <h3 class="card-title">Basic Information</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
+                                    <strong><i class="fa fa-calendar"></i> Birthdate</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_birthdate; ?></p>
+                                    <hr>
+
                                     <strong><i class="fa fa-calendar"></i> Age</strong>
                                     <p class="text-muted">
                                         <?php echo $get_age; ?></p>
+                                    <hr>
+
+                                    <strong><i class="fa fa-calendar"></i> Civil Status</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_civil_status; ?></p>
+                                    <hr>
+
+                                    <strong><i class="fa fa-calendar"></i> Contact No.</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_mobile_no; ?></p>
                                     <hr>
 
                                     <strong><i class="fa fa-envelope"></i> E-mail Address</strong>
@@ -493,14 +519,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                 </div>
 
-                                                <!-- category -->
-                                                <div class="card card-success card-outline">
+
+                                                <!-- <div class="card card-success card-outline">
                                                     <div class="card-header">
 
 
                                                         <h5 class="m-0">BASIC INFORMATION</h5>
                                                     </div>
-                                                    <!-- </legend> -->
+                                                    
                                                     <div class="card-body">
 
                                                         <div class="row">
@@ -572,7 +598,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div><br>
 
                                                     </div>
-                                                </div>
+                                                </div> -->
                                         </div>
 
 
@@ -581,7 +607,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div hidden class="card card-success card-outline">
                                             <div class="card-header">
 
-                                                <h5  class="m-0">CATEGORY</h5>
+                                                <h5 class="m-0">CATEGORY</h5>
                                             </div>
                                             <!-- </legend> -->
                                             <div class="card-body">
@@ -732,7 +758,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                         <div class="col-sm-5">
                                                             <label> If pregnant, 2nd or 3rd trimester?</label>
-                                                            <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status">
+                                                            <select class="form-control select2" style="width:100%" name="preg_semester" id="preg_semester" value= "<?php echo $pregnant_semester?>">
                                                                 <option selected> Please select</option>
                                                                 <option value="01_Yes">Yes</option>
                                                                 <option value="02_No">No</option>
@@ -757,10 +783,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="row">
                                                         <div class="col-sm-4">
                                                             <label>With Comorbidities?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
+                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities" value = "<?php echo $get_wcomorbidities; ?>">
                                                                 <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
+                                                                <option <?php if ($get_wcomorbidities == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_wcomorbidities == '02_No') echo 'selected'; ?> value="02_No">None </option>
                                                             </select>
                                                         </div>
                                                     </div><br>
@@ -853,66 +879,347 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             <!-- end of form choices comorbidities -->
 
 
+                                            <div class="card">
+
+                                                <div class="card-header p-2 card-success card-outline">
+                                                    <div class="nav nav-pills" id="nav-tab" role="tablist">
+                                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-allergy" role="tab" aria-controls="nav-home" aria-selected="true">ALLERGY INFORMATION</a>
+                                                        <a class="nav-item nav-link" id="nav-covid-tab" data-toggle="tab" href="#nav-covid" role="tab" aria-controls="nav-covid" aria-selected="false">COVID INFORMATION</a>
+                                                        <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#nav-other" role="tab" aria-controls="nav-other" aria-selected="false">OTHER INFORMATION</a>
+                                                        <a class="nav-item nav-link" id="nav-vaccine-tab" data-toggle="tab" href="#nav-vaccine" role="tab" aria-controls="nav-vaccine" aria-selected="false">VACCINE INFORMATION</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-body">
+                                                    <div class="box-body">
+                                                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+
+                                                            <div class="tab-content" id="nav-tabContent">
+
+                                                                <div class="tab-pane fade show active" id="nav-allergy" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                                    <div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-sm-6">
+                                                                                <label>With Allergy? </label>
+                                                                                <select class="form-control select2  " name="with_allergy" id="with_allergy" style="width:100%" value = "<?php echo $get_wallergy; ?>">
+                                                                                    <!-- <option>Do you have allergy?</option> -->
+                                                                                    <option <?php if ($get_wallergy == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                    <option <?php if ($get_wallergy == '02_No') echo 'selected'; ?> value="02_No">None </option>
+                                                                                </select>
+                                                                            </div>
+
+
+                                                                            <div class="col-sm-6">
+                                                                                <label>Has no allergies to PEG or polysorbate?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="allergy_PEG" id="allergy_PEG" value = "<?php echo $allergy_PEG; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-sm-6">
+                                                                                <label>Has no allergy to food, egg, medicines, and no asthma?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="food_allergy" id="food_allergy" value = "<?php echo $no_food_allergy; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="col-sm-5">
+                                                                                <label>* If with allergy or asthma, will the vaccinator able to monitor the patient for 30 minutes?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="monitor_patient" id="monitor_patient" value = "<?php echo $monitor_patient; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4">
+                                                                                <label>Has no severe allergic reaction after the 1st dose of the vaccine?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="allergic_reaction" id="allergic_reaction" value = "<?php echo $allergic_reaction; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                                <div class="tab-pane fade" id="nav-covid" role="tabpanel" aria-labelledby="nav-covid-tab">
+                                                                    <div>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px"> COVID History? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                                <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value = "<?php echo $get_covidhistory; ?>">
+                                                                                    <!-- <option>Please select</option> -->
+                                                                                    <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                    <option <?php if ($get_covidhistory == '02_No') echo 'selected'; ?> value="02_No">None </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Directly in interaction with COVID patient &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                                <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option <?php if ($get_directcovid == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                    <option <?php if ($get_directcovid == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Has no history of exposure to a confirmed or suspected COVID-19 case in the past 2 weeks?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="covid_exposure" id="covid_exposure" value="<?php echo $no_exposure; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Has not been previously treated for COVID-19 in the past 90 days?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="covid_treated" id="covid_treated" value="<?php echo $no_treated; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Has not received convalescent plasma or monoclonal antibodies for COVID-19 in the past 90 days?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="covid_antibody" id="covid_antibody" value="<?php echo $no_received_antibodies; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="tab-pane fade" id="nav-other" role="tabpanel" aria-labelledby="nav-other-tab">
+
+                                                                    <div>
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Age more than 16 years old?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="age_16" id="age_16" value = "<?php echo $age_16; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Has no history of bleeding disorders or currently taking anti-coagulants?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="bleeding_history" id="bleeding_history" value = "<?php echo $bleeding_history; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">* If with bleeding history, is a gauge 23 - 25 syringe available for injection?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="yes_bleeding" id="yes_bleeding" value = "<?php echo $yes_bleeding_history; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Has not received any vaccine in the past 2 weeks?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="no_received_vaccine" id="no_received_vaccine" value="<?php echo $no_received_vaccine; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Does not manifest any of the following symptoms: Fever/chills, Headache, Cough, Colds, Sore throat, Myalgia, Fatigue, Weakness, Loss of smell/taste, Diarrhea, Shortness of breath/ difficulty in breathing</label>
+                                                                                <select class="form-control select2" style="width:100%" name="manifest_symptoms" id="manifest_symptoms" value = "<?php echo $manifest_symptoms; ?>">
+                                                                                    <!-- <option>Do you have comorbidities?</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify all that apply</label>
+                                                                                <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="list_symptoms[]" placeholder="Select Symptoms" required value = "<?php echo $specify_symptoms; ?>">
+                                                                                    <?php while ($get_complications = $get_all_complications_data->fetch(PDO::FETCH_ASSOC)) { ?>>
+                                                                                    <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                                        <option value="<?php echo $get_symptoms['idno']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
+                                                                                    <?php } ?>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">Does not have any of the following: HIV, Cancer/ Malignancy, Underwent Transplant, Under Steroid Medication/ Treatment, Bed Ridden, terminal illness, less than 6 months prognosis</label>
+                                                                                <select class="form-control select2" style="width:100%" name="no_illness" id="no_illness" value="<?php echo $no_illness; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">None</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify.</label>
+                                                                                <select class="form-control select2" id="complications" style="width: 100%;" multiple="" name="list_illness[]" placeholder="Select Illness" required value = "<?php echo $specify_illness; ?>">
+                                                                                    <?php while ($get_complications = $get_all_complications_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                                        <option value="<?php echo $get_complications['idno']; ?>"><?php echo $get_complications['complications']; ?></option>
+                                                                                    <?php } ?>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div><br>
+
+
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <label style="font-size:14px">* If with mentioned condition, has presented medical clearance prior to vaccination day?</label>
+                                                                                <select class="form-control select2" style="width:100%" name="medical_clearance" id="medical_clearance" value="<?php echo $medical_clearance; ?>">
+                                                                                    <!-- <option>Choose here</option> -->
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="tab-pane fade" id="nav-vaccine" role="tabpanel" aria-labelledby="nav-vaccine-tab">
+                                                                    <div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label>Vaccination Date: </label>
+                                                                                <div class="input-group date" data-provide="datepicker">
+                                                                                    <div class="input-group-addon">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo $vaccination_date; ?>">
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="">Vaccine Manufacturer: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <input type="text" class="form-control" name="vaccine_manufacturer" id="vaccine_manufacturer" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Manufacturer" value="<?php echo $vaccine_manufacturer; ?>">
+                                                                            </div>
+
+                                                                        </div><br>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="">Batch Number: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <input type="text" class="form-control" name="batch_number" id="batch_number" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Batch Number" value="<?php echo $batch_number; ?>">
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="">Lot Number: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <input type="text" class="form-control" name="lot_number" id="lot_number" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Lot Number"value="<?php echo $lot_number; ?>">
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <label for="">Vaccinator Name: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <input type="text" class="form-control" name="vaccinator" id="vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Vaccinator" value="<?php echo $vaccinator_name; ?>">
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="">Profession of Vaccinator: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <input type="text" class="form-control" name="vaccinator_profession" id="vaccinator_profession" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $profession_vaccinator; ?>">
+                                                                            </div>
+                                                                        </div><br>
+
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <label>1st Dose</label>
+                                                                                <select name="first_dose" id="first_dose" style="width:100%" class="form-control " value="<?php echo $dose_1st; ?>">
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label>2nd Dose</label>
+                                                                                <select name="second_dose" id="second_dose" style="width:100%" class="form-control " value="<?php echo $dose_2nd; ?>">
+                                                                                    <option value="01_Yes">Yes</option>
+                                                                                    <option selected value="02_No">No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+
                                             <!-- allergy information-->
-                                            <div class="card card-success card-outline">
+                                            <div hidden class="card card-success card-outline">
                                                 <div class="card-header">
                                                     <h5 class="m-0">ALLERGY INFORMATION</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="row">
-
-                                                        <div class="col-sm-6">
-                                                            <label>With Allergy? </label>
-                                                            <select class="form-control select2  " name="with_allergy" id="with_allergy" style="width:100%">
-                                                                <!-- <option>Do you have allergy?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
 
 
-                                                        <div class="col-sm-6">
-                                                            <label>Has no allergies to PEG or polysorbate?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
 
-                                                    <div class="row">
 
-                                                        <div class="col-sm-6">
-                                                            <label>Has no allergy to food, egg, medicines, and no asthma?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
 
-                                                        <div class="col-sm-5">
-                                                            <label>* If with allergy or asthma, will the vaccinator able to monitor the patient for 30 minutes?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
-
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label>Has no severe allergic reaction after the 1st dose of the vaccine?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
 
                                                 </div>
                                             </div>
@@ -995,69 +1302,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                             <!-- covid information -->
-                                            <div class="card card-success card-outline">
+                                            <div hidden class="card card-success card-outline">
                                                 <div class="card-header">
                                                     <h5 class="m-0">COVID INFORMATION </5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="row">
-
-                                                        <div class="">
-                                                            <label style="font-size:14px"> COVID History? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose">
-                                                                <!-- <option>Please select</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Directly in interaction with COVID patient &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Has no history of exposure to a confirmed or suspected COVID-19 case in the past 2 weeks?</label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Has not been previously treated for COVID-19 in the past 90 days?</label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Has not received convalescent plasma or monoclonal antibodies for COVID-19 in the past 90 days?</label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
 
                                                 </div>
                                             </div>
@@ -1104,102 +1353,13 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                             <!-- other information -->
 
-                                            <div class="card card-success card-outline">
+                                            <div hidden class="card card-success card-outline">
                                                 <div class="card-header">
                                                     <h5 class="m-0">
                                                         OTHER INFORMATION
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Has no history of bleeding disorders or currently taking anti-coagulants?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">* If with bleeding history, is a gauge 23 - 25 syringe available for injection?</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Has not received any vaccine in the past 2 weeks?</label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Does not manifest any of the following symptoms: Fever/chills, Headache, Cough, Colds, Sore throat, Myalgia, Fatigue, Weakness, Loss of smell/taste, Diarrhea, Shortness of breath/ difficulty in breathing</label>
-                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities">
-                                                                <!-- <option>Do you have comorbidities?</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">None</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify all that apply</label>
-                                                            <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="list_symptoms[]" placeholder="Select Symptoms" required>
-                                                                <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                    <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">Does not have any of the following: HIV, Cancer/ Malignancy, Underwent Transplant, Under Steroid Medication/ Treatment, Bed Ridden, terminal illness, less than 6 months prognosis</label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify.</label>
-                                                            <select class="form-control select2" id="complications" style="width: 100%;" multiple="" name="list_complications[]" placeholder="Select Complications" required>
-                                                                <?php while ($get_complications = $get_all_complications_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                    <option value="<?php echo $get_complications['complications']; ?>"><?php echo $get_complications['complications']; ?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
-                                                    </div><br>
-
-
-                                                    <div class="row">
-                                                        <div class="">
-                                                            <label style="font-size:14px">* If with mentioned condition, has presented medical clearance prior to vaccination day?</label>
-                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                <!-- <option>Choose here</option> -->
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
 
                                                 </div>
                                             </div>
@@ -1218,18 +1378,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="electronic_consent" id="electronic_consent">
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                                <option value="03_Unknown">Unknown</option>
+                                                            <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="<?php echo $consent; ?>">
+                                                                <!-- <option value="01_Yes">Yes</option> -->
+                                                                <option <?php if ($consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($consent == '02_No') echo 'selected'; ?> value="02_No">No </option>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-6">
                                                             <label for="">Reason for refusal</label>
-                                                            <select class="form-control select2" id="refusal" style="width: 100%;" multiple="" name="refusal" placeholder="Select Complications" required>
+                                                            <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="" required value="<?php echo $refusal; ?>">
                                                                 <?php while ($get_reason = $get_all_reason_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                    <option value="<?php echo $get_reason['reason']; ?>"><?php echo $get_reason['reason']; ?></option>
+                                                                    <option value="<?php echo $get_reason['idno']; ?>"><?php echo $get_reason['reason']; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
@@ -1239,29 +1399,40 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="astrazeneca" id="astrazeneca">
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                                <option value="03_Unknown">Unknown</option>
+                                                            <select class="form-control select2" name="astrazeneca" id="astrazeneca" value="<?php echo $get_astrazeneca; ?>">
+                                                            <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                            <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+
                                                             </select>
                                                         </div>
 
                                                         <div class="col-sm-6">
                                                             <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="sinovac" id="sinovac">
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                                <option value="03_Unknown">Unknown</option>
+                                                            <select class="form-control select2" name="sinovac" id="sinovac" value="<?php echo $get_sinovac; ?>">
+                                                            <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                            <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
                                                             </select>
                                                         </div>
+                                                    </div><br>
 
+                                                    <div class="row">
+                                                    <div class="col-md-6">
+                                                            <label for="">Deferral</label>
+                                                            <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="Select Complications" required value="<?php echo $deferral; ?>">
+                                                                <?php while ($get_deferral = $get_all_deferral_sql->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                    <option value="<?php echo $get_deferral['idno']; ?>"><?php echo $get_deferral['deferral']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
                                                     </div>
 
                                                 </div><br>
-                                            </div><br>
+                                            </div>
 
                                             <div class="box-footer" align="center">
-                                                <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
+                                                <button type="submit" id="btnSubmit" name="insert_assessment" class="btn btn-success">
                                                     <!-- <i class="fa fa-check fa-fw"> </i> -->
                                                     <h4>Submit Form</h4>
                                                 </button>
