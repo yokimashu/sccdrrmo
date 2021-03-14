@@ -3,7 +3,7 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 include('update_status.php');
-
+include('import_csv.php');
 session_start();
 
 $user_id = $_SESSION['id'];
@@ -58,11 +58,14 @@ $get_all_vaccine_data->execute();
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <div class="content-header"></div>
-
+      <div class="float-topright">
+                <?php echo $alert_msg; ?>
+            </div>
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
             <h4> Vaccine Masterlists
+            <button class="btn btn-success bg-gradient-success"  data-toggle="modal"  data-target="#myModal"> <i class="nav-icon fa fa-download"></i> </button>
               <a href="add_vaccine_registry" style="float:right;" type="button"
                 class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
@@ -70,7 +73,36 @@ $get_all_vaccine_data->execute();
             </h4>
 
           </div>
+          <div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Import from CSV</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <form method="post" enctype="multipart/form-data">
+   <div align="center">  
+    <label>Select CSV File:</label>
+    <input type="file" name="file" />
+    <br />
+    <input type="submit" name="submit" value="Import" class="btn btn-info" />
+   </div>
+  </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
           <div class="card-body">
             <div class="box box-primary">
               <form role="form" method="get" action="">
