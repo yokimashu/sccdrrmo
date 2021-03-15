@@ -38,16 +38,16 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-// $entity_no = $_SESSION['entity_no'];
+$entity_no = $_SESSION['entity_number'];
 
-// $get_vaccine_sql = "SELECT * FROM tbl_vaccine where entity_no = :entity_no ";
-// $vaccine_data = $con->prepare($get_vaccine_sql);
-// $vaccine_data->execute([':entity_no' => $entity_no]);
-// while ($result = $vaccine_data->fetch(PDO::FETCH_ASSOC)) {
+$get_vaccine_sql = "SELECT * FROM tbl_vaccine where entity_no = :entity_no ";
+$vaccine_data = $con->prepare($get_vaccine_sql);
+$vaccine_data->execute([':entity_no' => $entity_no]);
+while ($result = $vaccine_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-//     $entity_no = $result['entity_no'];
-// }
+    $entity_no = $result['entity_no'];
+}
 
 
 
@@ -360,14 +360,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                     <strong><i class="fa fa-print mr-1"></i>
-                                        <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> " id="printlink" target="_blank" title="Vamos ID"> Print Vamos ID </a>
+                                        <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a>
                                     </strong>
 
                                     <p class="text-muted">
 
                                         <hr>
                                         <strong><i class="fa fa-print mr-1"></i>
-                                            <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?> " id="printlink1" target="_blank" title="Vaccine Form"> Print Vaccination Form </a>
+                                            <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a>
                                         </strong>
                                     </p>
 
@@ -378,7 +378,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <hr>
 
                                         <strong><i class="fa fa-print mr-1"></i>
-                                            <a href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> " id="printlink2" target="_blank" title="Vaccination Card"> Print Vaccination Card </a>
+                                            <a href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccination Card"> Print Vaccination Card </a>
                                         </strong>
 
 
@@ -447,7 +447,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-5">
                                                                 <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <input type="text" readonly class="form-control ent_no" id="entity_no" name="entity_no" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number">
+                                                                <input type="text" readonly class="form-control ent_no"  id="entity_no" name="entity_no" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number" value= "<?php echo $entity_no?>">
                                                             </div>
 
                                                         </div><br>
