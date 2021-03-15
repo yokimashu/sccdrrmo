@@ -446,7 +446,7 @@ if (isset($_GET['id'])) {
                                     <hr>
 
 
-                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="add_assessment.php?id=<?php echo $entity_no; ?> "> View VAS </a> </strong>
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="update_assessment.php?entity_no=<?php echo $entity_no; ?> "> View VAS </a> </strong>
 
 
                                     <p class="text-muted">
