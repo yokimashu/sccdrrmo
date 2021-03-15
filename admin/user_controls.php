@@ -32,7 +32,8 @@ $masterlist_symptoms = '';
 $list_vaccine = '';
 $list_vaccine_report = ' ';
 $list_vaccine_report_no = ' ';
-
+$list_vaccine_linelist = ' ';
+$list_categorylist = ' ';
 $list_close_contact = ' ';
 $list_positive_case = ' ';
 $single_break = ' ';
@@ -40,7 +41,6 @@ $single_break = ' ';
 
 $label_vaccination = ' ';
 $list_assessment = ' ';
-$list_bakuna_center = ' ';
 
 
 //google forms
@@ -123,13 +123,12 @@ if ($_SESSION['user_type'] == 1) {
  </a>
 </li> ';
 
-  $list_bakuna_center = '<li class="nav-item">
- <a href="list_bakuna_center" class="nav-link sidebar-link">
-   &nbsp;
-   <i class="nav-icon fas fa-hospital-o icons"></i>
-
-   <p> Bakuna Center </p>
- </a>
+$list_categorylist = '<li class="nav-item">
+<a href="list_categorylist" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Vaccine Masterlist </p>
+</a>
 </li> ';
 
   // end of masterlist vaccination
@@ -188,6 +187,14 @@ if ($_SESSION['user_type'] == 1) {
   &nbsp;
   <i class="nav-icon fas fa-syringe icons"></i>
   <p> All Population </p>
+</a>
+</li> ';
+
+$list_vaccine_linelist = '<li class="nav-item">
+<a href="../plugins/jasperreport/vaccine_linelist.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Sinovac Linelist </p>
 </a>
 </li> ';
 
