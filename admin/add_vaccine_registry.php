@@ -440,7 +440,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-5">
                                                                 <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number">
+                                                                <input required type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number">
                                                             </div>
 
                                                         </div><br>
@@ -450,17 +450,17 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-3">
                                                                 <label>First name: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <input type="text" class="form-control" id="firstname" name="firstname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="First name">
+                                                                <input required type="text" class="form-control" id="firstname" name="firstname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="First name">
                                                             </div>
 
                                                             <div class="col-sm-3">
                                                                 <label>Middle name: </label>
-                                                                <input type="text" class="form-control" id="middlename" name="middlename" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Middle name">
+                                                                <input required type="text" class="form-control" id="middlename" name="middlename" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Middle name">
 
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <label>Last name : &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <input type="text" class="form-control" id="lastname" name="lastname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Last name">
+                                                                <input required type="text" class="form-control" id="lastname" name="lastname" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Last name">
                                                             </div>
                                                             <div class="col-sm-3">
 
@@ -475,7 +475,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
                                                                 <select class="form-control select2" id="gender" name="gender">
-                                                                    <option selected value=" ">Select gender</option>
+                                                                    <option selected value=" ">Select Gender</option>
                                                                     <option value="01_Female">Female</option>
                                                                     <option value="02_Male">Male</option>
                                                                     <option value="03_Not to disclose"> Not to Disclose</option>
@@ -486,7 +486,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <label>Birthdate: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="date" class="form-control pull-right" onblur="getAge();" placeholder="dd/mm/yyyy" id="birthdate" name="birthdate" />
                                                             </div>
-                                                         
+
 
                                                             <div class="col-sm-3">
                                                                 <label>Civil Status: <span id="required">*</span></label>
@@ -504,7 +504,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             </div>
 
                                                         </div><br>
-                                             
+
 
 
                                                     </div>
@@ -531,7 +531,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 </select> -->
 
                                                                 <select class="form-control select2" style="width:100%" name="category" id="category">
-                                                                    <option value=" " selected> Select Category </option>
+                                                                    <option value=" " selected>Select Category</option>
                                                                     <option value="01_Health_Care_Worker">Health Care Worker</option>
                                                                     <option value="02_Senior_Citizen">Senior Citizen</option>
                                                                     <option value="03_Indigent">Indigent</option>
@@ -547,7 +547,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-4" id="indigent" hidden>
                                                                 <label> Indigent or not?</label>
                                                                 <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
-                                                                    <option value=" " selected> Select status </option>
+                                                                    <option value=" " selected>Select status</option>
                                                                     <option value="01_Indigent">Indigent</option>
                                                                     <option value="02_Not_Indigent">Not Indigent</option>
                                                                 </select>
@@ -663,7 +663,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
-                                                                    <option value="">Please select...</option>
+                                                                    <option value="">Select Employment</option>
                                                                     <?php while ($get_employment = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                         <option value="<?php echo $get_employment['description']  ?>"><?php echo $get_employment['status']; ?></option>
                                                                     <?php } ?>
@@ -985,46 +985,54 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 </select>
                                                             </div>
 
-                                                            <div class="col-sm-6">
-                                                                <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <select class="form-control select2" name="sinovac" id="sinovac">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                    <option value="03_Unknown">Unknown</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
+                                                            <?php if ($age < 65) { ?>
+                                                                <div class="col-sm-6">
+                                                                <?php } else { ?>
+                                                                    <div hidden class="col-sm-6">
+                                                                    <?php } ?>
+                                                                    <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                    <select class="form-control select2" name="sinovac" id="sinovac">
+                                                                        <option value="01_Yes">Yes</option>
+                                                                        <option selected value="02_No">No</option>
+                                                                        <option value="03_Unknown">Unknown</option>
+                                                                    </select>
+                                                                    </div>
+                                                                </div><br>
 
-                                                        <div class="col-sm-6">
-                                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="astrazeneca" id="astrazeneca">
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                                <option value="03_Unknown">Unknown</option>
-                                                            </select>
+                                                                <?php if ($age >= 65) { ?>
+                                                                    <div class="col-sm-6">
+                                                                    <?php } else { ?>
+                                                                        <div hidden class="col-sm-6">
+                                                                        <?php } ?>
+                                                                        <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                        <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                                                            <option value="01_Yes">Yes</option>
+                                                                            <option selected value="02_No">No</option>
+                                                                            <option value="03_Unknown">Unknown</option>
+                                                                        </select>
+                                                                        </div>
+                                                                    </div><br>
                                                         </div>
-                                                    </div><br>
-                                                </div>
-                                                <!-- end sa choices sa form sa consent -->
+                                                        <!-- end sa choices sa form sa consent -->
 
 
-                                                <div class="box-footer" align="center">
-                                                    <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
-                                                        <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                                        <h4>Submit Form</h4>
-                                                    </button>
+                                                        <div class="box-footer" align="center">
+                                                            <button type="submit" id="btnSubmit" name="insert_vaccine" class="btn btn-success">
+                                                                <!-- <i class="fa fa-check fa-fw"> </i> -->
+                                                                <h4>Submit Form</h4>
+                                                            </button>
 
-                                                    <!-- <a href="list_vaccine_profile">
+                                                            <!-- <a href="list_vaccine_profile">
                                                             <button type="button" name="cancel" class="btn btn-danger">
                                                                 <i class="fa fa-close fa-fw"> </i> </button>
                                                         </a> -->
 
-                                                    <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                                            <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                                         <button type="button" name="print" class="btn btn-primary">
                                                             <i class="nav-icon fa fa-print"> </i> </button>
                                                         </a> -->
 
-                                                </div><br>
+                                                        </div><br>
                                             </form>
                                         </div>
 
@@ -1418,6 +1426,89 @@ $title = 'VAMOS | COVID-19 Patient Form';
             }
 
             console.log("test");
+        });
+
+        $("#btnSubmit").click(function() {
+
+            //category
+            var middlename = $('#middlename').val();
+            var countmname  = middlename.length;
+            var gender = $('#gender :selected').text();
+            var civilstatus = $('#civil_status :selected').text();
+            var barangay = $('#barangay :selected').text();
+            var category = $('#category :selected').text();
+            var healthworker = $('#health_worker :selected').text();
+            var indigent = $('#indigent :selected').text();
+            var employment = $('#emp_status :selected').text();
+            var pregnancy = $('#preg_status :selected').text();
+            var profession = $('#profession :selected').text();
+            var sinovac = $('#sinovac :selected').text();
+            var astrazeneca = $('#astrazeneca :selected').text();
+
+
+            //  alert (category);
+            if (countmname == 1){
+                alert(countmname);
+                alert("Please type middlename in full!");
+                $('#middlename').focus();
+                return false;
+            } if (gender == 'Select Gender') {
+                alert("Please select Gender!");
+                $('#gender').focus();
+                return false;
+            } else if (civilstatus == 'Select Civil Status') {
+                alert("Please select civil status!");
+                $('#civil_status').focus();
+                return false;
+            } else if (barangay == 'Select Barangay') {
+                alert("Please select barangay!");
+                $('#barangay').focus();
+                return false;
+            } else if (category == 'Select Category') {
+                alert("Please select category!");
+                $('#category').focus();
+                return false;
+            } else if ((category == 'Health Care Worker') && (healthworker == 'Select Health Worker')) {
+                alert("Please select type of health worker!");
+                $('#health_worker').focus();
+                return false;
+            } else if ((category == 'Senior Citizen') && (indigent == 'Select status')) {
+                alert("Please select if indigent or not!");
+                $('#indigent').focus();
+                return false;
+            } else if (employment == 'Select Employment') {
+                alert("Please select employment! Select N/A if not applicable.");
+                $('#emp_status').focus();
+                return false;
+            } else if (profession == 'Select Profession') {
+                alert("Please select profession! Select N/A if not applicable.");
+                $('#profession').focus();
+                return false;
+            } else if (pregnancy == 'Select pregnancy status...') {
+                alert("Please select pregnancy status!");
+                $('#preg_status').focus();
+                return false;
+            } else if (sinovac == 'Please select') {
+                alert("Are you willing to be vaccinated with Sinovac?");
+                $('#sinovac').focus();
+                return false;
+                // } else if (astrazeneca == 'Please select') {
+                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
+                //   $('#astrazeneca').focus();
+                //   return false;
+
+
+
+
+            } else return;
+
+
+            //category
+
+            //  alert (category);
+
+
+
         });
     </script>
 
