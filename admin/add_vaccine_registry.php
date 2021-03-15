@@ -15,7 +15,7 @@ $now = new DateTime();
 
 // $time = date("h:i:sa");
 
-$entity_no = ' ';
+
 $get_firstname = $get_middlename = $get_lastname = $get_entity_no = $get_email = $get_status = ' ';
 $btnSave = $btnEdit = $pregstatus = $wallergy = $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $consent = '';
 $btnNew = 'hidden';
@@ -36,6 +36,19 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
     $tracer_fullname = $result['fullname'];
 }
+
+
+$entity_no = $_SESSION['entity_number'];
+
+$get_vaccine_sql = "SELECT * FROM tbl_vaccine where entity_no = :entity_no ";
+$vaccine_data = $con->prepare($get_vaccine_sql);
+$vaccine_data->execute([':entity_no' => $entity_no]);
+while ($result = $vaccine_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+    $entity_no = $result['entity_no'];
+}
+
 
 
 
@@ -293,8 +306,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                             <!-- /.card -->
 
                             <!-- About Me Box -->
-
-
                             <div class="card card-success">
                                 <div class="card-header">
                                     <h3 class="card-title">About Me</h3>
@@ -336,6 +347,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                 <!-- /.card-body -->
                             </div>
+
+
+                            <!-- actions -->
                             <div class="card card-success">
                                 <div class="card-header">
                                     <h3 class="card-title">Actions</h3>
@@ -343,40 +357,32 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
+
+                                    <strong><i class="fa fa-print mr-1"></i>
+                                        <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a>
+                                    </strong>
+
                                     <p class="text-muted">
 
-                                        <strong><i class="fa fa-calendar mr-1"></i>
-                                            <a id="card-print" href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> ">
-                                                Print VAMOS ID</a>
+                                        <hr>
+                                        <strong><i class="fa fa-print mr-1"></i>
+                                            <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a>
                                         </strong>
                                     </p>
+
 
 
                                     <p class="text-muted">
 
                                         <hr>
 
-                                        <strong><i class="fa fa-envelope mr-1"></i>
-
-                                            Print Vaccination Form
-
+                                        <strong><i class="fa fa-print mr-1"></i>
+                                            <a href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccination Card"> Print Vaccination Card </a>
                                         </strong>
-                                    </p>
 
-                                    <p class="text-muted">
 
                                         <hr>
-
-
-                                        <strong><i class="fa fa-pencil mr-1"></i>
-                                            <a id="card-print" href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> ">
-                                                Print Vaccination Card
-                                            </a>
-
-                                        </strong>
-
                                     </p>
-                                    <hr>
 
                                 </div>
 
@@ -440,7 +446,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-5">
                                                                 <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number">
+                                                                <input type="text" readonly class="form-control ent_no"  id="entity_no" name="entity_no" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number"<?php echo $entity_no?>
                                                             </div>
 
                                                         </div><br>
@@ -486,7 +492,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <label>Birthdate: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="date" class="form-control pull-right" onblur="getAge();" placeholder="dd/mm/yyyy" id="birthdate" name="birthdate" />
                                                             </div>
-                                                         
+
 
                                                             <div class="col-sm-3">
                                                                 <label>Civil Status: <span id="required">*</span></label>
@@ -504,7 +510,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             </div>
 
                                                         </div><br>
-                                             
+
 
 
                                                     </div>
@@ -1150,7 +1156,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                     success: function(response) {
                         var result = jQuery.parseJSON(response);
                         console.log('response from server', result);
-                        $('#entity_number').val(result.data);
+                        $('#entity_no').val(result.data);
                         $('#fullname').val(result.data1);
                         $('#firstname').val(result.data2);
                         $('#middlename').val(result.data3);
