@@ -290,7 +290,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         <?php echo $label_vaccination; ?>
         <?php echo $list_vaccine; ?>
         <?php echo $list_assessment; ?>
-        <?php echo $list_bakuna_center; ?>
+        <?php echo $list_categorylist; ?>
         <?php echo $single_break; ?>
         <!-- end of masterlist of covid-19 -->
 
@@ -310,6 +310,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </li>
 
           <?php echo $list_vaccine_report; ?>
+          <?php echo $list_vaccine_report_no; ?>
+          <?php echo $list_vaccine_linelist; ?>
 
 
         </div><br>
