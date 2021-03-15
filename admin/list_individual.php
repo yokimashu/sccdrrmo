@@ -1,4 +1,8 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', true);
+
+require_once '../admin/SimpleXLSXGen.php';
 
 include('../config/db_config.php');
 include('sql_queries.php');
@@ -34,7 +38,29 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 // while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)){
 //   $entity_no =  $list_individual['entity_no'];
 // }
+if(isset($_POST['download'])){
 
+  $data = [["Entity No","Username","Full Name"]];
+ 
+$getAllIndividual = "SELECT e.entity_no,
+                     username,
+                     fullname FROM tbl_individual e 
+                    inner join tbl_entity i on e.entity_no = i.entity_no 
+                     ORDER BY e.date_register";
+
+$getIndividualData = $con->prepare($getAllIndividual);
+$getIndividualData->execute();      
+while ($row = $getIndividualData->fetch(PDO::FETCH_ASSOC)){      
+  $nestedData=array(); 
+	$nestedData[] = $row["entity_no"];
+	$nestedData[] = $row["username"];
+	$nestedData[] = ucwords(strtolower($row["fullname"]));
+	$data[] = $nestedData;
+  
+} 
+SimpleXLSXGen::fromArray($data)->downloadAs('Individual.xlsx');// or downloadAs('books.xlsx') or $xlsx_content = (string) $xlsx 
+
+}
 
 ?>
 
@@ -68,6 +94,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
               <a href="add_individual" id="add_individual" style="float:right;" type="button" class="btn btn-success bg-gradient-success" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a>
+                <form method = "post" action = "<?php htmlspecialchars("PHP_SELF");?>">
+                <button type ="submit" class = "btn btn-success" name = "download"><i class = "fa fa-download" ></i></button>
+                </form>
               <!-- <a href="../cameracapture/capture.php" style="float:right;" type="button" class="btn btn-info bg-gradient-info" style="border-radius: 0px;">
                 <i class="nav-icon fa fa-plus-square"></i></a> -->
             </h4>
