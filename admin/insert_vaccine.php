@@ -174,13 +174,13 @@ if (isset($_POST['insert_vaccine'])) {
 
 
     //basic information
-    $entityno        = $_POST['entity_number'];
+    $entityno        = $_POST['entity_no'];
     $lastname       = strtoupper($_POST['lastname']);
     $firstname      = strtoupper($_POST['firstname']);
     $middlename     = strtoupper($_POST['middlename']);
     $suffix         = strtoupper($_POST['suffix']);
     $fullname       = strtoupper($_POST['firstname'] . ' ' . $_POST['middlename'] . ' ' . $_POST['lastname']);
-    $age            = $_POST['age'];
+    $age            = $_POST['ages'];
 
     $gender         = $_POST['gender'];
 
@@ -206,6 +206,8 @@ if (isset($_POST['insert_vaccine'])) {
     $province       = "_0645_NEGROS_OCCIDENTAL";
     $city           = "_64524_SAN_CARLOS_CITY";
     $barangay       = strtoupper($_POST['barangay']);
+    $sinovac        = $_POST['sinovac'];
+    $astrazeneca    = $_POST['astrazeneca'];
 
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
@@ -308,6 +310,9 @@ if (isset($_POST['insert_vaccine'])) {
     } else {
         $patient_diagnose = '02_No';
     }
+
+
+
 
 
     if (!empty($_POST['date_positive'])) {
@@ -420,6 +425,8 @@ if (isset($_POST['insert_vaccine'])) {
             covid_date              = :date_history,
             covid_classification    = :infection,
             Consent                 = :consent,
+            sinovac                 = :sinovacs,
+            astrazeneca             = :astravas,
             username                = :user,
             status                  = 'NEW'
         ";
@@ -479,6 +486,8 @@ if (isset($_POST['insert_vaccine'])) {
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
         ':consent'          => $consent,
+        ':sinovacs'         => $sinovac,
+        ':astravas'         => $astrazeneca,
         ':user'             => $tracer_fullname
 
 
@@ -556,7 +565,7 @@ if (isset($_POST['insert_vaccine'])) {
             email            = '-',
             gender           = :gender,
             birthdate        = :birthdate,
-            age              = :age,
+            age              = :ageq,
             street           = :street,
             barangay         = :barangay,
             city             = :city,
@@ -573,7 +582,7 @@ if (isset($_POST['insert_vaccine'])) {
             ':middlename'        => $middlename,
             ':lastname'          => $lastname,
             ':fullname'          => $fullname,
-            ':age'               => $age,
+            ':ageq'              => $age,
             ':gender'            => $gender1,
             ':mobile_no'         => $contactno,
             ':barangay'          => $barangay,
