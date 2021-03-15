@@ -4,7 +4,7 @@ include('../config/db_config.php');
 include('sql_queries.php');
 include('update_vas.php');
 
-session_start();
+// session_start();
 
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
@@ -316,7 +316,7 @@ $get_all_vaccine_data->execute();
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
-            '<a class="btn btn-warning btn-sm modalupdate" style="margin-right:10px;" id="modal" data-placement="top" title="FORWARD TO VAS"> VAS',
+            '<a class="btn btn-warning btn-sm modalupdate" style="margin-right:10px;" id="modal" data-placement="top" title="FORWARD TO VAS">VAS',
           // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
         },
 
