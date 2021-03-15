@@ -40,11 +40,10 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 // }
 if(isset($_POST['download'])){
 
-  $data = [["Entity No","Username","Full Name"]];
+  $data = [["Entity No","Username","Last Name","First Name","Middle Name","Birth Date","Age","Street","Barangay","City","Province","Email","Type"]];
  
-$getAllIndividual = "SELECT e.entity_no,
-                     username,
-                     fullname FROM tbl_individual e 
+$getAllIndividual = "SELECT *
+                     FROM tbl_individual e 
                     inner join tbl_entity i on e.entity_no = i.entity_no 
                      ORDER BY e.date_register";
 
@@ -54,7 +53,20 @@ while ($row = $getIndividualData->fetch(PDO::FETCH_ASSOC)){
   $nestedData=array(); 
 	$nestedData[] = $row["entity_no"];
 	$nestedData[] = $row["username"];
-	$nestedData[] = ucwords(strtolower($row["fullname"]));
+  $nestedData[] = $row["lastname"];
+  $nestedData[] = $row["firstname"];
+  $nestedData[] = $row["middlename"];
+  $nestedData[] = $row["birthdate"];
+  $nestedData[] = $row["age"];
+  $nestedData[] = $row["street"];
+  $nestedData[] = $row["barangay"];
+  $nestedData[] = $row["city"];
+  $nestedData[] = $row["province"];
+  $nestedData[] = $row["mobile_no"];
+  $nestedData[] = $row["telephone_no"];
+  $nestedData[] = $row["email"];
+  $nestedData[] = $row["type"];
+
 	$data[] = $nestedData;
   
 } 
