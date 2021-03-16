@@ -36,13 +36,13 @@ if (isset($_POST['update_assessment'])) {
         $consent        = '03_Unknown';
     }
 
-    if($_POST['refusal'] != 'Choose here'){
+    if(!empty($_POST['refusal'])){
         $refusal = $_POST['refusal'];
     } else {
         $refusal = 'N/A';
     }
 
-    if($_POST['preg_semester'] != 'Please select...'){
+    if(!empty($_POST['preg_semester'])){
         $preg_semester = $_POST['preg_semester'];
     } else {
         $preg_semester = '02_No';
@@ -54,14 +54,14 @@ if (isset($_POST['update_assessment'])) {
         $deferral = 'N/A';
     }
 
-    if($_POST['list_symptoms[]'] != ''){
-        $list_symptoms = $_POST['list_symptoms[]'];
+    if($_POST['list_symptoms'] != 'Choose here...'){
+        $list_symptoms = $_POST['list_symptoms'];
     } else {
-        $list_symptoms = 'N/A';
+        $list_symptoms = ' ';
     }
 
-    if($_POST['list_illness[]'] != ''){
-        $list_illness = $_POST['list_illness[]'];
+    if($_POST['list_illness'] != 'Choose here...'){
+        $list_illness = $_POST['list_illness'];
     } else {
         $list_illness = 'N/A';
     }
@@ -99,7 +99,7 @@ if (isset($_POST['update_assessment'])) {
             Refusal_Reasons         = :refusal_reasons,
             MoreThan16yo            = :age_16,
             PegPolysorbate          = :peg_polysorbate,
-            SevereReaction          = :severe_reaction,
+            Severe_Reaction          = :severe_reaction,
             AllergyToFood           = :allergy_food,
             MonitorAllergy          = :monitor_allergy,
             BleedingDisorders       = :bleeding_disorder,
@@ -124,16 +124,15 @@ if (isset($_POST['update_assessment'])) {
             VaccinatorProfession    = :vaccinator_profession,
             1stDose                 = :first_dose,
             2ndDose                 = :second_dose
-
-            where entity_no         = :entityno;
+            where entity_no         = :entityno
     
         ";
 
     $assessment_data = $con->prepare($insert_assessment_sql);
     $assessment_data->execute([
         ':entityno'                     => $entityno,
-        ':datereg'                      => $date_reg,
-        ':time_regg'                    => $time,
+        ':date_reg'                      => $date_reg,
+        ':time_reg'                    => $time,
         ':refusal_reasons'              => $refusal,
         ':age_16'                       => $age_16,
         ':peg_polysorbate'              => $allergy_peg,
@@ -143,7 +142,7 @@ if (isset($_POST['update_assessment'])) {
         ':bleeding_disorder'            => $bleeding_history,
         ':bleeding_history'             => $yes_bleeding,
         ':manifest_symptoms'            => $manifest_symptoms,
-        ':mentioned_symptoms'           => $list_symptoms,
+        ':mentioned_symptoms'           => implode(", ", $list_symptoms),
         ':covid_history'                => $covid_exposure,
         ':covid_treated'                => $covid_treated,
         ':received_vaccine'             => $no_received_vaccine,
@@ -151,7 +150,7 @@ if (isset($_POST['update_assessment'])) {
         ':pregnant'                     => $preg_status,
         ':pregnant_semester'            => $preg_semester,
         ':illness'                      => $no_illness,
-        ':mentioned_illness'            => $list_illness,
+        ':mentioned_illness'            => implode(", ", $list_illness),
         ':medical_clearance'            => $medical_clearance,
         ':deferral'                     => $deferral,
         ':date_vaccination'             => $vaccination_date,
@@ -169,18 +168,18 @@ if (isset($_POST['update_assessment'])) {
 
 
 
-    // if ($assessment_data) {
+    if ($assessment_data) {
 
-    //     $_SESSION['status'] = "Update Successful!";
-    //     $_SESSION['status_code'] = "success";
+        $_SESSION['status'] = "Update Successful!";
+        $_SESSION['status_code'] = "success";
 
-    //     header('location: list_vaccine_profile.php');
-    // } else {
-    //     $_SESSION['status'] = "Update Unsuccessful!";
-    //     $_SESSION['status_code'] = "error";
+        header('location: list_assessment.php');
+    } else {
+        $_SESSION['status'] = "Update Unsuccessful!";
+        $_SESSION['status_code'] = "error";
 
-    //     header('location: list_vaccine_profile.php');
-    // }
+        header('location: list_assessment.php');
+    }
 }
 
 ?>
