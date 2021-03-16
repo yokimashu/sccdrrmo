@@ -114,10 +114,8 @@ $title = 'VAMOS | Add Bakuna Center';
                                         <div class=" card-header">
                                             <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
-
                                         <div class="box-body">
                                             <br>
-
                                             <div class="row">
 
                                                 <div class="col-md-1"></div>
@@ -127,7 +125,7 @@ $title = 'VAMOS | Add Bakuna Center';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input readonly type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
 
                                                     </div>
                                                 </div>
@@ -138,14 +136,10 @@ $title = 'VAMOS | Add Bakuna Center';
                                                     <input type="text" class="form-control" name="bc_code" id="bc_code" placeholder="Bakuna Center Code" value="<?php echo $bc_code; ?>" required>
                                                     <div id="status"></div>
                                                 </div>
-
-
                                             </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-
-
                                                 <div class="col-md-5">
                                                     <label>Bakuna Center Name : </label>
                                                     <input type="text" class="form-control" id="bc_name" name="bc_name" placeholder="Bakuna Center Name" onblur="checkUsername()" value="<?php echo $bc_name; ?>" required>
@@ -160,24 +154,19 @@ $title = 'VAMOS | Add Bakuna Center';
 
                                                 </div>
                                             </div></br>
-
                                             <div class="box-footer" align="center">
-
-
                                                 <button type="submit" <?php echo $btnSave; ?> name="insert_bakuna_center" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
 
-                                                <a href="list_bakuna_center.php">
+                                                <a href="list_bakuna_center">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
 
-                                                <a href="add_bakuna_center.php">
+                                                <a href="add_bakuna_center">
                                                     <button type="button" name="New" class="btn btn-primary">
                                                         <i class="fa fa-plus-circle fa-fw"> </i> </button>
                                                 </a>
-
-
                                             </div><br>
                                         </div>
                                     </div>
@@ -187,10 +176,7 @@ $title = 'VAMOS | Add Bakuna Center';
                 </div>
             </section>
         </div>
-
-
         <?php include('footer.php') ?>
-
     </div>
 
 
@@ -236,13 +222,10 @@ $title = 'VAMOS | Add Bakuna Center';
      -->
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
-
     <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script>
-        
-
         function checkUsername() {
             var bc_code = $('#bc_code').val();
             if (bc_code.length >= 3) {
@@ -255,31 +238,11 @@ $title = 'VAMOS | Add Bakuna Center';
                     url: 'check_bc_code.php',
                     success: function(data) {
                         $("#status").html(data);
-
                     }
                 });
             }
         };
-
-
-        // $("#insert_user").click(function(e) {
-        //     e.preventDefault();
-        //     var name = $("#name").val();
-        //     var last_name = $("#last_name").val();
-        //     var 
-        //     var dataString = 'name=' + name + '&last_name=' + last_name;
-        //     $.ajax({
-        //         type: 'POST',
-        //         data: dataString,
-        //         url: 'insert_user.php',
-        //         success: function(data) {
-        //             alert(data);
-        //         }
-        //     });
-        // });
     </script>
-
-
 </body>
 
 </html>

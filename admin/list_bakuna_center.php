@@ -14,28 +14,6 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-// $symptoms = $patient = $person_status = $entity_no = '';
-// $entity_no = '';
-//fetch user from database
-
-// $accountType = '';
-// $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
-// $user_data = $con->prepare($get_user_sql);
-// $user_data->execute([':id' => $user_id]);
-// while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
-
-
-//   $db_fullname = $result['fullname'];
-//   $accountType = $result['account_type'];
-// }
-
-// $get_all_individual_sql = "SELECT * FROM tbl_individual i inner join tbl_entity e on e.entity_no = i.entity_no order by i.lastname ASC ";
-// $get_all_individual_data = $con->prepare($get_all_individual_sql);
-// $get_all_individual_data->execute();
-// while ($list_individual = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)){
-//   $entity_no =  $list_individual['entity_no'];
-// }
-
 
 ?>
 
@@ -89,7 +67,6 @@ $time = date('H:i:s');
 
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
-                        <th> ID </th>
                         <th> Bakuna Center Code </th>
                         <th> Bakuna Center Name </th>
                         <th> Bakuna Center Address</th>
@@ -110,31 +87,6 @@ $time = date('H:i:s');
       <br><br>
 
     </div><!-- /.content-wrapper -->
-
-    <div class="modal fade" id="delete_individual" role="dialog" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Confirm Delete</h4>
-          </div>
-          <form method="POST" action="">
-            <div class="modal-body">
-              <div class="box-body">
-                <div class="form-group">
-                  <label>Delete Record?</label>
-                  <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-              <input type="submit" name="delete_individual" class="btn btn-danger" value="Yes">
-            </div>
-          </form>
-        </div>
-      </div> <!-- /.modal-content -->
-    </div> <!-- /.modal-dialog -->
-
     <?php include('footer.php') ?>
 
   </div><!-- /.wrapper -->
@@ -166,52 +118,30 @@ $time = date('H:i:s');
   <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
   <!-- Select2 -->
   <script src="../plugins/select2/select2.full.min.js"></script>
+  <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
+
+  <?php
+
+  if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+
+  ?>
+    <script>
+      swal({
+        title: "<?php echo $_SESSION['status'] ?>",
+        // text: "You clicked the button!",
+        icon: "<?php echo $_SESSION['status_code'] ?>",
+        button: "OK. Done!",
+      });
+    </script>
+
+  <?php
+    unset($_SESSION['status']);
+  }
+  ?>
 
   <script>
-    // $('#users').DataTable({
-    //   'paging': true,
-    //   'lengthChange': true,
-    //   'searching': true,
-    //   'ordering': true,
-    //   'info': true,
-    //   'autoWidth': true,
-    //   'autoHeight': true
-    // });
-    function checkViewHistory() {
-      accountType = $('#accountType').val();
-      if (accountType == 1) {
-        return ' <button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
-      } else if (accountType == 3) {
-        return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
 
-      } else if (accountType == 4) {
-        return '<button class="btn btn-outline-warning btn-sm" id = "viewHistory" style = "margin-right:10px;" data-placement="top" title="View History"><i class="fa fa-search"></i></button>';
-
-      } else {
-        return '';
-      }
-
-    }
-
-    function checkDelete() {
-      accountType = $('#accountType').val();
-      if (accountType == 1) {
-        return '<button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>';
-      } else {
-        return '';
-      }
-
-    }
-
-    function checkmessage() {
-      accountType = $('#accountType').val();
-      if (accountType == 1) {
-        return '<button class="btn btn-warning message btn-sm" data-placement="top" title="Messages"><i class="fa fa-envelope-open-o"></i></button>';
-      } else {
-        return '';
-      }
-
-    }
     var dataTable = $('#users').DataTable({
 
       page: true,
@@ -253,72 +183,7 @@ $time = date('H:i:s');
 
 
     });
-
-    $("#users tbody").on("click", ".message", function() {
-      event.preventDefault();
-      var currow = $(this).closest("tr");
-      var entity = currow.find("td:eq(0)").text();
-      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("view_individual.php?&id=" + entity, '_parent');
-
-    });
-
-    $("#users tbody").on("click", "#viewIndividual", function() {
-      event.preventDefault();
-      var currow = $(this).closest("tr");
-      var entity = currow.find("td:eq(0)").text();
-      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("view_individual.php?&id=" + entity, '_parent');
-
-    });
-    $("#users tbody").on("click", ".printlink", function() {
-      // event.preventDefault();
-      var currow = $(this).closest("tr");
-      var entity = currow.find("td:eq(0)").text();
-      $('.printlink').attr("href", "../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
-      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
-
-    });
-
-    $("#users tbody").on("click", "#viewHistory", function() {
-      event.preventDefault();
-      var currow = $(this).closest("tr");
-      var entity = currow.find("td:eq(0)").text();
-      // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
-      window.open("view_individual_history.php?&entity_no=" + entity, '_parent');
-
-    });
-
-
-    // $('#users').DataTable({
-    //   'paging': true,
-    //   'lengthChange': true,
-    //   'searching': true,
-    //   'ordering': true,
-    //   'info': true,
-    //   'autoWidth': true,
-    //   'autoHeight': true,
-    //   initComplete: function() {
-    //     this.api().columns([4]).every(function() {
-    //       var column = this;
-    //       var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-    //         .appendTo('#combo')
-    //         .on('change', function() {
-    //           var val = $.fn.dataTable.util.escapeRegex(
-    //             $(this).val()
-    //           );
-    //           column
-    //             .search(val ? '^' + val + '$' : '', true, false)
-    //             .draw();
-    //         });
-    //       column.data().unique().sort().each(function(d, j) {
-    //         select.append('<option value="' + d + '">' + d + '</option>')
-    //       });
-    //     });
-    //   }
-
-    // });
-
+-
     $(function() {
       $(document).on('click', '.delete', function(e) {
         e.preventDefault();
