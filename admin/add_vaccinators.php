@@ -178,7 +178,6 @@ $title = 'VAMOS | Add Vaccinator';
 
                                                 <button type="submit" <?php echo $btnSave; ?> name="insert_vaccinators" id="btnSubmit" class="btn btn-success">
                                                     <i class="fa fa-check fa-fw"> </i> </button>
-
                                                 <a href="list_vaccinators">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>

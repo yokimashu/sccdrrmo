@@ -152,7 +152,7 @@ $time = date('H:i:s');
       processing: true,
       serverSide: true,
       scrollX: false,
-
+      
       ajax: {
         url: "search_vaccinators.php",
         type: "post",

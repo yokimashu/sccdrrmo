@@ -87,6 +87,7 @@ if (isset($_POST['insert_vaccinators'])) {
     $btnNew = 'enabled';
     $btnPrint = 'enabled';
 
+   
 
     //echo print_r($firstname);
 

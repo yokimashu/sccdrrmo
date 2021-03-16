@@ -83,8 +83,8 @@ $get_vaccinators_data->execute();
     $countfilter.=" OR n_facility LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR pr_license_number LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR l_name LIKE '%".$requestData['search']['value']."%' ";
-    $countfilter.=" OR m_name LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR f_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR m_name LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR position LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR role LIKE '%".$requestData['search']['value']."%' )";
 
