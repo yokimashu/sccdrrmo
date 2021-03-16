@@ -143,7 +143,7 @@ $time = date('H:i:s');
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
-
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
 
 
     <?php
