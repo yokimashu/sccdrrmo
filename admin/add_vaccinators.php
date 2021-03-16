@@ -3,7 +3,6 @@
 session_start();
 
 $now = new DateTime();
-
 $id = $n_facility = $pr_license_number = $l_name = $m_name = $f_name = $position = $role = '';
 
 $btnSave = $btnEdit = "";
@@ -21,6 +20,10 @@ include('insert_vaccinators.php');
 include('verify_admin.php');
 
 $title = 'VAMOS | Add Vaccinator';
+
+$get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center";
+$get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
+$get_all_bakuna_center_data->execute();
 
 
 ?>
@@ -118,60 +121,76 @@ $title = 'VAMOS | Add Vaccinator';
                                         <div class="box-body">
                                             <br>
 
+
                                             <div class="row">
 
                                                 <div class="col-md-1"></div>
-                                                <div class="col-lg-3">
-                                                    <label>Name of Facility : </label>
-                                                    <input type="text" class="form-control" name="n_facility" id="n_facility" placeholder="Enter name of facility" value="<?php echo $n_facility; ?>" required>
-                                                    <div id="status"></div>
+                                                
+                                                <div class="col-sm-3">
+                                                    <label for="">Name of Facility: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                    <select class="form-control select2" style="width: 100%;" name="n_facility" id="n_facility">
+                                                        <option value=" " selected>Select Facility</option>
+                                                        <?php while ($get_n_facility = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_n_facility == $get_n_facility['bc_code']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_n_facility['bc_code']; ?>"><?php echo $get_n_facility['bc_name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                                 <input hidden type="text" class="form-control pull-right" id="id" name="id" placeholder="id" value="<?php echo $id; ?>">
-
-                                                <div class="col-lg-3">
-                                                    <label>PR License Number : </label>
-                                                    <input type="text" class="form-control" name="pr_license_number" id="pr_license_number" placeholder="Enter PR license number" value="<?php echo $pr_license_number; ?>" required>
-                                                    
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <label>Position : </label>
-                                                    <input type="text" class="form-control" name="position" id="position" placeholder="Enter position" value="<?php echo $position; ?>" required>
-                                                    
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <label>Role : </label>
-                                                    <input type="text" class="form-control" name="role" id="role" placeholder="Enter role" value="<?php echo $role; ?>" required>
-                                                    
-                                                </div>
-
-
                                             </div></br>
+
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-
-
-                                                <div class="col-md-3">
-                                                    <label>Last Name : </label>
-                                                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Enter Lastname" onblur="checkUsername()" value="<?php echo $l_name; ?>" required>
-                                                    
-
-                                                </div>
 
                                                 <div class="col-md-3">
                                                     <label>First Name : </label>
-                                                    <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Enter Middlename" onblur="checkUsername()" value="<?php echo $f_name; ?>" required>
-                                                    
-
+                                                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter Firstname" onblur="checkUsername()" value="<?php echo $f_name; ?>" required>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <label>Middle Name : </label>
-                                                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter Firstname" onblur="checkUsername()" value="<?php echo $m_name; ?>" required>
-                                                    
+                                                    <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Enter Middlename" onblur="checkUsername()" value="<?php echo $m_name; ?>" required>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Last Name : </label>
+                                                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Enter Lastname" onblur="checkUsername()" value="<?php echo $l_name; ?>" required>
+                                                </div>
+
+                                            </div></br>
+
+                                            <div class="row">
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-3">
+                                                    <label>Position : </label>
+                                                    <input type="text" class="form-control" name="position" id="position" placeholder="Enter position" value="<?php echo $position; ?>" required>
 
                                                 </div>
                                             </div></br>
+
+                                            <div class="row">
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-3">
+                                                    <label>PRC License Number : </label>
+                                                    <input type="text" class="form-control" name="pr_license_number" id="pr_license_number" placeholder="Enter PRC license number" value="<?php echo $pr_license_number; ?>" required>
+
+                                                </div>
+                                            </div></br>
+
+                                            <div class="row">
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-3">
+                                                    <label>Role : </label>
+                                                    <input type="text" class="form-control" name="role" id="role" placeholder="Enter role" value="<?php echo $role; ?>" required>
+
+                                                </div>
+                                            </div></br>
+
+
 
                                             <div class="box-footer" align="center">
 
@@ -252,7 +271,7 @@ $title = 'VAMOS | Add Vaccinator';
 
 
     <script>
-        
+
     </script>
 
 
