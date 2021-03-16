@@ -21,6 +21,7 @@ include('verify_admin.php');
 
 $title = 'VAMOS | Add Vaccinator';
 
+
 $get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center";
 $get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
 $get_all_bakuna_center_data->execute();
