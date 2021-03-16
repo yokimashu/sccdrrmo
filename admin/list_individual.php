@@ -40,7 +40,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 // }
 if(isset($_POST['download'])){
 
-  $data = [["Entity No","Username","Last Name","First Name","Middle Name","Birth Date","Age","Street","Barangay","City","Province","Email","Type"]];
+  $data = [["Entity No","Username","Last Name","First Name","Middle Name","Birth Date","Age","Street","Barangay","City","Province","Mobile No","Tel. No.","Email","Type"]];
  
 $getAllIndividual = "SELECT *
                      FROM tbl_individual e 
