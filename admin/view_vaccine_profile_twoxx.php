@@ -128,7 +128,6 @@ if (isset($_GET['id'])) {
         $get_civil_status   = $result['Civilstatus'];
         $get_employed      = $result['Employed'];
         $get_profession     = $result['Profession'];
-        $get_indicate       = $result['indicate'];
         $get_barangay       = $result['Barangay'];
         $get_province       = $result['Province'];
         $get_region         = $result['Region'];
@@ -317,7 +316,7 @@ if (isset($_GET['id'])) {
 
         }
 
-        #required {
+         #required {
             color: red;
         }
 
@@ -447,7 +446,7 @@ if (isset($_GET['id'])) {
                                     <hr>
 
 
-                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="add_assessment.php?id=<?php echo $entity_no; ?> "> View VAS </a> </strong>
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="update_assessment.php?entity_no=<?php echo $entity_no; ?> "> View VAS </a> </strong>
 
 
                                     <p class="text-muted">
@@ -728,7 +727,7 @@ if (isset($_GET['id'])) {
                                                 <div class="card-body">
 
                                                     <div class="row">
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
                                                             <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
                                                                 <option selected value=" ">Select Employment</option>
@@ -739,7 +738,7 @@ if (isset($_GET['id'])) {
 
                                                             </select>
                                                         </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <label>Profession :&nbsp;&nbsp; <span id="required">*</span> </label>
                                                             <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
                                                                 <option selected value=" ">Select Profession</option>
@@ -751,243 +750,144 @@ if (isset($_GET['id'])) {
 
                                                         </div>
 
-                                                        <?php if ($get_profession == '19_Other') { ?>
-                                                            <div class="col-sm-4" id='indicate'>
-                                                            <?php } else { ?>
-                                                                <div class="col-sm-4" id='indicate' hidden>
-                                                                <?php } ?>
-
-                                                                <label>If other, indicate profession: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <input type="text" class="form-control" name="indicate_profession" id="indicate_profession" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Specific Profession" value="<?php echo $get_indicate; ?>">
+                                                    </div><br>
 
 
-                                                                </div><br>
+                                                    <!-- end of basic information -->
 
-                                                            </div>
-                                                            <!-- end of basic information -->
-
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <label>Employer Name: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                    <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employer" value="<?php echo $get_employername; ?>">
-                                                                    <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label>Employer Address: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                    <input type="text" class="form-control" name="emp_address" id="emp_address" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Lot # / Block # " value="<?php echo $get_employeraddress; ?>">
-                                                                    <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
-                                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label>Employer Name: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                            <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employer" value="<?php echo $get_employername; ?>">
+                                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label>Employer Address: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                            <input type="text" class="form-control" name="emp_address" id="emp_address" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Street / Lot # / Block # " value="<?php echo $get_employeraddress; ?>">
+                                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
+                                                        </div>
 
 
-                                                            </div> <br>
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <label>LGU: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                    </div> <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label>LGU: &nbsp;&nbsp; <span id="required">*</span> </label>
 
-                                                                    <input readonly type="text" class="form-control" name="emp_lgu" id="emp_lgu" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="LGU" value="<?php echo $get_employerlgu ?>">
+                                                            <input readonly type="text" class="form-control" name="emp_lgu" id="emp_lgu" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="LGU" value="<?php echo $get_employerlgu ?>">
 
-                                                                </div>
+                                                        </div>
 
-                                                                <div class="col-sm-6">
-                                                                    <label>Contact Number: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                    <input type="text" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number" value="<?php echo $get_employercontact; ?>">
-                                                                    <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
-                                                                </div>
-                                                            </div><br>
+                                                        <div class="col-sm-6">
+                                                            <label>Contact Number: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                            <input type="text" class="form-control" name="emp_contact" id="emp_contact" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Contact Number" value="<?php echo $get_employercontact; ?>">
+                                                            <span id="asstdname"> &nbsp;&nbsp;<i>Type N/A if Not Applicable</i></span>
+                                                        </div>
+                                                    </div><br>
 
-                                                    </div>
                                                 </div>
-
-
-                                                <!-- end of employer fieldset -->
-
-                                                <!-- medical conditions -->
-                                                <div class="card card-success card-outline">
-                                                    <div class="card-header">
-
-                                                        <h5 class="m-0">MEDICAL CONDITION</h5>
-                                                    </div>
-                                                    <!-- </legend> -->
-                                                    <div class="card-body">
-
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <label> If female, pregnancy status?</label>
-                                                                <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status" value="<?php echo $get_pregstatus ?>">
-                                                                    <option>Select pregnancy status...</option>
-                                                                    <option <?php if ($get_pregstatus == '01_Pregnant') echo 'selected'; ?> value="01_Pregnant">Pregnant </option>
-                                                                    <option <?php if ($get_pregstatus == '02_Not_Pregnant') echo 'selected'; ?> value="02_Not_Pregnant">Not Pregnant </option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>With Allergy? </label>
-                                                                <select class="form-control select2 " name="with_allergy" id="with_allergy" style="width:100%" value="<?php echo $get_wallergy; ?>">
-                                                                    <option>Do you have allergy?</option>
-                                                                    <option <?php if ($get_wallergy == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_wallergy == '02_No') echo 'selected'; ?> value="02_No">None</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>With Comorbidities?</label>
-                                                                <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities" value="<?php echo $get_wcomorbidities; ?>">
-                                                                    <option>Do you have comorbidities?</option>
-                                                                    <option <?php if ($get_wcomorbidities == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_wcomorbidities == '02_No') echo 'selected'; ?> value="02_No">None</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
-
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Covid History? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value="<?php echo $get_covidhistory; ?>">
-                                                                    <option>Please select</option>
-                                                                    <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_covidhistory == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Direct interaction with COVID Patient &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
-                                                                    <option>Choose here</option>
-                                                                    <option <?php if ($get_directcovid == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_directcovid == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- end of medical conditions -->
-
-                                                <!-- kung yes ang covid history -->
-                                                <?php if ($get_covidhistory == '01_Yes') { ?>
-                                                    <div class="card card-success card-outline" id="yes-diagnose">
-                                                        <div class="card-header">
-
-                                                            <h5 class="m-0">COVID HISTORY</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-sm-7">
-                                                                    <label>Date of first positive result /specimen collection? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <label>Classification of infection?</label>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <input type="date" style="width:100%" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" value="<?php echo $get_coviddate ?>" />
-                                                                </div>
-                                                                <div class="col-sm-4"></div>
-
-                                                                <div class="col-sm-3">
-                                                                    <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
-                                                                        <option selected>Classification of Infection</option>
-                                                                        <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                            <?php $selected = ($get_covidclass == $get_infection['description']) ? 'selected' : ''; ?>
-                                                                            <option <?= $selected; ?> value="<?php echo $get_infection['description']; ?>"><?php echo $get_infection['classification']; ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-
-
-                                                <!-- </legend> -->
-
                                             </div>
 
-                                            <!-- end of yes form sa covid history -->
 
-                                            <?php if ($get_wallergy == '01_Yes') { ?>
-                                                <div class="card card-success card-outline" id="yes-allergy">
+                                            <!-- end of employer fieldset -->
+
+                                            <!-- medical conditions -->
+                                            <div class="card card-success card-outline">
+                                                <div class="card-header">
+
+                                                    <h5 class="m-0">MEDICAL CONDITION</h5>
+                                                </div>
+                                                <!-- </legend> -->
+                                                <div class="card-body">
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label> If female, pregnancy status?</label>
+                                                            <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status" value="<?php echo $get_pregstatus ?>">
+                                                                <option>Select pregnancy status...</option>
+                                                                <option <?php if ($get_pregstatus == '01_Pregnant') echo 'selected'; ?> value="01_Pregnant">Pregnant </option>
+                                                                <option <?php if ($get_pregstatus == '02_Not_Pregnant') echo 'selected'; ?> value="02_Not_Pregnant">Not Pregnant </option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <label>With Allergy? </label>
+                                                            <select class="form-control select2 " name="with_allergy" id="with_allergy" style="width:100%" value="<?php echo $get_wallergy; ?>">
+                                                                <option>Do you have allergy?</option>
+                                                                <option <?php if ($get_wallergy == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_wallergy == '02_No') echo 'selected'; ?> value="02_No">None</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <label>With Comorbidities?</label>
+                                                            <select class="form-control select2" style="width:100%" name="with_commorbidities" id="with_commorbidities" value="<?php echo $get_wcomorbidities; ?>">
+                                                                <option>Do you have comorbidities?</option>
+                                                                <option <?php if ($get_wcomorbidities == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_wcomorbidities == '02_No') echo 'selected'; ?> value="02_No">None</option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Covid History? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                            <select class="form-control select2" style="width:100%" name="patient_diagnose" id="patient_diagnose" value="<?php echo $get_covidhistory; ?>">
+                                                                <option>Please select</option>
+                                                                <option <?php if ($get_covidhistory == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_covidhistory == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Direct interaction with COVID Patient &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                            <select class="form-control select2" style="width:100%" name="interact_patient" id="interact_patient" value="<?php echo $get_directcovid; ?>">
+                                                                <option>Choose here</option>
+                                                                <option <?php if ($get_directcovid == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_directcovid == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- end of medical conditions -->
+
+                                            <!-- kung yes ang covid history -->
+                                            <?php if ($get_covidhistory == '01_Yes') { ?>
+                                                <div class="card card-success card-outline" id="yes-diagnose">
                                                     <div class="card-header">
 
-                                                        <h5 class="m-0">ALLERGIES</h5>
+                                                        <h5 class="m-0">COVID HISTORY</h5>
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <label>Drug</label>
-                                                                <select name="allergy_drug" id="allergy_drug" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
+                                                            <div class="col-sm-7">
+                                                                <label>Date of first positive result /specimen collection? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                             </div>
                                                             <div class="col-sm-3">
-                                                                <label>Food</label>
-                                                                <select name="allergy_food" id="allergy_food" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
+                                                                <label>Classification of infection?</label>
+
                                                             </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Insect</label>
-                                                                <select name="allergy_insect" id="allergy_insect" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Latex</label>
-                                                                <select name="allergy_latex" id="allergy_latex" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
+
+                                                        </div>
 
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Mold</label>
-                                                                <select name="allergy_mold" id="allergy_mold" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
+                                                                <input type="date" style="width:100%" id="date_positive" name="date_positive" class="form-control pull-right " placeholder="dd/mm/yyyy" value="<?php echo $get_coviddate ?>" />
                                                             </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Pet</label>
-                                                                <select name="allergy_pet" id="allergy_pet" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Pollen</label>
-                                                                <select name="allergy_pollen" id="allergy_pollen" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Vaccine and related products</label>
-                                                                <select name="allergy_vaccine" id="allergy_vaccine" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_allergy08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_allergy08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                </select>
-                                                            </div>
+                                                            <div class="col-sm-4"></div>
 
+                                                            <div class="col-sm-3">
+                                                                <select name="name_infection" id="name_infection" style="width:100%" class="form-control select2">
+                                                                    <option selected>Classification of Infection</option>
+                                                                    <?php while ($get_infection = $get_all_infection_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                        <?php $selected = ($get_covidclass == $get_infection['description']) ? 'selected' : ''; ?>
+                                                                        <option <?= $selected; ?> value="<?php echo $get_infection['description']; ?>"><?php echo $get_infection['classification']; ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
                                                         </div><br>
-
                                                     </div>
                                                 </div>
                                             <?php } ?>
@@ -995,171 +895,260 @@ if (isset($_GET['id'])) {
 
                                             <!-- </legend> -->
 
+                                        </div>
 
+                                        <!-- end of yes form sa covid history -->
 
-
-                                            <!-- end of list allergy -->
-
-
-
-                                            <?php if ($get_wcomorbidities == '01_Yes') { ?>
-                                                <!-- if yes kung with comorbidities -->
-                                                <div class="card card-success card-outline" id="yes-comordities">
-                                                    <div class="card-header">
-
-                                                        <h5 class="m-0">COMORBIDITIES</h5>
-                                                    </div>
-                                                    <div class="card-body">
-
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <label>Hypertension</label>
-                                                                <select name="como_hypertension" id="como_hypertension" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity01 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Heart disease</label>
-                                                                <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity02 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Kidney disease</label>
-                                                                <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity03 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Diabetes mellitus</label>
-                                                                <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <label>Bronchial Asthma</label>
-                                                                <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Immunodefiency state</label>
-                                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Cancer</label>
-                                                                <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Other</label>
-                                                                <select name="como_other" id="como_other" style="width:100%" class="form-control ">
-                                                                    <option value="02_No"> Choose here</option>
-                                                                    <option <?php if ($get_comorbidity08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_comorbidity08 == '02_No') echo 'selected'; ?> value="02_No">No </option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
-                                                    </div>
-                                                </div>
-                                            <?php } ?>
-
-
-
-                                            <!-- end of form choices comorbidities -->
-
-
-                                            <div class="card card-success card-outline">
+                                        <?php if ($get_wallergy == '01_Yes') { ?>
+                                            <div class="card card-success card-outline" id="yes-allergy">
                                                 <div class="card-header">
 
-                                                    <h5 class="m-0">CONSENT</h5>
+                                                    <h5 class="m-0">ALLERGIES</h5>
                                                 </div>
-                                                <!-- </legend> -->
                                                 <div class="card-body">
-
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label for="">Provided Electronic Informed Consent? &nbsp;&nbsp; <span id="required">*</span></label>
-                                                            <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
-                                                                <option>Please select</option>
-                                                                <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                        <div class="col-sm-3">
+                                                            <label>Drug</label>
+                                                            <select name="allergy_drug" id="allergy_drug" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                             </select>
-
                                                         </div>
-
-                                                        <div class="col-sm-6">
-                                                            <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="sinovac" id="sinovac">
-                                                                <option>Please select</option>
-                                                                <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                        <div class="col-sm-3">
+                                                            <label>Food</label>
+                                                            <select name="allergy_food" id="allergy_food" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Insect</label>
+                                                            <select name="allergy_insect" id="allergy_insect" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Latex</label>
+                                                            <select name="allergy_latex" id="allergy_latex" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                             </select>
                                                         </div>
                                                     </div><br>
 
-                                                    <div class="col-sm-6">
-                                                        <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                        <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Mold</label>
+                                                            <select name="allergy_mold" id="allergy_mold" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Pet</label>
+                                                            <select name="allergy_pet" id="allergy_pet" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Pollen</label>
+                                                            <select name="allergy_pollen" id="allergy_pollen" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Vaccine and related products</label>
+                                                            <select name="allergy_vaccine" id="allergy_vaccine" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_allergy08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_allergy08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div><br>
+
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+
+
+                                        <!-- </legend> -->
+
+
+
+
+                                        <!-- end of list allergy -->
+
+
+
+                                        <?php if ($get_wcomorbidities == '01_Yes') { ?>
+                                            <!-- if yes kung with comorbidities -->
+                                            <div class="card card-success card-outline" id="yes-comordities">
+                                                <div class="card-header">
+
+                                                    <h5 class="m-0">COMORBIDITIES</h5>
+                                                </div>
+                                                <div class="card-body">
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Hypertension</label>
+                                                            <select name="como_hypertension" id="como_hypertension" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity01 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Heart disease</label>
+                                                            <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity02 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Kidney disease</label>
+                                                            <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity03 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Diabetes mellitus</label>
+                                                            <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Bronchial Asthma</label>
+                                                            <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Immunodefiency state</label>
+                                                            <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Cancer</label>
+                                                            <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>Other</label>
+                                                            <select name="como_other" id="como_other" style="width:100%" class="form-control ">
+                                                                <option value="02_No"> Choose here</option>
+                                                                <option <?php if ($get_comorbidity08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                <option <?php if ($get_comorbidity08 == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+
+
+
+                                        <!-- end of form choices comorbidities -->
+
+
+                                        <div class="card card-success card-outline">
+                                            <div class="card-header">
+
+                                                <h5 class="m-0">CONSENT</h5>
+                                            </div>
+                                            <!-- </legend> -->
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="">Provided Electronic Informed Consent? &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <select class="form-control select2" style="width:100%" name="electronic_consent" id="consentation" value="<?php echo $get_consent; ?>">
                                                             <option>Please select</option>
-                                                            <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                            <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                            <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                            <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                            <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <select class="form-control select2" name="sinovac" id="sinovac">
+                                                            <option>Please select</option>
+                                                            <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                            <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                            <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
                                                         </select>
                                                     </div>
                                                 </div><br>
-                                            </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                    <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                                        <option>Please select</option>
+                                                        <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                        <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                        <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                    </select>
+                                                </div>
+                                            </div><br>
+                                        </div>
 
 
 
-                                            <div class="box-footer" align="center">
+                                        <div class="box-footer" align="center">
 
 
-                                                <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
-                                                    <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                                    <h4>Update Form</h4>
-                                                </button>
+                                            <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
+                                                <!-- <i class="fa fa-check fa-fw"> </i> -->
+                                                <h4>Update Form</h4>
+                                            </button>
 
-                                                <!-- <a href="list_vaccine_profile">
+                                            <!-- <a href="list_vaccine_profile">
                                         <button type="button" name="cancel" class="btn btn-danger">
                                             <i class="fa fa-close fa-fw"> </i> </button>
                                     </a> -->
 
-                                                <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
+                                            <!-- <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?>">
                                     <button type="button" name="print" class="btn btn-primary">
                                         <i class="nav-icon fa fa-print"> </i> </button>
                                     </a> -->
 
 
-                                            </div><br>
-                                        </div>
+                                        </div><br>
                                     </div>
                                 </div>
                         </div>
-
                     </div>
+
+                </div>
 
 
 

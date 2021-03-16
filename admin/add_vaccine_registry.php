@@ -482,7 +482,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <label>Gender: &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
                                                                 <select class="form-control select2" id="gender" name="gender">
-                                                                    <option selected value=" ">Select gender</option>
+                                                                    <option selected value=" ">Select Gender</option>
                                                                     <option value="01_Female">Female</option>
                                                                     <option value="02_Male">Male</option>
                                                                     <option value="03_Not to disclose"> Not to Disclose</option>
@@ -538,7 +538,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 </select> -->
 
                                                                 <select class="form-control select2" style="width:100%" name="category" id="category">
-                                                                    <option value=" " selected> Select Category </option>
+                                                                    <option value=" " selected>Select Category </option>
                                                                     <option value="01_Health_Care_Worker">Health Care Worker</option>
                                                                     <option value="02_Senior_Citizen">Senior Citizen</option>
                                                                     <option value="03_Indigent">Indigent</option>
@@ -554,7 +554,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-4" id="indigent" hidden>
                                                                 <label> Indigent or not?</label>
                                                                 <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
-                                                                    <option value=" " selected> Select status </option>
+                                                                    <option value=" " selected>Select status </option>
                                                                     <option value="01_Indigent">Indigent</option>
                                                                     <option value="02_Not_Indigent">Not Indigent</option>
                                                                 </select>
@@ -667,16 +667,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <!-- </legend> -->
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-4">
                                                                 <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
-                                                                    <option value="">Please select...</option>
+                                                                    <option value="">Select Employment</option>
                                                                     <?php while ($get_employment = $get_all_employment_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                         <option value="<?php echo $get_employment['description']  ?>"><?php echo $get_employment['status']; ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-4">
                                                                 <label>Profession :&nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
                                                                     <option selected value="">Select Profession</option>
@@ -687,6 +687,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             </div>
 
+                                                            <div hidden class="col-sm-4" id='indicate'>
+                                                                <label>If other, indicate profession: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <input type="text" class="form-control" name="indicate_profession" id="indicate_profession" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Specific Profession">
+                                                            </div>
+
+
                                                         </div> <br>
 
                                                         <div class="row">
@@ -694,7 +700,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                                                 <label>Employer Name: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employeer">
+                                                                <input type="text" class="form-control" name="name_employeer" id="name_employeer" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Name of employer">
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <label>Employer Address: &nbsp;&nbsp; <span id="required">*</span> </label>
@@ -1393,6 +1399,23 @@ $title = 'VAMOS | COVID-19 Patient Form';
             console.log("test");
         });
 
+        $('#profession').change(function() {
+            var option = $('#profession').val();
+            if (option == "19_Other") {
+                $('#indicate').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#indicate').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
 
         $('#with_commorbidities').change(function() {
             var option = $('#with_commorbidities').val();
@@ -1425,7 +1448,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
             }
 
             console.log("test");
+
+
         });
+
+
 
 
 
@@ -1476,6 +1503,96 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                 $('#printlink2').attr("href", "../plugins/jasperreport/vaccination_card.php?" + param, '_parent');
             })
+        });
+    </script>
+
+    <script>
+        $("#btnSubmit").click(function() {
+
+            var middlename = $('#middlename').val();
+            var countmname = middlename.length;
+            var gender = $('#gender :selected').text();
+            var civilstatus = $('#civil_status :selected').text();
+            var barangay = $('#barangay :selected').text();
+            var category = $('#category :selected').text();
+            var categoryid = $('#category_id :selected').text();
+            var healthworker = $('#health_worker :selected').text();
+            var indigent = $('#indigent :selected').text();
+            var employment = $('#emp_status :selected').text();
+            var pregnancy = $('#preg_status :selected').text();
+            var profession = $('#profession :selected').text();
+            var indicate = $('#indicate_profession :selected').text();
+            var sinovac = $('#sinovac :selected').text();
+            var astrazeneca = $('#astrazeneca :selected').text();
+
+
+            //  alert (category);
+            if (countmname == 1) {
+              
+                alert("Please type middlename in full!");
+                $('#middlename').focus();
+                return false;
+            } else if (gender == 'Select Gender') {
+                alert("Please select Gender!");
+                $('#gender').focus();
+                return false;
+            } else if (civilstatus == 'Select Civil Status') {
+                alert("Please select civil status!");
+                $('#civil_status').focus();
+                return false;
+            } else if (barangay == 'Select Barangay') {
+                alert("Please select barangay!");
+                $('#barangay').focus();
+                return false;
+            } else if (category == 'Select Category') {
+                alert("Please select category!");
+                $('#category').focus();
+                return false;
+            } else if ((category == 'Health Care Worker') && (healthworker == 'Select Health Worker')) {
+                alert("Please select type of health worker!");
+                $('#health_worker').focus();
+                return false;
+            } else if ((category == 'Senior Citizen') && (indigent == 'Select status')) {
+                alert("Please select if indigent or not!");
+                $('#indigent').focus();
+                return false;
+            } else if (categoryid == 'Select Category ID') {
+                alert("Please select Category ID!");
+                $('#category_id').focus();
+                return false;
+            } else if (employment == 'Select Employment') {
+                alert("Please select employment! Select N/A if not applicable.");
+                $('#emp_status').focus();
+                return false;
+            } else if (profession == 'Select Profession') {
+                alert("Please select profession! Select N/A if not applicable.");
+                $('#profession').focus();
+                return false;
+            } else if ((profession == '19_Other') && (indicate == '')) {
+                alert("Please indicate profession!");
+                $('#indicate_profession').focus();
+                return false;
+            } else if (pregnancy == 'Select pregnancy status...') {
+                alert("Please select pregnancy status!");
+                $('#preg_status').focus();
+                return false;
+            } else if (sinovac == 'Please select') {
+                alert("Are you willing to be vaccinated with Sinovac?");
+                $('#sinovac').focus();
+                return false;
+                // } else if (astrazeneca == 'Please select') {
+                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
+                //   $('#astrazeneca').focus();
+                //   return false;
+
+
+            } else return;
+
+
+            //category
+
+            //  alert (category);
+
         });
     </script>
 

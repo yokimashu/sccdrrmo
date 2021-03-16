@@ -126,8 +126,8 @@ $get_all_bakuna_center_data->execute();
                                             <div class="row">
 
                                                 <div class="col-md-1"></div>
-                                                
-                                                <div class="col-sm-3">
+
+                                                <div class="col-sm-6">
                                                     <label for="">Name of Facility: &nbsp;&nbsp; <span id="required">*</span></label>
                                                     <select class="form-control select2" style="width: 100%;" name="n_facility" id="n_facility">
                                                         <option value=" " selected>Select Facility</option>
@@ -272,7 +272,7 @@ $get_all_bakuna_center_data->execute();
 
 
     <script>
-
+        $('.select2').select2();
     </script>
 
 

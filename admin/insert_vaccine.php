@@ -199,6 +199,14 @@ if (isset($_POST['insert_vaccine'])) {
     $contactno      = $_POST['contact_no'];
     $emp_status     = $_POST['emp_status'];
     $profession     = $_POST['profession'];
+
+    if ($_POST['indicate_profession'] != '') {
+        $indicate = $_POST['indicate_profession'];
+    } else {
+        $indicate = 'N/A';
+    }
+
+
     $tracer_fullname = strtoupper($_POST['encoder_fullname']);
 
     //full address
@@ -398,6 +406,7 @@ if (isset($_POST['insert_vaccine'])) {
             Employed                = :emp_stat,
             Direct_covid            = :direct_covid,
             Profession              = :profee,
+            indicate                = :indicate,
             Employer_name           = :emp_name,
             Employer_LGU            = :emp_lgu,
             Employer_address        = :emp_add,
@@ -459,6 +468,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':emp_stat'         => $emp_status,
         ':direct_covid'     => $direct_covid,
         ':profee'           => $profession,
+        ':indicate'         => $indicate,
         ':emp_name'         => $emp_name,
         ':emp_lgu'          => $emp_lgu,
         ':emp_add'          => $emp_address,
