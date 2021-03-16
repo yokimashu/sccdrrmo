@@ -160,14 +160,14 @@ $title = 'VAMOS | Add Vaccinator';
 
                                                 <div class="col-md-3">
                                                     <label>First Name : </label>
-                                                    <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Enter Middlename" onblur="checkUsername()" value="<?php echo $m_name; ?>" required>
+                                                    <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Enter Middlename" onblur="checkUsername()" value="<?php echo $f_name; ?>" required>
                                                     
 
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <label>Middle Name : </label>
-                                                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter Firstname" onblur="checkUsername()" value="<?php echo $f_name; ?>" required>
+                                                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter Firstname" onblur="checkUsername()" value="<?php echo $m_name; ?>" required>
                                                     
 
                                                 </div>

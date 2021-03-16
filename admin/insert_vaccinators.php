@@ -87,7 +87,18 @@ if (isset($_POST['insert_vaccinators'])) {
     $btnNew = 'enabled';
     $btnPrint = 'enabled';
 
-   
+    if ($vaccinators_data) {
+
+        $_SESSION['status'] = "Registered Succesfully!";
+        $_SESSION['status_code'] = "success";
+
+        header('location: list_vaccinators');
+    } else {
+        $_SESSION['status'] = "Not successfully registered!";
+        $_SESSION['status_code'] = "error";
+
+        header('location: list_vaccinators');
+    }
 
     //echo print_r($firstname);
 
