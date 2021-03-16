@@ -35,7 +35,7 @@ $list_vaccine_report_no = ' ';
 $list_vaccine_linelist = ' ';
 $list_categorylist = ' ';
 $list_bakuna_center = ' ';
-$list_vaccinator = ' ';
+$list_vaccinators = ' ';
 $list_close_contact = ' ';
 $list_positive_case = ' ';
 $single_break = ' ';
@@ -141,8 +141,8 @@ $list_bakuna_center = '<li class="nav-item">
 </a>
 </li> ';
 
-$list_vaccinator = '<li class="nav-item">
-<a href="list_vaccinator" class="nav-link sidebar-link">
+$list_vaccinators = '<li class="nav-item">
+<a href="list_vaccinators" class="nav-link sidebar-link">
   &nbsp;
   <i class="nav-icon fas fa-user-md"></i>
   <p> Vaccinator </p>
