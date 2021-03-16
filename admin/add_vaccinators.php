@@ -3,8 +3,7 @@
 session_start();
 
 $now = new DateTime();
-
-$id = $bc_code = $bc_name = $bc_address = $date_register = '';
+$id = $n_facility = $pr_license_number = $l_name = $m_name = $f_name = $position = $role = '';
 
 $btnSave = $btnEdit = "";
 $btnNew = 'hidden';
@@ -17,10 +16,15 @@ if (!isset($_SESSION['id'])) {
 $user_id = $_SESSION['id'];
 
 include('../config/db_config.php');
-include('insert_bakuna_center.php');
+include('insert_vaccinators.php');
 include('verify_admin.php');
 
-$title = 'VAMOS | Add Bakuna Center';
+$title = 'VAMOS | Add Vaccinator';
+
+
+$get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center";
+$get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
+$get_all_bakuna_center_data->execute();
 
 
 ?>
@@ -97,7 +101,7 @@ $title = 'VAMOS | Add Bakuna Center';
             <section class="content">
                 <div class="card">
                     <div class="card-header text-white bg-success">
-                        <h4>Bakuna Center Form</h4>
+                        <h4>Vaccinator Form</h4>
                     </div>
 
 
@@ -114,59 +118,97 @@ $title = 'VAMOS | Add Bakuna Center';
                                         <div class=" card-header">
                                             <h6><strong>GENERAL INFORMATION</strong></h6>
                                         </div>
+
                                         <div class="box-body">
                                             <br>
+
+
                                             <div class="row">
 
                                                 <div class="col-md-1"></div>
-                                                <div class="col-lg-5">
-                                                    <label>Date Registered: </label>
-                                                    <div class="input-group date" data-provide="datepicker">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input readonly type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
-
-                                                    </div>
+                                                
+                                                <div class="col-sm-3">
+                                                    <label for="">Name of Facility: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                    <select class="form-control select2" style="width: 100%;" name="n_facility" id="n_facility">
+                                                        <option value=" " selected>Select Facility</option>
+                                                        <?php while ($get_n_facility = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <?php $selected = ($get_n_facility == $get_n_facility['bc_code']) ? 'selected' : ''; ?>
+                                                            <option <?= $selected; ?> value="<?php echo $get_n_facility['bc_code']; ?>"><?php echo $get_n_facility['bc_name']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                                 <input hidden type="text" class="form-control pull-right" id="id" name="id" placeholder="id" value="<?php echo $id; ?>">
+                                            </div></br>
 
-                                                <div class="col-lg-5">
-                                                    <label>Bakuna Center Code : </label>
-                                                    <input type="text" class="form-control" name="bc_code" id="bc_code" placeholder="Bakuna Center Code" value="<?php echo $bc_code; ?>" required>
-                                                    <div id="status"></div>
+
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+
+                                                <div class="col-md-3">
+                                                    <label>First Name : </label>
+                                                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter Firstname" onblur="checkUsername()" value="<?php echo $f_name; ?>" required>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Middle Name : </label>
+                                                    <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Enter Middlename" onblur="checkUsername()" value="<?php echo $m_name; ?>" required>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Last Name : </label>
+                                                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Enter Lastname" onblur="checkUsername()" value="<?php echo $l_name; ?>" required>
+                                                </div>
+
+                                            </div></br>
+
+                                            <div class="row">
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-3">
+                                                    <label>Position : </label>
+                                                    <input type="text" class="form-control" name="position" id="position" placeholder="Enter position" value="<?php echo $position; ?>" required>
+
                                                 </div>
                                             </div></br>
 
                                             <div class="row">
+
                                                 <div class="col-md-1"></div>
-                                                <div class="col-md-5">
-                                                    <label>Bakuna Center Name : </label>
-                                                    <input type="text" class="form-control" id="bc_name" name="bc_name" placeholder="Bakuna Center Name" onblur="checkUsername()" value="<?php echo $bc_name; ?>" required>
-                                                    <div id="status"></div>
-
-                                                </div>
-
-                                                <div class="col-md-5">
-                                                    <label>Bakuna Center Address : </label>
-                                                    <input type="text" class="form-control" id="bc_address" name="bc_address" placeholder="Bakuna Center Full Address" onblur="checkUsername()" value="<?php echo $bc_address; ?>" required>
-                                                    <div id="status"></div>
+                                                <div class="col-lg-3">
+                                                    <label>PRC License Number : </label>
+                                                    <input type="text" class="form-control" name="pr_license_number" id="pr_license_number" placeholder="Enter PRC license number" value="<?php echo $pr_license_number; ?>" required>
 
                                                 </div>
                                             </div></br>
-                                            <div class="box-footer" align="center">
-                                                <button type="submit" <?php echo $btnSave; ?> name="insert_bakuna_center" id="btnSubmit" class="btn btn-success">
-                                                    <i class="fa fa-check fa-fw"> </i> </button>
 
-                                                <a href="list_bakuna_center">
+                                            <div class="row">
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-lg-3">
+                                                    <label>Role : </label>
+                                                    <input type="text" class="form-control" name="role" id="role" placeholder="Enter role" value="<?php echo $role; ?>" required>
+
+                                                </div>
+                                            </div></br>
+
+
+
+                                            <div class="box-footer" align="center">
+
+
+                                                <button type="submit" <?php echo $btnSave; ?> name="insert_vaccinators" id="btnSubmit" class="btn btn-success">
+                                                    <i class="fa fa-check fa-fw"> </i> </button>
+                                                <a href="list_vaccinators">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
 
-                                                <a href="add_bakuna_center">
+                                                <a href="add_vaccinators">
                                                     <button type="button" name="New" class="btn btn-primary">
                                                         <i class="fa fa-plus-circle fa-fw"> </i> </button>
                                                 </a>
+
+
                                             </div><br>
                                         </div>
                                     </div>
@@ -176,7 +218,10 @@ $title = 'VAMOS | Add Bakuna Center';
                 </div>
             </section>
         </div>
+
+
         <?php include('footer.php') ?>
+
     </div>
 
 
@@ -222,27 +267,15 @@ $title = 'VAMOS | Add Bakuna Center';
      -->
 
     <!-- <script src="jpeg_camera/dist/jpeg_camera_with_dependencies.min.js" type="text/javascript"></script> -->
+
     <script src="../plugins/select2/select2.full.min.js"></script>
 
 
     <script>
-        function checkUsername() {
-            var bc_code = $('#bc_code').val();
-            if (bc_code.length >= 3) {
-                $("#status").html('<img src="loader.gif" /> Checking availability...');
-                $.ajax({
-                    type: 'POST',
-                    data: {
-                        bc_code: bc_code
-                    },
-                    url: 'check_bc_code.php',
-                    success: function(data) {
-                        $("#status").html(data);
-                    }
-                });
-            }
-        };
+
     </script>
+
+
 </body>
 
 </html>

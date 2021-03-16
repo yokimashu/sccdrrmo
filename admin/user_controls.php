@@ -34,6 +34,8 @@ $list_vaccine_report = ' ';
 $list_vaccine_report_no = ' ';
 $list_vaccine_linelist = ' ';
 $list_categorylist = ' ';
+$list_bakuna_center = ' ';
+$list_vaccinators = ' ';
 $list_close_contact = ' ';
 $list_positive_case = ' ';
 $single_break = ' ';
@@ -128,6 +130,22 @@ $list_categorylist = '<li class="nav-item">
   &nbsp;
   <i class="nav-icon fas fa-syringe icons"></i>
   <p> Vaccine Masterlist </p>
+</a>
+</li> ';
+
+$list_bakuna_center = '<li class="nav-item">
+<a href="list_bakuna_center" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-hospital-o"></i>
+  <p> Bakuna Center </p>
+</a>
+</li> ';
+
+$list_vaccinators = '<li class="nav-item">
+<a href="list_vaccinators" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-user-md"></i>
+  <p> Vaccinator </p>
 </a>
 </li> ';
 

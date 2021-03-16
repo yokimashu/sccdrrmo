@@ -10,32 +10,125 @@ $alert_msg = '';
 
 if (isset($_POST['insert_assessment'])) {
 
-
-    // echo "<pre>";
+   // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
 
     // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
     $time           = date("h:i:s a");
-    
+    $category       = $_POST['category'];
+    $category_id    = $_POST['category_id'];
+    $healthworker   = $_POST['health_worker'];
+    if ($_POST['idno'] != '') {
+        $idnumber = $_POST['idno'];
+    } else {
+        $idnumber = 'N/A';
+    }
+
+    if ($_POST['philhealth_id'] != '') {
+        $philhealth = $_POST['philhealth_id'];
+    } else {
+        $philhealth = 'N/A';
+    }
+
+    if ($_POST['pwd_id'] != '') {
+        $pwd = $_POST['pwd_id'];
+    } else {
+        $pwd = 'N/A';
+    }
+
+
     //basic information
     $entityno        = $_POST['entity_number'];
+    $lastname       = strtoupper($_POST['lastname']);
+    $firstname      = strtoupper($_POST['firstname']);
+    $middlename     = strtoupper($_POST['middlename']);
+    $suffix         = strtoupper($_POST['suffix']);
+    $gender         = $_POST['gender'];
+
+    $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
+    $civil_stat      = $_POST['civil_status'];
+    $contactno      = $_POST['contact_no'];
+    $emp_status     = $_POST['emp_status'];
+    $profession     = $_POST['profession'];
+
+    //full address
+    $region         = "WesternVisayas";
+    $province       = "_0645_NEGROS_OCCIDENTAL";
+    $city           = "_64524_SAN_CARLOS_CITY";
+    $barangay       = strtoupper($_POST['barangay']);
+
+    //for bararangay 
+    if ($barangay == 'BARANGAY I') {
+        $barangay1 = "_64524010_BARANGAY_I_(POB.)";
+    } elseif ($barangay == 'BARANGAY II') {
+        $barangay1 = "_64524011_BARANGAY_II_(POB.)";
+    } elseif ($barangay == 'BARANGAY III') {
+        $barangay1 = "_64524012_BARANGAY_III_(POB.)";
+    } elseif ($barangay == 'BARANGAY IV') {
+        $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
+    } elseif ($barangay == 'BARANGAY V') {
+        $barangay1 = "_64524014_BARANGAY_V_(POB.)";
+    } elseif ($barangay == 'BARANGAY VI') {
+        $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
+    } elseif ($barangay == 'BAGONBON') {
+        $barangay1 = "_64524001_BAGONBON";
+    } elseif ($barangay == 'BULUANGAN') {
+        $barangay1 = "_64524002_BULUANGAN";
+    } elseif ($barangay == 'CODCOD') {
+        $barangay1 = "_64524004_CODCOD";
+    } elseif ($barangay == 'ERMITA') {
+        $barangay1 = "_64524005_ERMITA";
+    } elseif ($barangay == 'GUADALUPE') {
+        $barangay1 = "_64524006_GUADALUPE";
+    } elseif ($barangay == 'NATABAN') {
+        $barangay1 = "_64524008_NATABAN";
+    } elseif ($barangay == 'PALAMPAS') {
+        $barangay1 = "_64524009_PALAMPAS";
+    } elseif ($barangay == 'PROSPERIDAD') {
+        $barangay1 = "_64524016_PROSPERIDAD";
+    } elseif ($barangay == 'PUNAO') {
+        $barangay1 = "_64524017_PUNAO";
+    } elseif ($barangay == 'QUEZON') {
+        $barangay1 = "_64524018_QUEZON";
+    } elseif ($barangay == 'RIZAL') {
+        $barangay1 = "_64524019_RIZAL";
+    } elseif ($barangay == 'SAN JUAN') {
+        $barangay1 = "_64524020_SAN_JUAN";
+    }
+
+    $street         = $_POST['street'];
+    $fulladdress    = strtoupper($street . ', ' . $barangay);
+    //employer
+
+    if ($_POST['name_employeer'] != '') {
+        $emp_name       = strtoupper($_POST['name_employeer']);
+    } else {
+        $emp_name = 'N/A';
+    }
+
+    if ($_POST['emp_contact'] != ''){
+        $emp_contact    = $_POST['emp_contact'];
+    } else {
+        $emp_contact = 'N/A';
+    }
    
+    if ($_POST['emp_address'] != ''){
+        $emp_address    = strtoupper($_POST['emp_address']);
+    }else{
+        $emp_address = 'N/A';
+    }
+  
+    $emp_lgu        = "_64524_SAN_CARLOS_CITY";
+
     //medical conditions
 
-    if ($_POST['preg_semester'] != 'Select pregnancy status...') {
+    if ($_POST['preg_status'] != 'Select pregnancy status...') {
         $preg_status    = $_POST['preg_status'];
     } else {
         $preg_status = '02_Not_Pregnant';
     }
-
-    if ($_POST['preg_status'] != 'Please select...') {
-        $preg_status    = $_POST['preg_status'];
-    } else {
-        $preg_status = '02_No';
-    }
-
 
     if ($_POST['with_allergy'] != 'Do you have allergy?') {
         $with_allergy   = $_POST['with_allergy'];
@@ -136,6 +229,8 @@ if (isset($_POST['insert_assessment'])) {
         $cancer         = $_POST['como_cancer'];
         $other          = $_POST['como_other'];
     }
+
+
 
 
 

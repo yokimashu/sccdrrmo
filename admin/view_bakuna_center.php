@@ -9,41 +9,31 @@ if (!isset($_SESSION['id'])) {
 } else {
 }
 
-
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $now = new DateTime();
 $time = date('H:i:s');
 
-$btnSave = $btnEdi =  $entity_no = $btn_enabled = $get_date_register =
+$btnSave = $btnEdi = $btn_enabled = $get_date_register =
     $get_bc_code = $get_bc_name = $get_bc_address = '';
 
 //fetch user from database
-$get_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center where id = :id ";
-$bakuna_center_data = $con->prepare($get_bakuna_center_sql);
-//$bakuna_center_data->execute([':id' => $bakuna_center_id]);
 
+if (isset($_GET['id'])) {
 
-$id = $_GET['id'];
-$get_data_sql = "SELECT * FROM tbl_bakuna_center ";
-$get_data_data = $con->prepare($get_data_sql);
-$get_data_data->execute([':id' => $id]);
+    $id = $_GET['id'];
+    $get_data_sql = "SELECT * FROM tbl_bakuna_center  where bc_code = :id ";
+    $get_data_data = $con->prepare($get_data_sql);
+    $get_data_data->execute([':id' => $id]);
 
-while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+    while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
-
-    // $get_cb_code = $result['cb_code'];
-    // $get_cb_name = $result['cb_name'];
-    // $get_cb_address = $result['cb_address'];
-
-    $get_date_register = $result['date_register'];
+        $get_bc_code = $result['bc_code'];
+        $get_bc_name = $result['bc_name'];
+        $get_bc_address = $result['bc_address'];
+        $get_date_register = $result['date_register'];
+    }
 }
-
-$get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center";
-$get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
-$get_all_bakuna_center_data->execute();
-
-
 
 ?>
 
@@ -56,11 +46,7 @@ $get_all_bakuna_center_data->execute();
     <title>VAMOS | Bakuna Center Update </title>
     <?php include('heading.php'); ?>
 
-
-
 </head>
-
-
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -104,7 +90,7 @@ $get_all_bakuna_center_data->execute();
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input readonly type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
 
                                                     </div>
                                                 </div>
@@ -112,16 +98,13 @@ $get_all_bakuna_center_data->execute();
 
                                                 <div class="col-lg-5">
                                                     <label>Bakuna Center Code : </label>
-                                                    <input type="text" class="form-control" name="bc_code" id="bc_code" placeholder="Bakuna Center Code" value="<?php echo $get_bc_code; ?>" required>
-                                                    <div id="status"></div>
+                                                    <input readonly type="text" class="form-control" name="bc_code" id="bc_code" placeholder="Bakuna Center Code" value="<?php echo $get_bc_code; ?>" required>
                                                 </div>
-
 
                                             </div></br>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
-
 
                                                 <div class="col-md-5">
                                                     <label>Bakuna Center Name : </label>
@@ -140,17 +123,15 @@ $get_all_bakuna_center_data->execute();
 
                                             <div class="box-footer" align="center">
 
+                                                <button type="submit" id="btnSubmit" name="update_bakuna_center" class="btn btn-success">
+                                                    <i class="fa fa-check fa-fw"> </i>
+                                                    <!-- <h5>Update Form</h4> -->
+                                                </button>
+
                                                 <a href="list_bakuna_center.php">
                                                     <button type="button" name="cancel" class="btn btn-danger">
                                                         <i class="fa fa-close fa-fw"> </i> </button>
                                                 </a>
-
-                                                <button type="submit" id="btnSubmit" name="update_bakuna_center" class="btn btn-success">
-                                                    <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                                    <h5>Update Form</h4>
-                                                </button>
-
-
                                             </div><br>
                                         </div>
                                     </div>
@@ -191,6 +172,8 @@ $get_all_bakuna_center_data->execute();
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
 
     <script>
         $('#users').DataTable({
@@ -222,67 +205,6 @@ $get_all_bakuna_center_data->execute();
 
         });
         $('.select2').select2();
-
-
-
-
-
-        function checkUsername() {
-            var username = $('#username').val();
-            if (username.length >= 3) {
-                $("#status").html('<img src="loader.gif" /> Checking availability...');
-                $.ajax({
-                    type: 'POST',
-                    data: {
-                        username: username
-                    },
-                    url: 'check_username.php',
-                    success: function(data) {
-                        $("#status").html(data);
-
-                    }
-                });
-            }
-        };
-
-
-        // $(document).ready(function() {
-
-
-        //     $('#username').change(function() {
-        //         if ($('#entity_no').val() == '') {
-        //             $.ajax({
-        //                 type: 'POST',
-        //                 data: {},
-        //                 url: 'generate_id.php',
-        //                 success: function(data) {
-        //                     //$('#entity_no').val(data);
-        //                     document.getElementById("entity_no").value = data;
-        //                     console.log(data);
-        //                 }
-        //             });
-        //         }
-        //     });
-
-
-        // });
-
-
-        // $("#insert_user").click(function(e) {
-        //     e.preventDefault();
-        //     var name = $("#name").val();
-        //     var last_name = $("#last_name").val();
-        //     var 
-        //     var dataString = 'name=' + name + '&last_name=' + last_name;
-        //     $.ajax({
-        //         type: 'POST',
-        //         data: dataString,
-        //         url: 'insert_user.php',
-        //         success: function(data) {
-        //             alert(data);
-        //         }
-        //     });
-        // });
     </script>
 </body>
 

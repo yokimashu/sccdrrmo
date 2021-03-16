@@ -24,70 +24,87 @@ $requestData= $_REQUEST;
  $columns= array( 
 // datatable column index  => database column name
 	// 0 => 'id', 
-	// 1 => 'bc_code',
-	// 2 => 'bc_name',
-	// 3 => 'bc_address'
+	// 1 => 'n_facility',
+	// 2 => 'pr_license_number',
+    // 3 => 'f_name',
+    // 4 => 'l_name',
+    // 5 => 'm_name',
+    // 6 => 'position',
+    // 7 => 'role'
+	
+
+
 );
 
 
 
 // getting total number records without any search
 
-$sql = "SELECT *  FROM tbl_bakuna_center ";
-$get_bakuna_center_data = $con->prepare($sql);
-$get_bakuna_center_data->execute();
+$sql = "SELECT *  FROM tbl_vaccinators ";
+$get_vaccinators_data = $con->prepare($sql);
+$get_vaccinators_data->execute();
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 // PDOStatement::rowCount
 
-$countnofilter= "SELECT COUNT(idno) as idno from tbl_bakuna_center"; //count all rows w/o filter
+$countnofilter= "SELECT COUNT(id) as id from tbl_vaccinators"; //count all rows w/o filter
 $getrecordstmt = $con->prepare($countnofilter);
-$getrecordstmt->execute() or die("search_bakuna_center.php");
+$getrecordstmt->execute() or die("search_vaccinators.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
-$totalData = $getrecord['idno'];
+$totalData = $getrecord['id'];
 // $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT * FROM tbl_bakuna_center where ";
+$sql = "SELECT * FROM tbl_vaccinators v inner join tbl_bakuna_center b on b.bc_code = v.n_facility where ";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-	$sql.=" (idno LIKE '%".$requestData['search']['value']."%' ";    
-	$sql.=" OR bc_code LIKE '%".$requestData['search']['value']."%' ";
-	$sql.=" OR bc_name LIKE '%".$requestData['search']['value']."%' ";
-	$sql.=" OR bc_address LIKE '%".$requestData['search']['value']."%') ";
+	$sql.=" (id LIKE '%".$requestData['search']['value']."%' ";    
+    $sql.=" OR b.bc_name LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR pr_license_number LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR l_name LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR f_name LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR m_name LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR position LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR role LIKE '%".$requestData['search']['value']."%' )";
 
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 
 
 // $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-$sql.="   ORDER BY idno DESC  LIMIT 100  ";
-$get_bakuna_center_data = $con->prepare($sql);
-$get_bakuna_center_data->execute();
+$sql.="   ORDER BY id DESC  LIMIT 100  ";
+$get_vaccinators_data = $con->prepare($sql);
+$get_vaccinators_data->execute();
 // $totalData = $get_user_data->fetch(PDOStatement::rowCount);
 // $totalFiltered = $totalData;
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 
-	$countfilter= "SELECT COUNT(idno) as idno from tbl_bakuna_center where ";
-	$countfilter.=" (idno LIKE '%".$requestData['search']['value']."%' ";    
-	$countfilter.=" OR bc_code LIKE '%".$requestData['search']['value']."%' ";
-	$countfilter.=" OR bc_name LIKE '%".$requestData['search']['value']."%' ";
-	$countfilter.=" OR bc_address LIKE '%".$requestData['search']['value']."%') ";
+	$countfilter= "SELECT COUNT(id) as id from tbl_vaccinators v inner join tbl_bakuna_center b on b.bc_code = v.n_facility where ";
+	$countfilter.=" (id LIKE '%".$requestData['search']['value']."%' ";    
+    $countfilter.=" OR b.bc_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR pr_license_number LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR l_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR f_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR m_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR position LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR role LIKE '%".$requestData['search']['value']."%' )";
 
 $countfilter.="LIMIT 100 " ;//count all rows w/ filter
 $getrecordstmt = $con->prepare($countfilter);
-$getrecordstmt->execute() or die("search_bakuna_center.php");
+$getrecordstmt->execute() or die("search_vaccinators.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
-$totalData = $getrecord['idno'];
+$totalData = $getrecord['id'];
 $totalFiltered = $totalData;
 }
 $data = array();
 // while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-	while ($row = $get_bakuna_center_data->fetch(PDO::FETCH_ASSOC)){
+	while ($row = $get_vaccinators_data->fetch(PDO::FETCH_ASSOC)){
 	$nestedData=array(); 
 
-	$nestedData[] = $row["bc_code"];
-	$nestedData[] = $row["bc_name"];
-	$nestedData[] = $row["bc_address"];
+	$nestedData[] = $row["b.bc_name"];
+    $nestedData[] = $row["pr_license_number"];
+    $nestedData[] = strtoupper($row["f_name"] . ' ' . $row["m_name"] . ' ' . $row["l_name"]);
+    $nestedData[] = $row["position"];
+    $nestedData[] = $row["role"];
 	$data[] = $nestedData;
 }
 
