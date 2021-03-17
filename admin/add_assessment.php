@@ -567,7 +567,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <label>Willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="<?php echo $get_consent; ?>">
                                                                     <!-- <option value="01_Yes">Yes</option> -->
                                                                     <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
@@ -1172,7 +1172,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
              $('#vaccinator1').on('change', function() {
                 var vaccinator = this.value;
-                alert(vaccinator);
+                // alert(vaccinator);
                 console.log(vaccinator);
                 $.ajax({
                     type: "POST",

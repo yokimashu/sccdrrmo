@@ -551,10 +551,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             </div>
 
-                                                            <div class="col-sm-4" id="indigent" hidden>
+                                                            <div class="col-sm-4" id="indigent1" hidden>
                                                                 <label> Indigent or not?</label>
                                                                 <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
-                                                                    <option value=" " selected>Select status </option>
+                                                                    <option value=" " selected>Select status</option>
                                                                     <option value="01_Indigent">Indigent</option>
                                                                     <option value="02_Not_Indigent">Not Indigent</option>
                                                                 </select>
@@ -1308,7 +1308,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var option = $('#category').val();
             //if Senior_Citizen is Selected
             if (option == "02_Senior_Citizen") {
-                $('#indigent').prop("hidden", false);
+                $('#indigent1').prop("hidden", false);
                 $('#healthworker').prop("hidden", true);
 
 
@@ -1317,7 +1317,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             //if Health_Care_Worker is Selected
             if (option == "01_Health_Care_Worker") {
                 $('#healthworker').prop("hidden", false);
-                $('#indigent').prop("hidden", true);
+                $('#indigent1').prop("hidden", true);
 
 
             }
@@ -1325,7 +1325,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             //if 03_Indigent is Selected
             if (option == "03_Indigent") {
                 $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
+                $('#indigent1').prop("hidden", true);
 
 
 
@@ -1333,7 +1333,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             //if 04_Uniformed_Personnel is Selected
             if (option == "04_Uniformed_Personnel") {
                 $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
+                $('#indigent1').prop("hidden", true);
 
 
 
@@ -1342,7 +1342,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             //if 05_Essential_Worker is Selected
             if (option == "05_Essential_Worker") {
                 $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
+                $('#indigent1').prop("hidden", true);
 
 
 
@@ -1351,7 +1351,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             //if 06_Other is Selected
             if (option == "06_Other") {
                 $('#healthworker').prop("hidden", true);
-                $('#indigent').prop("hidden", true);
+                $('#indigent1').prop("hidden", true);
 
 
 
@@ -1568,7 +1568,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Please select profession! Select N/A if not applicable.");
                 $('#profession').focus();
                 return false;
-            } else if ((profession == '19_Other') && (indicate == '')) {
+            } else if ((profession == '19_Other') && (indicate == ' ')) {
                 alert("Please indicate profession!");
                 $('#indicate_profession').focus();
                 return false;
