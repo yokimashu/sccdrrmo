@@ -1198,51 +1198,42 @@ if (isset($_GET['id'])) {
 
                 <form method="POST" action="">
                     <div class="modal-body">
-                        <div class="box-body-lg-50">
+                        <div class="box-body-lg">
                             <div class="form-group">
                                 <label>VAMOS ID: </label>
                                 <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
 
-
-                                <div class="col-sm-3">
-                                    <label>Other</label>
-                                    <select class="form-control select2" style="width: 100%;" name="n_facility" id="n_facility">
-                                        <option value=" " selected>Select Facility</option>
-                                        <?php while ($get_n_facility = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                            <?php $selected = ($get_n_facility == $get_n_facility['bc_code']) ? 'selected' : ''; ?>
-                                            <option <?= $selected; ?> value="<?php echo $get_n_facility['bc_code']; ?>"><?php echo $get_n_facility['bc_name']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                                <br>
 
 
+                                <label>Other</label>
+                                <select class="form-control" style="width: 100%;" name="n_facility" id="n_facility">
+                                    <option selected value="">Select Facility</option>
+                                    <?php while ($get_n_facility = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                        <option value="<?php echo $get_n_facility['bc_code']; ?>"><?php echo $get_n_facility['bc_name']; ?></option>
+                                    <?php } ?>
+                                </select>
 
+                                <br>
 
-                                <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo date("y/m/d") ?>" required>
+                                <label>Set Date for Vaccination </label>
+                                <div class="input-group date" data-provide="datepicker">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_set" placeholder="Schedule Date" value="">
+                                </div><br>
 
-                                <!-- <label>Time Registered:
-                <input readonly="true" readonly type="text" name="time_registered" id="time_registered" class = "form-control" pull-right value="<?php echo date("H:i") ?>" required>
-                </label>  -->
+                                <label> Set Time</label>
+                                <input type="time" selected="00:00:00" class="form-control" style="text-align:center;" name="time_set" id="time" placeholder="Time Registered" value="">
 
-
+                                <br>
 
                                 <label>Remarks: </label>
                                 <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
 
 
                             </div>
-
-                            <!-- <div class="col-md-5">
-                <label for="">STATUS:</label>
-                <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
-                  <option selected>Please select</option>
-                  <option value="POSITIVE">POSITIVE</option>
-                  <option value="NEGATIVE">NEGATIVE</option>
-                  <option value="PENDING">PENDING</option>
-                </select>
-              </div> -->
-                            <!-- <label for="">MOVE TO VAST LIST:</label>
-              <br> -->
 
                         </div>
 
@@ -1316,6 +1307,12 @@ if (isset($_GET['id'])) {
             theme: "classic"
         });
     </script>
+
+    <!-- <script>
+  $("#n_facility").select2({
+    dropdownParent: $('#myModal')
+});
+    </script> -->
 
 
     <script>
