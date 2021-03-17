@@ -1065,17 +1065,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <label for="">Vaccinator Name: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    
                                                                     <select class="form-control select2" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="<?php echo $vaccinator_name; ?>">
+                                                                    <option value="">Select Vaccinator</option>
                                                                         <?php while ($get_vaccinator = $get_all_vaccinator_sql->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                            <option value="<?php echo $get_vaccinator['f_name']. ' ' . $get_vaccinator['f_name']. ' ' . $get_vaccinator['l_name']; ?>"><?php echo $get_vaccinator['f_name']. ' ' . $get_vaccinator['f_name']. ' ' . $get_vaccinator['l_name']; ?></option>
+                                                                          <option value="<?php echo $get_vaccinator['f_name']. ' ' . $get_vaccinator['m_name']. ' ' . $get_vaccinator['l_name']; ?>"><?php echo $get_vaccinator['f_name']. ' ' . $get_vaccinator['m_name']. ' ' . $get_vaccinator['l_name']; ?></option>
                                                                         <?php } ?>
-                                                                   
+                                                                   </select>
                                                                 </div>
 
                                                                 <div class="col-md-6">
                                                                     <label for="">Profession of Vaccinator: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                    <input type="text" class="form-control" name="profession_vaccinator" id="profession_vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $vaccinator_name; ?>">
-                                                                    </select>                                                                
+                                                                    <input type="text" class="form-control" name="profession_vaccinator" id="profession_vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $profession_vaccinator; ?>">                                                 
                             
                                                                 </div>
                                                             </div><br>
@@ -1169,49 +1170,15 @@ $title = 'VAMOS | COVID-19 Patient Form';
     <script>
         $(function() {
 
-            $("#entity1").select2({
-                //  minimumInputLength: 3,
-                // placeholder: "hello",
-                ajax: {
-                    url: "vaccine_query_patient", // json datasource
-                    type: "post",
-                    dataType: 'json',
-                    delay: 250,
-                    data: function(params) {
-                        return {
-                            searchTerm: params.term
-                        };
-                    },
-
-                    processResults: function(response) {
-                        return {
-                            results: response
-
-
-                        };
-                    },
-                    cache: true,
-                    error: function(xhr, b, c) {
-                        console.log(
-                            "xhr=" +
-                            xhr.responseText +
-                            " b=" +
-                            b.responseText +
-                            " c=" +
-                            c.responseText
-                        );
-                    }
-                }
-            });
-
-            $('#entity1').on('change', function() {
-                var entity_no = this.value;
-                console.log(entity_no);
+             $('#vaccinator1').on('change', function() {
+                var vaccinator = this.value;
+                alert(vaccinator);
+                console.log(vaccinator);
                 $.ajax({
                     type: "POST",
-                    url: 'profile_vaccine.php',
+                    url: 'profile_vaccinator.php',
                     data: {
-                        entity_no: entity_no
+                        vaccinator: vaccinator
                     },
                     error: function(xhr, b, c) {
                         console.log(
@@ -1226,29 +1193,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                     success: function(response) {
                         var result = jQuery.parseJSON(response);
                         console.log('response from server', result);
-                        $('#entity_number').val(result.data);
-                        $('#fullname').val(result.data1);
-                        $('#firstname').val(result.data2);
-                        $('#middlename').val(result.data3);
-                        $('#lastname').val(result.data4);
-                        $('#birthdate').val(result.data5);
-                        $('#street').val(result.data7);
-                        $('#barangay').val(result.data8);
-                        $('#age').val(result.data9);
-
-                        var gender = result.data10;
-
-                        if (gender == 'Female') {
-                            $("#gender").select2("val", "01_Female");
-                            $('#preg_status').select2("val", "Select pregnancy status...")
-                        } else if (gender == 'Male') {
-                            $("#gender").select2("val", "02_Male");
-                            $('#preg_status').select2("val", "02_Not_Pregnant")
-                        }
-
-                        $('#contact_no').val(result.data12);
-                        $('#tphoto').attr("src", "../flutter/images/" + result.data13);
-                    },
+                        $('#profession_vaccinator').val(result.data1);
+                        
+                                   },
                 });
 
             });
