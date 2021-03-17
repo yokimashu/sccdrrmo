@@ -202,6 +202,10 @@ $get_all_manufacturer_sql = $con->prepare($get_all_manufacturer_sql);
 $get_all_manufacturer_sql->execute();
 
 
+$get_all_vaccinator_sql = "SELECT * FROM tbl_vaccinators";
+$get_all_vaccinator_sql = $con->prepare($get_all_vaccinator_sql);
+$get_all_vaccinator_sql->execute();
+
 
 
 $province = 'NEGROS OCCIDENTAL ';
@@ -1061,12 +1065,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <label for="">Vaccinator Name: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                    <input type="text" class="form-control" name="vaccinator" id="vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Vaccinator" value="<?php echo $vaccinator_name; ?>">
+                                                                    <select class="form-control select2" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="<?php echo $vaccinator_name; ?>">
+                                                                        <?php while ($get_vaccinator = $get_all_vaccinator_sql->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <option value="<?php echo $get_vaccinator['f_name']. ' ' . $get_vaccinator['f_name']. ' ' . $get_vaccinator['l_name']; ?>"><?php echo $get_vaccinator['f_name']. ' ' . $get_vaccinator['f_name']. ' ' . $get_vaccinator['l_name']; ?></option>
+                                                                        <?php } ?>
+                                                                   
                                                                 </div>
 
                                                                 <div class="col-md-6">
                                                                     <label for="">Profession of Vaccinator: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                    <input type="text" class="form-control" name="profession_vaccinator" id="profession_vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $profession_vaccinator; ?>">
+                                                                    <input type="text" class="form-control" name="profession_vaccinator" id="profession_vaccinator" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Profession" value="<?php echo $vaccinator_name; ?>">
+                                                                    </select>                                                                
+                            
                                                                 </div>
                                                             </div><br>
 
