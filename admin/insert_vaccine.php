@@ -214,9 +214,7 @@ if (isset($_POST['insert_vaccine'])) {
     $province       = "_0645_NEGROS_OCCIDENTAL";
     $city           = "_64524_SAN_CARLOS_CITY";
     $barangay       = strtoupper($_POST['barangay']);
-    $sinovac        = $_POST['sinovac'];
-    $astrazeneca    = $_POST['astrazeneca'];
-
+    
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
         $barangay1 = "_64524010_BARANGAY_I_(POB.)";
@@ -310,6 +308,10 @@ if (isset($_POST['insert_vaccine'])) {
     } else {
         $consent        = '03_Unknown';
     }
+
+    $sinovac        = $_POST['sinovac'];
+    $astrazeneca    = $_POST['astrazeneca'];
+
 
 
     //covid history
