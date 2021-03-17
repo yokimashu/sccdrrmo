@@ -1026,7 +1026,7 @@ if (isset($_GET['id'])) {
                                                 <?php } else { ?>
                                                     <div hidden  class="card card-success card-outline" id="yes-comordities">
                                                     <?php } ?>
-
+                                                    
                                                     <div class="card-header">
 
                                                         <h5 class="m-0">COMORBIDITIES</h5>
