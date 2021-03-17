@@ -36,6 +36,7 @@ if (isset($_POST['signin'])) {
         session_start();
         $_SESSION['id'] = $result['id'];
         $_SESSION['user_type'] = $result['account_type'];
+        $_SESSION['cbcr'] = $result['cbcr'];
         // if ($result['account_type'] == 1) {
 
         header('location: admin'); //location is folder
@@ -158,9 +159,9 @@ if (isset($_POST['signin'])) {
 
       </form>
     </div><!-- /.login-box-body -->
-    <div class="login-logo">
+    <!-- <div class="login-logo">
       <a href="http://34.92.117.58/sccdrrmo/downloads/app-release.apk"><img src="dist/img/downloadbuttonandroid.png" width="200px"></a>
-    </div>
+    </div> -->
 
   </div><!-- /.login-box -->
 </body>

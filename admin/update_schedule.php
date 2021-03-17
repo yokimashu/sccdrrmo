@@ -1,19 +1,18 @@
 <?php
-session_start();
+
 $alert_msg = '';
 include('../config/db_config.php');
-
+session_start();
 date_default_timezone_set('Asia/Manila');
-
 
 if (isset($_POST['update_vas'])) {
 
 
-    $entity_no             = $_POST['entity_no'];
-    $remarks               = $_POST['remarks'];
-    $date_reg              = date('Y-m-d');
-    $time                  = date("H:i:s");
-    $cbcr                  = $_SESSION['cbcr'];
+    $entity_no      = $_POST['entity_no'];
+    $cbcr           = $_POST['n_facility'];
+    $date_reg       = date('Y-m-d', strtotime($_POST['date_set']));
+    $time           = date("h:i:s a", strtotime($_POST['time_set']));
+    $remarks        = $_POST['remarks'];
 
 
     $alert_msg = '';
@@ -22,21 +21,21 @@ if (isset($_POST['update_vas'])) {
 
 
 
-    $insert_tbl_assesment_sql = "INSERT INTO tbl_assessment SET 
+    $insert_tbl_assesment_sql = "INSERT INTO tbl_schedule SET 
         
-           date_reg             = :date_reg,
-           time_reg             = :time_reg,
-           remarks              = :remarks, 
            entity_no            = :entity_no,
-           bakuna_center_no     = :cbcr";
+           cbcr                 = :cbcr,
+           date                 = :date_reg,
+           time                 = :time_reg,
+           remarks              = :remarks";
 
     $add_assesment_data = $con->prepare($insert_tbl_assesment_sql);
     $add_assesment_data->execute([
         ':entity_no'             => $entity_no,
+        ':cbcr'                  => $cbcr,
         ':date_reg'              => $date_reg,
         ':time_reg'              => $time,
-        ':remarks'               => $remarks,
-        ':cbcr'                  => $cbcr
+        ':remarks'               => $remarks
 
 
     ]);
@@ -45,7 +44,7 @@ if (isset($_POST['update_vas'])) {
 
 
 
-    header('location: list_vaccine_profile.php');
+    // header('location: list_assessment.php');
 
 
 
