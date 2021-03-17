@@ -1230,11 +1230,12 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_set" placeholder="Schedule Date" value="">
                                 </div><br>
-
+                                
+                                <div class="md-form">
                                 <label> Set Time</label>
-                                <input type="time" selected="00:00:00" class="form-control" style="text-align:center;" name="time_set" id="time" placeholder="Time Registered" value="">
+                                <input type="text" class="form-control timepicker" style="text-align:center;" name="time_set" id="time" placeholder="Schedule Time" value="">
 
-                                <br>
+                                </div><br>
 
                                 <label>Remarks: </label>
                                 <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
@@ -1313,6 +1314,13 @@ if (isset($_GET['id'])) {
         $("#name_comorbidities").select2({
             theme: "classic"
         });
+    </script>
+
+    <script>
+    $('#time').pickatime({
+// 12 or 24 hour
+twelvehour: true,
+});
     </script>
 
     <!-- <script>
