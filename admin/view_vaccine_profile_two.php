@@ -90,6 +90,11 @@ $get_all_infection_sql = "SELECT * FROM tbl_infection";
 $get_all_infection_data = $con->prepare($get_all_infection_sql);
 $get_all_infection_data->execute();
 
+$get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center";
+$get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
+$get_all_bakuna_center_data->execute();
+
+
 // $province = 'NEGROS OCCIDENTAL ';
 // $city = 'SAN CARLOS CITY';
 $province = 'NEGROS OCCIDENTAL ';
@@ -448,6 +453,15 @@ if (isset($_GET['id'])) {
 
 
                                     <strong><i class="fa fa-pencil mr-1"></i> <a href="add_assessment.php?id=<?php echo $entity_no; ?> "> View VAS </a> </strong>
+
+
+                                    <p class="text-muted">
+
+                                    </p>
+                                    <hr>
+
+
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="#myModal" data-toggle="modal" data-target="#myModal"> Assign Schedule </a> </strong>
 
 
                                     <p class="text-muted">
@@ -1172,6 +1186,84 @@ if (isset($_GET['id'])) {
         <?php include('footer.php') ?>
 
     </div>
+
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ASSIGN SCHEDULE</h4>
+                </div>
+
+
+
+                <form method="POST" action="">
+                    <div class="modal-body">
+                        <div class="box-body-lg-50">
+                            <div class="form-group">
+                                <label>VAMOS ID: </label>
+                                <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+
+
+                                <div class="col-sm-3">
+                                    <label>Other</label>
+                                    <select class="form-control select2" style="width: 100%;" name="n_facility" id="n_facility">
+                                        <option value=" " selected>Select Facility</option>
+                                        <?php while ($get_n_facility = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                            <?php $selected = ($get_n_facility == $get_n_facility['bc_code']) ? 'selected' : ''; ?>
+                                            <option <?= $selected; ?> value="<?php echo $get_n_facility['bc_code']; ?>"><?php echo $get_n_facility['bc_name']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+
+
+
+                                <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo date("y/m/d") ?>" required>
+
+                                <!-- <label>Time Registered:
+                <input readonly="true" readonly type="text" name="time_registered" id="time_registered" class = "form-control" pull-right value="<?php echo date("H:i") ?>" required>
+                </label>  -->
+
+
+
+                                <label>Remarks: </label>
+                                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
+
+
+                            </div>
+
+                            <!-- <div class="col-md-5">
+                <label for="">STATUS:</label>
+                <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
+                  <option selected>Please select</option>
+                  <option value="POSITIVE">POSITIVE</option>
+                  <option value="NEGATIVE">NEGATIVE</option>
+                  <option value="PENDING">PENDING</option>
+                </select>
+              </div> -->
+                            <!-- <label for="">MOVE TO VAST LIST:</label>
+              <br> -->
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                            <input type="submit" name="update_vas" class="btn btn-danger" value="SAVE">
+
+                            <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button> -->
+                        </div>
+
+
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
 
 
 
