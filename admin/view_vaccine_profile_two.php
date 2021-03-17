@@ -926,6 +926,10 @@ if (isset($_GET['id'])) {
 
                                             <?php if ($get_wallergy == '01_Yes') { ?>
                                                 <div class="card card-success card-outline" id="yes-allergy">
+                                                <?php } else {  ?>
+                                                    <div hidden class="card card-success card-outline" id="yes-allergy">
+                                                    <?php } ?>
+
                                                     <div class="card-header">
 
                                                         <h5 class="m-0">ALLERGIES</h5>
@@ -1004,7 +1008,7 @@ if (isset($_GET['id'])) {
 
                                                     </div>
                                                 </div>
-                                            <?php } ?>
+                                           
 
 
                                             <!-- </legend> -->
@@ -1019,6 +1023,10 @@ if (isset($_GET['id'])) {
                                             <?php if ($get_wcomorbidities == '01_Yes') { ?>
                                                 <!-- if yes kung with comorbidities -->
                                                 <div class="card card-success card-outline" id="yes-comordities">
+                                                <?php } else { ?>
+                                                    <div hidden  class="card card-success card-outline" id="yes-comordities">
+                                                    <?php } ?>
+
                                                     <div class="card-header">
 
                                                         <h5 class="m-0">COMORBIDITIES</h5>
@@ -1096,8 +1104,7 @@ if (isset($_GET['id'])) {
                                                         </div><br>
                                                     </div>
                                                 </div>
-                                            <?php } ?>
-
+                                        
 
 
                                             <!-- end of form choices comorbidities -->

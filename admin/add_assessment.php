@@ -573,6 +573,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <?php if ($get_consent == '02_No') { ?>
                                                                 <div id="reason_refusal" class="col-md-6">
+                                                                <?php } else { ?>
+                                                                    <div hidden id="reason_refusal" class="col-md-6">
+                                                                    <?php } ?>
+
                                                                     <label for="">Reason for refusal</label>
                                                                     <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="" value="<?php echo $refusal; ?>">
                                                                         <option selected value="">Choose here</option>
@@ -581,7 +585,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         <?php } ?>
                                                                     </select>
                                                                 </div>
-                                                            <?php } ?>
+                                                        
 
                                                         </div>
 
@@ -638,7 +642,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                             </div>
                                                                         </div><br>
 
-                                                                        <div class="row">
+                                                                        <div hidden class="row" id ="allergic">
                                                                             <div class="col-sm-7">
                                                                                 <label>* If with allergy or asthma, will the vaccinator able to monitor the patient for 30 minutes?</label>
                                                                             </div>
@@ -782,11 +786,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         </div><br>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-8">
+                                                                            <div hidden class="col-sm-8" id="bleeding">
                                                                                 <label style="font-size:14px">* If with bleeding history, is a gauge 23 - 25 syringe available for injection?</label>
                                                                             </div>
                                                                             <div class="col-sm-1"></div>
-                                                                            <div class="col-sm-3">
+                                                                            <div hidden class="col-sm-3" id="bleeding1">
                                                                                 <select class="form-control select2" style="width:100%" name="yes_bleeding" id="yes_bleeding" value="<?php echo $yes_bleeding_history; ?>">
                                                                                     <!-- <option>Do you have comorbidities?</option> -->
                                                                                     <option selected value="01_Yes">Yes</option>
@@ -824,11 +828,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         </div><br>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-8">
+                                                                            <div hidden class="col-sm-8" id="symptoms">
                                                                                 <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify all that apply</label>
                                                                             </div>
                                                                             <div class="col-sm-1"></div>
-                                                                            <div class="col-sm-3">
+                                                                            <div hidden class="col-sm-3" id="symptoms1">
                                                                                 <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="list_symptoms[]" placeholder="" >
                                                                                 <option selected>Choose here...</option>
                                                                                     <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -853,11 +857,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         </div><br>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-8">
+                                                                            <div hidden class="col-sm-8" id="illness">
                                                                                 <label style="font-size:14px" for="">* If manifesting any of the mentioned symptom/s, specify.</label>
                                                                             </div>
                                                                             <div class="col-sm-1"></div>
-                                                                            <div class="col-sm-3">
+                                                                            <div hidden class="col-sm-3" id="illness1">
                                                                                 <select class="form-control select2" id="complications" style="width: 100%;" multiple="" name="list_illness[]" placeholder="Select Illness" value="<?php echo $specify_illness; ?>">
                                                                                 <option selected>Choose here...</option>
                                                                                     <?php while ($get_complications = $get_all_complications_data->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -1382,6 +1386,96 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
             console.log("test");
         });
+
+        $('#allergy_PEG').change(function() {
+            var option = $('#allergy_PEG').val();
+            if (option == "02_No") {
+                $('#allergic').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#allergic').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#food_allergy').change(function() {
+            var option = $('#food_allergy').val();
+            if (option == "02_No") {
+                $('#allergic').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#allergic').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#bleeding_history').change(function() {
+            var option = $('#bleeding_history').val();
+            if (option == "02_No") {
+                $('#bleeding').prop("hidden", false);
+                $('#bleeding1').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#bleeding').prop("hidden", true);
+                $('#bleeding1').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        
+        $('#manifest_symptoms').change(function() {
+            var option = $('#manifest_symptoms').val();
+            if (option == "02_No") {
+                $('#symptoms').prop("hidden", false);
+                $('#symptoms1').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#symptoms').prop("hidden", true);
+                $('#symptoms1').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#no_illness').change(function() {
+            var option = $('#no_illness').val();
+            if (option == "02_No") {
+                $('#illness').prop("hidden", false);
+                $('#illness1').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#illness').prop("hidden", true);
+                $('#illness1').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+
 
         $('#electronic_consent').change(function() {
             var option = $('#electronic_consent').val();
