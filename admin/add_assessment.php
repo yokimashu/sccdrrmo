@@ -908,6 +908,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                         <?php if ($get_pregstatus == '01_Pregnant') { ?>
                                                                             <div id="preg_sem" class="row">
+                                                                            <?php } else { ?>
+                                                                                <div hidden id="preg_sem" class="row">
+                                                                                <?php } ?>
+                                                                                
                                                                                 <div class="col-sm-7">
                                                                                     <label> If pregnant, 2nd or 3rd trimester?</label>
                                                                                 </div>
@@ -920,7 +924,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
-                                                                        <?php } ?>
+                                                                      
 
                                                                     </div>
                                                                 </div>
