@@ -33,6 +33,8 @@ $list_vaccine = '';
 $list_vaccine_report = ' ';
 $list_vaccine_report_no = ' ';
 $list_vaccine_linelist = ' ';
+$vaccine_sandoc = ' ';
+$daily_report = ' ';
 $list_categorylist = ' ';
 $list_bakuna_center = ' ';
 $list_vaccinators = ' ';
@@ -215,6 +217,23 @@ $list_vaccine_linelist = '<li class="nav-item">
   <p> Sinovac Linelist </p>
 </a>
 </li> ';
+
+$vaccine_sandoc = '<li class="nav-item">
+<a href="../plugins/jasperreport/vaccine_sandoc.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> SanDoc Linelist </p>
+</a>
+</li> ';
+
+$daily_report = '
+<li class="nav-item">
+  <a href="daily_vaccine_report" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-id-card-alt icons"></i>
+    <p> Daily Count </p>
+  </a>
+</li>';
 
   // end report for vaccine 
 

@@ -10,9 +10,14 @@ include('insert_contactcase.php');
 $now = new DateTime();
 $time = date(' H:i');
 
-$patient_no = '';
-$entity_no = $date_register = $user_name = $firstname = $middlename = $lastname = $birthdate = $age = $gender = $barangay = $street =
-    $city = $province = $mobile_no = $gender = $telephone_no = $email = $individual = $individual2 =  $fullname = $entity_no1 = $fullname1 = $photo = '';
+
+$date_register = $time_register = $tracer_name = $brgy_contacttracer = $case_investigation = $place_origin = $index_id = $index_name = $patient_id = $patient_fullname = $patient_street = 
+$patient_barangay = $patient_bday = $patient_age = $patient_gender = $patient_mobile = $permanent_add = $house_no = $longtitude =  $latitude = $occupation = $placeofwork = $healthworker = 
+$phil_no = $blood_type = $maritalstatus = $nationality = $householdno = $outside_ph =  $passport = $employee_name = $ofw_occupation =  $ofw_placework = $ofw_buildingname = $ofw_street = $ofw_city = 
+$ofw_state = $ofw_country = $ofw_phoneno = $ofw_mobileno = $history_exposure = $date_exposure = $place_covid = $place_been =  $facility_name = $date_visit = $placename = $personentity1 =
+$personfullname1 = $personentity2 = $personfullname2 = $personentity3 = $personfullname3 = $personentity4 = $personfullname4 = $personentity5 =  $personfullname5 = $disposition = $date_illness = $quarantine_type =
+$date_swab = $reason_swabbing = $date_quarantine = $lockdown = $travel = $travel_port_exit = $travel_airline = $travel_flight =  $symptoms_signs = '';
+
 
 $btnSave = $btnEdit = "";
 $btnNew = 'hidden';
@@ -36,7 +41,98 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
+$user_id = $_GET['id'];
+$get_data_sql = "SELECT * FROM  tbl_closecontact where objid ='$user_id'";
+$get_data_data = $con->prepare($get_data_sql);
+$get_data_data->execute([':id' => $user_id]);
+
+while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+    $get_date_register = $result['date_register'];
+    $get_time_register = $result['time_register'];
+    $get_tracer_name= $result['tracer_name'];
+    $get_brgy_contacttracer = $result['brgy_contacttracer'];
+    $get_case_investigation = $result['case_investigation'];
+    $get_place_origin= $result['place_origin'];
+    $get_index_id = $result['index_id'];
+    $get_index_name = $result['index_name'];
+    $get_patient_id = $result['patient_id'];
+    $get_patient_fullname = $result['patient_fullname'];
+    $get_patient_street = $result['patient_street'];
+    $get_patient_barangay = $result['patient_barangay'];
+    $get_patient_bday= $result['patient_bday'];
+    $get_patient_age = $result['patient_age'];
+    $get_patient_gender = $result['patient_gender'];
+    $get_patient_mobile= $result['patient_mobile'];
+    $get_permanent_add= $result['permanent_add'];
+    $get_house_no = $result['house_no'];
+
+    $get_longtitude = $result['longtitude'];
+    $get_latitude = $result['latitude'];
+    $get_occupation = $result['occupation'];
+    $get_placeofwork = $result['placeofwork'];
+    $get_healthworker = $result['healthworker'];
+    $get_phil_no = $result['phil_no'];
+    $get_blood_type = $result['blood_type'];
+    $get_maritalstatus= $result['maritalstatus'];
+    $get_nationality = $result['nationality'];
+    $get_householdno = $result['householdno'];
+    $get_outside_ph = $result['outside_ph'];
+    $get_passport = $result['passport'];
+    $get_employee_name = $result['employee_name'];
+    $get_ofw_occupation = $result['ofw_occupation'];
+    $get_ofw_placework = $result['ofw_placework'];
+    $get_ofw_buildingname = $result['ofw_buildingname'];
+    $get_ofw_street = $result['ofw_street'];
+    $get_ofw_city = $result['ofw_city'];
+    $get_ofw_state = $result['ofw_state'];
+
+    $get_ofw_country = $result['ofw_country'];
+    $get_ofw_phoneno = $result['ofw_phoneno'];
+    $get_ofw_mobileno = $result['ofw_mobileno'];
+    $get_history_exposure = $result['history_exposure'];
+    $get_date_exposure = $result['date_exposure'];
+    $get_place_covid = $result['place_covid'];
+    $get_place_been = $result['place_been'];
+    $get_facility_name = $result['facility_name'];
+    $get_date_visit = $result['date_visit'];
+    $get_placename = $result['placename'];
+    $get_personentity1 = $result['personentity1'];
+    $get_personfullname1 = $result['personfullname1'];
+    $get_personentity2= $result['personentity2'];
+    $get_personfullname2 = $result['personfullname2'];
+    $get_personentity3 = $result['personentity3'];
+    $get_personfullname3 = $result['personfullname3'];
+    $get_personentity4 = $result['personentity4'];
+    $get_personfullname4 = $result['personfullname4'];
+    $get_personentity5 = $result['personentity5'];
+    $get_personfullname5 = $result['personfullname5'];
+
+    $get_disposition = $result['disposition'];
+    $get_date_illness = $result['date_illness'];
+    $get_quarantine_type = $result['quarantine_type'];
+    $get_date_swab = $result['date_swab'];
+    $get_reason_swabbing = $result['reason_swabbing'];
+    $get_date_quarantine = $result['date_quarantine'];
+    $get_lockdown = $result['lockdown'];
+    $get_travel = $result['travel'];
+    $get_travel_port_exit = $result['travel_port_exit'];
+    $get_travel_airline = $result['travel_airline'];
+    $get_travel_flight = $result['travel_flight'];
+    $get_symptoms_signs = $result['symptoms_signs'];
+
+
+}
+
+
+
 // include('verify_admin.php');
+
+$get_all_case_sql = "SELECT * FROM type_caseinvestigation";
+$get_all_case_data = $con->prepare($get_all_case_sql);
+$get_all_case_data->execute();
+
 
 $get_all_brgy_sql = "SELECT * FROM tbl_barangay";
 $get_all_brgy_data = $con->prepare($get_all_brgy_sql);
@@ -209,7 +305,7 @@ $title = 'VAMOS | Close Contact Form';
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" style="width: 90%;" readonly id="datepicker" name="date_register1" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
+                                                        <input type="text" class="form-control pull-right" style="width: 90%;" readonly id="datepicker" name="date_register1" placeholder="Date Process" value="<?php echo $get_date_register; ?>">
                                                     </div>
                                                 </div>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -218,7 +314,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <label> Time Registered: &nbsp;&nbsp; <span id="required">*</span></label>
 
 
-                                                    <input readonly type="text" class="form-control" name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>">
+                                                    <input readonly type="text" class="form-control" name="time" id="time" placeholder="Time Registered" value="<?php echo $get_time_register; ?>">
                                                 </div>
 
 
@@ -231,28 +327,13 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-3">
                                                     <label>Name of Investigator: &nbsp;&nbsp; <span id="required">*</span></label>
 
-                                                    <input type="text" class="form-control" name="contact_tracer" style=" text-transform: uppercase;" id="contact_tracer" placeholder="Investigator's Name" value="<?php echo $db_fullname ?>">
+                                                    <input type="text" class="form-control" readonly name="contact_tracer" style=" text-transform: uppercase;" id="contact_tracer" placeholder="Investigator's Name" value="<?php echo $get_tracer_name; ?>">
                                                     <span id="asstdname"> &nbsp;&nbsp;<i>Name of Contact Tracer</i></span>
                                                 </div>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <div class="col-md-3">
-                                                    <label for="">Contact No.:</label>
-                                                    <input type="text" class="form-control" name="tracer_contactno" style=" text-transform: uppercase;" id="tracer_contactno" placeholder="tracer_contactno" value="">
-                                                 
-                                                </div>
-
-
-
-
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                            
-                                          
-                                                <div class="col-md-3">
                                                     <label for="">Name of Brgy Contact Tracer: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="brgy_contacttracer" style=" text-transform: uppercase;" id="brgy_contacttracer" placeholder="Name of Brgy Contact Tracer" value="">
+                                                    <input type="text" class="form-control" name="brgy_contacttracer" style=" text-transform: uppercase;" id="brgy_contacttracer" placeholder="Name of Brgy Contact Tracer" value="<?php echo $get_brgy_contacttracer; ?>">
                                                     <span id="asstdname"> &nbsp; &nbsp;<i>Please put NONE if no Brgy CT assisted</i></span>
                                                 </div>
 
@@ -260,7 +341,6 @@ $title = 'VAMOS | Close Contact Form';
 
 
                                             </div>
-
 
                                         </div>
 
@@ -275,14 +355,22 @@ $title = 'VAMOS | Close Contact Form';
                                             <div class="col-md-5">
 
                                                 <label for="">Case of Investigation: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                <select class="form-control select2" style="width: 90%;" id="case_investigation" name="case_investigation" value="">
+
+                                                <select class=" form-control select2" style="width: 100%;" id="case_investigation1" name="case_investigation" >
+                                                        <option value = ""><?php echo $get_case_investigation;?></option>
+                                                        <?php while ($get_case = $get_all_case_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $get_case['description']; ?>"><?php echo $get_case['description']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+
+                                                <!-- <select class="form-control select2" style="width: 90%;" id="case_investigation" name="case_investigation" value="<?php echo $get_case_investigation; ?>">
                                                     <option selected>Please select</option>
-                                                    <option value="LOCALLY STRANDED INDIVIDUAL">LOCALLY STRANDED INDIVIDUAL</option>
-                                                    <option value="LOCAL TRANSMISSION">LOCAL TRANSMISSION</option>
-                                                    <option value="AUTHORIZED PERSON OUTSIDE RESIDENCE">AUTHORIZED PERSON OUTSIDE RESIDENCE</option>
-                                                    <option value="CLOSE CONTACT">CLOSE CONTACT</option>
-                                                    <option value="NOT APPLICABLE">NOT APPLICABLE</option>
-                                                </select>
+                                                    <option value="LSI">LOCALLY STRANDED INDIVIDUAL</option>
+                                                    <option value="LT">LOCAL TRANSMISSION</option>
+                                                    <option value="APOR">AUTHORIZED PERSON OUTSIDE RESIDENCE</option>
+                                                    <option value="CC">CLOSE CONTACT</option>
+                                                    <option value="NA">NOT APPLICABLE</option>
+                                                </select> -->
                                             </div>
 
                                         </div><br>
@@ -292,7 +380,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                             <div class="col-md-5">
                                                 <label for="">Place of Origin:</label>
-                                                <input type="text" class="form-control" id="name_lsi" name="name_lsi" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of Origin">
+                                                <input type="text" class="form-control" id="name_lsi" name="name_lsi" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of Origin" value="<?php echo $get_place_origin; ?>">
                                             </div>
                                         </div><br>
 
@@ -304,7 +392,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-9">
                                                         <label>Who is the COVID-19 Patient?: &nbsp;&nbsp;</label>
-                                                        <select class="form-control select2" style="width: 100%;" id="index_name" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name=" index_name" value="<?php echo $entity_no ?>">
+                                                        <select class="form-control select2" style="width: 100%;" id="index_name" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name=" index_name" value="<?php echo $entity_no; ?>">
                                                             <option>Select Individual</option>
                                                         </select>
                                                     </div>
@@ -316,11 +404,11 @@ $title = 'VAMOS | Close Contact Form';
 
                                                     <div class="col-md-3">
                                                         <label for="">COVID-19 Patient #: </label>
-                                                        <input type="text" readonly class="form-control" id="entity_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="index_no" placeholder="COVID-19 Patient #">
+                                                        <input type="text" readonly class="form-control" id="index_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="index_no" placeholder="COVID-19 Patient #" value="<?php echo $get_index_id; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="">COVID-19 Patient Full Name: </label>
-                                                        <input type="text" class="form-control" id="fullname" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="patient_name" placeholder="COVID-10 Patient Fullname">
+                                                        <input type="text" class="form-control" id="patient_name" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="patient_name" placeholder="COVID-10 Patient Fullname" value="<?php echo $get_index_name; ?>">
                                                     </div>
                                                 </div><br>
 
@@ -365,35 +453,17 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
                                                     <label for="">ENTITY ID: &nbsp;&nbsp; </label>
-                                                    <input type="text" readonly class="form-control" id="entity_no7" name="entity_no7" placeholder="Entity #">
+                                                    <input type="text" readonly class="form-control" id="entity_no7" name="entity_no7" placeholder="Entity #" value="<?php echo $get_patient_id; ?>">
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <label for="">PATIENT ID: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" readonly class="form-control" id="patient_no" name="patient_no" placeholder="Patient #" value="<?php echo $patient_no ?>">
+                                                    <input type="text" readonly class="form-control" id="patient_no" name="patient_no" placeholder="Patient #" value="<?php echo $patient_id; ?>">
 
                                                 </div>
 
 
 
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label for="">FIRSTNAME: </label>
-
-                                                    <input type="text" class="form-control" name="firstname1" id="firstname1" style=" text-transform: uppercase;" placeholder="firstname1">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">MIDDLENAME:</label>
-                                                    <input type="text" class="form-control" name="middlename1" id="middlename1" style="text-transform: uppercase;" placeholder="middlename1">
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <label for="">LASTNAME:</label>
-                                                    <input type="text" class="form-control" name="lastname1" id="lastname1" style="text-transform: uppercase;" placeholder="lastname1">
-                                                </div>
                                             </div><br>
 
                                             <div class="row">
@@ -401,16 +471,16 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-3">
                                                     <label for="">FULL NAME: &nbsp;&nbsp; <span id="required">*</span></label>
 
-                                                    <input type="text" class="form-control" name="fullnamess" id="fullnamess" style=" text-transform: uppercase;" placeholder="fullname">
+                                                    <input type="text" class="form-control" name="fullnamess" id="fullnamess" style=" text-transform: uppercase;" placeholder="fullname" value="<?php echo $get_patient_fullname; ?>">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="">STREET: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="street" id="street" style="text-transform: uppercase;" placeholder="street">
+                                                    <input type="text" class="form-control" name="street" id="street" style="text-transform: uppercase;" placeholder="street" value="<?php echo $get_patient_street; ?>">
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <label for="">BARANGAY: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="barangay" id="barangay" style="text-transform: uppercase;" placeholder="barangay">
+                                                    <input type="text" class="form-control" name="barangay" id="barangay" style="text-transform: uppercase;" placeholder="barangay" value="<?php echo $get_patient_barangay; ?>">
                                                 </div>
                                             </div><br>
 
@@ -418,23 +488,23 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
                                                     <label for="">BIRTH DATE: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="date" id="birthdate" name="birthdate" style="width: 100%;" value="" class="form-control " placeholder="dd/mm/yyyy" />
+                                                    <input type="date" id="birthdate" name="birthdate" style="width: 100%;" value="" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo  $get_patient_bday; ?>">
                                                 </div>
 
                                                 <div class="col-md-1">
                                                     <label for="">AGE: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" id="age" name="age" value="" class="form-control " placeholder="age" />
+                                                    <input type="text" id="age" name="age" value="" class="form-control " placeholder="age" value="<?php echo  $get_patient_age; ?>">>
 
                                                 </div>
 
                                                 <div class="col-md-2">
                                                     <label for="">GENDER: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" id="gender" name="gender" value="" class="form-control " placeholder="age" />
+                                                    <input type="text" id="gender" name="gender" value="" class="form-control " placeholder="gender" value="<?php echo   $get_patient_gender; ?>">>
 
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="">Mobile Number: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="mobile_no" id="mobile_no" style="text-transform: uppercase;" placeholder="Mobile Number" value="">
+                                                    <input type="text" class="form-control" name="mobile_no" id="mobile_no" style="text-transform: uppercase;" placeholder="Mobile Number" value="<?php echo  $get_patient_mobile; ?>">
                                                 </div>
 
                                             </div><br>
@@ -445,12 +515,12 @@ $title = 'VAMOS | Close Contact Form';
 
                                                 <div class="col-md-4">
                                                     <label for="">PERMANENT ADDRESS: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="permanent_add" id="permanent_add" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent Address" value="N/A">
+                                                    <input type="text" class="form-control" name="permanent_add" id="permanent_add" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent Address" value="<?php echo  $get_permanent_add; ?>">
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label for="">PERMANENT HOUSE NO.: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="house_no" id="house_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent House No." value="N/A">
+                                                    <input type="text" class="form-control" name="house_no" id="house_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent House No." value="<?php echo  $get_house_no; ?>">
                                                 </div>
 
                                             </div><br>
@@ -459,12 +529,12 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-4">
                                                     <label for="">Longitude: &nbsp;&nbsp;<span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="longtitude" id="longtitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="longitude" value="N/A">
+                                                    <input type="text" class="form-control" name="longtitude" id="longtitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="longitude" value="<?php echo  $get_longtitude; ?>">
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label for="">Latitude:&nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" class="form-control" name="latitude" id="latitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder=" latitude" value="N/A">
+                                                    <input type="text" class="form-control" name="latitude" id="latitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder=" latitude" value="<?php echo  $get_latitude; ?>">
                                                 </div>
 
                                             </div><br>
@@ -474,7 +544,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                                 <div class="col-md-2">
                                                     <label for="">Are you a health worker?:</label>
-                                                    <select class="form-control select2" style="width: 100%;" id="healthworker" name="healthworker" value="">
+                                                    <select class="form-control select2" style="width: 100%;" id="healthworker" name="healthworker" value="<?php echo $get_healthworker; ?>">
                                                         <option value=" " selected>Please select</option>
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
@@ -484,12 +554,12 @@ $title = 'VAMOS | Close Contact Form';
 
                                                 <div class="col-md-2">
                                                     <label for="">Occupation: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="occupation" id="occupation" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Occupation" value="N/A">
+                                                    <input type="text" class="form-control" name="occupation" id="occupation" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Occupation" value="<?php echo $get_occupation; ?>">
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label for="">Place of work:&nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="placeofwork" id="placeofwork" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of work" value="N/A">
+                                                    <input type="text" class="form-control" name="placeofwork" id="placeofwork" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of work" value="<?php echo $get_placeofwork; ?>">
                                                 </div>
                                              
 
@@ -501,7 +571,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                                 <div class="col-md-3">
                                                     <label for="">Civil Status: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class=" form-control select2" style="width: 100%;" id="patient_civilstatus" name="patient_civilstatus" value="" required>
+                                                    <select class=" form-control select2" style="width: 100%;" id="marital_status" name="marital_status" value="<?php echo $get_maritalstatus; ?>">
                                                         <option value=" " selected="selected">Select Civil Status</option>
                                                         <?php while ($get_civil = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_civil['name_civilstatus']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
@@ -515,7 +585,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="">Blood Type: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class=" form-control select2" style="width: 100%;" id="blood_type" name="blood_type" value="" required>
+                                                    <select class=" form-control select2" style="width: 100%;" id="blood_type" name="blood_type" value="<?php echo $get_blood_type; ?>">
                                                         <option selected="selected">Select Blood Type</option>
                                                         <?php while ($get_blood = $get_all_bloddtype_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_blood['objid']; ?>"><?php echo $get_blood['blood_type']; ?></option>
@@ -536,15 +606,15 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
                                                     <label for="">Philhealth #: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="phil_no" id="phil_no" style=" text-transform: uppercase;" placeholder="Philhealth Number" value="N/A">
+                                                    <input type="text" class="form-control" name="phil_no" id="phil_no" style=" text-transform: uppercase;" placeholder="Philhealth Number" value="<?php echo $get_phil_no; ?>">
                                                 </div>
                                                 <div class="cold-md-3">
                                                     <label for="">Passport #: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="passport" id="passport" style=" text-transform: uppercase;" placeholder="Passport Number" value="N/A">
+                                                    <input type="text" class="form-control" name="passport" id="passport" style=" text-transform: uppercase;" placeholder="Passport Number" value="<?php echo $passport; ?>">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="">No. of Household Members: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" class="form-control" name="household_member" id="household_member" placeholder="No. of Household Members" value="N/A">
+                                                    <input type="text" class="form-control" name="household_member" id="household_member" placeholder="No. of Household Members" value="<?php echo $get_householdno; ?>">
                                                 </div>
 
 
@@ -579,7 +649,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-2">
                                                         <label for="">(OFW) Employer's Name:</label>
-                                                        <input type="text" class="form-control" name="ofw_name" id="ofw_name" style=" text-transform: uppercase;" placeholder="ofw_name" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_name" id="ofw_name" style=" text-transform: uppercase;" placeholder="ofw_name" value="<?php echo $get_employee_name; ?>">
                                                     </div>
                                                 </div><br>
 
@@ -587,11 +657,11 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Occupation:</label>
-                                                        <input type="text" class="form-control" name="ofw_occupation" id="ofw_occupation" style=" text-transform: uppercase;" placeholder="ofw_occupation" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_occupation" id="ofw_occupation" style=" text-transform: uppercase;" placeholder="ofw_occupation" value="<?php echo $get_ofw_occupation; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Place of Work:</label>
-                                                        <input type="text" class="form-control" name="ofw_placeofwork" id="ofw_placeofwork" style=" text-transform: uppercase;" placeholder="ofw_placeofwork" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_placeofwork" id="ofw_placeofwork" style=" text-transform: uppercase;" placeholder="ofw_placeofwork" value="<?php echo $get_ofw_placework; ?>">
                                                     </div>
                                                 </div><br>
 
@@ -599,15 +669,15 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Building Name:</label>
-                                                        <input type="text" class="form-control" name="ofw_buidlingname" id="ofw_buidlingname" style=" text-transform: uppercase;" placeholder="ofw_buidlingname" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_buidlingname" id="ofw_buidlingname" style=" text-transform: uppercase;" placeholder="ofw_buidlingname" value="<?php echo $get_ofw_buildingname; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Street/Subdivision:</label>
-                                                        <input type="text" class="form-control" name="ofw_street" id="ofw_street" style=" text-transform: uppercase;" placeholder="ofw_street" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_street" id="ofw_street" style=" text-transform: uppercase;" placeholder="ofw_street" value="<?php echo $get_ofw_street; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) City:</label>
-                                                        <input type="text" class="form-control" name="ofw_city" id="ofw_city" style=" text-transform: uppercase;" placeholder="ofw_city" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_city" id="ofw_city" style=" text-transform: uppercase;" placeholder="ofw_city" value="<?php echo $get_ofw_city; ?>">
                                                     </div>
                                                 </div><br>
 
@@ -615,12 +685,12 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) State:</label>
-                                                        <input type="text" class="form-control" name="ofw_state" id="ofw_state" style=" text-transform: uppercase;" placeholder="ofw_state" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_state" id="ofw_state" style=" text-transform: uppercase;" placeholder="ofw_state" value="<?php echo $get_ofw_state; ?>">
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Country:</label>
-                                                        <input type="text" class="form-control" name="ofw_country" id="ofw_country" style=" text-transform: uppercase;" placeholder="ofw_country" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_country" id="ofw_country" style=" text-transform: uppercase;" placeholder="ofw_country" value="<?php echo $get_ofw_country; ?>">
                                                     </div>
                                                 </div><br>
 
@@ -628,13 +698,13 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Office Phone Number:</label>
-                                                        <input type="text" class="form-control" name="ofw_phoneno" id="ofw_phoneno" style=" text-transform: uppercase;" placeholder="ofw_officenumber" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_phoneno" id="ofw_phoneno" style=" text-transform: uppercase;" placeholder="ofw_officenumber" value="<?php echo $get_ofw_phoneno; ?>">
                                                     </div>
 
 
                                                     <div class="col-md-3">
                                                         <label for="">(OFW) Office Cellphone Number:</label>
-                                                        <input type="text" class="form-control" name="ofw_mobileno" id="ofw_mobileno" style=" text-transform: uppercase;" placeholder="ofw_phoneno" value="N/A">
+                                                        <input type="text" class="form-control" name="ofw_mobileno" id="ofw_mobileno" style=" text-transform: uppercase;" placeholder="ofw_phoneno" value="<?php echo $get_ofw_mobileno; ?>">
                                                     </div>
                                                 </div>
 
@@ -650,7 +720,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-4">
 
                                                     <label for="">History of exposure to known COVID-19 Case 14 days before the onset of sign and symptoms * </label>
-                                                    <select class="form-control select2" style="width: 100%;" id="exposure" name="exposure" value="">
+                                                    <select class="form-control select2" style="width: 100%;" id="exposure" name="exposure" value="<?php echo $get_history_exposure; ?>">
                                                         <option value=" " selected>Please select</option>
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
@@ -662,7 +732,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-3">
                                                     <div id="exposure1" hidden>
                                                         <label for="">If Yes: Date of Contact with known COVID-19 Case: </label>
-                                                        <input type="date" id="date_exposure" name="date_exposure" style="width: 90%;" value="" class="form-control " placeholder="dd/mm/yyyy" />
+                                                        <input type="date" id="date_exposure" name="date_exposure" style="width: 90%;" value="<?php echo $get_date_exposure; ?>">
                                                     </div>
                                                 </div>
                                             </div><br>
@@ -699,7 +769,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 </div>
                                                 <div class="col-md-4" id="other_choice" hidden>
                                                     <label for="">Others : </label>
-                                                    <input type="text" class="form-control" name="name_facility1" id="name_facility1" style=" text-transform: uppercase;" placeholder="Other" value="">
+                                                    <input type="text" class="form-control" name="facility_name1" id="name_facility1" style=" text-transform: uppercase;" placeholder="Other" value="">
 
                                                 </div>
 
@@ -707,14 +777,14 @@ $title = 'VAMOS | Close Contact Form';
 
                                                 <div class="col-md-4" id="visit_date" name="visit_date" hidden>
                                                     <label for="">Date of Visit : </label>
-                                                    <input type="date" id="date_visit" name="date_visit" style="width: 90%;" value="" class="form-control " placeholder="dd/mm/yyyy" />
+                                                    <input type="date" id="date_visit" name="date_visit" style="width: 90%;" value="" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo $get_date_visit; ?>">
                                                 </div>
                                             </div><br>
                                             <div class="row" id="name_of_place" name="name_of_place" hidden>
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-4">
                                                     <label for=""> Name of Place </label>
-                                                    <input type="text" id="name_place" name="name_place" style=" text-transform: uppercase;" class="form-control" placeholder="Name of place" value="">
+                                                    <input type="text" id="name_place" name="name_place" style=" text-transform: uppercase;" class="form-control" placeholder="Name of place" value="<?php echo $get_placename; ?>">
 
                                                 </div>
 
@@ -734,7 +804,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-5">
                                                         <label> PERSON 1 </label>
-                                                        <select class="form-control select3" id="person1" style="width: 100%;" name="person1" value=" ">
+                                                        <select class="form-control select3" id="person1" style="width: 100%;" name="person1" value="<?php echo $get_personentity1; ?>">
                                                             <option>Please select...</option>
                                                         </select>
                                                     </div><br>
@@ -742,10 +812,10 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control  " id="person_entity1" name="person_entity1" value="">
+                                                        <input type="text" readonly class="form-control  " id="person_entity1" name="person_entity1" value="<?php echo $get_personentity1; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control " id="person_fullname1" name="person_fullname1" value="">
+                                                        <input type="text" readonly class="form-control " id="person_fullname1" name="person_fullname1" value="<?php echo $get_personfullname1; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <input type="text" readonly class="form-control " id="person_street1" name="person_street1" value="">
@@ -763,7 +833,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-5">
                                                         <label> PERSON 2 </label>
-                                                        <select class="form-control select2" id="person2" style="width: 100%;" name="person2" value=" ">
+                                                        <select class="form-control select2" id="person2" style="width: 100%;" name="person2" value="<?php echo $get_personentity2; ?>">
                                                             <option>Please select...</option>
                                                         </select>
                                                     </div>
@@ -771,10 +841,10 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_entity2" name="person_entity2" value="">
+                                                        <input type="text" readonly class="form-control" id="person_entity2" name="person_entity2" value="<?php echo $get_personentity2; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_fullname2" name="person_fullname2" value="">
+                                                        <input type="text" readonly class="form-control" id="person_fullname2" name="person_fullname2" value="<?php echo $get_personfullname2; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <input type="text" readonly class="form-control" id="person_street2" name="person_street2" value="">
@@ -792,7 +862,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"> </div>
                                                     <div class="col-md-5">
                                                         <label> PERSON 3 </label>
-                                                        <select class="form-control select2" id="person3" style="width: 100%;" name="person3" value=" ">
+                                                        <select class="form-control select2" id="person3" style="width: 100%;" name="person3" value="<?php echo $get_personentity3; ?>">
                                                             <option>Please select...</option>
 
                                                         </select>
@@ -802,10 +872,10 @@ $title = 'VAMOS | Close Contact Form';
 
                                                     <div class="col-md-1"></div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_entity3" name="person_entity3" value="">
+                                                        <input type="text" readonly class="form-control" id="person_entity3" name="person_entity3" value="<?php echo $get_personentity3; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_fullname3" name="person_fullname3" value="">
+                                                        <input type="text" readonly class="form-control" id="person_fullname3" name="person_fullname3" value="<?php echo $get_personfullname3; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <input type="text" readonly class="form-control" id="person_street3" name="person_street3" value="">
@@ -823,7 +893,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-5">
                                                         <label> PERSON 4 </label>
-                                                        <select class="form-control select2" id="person4" style="width: 100%;" name="person4" value=" ">
+                                                        <select class="form-control select2" id="person4" style="width: 100%;" name="person4" value="<?php echo $get_personentity4; ?>">
                                                             <option>Please select...</option>
 
                                                         </select>
@@ -833,10 +903,10 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_entity4" name="person_entity4" value="">
+                                                        <input type="text" readonly class="form-control" id="person_entity4" name="person_entity4" value="<?php echo $get_personentity4; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_fullname4" name="person_fullname4" value="">
+                                                        <input type="text" readonly class="form-control" id="person_fullname4" name="person_fullname4" value="<?php echo $get_personfullname4; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <input type="text" readonly class="form-control" id="person_street4" name="person_street4" value="">
@@ -854,7 +924,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-5">
 
                                                         <label> PERSON 5 </label>
-                                                        <select class="form-control select2" id="person5" style="width: 100%;" name="person5" value=" ">
+                                                        <select class="form-control select2" id="person5" style="width: 100%;" name="person5" value="<?php echo $get_personentity4; ?>">
                                                             <option>Please select...</option>
 
                                                         </select>
@@ -864,10 +934,10 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_entity5" name="person_entity5" value="">
+                                                        <input type="text" readonly class="form-control" id="person_entity5" name="person_entity5" value="<?php echo $get_personentity4; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <input type="text" readonly class="form-control" id="person_fullname5" name="person_fullname5" value="">
+                                                        <input type="text" readonly class="form-control" id="person_fullname5" name="person_fullname5" value="<?php echo $get_personfullname5; ?>">
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <input type="text" readonly class="form-control" id="person_street5" name="person_street5" value="">
@@ -906,7 +976,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-9">
                                                     <label for="">Signs & Symptoms: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="signs_symptoms[]" placeholder="Select Symptoms">
+                                                    <select class="form-control select2" id="symptoms" style="width: 100%;" multiple="" name="signs_symptoms[]" placeholder="Select Symptoms" value="<?php echo $get_symptoms_signs; ?>">
 
                                                         <?php while ($get_symptoms = $get_all_symptoms_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_symptoms['symptoms']; ?>"><?php echo $get_symptoms['symptoms']; ?></option>
@@ -922,7 +992,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-3">
 
                                                     <label for="">Disposition at the time of report* </label>
-                                                    <select class="form-control select2" style="width: 90%;" id="disposition" name="disposition" value="">
+                                                    <select class="form-control select2" style="width: 90%;" id="disposition" name="disposition" value="<?php echo $get_disposition; ?>">
                                                         <option selected>Please select</option>
                                                         <option value="INPATIENT">INPATIENT</option>
                                                         <option value="OUTPATIENT">OUTPATIENT</option>
@@ -934,7 +1004,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Date of Onset of Illness: </label>
-                                                    <input type="date" id="date_illness" style="width: 90%;" name="date_illness" value="<?php echo $now->format('Y-m-d'); ?>" class="form-control " placeholder="dd/mm/yyyy" />
+                                                    <input type="date" id="date_illness" style="width: 90%;" name="date_illness" value="<?php echo $now->format('Y-m-d'); ?>" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo $get_date_illness; ?>">
                                                 </div>
 
 
@@ -945,7 +1015,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
                                                     <label for="">Is the HOUSEHOLD/UNIT on LOCKDOWN?:</label>
-                                                    <select class="form-control select2" style="width: 90%;" id="lockdown" name="lockdown" value="">
+                                                    <select class="form-control select2" style="width: 90%;" id="lockdown" name="lockdown" value="<?php echo $get_lockdown; ?>">
                                                         <option selected>Please select</option>
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
@@ -954,7 +1024,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                                 <div class="col-md-3" hidden id="lockdown1-form">
                                                     <label for="">Quarantine Type: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class="form-control select2" style="width: 90%;" id="quaran123" name="get_typess">
+                                                    <select class="form-control select2" style="width: 90%;" id="quaran123" name="get_typess" value="<?php echo $get_quarantine_type; ?>">
                                                         <option selected>Please select</option>
                                                         <?php while ($get_quarantine = $get_all_typequarantine_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_quarantine['objid']; ?>"><?php echo $get_quarantine['quarantine_name']; ?></option>
@@ -963,7 +1033,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 </div>
                                                 <div class="col-md-3" hidden id="lockdown2-form">
                                                     <label for="">Date of Quarantine started: </label>
-                                                    <input type="date" id="date_quarans" name="date_quarans" style="width: 100%;" value="<?php echo $now->format('Y-m-d'); ?>" class="form-control " placeholder="dd/mm/yyyy" />
+                                                    <input type="date" id="date_quarans" name="date_quarans" style="width: 100%;" value="<?php echo $now->format('Y-m-d'); ?>" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo $get_date_quarantine; ?>">
 
                                                 </div>
                                             </div><br>
@@ -973,12 +1043,12 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
                                                     <label for="">Schedule Swab Date:</label>
-                                                    <input type="date" id="sched_date" style="width: 100%;" name="sched_date" value="" class="form-control " placeholder="dd/mm/yyyy" />
+                                                    <input type="date" id="sched_date" style="width: 100%;" name="sched_date" value="" class="form-control " placeholder="dd/mm/yyyy" value="<?php echo $get_date_swab; ?>">
 
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="">Reasons for swabbing?: </label>
-                                                    <select class="form-control select2" style="width: 100%;" id="reasons_swabbing" name="reason_swabbing" value="">
+                                                    <select class="form-control select2" style="width: 100%;" id="reasons_swabbing" name="reason_swabbing" value="<?php echo $get_reason_swabbing; ?>">
                                                         <option selected>Please select</option>
                                                         <?php while ($get_swab = $get_all_swabbing_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                             <option value="<?php echo $get_swab['objid']; ?>"><?php echo $get_swab['list_swabbing']; ?></option>
@@ -1013,7 +1083,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
 
-                                                    <select class="form-control select2" style="width: 100%;" id="travel" name="travel" value="">
+                                                    <select class="form-control select2" style="width: 100%;" id="travel" name="travel" value="<?php echo $get_travel; ?>">
                                                         <option selected>Please select</option>
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
@@ -1028,19 +1098,19 @@ $title = 'VAMOS | Close Contact Form';
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-3">
                                                         <label for="">Port (Country) of exit: </label>
-                                                        <input type="text" class="form-control" name="port_exit" id="port_exit" style=" text-transform: uppercase;" placeholder="port_exit" value="N/A">
+                                                        <input type="text" class="form-control" name="port_exit" id="port_exit" style=" text-transform: uppercase;" placeholder="port_exit" value="<?php echo $get_travel_port_exit; ?>">
                                                     </div>
 
 
                                                     <div class="col-md-3">
                                                         <label for="">Airline/Sea Vessel </label>
-                                                        <input type="text" class="form-control" name="airline" id="airline" style=" text-transform: uppercase;" placeholder="airline" value="N/A">
+                                                        <input type="text" class="form-control" name="airline" id="airline" style=" text-transform: uppercase;" placeholder="airline" value="<?php echo $get_travel_airline; ?>">
                                                     </div>
 
 
                                                     <div class="col-md-3">
                                                         <label for="">Flight/Vessel Number </label>
-                                                        <input type="text" class="form-control" name="flight_no" id="flight_no" style=" text-transform: uppercase;" placeholder="flight_no" value="N/A">
+                                                        <input type="text" class="form-control" name="flight_no" id="flight_no" style=" text-transform: uppercase;" placeholder="flight_no" value="<?php echo $get_travel_flight; ?>">
                                                     </div>
 
                                                 </div><br>
@@ -1187,37 +1257,37 @@ $title = 'VAMOS | Close Contact Form';
     <!-- generate index  -->
     <script>
         // index name
-        // $('#index_name').on('change', function() {
-        //     var patient_no = this.value;
-        //     console.log(patient_no);
-        //     $.ajax({
-        //         type: "POST",
-        //         url: 'sql_query_get_indexname.php',
-        //         data: {
-        //             patient_no: patient_no
-        //         },
-        //         error: functionf(xhr, b, c) {
-        //             console.log(
-        //                 "xhr=" +
-        //                 xhr.responseText +
-        //                 " b=" +
-        //                 b.responseText +
-        //                 " c=" +
-        //                 c.responseText
-        //             );
-        //         },
-        //         success: function(response) {
-        //             var result = jQuery.parseJSON(response);
-        //             console.log('response from server', result);
-        //             $('#index_no').val(result.data);
-        //             $('#patient_name').val(result.data1);
+        $('#index_name').on('change', function() {
+            var patient_no = this.value;
+            console.log(patient_no);
+            $.ajax({
+                type: "POST",
+                url: 'sql_query_get_indexname.php',
+                data: {
+                    patient_no: patient_no
+                },
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                },
+                success: function(response) {
+                    var result = jQuery.parseJSON(response);
+                    console.log('response from server', result);
+                    $('#index_no').val(result.data);
+                    $('#patient_name').val(result.data1);
            
 
-        //         },
+                },
 
-        //     });
+            });
 
-        // });
+        });
 
         $(function() {
 
@@ -1260,43 +1330,6 @@ $title = 'VAMOS | Close Contact Form';
 
         });
 
-        $('#index_name').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'close_contact.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#entity_no').val(result.data);
-                    $('#fullname').val(result.data1);
-
-               
-
-
-
-
-                },
-
-
-            });
-
-        });
-
         // individual
         $('#entity2').on('change', function() {
             var entity_no = this.value;
@@ -1330,10 +1363,6 @@ $title = 'VAMOS | Close Contact Form';
                     $('#age').val(result.data5);
                     $('#gender').val(result.data6);
                     $('#mobile_no').val(result.data7);
-
-                    $('#firstname1').val(result.data8);
-                    $('#middlename1').val(result.data9);
-                    $('#lastname1').val(result.data10);
 
 
 
@@ -1866,16 +1895,14 @@ $title = 'VAMOS | Close Contact Form';
         });
 
 
-
-
-        $('#case_investigation').change(function() {
-            var option = $('#case_investigation').val();
-            if (option == "CLOSE CONTACT" || option == "AUTHORIZED PERSON OUTSIDE RESIDENCE " || option == "LOCAL TRANSMISSION") {
+        $('#case_investigation1').change(function() {
+            var option = $('#case_investigation1').val();
+            if (option == "CLOSE CONTACT" || option == "AUTHORIZED PERSON OUTSIDE RESI" || option == "LOCAL TRANSMISSION") {
                 $('#cc-form').prop("hidden", false);
                 $('#lsi-form').prop("hidden", true);
 
 
-            } else if (option == "LOCALLY STRANDED INDIVIDUAL") {
+            } else if (option == "LSI") {
 
                 $('#lsi-form').prop("hidden", false);
                 $('#cc-form').prop("hidden", true);

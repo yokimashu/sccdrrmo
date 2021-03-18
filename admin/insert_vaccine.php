@@ -214,7 +214,9 @@ if (isset($_POST['insert_vaccine'])) {
     $province       = "_0645_NEGROS_OCCIDENTAL";
     $city           = "_64524_SAN_CARLOS_CITY";
     $barangay       = strtoupper($_POST['barangay']);
-    
+    $sinovac        = $_POST['sinovac'];
+    $astrazeneca    = $_POST['astrazeneca'];
+
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
         $barangay1 = "_64524010_BARANGAY_I_(POB.)";
@@ -308,10 +310,6 @@ if (isset($_POST['insert_vaccine'])) {
     } else {
         $consent        = '03_Unknown';
     }
-
-    $sinovac        = $_POST['sinovac'];
-    $astrazeneca    = $_POST['astrazeneca'];
-
 
 
     //covid history
@@ -556,7 +554,7 @@ if (isset($_POST['insert_vaccine'])) {
         $alert_msg = ' ';
         //insert to tbl_individual
 
-        $user_name = $_POST['lastname'] . ' ' . $_POST['birthdate'];
+        //$user_name = $_POST['lastname'] . ' ' . $_POST['birthdate'];
         $hashed_password  = password_hash($entityno, PASSWORD_DEFAULT);
         $type = 'INDIVIDUAL';
         $status = 'VERIFIED';
@@ -622,7 +620,7 @@ if (isset($_POST['insert_vaccine'])) {
         $insert_entity_data->execute([
 
             ':entity_no'        => $entityno,
-            ':username'         => $user_name,
+            ':username'         => $entityno,
             ':password'         => $hashed_password,
             ':type'             => 'INDIVIDUAL',
             ':status'           => 'VERIFIED'

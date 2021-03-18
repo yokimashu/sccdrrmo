@@ -3,10 +3,10 @@
 
 include ('../config/db_config.php');
 
-if (isset($_POST['patient_no'])) {
+if (isset($_POST['entity_no'])) {
 
 
-  $entity_no = $_POST['patient_no'];
+  $entity_no = $_POST['entity_no'];
   $fullname = '';
   $street = '';
   $barangay = '';
