@@ -17,7 +17,7 @@ if (isset($_POST['update_assessment'])) {
 
     // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_reg']));
-    $time           = date("h:i:s a");
+    $time           = date("H:i:s");
 
     //basic information
     $entityno        = $_POST['entity_number'];
