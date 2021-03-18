@@ -200,7 +200,7 @@ $title = 'VAMOS | Close Contact Form';
 
 
                                     <div class="tab-pane fade show active" id="nav-tracer" role="tabpanel" aria-labelledby="nav-home-tab">
-                                        <div>
+                                        <!-- <div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-3">
@@ -231,25 +231,10 @@ $title = 'VAMOS | Close Contact Form';
                                                 <div class="col-md-3">
                                                     <label>Name of Investigator: &nbsp;&nbsp; <span id="required">*</span></label>
 
-                                                    <input type="text" class="form-control" name="contact_tracer" style=" text-transform: uppercase;" id="contact_tracer" placeholder="Investigator's Name" value="<?php echo $db_fullname ?>">
+                                                    <input type="text" class="form-control" readonly name="contact_tracer" style=" text-transform: uppercase;" id="contact_tracer" placeholder="Investigator's Name" value="<?php echo $db_fullname ?>">
                                                     <span id="asstdname"> &nbsp;&nbsp;<i>Name of Contact Tracer</i></span>
                                                 </div>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <div class="col-md-3">
-                                                    <label for="">Contact No.:</label>
-                                                    <input type="text" class="form-control" name="tracer_contactno" style=" text-transform: uppercase;" id="tracer_contactno" placeholder="tracer_contactno" value="">
-                                                 
-                                                </div>
-
-
-
-
-                                            </div><br>
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                            
-                                          
                                                 <div class="col-md-3">
                                                     <label for="">Name of Brgy Contact Tracer: &nbsp;&nbsp; <span id="required">*</span></label>
                                                     <input type="text" class="form-control" name="brgy_contacttracer" style=" text-transform: uppercase;" id="brgy_contacttracer" placeholder="Name of Brgy Contact Tracer" value="">
@@ -261,8 +246,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                             </div>
 
-
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                     <!-- TRACER FORM -->
@@ -270,73 +254,71 @@ $title = 'VAMOS | Close Contact Form';
 
                                         <!-- COVID INFO. -->
 
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-5">
+                                        <!-- <div>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-5">
 
-                                                <label for="">Case of Investigation: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                <select class="form-control select2" style="width: 90%;" id="case_investigation" name="case_investigation" value="">
-                                                    <option selected>Please select</option>
-                                                    <option value="LOCALLY STRANDED INDIVIDUAL">LOCALLY STRANDED INDIVIDUAL</option>
-                                                    <option value="LOCAL TRANSMISSION">LOCAL TRANSMISSION</option>
-                                                    <option value="AUTHORIZED PERSON OUTSIDE RESIDENCE">AUTHORIZED PERSON OUTSIDE RESIDENCE</option>
-                                                    <option value="CLOSE CONTACT">CLOSE CONTACT</option>
-                                                    <option value="NOT APPLICABLE">NOT APPLICABLE</option>
-                                                </select>
+                                                    <label for="">Case of Investigation: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                    <select class="form-control select2" style="width: 90%;" id="case_investigation" name="case_investigation" value="">
+                                                        <option selected>Please select</option>
+                                                        <option value="LSI">LOCALLY STRANDED INDIVIDUAL</option>
+                                                        <option value="LT">LOCAL TRANSMISSION</option>
+                                                        <option value="APOR">AUTHORIZED PERSON OUTSIDE RESIDENCE</option>
+                                                        <option value="CC">CLOSE CONTACT</option>
+                                                        <option value="NA">NOT APPLICABLE</option>
+                                                    </select>
+                                                </div>
+
+                                            </div><br>
+                                            <div class="row" id="lsi-form" hidden>
+                                                <div class="col-md-1"></div>
+
+
+                                                <div class="col-md-5">
+                                                    <label for="">Place of Origin:</label>
+                                                    <input type="text" class="form-control" id="name_lsi" name="name_lsi" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of Origin">
+                                                </div>
+                                            </div><br>
+
+
+
+                                            <div id="cc-form" hidden>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                        <div class="col-md-9">
+                                                            <label>Who is the COVID-19 Patient?: &nbsp;&nbsp;</label>
+                                                            <select class="form-control select2" style="width: 100%;" id="index_info" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name=" index_info" value="<?php echo $entity_no ?>">
+                                                                <option>Select Individual</option>
+                                                            </select>
+                                                        </div>
+                                                    </div><br>
+
+                                                    <div class="row">
+                                                        <div class="col-md-1"></div>
+
+
+                                                        <div class="col-md-3">
+                                                            <label for="">COVID-19 Patient #: </label>
+                                                            <input type="text" readonly class="form-control" id="index_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="index_no" placeholder="COVID-19 Patient #">
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for="">COVID-19 Patient Full Name: </label>
+                                                            <input type="text" class="form-control" id="index_name" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="index_name" placeholder="COVID-10 Patient Fullname">
+                                                        </div>
+                                                    </div><br>
+
+                                                </div>
+
                                             </div>
-
-                                        </div><br>
-                                        <div class="row" id="lsi-form" hidden>
-                                            <div class="col-md-1"></div>
-
-
-                                            <div class="col-md-5">
-                                                <label for="">Place of Origin:</label>
-                                                <input type="text" class="form-control" id="name_lsi" name="name_lsi" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of Origin">
-                                            </div>
-                                        </div><br>
-
-
-
-                                        <div id="cc-form" hidden>
-                                            <div>
-                                                <div class="row">
-                                                    <div class="col-md-1"></div>
-                                                    <div class="col-md-9">
-                                                        <label>Who is the COVID-19 Patient?: &nbsp;&nbsp;</label>
-                                                        <select class="form-control select2" style="width: 100%;" id="index_name" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name=" index_name" value="<?php echo $entity_no ?>">
-                                                            <option>Select Individual</option>
-                                                        </select>
-                                                    </div>
-                                                </div><br>
-
-                                                <div class="row">
-                                                    <div class="col-md-1"></div>
-
-
-                                                    <div class="col-md-3">
-                                                        <label for="">COVID-19 Patient #: </label>
-                                                        <input type="text" readonly class="form-control" id="entity_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="index_no" placeholder="COVID-19 Patient #">
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="">COVID-19 Patient Full Name: </label>
-                                                        <input type="text" class="form-control" id="fullname" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="patient_name" placeholder="COVID-10 Patient Fullname">
-                                                    </div>
-                                                </div><br>
-
-                                            </div>
-
-                                        </div>
-
-
-
-
+                                        </div> -->
                                     </div>
 
                                     <!-- PATIENT PROFILE -->
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <!-- patient information -->
-                                        <div>
+                                        <!-- <div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
 
@@ -378,183 +360,167 @@ $title = 'VAMOS | Close Contact Form';
 
                                             </div><br>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label for="">FIRSTNAME: </label>
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-3">
+                                                        <label for="">FULL NAME: &nbsp;&nbsp; <span id="required">*</span></label>
 
-                                                    <input type="text" class="form-control" name="firstname1" id="firstname1" style=" text-transform: uppercase;" placeholder="firstname1">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">MIDDLENAME:</label>
-                                                    <input type="text" class="form-control" name="middlename1" id="middlename1" style="text-transform: uppercase;" placeholder="middlename1">
-                                                </div>
+                                                        <input type="text" class="form-control" name="fullnamess" id="fullnamess" style=" text-transform: uppercase;" placeholder="fullname">
 
-                                                <div class="col-md-3">
-                                                    <label for="">LASTNAME:</label>
-                                                    <input type="text" class="form-control" name="lastname1" id="lastname1" style="text-transform: uppercase;" placeholder="lastname1">
-                                                </div>
-                                            </div><br>
+                                                        <input type="text" id="name_1" name="name_1">
+                                                        <input type="text" id="name_2" name="name_2">
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label for="">FULL NAME: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" id="name_3" name="name_3">
 
-                                                    <input type="text" class="form-control" name="fullnamess" id="fullnamess" style=" text-transform: uppercase;" placeholder="fullname">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">STREET: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="street" id="street" style="text-transform: uppercase;" placeholder="street">
-                                                </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">STREET: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="street" id="street" style="text-transform: uppercase;" placeholder="street">
+                                                    </div>
 
-                                                <div class="col-md-3">
-                                                    <label for="">BARANGAY: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="barangay" id="barangay" style="text-transform: uppercase;" placeholder="barangay">
-                                                </div>
-                                            </div><br>
+                                                    <div class="col-md-3">
+                                                        <label for="">BARANGAY: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="barangay" id="barangay" style="text-transform: uppercase;" placeholder="barangay">
+                                                    </div>
+                                                </div><br>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label for="">BIRTH DATE: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="date" id="birthdate" name="birthdate" style="width: 100%;" value="" class="form-control " placeholder="dd/mm/yyyy" />
-                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-3">
+                                                        <label for="">BIRTH DATE: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="date" id="birthdate" name="birthdate" style="width: 100%;" value="" class="form-control " placeholder="dd/mm/yyyy" />
+                                                    </div>
 
-                                                <div class="col-md-1">
-                                                    <label for="">AGE: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" id="age" name="age" value="" class="form-control " placeholder="age" />
+                                                    <div class="col-md-1">
+                                                        <label for="">AGE: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" id="age" name="age" value="" class="form-control " placeholder="age" />
 
-                                                </div>
+                                                    </div>
 
-                                                <div class="col-md-2">
-                                                    <label for="">GENDER: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" id="gender" name="gender" value="" class="form-control " placeholder="age" />
+                                                    <div class="col-md-2">
+                                                        <label for="">GENDER: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" id="gender" name="gender" value="" class="form-control " placeholder="age" />
 
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">Mobile Number: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="mobile_no" id="mobile_no" style="text-transform: uppercase;" placeholder="Mobile Number" value="">
-                                                </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">Mobile Number: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="mobile_no" id="mobile_no" style="text-transform: uppercase;" placeholder="Mobile Number" value="">
+                                                    </div>
 
-                                            </div><br>
+                                                </div><br>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
 
 
-                                                <div class="col-md-4">
-                                                    <label for="">PERMANENT ADDRESS: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="permanent_add" id="permanent_add" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent Address" value="N/A">
-                                                </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">PERMANENT ADDRESS: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="permanent_add" id="permanent_add" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent Address" value="N/A">
+                                                    </div>
 
-                                                <div class="col-md-4">
-                                                    <label for="">PERMANENT HOUSE NO.: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="house_no" id="house_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent House No." value="N/A">
-                                                </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">PERMANENT HOUSE NO.: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="house_no" id="house_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Permanent House No." value="N/A">
+                                                    </div>
 
-                                            </div><br>
+                                                </div><br>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-4">
-                                                    <label for="">Longitude: &nbsp;&nbsp;<span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="longtitude" id="longtitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="longitude" value="N/A">
-                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-4">
+                                                        <label for="">Longitude: &nbsp;&nbsp;<span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="longtitude" id="longtitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="longitude" value="N/A">
+                                                    </div>
 
-                                                <div class="col-md-4">
-                                                    <label for="">Latitude:&nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" class="form-control" name="latitude" id="latitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder=" latitude" value="N/A">
-                                                </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">Latitude:&nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <input type="text" class="form-control" name="latitude" id="latitude" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder=" latitude" value="N/A">
+                                                    </div>
 
-                                            </div><br>
+                                                </div><br>
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
 
-                                                <div class="col-md-2">
-                                                    <label for="">Are you a health worker?:</label>
-                                                    <select class="form-control select2" style="width: 100%;" id="healthworker" name="healthworker" value="">
-                                                        <option value=" " selected>Please select</option>
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">Are you a health worker?:</label>
+                                                        <select class="form-control select2" style="width: 100%;" id="healthworker" name="healthworker" value="">
+                                                            <option value=" " selected>Please select</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
 
-                                                <div class="col-md-2">
-                                                    <label for="">Occupation: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="occupation" id="occupation" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Occupation" value="N/A">
-                                                </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">Occupation: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="occupation" id="occupation" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Occupation" value="N/A">
+                                                    </div>
 
-                                                <div class="col-md-4">
-                                                    <label for="">Place of work:&nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="placeofwork" id="placeofwork" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of work" value="N/A">
-                                                </div>
-                                             
-
-                                            </div><br>
+                                                    <div class="col-md-3">
+                                                        <label for="">Place of work:&nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="placeofwork" id="placeofwork" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Place of work" value="N/A">
+                                                    </div>
 
 
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
+                                                </div><br>
 
-                                                <div class="col-md-3">
-                                                    <label for="">Civil Status: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class=" form-control select2" style="width: 100%;" id="patient_civilstatus" name="patient_civilstatus" value="" required>
-                                                        <option value=" " selected="selected">Select Civil Status</option>
-                                                        <?php while ($get_civil = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_civil['name_civilstatus']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
 
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">Nationality: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" name="nationality" id="nationality" class="form-control" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Nationality " value="FILIPINO" >
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">Blood Type: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <select class=" form-control select2" style="width: 100%;" id="blood_type" name="blood_type" value="" required>
-                                                        <option selected="selected">Select Blood Type</option>
-                                                        <?php while ($get_blood = $get_all_bloddtype_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_blood['objid']; ?>"><?php echo $get_blood['blood_type']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                    <div class="col-md-3">
+                                                        <label for="">Civil Status: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <select class=" form-control select2" style="width: 100%;" id="marital_status" name="marital_status" value="" required>
+                                                            <option value=" " selected="selected">Select Civil Status</option>
+                                                            <?php while ($get_civil = $get_all_civilstatus_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                <option value="<?php echo $get_civil['name_civilstatus']; ?>"><?php echo $get_civil['name_civilstatus']; ?></option>
+                                                            <?php } ?>
+                                                        </select>
 
-                                                </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">Nationality: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <input type="text" name="nationality" id="nationality" class="form-control" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="Nationality " value="FILIPINO">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">Blood Type: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <select class=" form-control select2" style="width: 100%;" id="blood_type" name="blood_type" value="" required>
+                                                            <option selected="selected">Select Blood Type</option>
+                                                            <?php while ($get_blood = $get_all_bloddtype_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                <option value="<?php echo $get_blood['objid']; ?>"><?php echo $get_blood['blood_type']; ?></option>
+                                                            <?php } ?>
+                                                        </select>
 
-                                            </div><br>
+                                                    </div>
 
+                                                </div><br>
 
-
-
-
-
-
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-3">
-                                                    <label for="">Philhealth #: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="phil_no" id="phil_no" style=" text-transform: uppercase;" placeholder="Philhealth Number" value="N/A">
-                                                </div>
-                                                <div class="cold-md-3">
-                                                    <label for="">Passport #: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                    <input type="text" class="form-control" name="passport" id="passport" style=" text-transform: uppercase;" placeholder="Passport Number" value="N/A">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="">No. of Household Members: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                    <input type="text" class="form-control" name="household_member" id="household_member" placeholder="No. of Household Members" value="N/A">
-                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-3">
+                                                        <label for="">Philhealth #: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="phil_no" id="phil_no" style=" text-transform: uppercase;" placeholder="Philhealth Number" value="N/A">
+                                                    </div>
+                                                    <div class="cold-md-3">
+                                                        <label for="">Passport #: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                        <input type="text" class="form-control" name="passport" id="passport" style=" text-transform: uppercase;" placeholder="Passport Number" value="N/A">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="">No. of Household Members: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                        <input type="text" class="form-control" name="household_member" id="household_member" placeholder="No. of Household Members" value="N/A">
+                                                    </div>
 
 
 
 
-                                            </div><br>
-                                        </div>
+                                                </div><br>
+                                            </div>
+
+                                        </div> -->
                                         <br><br>
                                         <!-- outside the philippiens -->
-                                        <div>
+                                        <!-- <div>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -639,7 +605,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 </div>
 
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="tab-pane fade" id="nav-exposure" role="tabpanel" aria-labelledby="nav-exposure-tab">
                                         <div>
@@ -699,7 +665,7 @@ $title = 'VAMOS | Close Contact Form';
                                                 </div>
                                                 <div class="col-md-4" id="other_choice" hidden>
                                                     <label for="">Others : </label>
-                                                    <input type="text" class="form-control" name="name_facility1" id="name_facility1" style=" text-transform: uppercase;" placeholder="Other" value="">
+                                                    <input type="text" class="form-control" name="facility_name1" id="name_facility1" style=" text-transform: uppercase;" placeholder="Other" value="">
 
                                                 </div>
 
@@ -900,7 +866,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                     <!-- CLINICAL FORM -->
                                     <div class="tab-pane fade" id="nav-clinical" role="tabpanel" aria-labelledby="nav-clinical-tab">
-                                        <div>
+                                        <!-- <div>
 
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -997,8 +963,8 @@ $title = 'VAMOS | Close Contact Form';
 
 
 
-                                        </div>
-
+                                        </div> -->
+                                        <!-- 
                                         <div>
                                             <div class="row">
                                                 <div class="col-md-1"></div>
@@ -1053,7 +1019,7 @@ $title = 'VAMOS | Close Contact Form';
 
 
 
-                                        </div>
+                                        </div> -->
                                         <div class="box-footer" align="center">
 
 
@@ -1078,7 +1044,7 @@ $title = 'VAMOS | Close Contact Form';
 
                                     <!-- HISTORY INDIVIDUAL -->
                                     <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
-                                        <div>
+                                        <!-- <div>
 
 
 
@@ -1136,7 +1102,7 @@ $title = 'VAMOS | Close Contact Form';
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
 
@@ -1187,47 +1153,15 @@ $title = 'VAMOS | Close Contact Form';
     <!-- generate index  -->
     <script>
         // index name
-        // $('#index_name').on('change', function() {
-        //     var patient_no = this.value;
-        //     console.log(patient_no);
-        //     $.ajax({
-        //         type: "POST",
-        //         url: 'sql_query_get_indexname.php',
-        //         data: {
-        //             patient_no: patient_no
-        //         },
-        //         error: functionf(xhr, b, c) {
-        //             console.log(
-        //                 "xhr=" +
-        //                 xhr.responseText +
-        //                 " b=" +
-        //                 b.responseText +
-        //                 " c=" +
-        //                 c.responseText
-        //             );
-        //         },
-        //         success: function(response) {
-        //             var result = jQuery.parseJSON(response);
-        //             console.log('response from server', result);
-        //             $('#index_no').val(result.data);
-        //             $('#patient_name').val(result.data1);
-           
-
-        //         },
-
-        //     });
-
-        // });
-
         $(function() {
 
             //Initialize Select2 Elements
             $('.select2').select2();
-            $("#index_name").select2({
+            $("#index_info").select2({
                 //  minimumInputLength: 3,
                 // placeholder: "hello",
                 ajax: {
-                    url: "patient_query", // json datasource
+                    url: "query_indexname.php", // json datasource
                     type: "post",
                     dataType: 'json',
                     delay: 250,
@@ -1240,8 +1174,6 @@ $title = 'VAMOS | Close Contact Form';
                     processResults: function(response) {
                         return {
                             results: response
-
-
                         };
                     },
                     cache: true,
@@ -1258,92 +1190,48 @@ $title = 'VAMOS | Close Contact Form';
                 }
             });
 
-        });
-
-        $('#index_name').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'close_contact.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#entity_no').val(result.data);
-                    $('#fullname').val(result.data1);
-
-               
+            $('#index_info').on('change', function() {
+                var patient_no = this.value;
+                console.log(patient_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'sql_query_get_indexname.php',
+                    data: {
+                        patient_no: patient_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#index_no').val(result.data);
+                        $('#index_name').val(result.data1);
 
 
+                    },
 
-
-                },
-
+                });
 
             });
 
         });
+
+
+
+
+
+
 
         // individual
-        $('#entity2').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'close_contact.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#entity_no7').val(result.data);
-                    $('#entity_no11').val(result.data);
 
-                    $('#fullnamess').val(result.data1);
-                    $('#street').val(result.data2);
-                    $('#barangay').val(result.data3);
-                    $('#birthdate').val(result.data4);
-                    $('#age').val(result.data5);
-                    $('#gender').val(result.data6);
-                    $('#mobile_no').val(result.data7);
-
-                    $('#firstname1').val(result.data8);
-                    $('#middlename1').val(result.data9);
-                    $('#lastname1').val(result.data10);
-
-
-
-
-                },
-
-
-            });
-
-        });
 
         $(function() {
 
@@ -1384,21 +1272,70 @@ $title = 'VAMOS | Close Contact Form';
                 }
             });
 
-        });
-        $('#entity2').on('change', function() {
+            $('#entity2').on('change', function() {
+                var entity_no = this.value;
+                console.log(entity_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'close_contact.php',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
 
-            var entity_no = $(this).val();
-            $.ajax({
-                type: 'POST',
-                data: {
-                    entity_no: entity_no
-                },
-                url: 'generate_closecontact.php',
-                success: function(data) {
-                    $('#patient_no').val(data);
-                }
+                        $('#entity_no7').val(result.data);
+                        $('#entity_no11').val(result.data);
+
+                        $('#fullnamess').val(result.data1);
+                        $('#street').val(result.data2);
+                        $('#barangay').val(result.data3);
+                        $('#birthdate').val(result.data4);
+                        $('#age').val(result.data5);
+                        $('#gender').val(result.data6);
+                        $('#mobile_no').val(result.data7);
+                        $('#name_1').val(result.data8);
+                        $('#name_2').val(result.data9);
+                        $('#name_3').val(result.data10);
+
+
+
+
+
+                    },
+
+
+                });
+
             });
-            //  }
+
+            $('#entity2').on('change', function() {
+
+                var entity_no = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    url: 'generate_closecontact.php',
+                    success: function(data) {
+                        $('#patient_no').val(data);
+                    }
+                });
+                //  }
+            });
+
         });
     </script>
 
@@ -1446,42 +1383,44 @@ $title = 'VAMOS | Close Contact Form';
                 }
             });
 
+            $('#person1').on('change', function() {
+                var entity_no = this.value;
+                console.log(entity_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'sql_query_get_persondetails.php',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#person_entity1').val(result.data);
+                        $('#person_fullname1').val(result.data1);
+                        $('#person_street1').val(result.data2);
+                        $('#person_barangay1').val(result.data3);
+                        $('#person_mobile1').val(result.data4);
 
-        });
-        //PERSON 1
-        $('#person1').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'sql_query_get_index_name.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#person_entity1').val(result.data);
-                    $('#person_fullname1').val(result.data1);
-                    $('#person_street1').val(result.data2);
-                    $('#person_barangay1').val(result.data3);
-                    $('#person_mobile1').val(result.data4);
+                    },
 
-                },
+                });
 
             });
 
+
+
         });
+        //PERSON 1
 
         //PERSON 2
         $(function() {
@@ -1520,43 +1459,44 @@ $title = 'VAMOS | Close Contact Form';
                     }
                 }
             });
+            $('#person2').on('change', function() {
+                var entity_no = this.value;
+                console.log(entity_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'sql_query_get_persondetails.php',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#person_entity2').val(result.data);
+                        $('#person_fullname2').val(result.data1);
+                        $('#person_street2').val(result.data2);
+                        $('#person_barangay2').val(result.data3);
+                        $('#person_mobile2').val(result.data4);
+
+                    },
+
+                });
+
+            });
 
 
         });
         //PERSON 2
-        $('#person2').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'sql_query_get_index_name.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#person_entity2').val(result.data);
-                    $('#person_fullname2').val(result.data1);
-                    $('#person_street2').val(result.data2);
-                    $('#person_barangay2').val(result.data3);
-                    $('#person_mobile2').val(result.data4);
 
-                },
-
-            });
-
-        });
 
         //PERSON 3
         $(function() {
@@ -1595,43 +1535,44 @@ $title = 'VAMOS | Close Contact Form';
                     }
                 }
             });
+            $('#person3').on('change', function() {
+                var entity_no = this.value;
+                console.log(entity_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'sql_query_get_persondetails.php',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#person_entity3').val(result.data);
+                        $('#person_fullname3').val(result.data1);
+                        $('#person_street3').val(result.data2);
+                        $('#person_barangay3').val(result.data3);
+                        $('#person_mobile3').val(result.data4);
+
+                    },
+
+                });
+
+            });
 
 
         });
         //PERSON 3
-        $('#person3').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'sql_query_get_index_name.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#person_entity3').val(result.data);
-                    $('#person_fullname3').val(result.data1);
-                    $('#person_street3').val(result.data2);
-                    $('#person_barangay3').val(result.data3);
-                    $('#person_mobile3').val(result.data4);
 
-                },
-
-            });
-
-        });
 
         //PERSON 4
         $(function() {
@@ -1671,42 +1612,44 @@ $title = 'VAMOS | Close Contact Form';
                 }
             });
 
+            $('#person4').on('change', function() {
+                var entity_no = this.value;
+                console.log(entity_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'sql_query_get_persondetails.php',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#person_entity4').val(result.data);
+                        $('#person_fullname4').val(result.data1);
+                        $('#person_street4').val(result.data2);
+                        $('#person_barangay4').val(result.data3);
+                        $('#person_mobile4').val(result.data4);
 
-        });
-        //PERSON 4
-        $('#person4').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'sql_query_get_index_name.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#person_entity4').val(result.data);
-                    $('#person_fullname4').val(result.data1);
-                    $('#person_street4').val(result.data2);
-                    $('#person_barangay4').val(result.data3);
-                    $('#person_mobile4').val(result.data4);
+                    },
 
-                },
+                });
 
             });
 
+
+
         });
+        //PERSON 4
 
         //PERSON 5
         $(function() {
@@ -1745,43 +1688,43 @@ $title = 'VAMOS | Close Contact Form';
                     }
                 }
             });
+            $('#person5').on('change', function() {
+                var entity_no = this.value;
+                console.log(entity_no);
+                $.ajax({
+                    type: "POST",
+                    url: 'sql_query_get_persondetails.php',
+                    data: {
+                        entity_no: entity_no
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#person_entity5').val(result.data);
+                        $('#person_fullname5').val(result.data1);
+                        $('#person_street5').val(result.data2);
+                        $('#person_barangay5').val(result.data3);
+                        $('#person_mobile5').val(result.data4);
+
+                    },
+
+                });
+
+            });
 
 
         });
         //PERSON 5
-        $('#person5').on('change', function() {
-            var entity_no = this.value;
-            console.log(entity_no);
-            $.ajax({
-                type: "POST",
-                url: 'sql_query_get_index_name.php',
-                data: {
-                    entity_no: entity_no
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#person_entity5').val(result.data);
-                    $('#person_fullname5').val(result.data1);
-                    $('#person_street5').val(result.data2);
-                    $('#person_barangay5').val(result.data3);
-                    $('#person_mobile5').val(result.data4);
-
-                },
-
-            });
-
-        });
     </script>
 
     <script>
@@ -1866,16 +1809,14 @@ $title = 'VAMOS | Close Contact Form';
         });
 
 
-
-
         $('#case_investigation').change(function() {
             var option = $('#case_investigation').val();
-            if (option == "CLOSE CONTACT" || option == "AUTHORIZED PERSON OUTSIDE RESIDENCE " || option == "LOCAL TRANSMISSION") {
+            if (option == "CC" || option == "APOR" || option == "LT") {
                 $('#cc-form').prop("hidden", false);
                 $('#lsi-form').prop("hidden", true);
 
 
-            } else if (option == "LOCALLY STRANDED INDIVIDUAL") {
+            } else if (option == "LSI") {
 
                 $('#lsi-form').prop("hidden", false);
                 $('#cc-form').prop("hidden", true);
@@ -1900,21 +1841,6 @@ $title = 'VAMOS | Close Contact Form';
         });
 
 
-
-
-        // uyes t
-        // $('#transmission1').change(function() {
-        //     var option = $('#transmission1').val();
-        //     if (option == "OTHER") {
-        //         $('#OTHER').prop("hidden", false);
-
-        //     } else {
-        //         $('#OTHER').prop("hidden", true);
-
-        //     }
-
-        //     console.log("test");
-        // });
 
 
 
@@ -1943,49 +1869,50 @@ $title = 'VAMOS | Close Contact Form';
 
 
 
-        // function loadhistory(){
-        //        event.preventDefault();
-        //     var entity_no  = $('#entity_no11').val();
-        //       var date_from  = $('#dtefrom').val();
-        //       var date_to  = $('#dteto').val();
+        function loadhistory() {
+            event.preventDefault();
+            var entity_no = $('#entity_no11').val();
+            var date_from = $('#dtefrom').val();
+            var date_to = $('#dteto').val();
 
-        //     $('#history_table').load("load_history_patient.php",{
-        //     entity_no:  entity_no,
-        //     date_from :  date_from,
-        //     date_to :    date_to},
-        //     function(response, status, xhr) {
-        //   if (status == "error") {
-        //       alert(msg + xhr.status + " " + xhr.statusText);
-        //       console.log(msg + xhr.status + " " + xhr.statusText);
-        //       console.log("xhr=" + xhr.responseText );
-        //     }
-        //     });
-        //     }
+            $('#history_table').load("load_history_patient.php", {
+                    entity_no: entity_no,
+                    date_from: date_from,
+                    date_to: date_to
+                },
+                function(response, status, xhr) {
+                    if (status == "error") {
+                        alert(msg + xhr.status + " " + xhr.statusText);
+                        console.log(msg + xhr.status + " " + xhr.statusText);
+                        console.log("xhr=" + xhr.responseText);
+                    }
+                });
+        }
 
-        //    $('#entity_no8').change(function() {
-        //             loadhistoy();
+        $('#entity_no8').change(function() {
+            loadhistoy();
 
-        //         });
+        });
 
-        // function loadhistory() {
-        //     event.preventDefault();
-        //     var entity_no = $('#entity_no').val();
-        //     var date_from = $('#dtefrom').val();
-        //     var date_to = $('#dteto').val();
+        function loadhistory() {
+            event.preventDefault();
+            var entity_no = $('#entity_no').val();
+            var date_from = $('#dtefrom').val();
+            var date_to = $('#dteto').val();
 
-        //     $('#history_table').load("load_history_patient.php", {
-        //             entity_no: entity_no,
-        //             date_from: date_from,
-        //             date_to: date_to
-        //         },
-        //         function(response, status, xhr) {
-        //             if (status == "error") {
-        //                 alert(msg + xhr.status + " " + xhr.statusText);
-        //                 console.log(msg + xhr.status + " " + xhr.statusText);
-        //                 console.log("xhr=" + xhr.responseText);
-        //             }
-        //         });
-        // }
+            $('#history_table').load("load_history_patient.php", {
+                    entity_no: entity_no,
+                    date_from: date_from,
+                    date_to: date_to
+                },
+                function(response, status, xhr) {
+                    if (status == "error") {
+                        alert(msg + xhr.status + " " + xhr.statusText);
+                        console.log(msg + xhr.status + " " + xhr.statusText);
+                        console.log("xhr=" + xhr.responseText);
+                    }
+                });
+        }
 
 
         // window.onload(loadhistory());

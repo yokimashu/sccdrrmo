@@ -3,7 +3,7 @@
 
 include('../config/db_config.php');
 
-$numberofrecords = 10;
+$numberofrecords = 100;
 // define ($servername,"localhost");
 // define ($username,"root");
 // define ($password,"");
@@ -20,7 +20,7 @@ if (!isset($_POST['searchTerm'])) {
 } else {
   $search = $_POST['searchTerm'];
 
-  $stmt = $con->prepare("SELECT * FROM tbl_individual where fullname like :name order by lastname LIMIT :limit");
+  $stmt = $con->prepare("SELECT * FROM tbl_individual where fullname like :name order by fullname LIMIT :limit");
   $stmt->bindValue(':name', '%' . $search . '%', PDO::PARAM_STR);
   $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
   $stmt->execute();

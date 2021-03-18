@@ -90,19 +90,6 @@
                                     <img src="..." class="img-fluid rounded image" id="userverification" alt="Responsive image">
 
                                 </div>
-<<<<<<< Updated upstream
-                                <input type = "text" hidden id = "photolink" name = "photolink">
-
-                            </div>
-                            <div class ="col-6">
-                            <img src="..." class="img-fluid rounded image" id = "userimage" alt="Responsive image"> 
-                            <!-- <div class="zoom-box"> -->
-
-                            <img src="..." class=" img-fluid rounded image" id = "userverification" >      
-                           
-
-=======
->>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>
@@ -112,13 +99,8 @@
 
                     <input type="submit" id="deny" name="deny" class="btn btn-danger pull-left bg-olive" value="DENY">
                     <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-<<<<<<< Updated upstream
-                    <input type="submit"  id = "approve" name="approve" class="btn btn-primary"  value="APPROVE">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="CANCEL">
-=======
                     <input type="submit" id="approve" name="approve" class="btn btn-primary" value="APPROVE">
                     <input type="button" class="btn btn-default" dadata-dismiss="modal" data-dismiss="modal" value="CANCEL">
->>>>>>> Stashed changes
                 </div>
             </form>
         </div>
@@ -128,20 +110,10 @@
 </div>
 
 <style>
-<<<<<<< Updated upstream
-.image{
-margin-left:50px;
-margin-right:60px;
-height: 300px;
-width:300px;
-image-rendering: pixelated;
-}
-=======
     .image {
         margin-left: 50px;
         margin-right: 60px;
         height: 300px;
         width: 300px;
     }
->>>>>>> Stashed changes
 </style>

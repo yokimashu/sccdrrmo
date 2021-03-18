@@ -314,6 +314,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $list_vaccine_report; ?>
           <?php echo $list_vaccine_report_no; ?>
           <?php echo $list_vaccine_linelist; ?>
+          <?php echo $vaccine_sandoc; ?>
+          <?php echo $daily_report; ?>
 
 
         </div><br>

@@ -55,11 +55,11 @@ $totalData = $getrecord['id'];
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT * FROM tbl_vaccinators v inner join tbl_bakuna_center b on b.bc_code = v.n_facility where ";
+$sql = "SELECT * FROM tbl_vaccinators where ";
 
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" (id LIKE '%".$requestData['search']['value']."%' ";    
-    $sql.=" OR b.bc_name LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR n_facility LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR pr_license_number LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR l_name LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR f_name LIKE '%".$requestData['search']['value']."%' ";
@@ -78,13 +78,13 @@ $get_vaccinators_data->execute();
 // $totalFiltered = $totalData;
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 
-	$countfilter= "SELECT COUNT(id) as id from tbl_vaccinators v inner join tbl_bakuna_center b on b.bc_code = v.n_facility where ";
+	$countfilter= "SELECT COUNT(id) as id from tbl_vaccinators where ";
 	$countfilter.=" (id LIKE '%".$requestData['search']['value']."%' ";    
-    $countfilter.=" OR b.bc_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR n_facility LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR pr_license_number LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR l_name LIKE '%".$requestData['search']['value']."%' ";
-    $countfilter.=" OR f_name LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR m_name LIKE '%".$requestData['search']['value']."%' ";
+    $countfilter.=" OR f_name LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR position LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR role LIKE '%".$requestData['search']['value']."%' )";
 
@@ -100,7 +100,7 @@ $data = array();
 	while ($row = $get_vaccinators_data->fetch(PDO::FETCH_ASSOC)){
 	$nestedData=array(); 
 
-	$nestedData[] = $row["b.bc_name"];
+	$nestedData[] = $row["n_facility"];
     $nestedData[] = $row["pr_license_number"];
     $nestedData[] = strtoupper($row["f_name"] . ' ' . $row["m_name"] . ' ' . $row["l_name"]);
     $nestedData[] = $row["position"];

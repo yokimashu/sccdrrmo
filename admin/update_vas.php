@@ -4,6 +4,17 @@ $alert_msg = '';
 include('../config/db_config.php');
 
 date_default_timezone_set('Asia/Manila');
+$cbcr = $_SESSION['cbcr'];
+
+
+$get_cbcr_sql = "SELECT * FROM tbl_bakuna_center where bc_code = :cbcr";
+$cbcr_data = $con->prepare($get_cbcr_sql);
+$cbcr_data->execute([':cbcr' => $cbcr]);
+while ($result = $cbcr_data->fetch(PDO::FETCH_ASSOC)) {
+
+    $bc_code = $result['bc_code'];
+    $bc_name = $result['bc_name'];
+}
 
 
 if (isset($_POST['update_vas'])) {
@@ -13,7 +24,7 @@ if (isset($_POST['update_vas'])) {
     $remarks               = $_POST['remarks'];
     $date_reg              = date('Y-m-d');
     $time                  = date("H:i:s");
-    $cbcr                  = $_SESSION['cbcr'];
+    
 
 
     $alert_msg = '';
@@ -28,7 +39,8 @@ if (isset($_POST['update_vas'])) {
            time_reg             = :time_reg,
            remarks              = :remarks, 
            entity_no            = :entity_no,
-           bakuna_center_no     = :cbcr";
+           bakuna_center_no     = :cbcr,
+           bakuna_center       = :bc_name";
 
     $add_assesment_data = $con->prepare($insert_tbl_assesment_sql);
     $add_assesment_data->execute([
@@ -36,7 +48,8 @@ if (isset($_POST['update_vas'])) {
         ':date_reg'              => $date_reg,
         ':time_reg'              => $time,
         ':remarks'               => $remarks,
-        ':cbcr'                  => $cbcr
+        ':cbcr'                  => $bc_code,
+        ':bc_name'               => $bc_name
 
 
     ]);

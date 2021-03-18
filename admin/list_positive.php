@@ -98,7 +98,7 @@ $get_all_symptoms_data->execute();
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" data-role="confirm_delete" 
                                                             data-id="<?php echo $list_pum["idno"];?>"><i class="fa fa-trash-o"></i></button>
-                                                        &nbsp;                            
+                                                        &nbsp;                           
                                                         
                                                     </td>
                                                 </tr>

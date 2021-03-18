@@ -1,6 +1,5 @@
 <?php
 include('../config/db_config.php');
-session_start();
 // $userDepartment = $_SESSION['department'];
 // $filterBrgy =   '';
 // if($_SESSION['user_type'] == 1){
@@ -13,6 +12,7 @@ $columns= array(
         0 =>  'entity_no', 
         1 => 'username',
         2 => 'fullname',
+        3 => 'status',
     
     );
     
@@ -23,7 +23,7 @@ $requestData= $_REQUEST;
 
 $getAllIndividual = "SELECT e.entity_no,
                      username,
-                     fullname FROM tbl_individual e 
+                     fullname, status FROM tbl_individual e 
                     inner join tbl_entity i on e.entity_no = i.entity_no 
                      ORDER BY e.date_register DESC LIMIT ".$requestData['start']." ,".$requestData['length']."  ";
 
@@ -42,7 +42,8 @@ $totalFiltered = $totalData;
 
 $getAllIndividual = "SELECT e.entity_no,
                     username, 
-                    fullname 
+                    fullname,
+                    status 
                     from tbl_individual e 
                     inner join tbl_entity i on e.entity_no = i.entity_no where ";
              
@@ -91,8 +92,11 @@ $getAllIndividual = "SELECT e.entity_no,
 	$nestedData=array(); 
 
 	$nestedData[] = $row["entity_no"];
-	$nestedData[] = $row["username"];
-	$nestedData[] = ucwords(strtolower($row["fullname"]));
+    $nestedData[] = $row["username"];
+    
+    $nestedData[] = ucwords(strtolower($row["fullname"]));
+    $nestedData[] = $row["status"];
+
 	$data[] = $nestedData;
 }
         $json_data = array(

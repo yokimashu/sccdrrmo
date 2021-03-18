@@ -1,8 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-$user_id = $_SESSION['id'];
-$cbcr = $_SESSION['cbcr'];
+// $user_id = $_SESSION['id'];
 
 // if (!isset($_SESSION['id'])) {
 //     header('location:../index.php');

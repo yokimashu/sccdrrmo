@@ -46,6 +46,7 @@ while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
     $get_barangay = $result['barangay'];
     $get_email = $result['email'];
     $get_photo = $result['photo'];
+    $get_status = $result['status'];
 }
 
 
@@ -176,6 +177,14 @@ include('update_individual.php');
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     <!-- <label>First Name:</label> -->
+                                                    <input type="text" class="form-control" name="etracs_id" placeholder="ETRACS ID" value="">
+                                                </div>
+                                                </div>
+                                                </br>
+                                                <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <!-- <label>First Name:</label> -->
                                                     <input type="text" class="form-control" readonly name="username" placeholder="User Name" value="<?php echo $get_username; ?>">
                                                 </div>
                                             </div></br>
@@ -301,7 +310,8 @@ include('update_individual.php');
                                             <?php include('template_individual.php'); ?>
 
                                             <!-- </form> -->
-                                        </div>
+
+                                           
 
                                         <div class="row">
                                             <div class="col-md-1"></div>

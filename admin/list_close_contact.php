@@ -2,6 +2,7 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
+include('update_status.php');
 session_start();
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
@@ -80,10 +81,15 @@ $get_all_contact_data->execute();
                     <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
                         <tr style="font-size: 1.10rem">
-                          <th> DATE & TIME </th>
-                          <th> TRACER NAME</th>
-                          <th> PATIENT ID </th>
-                          <th> PATIENT NAME </th>
+
+                          <th> OBJID </th>
+                          <th> DATE&TIME </th>
+
+                          <th> INDEX</th>
+                          <th> ID </th>
+                          <th> PATIENT</th>
+                          <th> BARANGAY </th>
+                          <th> SYPMTOMS </th>
                           <th> STATUS </th>
                           <!-- <th></th> -->
 
@@ -94,44 +100,42 @@ $get_all_contact_data->execute();
                       <tbody>
                         <?php while ($list_contact = $get_all_contact_data->fetch(PDO::FETCH_ASSOC)) { ?>
                           <tr>
+
+                            <td><?php echo $list_contact['objid']; ?> </td>
                             <td><?php echo $list_contact['date_register'];
                                 echo " / ";
                                 echo   $list_contact['time_register']; ?></td>
-                            <td><?php echo $list_contact['tracer_name']; ?> </td>
+
+                            <td><?php echo $list_contact['index_name']; ?> </td>
                             <td><?php echo $list_contact['patient_id']; ?> </td>
+
                             <td><?php echo $list_contact['patient_fullname']; ?></td>
+                            <td><?php echo $list_contact['patient_barangay']; ?></td>
+                            <td><?php echo $list_contact['symptoms_signs']; ?></td>
                             <td><?php echo $list_contact['status']; ?></td>
 
                             <td>
 
-                              <!-- <a class="btn btn-warning btn-sm" href="view_positive_case.php?&id=<?php echo $list_infection['patient_no']; ?> ">
-                                <i class="fa fa-edit"></i></a> -->
+                              <a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>
+
+                              <a class="btn btn-success btn-sm" href="view_close_contact.php?&id=<?php echo $list_contact['objid']; ?> ">
+                                <i class="fa fa-folder-open-o"></i></a>
+
+                                <a class="btn btn-outline-success btn-sm printlink" style="margin-right:10px;" id="printlink" href="../plugins/jasperreport/closecontact.php?objid=" data-placement="top" target="_blank" title="Report Close Contact">
+                                  <i class="nav-icon fa fa-print"></i></a>
 
 
-                              <?php if ($_SESSION['user_type'] == 1) {
-                                //restrict users to view history
-                              ?>
-                                <!-- <a class="btn btn-success btn-sm" href="view_juridical_history.php?&entity_no=<?php echo $list_infection['entity_no']; ?> ">
-                                  <i class="fa fa-suitcase"></i></a> -->
+                                <button class="btn btn-danger delete btn-sm" id="delete_record" data-placement="top" title="Delete Record"><i class="fa fa-trash-o"></i></button>
+                                <!-- <button class="btn btn-outline-success btn-sm editIndividual" style = "margin-right:10px;"  id = "viewIndividual" data-placement="top" title="Edit Individual"> <i class="fa fa-edit"></i></button> -->
+
+                                <!--                           
+                                <button class="btn btn-warning btn-sm"  data-placement="top" title="UPDATE"> <i class="fa fa-edit"></i></button> -->
 
 
-                              <?php } ?>
 
 
-                              <!-- <a class="btn btn-danger btn-sm" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/juridical_id_new.php?entity_no=<?php echo $list_infection['entity_no'];  ?>">
-                                <i class="nav-icon fa fa-print"></i></a>
-                              </a> -->
 
-                              <!-- <?php if ($_SESSION['user_type'] == 1) {
-                                      //restrict users to view history
-                                    ?>
-                                <button class="btn btn-danger delete btn-sm" data-placement="top" title="Delete Individual"><i class="fa fa-trash-o"></i></button>
-
-
-                              <?php } ?> -->
-
-
-                              &nbsp;
+                                &nbsp;
 
                             </td>
                           </tr>
@@ -157,7 +161,68 @@ $get_all_contact_data->execute();
 
   </div>
 
-  <div class="modal fade" id="delete_PUMl" role="dialog" data-backdrop="static" data-keyboard="false">
+
+
+  <div class="modal fade" id="modalupdate" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">UPDATE STATUS</h4>
+        </div>
+
+
+
+        <form method="POST" action="">
+          <div class="modal-body">
+            <div class="box-body-lg-50">
+              <div class="form-group">
+                <label>ID:</label>
+                <input readonly="true" type="text" name="objid" id="objid" class="form-control" value="<?php echo $objid; ?>" required>
+
+
+              </div>
+
+              <!-- <div class="col-md-5">
+                <label for="">STATUS:</label>
+                <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
+                  <option selected>Please select</option>
+                  <option value="POSITIVE">POSITIVE</option>
+                  <option value="NEGATIVE">NEGATIVE</option>
+                  <option value="PENDING">PENDING</option>
+                </select>
+              </div> -->
+              <label for="">STATUS:</label>
+              <br>
+              <input type="radio" name="status" <?php if (isset($status) && $status == "PENDING") echo "checked"; ?> value="PENDING">PENDING<br>
+              <input type="radio" name="status" <?php if (isset($status) && $status == "POSITIVE") echo "checked"; ?> value="POSITIVE">POSITIVE<br>
+              <input type="radio" name="status" <?php if (isset($status) && $status == "NEGATIVE") echo "checked"; ?> value="NEGATIVE">NEGATIVE<br>
+
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+              <input type="submit" name="update_status" class="btn btn-danger" value="SAVE">
+
+              <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button> -->
+            </div>
+
+
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- /.modal-dialog -->
+
+
+  <div class="modal fade" id="delete_recordmodal" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
@@ -168,22 +233,25 @@ $get_all_contact_data->execute();
             <div class="box-body">
               <div class="form-group">
                 <label>Delete Record?</label>
-                <input readonly="true" type="text" name="user_id" id="user_id" class="form-control">
+                <input readonly="true" type="text" name="fullname2" id="fullname2" class="form-control">
+                <input readonly="true" type="text" name="objid_closecontact" id="objid_closecontact" class="form-control">
               </div>
+
+
+
             </div>
           </div>
           <div class="modal-footer">
-
             <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-            <!-- <button type="submit" name="delete_user" class="btn btn-danger">Yes</button> -->
-            <input type="submit" name="delete_pum" class="btn btn-danger" value="Yes">
+            <input type="submit" name="delete_closecontact" class="btn btn-danger" value="Yes">
           </div>
         </form>
+
+
       </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+    </div> <!-- /.modal-content -->
   </div>
+   <!-- /.modal-dialog -->
 
 
 
@@ -244,6 +312,52 @@ $get_all_contact_data->execute();
       // }
 
     });
+
+
+    $("#users tbody").on("click", ".printlink", function() {
+      // event.preventDefault();
+      var currow = $(this).closest("tr");
+      var objid = currow.find("td:eq(0)").text();
+      $('.printlink').attr("href", "../plugins/jasperreport/closecontact.php?objid=" + objid, '_parent');
+      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+
+    });
+
+
+    $("#users tbody").on("click", "#modal", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+
+      var objid = currow.find("td:eq(0)").text();
+
+
+
+
+      console.log("test");
+      $('#modalupdate').modal('show');
+      $('#objid').val(objid);
+
+
+
+    });
+
+
+
+    $(function() {
+      $(document).on('click', '.delete', function(e) {
+        e.preventDefault();
+
+        var currow = $(this).closest("tr");
+        var objid5 = currow.find("td:eq(0)").text();
+        var fullname2 = currow.find("td:eq(1)").text();
+        $('#delete_recordmodal').modal('show');
+        $('#objid_closecontact').val(objid5);
+
+      });
+    });
+
+
+
     $('.select2').select2();
 
 
