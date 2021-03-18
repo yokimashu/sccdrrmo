@@ -1176,6 +1176,7 @@ if (isset($_GET['id'])) {
                                                                 </div>
                                                         </div>
                                                 </div>
+                                            </form>
                                         </div>
 
                                     </div>
@@ -1201,7 +1202,7 @@ if (isset($_GET['id'])) {
 
 
 
-                                <form method="POST" action="">
+                                <form method="POST" action="update_schedule.php" id="schedule_form" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="box-body-lg">
                                             <div class="form-group">
@@ -1230,24 +1231,24 @@ if (isset($_GET['id'])) {
                                                 </div><br>
 
 
-                                            
-                                                        <!-- time Picker -->
-                                                        <div class="bootstrap-timepicker">
-                                                            <div class="form-group">
-                                                                <label>Time:</label>
 
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control timepicker" name="time_set">
+                                                <!-- time Picker -->
+                                                <div class="bootstrap-timepicker">
+                                                    <div class="form-group">
+                                                        <label>Time:</label>
 
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- /.input group -->
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control timepicker" name="time_set">
+
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                             </div>
-                                                            <!-- /.form group -->
                                                         </div>
-                                                 
+                                                        <!-- /.input group -->
+                                                    </div>
+                                                    <!-- /.form group -->
+                                                </div>
+
                                                 <label>Remarks: </label>
                                                 <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
 
@@ -1258,7 +1259,7 @@ if (isset($_GET['id'])) {
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-                                            <input type="submit" name="update_vas" class="btn btn-danger" value="ASSIGN">
+                                            <input type="submit" name="update_schedule" class="btn btn-danger" value="ASSIGN">
 
                                             <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button> -->
@@ -1330,7 +1331,49 @@ if (isset($_GET['id'])) {
                     </script>
 
 
+
+
+
                     <script>
+                        // $(function() {
+
+                        //     $('#update_schedule').on('submit', function() {
+                        //         var entity_no = this.value;
+                        //         var n_facility = this.value;
+                        //         var date_set = this.value;
+                        //         var time_set = this.value;
+                        //         var remarks = this.value;
+                        //         // alert(vaccinator);
+                        //         console.log(entity_no);
+                        //         $.ajax({
+                        //             type: "POST",
+                        //             url: 'update_schedule.php',
+                        //             data: {
+                        //                 entity_no:  entity_no,
+                        //                 n_facility: n_facility,
+                        //                 date_set:   date_set,
+                        //                 time_set:   time_set,
+                        //                 remarks:    remarks
+                        //             },
+                        //             error: function(xhr, b, c) {
+                        //                 console.log(
+                        //                     "xhr=" +
+                        //                     xhr.responseText +
+                        //                     " b=" +
+                        //                     b.responseText +
+                        //                     " c=" +
+                        //                     c.responseText
+                        //                 );
+                        //             },
+                        //             success: function(response) {
+                        //                 $('#schedule_form')[0].reset()
+
+                        //             },
+                        //         });
+
+                        //     });
+
+                        // });
                         $(function() {
 
                             // //Timepicker
@@ -1399,14 +1442,14 @@ if (isset($_GET['id'])) {
 
 
                         $(document).on('click', 'button[data-role=confirm_delete]', function(event) {
-      event.preventDefault();
+                            event.preventDefault();
 
-      var user_id = ($(this).data('id'));
+                            var user_id = ($(this).data('id'));
 
-      $('#user_id').val(user_id);
-      $('#delete_PUMl').modal('toggle');
+                            $('#user_id').val(user_id);
+                            $('#delete_PUMl').modal('toggle');
 
-    });
+                        });
                     </script>
 
 
