@@ -1039,7 +1039,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                             <select class="form-control select2" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="<?php echo $vaccinator_name; ?>">
                                                                                 <option value="">Select Vaccinator</option>
                                                                                 <?php while ($get_vaccinator = $get_all_vaccinator_sql->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                                    <option value="<?php echo $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']; ?>"><?php echo $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']; ?></option>
+                                                                      
                                                                                     <?php $selected = ($get_vaccinator_name == $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']) ? 'selected' : ''; ?>
                                                                                     <option <?= $selected; ?> value="<?php echo $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']; ?>"><?php echo $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']; ?></option>
                                                                                 <?php } ?>
