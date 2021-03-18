@@ -21,14 +21,8 @@ if (isset($_POST['update_assessment'])) {
 
     //basic information
     $entityno        = $_POST['entity_number'];
-    
-    //medical conditions
 
-    if ($_POST['preg_status'] != 'Select pregnancy status...') {
-        $preg_status    = $_POST['preg_status'];
-    } else {
-        $preg_status = '02_Not_Pregnant';
-    }
+    //medical conditions
 
     if ($_POST['electronic_consent'] != 'Please select') {
         $consent        = $_POST['electronic_consent'];
@@ -36,54 +30,136 @@ if (isset($_POST['update_assessment'])) {
         $consent        = '03_Unknown';
     }
 
-    if(!empty($_POST['refusal'])){
+    if ($_POST['age_16'] != 'Please select') {
+        $age_16              = $_POST['age_16'];
+    } else {
+        $age_16 = '01_Yes';
+    }
+
+    if ($_POST['allergy_PEG'] != 'Please select') {
+        $allergy_peg         = $_POST['allergy_PEG'];
+    } else {
+        $allergy_peg = '01_Yes';
+    }
+  
+    if ($_POST['food_allergy'] != 'Please select') {
+        $food_allergy        = $_POST['food_allergy'];
+    } else {
+        $food_allergy = '01_Yes';
+    }
+    
+
+    if ($_POST['monitor_patient'] != 'Please select') {
+        $monitor_patient     = $_POST['monitor_patient'];
+    } else {
+        $monitor_patient = '01_Yes';
+    }
+
+    if ($_POST['allergic_reaction'] != 'Please select') {
+        $allergic_reaction   = $_POST['allergic_reaction'];
+ 
+    } else {
+        $allergic_reaction = '01_Yes';
+    }
+
+    if ($_POST['covid_exposure'] != 'Please select') {
+        $covid_exposure      = $_POST['covid_exposure'];
+    } else {
+        $covid_exposure = '01_Yes';
+    }
+  
+
+    if ($_POST['covid_treated'] != 'Please select') {
+        $covid_treated       = $_POST['covid_treated'];
+    } else {
+        $covid_treated = '01_Yes';
+    }
+
+
+    if ($_POST['covid_antibody'] != 'Please select') {
+        $covid_antibody      = $_POST['covid_antibody'];
+    } else {
+        $covid_antibody = '01_Yes';
+    }
+
+
+    if ($_POST['yes_bleeding'] != 'Please select') {
+        $yes_bleeding        = $_POST['yes_bleeding'];
+    } else {
+        $yes_bleeding = '01_Yes';
+    }
+
+
+    if ($_POST['bleeding_history'] != 'Please select') {
+        $bleeding_history    = $_POST['bleeding_history'];
+    } else {
+        $bleeding_history = '01_Yes';
+    }
+
+    if ($_POST['no_received_vaccine'] != 'Please select') {
+        $no_received_vaccine = $_POST['no_received_vaccine'];
+    } else {
+        $no_received_vaccine = '01_Yes';
+    }
+
+
+
+    if ($_POST['medical_clearance'] != 'Please select') {
+        $medical_clearance = $_POST['medical_clearance'];
+    } else {
+        $medical_clearance = '02_No';
+    }
+
+
+    if (!empty($_POST['refusal'])) {
         $refusal = $_POST['refusal'];
     } else {
         $refusal = 'N/A';
     }
 
-    if(!empty($_POST['preg_semester'])){
+    if ($_POST['preg_semester'] != 'Please select') {
         $preg_semester = $_POST['preg_semester'];
     } else {
         $preg_semester = '02_No';
     }
 
-    if($_POST['deferral'] != 'Choose here'){
+    if ($_POST['preg_status'] != 'Select pregnancy status...') {
+        $preg_status    = $_POST['preg_status'];
+    } else {
+        $preg_status = '02_Not_Pregnant';
+    }
+
+    if (!empty($_POST['deferral'])) {
         $deferral = $_POST['deferral'];
     } else {
         $deferral = 'N/A';
     }
 
-    if($_POST['list_symptoms'] != 'Choose here...'){
+    if ($_POST['manifest_symptoms'] != 'Please select') {
+        $manifest_symptoms = $_POST['manifest_symptoms'];
+    } else {
+        $manifest_symptoms = '01_Yes';
+    }
+
+    if (!empty($_POST['list_symptoms'])) {
         $list_symptoms = $_POST['list_symptoms'];
     } else {
-        $list_symptoms = ' ';
+        $list_symptoms = ['N/A'];
     }
 
-    if($_POST['list_illness'] != 'Choose here...'){
+    if ($_POST['no_illness'] != 'Please select') {
+        $no_illness = $_POST['no_illness'];
+    } else {
+        $no_illness = '01_Yes';
+    }
+
+    if (!empty($_POST['list_illness'])) {
         $list_illness = $_POST['list_illness'];
     } else {
-        $list_illness = 'N/A';
+        $list_illness = ['N/A'];
     }
 
-
-
-    //////////
-    $allergy_peg         = $_POST['allergy_PEG'];
-    $food_allergy        = $_POST['food_allergy'];
-    $monitor_patient     = $_POST['monitor_patient'];
-    $allergic_reaction   = $_POST['allergic_reaction'];
-    $covid_exposure      = $_POST['covid_exposure'];
-    $covid_treated       = $_POST['covid_treated'];
-    $covid_antibody      = $_POST['covid_antibody'];
-    $age_16              = $_POST['age_16'];
-    $bleeding_history    = $_POST['bleeding_history'];
-    $yes_bleeding        = $_POST['yes_bleeding'];
-    $no_received_vaccine = $_POST['no_received_vaccine'];
-    $manifest_symptoms   = $_POST['manifest_symptoms'];
-    $no_illness          = $_POST['no_illness'];
-    $medical_clearance   = $_POST['medical_clearance'];
-    $vaccination_date    = $_POST['vaccination_date'];
+    $vaccination_date    = date('Y-m-d', strtotime($_POST['vaccination_date']));
     $manufacturer        = $_POST['vaccine_manufacturer'];
     $batch_number        = $_POST['batch_number'];
     $lot_number          = $_POST['lot_number'];
@@ -91,6 +167,7 @@ if (isset($_POST['update_assessment'])) {
     $profession          = $_POST['profession_vaccinator'];
     $first_dose          = $_POST['first_dose'];
     $second_dose          = $_POST['second_dose'];
+
 
     $insert_assessment_sql = "UPDATE tbl_assessment SET 
         
@@ -181,5 +258,3 @@ if (isset($_POST['update_assessment'])) {
         header('location: list_assessment.php');
     }
 }
-
-?>
