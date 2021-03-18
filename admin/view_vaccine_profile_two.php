@@ -1,8 +1,10 @@
 <?php
 
-
-include('../config/db_config.php');
 session_start();
+include('../config/db_config.php');
+
+include('update_schedule.php');
+
 $cbcr = $_SESSION['cbcr'];
 
 $now = new DateTime();
@@ -44,7 +46,6 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
-// include('verify_admin.php');
 
 $get_all_gender_sql = "SELECT * FROM tbl_gender";
 $get_all_gender_data = $con->prepare($get_all_gender_sql);
@@ -1251,7 +1252,6 @@ if (isset($_GET['id'])) {
 
                                                 <label>Remarks: </label>
                                                 <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
-
 
                                             </div>
 

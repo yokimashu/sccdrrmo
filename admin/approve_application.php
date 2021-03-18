@@ -84,10 +84,7 @@ if (isset($_POST['deny'])) {
             date                = now(),
             time                = :time,
             title               = :title,
-            status              = 'UNREAD'
-
-
-";
+            status              = 'UNREAD'";
 
     $notif_data = $con->prepare($insert_notif_sql);
     $notif_data->execute([
