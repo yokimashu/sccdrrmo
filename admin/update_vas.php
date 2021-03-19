@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 $alert_msg = '';
 include('../config/db_config.php');
@@ -60,18 +62,16 @@ if (isset($_POST['update_vas'])) {
 
     ]);
 
-
-
-    if ($add_assesment_data) {
+    if ($add_assesment_data && $cbcr_data) {
 
         $_SESSION['status'] = "Add Successful!";
         $_SESSION['status_code'] = "success";
 
-        header('location: list_vaccine_profile.php');
+        // header('location: list_vaccine_profile.php');
     } else {
         $_SESSION['status'] = "Add Unsuccessful!";
         $_SESSION['status_code'] = "error";
 
-        header('location: list_vaccine_profile.php');
+        // header('loca/tion: list_vaccine_profile.php');
     }
 }

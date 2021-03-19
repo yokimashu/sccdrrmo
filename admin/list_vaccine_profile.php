@@ -21,13 +21,15 @@ $time = date('H:i:s');
 $symptoms = $patient = $person_status = '';
 
 //fetch user from database
-// $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
-// $user_data = $con->prepare($get_user_sql);
-// $user_data->execute([':id' => $user_id]);
-// while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+// $vas_entity_no = ' ';
+
+// $get_assessment_sql = "SELECT * FROM tbl_assessment where entity_no = :id ";
+// $assestment_data = $con->prepare($get_assessment_sql);
+// $assestment_data->execute([':id' => $vas_entity_no]);
+// while ($result = $assestment_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-//   $db_fullname = $result['fullname'];
+//   $vas_entity_no = $result['entity_no'];
 // }
 
 $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
