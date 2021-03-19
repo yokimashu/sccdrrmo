@@ -11,8 +11,12 @@ if (!isset($_SESSION['id'])) {
   header('location:../index.php');
 }
 date_default_timezone_set('Asia/Manila');
-$date = date('Y-m-d');
+
+$now = new DateTime();
+// $date = date('Y-m-d');
 $time = date('H:i:s');
+
+
 
 $symptoms = $patient = $person_status = '';
 
@@ -61,8 +65,8 @@ $get_all_vaccine_data->execute();
     <div class="content-wrapper">
       <div class="content-header"></div>
       <div class="float-topright">
-                <?php echo $alert_msg; ?>
-            </div>
+        <?php echo $alert_msg; ?>
+      </div>
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
@@ -74,35 +78,35 @@ $get_all_vaccine_data->execute();
 
           </div>
           <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+            <div class="modal-dialog">
+              <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Import from CSV</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Import from CSV</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-      <form method="post" enctype="multipart/form-data">
-   <div align="center">  
-    <label>Select CSV File:</label>
-    <input type="file" name="file" />
-    <br />
-    <input type="submit" name="submit" value="Import" class="btn btn-info" />
-   </div>
-  </form>
-      </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form method="post" enctype="multipart/form-data">
+                    <div align="center">
+                      <label>Select CSV File:</label>
+                      <input type="file" name="file" />
+                      <br />
+                      <input type="submit" name="submit" value="Import" class="btn btn-info" />
+                    </div>
+                  </form>
+                </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
 
-    </div>
-  </div>
-</div>
+              </div>
+            </div>
+          </div>
           <div class="card-body">
             <div class="box box-primary">
               <form role="form" method="get" action="">
@@ -178,9 +182,9 @@ $get_all_vaccine_data->execute();
                 <label>VAMOS ID: </label>
                 <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
 
-             
-                  <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class = "form-control" pull-right value="<?php echo date("y/m/d") ?>" required>
-             
+
+                <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo $now->format('Y-m-d'); ?>" required>
+
                 <!-- <label>Time Registered:
                 <input readonly="true" readonly type="text" name="time_registered" id="time_registered" class = "form-control" pull-right value="<?php echo date("H:i") ?>" required>
                 </label>  -->
