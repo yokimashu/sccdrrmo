@@ -413,11 +413,11 @@ if (isset($_POST['update_vaccine'])) {
         $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";
 
-        header('location: view_vaccine_profile_two.php');
+        header('location: view_vaccine_profile_two.php?id=' . $entityno);
     } else {
         $_SESSION['status'] = "Update Unsuccessful!";
         $_SESSION['status_code'] = "error";
 
-        header('location: view_vaccine_profile_two.php');
+        header('location: view_vaccine_profile_two.php?=' . $entityno);
     }
 }

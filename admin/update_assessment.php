@@ -17,7 +17,6 @@ if (isset($_POST['update_assessment'])) {
 
     // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_reg']));
-    
     $time           = date("H:i:s");
 
     //basic information
@@ -114,8 +113,10 @@ if (isset($_POST['update_assessment'])) {
 
     if (!empty($_POST['refusal'])) {
         $refusal = $_POST['refusal'];
+        $status = 'REFUSAL';
     } else {
         $refusal = 'N/A';
+        $status = 'VACCINATED';
     }
 
     if ($_POST['preg_semester'] != 'Please select') {
@@ -132,8 +133,10 @@ if (isset($_POST['update_assessment'])) {
 
     if (!empty($_POST['deferral'])) {
         $deferral = $_POST['deferral'];
+        $status = 'DEFERRAL';
     } else {
         $deferral = 'N/A';
+        $status = 'VACCINATED';
     }
 
     if ($_POST['manifest_symptoms'] != 'Please select') {
@@ -160,16 +163,51 @@ if (isset($_POST['update_assessment'])) {
         $list_illness = ['N/A'];
     }
 
+
     $vaccination_date    = date('Y-m-d', strtotime($_POST['vaccination_date']));
-    $manufacturer        = $_POST['vaccine_manufacturer'];
-    $batch_number        = $_POST['batch_number'];
-    $lot_number          = $_POST['lot_number'];
-    $vaccinator          = $_POST['vaccinator'];
-    $profession          = $_POST['profession_vaccinator'];
-    $first_dose          = $_POST['first_dose'];
-    $second_dose          = $_POST['second_dose'];
 
+    if ($_POST['vaccine_manufacturer'] != '') {
+        $manufacturer = $_POST['vaccine_manufacturer'];
+    } else {
+        $manufacturer = 'N/A';
+    }
+   
+    if (!empty($_POST['batch_number'])) {
+        $batch_number        = $_POST['batch_number'];
+    } else {
+        $batch_number = 'N/A';
+    }
+   
+    if (!empty($_POST['lot_number'])) {
+        $lot_number          = $_POST['lot_number'];
+    } else {
+        $lot_number = 'N/A';
+    }
+  
+    if ($_POST['vaccinator'] != '') {
+        $vaccinator = $_POST['vaccinator'];
+    } else {
+        $vaccinator = 'N/A';
+    }
 
+    if (!empty($_POST['profession_vaccinator'])) {
+        $profession          = $_POST['profession_vaccinator'];
+    } else {
+        $profession = 'N/A';
+    }
+   
+    if ($_POST['first_dose'] != 'Please select') {
+        $first_dose = $_POST['first_dose'];
+    } else {
+        $first_dose = '02_No';
+    }
+
+    if ($_POST['second_dose'] != 'Please select') {
+        $second_dose = $_POST['second_dose'];
+    } else {
+        $second_dose = '02_No';
+    }
+   
     $insert_assessment_sql = "UPDATE tbl_assessment SET 
         
             date_reg                = :date_reg,
@@ -178,7 +216,7 @@ if (isset($_POST['update_assessment'])) {
             Refusal_Reasons         = :refusal_reasons,
             MoreThan16yo            = :age_16,
             PegPolysorbate          = :peg_polysorbate,
-            Severe_Reaction          = :severe_reaction,
+            Severe_Reaction         = :severe_reaction,
             AllergyToFood           = :allergy_food,
             MonitorAllergy          = :monitor_allergy,
             BleedingDisorders       = :bleeding_disorder,
@@ -202,7 +240,8 @@ if (isset($_POST['update_assessment'])) {
             VaccinatorName          = :vaccinator,
             VaccinatorProfession    = :vaccinator_profession,
             1stDose                 = :first_dose,
-            2ndDose                 = :second_dose
+            2ndDose                 = :second_dose,
+            status                  = :status
             where entity_no         = :entityno
     
         ";
@@ -240,7 +279,8 @@ if (isset($_POST['update_assessment'])) {
         ':vaccinator'                   => $vaccinator,
         ':vaccinator_profession'        => $profession,
         ':first_dose'                   => $first_dose,
-        ':second_dose'                  => $second_dose
+        ':second_dose'                  => $second_dose,
+        ':status'                       => $status
 
 
     ]);
@@ -253,11 +293,11 @@ if (isset($_POST['update_assessment'])) {
         $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";
 
-        header('location: list_assessment.php');
+        header('location: add_assessment.php?id=' . $entityno);
     } else {
         $_SESSION['status'] = "Update Unsuccessful!";
         $_SESSION['status_code'] = "error";
 
-        header('location: list_assessment.php');
+        header('location: add_assessment.php?id=' . $entityno);
     }
 }

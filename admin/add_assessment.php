@@ -541,7 +541,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
-                                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_reg" placeholder="Date Process" value="<?php echo $get_datecreated; ?>">
+                                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_reg" placeholder="Date Process" value="<?php echo date('Y-m-d'); ?>">
                                                         </div>
                                                     </div>
 
@@ -1015,8 +1015,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                             <div class="col-md-6">
                                                                                 <label for="">Vaccine Manufacturer: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                                <select class="form-control select2" id="vaccine_manufacturer" style="width: 100%;" name="vaccine_manufacturer" placeholder="" value="<?php echo $vaccine_manufacturer; ?>">
-                                                                                    <option selected value=" ">Select Manufacturer</option>
+                                                                                <select class="form-control select2" id="vaccine_manufacturer" style="width: 100%;" name="vaccine_manufacturer" placeholder="" value="">
+                                                                                    <option selected value="">Select Manufacturer</option>
                                                                                     <?php while ($get_manufacturer = $get_all_manufacturer_sql->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                                         <?php $selected = ($vaccine_manufacturer == $get_manufacturer['manufacturer']) ? 'selected' : ''; ?>
                                                                                         <option <?= $selected; ?> value="<?php echo $get_manufacturer['manufacturer']; ?>"><?php echo $get_manufacturer['manufacturer']; ?></option>
@@ -1043,7 +1043,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                             <div class="col-md-6">
                                                                                 <label for="">Vaccinator Name: &nbsp;&nbsp; <span id="required">*</span></label>
 
-                                                                                <select class="form-control select2" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="<?php echo $vaccinator_name; ?>">
+                                                                                <select class="form-control select2" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="">
                                                                                     <option value="">Select Vaccinator</option>
                                                                                     <?php while ($get_vaccinator = $get_all_vaccinator_sql->fetch(PDO::FETCH_ASSOC)) { ?>
 
@@ -1136,6 +1136,24 @@ $title = 'VAMOS | COVID-19 Patient Form';
     <script src="../plugins/select2/select2.full.min.js"></script>
 
 
+    <?php
+
+    if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status'] ?>",
+                // text: "You clicked the button!",
+                icon: "<?php echo $_SESSION['status_code'] ?>",
+                button: "OK. Done!",
+            });
+        </script>
+
+    <?php
+        unset($_SESSION['status']);
+    }
+    ?>
 
 
     <script language="JavaScript">
