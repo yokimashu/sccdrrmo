@@ -17,6 +17,7 @@ if (isset($_POST['update_assessment'])) {
 
     // category
     $date_reg       = date('Y-m-d', strtotime($_POST['date_reg']));
+    
     $time           = date("H:i:s");
 
     //basic information
@@ -173,6 +174,7 @@ if (isset($_POST['update_assessment'])) {
         
             date_reg                = :date_reg,
             time_reg                = :time_reg,
+            consent                 = :consent,
             Refusal_Reasons         = :refusal_reasons,
             MoreThan16yo            = :age_16,
             PegPolysorbate          = :peg_polysorbate,
@@ -208,8 +210,9 @@ if (isset($_POST['update_assessment'])) {
     $assessment_data = $con->prepare($insert_assessment_sql);
     $assessment_data->execute([
         ':entityno'                     => $entityno,
-        ':date_reg'                      => $date_reg,
+        ':date_reg'                     => $date_reg,
         ':time_reg'                    => $time,
+        ':consent'                      => $consent,
         ':refusal_reasons'              => $refusal,
         ':age_16'                       => $age_16,
         ':peg_polysorbate'              => $allergy_peg,

@@ -40,17 +40,17 @@ $get_all_landtrans_sql = "SELECT * FROM tbl_landtranspo ";
 $get_all_landtrans_data = $con->prepare($get_all_landtrans_sql);
 $get_all_landtrans_data->execute();
 
-$get_all_recovered_sql = "SELECT * FROM tbl_sources_infection where status='RECOVERED' ";
-$get_all_recovered_data = $con->prepare($get_all_recovered_sql);
-$get_all_recovered_data->execute();
+// $get_all_recovered_sql = "SELECT * FROM tbl_sources_infection where status='RECOVERED' ";
+// $get_all_recovered_data = $con->prepare($get_all_recovered_sql);
+// $get_all_recovered_data->execute();
 
-$get_all_active_sql = "SELECT * FROM tbl_sources_infection where status='ACTIVE' ";
-$get_all_active_data = $con->prepare($get_all_active_sql);
-$get_all_active_data->execute();
+// $get_all_active_sql = "SELECT * FROM tbl_sources_infection where status='ACTIVE' ";
+// $get_all_active_data = $con->prepare($get_all_active_sql);
+// $get_all_active_data->execute();
 
-$get_all_dead_sql = "SELECT * FROM tbl_sources_infection where status='DIED' ";
-$get_all_dead_data = $con->prepare($get_all_dead_sql);
-$get_all_dead_data->execute();
+// $get_all_dead_sql = "SELECT * FROM tbl_sources_infection where status='DIED' ";
+// $get_all_dead_data = $con->prepare($get_all_dead_sql);
+// $get_all_dead_data->execute();
 
 $title = 'VAMOS | Dashboard';
 ?>
