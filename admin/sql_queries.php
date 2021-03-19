@@ -321,3 +321,14 @@ if (isset($_POST['add_pum'])) {
 
     header('location: list_followup.php');
 }
+
+else if (isset($_POST['delete_closecontact'])) {
+
+    $delete_closecontact_id = $_POST['objid_closecontact'];
+    $delete_closecontact_sql = "DELETE FROM tbl_closecontact WHERE objid = :id ";
+    $delete_closecontact_data = $con->prepare($delete_closecontact_sql);
+    $delete_closecontact_data->execute([':id' => $delete_closecontact_id]);
+    
+    header('location: list_close_contact.php');
+    }
+    

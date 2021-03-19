@@ -30,9 +30,22 @@ $label_covid_case = ' ';
 $label_masterlist = '';
 $masterlist_symptoms = '';
 $list_vaccine = '';
+$list_vaccine_report = ' ';
+$list_vaccine_report_no = ' ';
+$list_vaccine_linelist = ' ';
+$vaccine_sandoc = ' ';
+$daily_report = ' ';
+$list_categorylist = ' ';
+$list_bakuna_center = ' ';
+$list_vaccinators = ' ';
 $list_close_contact = ' ';
 $list_positive_case = ' ';
 $single_break = ' ';
+
+
+$label_vaccination = ' ';
+$list_assessment = ' ';
+
 
 //google forms
 $label_tracer = ' ';
@@ -83,14 +96,62 @@ if ($_SESSION['user_type'] == 1) {
   // end of masterlist
 
 
+  // vaccination masterlist
+  $label_vaccination =
+    '  
+  <label id="label1" style="font-size:18px; ">
+      &nbsp;
+      <i class="nav-icon fas fa-briefcase-medical icons "></i>
+      &nbsp;
+       VACCINATION
+   </label>';
 
 
 
 
 
+  $list_vaccine = '<li class="nav-item">
+   <a href="list_vaccine_profile" class="nav-link sidebar-link">
+     &nbsp;
+     <i class="nav-icon fas fa-syringe icons"></i>
+     <p> Registration </p>
+   </a>
+ </li> ';
 
+  $list_assessment = '<li class="nav-item">
+ <a href="list_assessment" class="nav-link sidebar-link">
+   &nbsp;
+   <i class="nav-icon fas fa-hands-helping icons"></i>
 
+   <p> Assessment </p>
+ </a>
+</li> ';
 
+$list_categorylist = '<li class="nav-item">
+<a href="list_categorylist" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Vaccine Masterlist </p>
+</a>
+</li> ';
+
+$list_bakuna_center = '<li class="nav-item">
+<a href="list_bakuna_center" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-hospital-o"></i>
+  <p> Bakuna Center </p>
+</a>
+</li> ';
+
+$list_vaccinators = '<li class="nav-item">
+<a href="list_vaccinators" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-user-md"></i>
+  <p> Vaccinator </p>
+</a>
+</li> ';
+
+  // end of masterlist vaccination
 
 
 
@@ -103,16 +164,8 @@ if ($_SESSION['user_type'] == 1) {
           <i class="nav-icon fas fa-briefcase-medical icons "></i>
           &nbsp;
           COVID-19 CASES
-       </label>';
+    </label>';
 
-
-  $list_vaccine = '<li class="nav-item">
-  <a href="list_vaccine_profile" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-syringe icons"></i>
-    <p> COVID Vaccine </p>
-  </a>
-</li> ';
 
 
 
@@ -124,6 +177,8 @@ if ($_SESSION['user_type'] == 1) {
            <p> Close Contacts </p>
          </a>
        </li>';
+
+
 
 
   $list_positive_case =
@@ -138,11 +193,54 @@ if ($_SESSION['user_type'] == 1) {
   //end of masterlist of tracer 
 
 
+  // report for vaccine
+  $list_vaccine_report = '<li class="nav-item">
+<a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Eligible Population </p>
+</a>
+</li> ';
 
+  $list_vaccine_report_no = '<li class="nav-item">
+<a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> All Population </p>
+</a>
+</li> ';
+
+$list_vaccine_linelist = '<li class="nav-item">
+<a href="../plugins/jasperreport/vaccine_linelist.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Sinovac Linelist </p>
+</a>
+</li> ';
+
+$vaccine_sandoc = '<li class="nav-item">
+<a href="../plugins/jasperreport/vaccine_sandoc.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> SanDoc Linelist </p>
+</a>
+</li> ';
+
+$daily_report = '
+<li class="nav-item">
+  <a href="daily_vaccine_report" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-id-card-alt icons"></i>
+    <p> Daily Count </p>
+  </a>
+</li>';
+
+  // end report for vaccine 
 
 
 
   // SETTINGS MENU
+
   $settings = '  <label id="label1" style="font-size:18px; ">
       &nbsp;
       <i class="nav-icon fa fa-cogs icons"></i>
@@ -215,6 +313,8 @@ if ($_SESSION['user_type'] == 1) {
 
 // register account
 if ($_SESSION['user_type'] == 2) {
+
+  $single_break = '<br> ';
   $break = '<br><br><br><br>';
 }
 
@@ -243,45 +343,98 @@ if ($_SESSION['user_type'] == 3) {
 // CHO account
 if ($_SESSION['user_type'] == 4) {
 
+  // masterlist of covid-19
   $label_covid_case =
     '  
-  <label id="label1" style="font-size:18px; ">
-        &nbsp;
-        <i class="nav-icon fas fa-briefcase-medical icons "></i>
-        &nbsp;
-        COVID-19 CASES
-     </label>';
+   <label id="label1" style="font-size:18px; ">
+         &nbsp;
+         <i class="nav-icon fas fa-briefcase-medical icons "></i>
+         &nbsp;
+         COVID-19 CASES
+   </label>';
 
-
-  $list_vaccine = '<li class="nav-item">
-<a href="list_vaccine_profile" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> COVID Vaccine </p>
-</a>
-</li> ';
 
 
 
   $list_close_contact = '
-     <li class="nav-item">
-       <a href="list_close_contact" class="nav-link sidebar-link">
-         &nbsp;
-         <i class="nav-icon fas fa-id-card-alt icons"></i>
-         <p> Close Contacts </p>
-       </a>
-     </li>';
+      <li class="nav-item">
+        <a href="list_close_contact" class="nav-link sidebar-link">
+          &nbsp;
+          <i class="nav-icon fas fa-id-card-alt icons"></i>
+          <p> Close Contacts </p>
+        </a>
+      </li>';
+
+
 
 
   $list_positive_case =
     '<li class="nav-item">
-      <a href="list_sources_infection" class="nav-link sidebar-link">
-        &nbsp;
-        <i class="nav-icon fas fa-check-square icons"></i>
+       <a href="list_sources_infection" class="nav-link sidebar-link">
+         &nbsp;
+         <i class="nav-icon fas fa-check-square icons"></i>
 
-        <p> Confirmed Case </p>
-      </a>
+         <p> Confirmed Case </p>
+       </a>
+   </li> ';
+  //end of masterlist of tracer 
+
+
+  // vaccination masterlist
+  $label_vaccination =
+    '  
+  <label id="label1" style="font-size:18px; ">
+      &nbsp;
+      <i class="nav-icon fas fa-briefcase-medical icons "></i>
+      &nbsp;
+       VACCINATION
+   </label>';
+
+
+
+
+
+  $list_vaccine = '<li class="nav-item">
+   <a href="list_vaccine_profile" class="nav-link sidebar-link">
+     &nbsp;
+     <i class="nav-icon fas fa-syringe icons"></i>
+     <p> Registration </p>
+   </a>
+ </li> ';
+
+  $list_assessment = '<li class="nav-item">
+ <a href="list_assessment" class="nav-link sidebar-link">
+   &nbsp;
+   <i class="nav-icon fas fa-hands-helping icons"></i>
+
+   <p> Assessment </p>
+ </a>
+</li> ';
+
+  // end of masterlist vaccination
+
+
+
+
+
+  // start of vaccine report
+  $list_vaccine_report = '<li class="nav-item">
+  <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Eligible Population </p>
+  </a>
   </li> ';
+
+  $list_vaccine_report_no = '<li class="nav-item">
+  <a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> All Population </p>
+  </a>
+  </li> ';
+  // end of report
+
   $single_break = '<br> ';
 
   $break = '<br><br><br><br>';

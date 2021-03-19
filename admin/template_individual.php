@@ -28,12 +28,23 @@ $img = '';
 
     </div>
 
+    
 
 
 
 
-</div><br>
-<div class="row">
+
+    </div><br>
+
+    <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-5 ">
+                                                    <!-- <label>Street: </label> -->
+                                                    <input type="text" readonly class="form-control" style=" text-transform: uppercase; font-weight: bold; color: red; text-align: center;" name="province" placeholder="Province" value="<?php echo $get_status; ?>">
+                                                </div>
+                                            </div><br>
+                                
+    <div class="row">
 
 
     <div class="col-md-3"></div>

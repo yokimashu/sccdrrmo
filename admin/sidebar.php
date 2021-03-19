@@ -140,52 +140,25 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge"><?php echo $unread_messages;?></span>
+          <span class="badge badge-danger navbar-badge"><?php echo $unread_messages; ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
-           <?php while($result = $pre_message->fetch(PDO::FETCH_ASSOC)){
-    $entity = $result['sender'];
-    $photo = $result['photo'];
-    $notif = $result['notif_objid'];
-    $fullname =$result['fullname'];
-    $message = $result['message'];
-    $date = $result['date'];
-    $time = $result['time'];
-  ?>
 
-            <div class="media">
-              <img src="../flutter/images/<?php echo $photo?>"  alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-               
-                  <?php echo $fullname;?>
-               
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                 <a href = "view_message_thread.php?&id=<?php echo $entity;?>&notif=<?php echo $notif; ?>&img=<?php echo $photo;?>">
-                <p class="text-sm"><?php echo  $entity; ?></p>
-                </a>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i><?php echo $date.'/'.$time ?></p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <?php } ?>
-    <li class="nav-item" align="right">
-      <a href="announcement" class="nav-link ">
-        <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
-        <!-- <label href="announcement"> -->
-        ANNOUNCEMENTS
-        <!-- </label> -->
-      </a>
-    </li>
+      <li class="nav-item" align="right">
+        <a href="announcement" class="nav-link ">
+          <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
+          <!-- <label href="announcement"> -->
+          ANNOUNCEMENTS
+          <!-- </label> -->
+        </a>
+      </li>
 
 
 
 
-  </ul>
+    </ul>
 
 
 
@@ -306,13 +279,21 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         <!-- <?php echo $masterlist_symptoms; ?> -->
         <!-- <?php echo $single_break; ?> -->
 
+
         <!-- masterlist of covid-19 -->
         <?php echo $label_covid_case; ?>
         <?php echo $list_close_contact ?>
         <?php echo $list_positive_case ?>
-        <?php echo $list_vaccine; ?>
         <?php echo $single_break; ?>
 
+
+        <?php echo $label_vaccination; ?>
+        <?php echo $list_vaccine; ?>
+        <?php echo $list_assessment; ?>
+        <?php echo $list_categorylist; ?>
+        <?php echo $list_bakuna_center; ?>
+        <?php echo $list_vaccinators; ?>
+        <?php echo $single_break; ?>
         <!-- end of masterlist of covid-19 -->
 
         <div>
@@ -329,6 +310,12 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               <p> &nbsp; Multiple QR</p>
             </a>
           </li>
+
+          <?php echo $list_vaccine_report; ?>
+          <?php echo $list_vaccine_report_no; ?>
+          <?php echo $list_vaccine_linelist; ?>
+          <?php echo $vaccine_sandoc; ?>
+          <?php echo $daily_report; ?>
 
 
         </div><br>

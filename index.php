@@ -36,6 +36,7 @@ if (isset($_POST['signin'])) {
         session_start();
         $_SESSION['id'] = $result['id'];
         $_SESSION['user_type'] = $result['account_type'];
+        $_SESSION['cbcr'] = $result['cbcr'];
         // if ($result['account_type'] == 1) {
 
         header('location: admin'); //location is folder
@@ -152,15 +153,15 @@ if (isset($_POST['signin'])) {
         <div class="row" align="center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!-- <a href="#addnew" data-toggle="modal" style="color:white;" data-backdrop="static" class="btn btn-primary pull-left">Sign Up</a> -->
-            <input type="submit" class="btn btn-success pull-right" name="signin" value="Sign In">
+            <input type="submit"  class="btn btn-success pull-right" name="signin" value="Sign In">
           </div>
         </div>
 
       </form>
     </div><!-- /.login-box-body -->
-    <div class="login-logo">
+    <!-- <div class="login-logo">
       <a href="http://34.92.117.58/sccdrrmo/downloads/app-release.apk"><img src="dist/img/downloadbuttonandroid.png" width="200px"></a>
-    </div>
+    </div> -->
 
   </div><!-- /.login-box -->
 </body>
@@ -176,6 +177,8 @@ if (isset($_POST['signin'])) {
 
 
 <script>
+
+
   function loadImage() {
     var input = document.getElementById("fileToUpload");
     var fReader = new FileReader();
@@ -259,6 +262,16 @@ if (isset($_POST['signin'])) {
 
   });
 </script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.2.9/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
 </body>
 
 </html>

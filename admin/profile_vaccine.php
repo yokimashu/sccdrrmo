@@ -14,16 +14,18 @@ if (isset($_POST['entity_no'])) {
     $street = '';
     $age = ' ';
     $birthdate = ' ';
+    $email = ' ';
     $province = ' ';
     $gender = ' ';
     $city = ' ';
     $barangay = '';
     $mobile_no = '';
+    $status = ' ';
     $photo = '';
 
 
     // $user_id = $_SESSION['id  //select all data type
-    $get_all_individual_sql = "SELECT * FROM `tbl_individual` WHERE entity_no = :entity_no";
+    $get_all_individual_sql = "SELECT * FROM `tbl_individual` i inner join tbl_entity e on i.entity_no = e.entity_no WHERE i.entity_no = :entity_no";
     $get_all_individual_data = $con->prepare($get_all_individual_sql);
     $get_all_individual_data->execute([':entity_no' => $entity_no]);
     while ($result = $get_all_individual_data->fetch(PDO::FETCH_ASSOC)) {
@@ -36,7 +38,7 @@ if (isset($_POST['entity_no'])) {
 
         $middlename = $result['middlename'];
         $lastname = $result['lastname'];
-
+        $email = $result['email'];
         $birthdate = $result['birthdate'];
         $province = $result['province'];
         $street =  $result['street'];
@@ -44,6 +46,8 @@ if (isset($_POST['entity_no'])) {
         $age = $result['age'];
         $gender = $result['gender'];
         $city = $result['city'];
+        $status = $result['status'];
+
         $mobile_no =  $result['mobile_no'];
         $photo =  $result['photo'];
     }
@@ -64,6 +68,8 @@ if (isset($_POST['entity_no'])) {
         'data11' => $city,
         'data12' => $mobile_no,
         'data13' => $photo,
+        'data14' => $email,
+        'data15' => $status,
         'message' => 'success'
     );
     echo json_encode($data);
