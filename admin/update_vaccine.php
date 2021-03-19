@@ -10,7 +10,7 @@ $alert_msg = '';
 
 if (isset($_POST['update_vaccine'])) {
 
-   // echo "<pre>";
+    // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
 
@@ -115,18 +115,18 @@ if (isset($_POST['update_vaccine'])) {
         $emp_name = 'N/A';
     }
 
-    if ($_POST['emp_contact'] != ''){
+    if ($_POST['emp_contact'] != '') {
         $emp_contact    = $_POST['emp_contact'];
     } else {
         $emp_contact = 'N/A';
     }
-   
-    if ($_POST['emp_address'] != ''){
+
+    if ($_POST['emp_address'] != '') {
         $emp_address    = strtoupper($_POST['emp_address']);
-    }else{
+    } else {
         $emp_address = 'N/A';
     }
-  
+
     $emp_lgu        = "_64524_SAN_CARLOS_CITY";
 
     //medical conditions
@@ -413,11 +413,11 @@ if (isset($_POST['update_vaccine'])) {
         $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";
 
-        header('location: list_vaccine_profile.php');
+        header('location: view_vaccine_profile_two.php');
     } else {
         $_SESSION['status'] = "Update Unsuccessful!";
         $_SESSION['status_code'] = "error";
 
-        header('location: list_vaccine_profile.php');
+        header('location: view_vaccine_profile_two.php');
     }
 }
