@@ -1308,14 +1308,14 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
         $('#with_allergy').change(function() {
             var option = $('#with_allergy').val();
-            if (option == "01_Yes") {
-                $('#yes-allergy').prop("hidden", false);
+            if (option == "02_No") {
+                $('#allergic').prop("hidden", false);
 
 
 
             } else {
 
-                $('#yes-allergy').prop("hidden", true);
+                $('#allergic').prop("hidden", true);
 
             }
 
