@@ -146,7 +146,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       <div class="content-header"></div>
 
       <section class="content">
-        <div class="card card-info">
+        <div class="card">
           <div class="card-header  text-white bg-success">
             <h4> Assessment Masterlist
             </h4>
@@ -154,70 +154,84 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
           </div>
 
           <div class="card-body">
-            <div class="box box-primary">
+            <div class="box ">
               <form role="form" method="POST" action="<?php htmlspecialchars("PHP_SELF"); ?>">
-                <div class="box-body">
 
-                  <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                      <div class="input-group date">
+                <div class="card card-success card-outline">
+                  <div class="card-header ">
+                    <h5 class="m-0">GENERATE REPORT</h5>
+                  </div>
+                  <div class="box-body">
+                    <br>
+                    <div class="row">
 
-                        <label style="padding-right:10px;padding-left: 10px">Date: </label>
-                        <div style="padding-right:10px" class="input-group-addon">
-                          <i class="fa fa-calendar"></i>
+
+                      <div class="col-md-1" align="right">
+                        <label>Date: </label>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="input-group date">
+                          <div style="padding-right:10px" class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input style="margin-right:10px;" type="text" data-provide="datepicker" class="form-control " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom">
+
                         </div>
-                        <input type="text" data-provide="datepicker" class="form-control  " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom">
+                      </div>
+                      <div class="col-md-1" align="right">
+                        <label>Center <span id="required"></span> </label>
+                      </div>
+                      <div class="col-md-5">
+
+                        <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
+                        <select class="form-control select2" id="center" name="center">
+                          <option selected value=" ">Select Bakuna Center</option>
+                          <?php while ($get_bkcenter = $get_bakuna_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                            <option value="<?php echo $get_bkcenter['bc_code']; ?>"> <?php echo $get_bkcenter['bc_name'] ?> </option>
+
+                          <?php } ?>
+                        </select>
+                      </div>
+
+                      <!-- <div class="col-md-1"></div> -->
+                      <div class="col-md-2">
+                        <button type="submit" class="btn btn-success" name="download"><i class="fa fa-download"></i></button>
                       </div>
                     </div>
 
 
-                    <div class="col-md-1" align="right">
-                      <label>Center: <span id="required"></span> </label>
-                      <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
+                  </div><br>
+
+
+                </div>
+
+                <!-- start of deferral -->
+        
+                <div class="card" style="padding:12px;">
+                  <div class="box-body">
+                    <div class="table-responsive">
+ 
+
+                      <table id="users" name="user" class="table table-bordered table-striped">
+                        <thead align="center">
+
+
+                          <th> Entity_no </th>
+                          <th> Date Register </th>
+                          <th width="500px"> Category </th>
+                          <th> Full Name </th>
+                          <th>Options</th>
+
+
+                        </thead>
+                        <tbody>
+
+
+
+                        </tbody>
+                      </table>
 
                     </div>
-                    <div class="col-md-4">
-                      <select class="form-control select2" id="center" name="center">
-                        <option selected value=" ">Select Bakuna Center</option>
-                        <?php while ($get_bkcenter = $get_bakuna_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                          <option value="<?php echo $get_bkcenter['bc_code']; ?>"> <?php echo $get_bkcenter['bc_name'] ?> </option>
-
-                        <?php } ?>
-                      </select>
-                    </div>
-                    &nbsp; &nbsp;
-                    <button type="submit" class="btn btn-success" name="download"><i class="fa fa-download"></i></button>
-
-                  </div>
-                  <br>
-
-                  <div class="table-responsive">
-                    <!-- <div class="row">
-                      <div class="col-md-3" id="combo"></div>
-                    </div>
-                    <br> -->
-
-
-                    <table id="users" name="user" class="table table-bordered table-striped">
-                      <thead align="center">
-
-
-                        <th> Entity_no </th>
-                        <th> Date Register </th>
-                        <th width="500px"> Category </th>
-                        <th> Full Name </th>
-                        <th>Options</th>
-
-
-                      </thead>
-                      <tbody>
-
-
-
-                      </tbody>
-                    </table>
-
                   </div>
                 </div>
               </form>
