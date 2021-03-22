@@ -3,7 +3,7 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 include('update_status.php');
-
+require_once '../admin/SimpleXLSXGen.php';
 session_start();
 
 $user_id = $_SESSION['id'];
@@ -31,7 +31,95 @@ $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
 $get_all_vaccine_data->execute();
 
 
+$get_center = " SELECT bc_code,bc_name from tbl_bakuna_center";
+$get_bakuna_data = $con->prepare($get_center);
+$get_bakuna_data->execute();
 
+if (isset($_POST['download'])) {
+  $date_download = $_POST['datefrom'];
+  $date_format = date('Y-m-d', strtotime($date_download));
+  $bakuna_center = $_POST['center'];
+  $file_name = $date_format . '_' . $bakuna_center . '.xlsx';
+  $data = [[
+    "Category", "CategoryID", "CategoryIDNo.", "PhilHealthID", "PWD ID", "Last Name", "First Name", "Middle Name", "Suffix",
+    "Contact No", "Full Address", "Region", "Province", "MunCity", "Barangay", "Sex", "Birth Date", "Consent", "Refusal Reason", "MoreThan16yo", "PegPolysorbate", "Sever Reaction",
+    "AllergytoFood", "MonitorAllergy", "BleedingDisorders", "BleedingHistory", "ManifestSymptoms", "MentionedSymptoms", "CovidHistory", "CovidTreated", "ReceivedVaccine", "AntibodiesCovid",
+    "Pregnant", "PregnantSemester", "Illness", "MentionedIllness", "MedicalClearance", "Deferral", "DateVaccination", "VaccineManufacturer", "BatchNumber", "LotNumber", "VaccinatorName",
+    "VaccinatorProfession", "1stDose", "2ndDose"
+  ]];
+
+  $sql_download = "SELECT v.`Category`, v.`CategoryID`, v.`CategoryIDnumber`, v.`PhilHealthID`,
+v.`PWD_ID`, v.`Lastname`, v.`Firstname`, v.`Middlename`, v.`Suffix`,
+v.`Contact_no`, v.`Full_address`, v.`Region`, v.`Province`, v.`MunCity`,
+v.`Barangay`, v.`Sex`, v.`Birthdate_`, 
+a.`consent`, a.`Refusal_Reasons`, a.`MoreThan16yo`,
+a.`PegPolysorbate`, a.`Severe_Reaction`, a.`AllergyToFood`, a.`MonitorAllergy`, a.`BleedingDisorders`,
+a.`BleedingHistory`, a.`ManifestSymptoms`, a.`MentionedSymptoms`, a.`CovidHistory`,
+a.`CovidTreated`, a.`ReceivedVaccine`, a.`AntibodiesCovid`, a.`Pregnant`, a.`PregnantSemester`,
+a.`Illness`, a.`MentionedIllness`, a.`MedicalClearance`, a.`Deferral`, a.`DateVaccination`,
+a.`VaccineManufacturer`,a.`BatchNumber`, a.`LotNumber`, a.`VaccinatorName`, a.`VaccinatorProfession`,
+a.`1stDose`, a.`2ndDose` FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.`entity_no` = a.`entity_no`
+WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a.`time_reg` ASC";
+
+  $prep_stmt_download = $con->prepare($sql_download);
+  $prep_stmt_download->execute([
+    ':center' => $bakuna_center,
+    ':datedownload' => $date_format
+  ]);
+
+  while ($get_download_data = $prep_stmt_download->fetch(PDO::FETCH_ASSOC)) {
+    $nestedData = array();
+    $nestedData[] = $get_download_data["Category"];
+    $nestedData[] = $get_download_data["CategoryID"];
+    $nestedData[] = $get_download_data["CategoryIDnumber"];
+    $nestedData[] = $get_download_data["PhilHealthID"];
+    $nestedData[] = $get_download_data["PWD_ID"];
+    $nestedData[] = $get_download_data["Lastname"];
+    $nestedData[] = $get_download_data["Firstname"];
+    $nestedData[] = $get_download_data["Middlename"];
+    $nestedData[] = $get_download_data["Suffix"];
+    $nestedData[] = $get_download_data["Contact_no"];
+    $nestedData[] = $get_download_data["Full_address"];
+    $nestedData[] = $get_download_data["Region"];
+    $nestedData[] = $get_download_data["Province"];
+    $nestedData[] = $get_download_data["MunCity"];
+    $nestedData[] = $get_download_data["Barangay"];
+    $nestedData[] = $get_download_data["Sex"];
+    $nestedData[] = $get_download_data["Birthdate_"];
+    $nestedData[] = $get_download_data["consent"];
+    $nestedData[] = $get_download_data["Refusal_Reasons"];
+    $nestedData[] = $get_download_data["MoreThan16yo"];
+    $nestedData[] = $get_download_data["PegPolysorbate"];
+    $nestedData[] = $get_download_data["Severe_Reaction"];
+    $nestedData[] = $get_download_data["AllergyToFood"];
+    $nestedData[] = $get_download_data["MonitorAllergy"];
+    $nestedData[] = $get_download_data["BleedingDisorders"];
+    $nestedData[] = $get_download_data["BleedingHistory"];
+    $nestedData[] = $get_download_data["ManifestSymptoms"];
+    $nestedData[] = $get_download_data["MentionedSymptoms"];
+    $nestedData[] = $get_download_data["CovidHistory"];
+    $nestedData[] = $get_download_data["CovidTreated"];
+    $nestedData[] = $get_download_data["ReceivedVaccine"];
+    $nestedData[] = $get_download_data["AntibodiesCovid"];
+    $nestedData[] = $get_download_data["Pregnant"];
+    $nestedData[] = $get_download_data["PregnantSemester"];
+    $nestedData[] = $get_download_data["Illness"];
+    $nestedData[] = $get_download_data["MentionedIllness"];
+    $nestedData[] = $get_download_data["MedicalClearance"];
+    $nestedData[] = $get_download_data["Deferral"];
+    $nestedData[] = $get_download_data["DateVaccination"];
+    $nestedData[] = $get_download_data["VaccineManufacturer"];
+    $nestedData[] = $get_download_data["BatchNumber"];
+    $nestedData[] = $get_download_data["LotNumber"];
+    $nestedData[] = $get_download_data["VaccinatorName"];
+    $nestedData[] = $get_download_data["VaccinatorProfession"];
+    $nestedData[] = $get_download_data["1stDose"];
+    $nestedData[] = $get_download_data["2ndDose"];
+
+    $data[] = $nestedData;
+  }
+  SimpleXLSXGen::fromArray($data)->downloadAs($file_name);
+}
 ?>
 
 
@@ -67,8 +155,42 @@ $get_all_vaccine_data->execute();
 
           <div class="card-body">
             <div class="box box-primary">
-              <form role="form" method="get" action="">
+              <form role="form" method="POST" action="<?php htmlspecialchars("PHP_SELF"); ?>">
                 <div class="box-body">
+
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                      <div class="input-group date">
+
+                        <label style="padding-right:10px;padding-left: 10px">Date: </label>
+                        <div style="padding-right:10px" class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" data-provide="datepicker" class="form-control  " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom">
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-1" align="right">
+                      <label>Center: <span id="required"></span> </label>
+                      <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
+
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-control select2" id="center" name="center">
+                        <option selected value=" ">Select Bakuna Center</option>
+                        <?php while ($get_bkcenter = $get_bakuna_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <option value="<?php echo $get_bkcenter['bc_code']; ?>"> <?php echo $get_bkcenter['bc_name'] ?> </option>
+
+                        <?php } ?>
+                      </select>
+                    </div>
+                    &nbsp; &nbsp;
+                    <button type="submit" class="btn btn-success" name="download"><i class="fa fa-download"></i></button>
+
+                  </div>
+                  <br>
 
                   <div class="table-responsive">
                     <!-- <div class="row">
@@ -82,17 +204,9 @@ $get_all_vaccine_data->execute();
 
 
                         <th> Entity_no </th>
-                        <th> Category</th>
-                        <th width="500px"> Full Name </th>
-                        <th> Gender </th>
-                        <!-- <th> Date of Birth </th>
-                        <th> Address </th>
-                        <th> Barangay </th>
-                        <th> Municipality </th>
-                        <th> Province </th>
-                        <th> Region </th>
-                        <th> Employed </th>
-                        <th> Covid History </th> -->
+                        <th> Date Register </th>
+                        <th width="500px"> Category </th>
+                        <th> Full Name </th>
                         <th>Options</th>
 
 
@@ -246,7 +360,7 @@ $get_all_vaccine_data->execute();
 
   <!-- Select2 -->
   <script src="../plugins/select2/select2.full.min.js"></script>
-
+  <!-- <script src="../plugins/daterangepicker/tempusdominus.js" type="text/javascript"></script> -->
   <?php
 
   if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
