@@ -185,7 +185,7 @@ if ($_SESSION['user_type'] == 1) {
     $vaccine_dashboard = '<li class="nav-item">
     <a href="vaccine_dashboard" class="nav-link sidebar-link">
       &nbsp;
-      
+      <i class="nav-icon fas fa-laptop-medical icons "></i>
     
       <p> Vaccine Dashboard </p>
     </a>
@@ -739,10 +739,9 @@ if ($_SESSION['user_type'] == 4) {
 
 
 if ($_SESSION['user_type'] == 5) {
-
     // vaccination masterlist
     $label_vaccination =
-    '  
+    ' 
     <label id="label1" style="font-size:18px; ">
         &nbsp;
         <i class="nav-icon fas fa-briefcase-medical icons "></i>
@@ -750,12 +749,11 @@ if ($_SESSION['user_type'] == 5) {
         VACCINATION
     </label>';
 
-
-    $vaccine_dashboard = '<li class="nav-item">
+    $vaccine_dashboard = 
+    '<li class="nav-item">
     <a href="vaccine_dashboard" class="nav-link sidebar-link">
       &nbsp;
-      
-    
+      <i class="nav-icon fas fa-laptop-medical icons "></i>
       <p> Vaccine Dashboard </p>
     </a>
     </li> ';
@@ -778,14 +776,6 @@ if ($_SESSION['user_type'] == 5) {
   </a>
   </li> ';
 
-    $list_categorylist = '<li class="nav-item">
-  <a href="list_categorylist" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-syringe icons"></i>
-    <p> Vaccine Masterlist </p>
-  </a>
-  </li> ';
-
     $list_bakuna_center = '<li class="nav-item">
   <a href="list_bakuna_center" class="nav-link sidebar-link">
     &nbsp;
@@ -805,6 +795,15 @@ if ($_SESSION['user_type'] == 5) {
 
 
  // report for vaccine
+   $list_categorylist = '<li class="nav-item">
+  <a href="list_categorylist" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Vaccine Masterlist </p>
+  </a>
+  </li> ';
+
+ 
  $list_vaccine_report = '<li class="nav-item">
  <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
    &nbsp;

@@ -211,7 +211,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
         <?php
-        // echo $entities;
+        echo $entities;
+        
         ?>
 
 
@@ -235,30 +236,16 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         echo $single_break;
 
 
-
-
-
-
-
-
-
         ?>
 
 
 
-
-
-        <?php
-
-        ?>
-
-
+        <?php?>
 
         <?php echo $label_vaccination; ?>
         <?php echo $vaccine_dashboard; ?>
         <?php echo $list_vaccine; ?>
         <?php echo $list_assessment; ?>
-        <?php echo $list_categorylist; ?>
         <?php echo $list_bakuna_center; ?>
         <?php echo $list_vaccinators; ?>
         <?php echo $single_break; ?>
@@ -271,6 +258,13 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             &nbsp;
             REPORT
           </label>
+          
+          <?php echo $list_categorylist; ?>
+          <?php echo $list_vaccine_report; ?>
+          <?php echo $list_vaccine_report_no; ?>
+          <?php echo $list_vaccine_linelist; ?>
+          <?php echo $vaccine_sandoc; ?>
+          <?php echo $daily_report; ?>
           <li class="nav-item">
             <a href="print_individual" class="nav-link sidebar-link">
               &nbsp;
@@ -278,13 +272,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               <p> &nbsp; Multiple QR</p>
             </a>
           </li>
-
-          <?php echo $list_vaccine_report; ?>
-          <?php echo $list_vaccine_report_no; ?>
-          <?php echo $list_vaccine_linelist; ?>
-          <?php echo $vaccine_sandoc; ?>
-          <?php echo $daily_report; ?>
-
 
         </div><br>
 
