@@ -59,7 +59,7 @@ $get_all_brgy_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CATEGORYLIST </title>
+  <title>Category List </title>
   <?php include('heading.php'); ?>
 
 
@@ -81,14 +81,11 @@ $get_all_brgy_data->execute();
       <section class="content">
 
         <br>
-        <div class="card-header p-2 bg-success text-white">
+        <div class="card-header  bg-success text-white">
+          <h4>
+            Vaccine Masterlist
+          </h4>
 
-          <div class="nav nav-pills" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-daily" role="tab" aria-controls="nav-home" aria-selected="true">FILTER BY CATEGORY</a>
-
-
-
-          </div>
         </div>
 
 
@@ -97,90 +94,78 @@ $get_all_brgy_data->execute();
             <div class="card">
 
               <div class="card-body">
-                <div class="box box-primary">
+                <div class="box ">
                   <form role="form" method="POST" action="<?php htmlspecialchars("PHP_SELF"); ?>">
-                    <div class="box-body">
-                      <div class="row">
-                        <div class="col-12" style="margin-bottom:30px;padding:auto;">
 
+                    <div class="card card-success card-outline">
 
-                          <!-- <div class="input-group date">
-                            <label style="padding-right:10px;padding-left: 10px">From: </label>
-                            <div style="padding-right:10px" class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input style="margin-right:10px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" value="<?php echo $date_from; ?>">
+                      <div class="card-header ">
+                        <h5 class="m-0">GENERATE REPORT</h5>
+                      </div>
+                      <div class="box-body">
+                        <br>
+                        <div class="row">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <label style="padding-right:10px">To:</label>
-                            <div style="padding-right:10px" class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" style="margin-right:50px;" class="form-control col-3 " data-provide="datepicker" autocomplete="off" name="dateto" id="dteto" value="<?php echo $date_to; ?>">
+                          <div class="col-md-1" align="right">
+                            <label>Barangay: </label>
+                          </div>
 
+                          <div class="col-md-4">
+                            <select class="form-control select2" id="barangay1" style="width: 100%;" name="barangay1" value="<?php echo $barangay1; ?>" required>
+                              <option value="" selected="selected">Select Barangay</option>
+                              <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $get_brgy['code']; ?>"><?php echo $get_brgy['code']; ?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
 
-                          </div> -->
+                          <div class="col-md-1" align="right">
+                            <label>Category: <span id="required"></span> </label>
+                          </div>
 
-                          <div class="input-group date">
-                            <label style="padding-right:4px;padding-left: 10px">Barangay: </label>
                           <div class="col-md-3">
-                              <!-- <label>Barangay: </label> -->
-                              <select class="form-control select2" id="barangay1" style="width: 100%;" name="barangay1" value="<?php echo $barangay1; ?>" required>
-                                <option value="" selected="selected">Select Barangay</option>
-                                <?php while ($get_brgy = $get_all_brgy_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                  <option value="<?php echo $get_brgy['code']; ?>"><?php echo $get_brgy['code']; ?></option>
+                            <select class="form-control select2" style="width: 100%;" id="category" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category" value="">
+                              <option>Select Category</option>
+                            </select>
+                          </div>
 
-                                <?php } ?>
-
-                              </select>
-
-
-                            </div>
-                            </div>
-
-
-                          <div class="input-group date">
-                            <label style="padding-right:4px;padding-left: 10px">Category : </label>
-
-
-                            <div class="col-md-3">
-                              <!-- <label>Barangay: </label> -->
-                              <select class="form-control select2" style="width: 100%;" id="category" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="category" value="">
-                                <option>Select Category</option>
-                              </select>
-
-
-                            </div>
-
-
-
+                          <div class="col-md-1">
                             <button id="list_categorylist" onClick="loadhistory()" class="btn btn-success"><i class="fa fa-search"></i></button>
                             <input hidden readonly="true" type="text" name="description" id="description" class="form-control">
-                            <label style="padding-right:10px;padding-left: 10px"> </label>
-                            <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/vaccine_barangay.php?description=<?php echo $description; ?>&barangay=<?php echo $barangay; ?>">
-
-                              <i class="nav-icon fa fa-print"></i></a>
+                          </div>
+                          <div class="col-md-1" style="float:left">
+                            &nbsp;
+                            <a class="btn btn-danger btn-md" target="blank" id="printlink" href="../plugins/jasperreport/vaccine_barangay.php?description=<?php echo $description; ?>&barangay=<?php echo $barangay; ?>">
+                              <i class="nav-icon fa fa-print"></i>
+                            </a>
                           </div>
 
 
 
 
+
+                        </div>
+                        <br>
+
+
+                      </div>
+
+
+                    </div>
+
+                    <div class="card" style="padding:15px;">
+                      <div class="box-body">
+
+                        <div class="col-12" style="margin-bottom:30px;padding:auto;">
                           <div class="table-responsive">
-
-
 
                             <table style="overflow-x: auto;" id="users" name="user" class="table table-bordered table-striped">
                               <thead align="center">
-
-
-
                                 <th> Entity_no </th>
                                 <th> Date Create</th>
                                 <th> Full Name </th>
                                 <th> Barangay </th>
-
-
-
-
                               </thead>
                               <tbody id="category_member">
 
@@ -190,8 +175,10 @@ $get_all_brgy_data->execute();
 
                           </div>
                         </div>
+
                       </div>
                     </div>
+
                   </form>
                 </div>
               </div>
@@ -225,8 +212,7 @@ $get_all_brgy_data->execute();
 
 
   <script>
- 
- $('#users').DataTable({
+    $('#users').DataTable({
       'paging': true,
       'lengthChange': true,
       'searching': true,
@@ -234,7 +220,7 @@ $get_all_brgy_data->execute();
       'info': true,
       'autoWidth': true,
       'autoHeight': true
-     
+
 
     });
     $('.select2').select2();
@@ -252,12 +238,12 @@ $get_all_brgy_data->execute();
 
 
       $('#category_member').load("load_categorylist.php", {
-        description: description,
-            barangay1: barangay1
-         
-          },
+          description: description,
+          barangay1: barangay1
 
-   
+        },
+
+
 
 
         function(response, status, xhr) {
@@ -276,94 +262,94 @@ $get_all_brgy_data->execute();
 
     $(function() {
 
-//Initialize Select2 Elements
-$('.select2').select2();
-$("#category").select2({
-    //  minimumInputLength: 3,
-    // placeholder: "hello",
-    ajax: {
-        url: "category_query", // json datasource
-        type: "post",
-        dataType: 'json',
-        delay: 250,
-        data: function(params) {
+      //Initialize Select2 Elements
+      $('.select2').select2();
+      $("#category").select2({
+        //  minimumInputLength: 3,
+        // placeholder: "hello",
+        ajax: {
+          url: "category_query", // json datasource
+          type: "post",
+          dataType: 'json',
+          delay: 250,
+          data: function(params) {
             return {
-                searchTerm: params.term
+              searchTerm: params.term
             };
-        },
+          },
 
-        processResults: function(response) {
+          processResults: function(response) {
             return {
-                results: response
+              results: response
 
 
             };
-        },
-        cache: true,
-        error: function(xhr, b, c) {
+          },
+          cache: true,
+          error: function(xhr, b, c) {
             console.log(
-                "xhr=" +
-                xhr.responseText +
-                " b=" +
-                b.responseText +
-                " c=" +
-                c.responseText
+              "xhr=" +
+              xhr.responseText +
+              " b=" +
+              b.responseText +
+              " c=" +
+              c.responseText
             );
+          }
         }
-    }
-});
+      });
 
-});
+    });
 
     $('#category').on('change', function() {
-            var idno = this.value;
-            console.log(idno);
-            $.ajax({
-                type: "POST",
-                url: 'categorylist.php',
-                data: {
-                  idno: idno
-                },
-                error: function(xhr, b, c) {
-                    console.log(
-                        "xhr=" +
-                        xhr.responseText +
-                        " b=" +
-                        b.responseText +
-                        " c=" +
-                        c.responseText
-                    );
-                },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
-                    console.log('response from server', result);
-                    $('#idno').val(result.data);
-                    $('#category').val(result.data1);
-                    $('#description').val(result.data2);
-
-               
+      var idno = this.value;
+      console.log(idno);
+      $.ajax({
+        type: "POST",
+        url: 'categorylist.php',
+        data: {
+          idno: idno
+        },
+        error: function(xhr, b, c) {
+          console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+          );
+        },
+        success: function(response) {
+          var result = jQuery.parseJSON(response);
+          console.log('response from server', result);
+          $('#idno').val(result.data);
+          $('#category').val(result.data1);
+          $('#description').val(result.data2);
 
 
 
 
-                },
 
 
-            });
+        },
 
-        });
+
+      });
+
+    });
 
 
 
 
     $('#printlink').click(function() {
       var description = $('#description').val();
-      var barangay1  = $('#barangay1').val();
-  
+      var barangay1 = $('#barangay1').val();
+
 
 
       console.log(description);
-      var param = "description=" + description + "&barangay1="+barangay1+"";
+      var param = "description=" + description + "&barangay1=" + barangay1 + "";
       $('#printlink').attr("href", "../plugins/jasperreport/vaccine_barangay.php?" + param, '_parent');
     })
   </script>
