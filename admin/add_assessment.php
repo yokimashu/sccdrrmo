@@ -118,6 +118,7 @@ if (isset($_GET['id'])) {
 
 
         //table assessment
+        $consent            = $result['consent'];
         $age_16             = $result['MoreThan16yo'];
         $allergy_PEG        = $result['PegPolysorbate'];
         $wallergy           = $result['AllergyToFood'];
@@ -595,10 +596,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="<?php echo $get_consent; ?>">
+                                                                <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="">
                                                                     <!-- <option value="01_Yes">Yes</option> -->
-                                                                    <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                 </select>
                                                             </div>
 
@@ -991,8 +993,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                                             <!-- start of vaccine information -->
-                                                            <?php if ($get_consent == '01_Yes') { ?>
+                                                            <?php if ($consent == '01_Yes') { ?>
                                                                 <div id="vaccine_info" class="card card-success card-outline">
+                                                                <?php }else{ ?>
+                                                                    <div hidden id="vaccine_info" class="card card-success card-outline">
+                                                                <?php } ?>
                                                                     <div class="card-header">
 
                                                                         <h5 class="m-0">VACCINE INFORMATION</h5>
@@ -1081,7 +1086,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                     </div>
                                                                 </div>
-                                                            <?php } ?>
+                                                         
 
                                                             <!-- end vaccine information -->
 
