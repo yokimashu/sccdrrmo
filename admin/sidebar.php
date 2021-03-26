@@ -210,87 +210,42 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
-
-        <div>
-          <label id="label1" style="font-size:18px; ">
-            &nbsp;
-            <i class="nav-icon fa fa-address-book icons "></i>
-            &nbsp;
-            ENTITIES
-          </label>
+        <?php
+        echo $entities;
+        
+        ?>
 
 
-          <li class="nav-item">
-            <a href="list_individual" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fa fa-user icons"></i>
-              <p> &nbsp; Individual</p>
-            </a>
-          </li>
+        <?php
+        // masterlist enities
+        // echo $single_break;
+        // end of masterlist entities
 
 
+        // masterlist in symptoms
 
-          <li class="nav-item">
-            <a href="list_juridical" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fa fa-building icons"></i>
-              <p> &nbsp; Juridical</p>
-            </a>
-          </li>
+        // echo $label_masterlist;
+        // echo $masterlist_symptoms;
+        // echo $single_break;
 
 
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fa fa-car icons "></i>
-              <p> &nbsp; Transportation</p>
-            </a>
+        // masterlist for covid-19
+        echo $label_covid_case;
+        echo $list_close_contact;
+        echo $list_positive_case;
+        echo $single_break;
 
 
-            <ul class="nav nav-treeview ">
-
-
-              <li class="nav-item">
-                <a href="list_land_trans" id="lightgreen" class="nav-link ">
-                  &nbsp; &nbsp; &nbsp;
-
-                  <i class=" nav-icon fa fa-motorcycle icons"></i>
-                  <p> &nbsp; Land Trans.</p>
-                </a>
-              </li>
-
-              <li class=" nav-item">
-                <a href="list_sea_trans" id="lightgreen" class="nav-link ">
-                  &nbsp; &nbsp; &nbsp;
-
-                  <i class="nav-icon fa fa-ship icons"></i>
-                  <p> &nbsp; Sea Trans.</p>
-                </a>
-              </li>
+        ?>
 
 
 
-            </ul>
-          </li>
-        </div> <br>
-
-        <!-- <?php echo $label_masterlist; ?> -->
-        <!-- <?php echo $masterlist_symptoms; ?> -->
-        <!-- <?php echo $single_break; ?> -->
-
-
-        <!-- masterlist of covid-19 -->
-        <?php echo $label_covid_case; ?>
-        <?php echo $list_close_contact ?>
-        <?php echo $list_positive_case ?>
-        <?php echo $single_break; ?>
-
+        <?php?>
 
         <?php echo $label_vaccination; ?>
+        <?php echo $vaccine_dashboard; ?>
         <?php echo $list_vaccine; ?>
         <?php echo $list_assessment; ?>
-        <?php echo $list_categorylist; ?>
         <?php echo $list_bakuna_center; ?>
         <?php echo $list_vaccinators; ?>
         <?php echo $single_break; ?>
@@ -303,6 +258,13 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             &nbsp;
             REPORT
           </label>
+          
+          <?php echo $list_categorylist; ?>
+          <?php echo $list_vaccine_report; ?>
+          <?php echo $list_vaccine_report_no; ?>
+          <?php echo $list_vaccine_linelist; ?>
+          <?php echo $vaccine_sandoc; ?>
+          <?php echo $daily_report; ?>
           <li class="nav-item">
             <a href="print_individual" class="nav-link sidebar-link">
               &nbsp;
@@ -310,13 +272,6 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
               <p> &nbsp; Multiple QR</p>
             </a>
           </li>
-
-          <?php echo $list_vaccine_report; ?>
-          <?php echo $list_vaccine_report_no; ?>
-          <?php echo $list_vaccine_linelist; ?>
-          <?php echo $vaccine_sandoc; ?>
-          <?php echo $daily_report; ?>
-
 
         </div><br>
 

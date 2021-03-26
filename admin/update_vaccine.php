@@ -20,6 +20,7 @@ if (isset($_POST['update_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
+    $indigent       = $_POST['indigent'];
     if ($_POST['idno'] != '') {
         $idnumber = $_POST['idno'];
     } else {
@@ -65,6 +66,7 @@ if (isset($_POST['update_vaccine'])) {
     $province       = "_0645_NEGROS_OCCIDENTAL";
     $city           = "_64524_SAN_CARLOS_CITY";
     $barangay       = strtoupper($_POST['barangay']);
+    $barangay2       = strtoupper($_POST['barangay']);
 
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
@@ -104,6 +106,14 @@ if (isset($_POST['update_vaccine'])) {
     } elseif ($barangay == 'SAN JUAN') {
         $barangay1 = "_64524020_SAN_JUAN";
     }
+
+
+
+
+
+
+
+
 
     $street         = $_POST['street'];
     $fulladdress    = strtoupper($street . ', ' . $barangay);
@@ -251,6 +261,7 @@ if (isset($_POST['update_vaccine'])) {
             CategoryIDnumber        = :idnooo,
             HealthWorker            = :healthworker,
             PhilHealthID            = :philhealth,
+            Indigent                = :indigents,
             PWD_ID                  = :pwd,
             Lastname                = :lastname,
             Firstname               = :firstname,
@@ -310,6 +321,7 @@ if (isset($_POST['update_vaccine'])) {
         ':time_regg'        => $time,
         ':categ'            => $category,
         ':categ_id'         => $category_id,
+        ':indigents'        => $indigent,
         ':healthworker'     => $healthworker,
         ':idnooo'           => $idnumber,
         ':philhealth'       => $philhealth,
@@ -364,7 +376,12 @@ if (isset($_POST['update_vaccine'])) {
 
     ]);
 
-    $update_individual_sql = "UPDATE tbl_individual SET 
+
+    $get_data_sql = "SELECT * FROM  tbl_individual where entity_no = :id";
+    $get_data_data = $con->prepare($get_data_sql);
+    $get_data_data->execute([':id' => $entityno]);
+    if ($get_data_data->rowCount() > 0) {
+        $update_individual_sql = "UPDATE tbl_individual SET 
         fullname        = :fullname,
         firstname       = :fname,
         middlename      = :mname,
@@ -378,37 +395,37 @@ if (isset($_POST['update_vaccine'])) {
         -- mobile_no       = :contact
         where entity_no = :entityNo ";
 
-    $update_individual_data = $con->prepare($update_individual_sql);
-    $update_individual_data->execute([
-        ':entityNo'     => $entityno,
-        ':fullname'     => $firstname . ' ' . $middlename . ' ' . $lastname,
-        ':fname'        => $firstname,
-        ':mname'        => $middlename,
-        ':lname'        => $lastname,
-        // ':gender'       => $gender,
-        ':bdate'        => $birthdate
-        // ':street'       => $street,
-        // ':brgy'         => $barangay,
-        // ':province'     => $province,
-        // ':city'         => $city,
-        // ':contact'      => $contactno
-
-    ]);
-
-    $update_individual_sql = "UPDATE tbl_entity SET 
+        $update_individual_data = $con->prepare($update_individual_sql);
+        $update_individual_data->execute([
+            ':entityNo'     => $entityno,
+            ':fullname'     => $firstname . ' ' . $middlename . ' ' . $lastname,
+            ':fname'        => $firstname,
+            ':mname'        => $middlename,
+            ':lname'        => $lastname,
+            // ':gender'       => $gender,
+            ':bdate'        => $birthdate
+            // ':street'       => $street,
+            // ':brgy'         => $barangay,
+            // ':province'     => $province,
+            // ':city'         => $city,
+            // ':contact'      => $contactno
+        ]);
+        $update_individual_sql = "UPDATE tbl_entity SET 
         status          = :status
-        
         where entity_no = :entityNo ";
 
-    $update_individual_data = $con->prepare($update_individual_sql);
-    $update_individual_data->execute([
-        ':entityNo'     => $entityno,
-        ':status'       => 'VERIFIED'
-    ]);
+        $update_individual_data = $con->prepare($update_individual_sql);
+        $update_individual_data->execute([
+            ':entityNo'     => $entityno,
+            ':status'       => 'VERIFIED'
+        ]);
+    }
 
 
 
-    if ($vaccine_data && $update_individual_data) {
+
+
+    if ($vaccine_data && $get_data_data) {
 
         $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";

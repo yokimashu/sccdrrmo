@@ -1,4 +1,4 @@
-
+<?php include('chat.php') ?>
 
 
 <?php

@@ -21,10 +21,7 @@ session_start();
 $requestData = $_REQUEST;
 
 
-$columns = array(
-
-
-);
+$columns = array();
 
 
 
@@ -56,6 +53,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	$sql .= " OR v.Lastname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Sex LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR t.bakuna_center LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
 	// $sql .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
 	// $sql .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
