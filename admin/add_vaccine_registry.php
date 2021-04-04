@@ -1580,10 +1580,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Are you willing to be vaccinated with Sinovac?");
                 $('#sinovac').focus();
                 return false;
-                // } else if (astrazeneca == 'Please select') {
-                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
-                //   $('#astrazeneca').focus();
-                //   return false;
+            } else if (astrazeneca == 'Please select') {
+                  alert("Are you willing to be vaccinated with Astrazeneca?");
+                  $('#astrazeneca').focus();
+                  return false;
 
 
             } else return;
