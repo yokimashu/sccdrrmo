@@ -240,11 +240,12 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
-        <?php?>
+    
 
         <?php echo $label_vaccination; ?>
         <?php echo $vaccine_dashboard; ?>
         <?php echo $list_vaccine; ?>
+     
         <?php echo $list_assessment; ?>
         <?php echo $list_bakuna_center; ?>
         <?php echo $list_vaccinators; ?>
@@ -263,6 +264,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $list_vaccine_report; ?>
           <?php echo $list_vaccine_report_no; ?>
           <?php echo $list_vaccine_linelist; ?>
+          <?php echo $list_astrazeneca; ?>
           <?php echo $vaccine_sandoc; ?>
           <?php echo $daily_report; ?>
           <li class="nav-item">

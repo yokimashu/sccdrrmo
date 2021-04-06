@@ -634,6 +634,39 @@ if (isset($_GET['id'])) {
                                                                 </div>
                                                             <?php } ?>
 
+                                                            <div class="col-md-4">
+                                                                <label for="">Input Text:</label>
+                                                                <input type="text" class="form-control" placeholder="Input Text">
+
+                                                            <?php if ($get_category == '01_Health_Care_Worker') { ?>
+                                                                <div class="col-sm-4" id="healthworker">
+                                                                    <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
+                                                                        <option value=" " selected>Select Health Worker</option>
+                                                                        <?php while ($get_health = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <?php $selected = ($get_healthworker == $get_health['idno']) ? 'selected' : ''; ?>
+                                                                            <option <?= $selected; ?> value="<?php echo $get_health['idno']; ?>"><?php echo $get_health['description']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div><br>
+                                                            <?php } else { ?>
+                                                                <div class="col-sm-4" id="healthworker" hidden>
+                                                                    <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
+                                                                        <option value=" " selected>Select Health Worker</option>
+                                                                        <?php while ($get_health = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <?php $selected = ($get_healthworker == $get_health['idno']) ? 'selected' : ''; ?>
+                                                                            <option <?= $selected; ?> value="<?php echo $get_health['idno']; ?>"><?php echo $get_health['description']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div><br>
+
+                                                            <?php } ?>
+
+
+
+
+
                                                             <?php if ($get_category == '01_Health_Care_Worker') { ?>
                                                                 <div class="col-sm-4" id="healthworker">
                                                                     <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
@@ -860,6 +893,36 @@ if (isset($_GET['id'])) {
 
                                                         <h5 class="m-0">MEDICAL CONDITION</h5>
                                                     </div>
+                                                </div>
+                                                <!-- end of employer fieldset -->
+
+                                                <!-- medical conditions -->
+                                                <div class="card card-success card-outline">
+                                                    <div class="card-header">
+
+                                                        <h5 class="m-0">MEDICAL CONDITION</h5>
+                                                    </div>
+
+                                                    <div class="card-body">
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label> If female, pregnancy status?</label>
+                                                                <select class="form-control select2" style="width:100%" name="preg_status" id="preg_status" value="<?php echo $get_pregstatus ?>">
+                                                                    <option>Select pregnancy status...</option>
+                                                                    <option <?php if ($get_pregstatus == '01_Pregnant') echo 'selected'; ?> value="01_Pregnant">Pregnant </option>
+                                                                    <option <?php if ($get_pregstatus == '02_Not_Pregnant') echo 'selected'; ?> value="02_Not_Pregnant">Not Pregnant </option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>With Allergy? </label>
+                                                                <select class="form-control select2 " name="with_allergy" id="with_allergy" style="width:100%" value="<?php echo $get_wallergy; ?>">
+                                                                    <option>Do you have allergy?</option>
+                                                                    <option <?php if ($get_wallergy == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($get_wallergy == '02_No') echo 'selected'; ?> value="02_No">None</option>
+                                                                </select>
+                                                            </div>
 
                                                     <div class="card-body">
 
@@ -1346,6 +1409,14 @@ if (isset($_GET['id'])) {
                                                                     <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
                                                                 </select>
 
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="sinovac" id="sinovac">
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($get_sinovac == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($get_sinovac == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <option <?php if ($get_sinovac == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                                </select>
                                                             </div>
 
                                                             <div class="col-sm-6">
@@ -1419,7 +1490,6 @@ if (isset($_GET['id'])) {
                 </div>
 
 
-
                 <form method="POST" action="update_schedule.php" id="schedule_form" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="box-body-lg">
@@ -1429,6 +1499,7 @@ if (isset($_GET['id'])) {
 
                                 <br>
 
+                                <br>
 
                                 <label>Facility:</label>
                                 <select class="form-control" style="width: 100%;" name="n_facility" id="n_facility">
@@ -1448,6 +1519,13 @@ if (isset($_GET['id'])) {
                                     <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_set" placeholder="Schedule Date" value="">
                                 </div><br>
 
+                                <label>Date of Vaccination: </label>
+                                <div class="input-group date" data-provide="datepicker">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_set" placeholder="Schedule Date" value="">
+                                </div><br>
 
 
                                 <!-- time Picker -->
