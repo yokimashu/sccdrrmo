@@ -628,38 +628,6 @@ if (isset($_POST['insert_vaccine'])) {
         ]);
     }
 
-    $timenow = date('H:i:s');
-    $title = 'COVID-19 MASTERLISTING';
-    $message = "Good day! Your vaccination record has been successfully added to our masterlist. You may check and edit your response anytime as long as your vaccination schedule is not yet finalized. Just follow these steps:
-    \r\n\r\n 1. Open web browser (Google Chrome, Safari, Firefox, Microsoft Edge) in your computer or mobile phones/tablets.
-    \r\n\r\n 2. Type https://vamosmobile.app/vaccine in the address bar.
-    \r\n\r\n 3. Enter your VAMOS ID (entity no) then check the 'I am not a robot' and press the -> button. A 6-digit verification code will be sent to your registered phone number.
-    \r\n\r\n 4. Enter the 6-digit verification code and press the -> button.
-    \r\n\r\n 5. Once verified, your VAMOS profile will be displayed, check and validate your VACCINATION record.
-    \r\n\r\n 6. Click the SUBMIT FORM button once done.
-    \r\n\r\n NOTE: You may also print your VACCINATION FORM in advance to avoid long queues in the registration during the vaccinaton day.
-    \r\n\r\n We will notify you here once your schedule and vaccination site are already assigned. Thank you and keep safe!";
-    
-     $insert_notif_sql = "INSERT INTO tbl_notification SET 
-
-            entity_no           = :entity_no,
-            message             = :message,
-            date                = now(),
-            time                = :time,
-            title               = :title,
-            status              = 'UNREAD'";
-
-    $notif_data = $con->prepare($insert_notif_sql);
-    $notif_data->execute([
-
-        ':entity_no'         => $entityno,
-        ':message'           => $message,
-        ':time'              => $timenow,
-        ':title'             => $title
-
-
-    ]);
-
 
 
     if ($vaccine_data && $get_data_data) {

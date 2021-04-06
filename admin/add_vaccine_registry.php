@@ -447,7 +447,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             <div class="col-sm-5">
                                                                 <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <input type="text" readonly class="form-control ent_no" id="entity_no" name="entity_no" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" value=" " placeholder="Entity Number">
+                                                                <input type="text" readonly class="form-control ent_no" id="entity_no" name="entity_no" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number">
                                                             </div>
 
                                                         </div><br>
@@ -1287,7 +1287,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
         $('#category').change(function() {
-            if ($('#entity_no').val() == ' ') {
+            if ($('#entity_no').val() == '') {
                 $.ajax({
                     type: 'POST',
                     data: {},
@@ -1510,7 +1510,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
         $("#btnSubmit").click(function() {
 
             var middlename = $('#middlename').val();
-            var entityNo = $('#entity_no').val();
             var countmname = middlename.length;
             var gender = $('#gender :selected').text();
             var civilstatus = $('#civil_status :selected').text();
@@ -1528,12 +1527,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
             //  alert (category);
-
-            if (entityNo == ' ') {
-                alert("Entity no is empty please reselect category");
-                $('#entity_no').focus();
-                return false;
-            } else if (countmname == 1) {
+            if (countmname == 1) {
+              
                 alert("Please type middlename in full!");
                 $('#middlename').focus();
                 return false;
@@ -1585,10 +1580,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Are you willing to be vaccinated with Sinovac?");
                 $('#sinovac').focus();
                 return false;
-            } else if (astrazeneca == 'Please select') {
-                  alert("Are you willing to be vaccinated with Astrazeneca?");
-                  $('#astrazeneca').focus();
-                  return false;
+                // } else if (astrazeneca == 'Please select') {
+                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
+                //   $('#astrazeneca').focus();
+                //   return false;
 
 
             } else return;
