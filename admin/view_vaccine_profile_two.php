@@ -634,16 +634,6 @@ if (isset($_GET['id'])) {
                                                                 </div>
                                                             <?php } ?>
 
-                                                            <div class="col-md-4">
-                                                                <label for="">Input Text:</label>
-                                                                <input type="text" class="form-control" placeholder="Input Text">
-
-                                                            </div>
-
-
-
-
-
                                                             <?php if ($get_category == '01_Health_Care_Worker') { ?>
                                                                 <div class="col-sm-4" id="healthworker">
                                                                     <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
