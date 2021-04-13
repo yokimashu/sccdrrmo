@@ -152,7 +152,9 @@ if (isset($_POST['insert_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
+    $subpriority    = $_POST['subprio'];
     $indigent       = $_POST['indigent'];
+    $frontline_subprio  = $_POST['frontline_subpriority'];
 
     if ($_POST['idno'] != '') {
         $idnumber = $_POST['idno'];
@@ -358,23 +360,43 @@ if (isset($_POST['insert_vaccine'])) {
     //classification of comorbidity
 
     if ($with_comorbidities == "02_No") {
-        $hypertension   = "02_No";
-        $heart          = "02_No";
-        $kidney         = "02_No";
-        $diabetes       = "02_No";
-        $asthma         = "02_No";
-        $immuno         = "02_No";
-        $cancer         = "02_No";
-        $other          = "02_No";
+        $hypertension       = "02_No";
+        $chronic_kindey     = "02_No";
+        $heart              = "02_No";
+        $cerebrovascular    = "02_No";
+        $kidney             = "02_No";
+        $neurologic         = "02_No";
+        $diabetes           = "02_No";
+        $liver              = "02_No";
+        $asthma             = "02_No";
+        $tract_infection    = "02_No";
+        $immuno             = "02_No";
+        $obesity            = "02_No";
+        $cancer             = "02_No";
+        $tuberculosis       = "02_No";
+        $respiratory        = "02_No";
+        $malignancy         = "02_No";
+        $cardiovascular     = "02_No";
+        $other              = "02_No";
     } else {
-        $hypertension   = $_POST['como_hypertension'];
-        $heart          = $_POST['como_heart'];
-        $kidney         = $_POST['como_kidney'];
-        $diabetes       = $_POST['como_diabetes'];
-        $asthma         = $_POST['como_asthma'];
-        $immuno         = $_POST['como_immunodeficiency'];
-        $cancer         = $_POST['como_cancer'];
-        $other          = $_POST['como_other'];
+        $hypertension       = $_POST['como_hypertension'];
+        $chronic_kindey     = $_POST['como_chronic_kindey'];
+        $heart              = $_POST['como_heart'];
+        $cerebrovascular    = $_POST['como_cerebrovascular'];
+        $kidney             = $_POST['como_kidney'];
+        $neurologic         = $_POST['como_neurologic'];
+        $diabetes           = $_POST['como_diabetes'];
+        $liver              = $_POST['como_liver'];
+        $asthma             = $_POST['como_asthma'];
+        $tract_infection    = $_POST['como_tract_infection'];
+        $immuno             = $_POST['como_immunodeficiency'];
+        $obesity            = $_POST['como_obesity'];
+        $cancer             = $_POST['como_cancer'];
+        $tuberculosis       = $_POST['como_tuberculosis'];
+        $respiratory        = $_POST['como_respiratory'];
+        $malignancy         = $_POST['como_malignancy'];
+        $cardiovascular     = $_POST['como_cardiovascular'];
+        $other              = $_POST['como_other'];
     }
 
 
@@ -387,6 +409,8 @@ if (isset($_POST['insert_vaccine'])) {
             CategoryID              = :categ_id,
             CategoryIDnumber        = :idnooo,
             PhilHealthID            = :philhealth,
+            SubPriority             = :subprio,
+            FrontlineSubPriority    = :frontline_subprio,
             HealthWorker            = :healthworker,
             Indigent                = :indigents,
             PWD_ID                  = :pwd,
@@ -430,6 +454,16 @@ if (isset($_POST['insert_vaccine'])) {
             Comorbidity_06          = :com6,
             Comorbidity_07          = :com7,
             Comorbidity_08          = :com8,
+            Comorbidity_09          = :com9,
+            Comorbidity_10          = :com10,
+            Comorbidity_11          = :com11,
+            Comorbidity_12          = :com12,
+            Comorbidity_13          = :com13,
+            Comorbidity_14          = :com14,
+            Comorbidity_15          = :com15,
+            Comorbidity_16          = :com16,
+            Comorbidity_17          = :com17,
+            Comorbidity_18          = :com18,
             covid_history           = :history,
             covid_date              = :date_history,
             covid_classification    = :infection,
@@ -449,6 +483,8 @@ if (isset($_POST['insert_vaccine'])) {
         ':categ_id'         => $category_id,
         ':idnooo'           => $idnumber,
         ':healthworker'     => $healthworker,
+        ':subprio'          => $subpriority,
+        ':frontline_subprio' => $frontline_subprio,
         ':indigents'        => $indigent,
         ':philhealth'       => $philhealth,
         ':pwd'              => $pwd,
@@ -492,6 +528,16 @@ if (isset($_POST['insert_vaccine'])) {
         ':com6'             => $immuno,
         ':com7'             => $cancer,
         ':com8'             => $other,
+        ':com9'             => $respiratory,
+        ':com10'            => $cardiovascular,
+        ':com11'            => $chronic_kindey,
+        ':com12'            => $cerebrovascular,
+        ':com13'            => $neurologic,
+        ':com14'            => $liver,
+        ':com15'            => $tract_infection,
+        ':com16'            => $obesity,
+        ':com17'            => $tuberculosis,
+        ':com18'            => $malignancy,
         ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
@@ -627,6 +673,38 @@ if (isset($_POST['insert_vaccine'])) {
 
         ]);
     }
+
+    $timenow = date('H:i:s');
+    $title = 'COVID-19 MASTERLISTING';
+    $message = "Good day! Your vaccination record has been successfully added to our masterlist. You may check and edit your response anytime as long as your vaccination schedule is not yet finalized. Just follow these steps:
+    \r\n\r\n 1. Open web browser (Google Chrome, Safari, Firefox, Microsoft Edge) in your computer or mobile phones/tablets.
+    \r\n\r\n 2. Type https://vamosmobile.app/vaccine in the address bar.
+    \r\n\r\n 3. Enter your VAMOS ID (entity no) then check the 'I am not a robot' and press the -> button. A 6-digit verification code will be sent to your registered phone number.
+    \r\n\r\n 4. Enter the 6-digit verification code and press the -> button.
+    \r\n\r\n 5. Once verified, your VAMOS profile will be displayed, check and validate your VACCINATION record.
+    \r\n\r\n 6. Click the SUBMIT FORM button once done.
+    \r\n\r\n NOTE: You may also print your VACCINATION FORM in advance to avoid long queues in the registration during the vaccinaton day.
+    \r\n\r\n We will notify you here once your schedule and vaccination site are already assigned. Thank you and keep safe!";
+
+    $insert_notif_sql = "INSERT INTO tbl_notification SET 
+
+            entity_no           = :entity_no,
+            message             = :message,
+            date                = now(),
+            time                = :time,
+            title               = :title,
+            status              = 'UNREAD'";
+
+    $notif_data = $con->prepare($insert_notif_sql);
+    $notif_data->execute([
+
+        ':entity_no'         => $entityno,
+        ':message'           => $message,
+        ':time'              => $timenow,
+        ':title'             => $title
+
+
+    ]);
 
 
 

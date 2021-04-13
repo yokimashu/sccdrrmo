@@ -110,14 +110,13 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     </li>
 
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a href="announcement" class="nav-link ">
-        <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
-        <!-- <label href="announcement"> -->
+      
         ANNOUNCEMENTS
-        <!-- </label> -->
+   
       </a>
-    </li>
+    </li> -->
 
 
   </ul>
@@ -144,16 +143,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-
-      <li class="nav-item" align="right">
-        <a href="announcement" class="nav-link ">
-          <!-- <i class="nav-icon fa fa-exclamation-circle"></i> -->
-          <!-- <label href="announcement"> -->
-          ANNOUNCEMENTS
-          <!-- </label> -->
-        </a>
-      </li>
+          </a>
+        </div>
 
 
 
@@ -182,7 +173,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
       <img src="../dist/img/final_logo_white.png" width="150px" height="80px">
 
       <label style="color:white" class="d-block">
-        &nbsp; &nbsp; 
+        &nbsp; &nbsp;
         <?php echo strtoupper($db_fullname) ?> </label>
 
       <!-- <div class="user-panel mt-2 pb-2 mb-2 d-flex"> -->
@@ -212,7 +203,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
         <?php
         echo $entities;
-        
+
         ?>
 
 
@@ -240,13 +231,13 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
 
-    
+
 
         <?php echo $label_vaccination; ?>
         <?php echo $vaccine_dashboard; ?>
         <?php echo $list_vaccine; ?>
-     
         <?php echo $list_assessment; ?>
+        <?php echo $list_schedule; ?>
         <?php echo $list_bakuna_center; ?>
         <?php echo $list_vaccinators; ?>
         <?php echo $single_break; ?>
@@ -259,7 +250,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
             &nbsp;
             REPORT
           </label>
-          
+
           <?php echo $list_categorylist; ?>
           <?php echo $list_vaccine_report; ?>
           <?php echo $list_vaccine_report_no; ?>
@@ -267,6 +258,10 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $list_astrazeneca; ?>
           <?php echo $vaccine_sandoc; ?>
           <?php echo $daily_report; ?>
+
+
+
+
           <li class="nav-item">
             <a href="print_individual" class="nav-link sidebar-link">
               &nbsp;

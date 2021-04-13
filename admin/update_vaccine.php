@@ -20,6 +20,11 @@ if (isset($_POST['update_vaccine'])) {
     $category       = $_POST['category'];
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
+    $indigent       = $_POST['indigent'];
+    $frontline_subprio  = $_POST['frontline_subpriority'];
+    $subpriority    = $_POST['subprio'];
+
+
     if ($_POST['idno'] != '') {
         $idnumber = $_POST['idno'];
     } else {
@@ -218,23 +223,43 @@ if (isset($_POST['update_vaccine'])) {
     //classification of comorbidity
 
     if ($with_comorbidities == "02_No") {
-        $hypertension   = "02_No";
-        $heart          = "02_No";
-        $kidney         = "02_No";
-        $diabetes       = "02_No";
-        $asthma         = "02_No";
-        $immuno         = "02_No";
-        $cancer         = "02_No";
-        $other          = "02_No";
+        $hypertension       = "02_No";
+        $chronic_kindey     = "02_No";
+        $heart              = "02_No";
+        $cerebrovascular    = "02_No";
+        $kidney             = "02_No";
+        $neurologic         = "02_No";
+        $diabetes           = "02_No";
+        $liver              = "02_No";
+        $asthma             = "02_No";
+        $tract_infection    = "02_No";
+        $immuno             = "02_No";
+        $obesity            = "02_No";
+        $cancer             = "02_No";
+        $tuberculosis       = "02_No";
+        $respiratory        = "02_No";
+        $malignancy         = "02_No";
+        $cardiovascular     = "02_No";
+        $other              = "02_No";
     } else {
-        $hypertension   = $_POST['como_hypertension'];
-        $heart          = $_POST['como_heart'];
-        $kidney         = $_POST['como_kidney'];
-        $diabetes       = $_POST['como_diabetes'];
-        $asthma         = $_POST['como_asthma'];
-        $immuno         = $_POST['como_immunodeficiency'];
-        $cancer         = $_POST['como_cancer'];
-        $other          = $_POST['como_other'];
+        $hypertension       = $_POST['como_hypertension'];
+        $chronic_kindey     = $_POST['como_chronic_kindey'];
+        $heart              = $_POST['como_heart'];
+        $cerebrovascular    = $_POST['como_cerebrovascular'];
+        $kidney             = $_POST['como_kidney'];
+        $neurologic         = $_POST['como_neurologic'];
+        $diabetes           = $_POST['como_diabetes'];
+        $liver              = $_POST['como_liver'];
+        $asthma             = $_POST['como_asthma'];
+        $tract_infection    = $_POST['como_tract_infection'];
+        $immuno             = $_POST['como_immunodeficiency'];
+        $obesity            = $_POST['como_obesity'];
+        $cancer             = $_POST['como_cancer'];
+        $tuberculosis       = $_POST['como_tuberculosis'];
+        $respiratory        = $_POST['como_respiratory'];
+        $malignancy         = $_POST['como_malignancy'];
+        $cardiovascular     = $_POST['como_cardiovascular'];
+        $other              = $_POST['como_other'];
     }
 
 
@@ -250,6 +275,9 @@ if (isset($_POST['update_vaccine'])) {
             CategoryID              = :categ_id,
             CategoryIDnumber        = :idnooo,
             HealthWorker            = :healthworker,
+            SubPriority             = :subprio,
+            Indigent                = :indigents,
+            FrontlineSubPriority    = :frontline_subprio,
             PhilHealthID            = :philhealth,
             PWD_ID                  = :pwd,
             Lastname                = :lastname,
@@ -284,7 +312,7 @@ if (isset($_POST['update_vaccine'])) {
             Allergy_07              = :allergy7,
             Allergy_08              = :allergy8,
             W_comorbidities         = :with_comorbodities,
-            Comorbidity_01          = :com1,
+           Comorbidity_01          = :com1,
             Comorbidity_02          = :com2,
             Comorbidity_03          = :com3,
             Comorbidity_04          = :com4,
@@ -292,6 +320,16 @@ if (isset($_POST['update_vaccine'])) {
             Comorbidity_06          = :com6,
             Comorbidity_07          = :com7,
             Comorbidity_08          = :com8,
+            Comorbidity_09          = :com9,
+            Comorbidity_10          = :com10,
+            Comorbidity_11          = :com11,
+            Comorbidity_12          = :com12,
+            Comorbidity_13          = :com13,
+            Comorbidity_14          = :com14,
+            Comorbidity_15          = :com15,
+            Comorbidity_16          = :com16,
+            Comorbidity_17          = :com17,
+            Comorbidity_18          = :com18,
             covid_history           = :history,
             covid_date              = :date_history,
             covid_classification    = :infection,
@@ -310,6 +348,9 @@ if (isset($_POST['update_vaccine'])) {
         ':time_regg'        => $time,
         ':categ'            => $category,
         ':categ_id'         => $category_id,
+        ':subprio'          => $subpriority,
+        ':frontline_subprio' => $frontline_subprio,
+        ':indigents'        => $indigent,
         ':healthworker'     => $healthworker,
         ':idnooo'           => $idnumber,
         ':philhealth'       => $philhealth,
@@ -354,6 +395,16 @@ if (isset($_POST['update_vaccine'])) {
         ':com6'             => $immuno,
         ':com7'             => $cancer,
         ':com8'             => $other,
+        ':com9'             => $respiratory,
+        ':com10'            => $cardiovascular,
+        ':com11'            => $chronic_kindey,
+        ':com12'            => $cerebrovascular,
+        ':com13'            => $neurologic,
+        ':com14'            => $liver,
+        ':com15'            => $tract_infection,
+        ':com16'            => $obesity,
+        ':com17'            => $tuberculosis,
+        ':com18'            => $malignancy,
         ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,

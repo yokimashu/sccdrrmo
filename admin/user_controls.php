@@ -37,6 +37,7 @@ $list_vaccine_linelist = ' ';
 $vaccine_sandoc = ' ';
 $daily_report = ' ';
 $list_categorylist = ' ';
+$list_schedule = ' ';
 $list_bakuna_center = ' ';
 $list_vaccinators = ' ';
 $list_close_contact = ' ';
@@ -47,6 +48,7 @@ $entities = ' ';
 
 $label_vaccination = ' ';
 $list_assessment = ' ';
+$list_astrazeneca = ' ';
 
 
 //google forms
@@ -216,6 +218,16 @@ if ($_SESSION['user_type'] == 1) {
     <p> Vaccine Masterlist </p>
   </a>
   </li> ';
+
+
+  $list_schedule = '<li class="nav-item">
+  <a href="list_schedule" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="fas fa-calendar-plus nav-icon "></i>
+    <p> Schedule </p>
+  </a>
+  </li> ';
+
 
     $list_bakuna_center = '<li class="nav-item">
   <a href="list_bakuna_center" class="nav-link sidebar-link">
@@ -676,36 +688,77 @@ if ($_SESSION['user_type'] == 4) {
   //end of masterlist of tracer 
 
 
-  // vaccination masterlist
   $label_vaccination =
-    '  
+  '  
   <label id="label1" style="font-size:18px; ">
       &nbsp;
       <i class="nav-icon fas fa-briefcase-medical icons "></i>
       &nbsp;
-       VACCINATION
-   </label>';
+      VACCINATION
+  </label>';
 
 
-
+  $vaccine_dashboard = '<li class="nav-item">
+  <a href="vaccine_dashboard" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-laptop-medical icons "></i>
+  
+    <p> Vaccine Dashboard </p>
+  </a>
+  </li> ';
 
 
   $list_vaccine = '<li class="nav-item">
-   <a href="list_vaccine_profile" class="nav-link sidebar-link">
-     &nbsp;
-     <i class="nav-icon fas fa-syringe icons"></i>
-     <p> Registration </p>
-   </a>
- </li> ';
+  <a href="list_vaccine_profile" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Registration </p>
+  </a>
+</li> ';
 
   $list_assessment = '<li class="nav-item">
- <a href="list_assessment" class="nav-link sidebar-link">
-   &nbsp;
-   <i class="nav-icon fas fa-hands-helping icons"></i>
+<a href="list_assessment" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-hands-helping icons"></i>
 
-   <p> Assessment </p>
- </a>
+  <p> Assessment </p>
+</a>
 </li> ';
+
+  $list_categorylist = '<li class="nav-item">
+<a href="list_categorylist" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Vaccine Masterlist </p>
+</a>
+</li> ';
+
+
+$list_schedule = '<li class="nav-item">
+<a href="list_schedule" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="fas fa-calendar-plus nav-icon "></i>
+  <p> Schedule </p>
+</a>
+</li> ';
+
+
+  $list_bakuna_center = '<li class="nav-item">
+<a href="list_bakuna_center" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-hospital-o"></i>
+  <p> Bakuna Center </p>
+</a>
+</li> ';
+
+  $list_vaccinators = '<li class="nav-item">
+<a href="list_vaccinators" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-user-md"></i>
+  <p> Vaccinator </p>
+</a>
+</li> ';
+
 
   // end of masterlist vaccination
 
@@ -741,7 +794,7 @@ if ($_SESSION['user_type'] == 4) {
 if ($_SESSION['user_type'] == 5) {
     // vaccination masterlist
     $label_vaccination =
-    ' 
+    '  
     <label id="label1" style="font-size:18px; ">
         &nbsp;
         <i class="nav-icon fas fa-briefcase-medical icons "></i>
@@ -749,11 +802,12 @@ if ($_SESSION['user_type'] == 5) {
         VACCINATION
     </label>';
 
-    $vaccine_dashboard = 
-    '<li class="nav-item">
+
+    $vaccine_dashboard = '<li class="nav-item">
     <a href="vaccine_dashboard" class="nav-link sidebar-link">
       &nbsp;
       <i class="nav-icon fas fa-laptop-medical icons "></i>
+    
       <p> Vaccine Dashboard </p>
     </a>
     </li> ';
@@ -776,6 +830,24 @@ if ($_SESSION['user_type'] == 5) {
   </a>
   </li> ';
 
+    $list_categorylist = '<li class="nav-item">
+  <a href="list_categorylist" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Vaccine Masterlist </p>
+  </a>
+  </li> ';
+
+
+  $list_schedule = '<li class="nav-item">
+  <a href="list_schedule" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="fas fa-calendar-plus nav-icon "></i>
+    <p> Schedule </p>
+  </a>
+  </li> ';
+
+
     $list_bakuna_center = '<li class="nav-item">
   <a href="list_bakuna_center" class="nav-link sidebar-link">
     &nbsp;
@@ -791,7 +863,7 @@ if ($_SESSION['user_type'] == 5) {
     <p> Vaccinator </p>
   </a>
   </li> ';
-  
+// end of masterlist vaccination
 
 
  // report for vaccine

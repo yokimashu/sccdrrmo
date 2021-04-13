@@ -102,6 +102,14 @@ $get_all_healthworkers_sql = "SELECT * FROM tbl_health_workers";
 $get_all_healthworkers_data = $con->prepare($get_all_healthworkers_sql);
 $get_all_healthworkers_data->execute();
 
+$get_all_subprio_sql = "SELECT * FROM sub_priority";
+$get_all_subprio_data = $con->prepare($get_all_subprio_sql);
+$get_all_subprio_data->execute();
+
+$get_all_frontline_subprio_sql = "SELECT * FROM frontline_subprio";
+$get_all_frontline_subprio_data = $con->prepare($get_all_frontline_subprio_sql);
+$get_all_frontline_subprio_data->execute();
+
 $province = 'NEGROS OCCIDENTAL ';
 $city = 'SAN CARLOS CITY';
 $nationality = ' FILIPINO';
@@ -509,11 +517,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <label>Contact No: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
                                                             </div>
-
                                                         </div><br>
-
-
-
                                                     </div>
                                                 </div>
                                                 <!-- </fieldset><br> -->
@@ -528,16 +532,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <!-- </legend> -->
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <label for="">Category: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <!-- <select class="form-control select2" style="width: 100%;" name="category" id="category">
+                                                                <select class="form-control select2" style="width: 100%;" name="category" id="category">
                                                                     <option value=" " selected>Select Category</option>
                                                                     <?php while ($get_category = $get_all_category_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                         <option value="<?php echo $get_category['description'] ?>"><?php echo $get_category['category']; ?></option>
                                                                     <?php } ?>
-                                                                </select> -->
+                                                                </select>
 
-                                                                <select class="form-control select2" style="width:100%" name="category" id="category">
+                                                                <!-- <select class="form-control select2" style="width:100%" name="category" id="category">
                                                                     <option value=" " selected>Select Category </option>
                                                                     <option value="01_Health_Care_Worker">Health Care Worker</option>
                                                                     <option value="02_Senior_Citizen">Senior Citizen</option>
@@ -545,20 +549,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                     <option value="04_Uniformed_Personnel">Uniformed_Personnel</option>
                                                                     <option value="05_Essential_Worker">Essential_Worker</option>
                                                                     <option value="06_Other">Other</option>
-
-                                                                </select>
-
-
-                                                            </div>
-
-                                                            <div class="col-sm-4" id="indigent1" hidden>
-                                                                <label> Indigent or not?</label>
-                                                                <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
-                                                                    <option value=" " selected>Select status</option>
-                                                                    <option value="01_Indigent">Indigent</option>
-                                                                    <option value="02_Not_Indigent">Not Indigent</option>
-                                                                </select>
-
+                                                                </select> -->
                                                             </div>
 
                                                             <div class="col-sm-4">
@@ -570,17 +561,65 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4" id="healthworker">
-                                                                <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
-                                                                    <option value=" " selected>Select Health Worker</option>
-                                                                    <?php while ($get_healthworkers = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                        <option value="<?php echo $get_healthworkers['idno'] ?>"><?php echo $get_healthworkers['description']; ?></option>
-                                                                    <?php } ?>
-                                                                </select>
-                                                            </div>
+
 
                                                         </div><br>
+                                                        <div id="healthworker" hidden>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <label for="">Sub Priority: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <select class="form-control select2" style="width:100%" name="subprio" id="subprio">
+                                                                        <option value=" " selected>Select Sub Priority</option>
+                                                                        <?php while ($get_sub_priority = $get_all_subprio_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <option value="<?php echo $get_sub_priority['objid'] ?>"><?php echo $get_sub_priority['description']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <label for="">Type of Health Worker: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <select class="form-control select2" style="width: 100%;" id="health_worker" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" name="health_worker" value="">
+                                                                        <option value=" " selected>Select Health Worker</option>
+                                                                        <?php while ($get_healthworkers = $get_all_healthworkers_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <option value="<?php echo $get_healthworkers['idno'] ?>"><?php echo $get_healthworkers['description']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div><br>
+                                                        </div>
+
+                                                        <div id="indigent1" hidden>
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <label> Indigent or not?</label>
+                                                                    <select class="form-control select2" style="width:100%" name="indigent" id="indigent">
+                                                                        <option value=" " selected>Select status</option>
+                                                                        <option value="01_Indigent">Indigent</option>
+                                                                        <option value="02_Not_Indigent">Not Indigent</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div><br>
+
+                                                        </div>
+
+                                                        <div id="frontline_subprio" hidden>
+                                                            <div class="row">
+                                                                <div class="col-sm-10">
+                                                                    <label for="">Sub Priority: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <select class="form-control select2" style="width: 100%;" name="frontline_subpriority" id="frontline_subpriority">
+                                                                        <option value=" " selected>Select Frontline Sub Priority</option>
+                                                                        <?php while ($get_subpriority = $get_all_frontline_subprio_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <option value="<?php echo $get_subpriority['code'] ?>"><?php echo $get_subpriority['description']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div><br>
+                                                        </div>
+
+
+
+
+
 
                                                         <div class="row">
                                                             <div class="col-sm-4">
@@ -914,68 +953,216 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Hypertension</label>
-                                                                <select name="como_hypertension" id="como_hypertension" style="width:100%" class="form-control ">
+                                                                <label>Hypertension:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_hypertension" id="como_hypertension" style="width:150% " class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-4">
+                                                                <label>Chronic Kidney Disease:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+                                                        <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Heart disease</label>
-                                                                <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
+                                                                <label>Heart disease:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_heart" id="como_heart" style="width:150%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+                                                            <div class="col-sm-1"></div>
+
+                                                            <div class="col-sm-4">
+                                                                <label>Cerebrovascular Accident:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+                                                        <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Kidney disease</label>
-                                                                <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
+                                                                <label>Kidney disease:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_kidney" id="como_kidney" style="width:150%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+
+                                                            <div class="col-sm-1"> </div>
+
+                                                            <div class="col-sm-4">
+                                                                <label>Neurologic Disease:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_neurologic" id="como_neurologic">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+                                                        <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Diabetes mellitus</label>
-                                                                <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
+                                                                <label>Diabetes mellitus:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_diabetes" id="como_diabetes" style="width:150%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-4">
+                                                                <label>Chronic Liver Disease:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_liver" id="como_liver">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div><br>
+
+
+
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <label>Bronchial Asthma:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_asthma" id="como_asthma" style="width:150%" class="form-control ">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-4">
+                                                                <label>Chronic Respiratory Tract Infection:</label>
+
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_tract_infection" id="como_tract_infection">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+
 
                                                         </div><br>
 
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Bronchial Asthma</label>
-                                                                <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
+                                                                <label>Immunodefiency state: </label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:150%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-4">
+                                                                <label>Obesity:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_obesity" id="como_obesity">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+                                                        <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Immunodefiency state</label>
-                                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
+                                                                <label>Cancer:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_cancer" id="como_cancer" style="width:150%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-4">
+                                                                <label>Tuberculosis:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+
+                                                        <div class="row">
                                                             <div class="col-sm-3">
-                                                                <label>Cancer</label>
-                                                                <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
+                                                                <label>Chronic Respiratory Disease:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select class="form-control" style="width:150%" id="como_respiratory" name="como_respiratory">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-3">
-                                                                <label>Other</label>
-                                                                <select name="como_other" id="como_other" style="width:100%" class="form-control ">
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-4">
+                                                                <label>Malignancy:</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_malignancy" id="como_malignancy">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+
 
                                                         </div><br>
 
+                                                        <div class="row">
+
+                                                            <div class="col-sm-3">
+                                                                <label>Cardiovascular Disease:</label> 
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select style="width:150%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-1"></div>
+
+                                                            <div class="col-sm-4">
+                                                                <label>Other</label>
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                <select name="como_other" id="como_other" style="width:150%" class="form-control ">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
                                                     </div>
                                                 </div>
 
@@ -1306,61 +1493,35 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
         $('#category').change(function() {
             var option = $('#category').val();
-            //if Senior_Citizen is Selected
-            if (option == "02_Senior_Citizen") {
-                $('#indigent1').prop("hidden", false);
-                $('#healthworker').prop("hidden", true);
-
-
-            }
 
             //if Health_Care_Worker is Selected
-            if (option == "01_Health_Care_Worker") {
+            if (option == "01_A1: Health Care Workers") {
                 $('#healthworker').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
-
-
+                $('#frontline_subprio').prop("hidden", true);
             }
-
-            //if 03_Indigent is Selected
-            if (option == "03_Indigent") {
+            //if 05_A5: Poor Population is Selected
+            else if (option == "05_A5: Poor Population") {
+                $('#healthworker').prop("hidden", true);
+                $('#indigent1').prop("hidden", false);
+                $('#frontline_subprio').prop("hidden", true);
+            }
+            //if Senior_Citizen is Selected
+            else if (option == "02_A2: Senior Citizens") {
+                $('#indigent1').prop("hidden", false);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+            }
+            //if 04_A4: Frontline Personnel in Essential Sector is Selected
+            else if (option == "04_A4: Frontline Personnel in Essential Sector") {
+                $('#frontline_subprio').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+            } else {
+                $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
                 $('#indigent1').prop("hidden", true);
-
-
-
             }
-            //if 04_Uniformed_Personnel is Selected
-            if (option == "04_Uniformed_Personnel") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent1').prop("hidden", true);
-
-
-
-            }
-
-            //if 05_Essential_Worker is Selected
-            if (option == "05_Essential_Worker") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent1').prop("hidden", true);
-
-
-
-            }
-
-            //if 06_Other is Selected
-            if (option == "06_Other") {
-                $('#healthworker').prop("hidden", true);
-                $('#indigent1').prop("hidden", true);
-
-
-
-            }
-
-
-
-
-
             console.log("test");
         });
 
@@ -1513,6 +1674,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var countmname = middlename.length;
             var gender = $('#gender :selected').text();
             var civilstatus = $('#civil_status :selected').text();
+            var subprio = $('#subprio :selected').text();
             var barangay = $('#barangay :selected').text();
             var category = $('#category :selected').text();
             var categoryid = $('#category_id :selected').text();
@@ -1528,7 +1690,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
             //  alert (category);
             if (countmname == 1) {
-              
+
                 alert("Please type middlename in full!");
                 $('#middlename').focus();
                 return false;
@@ -1539,6 +1701,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
             } else if (civilstatus == 'Select Civil Status') {
                 alert("Please select civil status!");
                 $('#civil_status').focus();
+                return false;
+            } else if ((category == 'Health Care Worker') && (subprio == 'Select Sub Priority')) {
+                alert("Please select sub priority!");
+                $('#subprio').focus();
                 return false;
             } else if (barangay == 'Select Barangay') {
                 alert("Please select barangay!");
