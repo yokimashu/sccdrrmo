@@ -128,7 +128,7 @@ if (isset($_POST['update_assessment'])) {
     if ($_POST['preg_status'] != 'Select pregnancy status...') {
         $preg_status    = $_POST['preg_status'];
     } else {
-        $preg_status = '02_Not_Pregnant';
+        $preg_status = '02_No';
     }
 
     if (!empty($_POST['deferral'])) {

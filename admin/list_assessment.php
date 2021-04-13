@@ -148,7 +148,8 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       <section class="content">
         <div class="card">
           <div class="card-header  text-white bg-success">
-            <h4> Assessment Masterlist </h4>
+            <h4> Assessment Masterlist
+            </h4>
 
           </div>
 
@@ -206,7 +207,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
                 <!-- start of deferral -->
 
-                <div class="card" style="padding:13px;">
+                <div class="card" style="padding:12px;">
                   <div class="box-body">
                     <div class="table-responsive">
 
@@ -214,13 +215,16 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
                       <table id="users" name="user" class="table table-bordered table-striped">
                         <thead align="center">
 
-
-                          <th> Entity_no </th>
+                          <th> Objid </th>
+                          <!-- <th> Entity_no </th> -->
                           <th> Date Register </th>
                           <th> Category </th>
                           <th> Full Name </th>
+                          <th> 1st Dose </th>
+                          <th> 2nd Dose </th>
+                          <th> Status </th>
                           <th> Bakuna Center Name</th>
-                          <th width="140px"> Options</th>
+                          <th >Options</th>
 
 
                         </thead>
@@ -234,7 +238,6 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
                     </div>
                   </div>
                 </div>
-
               </form>
             </div>
           </div>

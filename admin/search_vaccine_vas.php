@@ -54,7 +54,8 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	$sql .= " OR v.Sex LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR t.bakuna_center LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR v.Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
+	$sql .= " OR t.status LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR v.Full_address LIKE '%" . $requestData['search']['value'] . "%' ) "; 
 	// $sql .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
 	// $sql .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
 	// $sql .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -81,6 +82,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	$countfilter .= " OR Lastname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Sex LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
+	$countfilter .= " OR status LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
 	// $countfilter .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
 	// $countfilter .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -100,12 +102,16 @@ $data = array();
 // while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 	$nestedData = array();
-
-	$nestedData[] = $row["entity_no"];
+	$nestedData[] = $row["objid"];
+	// $nestedData[] = $row["entity_no"];
 	$nestedData[] = $row["date_reg"];
 	$nestedData[] = $row["Category"];
 	$nestedData[] = strtoupper($row["Firstname"] . ' ' . $row["Middlename"] . ' ' . $row["Lastname"]);
 	// $nestedData[] = $row["Sex"];
+
+	$nestedData[] = $row["1stDose"];
+	$nestedData[] = $row["2ndDose"];
+	$nestedData[] = $row['status'];
 	$nestedData[] = $row["bakuna_center"];
 	// $nestedData[] = strtoupper($row["Full_address"]);
 	// $nestedData[] = $row["Barangay"];
