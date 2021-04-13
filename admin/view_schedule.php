@@ -8,12 +8,12 @@ include('update_schedule.php');
 $cbcr = $_SESSION['cbcr'];
 
 $now = new DateTime();
-$time = date(' H:i');
 
 
 $entity_no = ' ';
 
-$btnSave = $btnEdit = $get_entity_no = $get_date = $get_time = $get_cbcr = $get_remarks = $get_firstname =
+$btnSave = $btnEdit = $get_entity_no = $get_first_date = $get_first_time = $get_first_cbcr 
+                    = $get_first_remarks =$get_2nd_date = $get_2nd_time = $get_2nd_cbcr = $get_2nd_remarks = $get_firstname =
     $get_middlename = $get_lastname = $get_status = $get_assessment_status = '';
 
 $btnNew = 'hidden';
@@ -84,6 +84,10 @@ $get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center";
 $get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
 $get_all_bakuna_center_data->execute();
 
+$get_all_bakuna2_center_sql = "SELECT * FROM tbl_bakuna_center";
+$get_all_bakuna2_center_data = $con->prepare($get_all_bakuna2_center_sql);
+$get_all_bakuna2_center_data->execute();
+
 $get_all_department_sql = "SELECT * FROM tbl_department";
 $get_all_department_data = $con->prepare($get_all_department_sql);
 $get_all_department_data->execute();
@@ -104,16 +108,28 @@ if (isset($_GET['id'])) {
 
     $entity_no = $_GET['id'];
     $get_photo_individual = '';
-    $get_schedule_sql = "SELECT * from tbl_schedule WHERE entity_no = :id";
+    $get_schedule_sql = "SELECT * from tbl_schedule WHERE entity_no = :id AND remarks = '1st_Dose'";
     $schedule_data = $con->prepare($get_schedule_sql);
     $schedule_data->execute([':id' => $entity_no]);
     while ($result = $schedule_data->fetch(PDO::FETCH_ASSOC)) {
-        $get_entity_no       = $result['entity_no'];
-        $get_cbcr            = $result['cbcr'];
-        $get_time            = $result['time'];
-        $get_date            = $result['date'];
-        $get_remarks         = $result['remarks'];
+        $get_entity_no             = $result['entity_no'];
+        $get_first_cbcr            = $result['cbcr'];
+        $get_first_time            = $result['time'];
+        $get_first_date            = $result['date'];
+        $get_first_remarks         = $result['remarks'];
     }
+
+    $get_2nd_schedule_sql = "SELECT * from tbl_schedule WHERE entity_no = :id AND remarks = '2nd_Dose'";
+    $schedule_2nd_data = $con->prepare($get_2nd_schedule_sql);
+    $schedule_2nd_data->execute([':id' => $entity_no]);
+    while ($result = $schedule_2nd_data->fetch(PDO::FETCH_ASSOC)) {
+        $get_entity_no           = $result['entity_no'];
+        $get_2nd_cbcr            = $result['cbcr'];
+        $get_2nd_time            = $result['time'];
+        $get_2nd_date            = $result['date'];
+        $get_2nd_remarks         = $result['remarks'];
+    }
+
 
     $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
     $get_data_data = $con->prepare($get_data_sql);
@@ -372,21 +388,7 @@ if (isset($_GET['id'])) {
 
                                     <div class="card-body">
                                         <div class="box-body">
-                                            <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_vaccine.php">
-
-                                                <div class="row" hidden>
-                                                    <div class="col-md-1"></div>
-                                                    <div class="col-md-2">
-                                                        <label>Date Registered: </label>
-                                                        <div class="input-group date" data-provide="datepicker">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </div>
-                                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_datecreated; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                            <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_schedule_vaccine.php">
 
 
                                                 <!-- first dose -->
@@ -406,24 +408,13 @@ if (isset($_GET['id'])) {
 
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>Facility :</label>
-                                                                    <select class="form-control select2" style="width: 100%;" name="facility" id="facility">
-                                                                        <option selected value="">Select Facility</option>
-                                                                        <?php while ($get_bc_center = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                            <?php $selected = ($get_cbcr == $get_bc_center['bc_code']) ? 'selected' : ''; ?>
-                                                                            <option <?= $selected; ?> value="<?php echo $get_bc_center['bc_code']; ?>"><?php echo $get_bc_center['bc_name']; ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
+                                                            
 
                                                             <div class="row">
 
                                                                 <div class="col-md-6">
-                                                                    <label>Date of Vaccination: </label>
-                                                                    <input type="date" class="form-control" style="width: 100%;" id="datepicker" name="date_sched" placeholder="Schedule Date" value="<?php echo $get_date; ?>">
+                                                                    <label>Date of Vaccination </label>
+                                                                    <input type="date" class="form-control" style="width: 100%;" id="datepicker" name="first_date_sched" placeholder="Schedule Date" value="<?php echo $get_first_date; ?>">
                                                                 </div>
 
 
@@ -431,9 +422,9 @@ if (isset($_GET['id'])) {
                                                                 <div class="col-md-6">
                                                                     <div class="bootstrap-timepicker">
                                                                         <div class="form-group">
-                                                                            <label>Time:</label>
+                                                                            <label>Time</label>
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control timepicker" name="time_set" value="<?php echo $get_time; ?>">
+                                                                                <input type="text" class="form-control timepicker" name="first_time_set" value="<?php echo $get_first_time; ?>">
                                                                                 <div class="input-group-append">
                                                                                     <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                                                 </div>
@@ -444,15 +435,27 @@ if (isset($_GET['id'])) {
                                                                     </div>
 
                                                                 </div>
-                                                            </div><br>
+                                                            </div>
 
                                                             <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                    <label>Facility </label>
+                                                                    <select class="form-control select2" style="width: 100%;" name="first_facility" id="facility">
+                                                                        <option selected value="">Select Facility</option>
+                                                                        <?php while ($get_bc_center = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <?php $selected = ($get_first_cbcr == $get_bc_center['bc_code']) ? 'selected' : ''; ?>
+                                                                            <option <?= $selected; ?> value="<?php echo $get_bc_center['bc_code']; ?>"><?php echo $get_bc_center['bc_name']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
+
                                                                 <div class="col-md-6">
-                                                                    <label>Status:</label>
-                                                                    <select name="status" id="status" style="width:100%" class="form-control select2 " value="">
+                                                                    <label>Remarks</label>
+                                                                    <select name="first_remarks" id="status" style="width:100%" class="form-control select2 " value="">
                                                                         <option selected>Please select </option>
-                                                                        <option <?php if ($get_remarks == '1st_Dose') echo 'selected'; ?> value="1st_Dose">1ST DOSE </option>
-                                                                        <option <?php if ($get_remarks == '2nd_Dose') echo 'selected'; ?> value="2nd_Dose">2ND DOSE </option>
+                                                                        <option <?php if ($get_first_remarks == '1st_Dose') echo 'selected'; ?> value="1st_Dose">1ST DOSE </option>
+                                                                        <option <?php if ($get_first_remarks == '2nd_Dose') echo 'selected'; ?> value="2nd_Dose">2ND DOSE </option>
                                                                     </select>
 
                                                                 </div>
@@ -466,7 +469,7 @@ if (isset($_GET['id'])) {
                                                     <!-- end 1st dose -->
                                                 
 
-                                                    <!-- 2nd dose -->
+                                                    <!------- 2nd dose -------->
                                                     <div class="card card-success card-outline">
                                                         <div class="card-header">
                                                             <h5 class="m-0">SECOND DOSE</h5>
@@ -478,29 +481,17 @@ if (isset($_GET['id'])) {
 
                                                                 <div hidden class="col-sm-5">
                                                                     <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
-                                                                    <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number" value="<?php echo $get_entity_no; ?>">
+                                                                    <input type="text" readonly class="form-control" id="entity_number" name="entity_number_2nd" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number" value="<?php echo $get_entity_no; ?>">
                                                                 </div>
 
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>Facility :</label>
-                                                                    <select class="form-control select2" style="width: 100%;" name="facility" id="facility">
-                                                                        <option selected value="">Select Facility</option>
-                                                                        <?php while ($get_bc_center = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                                            <?php $selected = ($get_cbcr == $get_bc_center['bc_code']) ? 'selected' : ''; ?>
-                                                                            <option <?= $selected; ?> value="<?php echo $get_bc_center['bc_code']; ?>"><?php echo $get_bc_center['bc_name']; ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
 
                                                             <div class="row">
 
                                                                 <div class="col-md-6">
-                                                                    <label>Date of Vaccination: </label>
-                                                                    <input type="date" class="form-control" style="width: 100%;" id="datepicker" name="date_sched" placeholder="Schedule Date" value="<?php echo $get_date; ?>">
+                                                                    <label>Date of Vaccination </label>
+                                                                    <input type="date" class="form-control" style="width: 100%;" id="datepicker" name="2nd_date_sched" placeholder="Schedule Date" value="<?php echo $get_2nd_date; ?>">
                                                                 </div>
 
 
@@ -508,9 +499,9 @@ if (isset($_GET['id'])) {
                                                                 <div class="col-md-6">
                                                                     <div class="bootstrap-timepicker">
                                                                         <div class="form-group">
-                                                                            <label>Time:</label>
+                                                                            <label>Time</label>
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control timepicker" name="time_set" value="<?php echo $get_time; ?>">
+                                                                                <input type="text" class="form-control timepicker" name="2nd_time_set" value="<?php echo $get_2nd_time; ?>">
                                                                                 <div class="input-group-append">
                                                                                     <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                                                 </div>
@@ -521,15 +512,27 @@ if (isset($_GET['id'])) {
                                                                     </div>
 
                                                                 </div>
-                                                            </div><br>
+                                                            </div>
 
                                                             <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                    <label>Facility </label>
+                                                                    <select class="form-control select2" style="width: 100%;" name="2nd_facility" id="facility">
+                                                                        <option selected value="">Select Facility</option>
+                                                                        <?php while ($get_bc2_center = $get_all_bakuna2_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <?php $selected = ($get_2nd_cbcr == $get_bc2_center['bc_code']) ? 'selected' : ''; ?>
+                                                                            <option <?= $selected; ?> value="<?php echo $get_bc2_center['bc_code']; ?>"><?php echo $get_bc2_center['bc_name']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
+
                                                                 <div class="col-md-6">
-                                                                    <label>Status:</label>
-                                                                    <select name="status" id="status" style="width:100%" class="form-control select2 " value="">
+                                                                    <label>Remarks</label>
+                                                                    <select name="2nd_remarks" id="status" style="width:100%" class="form-control select2 " value="">
                                                                         <option selected>Please select </option>
-                                                                        <option <?php if ($get_remarks == '1st_Dose') echo 'selected'; ?> value="1st_Dose">1ST DOSE </option>
-                                                                        <option <?php if ($get_remarks == '2nd_Dose') echo 'selected'; ?> value="2nd_Dose">2ND DOSE </option>
+                                                                        <option <?php if ($get_2nd_remarks == '1st_Dose') echo 'selected'; ?> value="1st_Dose">1ST DOSE </option>
+                                                                        <option <?php if ($get_2nd_remarks == '2nd_Dose') echo 'selected'; ?> value="2nd_Dose">2ND DOSE </option>
                                                                     </select>
 
                                                                 </div>
@@ -546,7 +549,7 @@ if (isset($_GET['id'])) {
                                                 <div class="box-footer" align="center">
 
 
-                                                    <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
+                                                    <button type="submit" id="btnSubmit" name="update_schedule_vaccine" class="btn btn-success">
                                                         <!-- <i class="fa fa-check fa-fw"> </i> -->
                                                         <h4>Update Form</h4>
                                                     </button>
