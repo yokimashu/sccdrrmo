@@ -48,10 +48,11 @@ if (isset($_GET['id'])) {
 
     $entity_no = $_GET['id'];
     $get_photo_individual = '';
-    $get_vaccineProfile_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no WHERE a.entity_no = :id";
+    $get_vaccineProfile_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no WHERE a.objid = :id";
     $vaccineprofile_data = $con->prepare($get_vaccineProfile_sql);
     $vaccineprofile_data->execute([':id' => $entity_no]);
     while ($result = $vaccineprofile_data->fetch(PDO::FETCH_ASSOC)) {
+        $get_objid       = $result['objid'];
         $get_entity_no       = $result['entity_no'];
         $get_datecreated    = $result['datecreate'];
         $get_timereg        = $result['time_reg'];
@@ -118,6 +119,7 @@ if (isset($_GET['id'])) {
 
 
         //table assessment
+        $consent            = $result['consent'];
         $age_16             = $result['MoreThan16yo'];
         $allergy_PEG        = $result['PegPolysorbate'];
         $wallergy           = $result['AllergyToFood'];
@@ -533,7 +535,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="box-body">
                                             <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_assessment.php">
 
-                                                <div class="row" hidden>
+                                                <div class="row" hidden >
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-2">
                                                         <label>Date Registered: </label>
@@ -542,6 +544,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
                                                             <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_reg" placeholder="Date Process" value="<?php echo date('Y-m-d'); ?>">
+                                                            <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="objid" name="objid" placeholder="Objid" value="<?php echo $get_objid; ?>">
                                                         </div>
                                                     </div>
 
@@ -595,10 +598,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="<?php echo $get_consent; ?>">
+                                                                <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="">
                                                                     <!-- <option value="01_Yes">Yes</option> -->
-                                                                    <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                    <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                 </select>
                                                             </div>
 
@@ -991,8 +995,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
                                                             <!-- start of vaccine information -->
-                                                            <?php if ($get_consent == '01_Yes') { ?>
+                                                            <?php if ($consent == '01_Yes') { ?>
                                                                 <div id="vaccine_info" class="card card-success card-outline">
+                                                                <?php }else{ ?>
+                                                                    <div hidden id="vaccine_info" class="card card-success card-outline">
+                                                                <?php } ?>
                                                                     <div class="card-header">
 
                                                                         <h5 class="m-0">VACCINE INFORMATION</h5>
@@ -1008,7 +1015,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                     <div class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </div>
-                                                                                    <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo date('Y-m-d'); ?>">
+                                                                                    <?php if ($vaccination_date == ''){ ?>
+                                                                                        <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo date('Y-m-d'); ?>">
+                                                                                    <?php }else{ ?> 
+                                                                                    <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo $vaccination_date; ?>">
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
 
@@ -1081,7 +1092,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                     </div>
                                                                 </div>
-                                                            <?php } ?>
+                                                         
 
                                                             <!-- end vaccine information -->
 
