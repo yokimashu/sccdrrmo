@@ -430,7 +430,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div>
                                                     </div>
 
-
+                                                    <input id="ages" name="agess" style="font-size:15px; width:90%;" class="form-control" hidden placeholder="Email Address">
 
                                                 </div>
                                                 <input type="text" hidden name="encoder_fullname" id="encoder_fullname" value=" <?php echo $tracer_fullname ?>">
@@ -954,214 +954,164 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Hypertension:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_hypertension" id="como_hypertension" style="width:150% " class="form-control ">
+                                                                <select name="como_hypertension" id="como_hypertension" style="width: 100% " class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
 
-                                                            <div class="col-sm-1"></div>
-                                                            <div class="col-sm-4">
-                                                                <label>Chronic Kidney Disease:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
-
-                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Heart disease:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_heart" id="como_heart" style="width:150%" class="form-control ">
+                                                                <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-1"></div>
 
-                                                            <div class="col-sm-4">
-                                                                <label>Cerebrovascular Accident:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
 
-                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Kidney disease:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_kidney" id="como_kidney" style="width:150%" class="form-control ">
+                                                                <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
 
-                                                            <div class="col-sm-1"> </div>
 
-                                                            <div class="col-sm-4">
-                                                                <label>Neurologic Disease:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_neurologic" id="como_neurologic">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
-
-                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Diabetes mellitus:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_diabetes" id="como_diabetes" style="width:150%" class="form-control ">
+                                                                <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-1"></div>
-                                                            <div class="col-sm-4">
-                                                                <label>Chronic Liver Disease:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_liver" id="como_liver">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
+
+
 
                                                         </div><br>
-
 
 
                                                         <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Bronchial Asthma:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_asthma" id="como_asthma" style="width:150%" class="form-control ">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-1"></div>
-                                                            <div class="col-sm-4">
-                                                                <label>Chronic Respiratory Tract Infection:</label>
-
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_tract_infection" id="como_tract_infection">
+                                                                <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
 
-
-                                                        </div><br>
-
-                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Immunodefiency state: </label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:150%" class="form-control ">
+                                                                <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-1"></div>
-                                                            <div class="col-sm-4">
-                                                                <label>Obesity:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_obesity" id="como_obesity">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
 
-                                                        <div class="row">
+
                                                             <div class="col-sm-3">
                                                                 <label>Cancer:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_cancer" id="como_cancer" style="width:150%" class="form-control ">
+                                                                <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-1"></div>
-                                                            <div class="col-sm-4">
-                                                                <label>Tuberculosis:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div><br>
 
-
-                                                        <div class="row">
                                                             <div class="col-sm-3">
                                                                 <label>Chronic Respiratory Disease:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select class="form-control" style="width:150%" id="como_respiratory" name="como_respiratory">
+                                                                <select class="form-control" style="width:100%" id="como_respiratory" name="como_respiratory">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-1"></div>
-                                                            <div class="col-sm-4">
-                                                                <label>Malignancy:</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_malignancy" id="como_malignancy">
-                                                                    <option value="01_Yes">Yes</option>
-                                                                    <option selected value="02_No">No</option>
-                                                                </select>
-                                                            </div>
-
 
                                                         </div><br>
 
                                                         <div class="row">
 
                                                             <div class="col-sm-3">
-                                                                <label>Cardiovascular Disease:</label> 
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select style="width:150%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
+                                                                <label>Cardiovascular Disease:</label>
+                                                                <select style="width:100%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-3">
+                                                                <label>Chronic Kidney Disease:</label>
+                                                                <select style="width:100%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
 
-                                                            <div class="col-sm-4">
-                                                                <label>Other</label>
-                                                            </div>
-                                                            <div class="col-sm-1">
-                                                                <select name="como_other" id="como_other" style="width:150%" class="form-control ">
+                                                            <div class="col-sm-3">
+                                                                <label>Cerebrovascular Accident:</label>
+                                                                <select style="width:100%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
                                                                     <option value="01_Yes">Yes</option>
                                                                     <option selected value="02_No">No</option>
                                                                 </select>
                                                             </div>
+                                                            <div class="col-sm-3">
+                                                                <label>Neurologic Disease:</label>
+                                                                <select style="width:100%" class="form-control" name="como_neurologic" id="como_neurologic">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div><br>
+
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <label>Chronic Liver Disease:</label>
+                                                                <select style="width:100%" class="form-control" name="como_liver" id="como_liver">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+
+
+                                                            <div class="col-sm-3">
+                                                                <label>Chronic Respiratory Tract Infection:</label>
+                                                                <select style="width:100%" class="form-control" name="como_tract_infection" id="como_tract_infection">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label>Obesity:</label>
+                                                                <select style="width:100%" class="form-control" name="como_obesity" id="como_obesity">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label>Tuberculosis:</label>
+                                                                <select style="width:100%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+
+                                                        <div class="row">
+
+                                                            <div class="col-sm-3">
+                                                                <label>Malignancy:</label>
+                                                                <select style="width:100%" class="form-control" name="como_malignancy" id="como_malignancy">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label>Other:</label>
+                                                                <select name="como_other" id="como_other" style="width:100%" class="form-control ">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                </select>
+                                                            </div>
+
                                                         </div><br>
                                                     </div>
                                                 </div>
