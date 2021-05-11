@@ -1,16 +1,10 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
-session_start();
-$user_id = $_SESSION['id'];
 
-include('verify_admin.php');
-if (!isset($_SESSION['id'])) {
-  header('location:../index.php');
-} else {
-}
-include('verify_admin.php');
+session_start();
+
+
 
 
 date_default_timezone_set('Asia/Manila');
@@ -18,6 +12,17 @@ $date = date('Y-m-d');
 $time = date('H:i:s');
 
 $symptoms = $patient = $person_status = $entity_no = '';
+
+
+
+if (!isset($_SESSION['id'])) {
+  header('location:../index.php');
+} else {
+}
+
+$user_id = $_SESSION['id'];
+
+
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -29,7 +34,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $db_fullname = $result['fullname'];
 }
 
-$get_all_data_sql = "SELECT * FROM tbl_users u INNER JOIN tbl_account a ON u.`account_type` = a.`objid` WHERE STATUS='ACTIVE'";
+$get_all_data_sql = "SELECT * FROM tbl_users u INNER JOIN tbl_account a ON u.`account_type` = a.`objid` WHERE status ='ACTIVE'";
 $get_all_data_data = $con->prepare($get_all_data_sql);
 $get_all_data_data->execute();
 

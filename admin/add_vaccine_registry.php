@@ -110,6 +110,10 @@ $get_all_frontline_subprio_sql = "SELECT * FROM frontline_subprio";
 $get_all_frontline_subprio_data = $con->prepare($get_all_frontline_subprio_sql);
 $get_all_frontline_subprio_data->execute();
 
+$get_all_department_sql = "SELECT * FROM tbl_department";
+$get_all_department_data = $con->prepare($get_all_department_sql);
+$get_all_department_data->execute();
+
 $province = 'NEGROS OCCIDENTAL ';
 $city = 'SAN CARLOS CITY';
 $nationality = ' FILIPINO';
@@ -619,8 +623,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
 
 
-
-
                                                         <div class="row">
                                                             <div class="col-sm-4">
                                                                 <label>ID Number: &nbsp;&nbsp; <span id="required">*</span> </label>
@@ -706,7 +708,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                     <!-- </legend> -->
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <label>Employed : &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <select class="form-control select2" style="width: 100%;" name="emp_status" id="emp_status">
                                                                     <option value="">Select Employment</option>
@@ -715,7 +717,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <label>Profession :&nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" style="width: 100%;" name="profession" id="profession">
                                                                     <option selected value="">Select Profession</option>
@@ -726,13 +728,37 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                             </div>
 
-                                                            <div hidden class="col-sm-4" id='indicate'>
-                                                                <label>If other, indicate profession: &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                                <input type="text" class="form-control" name="indicate_profession" id="indicate_profession" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Specific Profession">
-                                                            </div>
+
 
 
                                                         </div> <br>
+                                                        <div id='indicate' hidden>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <label>If other, indicate profession: &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                    <input type="text" class="form-control" name="indicate_profession" id="indicate_profession" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Specific Profession">
+                                                                </div>
+                                                            </div><br>
+
+
+                                                        </div>
+
+
+                                                        <div id="dept_emp" hidden>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <label for="">Select Department: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <select class="form-control select2" style="width: 100%;" name="department" id="department">
+                                                                        <option value=" " selected>Select Department</option>
+                                                                        <?php while ($get_department = $get_all_department_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                            <option value="<?php echo $get_department['objid'] ?>"><?php echo $get_department['department']; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div><br>
+
+                                                        </div>
+
 
                                                         <div class="row">
                                                             <div class="col-sm-6">
@@ -1260,8 +1286,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                     processResults: function(response) {
                         return {
                             results: response
-
-
                         };
                     },
                     cache: true,
@@ -1470,6 +1494,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             } else {
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
+
                 $('#indigent1').prop("hidden", true);
             }
             console.log("test");
@@ -1498,15 +1523,19 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var option = $('#with_allergy').val();
             if (option == "01_Yes") {
                 $('#yes-allergy').prop("hidden", false);
-
-
-
             } else {
-
                 $('#yes-allergy').prop("hidden", true);
-
             }
+            console.log("test");
+        });
 
+        $('#emp_status').change(function() {
+            var option = $('#emp_status').val();
+            if (option == "01_Government_Employed") {
+                $('#dept_emp').prop("hidden", false);
+            } else {
+                $('#dept_emp').prop("hidden", true);
+            }
             console.log("test");
         });
 
@@ -1514,15 +1543,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var option = $('#profession').val();
             if (option == "19_Other") {
                 $('#indicate').prop("hidden", false);
-
-
-
             } else {
-
                 $('#indicate').prop("hidden", true);
-
             }
-
             console.log("test");
         });
 
@@ -1532,15 +1555,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var option = $('#with_commorbidities').val();
             if (option == "01_Yes") {
                 $('#yes-comordities').prop("hidden", false);
-
-
-
             } else {
-
                 $('#yes-comordities').prop("hidden", true);
-
             }
-
             console.log("test");
         });
 
@@ -1549,36 +1566,19 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var option = $('#patient_diagnose').val();
             if (option == "01_Yes") {
                 $('#yes-diagnose').prop("hidden", false);
-
-
-
             } else {
-
                 $('#yes-diagnose').prop("hidden", true);
-
             }
-
             console.log("test");
-
-
         });
-
-
-
 
 
         $(document).ready(function() {
             $('#printlink').click(function() {
-
                 var entity_no = $('#entity_no').val();
-
-
                 console.log(entity_no);
                 var param = "entity_no=" + entity_no +
-
-
                     "";
-
                 $('#printlink').attr("href", "../plugins/jasperreport/entity_id.php?" + param, '_parent');
             })
         });
@@ -1586,32 +1586,20 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
         $(document).ready(function() {
             $('#printlink1').click(function() {
-
                 var entity_no = $('#entity_no').val();
-
-
                 console.log(entity_no);
                 var param = "entity_no=" + entity_no +
-
-
                     "";
-
                 $('#printlink1').attr("href", "../plugins/jasperreport/vaccineform.php?" + param, '_parent');
             })
         });
 
         $(document).ready(function() {
             $('#printlink2').click(function() {
-
                 var entity_no = $('#entity_no').val();
-
-
                 console.log(entity_no);
                 var param = "entity_no=" + entity_no +
-
-
                     "";
-
                 $('#printlink2').attr("href", "../plugins/jasperreport/vaccination_card.php?" + param, '_parent');
             })
         });
@@ -1619,10 +1607,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
     <script>
         $("#btnSubmit").click(function() {
-
             var middlename = $('#middlename').val();
             var countmname = middlename.length;
             var gender = $('#gender :selected').text();
+            var department = $('#department :selected').text();
             var civilstatus = $('#civil_status :selected').text();
             var subprio = $('#subprio :selected').text();
             var barangay = $('#barangay :selected').text();
@@ -1637,16 +1625,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var sinovac = $('#sinovac :selected').text();
             var astrazeneca = $('#astrazeneca :selected').text();
 
-
             //  alert (category);
             if (countmname == 1) {
-
                 alert("Please type middlename in full!");
                 $('#middlename').focus();
                 return false;
             } else if (gender == 'Select Gender') {
                 alert("Please select Gender!");
                 $('#gender').focus();
+                return false;
+            } else if (department == 'Select Department') {
+                alert("Please department!");
+                $('#department').focus();
                 return false;
             } else if (civilstatus == 'Select Civil Status') {
                 alert("Please select civil status!");
@@ -1700,19 +1690,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
                 //   $('#astrazeneca').focus();
                 //   return false;
-
-
             } else return;
-
-
             //category
-
             //  alert (category);
-
         });
     </script>
-
-
 </body>
 
 </html>

@@ -153,8 +153,11 @@ if (isset($_POST['insert_vaccine'])) {
     $category_id    = $_POST['category_id'];
     $healthworker   = $_POST['health_worker'];
     $subpriority    = $_POST['subprio'];
-    $indigent       = $_POST['indigent'];
+    $indigentss       = $_POST['indigent'];
     $frontline_subprio  = $_POST['frontline_subpriority'];
+
+
+
 
     if ($_POST['idno'] != '') {
         $idnumber = $_POST['idno'];
@@ -182,7 +185,7 @@ if (isset($_POST['insert_vaccine'])) {
     $middlename     = strtoupper($_POST['middlename']);
     $suffix         = strtoupper($_POST['suffix']);
     $fullname       = strtoupper($_POST['firstname'] . ' ' . $_POST['middlename'] . ' ' . $_POST['lastname']);
-    $age            = $_POST['ages'];
+    $age            = $_POST['agess'];
 
     $gender         = $_POST['gender'];
 
@@ -200,6 +203,7 @@ if (isset($_POST['insert_vaccine'])) {
     $civil_stat     = $_POST['civil_status'];
     $contactno      = $_POST['contact_no'];
     $emp_status     = $_POST['emp_status'];
+    $department     = $_POST['department'];
     $profession     = $_POST['profession'];
 
     if ($_POST['indicate_profession'] != '') {
@@ -432,6 +436,7 @@ if (isset($_POST['insert_vaccine'])) {
             Profession              = :profee,
             indicate                = :indicate,
             Employer_name           = :emp_name,
+            Department              = :dept,
             Employer_LGU            = :emp_lgu,
             Employer_address        = :emp_add,
             Employer_contact_no    = :emp_contact,
@@ -471,7 +476,7 @@ if (isset($_POST['insert_vaccine'])) {
             sinovac                 = :sinovacs,
             astrazeneca             = :astravas,
             username                = :user,
-            status                  = 'NEW'
+            status                  = :statuss
         ";
 
     $vaccine_data = $con->prepare($insert_vaccine_sql);
@@ -485,7 +490,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':healthworker'     => $healthworker,
         ':subprio'          => $subpriority,
         ':frontline_subprio' => $frontline_subprio,
-        ':indigents'        => $indigent,
+        ':indigents'        => $indigentss,
         ':philhealth'       => $philhealth,
         ':pwd'              => $pwd,
         ':lastname'         => $lastname,
@@ -506,6 +511,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':profee'           => $profession,
         ':indicate'         => $indicate,
         ':emp_name'         => $emp_name,
+        ':dept'             => $department,
         ':emp_lgu'          => $emp_lgu,
         ':emp_add'          => $emp_address,
         ':emp_contact'      => $emp_contact,
@@ -544,7 +550,8 @@ if (isset($_POST['insert_vaccine'])) {
         ':consent'          => $consent,
         ':sinovacs'         => $sinovac,
         ':astravas'         => $astrazeneca,
-        ':user'             => $tracer_fullname
+        ':user'             => $tracer_fullname,
+        ':statuss'          => 'NEW'
 
 
     ]);
