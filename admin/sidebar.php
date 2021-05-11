@@ -136,7 +136,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
     </li> -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge"><?php echo $unread_messages; ?></span>
@@ -145,6 +145,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <a href="#" class="dropdown-item">
           </a>
         </div>
+      </li> -->
 
 
 
@@ -254,9 +255,13 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $list_categorylist; ?>
           <?php echo $list_vaccine_report; ?>
           <?php echo $list_vaccine_report_no; ?>
+          <?php echo $list_eligible_report; ?>
           <?php echo $list_vaccine_linelist; ?>
+         
           <?php echo $list_astrazeneca; ?>
           <?php echo $vaccine_sandoc; ?>
+          <?php echo $list_deped_report; ?>
+     
           <?php echo $daily_report; ?>
 
 
