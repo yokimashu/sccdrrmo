@@ -119,31 +119,31 @@ if (isset($_GET['id'])) {
 
 
         //table assessment
-        $consent            = $result['consent'];
-        $age_16             = $result['MoreThan16yo'];
-        $allergy_PEG        = $result['PegPolysorbate'];
-        $wallergy           = $result['AllergyToFood'];
-        $monitor_patient    = $result['MonitorAllergy'];
-        $allergic_reaction  = $result['Severe_Reaction'];
-        $no_exposure        = $result['CovidHistory'];
-        $no_treated         = $result['CovidTreated'];
-        $no_received_antibodies = $result['AntibodiesCovid'];
-        $bleeding_history   = $result['BleedingHistory'];
-        $yes_bleeding        = $result['BleedingDisorders'];
-        $no_received_vaccine = $result['ReceivedVaccine'];
-        $symptoms           = $result['ManifestSymptoms'];
-        $illness            = $result['Illness'];
-        $clearance          = $result['MedicalClearance'];
-        $semester           = $result['PregnantSemester'];
-        $deferral           = $result['Deferral'];
-        $vaccine_manufacturer = $result['VaccineManufacturer'];
-        $batch_number       = $result['BatchNumber'];
-        $lot_number         = $result['LotNumber'];
-        $get_vaccinator_name     = $result['VaccinatorName'];
-        $profession_vaccinator   = $result['VaccinatorProfession'];
-        $vaccination_date = $result['DateVaccination'];
-        $dose_1st         = $result['1stDose'];
-        $dose_2nd         = $result['2ndDose'];
+        $consent                    = $result['consent'];
+        $age_16                     = $result['MoreThan16yo'];
+        $allergy_PEG                = $result['PegPolysorbate'];
+        $wallergy                   = $result['AllergyToFood'];
+        $monitor_patient            = $result['MonitorAllergy'];
+        $allergic_reaction          = $result['Severe_Reaction'];
+        $no_exposure                = $result['CovidHistory'];
+        $no_treated                 = $result['CovidTreated'];
+        $no_received_antibodies     = $result['AntibodiesCovid'];
+        $bleeding_history           = $result['BleedingHistory'];
+        $yes_bleeding               = $result['BleedingDisorders'];
+        $no_received_vaccine        = $result['ReceivedVaccine'];
+        $symptoms                   = $result['ManifestSymptoms'];
+        $illness                    = $result['Illness'];
+        $clearance                  = $result['MedicalClearance'];
+        $semester                   = $result['PregnantSemester'];
+        $deferral                   = $result['Deferral'];
+        $vaccine_manufacturer       = $result['VaccineManufacturer'];
+        $batch_number               = $result['BatchNumber'];
+        $lot_number                 = $result['LotNumber'];
+        $get_vaccinator_name        = $result['VaccinatorName'];
+        $profession_vaccinator      = $result['VaccinatorProfession'];
+        $vaccination_date           = $result['DateVaccination'];
+        $dose_1st                   = $result['1stDose'];
+        $dose_2nd                   = $result['2ndDose'];
     }
 
     $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
