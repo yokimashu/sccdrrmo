@@ -2,13 +2,7 @@
 
 include('../config/db_config.php');
 include('update_user.php');
-session_start();
-$user_id = $_SESSION['id'];
-if (!isset($_SESSION['id'])) {
-    header('location:../index.php');
-} else {
-}
-
+// session_start();
 
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
@@ -19,6 +13,12 @@ $btnSave = $btnEdi =  $entity_no = $btn_enabled =
     $get_firstname = $get_middlename = $get_lastname = $get_username  = $get_password =
     $get_department = $get_account = $get_new_password =
     $symptoms = $patient = $person_status = $get_entity_no = $get_time = '';
+
+
+if (!isset($_SESSION['id'])) {
+    header('location:../index.php');
+}
+$user_id = $_SESSION['id'];
 
 //fetch user from database
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -31,34 +31,28 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
+if (isset($_GET['id'])) {
 
-$entity_no = $_GET['id'];
-$get_data_sql = "SELECT * FROM tbl_users  WHERE STATUS='ACTIVE' AND entity_no ='$entity_no'";
-$get_data_data = $con->prepare($get_data_sql);
-$get_data_data->execute([':id' => $entity_no]);
+    $idno = $_GET['id'];
+    $get_data_sql = "SELECT * FROM tbl_users  WHERE status = 'ACTIVE' AND entity_no = :idno";
+    $get_data_data = $con->prepare($get_data_sql);
+    $get_data_data->execute([':idno' => $idno]);
 
-while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+    while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
-
-    $get_entity_no = $result['entity_no'];
-    $get_username = $result['username'];
-    $get_password = $result['password'];
-
-    $get_date_register = $result['date_register'];
-    $get_time =  $result['time_reg'];
-
-    $get_firstname = $result['firstname'];
-    $get_middlename = $result['middlename'];
-    $get_lastname = $result['lastname'];
-    $get_department = $result['department'];
-    $get_account = $result['account_type'];
+        $get_entity_no = $result['entity_no'];
+        // $get_idno = $result['id'];
+        $get_username = $result['username'];
+        $get_password = $result['password'];
+        $get_date_register = $result['date_register'];
+        $get_time =  $result['time_reg'];
+        $get_firstname = $result['firstname'];
+        $get_middlename = $result['middlename'];
+        $get_lastname = $result['lastname'];
+        $get_department = $result['department'];
+        $get_account = $result['account_type'];
+    }
 }
-
-
-
-
-
-
 
 $get_all_data_sql = "SELECT * FROM tbl_department";
 $get_all_data_data = $con->prepare($get_all_data_sql);
@@ -67,10 +61,6 @@ $get_all_data_data->execute();
 $get_all_account_sql = "SELECT * FROM tbl_account ";
 $get_all_account_data = $con->prepare($get_all_account_sql);
 $get_all_account_data->execute();
-
-
-
-
 
 ?>
 
@@ -105,7 +95,7 @@ $get_all_account_data->execute();
                     </div>
 
                     <div class="card-body">
-                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_user.php">
                             <div class="box-body">
                                 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                 <div class="card ">
@@ -330,10 +320,33 @@ $get_all_account_data->execute();
     <script src="../dist/js/demo.js"></script>
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
+    <!-- Sweetalert -->
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
     <!-- DataTables Bootstrap -->
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
+
+
+
+    <?php
+
+    if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status'] ?>",
+                // text: "You clicked the button!",
+                icon: "<?php echo $_SESSION['status_code'] ?>",
+                button: "OK. Done!",
+            });
+        </script>
+
+    <?php
+        unset($_SESSION['status']);
+    }
+    ?>
 
     <script>
         $('#users').DataTable({

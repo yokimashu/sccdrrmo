@@ -1,11 +1,13 @@
 
  <?php
 
-    $alert_msg = '';
+
     include('../config/db_config.php');
 
 
-
+    session_start();
+    date_default_timezone_set('Asia/Manila');
+    // $alert_msg = '';
     if (isset($_POST['update_user'])) {
 
 
@@ -20,9 +22,6 @@
         $get_account                = $_POST['account_type'];
         $alert_msg = '';
         $alert_msg1 = '';
-
-
-
 
         if (empty($get_new_password)) {
 
@@ -80,12 +79,19 @@
 
 
             ]);
+        }
 
-            $alert_msg .= ' 
-         <div class="alert alert-danger alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <i class="icon fa fa-check"></i>You have successfully deleted the employee.
-         </div>     
-     ';
+
+        if ($add_user_data) {
+
+            $_SESSION['status'] = "Update Successful!";
+            $_SESSION['status_code'] = "success";
+
+            header('location: view_user.php?id=' . $get_entity_no);
+        } else {
+            $_SESSION['status'] = "Update Unsuccessful!";
+            $_SESSION['status_code'] = "error";
+
+            header('location: view_user.php?id=' . $get_entity_no);
         }
     }
