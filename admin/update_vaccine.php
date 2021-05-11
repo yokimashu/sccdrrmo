@@ -15,15 +15,14 @@ if (isset($_POST['update_vaccine'])) {
     // echo "</pre>";
 
     // category
-    $date_reg       = date('Y-m-d', strtotime($_POST['date_register']));
-    $time           = date("h:i:s a");
-    $category       = $_POST['category'];
-    $category_id    = $_POST['category_id'];
-    $healthworker   = $_POST['health_worker'];
-    $indigent       = $_POST['indigent'];
+    $date_reg           = date('Y-m-d', strtotime($_POST['date_register']));
+    $time               = date("h:i:s a");
+    $category           = $_POST['category'];
+    $category_id        = $_POST['category_id'];
+    $healthworker       = $_POST['health_worker'];
+    $subpriority        = $_POST['subprio'];
+    $indigentss         = $_POST['indigent'];
     $frontline_subprio  = $_POST['frontline_subpriority'];
-    $subpriority    = $_POST['subprio'];
-
 
     if ($_POST['idno'] != '') {
         $idnumber = $_POST['idno'];
@@ -50,11 +49,13 @@ if (isset($_POST['update_vaccine'])) {
     $firstname      = strtoupper($_POST['firstname']);
     $middlename     = strtoupper($_POST['middlename']);
     $suffix         = strtoupper($_POST['suffix']);
+    $fullname       = strtoupper($_POST['firstname'] . ' ' . $_POST['middlename'] . ' ' . $_POST['lastname']);
     $gender         = $_POST['gender'];
 
     $birthdate      = date('Y-m-d', strtotime($_POST['birthdate']));
     $civil_stat      = $_POST['civil_status'];
     $contactno      = $_POST['contact_no'];
+    $department     = $_POST['department'];
     $emp_status     = $_POST['emp_status'];
     $profession     = $_POST['profession'];
 
@@ -274,11 +275,11 @@ if (isset($_POST['update_vaccine'])) {
             Category                = :categ,
             CategoryID              = :categ_id,
             CategoryIDnumber        = :idnooo,
-            HealthWorker            = :healthworker,
-            SubPriority             = :subprio,
-            Indigent                = :indigents,
-            FrontlineSubPriority    = :frontline_subprio,
             PhilHealthID            = :philhealth,
+            SubPriority             = :subprio,
+            FrontlineSubPriority    = :frontline_subprio,
+            HealthWorker            = :healthworker,
+            Indigent                = :indigents,
             PWD_ID                  = :pwd,
             Lastname                = :lastname,
             Firstname               = :firstname,
@@ -298,6 +299,7 @@ if (isset($_POST['update_vaccine'])) {
             Profession              = :profee,
             indicate                = :indicate,
             Employer_name           = :emp_name,
+            Department              = :dept,
             Employer_LGU            = :emp_lgu,
             Employer_address        = :emp_add,
             Employer_contact_no    = :emp_contact,
@@ -312,7 +314,7 @@ if (isset($_POST['update_vaccine'])) {
             Allergy_07              = :allergy7,
             Allergy_08              = :allergy8,
             W_comorbidities         = :with_comorbodities,
-           Comorbidity_01          = :com1,
+            Comorbidity_01          = :com1,
             Comorbidity_02          = :com2,
             Comorbidity_03          = :com3,
             Comorbidity_04          = :com4,
@@ -334,10 +336,10 @@ if (isset($_POST['update_vaccine'])) {
             covid_date              = :date_history,
             covid_classification    = :infection,
             Consent                 = :consent,
-            status                  = 'VALIDATED',
-            sinovac                 = :sinovac,
-            astrazeneca             = :astrazeneca
-            where entity_no         = :entityno
+            sinovac                 = :sinovacs,
+            astrazeneca             = :astravas,
+            status                  = :statuss
+            WHERE entity_no         = :entityno
     
         ";
 
@@ -348,11 +350,11 @@ if (isset($_POST['update_vaccine'])) {
         ':time_regg'        => $time,
         ':categ'            => $category,
         ':categ_id'         => $category_id,
+        ':idnooo'           => $idnumber,
+        ':healthworker'     => $healthworker,
         ':subprio'          => $subpriority,
         ':frontline_subprio' => $frontline_subprio,
-        ':indigents'        => $indigent,
-        ':healthworker'     => $healthworker,
-        ':idnooo'           => $idnumber,
+        ':indigents'        => $indigentss,
         ':philhealth'       => $philhealth,
         ':pwd'              => $pwd,
         ':lastname'         => $lastname,
@@ -360,11 +362,11 @@ if (isset($_POST['update_vaccine'])) {
         ':middlename'       => $middlename,
         ':suffix'           => $suffix,
         ':contacno'         => $contactno,
-        ':fulladdress'      => $street,
+        ':fulladdress'      => $fulladdress,
         ':region'           => $region,
         ':province'         => $province,
         ':muncity'          => $city,
-        ':brgy'             => $barangay,
+        ':brgy'             => $barangay1,
         ':gender'           => $gender,
         ':birthdate'        => $birthdate,
         ':civil'            => $civil_stat,
@@ -373,6 +375,7 @@ if (isset($_POST['update_vaccine'])) {
         ':profee'           => $profession,
         ':indicate'         => $indicate,
         ':emp_name'         => $emp_name,
+        ':dept'             => $department,
         ':emp_lgu'          => $emp_lgu,
         ':emp_add'          => $emp_address,
         ':emp_contact'      => $emp_contact,
@@ -409,8 +412,9 @@ if (isset($_POST['update_vaccine'])) {
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
         ':consent'          => $consent,
-        ':sinovac'          => $sinovac,
-        ':astrazeneca'      => $astrazeneca
+        ':sinovacs'         => $sinovac,
+        ':astravas'         => $astrazeneca,
+        ':statuss'          => 'VALIDATED'
 
 
     ]);
