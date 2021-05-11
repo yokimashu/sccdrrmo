@@ -744,20 +744,17 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div>
 
 
-                                                        <div id="other_gov" hidden>
+                                                        <div id="dept_emp" hidden>
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     <label for="">Select Department: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                     <select class="form-control select2" style="width: 100%;" name="department" id="department">
                                                                         <option value=" " selected>Select Department</option>
-
                                                                         <?php while ($get_department = $get_all_department_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                             <option value="<?php echo $get_department['objid'] ?>"><?php echo $get_department['department']; ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                 </div>
-
-
                                                             </div><br>
 
                                                         </div>
@@ -1285,7 +1282,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                             searchTerm: params.term
                         };
                     },
-                    
+
                     processResults: function(response) {
                         return {
                             results: response
@@ -1497,7 +1494,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             } else {
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
-           
+
                 $('#indigent1').prop("hidden", true);
             }
             console.log("test");
@@ -1532,6 +1529,16 @@ $title = 'VAMOS | COVID-19 Patient Form';
             console.log("test");
         });
 
+        $('#emp_status').change(function() {
+            var option = $('#emp_status').val();
+            if (option == "01_Government_Employed") {
+                $('#dept_emp').prop("hidden", false);
+            } else {
+                $('#dept_emp').prop("hidden", true);
+            }
+            console.log("test");
+        });
+
         $('#profession').change(function() {
             var option = $('#profession').val();
             if (option == "19_Other") {
@@ -1541,6 +1548,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
             }
             console.log("test");
         });
+
+
 
         $('#with_commorbidities').change(function() {
             var option = $('#with_commorbidities').val();
@@ -1687,4 +1696,5 @@ $title = 'VAMOS | COVID-19 Patient Form';
         });
     </script>
 </body>
+
 </html>
