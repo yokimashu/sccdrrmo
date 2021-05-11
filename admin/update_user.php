@@ -87,11 +87,11 @@
             $_SESSION['status'] = "Update Successful!";
             $_SESSION['status_code'] = "success";
 
-            header('location: list_user.php');
+            header('location: list_users.php');
         } else {
             $_SESSION['status'] = "Update Unsuccessful!";
             $_SESSION['status_code'] = "error";
 
-            header('location: list_user.php');
+            header('location: list_users.php');
         }
     }
