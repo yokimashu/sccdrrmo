@@ -88,7 +88,7 @@ if (isset($_POST['update_vaccine'])) {
     //     $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
     // } elseif ($barangay == 'BAGONBON') {
     //     $barangay1 = "_64524001_BAGONBON";
-    // } elseif ($barangay == 'BULUANGAN') {
+    // } elseif ($barangay == 'BULUANGAN') {s
     //     $barangay1 = "_64524002_BULUANGAN";
     // } elseif ($barangay == 'CODCOD') {
     //     $barangay1 = "_64524004_CODCOD";

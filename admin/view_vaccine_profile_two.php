@@ -831,26 +831,25 @@ if (isset($_GET['id'])) {
 
 
                                                                 <select class="form-control select2" id="barangay" name="barangay">
-                                                                    <option <?php if ($get_barangay == ' ') echo 'selected'; ?> value=" ">Select Barangay </option>
-                                                                    <option <?php if ($get_barangay == '_64524010_BARANGAY_I_(POB.)') echo 'selected'; ?> value="_64524010_BARANGAY_I_(POB.)">Barangay I</option>
-                                                                    <option <?php if ($get_barangay == '_64524011_BARANGAY_II_(POB.)') echo 'selected'; ?> value="_64524011_BARANGAY_II_(POB.)">Barangay II</option>
-                                                                    <option <?php if ($get_barangay == '_64524012_BARANGAY_III_(POB.)') echo 'selected'; ?> value="_64524012_BARANGAY_III_(POB.)">Barangay III </option>
-                                                                    <option <?php if ($get_barangay == '_64524013_BARANGAY_IV_(POB.)') echo 'selected'; ?> value="_64524013_BARANGAY_IV_(POB.)">Barangay IV</option>
-                                                                    <option <?php if ($get_barangay == '_64524010_BARANGAY_I_(POB.)') echo 'selected'; ?> value="_64524010_BARANGAY_I_(POB.)">Select Barangay </option>
-                                                                    <option <?php if ($get_barangay == '_64524014_BARANGAY_V_(POB.)') echo 'selected'; ?> value="_64524014_BARANGAY_V_(POB.)">Barangay V</option>
-                                                                    <option <?php if ($get_barangay == '_64524015_BARANGAY_VI_(POB.)') echo 'selected'; ?> value="_64524015_BARANGAY_VI_(POB.)">Barangay VI</option>
-                                                                    <option <?php if ($get_barangay == '_64524001_BAGONBON') echo 'selected'; ?> value="_64524001_BAGONBON">Bagonbon</option>
-                                                                    <option <?php if ($get_barangay == '_64524002_BULUANGAN') echo 'selected'; ?> value="_64524002_BULUANGAN">Buluangan</option>
-                                                                    <option <?php if ($get_barangay == '_64524004_CODCOD') echo 'selected'; ?> value="_64524004_CODCOD">Codcod</option>
-                                                                    <option <?php if ($get_barangay == '_64524005_ERMITA') echo 'selected'; ?> value="_64524005_ERMITA">Ermita</option>
-                                                                    <option <?php if ($get_barangay == '_64524006_GUADALUPE') echo 'selected'; ?> value="_64524006_GUADALUPE">Guadalupe</option>
-                                                                    <option <?php if ($get_barangay == '_64524008_NATABAN') echo 'selected'; ?> value="_64524008_NATABAN">Nataban</option>
-                                                                    <option <?php if ($get_barangay == '_64524009_PALAMPAS') echo 'selected'; ?> value="_64524009_PALAMPAS">Palampas</option>
-                                                                    <option <?php if ($get_barangay == '_64524016_PROSPERIDAD') echo 'selected'; ?> value="_64524016_PROSPERIDAD">Prosperidad</option>
-                                                                    <option <?php if ($get_barangay == '_64524017_PUNAO') echo 'selected'; ?> value="_64524017_PUNAO">Punao</option>
-                                                                    <option <?php if ($get_barangay == '_64524018_QUEZON') echo 'selected'; ?> value="_64524018_QUEZON">Quezon</option>
-                                                                    <option <?php if ($get_barangay == '_64524019_RIZAL') echo 'selected'; ?> value="_64524019_RIZAL">Rizal</option>
-                                                                    <option <?php if ($get_barangay == '_64524020_SAN_JUAN') echo 'selected'; ?> value="_64524020_SAN_JUAN">San Juan</option>
+                                                                    <option <?php if ($get_barangay == ' ') echo 'selected'; ?> value=" ">Select Barangay</option>
+                                                                    <option <?php if ($get_barangay == 'Barangay I' || $get_barangay == '_64524010_BARANGAY_I_(POB.)') echo 'selected'; ?> value="_64524010_BARANGAY_I_(POB.)">Barangay I</option>
+                                                                    <option <?php if ($get_barangay == 'Barangay II' || $get_barangay == '_64524011_BARANGAY_II_(POB.)') echo 'selected'; ?> value="_64524011_BARANGAY_II_(POB.)">Barangay II</option>
+                                                                    <option <?php if ($get_barangay == 'Barangay III' || $get_barangay == '_64524012_BARANGAY_III_(POB.)') echo 'selected'; ?> value="_64524012_BARANGAY_III_(POB.)">Barangay III </option>
+                                                                    <option <?php if ($get_barangay == 'Barangay IV' || $get_barangay == '_64524013_BARANGAY_IV_(POB.)') echo 'selected'; ?> value="_64524013_BARANGAY_IV_(POB.)">Barangay IV</option>
+                                                                    <option <?php if ($get_barangay == 'Barangay V' ||  $get_barangay == '_64524014_BARANGAY_V_(POB.)') echo 'selected'; ?> value="_64524014_BARANGAY_V_(POB.)">Barangay V</option>
+                                                                    <option <?php if ($get_barangay == 'Barangay VI' || $get_barangay == '_64524015_BARANGAY_VI_(POB.)') echo 'selected'; ?> value="_64524015_BARANGAY_VI_(POB.)">Barangay VI</option>
+                                                                    <option <?php if ($get_barangay == 'Bagonbon' || $get_barangay == '_64524001_BAGONBON') echo 'selected'; ?> value="_64524001_BAGONBON">Bagonbon</option>
+                                                                    <option <?php if ($get_barangay == 'Buluangan' || $get_barangay == '_64524002_BULUANGAN') echo 'selected'; ?> value="_64524002_BULUANGAN">Buluangan</option>
+                                                                    <option <?php if ($get_barangay == 'Codcod' || $get_barangay == '_64524004_CODCOD') echo 'selected'; ?> value="_64524004_CODCOD">Codcod</option>
+                                                                    <option <?php if ($get_barangay == 'Ermita' || $get_barangay == '_64524005_ERMITA') echo 'selected'; ?> value="_64524005_ERMITA">Ermita</option>
+                                                                    <option <?php if ($get_barangay == 'Guadalue' || $get_barangay == '_64524006_GUADALUPE') echo 'selected'; ?> value="_64524006_GUADALUPE">Guadalupe</option>
+                                                                    <option <?php if ($get_barangay == 'Nataban' || $get_barangay == '_64524008_NATABAN') echo 'selected'; ?> value="_64524008_NATABAN">Nataban</option>
+                                                                    <option <?php if ($get_barangay == 'Palampas' || $get_barangay == '_64524009_PALAMPAS') echo 'selected'; ?> value="_64524009_PALAMPAS">Palampas</option>
+                                                                    <option <?php if ($get_barangay == 'Prosperidad' || $get_barangay == '_64524016_PROSPERIDAD') echo 'selected'; ?> value="_64524016_PROSPERIDAD">Prosperidad</option>
+                                                                    <option <?php if ($get_barangay == 'Punao' || $get_barangay == '_64524017_PUNAO') echo 'selected'; ?> value="_64524017_PUNAO">Punao</option>
+                                                                    <option <?php if ($get_barangay == 'Quezon' || $get_barangay == '_64524018_QUEZON') echo 'selected'; ?> value="_64524018_QUEZON">Quezon</option>
+                                                                    <option <?php if ($get_barangay == 'Rizal' || $get_barangay == '_64524019_RIZAL') echo 'selected'; ?> value="_64524019_RIZAL">Rizal</option>
+                                                                    <option <?php if ($get_barangay == 'San Juan' || $get_barangay == '_64524020_SAN_JUAN') echo 'selected'; ?> value="_64524020_SAN_JUAN">San Juan</option>
 
                                                                 </select>
 
