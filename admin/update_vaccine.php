@@ -72,47 +72,48 @@ if (isset($_POST['update_vaccine'])) {
     $city           = "_64524_SAN_CARLOS_CITY";
     $barangay       = strtoupper($_POST['barangay']);
 
+
     //for bararangay 
-    if ($barangay == 'BARANGAY I') {
-        $barangay1 = "_64524010_BARANGAY_I_(POB.)";
-    } elseif ($barangay == 'BARANGAY II') {
-        $barangay1 = "_64524011_BARANGAY_II_(POB.)";
-    } elseif ($barangay == 'BARANGAY III') {
-        $barangay1 = "_64524012_BARANGAY_III_(POB.)";
-    } elseif ($barangay == 'BARANGAY IV') {
-        $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
-    } elseif ($barangay == 'BARANGAY V') {
-        $barangay1 = "_64524014_BARANGAY_V_(POB.)";
-    } elseif ($barangay == 'BARANGAY VI') {
-        $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
-    } elseif ($barangay == 'BAGONBON') {
-        $barangay1 = "_64524001_BAGONBON";
-    } elseif ($barangay == 'BULUANGAN') {
-        $barangay1 = "_64524002_BULUANGAN";
-    } elseif ($barangay == 'CODCOD') {
-        $barangay1 = "_64524004_CODCOD";
-    } elseif ($barangay == 'ERMITA') {
-        $barangay1 = "_64524005_ERMITA";
-    } elseif ($barangay == 'GUADALUPE') {
-        $barangay1 = "_64524006_GUADALUPE";
-    } elseif ($barangay == 'NATABAN') {
-        $barangay1 = "_64524008_NATABAN";
-    } elseif ($barangay == 'PALAMPAS') {
-        $barangay1 = "_64524009_PALAMPAS";
-    } elseif ($barangay == 'PROSPERIDAD') {
-        $barangay1 = "_64524016_PROSPERIDAD";
-    } elseif ($barangay == 'PUNAO') {
-        $barangay1 = "_64524017_PUNAO";
-    } elseif ($barangay == 'QUEZON') {
-        $barangay1 = "_64524018_QUEZON";
-    } elseif ($barangay == 'RIZAL') {
-        $barangay1 = "_64524019_RIZAL";
-    } elseif ($barangay == 'SAN JUAN') {
-        $barangay1 = "_64524020_SAN_JUAN";
-    }
+    // if ($barangay == 'BARANGAY I') {
+    //     $barangay1 = "_64524010_BARANGAY_I_(POB.)";
+    // } elseif ($barangay == 'BARANGAY II') {
+    //     $barangay1 = "_64524011_BARANGAY_II_(POB.)";
+    // } elseif ($barangay == 'BARANGAY III') {
+    //     $barangay1 = "_64524012_BARANGAY_III_(POB.)";
+    // } elseif ($barangay == 'BARANGAY IV') {
+    //     $barangay1 = "_64524013_BARANGAY_IV_(POB.)";
+    // } elseif ($barangay == 'BARANGAY V') {
+    //     $barangay1 = "_64524014_BARANGAY_V_(POB.)";
+    // } elseif ($barangay == 'BARANGAY VI') {
+    //     $barangay1 = "_64524015_BARANGAY_VI_(POB.)";
+    // } elseif ($barangay == 'BAGONBON') {
+    //     $barangay1 = "_64524001_BAGONBON";
+    // } elseif ($barangay == 'BULUANGAN') {
+    //     $barangay1 = "_64524002_BULUANGAN";
+    // } elseif ($barangay == 'CODCOD') {
+    //     $barangay1 = "_64524004_CODCOD";
+    // } elseif ($barangay == 'ERMITA') {
+    //     $barangay1 = "_64524005_ERMITA";
+    // } elseif ($barangay == 'GUADALUPE') {
+    //     $barangay1 = "_64524006_GUADALUPE";
+    // } elseif ($barangay == 'NATABAN') {
+    //     $barangay1 = "_64524008_NATABAN";
+    // } elseif ($barangay == 'PALAMPAS') {
+    //     $barangay1 = "_64524009_PALAMPAS";
+    // } elseif ($barangay == 'PROSPERIDAD') {
+    //     $barangay1 = "_64524016_PROSPERIDAD";
+    // } elseif ($barangay == 'PUNAO') {
+    //     $barangay1 = "_64524017_PUNAO";
+    // } elseif ($barangay == 'QUEZON') {
+    //     $barangay1 = "_64524018_QUEZON";
+    // } elseif ($barangay == 'RIZAL') {
+    //     $barangay1 = "_64524019_RIZAL";
+    // } elseif ($barangay == 'SAN JUAN') {
+    //     $barangay1 = "_64524020_SAN_JUAN";
+    // }
 
     $street         = $_POST['street'];
-    $fulladdress    = strtoupper($street . ', ' . $barangay);
+    // $fulladdress    = strtoupper($street);
     //employer
 
     if ($_POST['name_employeer'] != '') {
@@ -362,11 +363,11 @@ if (isset($_POST['update_vaccine'])) {
         ':middlename'       => $middlename,
         ':suffix'           => $suffix,
         ':contacno'         => $contactno,
-        ':fulladdress'      => $fulladdress,
+        ':fulladdress'      => $street,
         ':region'           => $region,
         ':province'         => $province,
         ':muncity'          => $city,
-        ':brgy'             => $barangay1,
+        ':brgy'             => $barangay,
         ':gender'           => $gender,
         ':birthdate'        => $birthdate,
         ':civil'            => $civil_stat,
@@ -450,20 +451,20 @@ if (isset($_POST['update_vaccine'])) {
 
     ]);
 
-    $update_individual_sql = "UPDATE tbl_entity SET 
+    $update_entity_sql = "UPDATE tbl_entity SET 
         status          = :status
         
         where entity_no = :entityNo ";
 
-    $update_individual_data = $con->prepare($update_individual_sql);
-    $update_individual_data->execute([
+    $update_entity_data = $con->prepare($update_entity_sql);
+    $update_entity_data->execute([
         ':entityNo'     => $entityno,
         ':status'       => 'VERIFIED'
     ]);
 
 
 
-    if ($vaccine_data && $update_individual_data) {
+    if ($vaccine_data && $update_individual_data && $update_entity_data) {
 
         $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";

@@ -1634,7 +1634,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Please select Gender!");
                 $('#gender').focus();
                 return false;
-            } else if (department == 'Select Department') {
+            } else if ((employment == 'Government Employed') && (department == 'Select Department')) {
                 alert("Please department!");
                 $('#department').focus();
                 return false;
