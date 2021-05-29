@@ -23,7 +23,7 @@ $btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $ge
     $refusal = $age_16 = $allergy_PEG = $allergic_reaction = $no_food_allergy = $monitor_patient = $bleeding_history = $yes_bleeding_history =
     $manifest_symptoms = $specify_symptoms = $no_exposure = $no_treated = $no_received_vaccine = $no_received_antibodies = $pregnant_semester =
     $no_illness = $specify_illness = $medical_clearance = $deferral = $vaccination_date = $vaccine_manufacturer = $batch_number = $lot_number =
-    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = '';
+    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $objid = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $img = '';
@@ -119,31 +119,31 @@ if (isset($_GET['id'])) {
 
 
         //table assessment
-        $consent                    = $result['consent'];
-        $age_16                     = $result['MoreThan16yo'];
-        $allergy_PEG                = $result['PegPolysorbate'];
-        $wallergy                   = $result['AllergyToFood'];
-        $monitor_patient            = $result['MonitorAllergy'];
-        $allergic_reaction          = $result['Severe_Reaction'];
-        $no_exposure                = $result['CovidHistory'];
-        $no_treated                 = $result['CovidTreated'];
-        $no_received_antibodies     = $result['AntibodiesCovid'];
-        $bleeding_history           = $result['BleedingHistory'];
-        $yes_bleeding               = $result['BleedingDisorders'];
-        $no_received_vaccine        = $result['ReceivedVaccine'];
-        $symptoms                   = $result['ManifestSymptoms'];
-        $illness                    = $result['Illness'];
-        $clearance                  = $result['MedicalClearance'];
-        $semester                   = $result['PregnantSemester'];
-        $deferral                   = $result['Deferral'];
-        $vaccine_manufacturer       = $result['VaccineManufacturer'];
-        $batch_number               = $result['BatchNumber'];
-        $lot_number                 = $result['LotNumber'];
-        $get_vaccinator_name        = $result['VaccinatorName'];
-        $profession_vaccinator      = $result['VaccinatorProfession'];
-        $vaccination_date           = $result['DateVaccination'];
-        $dose_1st                   = $result['1stDose'];
-        $dose_2nd                   = $result['2ndDose'];
+        $consent            = $result['consent'];
+        $age_16             = $result['MoreThan16yo'];
+        $allergy_PEG        = $result['PegPolysorbate'];
+        $wallergy           = $result['AllergyToFood'];
+        $monitor_patient    = $result['MonitorAllergy'];
+        $allergic_reaction  = $result['Severe_Reaction'];
+        $no_exposure        = $result['CovidHistory'];
+        $no_treated         = $result['CovidTreated'];
+        $no_received_antibodies = $result['AntibodiesCovid'];
+        $bleeding_history   = $result['BleedingHistory'];
+        $yes_bleeding        = $result['BleedingDisorders'];
+        $no_received_vaccine = $result['ReceivedVaccine'];
+        $symptoms           = $result['ManifestSymptoms'];
+        $illness            = $result['Illness'];
+        $clearance          = $result['MedicalClearance'];
+        $semester           = $result['PregnantSemester'];
+        $deferral           = $result['Deferral'];
+        $vaccine_manufacturer = $result['VaccineManufacturer'];
+        $batch_number       = $result['BatchNumber'];
+        $lot_number         = $result['LotNumber'];
+        $get_vaccinator_name     = $result['VaccinatorName'];
+        $profession_vaccinator   = $result['VaccinatorProfession'];
+        $vaccination_date = $result['DateVaccination'];
+        $dose_1st         = $result['1stDose'];
+        $dose_2nd         = $result['2ndDose'];
     }
 
     $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
@@ -479,12 +479,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a> </strong>
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a> </strong>
 
                                     <p class="text-muted">
 
                                         <hr>
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
 
 
                                     <p class="text-muted">
@@ -492,7 +492,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <hr>
 
 
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccination_card.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccination Card"> Print Vaccination Card </a> </strong>
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccination_card_2nd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccination Card"> Print Vaccination Card </a> </strong>
 
 
                                     <p class="text-muted">
@@ -535,7 +535,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <div class="box-body">
                                             <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_assessment.php">
 
-                                                <div class="row" hidden >
+                                                <div class="row" hidden>
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-2">
                                                         <label>Date Registered: </label>
@@ -997,9 +997,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <!-- start of vaccine information -->
                                                             <?php if ($consent == '01_Yes') { ?>
                                                                 <div id="vaccine_info" class="card card-success card-outline">
-                                                                <?php }else{ ?>
+                                                                <?php } else { ?>
                                                                     <div hidden id="vaccine_info" class="card card-success card-outline">
-                                                                <?php } ?>
+                                                                    <?php } ?>
                                                                     <div class="card-header">
 
                                                                         <h5 class="m-0">VACCINE INFORMATION</h5>
@@ -1011,20 +1011,31 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                             <div class="col-md-6">
                                                                                 <label>Vaccination Date: </label>
-                                                                                <div class="input-group date" data-provide="datepicker">
-                                                                                    <div class="input-group-addon">
+
+                                                                                <!-- <div class="input-group date" data-provide="datepicker"> -->
+                                                                                <!-- <div class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
-                                                                                    </div>
-                                                                                    <?php if ($vaccination_date == ''){ ?>
-                                                                                        <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo date('Y-m-d'); ?>">
-                                                                                    <?php }else{ ?> 
-                                                                                    <input type="text" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo $vaccination_date; ?>">
-                                                                                    <?php } ?>
-                                                                                </div>
+                                                                                    </div> -->
+                                                                                <?php if ($vaccination_date == '') { ?>
+                                                                                    <!-- <input type="date" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo date('Y-m-d'); ?>"> -->
+
+                                                                                    <input type="date" class="form-control pull-right" name="vaccination_date" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo date('Y-m-d'); ?>" />
+                                                                                <?php } else { ?>
+
+                                                                                    <input type="date" class="form-control pull-right" name="vaccination_date" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo $vaccination_date; ?>" />
+                                                                                    <!-- <input type="date" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo $vaccination_date; ?>"> -->
+                                                                                <?php } ?>
+
+
+
+
+
+
+
                                                                             </div>
 
 
-                                                                            <div class="col-md-6">
+                                                                            <div class=" col-md-6">
                                                                                 <label for="">Vaccine Manufacturer: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                                 <select class="form-control select2" id="vaccine_manufacturer" style="width: 100%;" name="vaccine_manufacturer" placeholder="" value="">
                                                                                     <option selected value="">Select Manufacturer</option>
@@ -1091,19 +1102,19 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         </div>
 
                                                                     </div>
-                                                                </div>
-                                                         
-
-                                                            <!-- end vaccine information -->
+                                                                    </div>
 
 
-                                                            <div class="box-footer" align="center">
-                                                                <button type="submit" id="btnSubmit" name="update_assessment" class="btn btn-success">
-                                                                    <!-- <i class="fa fa-check fa-fw"> </i> -->
-                                                                    <h4>Submit Form</h4>
-                                                                </button>
+                                                                    <!-- end vaccine information -->
 
-                                                            </div>
+
+                                                                    <div class="box-footer" align="center">
+                                                                        <button type="submit" id="btnSubmit" name="update_assessment" class="btn btn-success">
+                                                                            <!-- <i class="fa fa-check fa-fw"> </i> -->
+                                                                            <h4>Submit Form</h4>
+                                                                        </button>
+
+                                                                    </div>
                                             </form>
                                         </div>
 

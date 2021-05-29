@@ -27,7 +27,7 @@ $columns = array();
 
 // getting total number records without any search
 
-$sql = "SELECT * FROM tbl_vaccine v inner join tbl_assessment t on t.entity_no = v.entity_no ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
+$sql = "SELECT * FROM tbl_vaccine v inner join tbl_assessment t on t.entity_no = v.entity_no where t.status !='VOID'  ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute() or die("search_vaccine_vas.php");
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -42,8 +42,8 @@ $totalData = $getrecord['id'];
 // $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-
-$sql = "SELECT * FROM tbl_vaccine v inner join tbl_assessment t on t.entity_no = v.entity_no where";
+ 
+$sql = "SELECT * FROM tbl_vaccine v inner join tbl_assessment t on t.entity_no = v.entity_no where ";
 
 if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql .= "  (v.entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -67,7 +67,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 
 
 	// $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-	$sql .= " ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
+	$sql .= "AND t.status !='VOID' ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
 	$get_user_data = $con->prepare($sql);
 	$get_user_data->execute();
 	// $totalData = $get_user_data->fetch(PDOStatement::rowCount);

@@ -3,6 +3,7 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 include('update_status.php');
+include('update_void.php');
 require_once '../admin/SimpleXLSXGen.php';
 session_start();
 
@@ -256,11 +257,13 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
 
 
-  <div class="modal fade" id="modalupdate" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-sm">
+
+
+  <div class="modal fade" id="modalvoid" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">UPDATE STATUS</h4>
+          <h4 class="modal-title">VOID</h4>
         </div>
 
 
@@ -270,32 +273,19 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
             <div class="box-body-lg-50">
               <div class="form-group">
                 <label>ID:</label>
-                <input readonly="true" type="text" name="objid" id="objid" class="form-control" value="<?php echo $objid; ?>" required>
-
-
+                <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+                <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
               </div>
 
-              <!-- <div class="col-md-5">
-                <label for="">STATUS:</label>
-                <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
-                  <option selected>Please select</option>
-                  <option value="POSITIVE">POSITIVE</option>
-                  <option value="NEGATIVE">NEGATIVE</option>
-                  <option value="PENDING">PENDING</option>
-                </select>
-              </div> -->
-              <label for="">STATUS:</label>
-              <br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "PENDING") echo "checked"; ?> value="PENDING">PENDING<br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "POSITIVE") echo "checked"; ?> value="POSITIVE">POSITIVE<br>
-              <input type="radio" name="status" <?php if (isset($status) && $status == "NEGATIVE") echo "checked"; ?> value="NEGATIVE">NEGATIVE<br>
+              <label>Remarks: </label>
+                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
 
 
             </div>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-              <input type="submit" name="update_status" class="btn btn-danger" value="SAVE">
+              <input type="submit" name="update_void" class="btn btn-danger" value="SAVE">
 
               <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button> -->
@@ -437,7 +427,8 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
           width: "100px",
           targets: -1,
           data: null,
-          defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE RECORD"> <i class="fa fa-edit"></i></a>'
+          defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE RECORD"> <i class="fa fa-edit"></i></a>' +
+          '<a class="btn btn-danger" style="margin-right:10px;" id="modal" data-placement="top" title="VOID">x',
 
         },
 
@@ -456,22 +447,24 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
     });
 
 
-    // $("#users tbody").on("click", "#modal", function() {
-    //   event.preventDefault();
-    //   var currow = $(this).closest("tr");
+    $("#users tbody").on("click", "#modal", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
 
-    //   var objid = currow.find("td:eq(0)").text();
-
-
-
-
-    //   console.log("test");
-    //   $('#modalupdate').modal('show');
-    //   $('#objid').val(objid);
+      var objid = currow.find("td:eq(0)").text();
+      var fullname = currow.find("td:eq(3)").text();
 
 
 
-    // });
+
+      console.log("test");
+      $('#modalvoid').modal('show');
+      $('#objid').val(objid);
+      $('#fullname').val(fullname);
+
+
+
+    });
 
 
 

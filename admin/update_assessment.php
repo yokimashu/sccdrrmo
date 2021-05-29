@@ -16,6 +16,7 @@ if (isset($_POST['update_assessment'])) {
     // echo "</pre>";
 
     // category
+    $objid          = $_POST['objid'];
     $date_reg       = date('Y-m-d', strtotime($_POST['date_reg']));
     $time           = date("H:i:s");
 
@@ -243,14 +244,16 @@ if (isset($_POST['update_assessment'])) {
             2ndDose                 = :second_dose,
             status                  = :status
             where entity_no         = :entityno
+            and objid               = :objid
     
         ";
 
     $assessment_data = $con->prepare($insert_assessment_sql);
     $assessment_data->execute([
         ':entityno'                     => $entityno,
+        ':objid'                        => $objid,
         ':date_reg'                     => $date_reg,
-        ':time_reg'                    => $time,
+        ':time_reg'                     => $time,
         ':consent'                      => $consent,
         ':refusal_reasons'              => $refusal,
         ':age_16'                       => $age_16,
@@ -293,11 +296,11 @@ if (isset($_POST['update_assessment'])) {
         $_SESSION['status'] = "Update Successful!";
         $_SESSION['status_code'] = "success";
 
-        header('location: add_assessment.php?id=' . $entityno);
+        header('location: add_assessment.php?id=' . $objid);
     } else {
         $_SESSION['status'] = "Update Unsuccessful!";
         $_SESSION['status_code'] = "error";
 
-        header('location: add_assessment.php?id=' . $entityno);
+        header('location: add_assessment.php?id=' . $objid);
     }
 }
