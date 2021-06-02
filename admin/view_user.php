@@ -12,7 +12,7 @@ $time = date('H:i:s');
 $btnSave = $btnEdi =  $entity_no = $btn_enabled =
     $get_firstname = $get_middlename = $get_lastname = $get_username  = $get_password =
     $get_department = $get_account = $get_new_password =
-    $symptoms = $patient = $person_status = $get_entity_no = $get_time = '';
+    $symptoms = $patient = $person_status = $get_entity_no = $get_time = $get_center = '';
 
 
 if (!isset($_SESSION['id'])) {
@@ -51,6 +51,7 @@ if (isset($_GET['id'])) {
         $get_lastname = $result['lastname'];
         $get_department = $result['department'];
         $get_account = $result['account_type'];
+        $get_center = $result['cbcr'];
     }
 }
 
@@ -62,6 +63,10 @@ $get_all_account_sql = "SELECT * FROM tbl_account ";
 $get_all_account_data = $con->prepare($get_all_account_sql);
 $get_all_account_data->execute();
 
+
+$get_all_bakuna_center_sql = "SELECT * FROM tbl_bakuna_center ";
+$get_all_bakuna_center_data = $con->prepare($get_all_bakuna_center_sql);
+$get_all_bakuna_center_data->execute();
 ?>
 
 <!DOCTYPE html>
@@ -107,37 +112,17 @@ $get_all_account_data->execute();
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
-
-
-                                            <label>Date & Time : </label>
-
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;
-
-                                            <div class="col-md-3">
-                                                <!-- <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-
-                                                </div> -->
+                                            <div class="col-md-4">
+                                                <label>Date & Time : </label>
                                                 <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $get_date_register;
-                                                                                                                                                                                    echo "       ";
                                                                                                                                                                                     echo $get_time; ?>">
-                                            </div>
 
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                                            &nbsp;&nbsp;
-                                            <div class="col-md-1">
-                                                <label>Entity ID : </label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4">
+                                                <label>Entity ID : </label>
                                                 <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="entity_no" id="entity_no" placeholder="Entity ID" value="<?php echo $get_entity_no; ?>" required>
                                             </div>
-
 
                                         </div></br>
 
@@ -145,31 +130,20 @@ $get_all_account_data->execute();
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
-
-                                            <label>Username : </label>
-
-
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
+                                                <label for="">Username:</label>
                                                 <input type="text" class="form-control" id="username" name="username" placeholder="Username" onblur="checkUsername()" value="<?php echo $get_username; ?>" required>
                                                 <div id="status"></div>
-
                                             </div>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                                            &nbsp;&nbsp;
 
-                                            <div class="col-md-1">
-                                                <label>Password: </label>
-                                            </div>
+
+                                            <div class="col-md-1"> </div>
                                             <div class="col-md-4">
+                                                <label>Password: </label>
                                                 <input type="password" class="form-control" <?php echo $btn_enabled ?> name="password" id="password" placeholder="Password" value="<?php echo $get_new_password ?>">
                                                 <span>Note: Input password if you want to update</span>
                                             </div>
+
 
 
 
@@ -179,13 +153,8 @@ $get_all_account_data->execute();
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
-                                            <div>
-                                                <label>Department:</label>
-                                            </div>
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <div class="col-md-4">
+                                                <label>Department:</label>
                                                 <select class="form-control select2" id="department" name="department" value="<?php echo $brgy; ?>">
                                                     <?php while ($get_categ = $get_all_data_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                         <?php $selected = ($get_department == $get_categ['objid']) ? 'selected' : ''; ?>
@@ -193,65 +162,34 @@ $get_all_account_data->execute();
                                                     <?php } ?>
                                                 </select>
                                             </div>
+
+                                            <div class="col-md-1"></div>
+
+                                            <div class="col-md-4">
+                                                <label>Bakuna Center:</label>
+                                                <select class="form-control select2" name="bakuna_center" id="bakuna_center">
+                                                    <option selected value=" ">Select Bakuna Center</option>
+                                                    <?php while ($get_bakuna = $get_all_bakuna_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <?php $selected = ($get_center == $get_bakuna['bc_code']) ? 'selected' : ''; ?>
+                                                        <option <?= $selected; ?> value="<?php echo $get_bakuna['bc_code']; ?>"><?php echo $get_bakuna['bc_name']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+
+
+                                            </div>
                                         </div></br>
 
 
                                         <div class="row">
                                             <div class="col-md-1"></div>
-
-                                            <div>
-                                                <label>First Name: </label>
-                                            </div>
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
                                             <div class="col-md-4">
+                                                <label>First Name: </label>
                                                 <input type="text" class="form-control" name="first_name" style=" text-transform: uppercase;" id="first_name" placeholder="First Name" value="<?php echo $get_firstname; ?>" required>
                                             </div>
-
-
-
-
-
-
-                                        </div><br>
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-
-
-                                            <label>Middle Name: </label>
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;
-
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="middle_name" style=" text-transform: uppercase;" id="middle_name" placeholder="Middle Name (Ex: 'A')" value="<?php echo $get_middlename; ?>" required>
+                                            <div class="col-md-1">
                                             </div>
-                                        </div><br>
-
-
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-
-
-                                            <label>Last Name: </label>
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" name="last_name" style=" text-transform: uppercase;" id="last_name" placeholder="Last Name" value="<?php echo $get_lastname; ?>" required>
-                                            </div>
-                                        </div><br>
-
-
-                                        <div class="row">
-                                            <div class="col-md-1    "></div>
-                                            <label>Account Type: </label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;
-                                            <div class="col-md-4">
+                                                <label>Account Type: </label>
                                                 <select class="form-control select2" id="type" name="account_type" value="<?php echo $account; ?>">
                                                     <?php while ($get_categ = $get_all_account_data->fetch(PDO::FETCH_ASSOC)) { ?>
                                                         <?php $selected = ($get_account == $get_categ['objid']) ? 'selected' : ''; ?>
@@ -259,6 +197,26 @@ $get_all_account_data->execute();
                                                     <?php } ?>
                                                 </select>
                                             </div>
+                                        </div><br>
+
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4">
+                                                <label>Middle Name: </label>
+                                                <input type="text" class="form-control" name="middle_name" style=" text-transform: uppercase;" id="middle_name" placeholder="Middle Name (Ex: 'A')" value="<?php echo $get_middlename; ?>" required>
+                                            </div>
+
+                                        </div><br>
+
+
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4">
+                                                <label>Last Name: </label>
+                                                <input type="text" class="form-control" name="last_name" style=" text-transform: uppercase;" id="last_name" placeholder="Last Name" value="<?php echo $get_lastname; ?>" required>
+                                            </div>
+
                                         </div><br>
 
 

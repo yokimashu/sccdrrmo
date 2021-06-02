@@ -19,6 +19,7 @@
         $get_firstname              = $_POST['first_name'];
         $get_middlename             = $_POST['middle_name'];
         $get_lastname               = $_POST['last_name'];
+        $get_bakuna                 =  $_POST['bakuna_center'];
         $get_account                = $_POST['account_type'];
         $alert_msg = '';
         $alert_msg1 = '';
@@ -34,7 +35,8 @@
             lastname             = :last_name,
             username             = :username,
             department           = :dept,
-            account_type         = :account
+            account_type         = :account,
+            cbcr                 = :cbcrno
             where entity_no      = :entityNo ";
 
             $add_user_data = $con->prepare($insert_users_sql);
@@ -43,6 +45,7 @@
                 ':full_name'                => $get_firstname . ' ' . $get_middlename . ' ' . $get_lastname,
                 ':first_name'               => $get_firstname,
                 ':middle_name'              => $get_middlename,
+                ':cbcrno'                   => $get_bakuna,
                 ':last_name'                => $get_lastname,
                 ':username'                => $get_username,
                 ':dept'                   => $department,
@@ -87,11 +90,12 @@
             $_SESSION['status'] = "Update Successful!";
             $_SESSION['status_code'] = "success";
 
-            header('location: list_users.php');
+            header('location: view_user.php?id=' . $get_entity_no);
         } else {
             $_SESSION['status'] = "Update Unsuccessful!";
             $_SESSION['status_code'] = "error";
 
-            header('location: list_users.php');
+            // header('location: view_user.php');
+            header('location: view_user.php?id=' . $get_entity_no);
         }
     }
