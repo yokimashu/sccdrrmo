@@ -1305,215 +1305,172 @@ if (isset($_GET['id'])) {
                                                         </div>
                                                         <!-- </legend> -->
                                                         <div class="card-body">
+
+
                                                             <div class="row">
+
                                                                 <div class="col-sm-3">
                                                                     <label>Hypertension:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_hypertension" id="como_hypertension" style="width:150% " class="form-control ">
+                                                                    <select name="como_hypertension" id="como_hypertension" style="width:100% " class="form-control ">
                                                                         <option <?php if ($get_comorbidity01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
-                                                                    <label>Chronic Kidney Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
-                                                                        <option <?php if ($get_comorbidity11 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity11 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <label>Heart disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_heart" id="como_heart" style="width:150%" class="form-control ">
+                                                                    <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
                                                                         <option <?php if ($get_comorbidity02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-1"></div>
 
-                                                                <div class="col-sm-4">
-                                                                    <label>Cerebrovascular Accident:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
-                                                                        <option <?php if ($get_comorbidity12 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity12 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <label>Kidney disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_kidney" id="como_kidney" style="width:150%" class="form-control ">
+                                                                    <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
                                                                         <option <?php if ($get_comorbidity03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
-                                                                <div class="col-sm-1"> </div>
-
-                                                                <div class="col-sm-4">
-                                                                    <label>Neurologic Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_neurologic" id="como_neurologic">
-                                                                        <option <?php if ($get_comorbidity13 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity13 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                <div class="col-sm-3">
+                                                                    <label>Diabetes mellitus:</label>
+                                                                    <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
                                                             </div><br>
 
                                                             <div class="row">
+
                                                                 <div class="col-sm-3">
-                                                                    <label>Diabetes mellitus:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_diabetes" id="como_diabetes" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <label>Bronchial Asthma:</label>
+                                                                    <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
-                                                                    <label>Chronic Liver Disease:</label>
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Immunodefiency state: </label>
+                                                                    <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
                                                                 </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_liver" id="como_liver">
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Cancer:</label>
+                                                                    <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Chronic Respiratory Disease:</label>
+                                                                    <select class="form-control" style="width:100%" id="como_respiratory" name="como_respiratory">
+                                                                        <option <?php if ($get_comorbidity09 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity09 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div><br>
+
+                                                            <div class="row">
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Cardiovascular Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
+                                                                        <option <?php if ($get_comorbidity10 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity10 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label>Chronic Kidney Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
+                                                                        <option <?php if ($get_comorbidity11 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity11 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label>Cerebrovascular Accident:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
+                                                                        <option <?php if ($get_comorbidity12 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity12 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Neurologic Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_neurologic" id="como_neurologic">
+                                                                        <option <?php if ($get_comorbidity13 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity13 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+
+
+                                                            </div><br>
+
+
+                                                            <div class="row">
+
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Chronic Liver Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_liver" id="como_liver">
                                                                         <option <?php if ($get_comorbidity14 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity14 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
-                                                            </div><br>
-
-
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Bronchial Asthma:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_asthma" id="como_asthma" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Chronic Respiratory Tract Infection:</label>
-
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_tract_infection" id="como_tract_infection">
+                                                                    <select style="width:100%" class="form-control" name="como_tract_infection" id="como_tract_infection">
                                                                         <option <?php if ($get_comorbidity15 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity15 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
 
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Immunodefiency state: </label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Obesity:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_obesity" id="como_obesity">
+                                                                    <select style="width:100%" class="form-control" name="como_obesity" id="como_obesity">
                                                                         <option <?php if ($get_comorbidity16 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity16 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Cancer:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_cancer" id="como_cancer" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Tuberculosis:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
+                                                                    <select style="width:100%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
                                                                         <option <?php if ($get_comorbidity17 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity17 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
+
                                                             </div><br>
+
+
 
 
                                                             <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Chronic Respiratory Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select class="form-control" style="width:150%" id="como_respiratory" name="como_respiratory">
-                                                                        <option <?php if ($get_comorbidity09 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity09 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Malignancy:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_malignancy" id="como_malignancy">
+                                                                    <select style="width:100%" class="form-control" name="como_malignancy" id="como_malignancy">
                                                                         <option <?php if ($get_comorbidity18 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity18 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Cardiovascular Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
-                                                                        <option <?php if ($get_comorbidity10 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity10 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-
-                                                                <div class="col-sm-4">
                                                                     <label>Other:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_other" id="como_other" style="width:150%" class="form-control ">
+                                                                    <select name="como_other" id="como_other" style="width:100%" class="form-control ">
                                                                         <option <?php if ($get_comorbidity08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
+
                                                             </div><br>
+
                                                         </div>
                                                     </div>
 
@@ -1529,215 +1486,172 @@ if (isset($_GET['id'])) {
                                                         </div>
                                                         <!-- </legend> -->
                                                         <div class="card-body">
+
+
                                                             <div class="row">
+
                                                                 <div class="col-sm-3">
                                                                     <label>Hypertension:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_hypertension" id="como_hypertension" style="width:150% " class="form-control ">
+                                                                    <select name="como_hypertension" id="como_hypertension" style="width:100% " class="form-control ">
                                                                         <option <?php if ($get_comorbidity01 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity01 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
-                                                                    <label>Chronic Kidney Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
-                                                                        <option <?php if ($get_comorbidity11 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity11 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <label>Heart disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_heart" id="como_heart" style="width:150%" class="form-control ">
+                                                                    <select name="como_heart" id="como_heart" style="width:100%" class="form-control ">
                                                                         <option <?php if ($get_comorbidity02 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity02 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-1"></div>
 
-                                                                <div class="col-sm-4">
-                                                                    <label>Cerebrovascular Accident:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
-                                                                        <option <?php if ($get_comorbidity12 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity12 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <label>Kidney disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_kidney" id="como_kidney" style="width:150%" class="form-control ">
+                                                                    <select name="como_kidney" id="como_kidney" style="width:100%" class="form-control ">
                                                                         <option <?php if ($get_comorbidity03 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity03 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
-                                                                <div class="col-sm-1"> </div>
-
-                                                                <div class="col-sm-4">
-                                                                    <label>Neurologic Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_neurologic" id="como_neurologic">
-                                                                        <option <?php if ($get_comorbidity13 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity13 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                <div class="col-sm-3">
+                                                                    <label>Diabetes mellitus:</label>
+                                                                    <select name="como_diabetes" id="como_diabetes" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
                                                             </div><br>
 
                                                             <div class="row">
+
                                                                 <div class="col-sm-3">
-                                                                    <label>Diabetes mellitus:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_diabetes" id="como_diabetes" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity04 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity04 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <label>Bronchial Asthma:</label>
+                                                                    <select name="como_asthma" id="como_asthma" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
-                                                                    <label>Chronic Liver Disease:</label>
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Immunodefiency state: </label>
+                                                                    <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
                                                                 </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_liver" id="como_liver">
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Cancer:</label>
+                                                                    <select name="como_cancer" id="como_cancer" style="width:100%" class="form-control ">
+                                                                        <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Chronic Respiratory Disease:</label>
+                                                                    <select class="form-control" style="width:100%" id="como_respiratory" name="como_respiratory">
+                                                                        <option <?php if ($get_comorbidity09 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity09 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div><br>
+
+                                                            <div class="row">
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Cardiovascular Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
+                                                                        <option <?php if ($get_comorbidity10 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity10 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label>Chronic Kidney Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_chronic_kindey" id="como_chronic_kindey">
+                                                                        <option <?php if ($get_comorbidity11 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity11 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label>Cerebrovascular Accident:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_cerebrovascular" id="como_cerebrovascular">
+                                                                        <option <?php if ($get_comorbidity12 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity12 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Neurologic Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_neurologic" id="como_neurologic">
+                                                                        <option <?php if ($get_comorbidity13 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                        <option <?php if ($get_comorbidity13 == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    </select>
+                                                                </div>
+
+
+                                                            </div><br>
+
+
+                                                            <div class="row">
+
+
+                                                                <div class="col-sm-3">
+                                                                    <label>Chronic Liver Disease:</label>
+                                                                    <select style="width:100%" class="form-control" name="como_liver" id="como_liver">
                                                                         <option <?php if ($get_comorbidity14 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity14 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
-                                                            </div><br>
-
-
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Bronchial Asthma:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_asthma" id="como_asthma" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity05 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity05 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Chronic Respiratory Tract Infection:</label>
-
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_tract_infection" id="como_tract_infection">
+                                                                    <select style="width:100%" class="form-control" name="como_tract_infection" id="como_tract_infection">
                                                                         <option <?php if ($get_comorbidity15 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity15 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
 
 
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Immunodefiency state: </label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_immunodeficiency" id="como_immunodeficiency" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity06 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity06 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Obesity:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_obesity" id="como_obesity">
+                                                                    <select style="width:100%" class="form-control" name="como_obesity" id="como_obesity">
                                                                         <option <?php if ($get_comorbidity16 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity16 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Cancer:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_cancer" id="como_cancer" style="width:150%" class="form-control ">
-                                                                        <option <?php if ($get_comorbidity07 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity07 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Tuberculosis:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
+                                                                    <select style="width:100%" class="form-control" name="como_tuberculosis" id="como_tuberculosis">
                                                                         <option <?php if ($get_comorbidity17 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity17 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
+
                                                             </div><br>
+
+
 
 
                                                             <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Chronic Respiratory Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select class="form-control" style="width:150%" id="como_respiratory" name="como_respiratory">
-                                                                        <option <?php if ($get_comorbidity09 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity09 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-                                                                <div class="col-sm-4">
                                                                     <label>Malignancy:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_malignancy" id="como_malignancy">
+                                                                    <select style="width:100%" class="form-control" name="como_malignancy" id="como_malignancy">
                                                                         <option <?php if ($get_comorbidity18 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity18 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
-                                                            </div><br>
-
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
-                                                                    <label>Cardiovascular Disease:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select style="width:150%" class="form-control" name="como_cardiovascular" id="como_cardiovascular">
-                                                                        <option <?php if ($get_comorbidity10 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                        <option <?php if ($get_comorbidity10 == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-1"></div>
-
-                                                                <div class="col-sm-4">
                                                                     <label>Other:</label>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <select name="como_other" id="como_other" style="width:150%" class="form-control ">
+                                                                    <select name="como_other" id="como_other" style="width:100%" class="form-control ">
                                                                         <option <?php if ($get_comorbidity08 == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                         <option <?php if ($get_comorbidity08 == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     </select>
                                                                 </div>
+
                                                             </div><br>
+
                                                         </div>
                                                     </div>
                                                 <?php } ?>
@@ -1752,7 +1666,6 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <!-- </legend> -->
                                                     <div class="card-body">
-
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="">Provided Electronic Informed Consent? &nbsp;&nbsp; <span id="required">*</span></label>
@@ -1762,9 +1675,7 @@ if (isset($_GET['id'])) {
                                                                     <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                     <option <?php if ($get_consent == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
                                                                 </select>
-
                                                             </div>
-
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="sinovac" id="sinovac">
@@ -1790,35 +1701,19 @@ if (isset($_GET['id'])) {
                                                 <!-- end consent -->
 
 
-
                                                 <div class="box-footer" align="center">
-
-
                                                     <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
                                                         <!-- <i class="fa fa-check fa-fw"> </i> -->
                                                         <h4>Update Form</h4>
                                                     </button>
-
-
-
                                                 </div><br>
-
                                             </form>
                                         </div>
-
                                     </div>
                                 </div>
-
-
-
-
                             </section>
                             <br>
                         </div>
-
-
-
-
                     </div>
                 </div>
             </section>
