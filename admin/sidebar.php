@@ -95,31 +95,37 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 ?>
 
 <nav class="main-header navbar navbar-expand greenBG navbar-light border-bottom">
-  <!-- Left navbar links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link">VAMOS | SYSTEM</a>
-    </li>
-
-
-    <li class="nav-item">
-      <a href="index" class="nav-link ">HOME PAGE</a>
-    </li>
-
-
-    <!-- <li class="nav-item">
-      <a href="announcement" class="nav-link ">
-      
-        ANNOUNCEMENTS
-   
-      </a>
-    </li> -->
-
-
-  </ul>
+	<!-- Left navbar links -->
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+		</li>
+		<li class="nav-item">
+			<a href="#" class="nav-link">VAMOS | SYSTEM</a>
+		</li>
+		
+		
+		<li class="nav-item">
+			<a href="index" class="nav-link ">HOME PAGE</a>
+		</li>
+		
+		
+		<li class="nav-item">
+			<a href="chatroom.php" class="nav-link ">PRIVATE MESSAGE / CHATROOM 
+			<b id="PMessage" style="font-size:15px;" class="badge badge-danger"></b></a>
+		</li>
+		
+		
+		<!-- <li class="nav-item">
+			<a href="announcement" class="nav-link ">
+			
+			ANNOUNCEMENTS
+			
+			</a>
+		</li> -->
+		
+		
+	</ul>
 
   <ul class="navbar-nav ml-auto">
     <!-- <li class="nav-item">
@@ -253,6 +259,8 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           </label>
 
           <?php echo $list_categorylist; ?>
+          
+          <?php echo $list_vaccinated; ?>
           <?php echo $list_vaccine_report; ?>
           <?php echo $list_vaccine_report_no; ?>
           <?php echo $list_eligible_report; ?>
@@ -261,6 +269,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $list_astrazeneca; ?>
           <?php echo $vaccine_sandoc; ?>
           <?php echo $list_deped_report; ?>
+          <?php echo $overallcount; ?>
      
           <?php echo $daily_report; ?>
 

@@ -60,7 +60,7 @@ $get_all_brgy_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CATEGORYLIST </title>
+  <title>VACCINATED MASTERLIST </title>
   <?php include('heading.php'); ?>
 
 
@@ -84,7 +84,7 @@ $get_all_brgy_data->execute();
         <br>
         <div class="card-header  bg-success text-white">
           <h4>
-            Vaccine Masterlist
+            Vaccinated Masterlist
           </h4>
 
         </div>
@@ -134,31 +134,32 @@ $get_all_brgy_data->execute();
                             </select>
                           </div>
 
-                          <div class="col-md-1" align="right">
-                            <label>Consent: </label>
+                          <div class="col-md-0" align="right">
+                            <label>Dose: </label>
                           </div>
                           <div class="col-md-1">
-                            <select name="consent" id="consent" style="width:80%" class="form-control ">
-                              <option value="02_No"> No</option>
-                              <option value="01_Yes">Yes </option>
+                            <select name="dose" id="dose" style="width:100%" class="form-control ">
+                              <option value="01_Yes"> 1st Dose</option>
+                              <option value="01_Yes"> 2nd Dose </option>
+                           
+                           
+                            </select>
+                          </div>
+
+                          <div class="col-md-0" align="right">
+                            <label>Vaccine Type: </label>
+                          </div>
+                          <div class="col-md-1">
+                            <select name="type" id="type" style="width:150%" class="form-control ">
+                              <option value="Sinovac"> Sinovac</option>
+                              <option value="Astrazeneca">Astrazeneca </option>
                            
                            
                             </select>
                           </div>
 
 
-<!--                           
-                          <div class="col-md-1" align="right">
-                            <label>Astrazeneca:  </label>
-                          </div>
-                          <div class="col-md-1">
-                            <select name="sinovac" id="astrazeneca" style="width:80%" class="form-control ">
-                              <option value="02_No">No</option>
-                              <option value="01_Yes">Yes </option>
-                          
-                           
-                            </select>
-                          </div> -->
+
 
 
                         </div>
@@ -166,12 +167,12 @@ $get_all_brgy_data->execute();
                         <div class="row">
 
                           <div class="col-md-5" align="right">
-                            <button id="list_categorylist" onClick="loadhistory()" class="btn btn-success"><i class="fa fa-search"></i></button>
+                            <button id="list_vaccinatedlist" onClick="loadhistory()" class="btn btn-success"><i class="fa fa-search"></i></button>
                             <!-- <input hidden readonly="true" type="text" name="description" id="description" class="form-control"> -->
                           </div>
                           <div class="col-md-1" style="float:left">
                             &nbsp;
-                            <a class="btn btn-danger btn-md" target="blank" id="printlink" href="../plugins/jasperreport/vaccine_masterlist.php?description=<?php echo $description; ?>&barangay=<?php echo $barangay; ?>">
+                            <a class="btn btn-danger btn-md" target="blank" id="printlink" href="../plugins/jasperreport/vaccinated_list.php?description=<?php echo $description; ?>&barangay=<?php echo $barangay; ?>">
                               <i class="nav-icon fa fa-print"></i>
                             </a>
                           </div>
@@ -185,19 +186,6 @@ $get_all_brgy_data->execute();
                       </div>
                       <br>
                       <!-- end of row -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     </div>
 
@@ -217,11 +205,12 @@ $get_all_brgy_data->execute();
                             <th> Category</th>
                             <th> Full Name </th>
                             <th> Barangay </th>
-                            <th> Consent</th>
+                            <th> 1st Dose</th>
+                            <th> 2nd Dose</th>
                             <th> Sinovac</th>
                             <th> Astrazeneca</th>
                           </thead>
-                          <tbody id="category_member">
+                          <tbody id="vaccinated_member">
 
                           </tbody>
                         </table>
@@ -283,7 +272,7 @@ $get_all_brgy_data->execute();
       event.preventDefault();
       var category = $('#category2').val();
       var barangay = $('#barangay1').val();
-      var consent = $('#consent').val();
+      var type = $('#type').val();
     
 
 
@@ -292,10 +281,10 @@ $get_all_brgy_data->execute();
 
 
 
-      $('#category_member').load("load_categorylist.php", {
+      $('#vaccinated_member').load("load_vaccinated.php", {
         category: category,
           barangay: barangay,
-          consent: consent
+          type: type
        
 
         },
@@ -319,9 +308,12 @@ $get_all_brgy_data->execute();
 
     $(function() {
 
+    
+
       $('.select2').select2();
       $("#category").select2({
-
+        //  minimumInputLength: 3,
+        // placeholder: "hello",
         ajax: {
           url: "category_query", // json datasource
           type: "post",
@@ -391,16 +383,16 @@ $get_all_brgy_data->execute();
 
 
     $('#printlink').click(function() {
-      var category = $('#category2').val();
-      var description = $('#description').val();
+      var description = $('#category2').val();
       var barangay1 = $('#barangay1').val();
-      var consent = $('#consent').val();
+      var dose = $('#dose').val();
+      var type = $('#type').val();
 
 
 
       console.log(description);
-      var param = "category=" + category + "&barangay=" + barangay1 + "&consent=" + consent + "";
-      $('#printlink').attr("href", "../plugins/jasperreport/vaccine_masterlist.php?" + param, '_parent');
+      var param = "description=" + description + "&barangay1=" + barangay1 + "&dose=" + dose + "&type=" + type + "";
+      $('#printlink').attr("href", "../plugins/jasperreport/vaccinated_list.php?" + param, '_parent');
     })
   </script>
 </body>

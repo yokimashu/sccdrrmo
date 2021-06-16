@@ -86,7 +86,7 @@ while ($result = $cbcr_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
-    header('location: list_assessment.php');
+    header('location: list_schedule.php');
 
 
 

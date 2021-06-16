@@ -16,12 +16,13 @@
     while($result = $execute_sql->fetch(PDO::FETCH_ASSOC))
     {
 		
-		if ($_SESSION['user'] == $result['sender']){
+		if ($_SESSION['flname'] == $result['sender']){
 			echo "<b style='font-size:14px;float:right;padding-right:20px;'>" . $result['sender'] . "</b><br>";
 		?>
 		<div class="row">
 			<div style="width:85%;background-color:#80ccff;border-radius:8px;margin:auto;height:auto;min-height:20px;">
 				<?php echo "<p style='font-size:14px;margin-top:4px;padding:10px;color:black;'>" . $result['message'] . "</p>";?>
+				<?php echo "<small style='font-size:11px;padding-left:10px;color:black'>" . $result['date'] . " " . $result['time'] . "</small>";?>
 			</div>
 			
 			
@@ -37,6 +38,7 @@
 			
 			<div style="width:85%;background-color:#d6d6d4;border-radius: 8px;margin:auto;height:auto;min-height:20px;">
 				<?php echo "<p style='font-size:14px;margin-top:4px;padding:10px;color:black;'>" . $result['message'] . "</p>";?>
+				<?php echo "<small style='font-size:11px;padding-left:10px;color:black'>" . $result['date'] . " " . $result['time'] . "</small>";?>
 			</div>
 		</div>
 		<br>

@@ -91,20 +91,27 @@ $category = $date_from = $date_to = '';
                   
 
                       <div class="input-group date">
-                        <label style="padding-right:10px;padding-left: 10px">DATE: </label>
+                        <label style="padding-right:10px;padding-left: 10px">DATE FROM: </label>
                         <div style="padding-right:10px" class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input style="margin-right:10px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"value="<?php echo $date_from; ?>">
-                        <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/daily_vaccine_report.php?datefrom=<?php echo $date_from; ?>">
-
-<i class="nav-icon fa fa-print"></i></a>
-                                 
+                        <input style="margin-right:5px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"value="<?php echo $date_from; ?>">
+                        <label style="padding-right:10px;padding-left: 10px">DATE TO: </label>
+                        <input style="margin-right:5px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="dateto" id="dteto"value="<?php echo $date_to; ?>">
+                        </div>
+                        <br>
+                       
+                        <div class="input-group date" style="padding-right:150px;padding-left: 50px">  
+                        <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/daily_vaccine_report.php?datefrom=<?php echo $date_from; ?>"> REPORT 1</a>
+                        <br>
+                        &nbsp;
+<a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink1" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/daily_vaccine_report_new.php?datefrom=<?php echo $date_from; ?>"> REPORT 2</a>
+</div> 
                       </div>
 
 
 
-                        </div>
+               
                       </div>
                     </div>
                   </form>
@@ -149,13 +156,26 @@ $category = $date_from = $date_to = '';
 
     $('#printlink').click(function() {
       var date_from = $('#dtefrom').val();
+      var date_to = $('#dteto').val();
    
   
 
 
       console.log(date_from);
-      var param = "datefrom=" + date_from + "";
+      var param = "datefrom=" + date_from + "&dateto=" + date_to + "";
       $('#printlink').attr("href", "../plugins/jasperreport/daily_vaccine_report.php?" + param, '_parent');
+    })
+
+    $('#printlink1').click(function() {
+      var date_from = $('#dtefrom').val();
+      var date_to = $('#dteto').val();
+   
+  
+
+
+      console.log(date_from);
+      var param = "datefrom=" + date_from + "&dateto=" + date_to + "";
+      $('#printlink1').attr("href", "../plugins/jasperreport/daily_vaccine_report_new.php?" + param, '_parent');
     })
   </script>
 </body>

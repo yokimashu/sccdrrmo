@@ -14,7 +14,7 @@ if (!isset($_POST['searchTerm'])){
 }else{
     $search = $_POST['searchTerm'];
 
-    $stmt = $con->prepare("SELECT * FROM tbl_category where category like :name order by category LIMIT :limit");
+    $stmt = $con->prepare("SELECT * FROM tbl_category where description like :name order by category LIMIT :limit");
     $stmt->bindValue(':name', '%'.$search.'%', PDO::PARAM_STR);
     $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
     $stmt->execute();
@@ -27,8 +27,8 @@ $response = array();
 
   foreach ($usersList as $user){
     $response[] = array(
-      "id" =>$user['idno'],
-      "text" =>$user['category']
+      "category" =>$user['category'],
+      "text" =>$user['description']
     );
 
   }

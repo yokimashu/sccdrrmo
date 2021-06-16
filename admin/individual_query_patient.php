@@ -17,16 +17,23 @@ if (!isset($_POST['searchTerm'])) {
   $stmt->execute();
   $usersList = $stmt->fetchAll();
   // $fetchData = mysqli_query($con,  "SELECT * FROM tbl_documents order by docno LIMIT 10" );
-} else {
+} else{
   $search = $_POST['searchTerm'];
 
-  $stmt = $con->prepare("SELECT * FROM tbl_individual where fullname like :name order by fullname LIMIT :limit");
+  $stmt = $con->prepare("SELECT * FROM tbl_individual where fullname like :name or entity_no like :entity_no order by fullname LIMIT :limit");
   $stmt->bindValue(':name', '%' . $search . '%', PDO::PARAM_STR);
+  $stmt->bindValue(':entity_no', '%' . $search . '%', PDO::PARAM_STR);
+
+ 
+
   $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
   $stmt->execute();
   $usersList = $stmt->fetchAll();
   // $fetchData = mysqli_query($con,  "SELECT * FROM tbl_documents where docno like '%".$_GET['q']."%' order by docno LIMIT 10" );
-}
+} 
+
+ 
+
 
 // $sql = "SELECT * FROM tbl_documents where docno like '%".$_GET['q']."%' order by docno LIMIT 10";
 
@@ -43,7 +50,8 @@ $response = array();
 foreach ($usersList as $user) {
   $response[] = array(
     "id" => $user['entity_no'],
-    "text" => $user['fullname'],
+    "text" => $user['entity_no'] . ' - ' . $user['fullname'],
+    
 
 
 

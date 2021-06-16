@@ -3,15 +3,15 @@
 include('../config/db_config.php');
 
 
-$get_all_vaccine_sql = "SELECT * FROM tbl_assessment ";
+$get_all_vaccine_sql = "SELECT * FROM tbl_assessment where status = 'VACCINATED'";
 $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
 $get_all_vaccine_data->execute();
 
-$get_all_sinovac_sql = "SELECT * FROM tbl_assessment where Vaccinemanufacturer = 'Sinovac' ";
+$get_all_sinovac_sql = "SELECT * FROM tbl_assessment where Vaccinemanufacturer = 'Sinovac' and status = 'VACCINATED' ";
 $get_all_sinovac_data = $con->prepare($get_all_sinovac_sql);
 $get_all_sinovac_data->execute();
 
-$get_all_astrazeneca_sql = "SELECT * FROM tbl_assessment where Vaccinemanufacturer = 'Astrazeneca' ";
+$get_all_astrazeneca_sql = "SELECT * FROM tbl_assessment where Vaccinemanufacturer = 'Astrazeneca' and status = 'VACCINATED' ";
 $get_all_astrazeneca_data = $con->prepare($get_all_astrazeneca_sql);
 $get_all_astrazeneca_data->execute();
 
@@ -23,6 +23,34 @@ $get_all_refusal_data->execute();
 $get_all_deferral_sql = "SELECT * FROM tbl_assessment where deferral != 'N/A' ";
 $get_all_deferral_data = $con->prepare($get_all_deferral_sql);
 $get_all_deferral_data->execute();
+
+$get_all_health_sql = "SELECT * FROM tbl_vaccine where category = '01_A1: Health Care Workers' ";
+$get_all_health_data = $con->prepare($get_all_health_sql);
+$get_all_health_data->execute();
+
+$get_all_senior_sql = "SELECT * FROM tbl_vaccine where category = '02_A2: Senior Citizens' ";
+$get_all_senior_data = $con->prepare($get_all_senior_sql);
+$get_all_senior_data->execute();
+
+$get_all_indigent_sql = "SELECT * FROM tbl_vaccine where category = '05_A5: Poor Population' ";
+$get_all_indigent_data = $con->prepare($get_all_indigent_sql);
+$get_all_indigent_data->execute();
+
+$get_all_Uniformed_Personnel_sql = "SELECT * FROM tbl_vaccine where category = '04_A4: Frontline Personnel in Essential Sector' ";
+$get_all_Uniformed_Personnel_data = $con->prepare($get_all_Uniformed_Personnel_sql);
+$get_all_Uniformed_Personnel_data->execute();
+
+$get_all_Essential_Worker_sql = "SELECT * FROM tbl_vaccine where category = '07_B2: Other Government Workers' ";
+$get_all_Essential_Worker_data = $con->prepare($get_all_Essential_Worker_sql);
+$get_all_Essential_Worker_data->execute();
+
+$get_all_Other_sql = "SELECT * FROM tbl_vaccine where category = '08_B3: Other Essential Workers' ";
+$get_all_Other_data = $con->prepare($get_all_Other_sql);
+$get_all_Other_data->execute();
+
+$get_all_Teachers_sql = "SELECT * FROM tbl_vaccine where category = '06_B1: Teachers and Social Workers' ";
+$get_all_Teachers_data = $con->prepare($get_all_Teachers_sql);
+$get_all_Teachers_data->execute();
 
 $title = 'VAMOS | Dashboard';
 ?>
@@ -86,17 +114,29 @@ $title = 'VAMOS | Dashboard';
             </div>
             <div class="card-body">
 
+            <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzY1YzE2YWEtMDVkNi00ZWRiLWIyNmYtNDExZTI0NjY1NjU3IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection3161605be07cb4a88351" width="100%" height="800" style="border:1px solid black;" title="W3Schools Free Online Web Tutorials">
+</iframe>
+
+</div>
+</div>
+</div>
+
+<div class="container-fluid">
+          <div class="card">
+<div class="card-header bg-success text-white">
+              <h4>
+                SUMMARY
+              </h4>
+            </div>
+            <div class="card-body">
               <div class="col-md-12">
 
                 <div class="row">
                   <fieldset class="form-control field_set">
-
-
-
                     <div class="row">
                       <div class="col-12 col-sm-6 col-md-4">
                         <div class="info-box mb-3">
-                          <a href="#" class="info-box-icon bg-warning elevation-1">
+                          <a href="list_vaccinated.php" class="info-box-icon bg-warning elevation-1">
                             <span><i class="fas fa-hospital-user"></i></span>
                           </a>
                           <div class="info-box-content">
@@ -164,9 +204,131 @@ $title = 'VAMOS | Dashboard';
 
                   </fieldset>
                 </div>
-                <br>
+          
 
-                <br>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container-fluid">
+          <div class="card">
+
+            <div class="card-header bg-success text-white">
+              <h4>
+              DISAGGREGATED ELIGIBLE POPULATION BY BARANGAY/ HEALTH FACILITY (HF)
+              </h4>
+            </div>
+            <div class="card-body">
+
+              <div class="col-md-12">
+
+                <div class="row">
+                  <fieldset class="form-control field_set">
+
+
+
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1">
+                            <span><i class="fas fa-hospital-user"></i></span>
+                          </a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Health Care Worker</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_health_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-users icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Senior Citizen</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_senior_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-users icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Indigent</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_indigent_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-users icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Uniformed_Personnel</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_Uniformed_Personnel_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-users icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Essential_Worker</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_Essential_Worker_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-users icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Teachers and Social Workers</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_Teachers_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="#" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-users icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Other</span>
+                            <span class="info-box-number">
+                              <?php echo $get_all_Other_data->rowCount() ?>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+                  </fieldset>
+                </div>
+               
 
 
 
@@ -181,12 +343,36 @@ $title = 'VAMOS | Dashboard';
 
 
 
-
-        <div class="content ">
+        <!-- <div class="content ">
           <div class="card">
             <div class="card-header bg-success text-white">
               <h4>
                 BAKUNA CENTER
+              </h4>
+            </div>
+
+            <div class="card-body">
+
+
+          registered individual by barangay -->
+              <!-- <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                      <div id="chart_div" style="padding-left:10px; width: 100; height: 750px"> </div>
+                    </div>
+                  </div>
+                </div>
+              </div><br>
+            </div> -->
+          <!-- </div> --> 
+        <!-- </div> -->
+        
+        <div class="content ">
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                SECOND DOSE SCHEDULE FOR SINOVAC
               </h4>
             </div>
 
@@ -198,23 +384,80 @@ $title = 'VAMOS | Dashboard';
                 <div class="card-body">
                   <div class="box box-primary ">
                     <div class="box-body">
-                      <div id="chart_div" style="padding-left:10px; width: 100; height: 750px"> </div>
+                    <div class="table-responsive">
+                    <!-- <div class="row">
+                      <div class="col-md-3" id="combo"></div>
+                    </div>
+                    <br> -->
+
+
+                    <table style="overflow-x: auto;" id="sinovac" name="sinovac" class="table table-bordered table-striped">
+                      <thead align="center">
+
+                        <th> Entity No </th>
+                        <th> Full Name </th>
+                        <th> Contact No. </th>
+                        <th> City </th>
+                        <th> Schedule of Second Dose</th>
+
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
                     </div>
                   </div>
                 </div>
               </div><br>
-
-
-
-
-
-
-
-
-
             </div>
           </div>
 
+   
+          <div class="content ">
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                SECOND DOSE SCHEDULE FOR ASTRAZENECA
+              </h4>
+            </div>
+
+            <div class="card-body">
+
+
+              <!-- registered individual by barangay -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                    <div class="table-responsive">
+                    <!-- <div class="row">
+                      <div class="col-md-3" id="combo"></div>
+                    </div>
+                    <br> -->
+
+
+                    <table style="overflow-x: auto;" id="astrazeneca" name="astrazeneca" class="table table-bordered table-striped">
+                      <thead align="center">
+
+                        <th> Entity No </th>
+                        <th> Full Name </th>
+                        <th> Contact No. </th>
+                        <th> City </th>
+                        <th> Schedule of Second Dose</th>
+
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                    </div>
+                  </div>
+                </div>
+              </div><br>
+            </div>
+          </div>
 
 
         </div>
@@ -290,9 +533,6 @@ $title = 'VAMOS | Dashboard';
     })
 
     $(document).ready(function() {
-
-
-
       google.charts.load('current', {
         packages: ['corechart', 'bar']
       });
@@ -364,7 +604,51 @@ $title = 'VAMOS | Dashboard';
         materialChart.draw(data, materialOptions);
       }
 
+      var dataTable = $('#sinovac').DataTable({
 
+page: true,
+stateSave: true,
+processing: true,
+serverSide: true,
+scrollX: false,
+ajax: {
+  url: "search_2nddose.php",
+  type: "post",
+  error: function(xhr, b, c) {
+    console.log(
+      "xhr=" +
+      xhr.responseText +
+      " b=" +
+      b.responseText +
+      " c=" +
+      c.responseText
+    );
+  }
+} }
+);
+
+var dataTable = $('#astrazeneca').DataTable({
+
+page: true,
+stateSave: true,
+processing: true,
+serverSide: true,
+scrollX: false,
+ajax: {
+  url: "search_2nddose_astra.php",
+  type: "post",
+  error: function(xhr, b, c) {
+    console.log(
+      "xhr=" +
+      xhr.responseText +
+      " b=" +
+      b.responseText +
+      " c=" +
+      c.responseText
+    );
+  }
+} }
+);
       //   google.charts.load('current', {
       //     packages: ['corechart', 'bar']
       //   });

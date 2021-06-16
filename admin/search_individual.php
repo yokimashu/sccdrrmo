@@ -50,6 +50,8 @@ $getAllIndividual = "SELECT e.entity_no,
      if( !empty($requestData['search']['value']) ) {
         $getAllIndividual.=" (firstname LIKE '%".$requestData['search']['value']."%'";
         $getAllIndividual.=" OR e.entity_no LIKE '%".$requestData['search']['value']."%' ";
+        $getAllIndividual.=" OR CONCAT(firstname,' ',middlename,' ',lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
+        $getAllIndividual.=" OR CONCAT(firstname,' ',lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
         $getAllIndividual.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR middlename LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR lastname LIKE '%".$requestData['search']['value']."%' ";
@@ -68,6 +70,8 @@ $getAllIndividual = "SELECT e.entity_no,
        $countfilter.=" (firstname LIKE '%".$requestData['search']['value']."%'";
        $countfilter.=" OR e.entity_no LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR middlename LIKE '%".$requestData['search']['value']."%' ";
+       $countfilter.=" OR CONCAT(firstname,' ',middlename,' ',lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
+        $countfilter.=" OR CONCAT(firstname,' ',lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
        $countfilter.=" OR fullname LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR lastname LIKE '%".$requestData['search']['value']."%' ";
        $countfilter.=" OR street LIKE '%".$requestData['search']['value']."%' ";

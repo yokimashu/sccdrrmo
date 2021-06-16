@@ -3,6 +3,9 @@
 
 include('../config/db_config.php');
 // include('update_assessment.php');
+// include('update_assessment.php');
+
+
 session_start();
 
 $cbcr = $_SESSION['cbcr'];
@@ -11,6 +14,8 @@ date_default_timezone_set('Asia/Manila');
 // date_default_timezone_set("America/New_York");
 // echo "The time is " . date("h:i:sa");
 $now = new DateTime();
+$time = date('H:i:s');
+
 // $time = date('H:i');
 
 // $time = date("h:i:sa");
@@ -23,7 +28,7 @@ $btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $ge
     $refusal = $age_16 = $allergy_PEG = $allergic_reaction = $no_food_allergy = $monitor_patient = $bleeding_history = $yes_bleeding_history =
     $manifest_symptoms = $specify_symptoms = $no_exposure = $no_treated = $no_received_vaccine = $no_received_antibodies = $pregnant_semester =
     $no_illness = $specify_illness = $medical_clearance = $deferral = $vaccination_date = $vaccine_manufacturer = $batch_number = $lot_number =
-    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $objid = '';
+    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $objid = $vaccine_card = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $img = '';
@@ -48,7 +53,7 @@ if (isset($_GET['id'])) {
 
     $entity_no = $_GET['id'];
     $get_photo_individual = '';
-    $get_vaccineProfile_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no WHERE a.objid = :id";
+    $get_vaccineProfile_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no  WHERE a.objid = :id";
     $vaccineprofile_data = $con->prepare($get_vaccineProfile_sql);
     $vaccineprofile_data->execute([':id' => $entity_no]);
     while ($result = $vaccineprofile_data->fetch(PDO::FETCH_ASSOC)) {
@@ -144,7 +149,17 @@ if (isset($_GET['id'])) {
         $vaccination_date = $result['DateVaccination'];
         $dose_1st         = $result['1stDose'];
         $dose_2nd         = $result['2ndDose'];
+        $vaccine_card         = $result['actions'];
     }
+
+
+    //     $get_control_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no inner join tbl_tnxhistory WHERE a.objid = :id";
+    //     $vaccinecontrol_data = $con->prepare($get_control_sql);
+    //     $vaccinecontrol_data->execute([':id' => $entity_no]);
+    //     while ($result = $vaccinecontrol_data->fetch(PDO::FETCH_ASSOC)) {
+
+    //     $vaccine_card         = $result['actions'];
+    // }
 
     $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
     $get_data_data = $con->prepare($get_data_sql);
@@ -479,7 +494,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a> </strong>
+                                    <strong><i class="fa fa-pencil mr-1"></i> <a> Print Vamos ID </a> </strong>
 
                                     <p class="text-muted">
 
@@ -487,17 +502,36 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                         <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
 
 
+
+
                                     <p class="text-muted">
 
                                         <hr>
 
+                                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card.php">
 
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccination_card_2nd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccination Card"> Print Vaccination Card </a> </strong>
 
+
+                                        <?php if ($vaccine_card == '1') { ?>
+
+                                            <strong><i class="fa fa-pencil mr-1"></i> <button disabled id="vaccinecard" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </button> </strong>
+                                        <?php } else { ?>
+                                            <strong><i class="fa fa-pencil mr-1"></i> <button name="update_resbakuna_card" id="vaccinecard" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </button> </strong>
+
+                                        <?php } ?>
+
+
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+                                    </form>
 
                                     <p class="text-muted">
 
                                     </p>
+
 
 
                                     <hr>
@@ -1156,6 +1190,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
     <script src="../plugins/sweetalert/sweetalert.min.js"></script>
 
     <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 
     <?php
@@ -1368,6 +1403,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
         //     console.log("test");
         // });
+
+
+
 
         $('#allergy_PEG').change(function() {
             var option = $('#allergy_PEG').val();

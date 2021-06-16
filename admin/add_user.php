@@ -2,7 +2,10 @@
 
 include('../config/db_config.php');
 include('insert_user.php');
+// session_start();
+
 session_start();
+
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');
@@ -11,11 +14,11 @@ if (!isset($_SESSION['id'])) {
 
 
 date_default_timezone_set('Asia/Manila');
-$date = date('Y-m-d');
+// $date = date('Y-m-d');
 $now = new DateTime();
-$time = date('H:i:s');
 
-$btnSave = $btnEdi = $user_name = $entity_no = $btn_enabled =
+
+$btnSave = $btnEdit = $user_name = $entity_no = $btn_enabled =
     $firstname = $middlename = $lastname =
     $symptoms = $patient = $person_status = $entity_no = '';
 
@@ -74,7 +77,7 @@ $get_all_account_data->execute();
                     </div>
 
                     <div class="card-body">
-                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="<?php htmlspecialchars("PHP_SELF"); ?>">
+                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="">
                             <div class="box-body">
                                 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                 <div class="card ">
@@ -84,7 +87,7 @@ $get_all_account_data->execute();
                                     <div class="box-body">
                                         <br>
 
-                                        <div class="row">
+                                        <div class="row" hidden>
                                             <div class="col-md-1"></div>
 
                                             <div>
@@ -98,23 +101,9 @@ $get_all_account_data->execute();
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d') ?>">
+                                                    <input type="text" readonly class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
                                                 </div>
                                             </div>
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;
-
-                                            <div class="col-md-2">
-                                                <label> Time Registered:</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input readonly type="text" class="form-control" <?php echo $btn_enabled ?> name="time" id="time" placeholder="Time Registered" value="<?php echo $time; ?>" required>
-                                            </div>
-
-
 
 
                                         </div></br>
@@ -235,7 +224,7 @@ $get_all_account_data->execute();
 
 
                                         <div class=" box-footer" align="center">
-                                            <button type="submit" <?php echo $btnSave; ?> name="insert_user" id="btnSubmit" class="btn btn-success">
+                                            <button type="submit" name="insert_user" id="btnSubmit" class="btn btn-success">
                                                 <i class="fa fa-check fa-fw"> </i> </button>
 
                                             <a href="list_users">
@@ -293,43 +282,17 @@ $get_all_account_data->execute();
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <!-- DataTables Bootstrap -->
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+
+
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
     <!-- Select2 -->
     <script src="../plugins/select2/select2.full.min.js"></script>
 
+
+
+
     <script>
-        $('#users').DataTable({
-            'paging': true,
-            'lengthChange': true,
-            'searching': true,
-            'ordering': true,
-            'info': true,
-            'autoWidth': true,
-            'autoHeight': true,
-            initComplete: function() {
-                this.api().columns([4]).every(function() {
-                    var column = this;
-                    var select = $('<select class="form-control select2"><option value="">show all</option></select>')
-                        .appendTo('#combo')
-                        .on('change', function() {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-                            column
-                                .search(val ? '^' + val + '$' : '', true, false)
-                                .draw();
-                        });
-                    column.data().unique().sort().each(function(d, j) {
-                        select.append('<option value="' + d + '">' + d + '</option>')
-                    });
-                });
-            }
-
-        });
         $('.select2').select2();
-
-
-
-
 
         function checkUsername() {
             var username = $('#username').val();

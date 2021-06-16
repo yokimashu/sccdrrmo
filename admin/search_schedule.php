@@ -27,7 +27,7 @@ $columns = array();
 
 // getting total number records without any search
 
-$sql = "SELECT DISTINCT s.entity_no, s.cbcr, v.Firstname, v.Middlename, v.Lastname FROM tbl_schedule s inner join tbl_vaccine v on v.entity_no = s.entity_no GROUP BY s.entity_no LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
+$sql = "SELECT DISTINCT s.entity_no, s.cbcr, v.Firstname, v.Middlename, v.Lastname, b.bc_name FROM tbl_schedule s inner join tbl_vaccine v on v.entity_no = s.entity_no inner join tbl_bakuna_center b on b.bc_code = s.cbcr GROUP BY s.entity_no ORDER BY s.idno DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute() or die("search_schedule.php");
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -43,7 +43,7 @@ $totalData = $getrecord['id'];
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT DISTINCT s.entity_no, s.cbcr, v.Firstname, v.Middlename, v.Lastname FROM tbl_schedule s inner join tbl_vaccine v on v.entity_no = s.entity_no where";
+$sql = "SELECT DISTINCT s.entity_no, s.cbcr, v.Firstname, v.Middlename, v.Lastname, b.bc_name FROM tbl_schedule s inner join tbl_vaccine v on v.entity_no = s.entity_no inner join tbl_bakuna_center b on b.bc_code = s.cbcr where";
 
 if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql .= "  (s.entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -51,53 +51,28 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	$sql .= " OR v.Firstname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Middlename LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Lastname LIKE '%" . $requestData['search']['value'] . "%' ";
-	$sql .= " OR s.cbcr LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR s.date LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR s.time LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR s.remarks LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR v.Sex LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR v.Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR t.bakuna_center LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR v.Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
-	// $sql .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
-	// $sql .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $sql .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
+	$sql .= " OR b.bc_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
 	// $query=mysqli_query($conn, $sql) or die("search_user.php");
 
 
 	// $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-	$sql .= " GROUP BY s.entity_no LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
+	$sql .= " GROUP BY s.entity_no ORDER BY s.idno DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
 	$get_user_data = $con->prepare($sql);
 	$get_user_data->execute();
 	// $totalData = $get_user_data->fetch(PDOStatement::rowCount);
 	// $totalFiltered = $totalData;
 	// $query=mysqli_query($conn, $sql) or die("search_user.php");
 
-	$countfilter = "SELECT COUNT(s.entity_no) as id FROM tbl_schedule s INNER JOIN tbl_vaccine v ON v.entity_no = s.entity_no where ";
+	$countfilter = "SELECT COUNT(s.entity_no) as id FROM tbl_schedule s INNER JOIN tbl_vaccine v ON v.entity_no = s.entity_no inner join tbl_bakuna_center b on b.bc_code = s.cbcr where ";
 	$countfilter .= "(entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
 	// $countfilter .= " OR Category LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Firstname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Middlename LIKE '%" . $requestData['search']['value'] . "%' ";
 	$countfilter .= " OR Lastname LIKE '%" . $requestData['search']['value'] . "%' ";
-	$countfilter .= " OR s.cbcr LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR s.date LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR s.time LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR s.remarks LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR Sex LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR Full_address LIKE '%" . $requestData['search']['value'] . "%' ) ";
-	// $countfilter .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
-	// $countfilter .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR Province LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
-	// $countfilter .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
+	$countfilter .= " OR b.bc_name LIKE '%" . $requestData['search']['value'] . "%' ";
 
-	$countfilter .= " order by idno LIMIT " . $requestData['start'] . "," . $requestData['length'] . " "; //count all rows w/ filter
+	$countfilter .= " order by idno DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . " "; //count all rows w/ filter
 	$getrecordstmt = $con->prepare($countfilter);
 	$getrecordstmt->execute() or die("search_schedule.php");
 	$getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
@@ -111,18 +86,7 @@ while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 
 	$nestedData[] = $row["entity_no"];
 	$nestedData[] = strtoupper($row["Firstname"] . ' ' . $row["Middlename"] . ' ' . $row["Lastname"]);
-	$nestedData[] = $row["cbcr"];
-	// $nestedData[] = $row["date"];
-	// $nestedData[] = $row["time"];
-	// $nestedData[] = $row["Sex"];
-	// $nestedData[] = $row["remarks"];
-	// $nestedData[] = strtoupper($row["Full_address"]);
-	// $nestedData[] = $row["Barangay"];
-	// $nestedData[] = $row["MunCity"];
-	// $nestedData[] = $row["Province"];
-	// $nestedData[] = $row["Region"];
-	// $nestedData[] = $row["Employed"];
-	// $nestedData[] = $row["covid_history"];
+	$nestedData[] = $row["bc_name"];
 	$data[] = $nestedData;
 }
 

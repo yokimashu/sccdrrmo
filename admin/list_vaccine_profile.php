@@ -3,6 +3,9 @@
 include('../config/db_config.php');
 include('sql_queries.php');
 include('update_vas.php');
+include('update_void_vaccine.php');
+
+
 
 // session_start();
 
@@ -124,7 +127,7 @@ $get_all_vaccine_data->execute();
                     <table id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
 
-
+                      <th> OBJID </th>
                         <th> Entity_no </th>
                         <th> Category</th>
                         <th width="300px"> Full Name </th>
@@ -183,7 +186,7 @@ $get_all_vaccine_data->execute();
               <div class="form-group">
                 <label>VAMOS ID: </label>
                 <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
-
+                <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
 
                 <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo $now->format('Y-m-d'); ?>" required>
 
@@ -230,6 +233,50 @@ $get_all_vaccine_data->execute();
 
 
   <!-- /.modal-dialog -->
+
+
+  <div class="modal fade" id="modalvoid" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">VOID</h4>
+        </div>
+
+
+
+        <form method="POST" action="">
+          <div class="modal-body">
+            <div class="box-body-lg-50">
+              <div class="form-group">
+                <label>ID:</label>
+                <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+                <input readonly="true" type="text" name="fullname" id="fullname1" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
+              </div>
+
+              <label>Remarks: </label>
+                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
+
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+              <input type="submit" name="update_void_vaccine" class="btn btn-danger" value="SAVE">
+
+              <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button> -->
+            </div>
+
+
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
 
 
   <div class="modal fade" id="delete_recordmodal" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -355,7 +402,8 @@ $get_all_vaccine_data->execute();
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
-            '<a class="btn btn-warning btn-sm modalupdate" style="margin-right:10px;" id="modal" data-placement="top" title="FORWARD TO VAS">VAS',
+            '<a class="btn btn-warning btn-sm modalupdate" style="margin-right:10px;" id="modal" data-placement="top" title="FORWARD TO VAS">VAS' + 
+            '<a class="btn btn-danger" style="margin-right:10px;" id="modal1" data-placement="top" title="VOID">x',
           // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
         },
 
@@ -366,7 +414,7 @@ $get_all_vaccine_data->execute();
     $("#users tbody").on("click", ".printlink1", function() {
       // event.preventDefault();
       var currow = $(this).closest("tr");
-      var entity_no = currow.find("td:eq(0)").text();
+      var entity_no = currow.find("td:eq(1)").text();
 
       $('.printlink1').attr("href", "view_vaccine_profile_two.php?id=" + entity_no, '_parent');
 
@@ -377,7 +425,8 @@ $get_all_vaccine_data->execute();
       event.preventDefault();
       var currow = $(this).closest("tr");
 
-      var entity_no = currow.find("td:eq(0)").text();
+      var entity_no = currow.find("td:eq(1)").text();
+      var fullname = currow.find("td:eq(3)").text();
 
 
 
@@ -385,6 +434,7 @@ $get_all_vaccine_data->execute();
       console.log("test");
       $('#modalupdate').modal('show');
       $('#entity_no').val(entity_no);
+      $('#fullname').val(fullname);
 
 
 
@@ -401,22 +451,25 @@ $get_all_vaccine_data->execute();
 
 
 
-    // $("#users tbody").on("click", "#modal", function() {
-    //   event.preventDefault();
-    //   var currow = $(this).closest("tr");
 
-    //   var objid = currow.find("td:eq(0)").text();
+    $("#users tbody").on("click", "#modal1", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
 
-
-
-
-    //   console.log("test");
-    //   $('#modalupdate').modal('show');
-    //   $('#objid').val(objid);
+      var objid = currow.find("td:eq(0)").text();
+      var fullname = currow.find("td:eq(3)").text();
 
 
 
-    // });
+
+      console.log("test");
+      $('#modalvoid').modal('show');
+      $('#objid').val(objid);
+      $('#fullname1').val(fullname);
+
+
+
+    });
 
 
 

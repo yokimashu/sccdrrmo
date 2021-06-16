@@ -91,7 +91,7 @@ $time = date('H:i:s');
                                             <thead align="center">
                                                 <th> Entity_no</th>
                                                 <th style = "width: 300px"> Fullname</th>
-                                                <th> Facility Number</th>
+                                                <th> Facility</th>
                                                 <!-- <th> Scheduled Date</th>
                                                 <th> Time</th>
                                                 <th> Remarks</th> -->

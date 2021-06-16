@@ -40,6 +40,7 @@ $list_deped_report = ' ';
 
 $daily_report = ' ';
 $list_categorylist = ' ';
+$list_vaccinated = ' ';
 $list_schedule = ' ';
 $list_bakuna_center = ' ';
 $list_vaccinators = ' ';
@@ -48,7 +49,7 @@ $list_positive_case = ' ';
 $single_break = ' ';
 $vaccine_dashboard = ' ';
 $entities = ' ';
-
+$overallcount = ' ';
 $label_vaccination = ' ';
 $list_assessment = ' ';
 $list_astrazeneca = ' ';
@@ -222,6 +223,14 @@ if ($_SESSION['user_type'] == 1) {
   </a>
   </li> ';
 
+  $list_vaccinated = '<li class="nav-item">
+  <a href="list_vaccinatedlist" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Vaccinated Masterlist </p>
+  </a>
+  </li> ';
+
 
   $list_schedule = '<li class="nav-item">
   <a href="list_schedule" class="nav-link sidebar-link">
@@ -339,7 +348,13 @@ if ($_SESSION['user_type'] == 1) {
 </a>
 </li> ';
 
-
+$overallcount = '<li class="nav-item">
+<a href="../plugins/jasperreport/daily_vaccine_report_new.php?"" class="nav-link sidebar-link">
+  &nbsp;
+  <i class="nav-icon fas fa-syringe icons"></i>
+  <p> Vaccine Overall Report </p>
+</a>
+</li> ';
 
   $daily_report = '
 <li class="nav-item">

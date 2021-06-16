@@ -24,7 +24,7 @@ if (isset($_POST['insert_vaccinators'])) {
 
 
 
-
+    
     $insert_vaccinators_sql = "INSERT INTO tbl_vaccinators SET 
     id             = :id,
     n_facility        = :n_facility,

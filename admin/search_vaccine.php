@@ -23,18 +23,15 @@ $requestData = $_REQUEST;
 
 $columns = array(
 	// datatable column index  => database column name
-	// 0 => 'entity_no',
-	// 1 => 'datecreate',
-	// 2 => 'fullname',
-	// 3 => 'gender',
-	// 4 => 'birthdate',
-	// 5 => 'street',
-	// 6 => 'barangay',
-	// 7 => 'MunCity',
-	// 8 => 'province',
-	// 9 => 'Region',
-	// 10 => 'Employed',
-	// 11 => 'covid_history'
+	0 => 'entity_no',
+	1 => 'Category',
+	2 => 'Firstname',
+	3 => 'Middlename',
+	4 => 'Lastname',
+	5 => 'Sex',
+	6 => 'Birthdate_',
+	7 => 'Full_address',
+
 
 
 
@@ -44,7 +41,7 @@ $columns = array(
 
 // getting total number records without any search
 
-$sql = "SELECT * FROM tbl_vaccine  ORDER BY idno DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
+$sql = "SELECT * FROM tbl_vaccine where status !='VOID' ORDER BY idno DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute() or die("search_vaccine.php");
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -64,6 +61,8 @@ $sql = "SELECT * FROM tbl_vaccine where ";
 
 if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql .= "  (entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR CONCAT(firstname,' ',middlename,' ',lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR CONCAT(firstname,' ',lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Category LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Firstname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR Middlename LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -82,7 +81,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 
 
 	// $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-	$sql .= " ORDER BY idno LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
+	$sql .= "AND status !='VOID' ORDER BY idno LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
 	$get_user_data = $con->prepare($sql);
 	$get_user_data->execute();
 	// $totalData = $get_user_data->fetch(PDOStatement::rowCount);
@@ -105,7 +104,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	// $countfilter .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
 	// $countfilter .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
 
-	$countfilter .= " order by idno LIMIT " . $requestData['start'] . "," . $requestData['length'] . " "; //count all rows w/ filter
+	$countfilter .= " order by idno LIMIT ". $requestData['length'] . " "; //count all rows w/ filter
 	$getrecordstmt = $con->prepare($countfilter);
 	$getrecordstmt->execute() or die("search_vaccine.php");
 	$getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
@@ -116,7 +115,7 @@ $data = array();
 // while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 	$nestedData = array();
-
+	$nestedData[] = $row["idno"];
 	$nestedData[] = $row["entity_no"];
 	$nestedData[] = $row["Category"];
 	$nestedData[] = strtoupper($row["Firstname"] . ' ' . $row["Middlename"] . ' ' . $row["Lastname"]);
