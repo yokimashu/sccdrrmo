@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.8.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
-<!-- 2020-10-02T14:35:11 -->
+<!-- 2020-12-14T14:59:05 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="juridical_id_new" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9c99dcbc-a89b-46e8-bac8-56a37e04380d">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sccdrrmo.xml"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -102,6 +102,14 @@
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
+			<componentElement>
+				<reportElement x="110" y="134" width="203" height="206" uuid="ccc4cda9-33be-4a77-a7b8-80e1e7b350e5">
+					<property name="com.jaspersoft.studio.unit.margin" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" margin="1" qrVersion="2">
+					<jr:codeExpression><![CDATA[$F{entity_no}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
 			<textField>
 				<reportElement x="28" y="120" width="374" height="40" uuid="aa06e238-8ef7-47c5-acc6-9751eb05a8ca"/>
 				<textElement textAlignment="Center">
@@ -109,14 +117,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="112" y="160" width="208" height="189" uuid="ccc4cda9-33be-4a77-a7b8-80e1e7b350e5">
-					<property name="com.jaspersoft.studio.unit.margin" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" margin="1" qrVersion="2">
-					<jr:codeExpression><![CDATA[$F{entity_no}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
 			<image onErrorType="Blank">
 				<reportElement x="79" y="47" width="55" height="51" uuid="b4b48f5a-8377-4bf2-9cf3-55891be8470d"/>
 				<box>
@@ -128,7 +128,9 @@
 				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/LOGO-png.png"]]></imageExpression>
 			</image>
 			<image onErrorType="Blank">
-				<reportElement x="300" y="47" width="52" height="51" uuid="df0c7fa2-1430-4781-8ea8-16cace4cfb67"/>
+				<reportElement x="300" y="47" width="80" height="67" uuid="df0c7fa2-1430-4781-8ea8-16cace4cfb67">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/images/"+$F{photo}+""]]></imageExpression>
 			</image>
 			<staticText>
@@ -153,25 +155,39 @@
 				<text><![CDATA[CITY OF SAN CARLOS]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="27" y="417" width="378" height="31" uuid="3878c3c4-8a62-414f-9b21-0a90b7d86b02"/>
+				<reportElement x="27" y="438" width="378" height="31" uuid="3878c3c4-8a62-414f-9b21-0a90b7d86b02"/>
 				<textElement textAlignment="Center">
-					<font isUnderline="true"/>
+					<font size="12" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mobile_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="27" y="430" width="378" height="20" uuid="6569f2e6-bce0-4deb-94f5-ebd4b39f9073"/>
+				<reportElement x="27" y="451" width="378" height="20" uuid="6569f2e6-bce0-4deb-94f5-ebd4b39f9073"/>
 				<textElement textAlignment="Center">
 					<font size="8" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Contact No.]]></text>
 			</staticText>
-			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="27" y="359" width="378" height="50" isPrintWhenDetailOverflows="true" uuid="1732c2fe-f99a-4123-8978-76bc48e71d43"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="RelativeToTallestObject" x="27" y="340" width="378" height="71" isPrintWhenDetailOverflows="true" uuid="1732c2fe-f99a-4123-8978-76bc48e71d43"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="25" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehicle_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="415" width="378" height="20" uuid="34d8f0cb-e3c8-4fda-a114-82bcc0b79e0c"/>
+				<textElement textAlignment="Center">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Contact Person]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="28" y="393" width="378" height="31" uuid="9c164342-bb1d-4238-b80d-b4c65817f716"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

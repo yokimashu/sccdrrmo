@@ -74,69 +74,69 @@ if ($_SESSION['user_type'] == 1) {
   $entities = ' 
   
   
-  <div>
-  <label id="label1" style="font-size:18px; ">
-    &nbsp;
-    <i class="nav-icon fa fa-address-book icons "></i>
-    &nbsp;
-    ENTITIES
-  </label>
-
-
-  <li class="nav-item">
-    <a href="list_individual" class="nav-link sidebar-link">
-      &nbsp;
-      <i class="nav-icon fa fa-user icons"></i>
-      <p> &nbsp; Individual</p>
-    </a>
-  </li>
-
-
-
-  <li class="nav-item">
-    <a href="list_juridical" class="nav-link sidebar-link">
-      &nbsp;
-      <i class="nav-icon fa fa-building icons"></i>
-      <p> &nbsp; Juridical</p>
-    </a>
-  </li>
-
-
-
-  <li class="nav-item has-treeview">
-    <a href="#" class="nav-link sidebar-link">
-      &nbsp;
-      <i class="nav-icon fa fa-car icons "></i>
-      <p> &nbsp; Transportation</p>
-    </a>
-
-
-    <ul class="nav nav-treeview ">
+    <div>
+      <label id="label1" style="font-size:18px; ">
+        &nbsp;
+        <i class="nav-icon fa fa-address-book icons "></i>
+        &nbsp;
+        ENTITIES
+      </label>
 
 
       <li class="nav-item">
-        <a href="list_land_trans" id="lightgreen" class="nav-link ">
-          &nbsp; &nbsp; &nbsp;
-
-          <i class=" nav-icon fa fa-motorcycle icons"></i>
-          <p> &nbsp; Land Trans.</p>
-        </a>
-      </li>
-
-      <li class=" nav-item">
-        <a href="list_sea_trans" id="lightgreen" class="nav-link ">
-          &nbsp; &nbsp; &nbsp;
-
-          <i class="nav-icon fa fa-ship icons"></i>
-          <p> &nbsp; Sea Trans.</p>
+        <a href="list_individual" class="nav-link sidebar-link">
+          &nbsp;
+          <i class="nav-icon fa fa-user icons"></i>
+          <p> &nbsp; Individual</p>
         </a>
       </li>
 
 
 
-    </ul>
-  </li>
-</div> <br>
+      <li class="nav-item">
+        <a href="list_juridical" class="nav-link sidebar-link">
+          &nbsp;
+          <i class="nav-icon fa fa-building icons"></i>
+          <p> &nbsp; Juridical</p>
+        </a>
+      </li>
+
+
+
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link sidebar-link">
+          &nbsp;
+          <i class="nav-icon fa fa-car icons "></i>
+          <p> &nbsp; Transportation</p>
+        </a>
+
+
+        <ul class="nav nav-treeview ">
+
+
+          <li class="nav-item">
+            <a href="list_land_trans" id="lightgreen" class="nav-link ">
+              &nbsp; &nbsp; &nbsp;
+
+              <i class=" nav-icon fa fa-motorcycle icons"></i>
+              <p> &nbsp; Land Trans.</p>
+            </a>
+          </li>
+
+          <li class=" nav-item">
+            <a href="list_sea_trans" id="lightgreen" class="nav-link ">
+              &nbsp; &nbsp; &nbsp;
+
+              <i class="nav-icon fa fa-ship icons"></i>
+              <p> &nbsp; Sea Trans.</p>
+            </a>
+          </li>
+
+
+
+        </ul>
+      </li>
+    </div><br>
   
   
   
@@ -144,10 +144,11 @@ if ($_SESSION['user_type'] == 1) {
   ';
 
   // individual form  
-  $view_history =
-    '   <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
+  $view_history = ' 
+      <a class="btn btn-success btn-sm" id="view_history" href="view_individual_history.php?&entity_no=' . $get_individual_entity . '">
         <i class="fa fa-suitcase"></i>
-      </a>';
+      </a>
+    ';
 
 
 
@@ -165,13 +166,13 @@ if ($_SESSION['user_type'] == 1) {
       ';
 
   $masterlist_symptoms = '
-    <li class="nav-item">
-      <a href="list_symptoms" class="nav-link sidebar-link">
-        &nbsp;
-        <i class="nav-icon fas fa-head-side-cough icons"></i>
-        <p>&nbsp; Signs & Symptoms </p>
-      </a>
-    </li>
+      <li class="nav-item">
+        <a href="list_symptoms" class="nav-link sidebar-link">
+          &nbsp;
+          <i class="nav-icon fas fa-head-side-cough icons"></i>
+          <p>&nbsp; Signs & Symptoms </p>
+        </a>
+      </li>
     ';
 
   // end of masterlist
@@ -188,31 +189,34 @@ if ($_SESSION['user_type'] == 1) {
     </label>';
 
 
-  $vaccine_dashboard = '<li class="nav-item">
-    <a href="vaccine_dashboard" class="nav-link sidebar-link">
-      &nbsp;
-      <i class="nav-icon fas fa-laptop-medical icons "></i>
-    
-      <p> Vaccine Dashboard </p>
-    </a>
+  $vaccine_dashboard = '
+    <li class="nav-item">
+      <a href="vaccine_dashboard" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-laptop-medical icons "></i>
+      
+        <p> Vaccine Dashboard </p>
+      </a>
     </li> ';
 
 
-  $list_vaccine = '<li class="nav-item">
-    <a href="list_vaccine_profile" class="nav-link sidebar-link">
+  $list_vaccine = '
+    <li class="nav-item">
+      <a href="list_vaccine_profile" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-syringe icons"></i>
+        <p> Registration </p>
+      </a>
+    </li> ';
+
+  $list_assessment = '
+  <li class="nav-item">
+    <a href="list_assessment" class="nav-link sidebar-link">
       &nbsp;
-      <i class="nav-icon fas fa-syringe icons"></i>
-      <p> Registration </p>
+      <i class="nav-icon fas fa-hands-helping icons"></i>
+
+      <p> Assessment </p>
     </a>
-  </li> ';
-
-  $list_assessment = '<li class="nav-item">
-  <a href="list_assessment" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-hands-helping icons"></i>
-
-    <p> Assessment </p>
-  </a>
   </li> ';
 
   $list_categorylist = '<li class="nav-item">
@@ -301,69 +305,69 @@ if ($_SESSION['user_type'] == 1) {
 
   // report for vaccine
   $list_vaccine_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Eligible Population </p>
-</a>
-</li> ';
+    <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Eligible Population </p>
+    </a>
+    </li> ';
 
   $list_vaccine_report_no = '<li class="nav-item">
-<a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> All Population </p>
-</a>
-</li> ';
+    <a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> All Population </p>
+    </a>
+    </li> ';
 
   $list_eligible_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/eligible_population.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Eligible Population per Priority Group </p>
-</a>
-</li> ';
+    <a href="../plugins/jasperreport/eligible_population.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Eligible Population per Priority Group </p>
+    </a>
+    </li> ';
 
   $list_vaccine_linelist = '<li class="nav-item">
-<a href="../plugins/jasperreport/vaccine_linelist.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Sinovac Linelist </p>
-</a>
-</li> ';
+    <a href="../plugins/jasperreport/vaccine_linelist.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Sinovac Linelist </p>
+    </a>
+    </li> ';
 
   $list_deped_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/vaccine_deped.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> DEPED Linelist</p>
-</a>
-</li> ';
+    <a href="../plugins/jasperreport/vaccine_deped.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> DEPED Linelist</p>
+    </a>
+    </li> ';
 
   $vaccine_sandoc = '<li class="nav-item">
-<a href="../plugins/jasperreport/vaccine_sandoc.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> SanDoc Linelist </p>
-</a>
-</li> ';
+    <a href="../plugins/jasperreport/vaccine_sandoc.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> SanDoc Linelist </p>
+    </a>
+    </li> ';
 
-$overallcount = '<li class="nav-item">
-<a href="../plugins/jasperreport/daily_vaccine_report_new.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Vaccine Overall Report </p>
-</a>
-</li> ';
+  $overallcount = '<li class="nav-item">
+    <a href="../plugins/jasperreport/daily_vaccine_report_new.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Vaccine Overall Report </p>
+    </a>
+    </li> ';
 
   $daily_report = '
-<li class="nav-item">
-  <a href="daily_vaccine_report" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-id-card-alt icons"></i>
-    <p> Daily Count </p>
-  </a>
-</li>';
+    <li class="nav-item">
+      <a href="daily_vaccine_report" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fas fa-id-card-alt icons"></i>
+        <p> Daily Count </p>
+      </a>
+    </li>';
 
   // end report for vaccine 
 
@@ -448,72 +452,101 @@ if ($_SESSION['user_type'] == 2) {
   
   
 
-  <label id="label1" style="font-size:18px; ">
-    &nbsp;
-    <i class="nav-icon fa fa-address-book icons "></i>
-    &nbsp;
-    ENTITIES
-  </label>
-
-
-  <li class="nav-item">
-    <a href="list_individual" class="nav-link sidebar-link">
+    <label id="label1" style="font-size:18px; ">
       &nbsp;
-      <i class="nav-icon fa fa-user icons"></i>
-      <p> &nbsp; Individual</p>
-    </a>
-  </li>
-
-
-
-  <li class="nav-item">
-    <a href="list_juridical" class="nav-link sidebar-link">
+      <i class="nav-icon fa fa-address-book icons "></i>
       &nbsp;
-      <i class="nav-icon fa fa-building icons"></i>
-      <p> &nbsp; Juridical</p>
-    </a>
-  </li>
+      ENTITIES
+    </label>
+
+
+    <li class="nav-item">
+      <a href="list_individual" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fa fa-user icons"></i>
+        <p> &nbsp; Individual</p>
+      </a>
+    </li>
 
 
 
-  <li class="nav-item has-treeview">
-    <a href="#" class="nav-link sidebar-link">
-      &nbsp;
-      <i class="nav-icon fa fa-car icons "></i>
-      <p> &nbsp; Transportation</p>
-    </a>
-
-
-    <ul class="nav nav-treeview ">
-
-
-      <li class="nav-item">
-        <a href="list_land_trans" id="lightgreen" class="nav-link ">
-          &nbsp; &nbsp; &nbsp;
-
-          <i class=" nav-icon fa fa-motorcycle icons"></i>
-          <p> &nbsp; Land Trans.</p>
-        </a>
-      </li>
-
-      <li class=" nav-item">
-        <a href="list_sea_trans" id="lightgreen" class="nav-link ">
-          &nbsp; &nbsp; &nbsp;
-
-          <i class="nav-icon fa fa-ship icons"></i>
-          <p> &nbsp; Sea Trans.</p>
-        </a>
-      </li>
+    <li class="nav-item">
+      <a href="list_juridical" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fa fa-building icons"></i>
+        <p> &nbsp; Juridical</p>
+      </a>
+    </li>
 
 
 
-    </ul>
-  </li>
+    <li class="nav-item has-treeview">
+      <a href="#" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fa fa-car icons "></i>
+        <p> &nbsp; Transportation</p>
+      </a>
+
+
+      <ul class="nav nav-treeview ">
+
+
+        <li class="nav-item">
+          <a href="list_land_trans" id="lightgreen" class="nav-link ">
+            &nbsp; &nbsp; &nbsp;
+
+            <i class=" nav-icon fa fa-motorcycle icons"></i>
+            <p> &nbsp; Land Trans.</p>
+          </a>
+        </li>
+
+        <li class=" nav-item">
+          <a href="list_sea_trans" id="lightgreen" class="nav-link ">
+            &nbsp; &nbsp; &nbsp;
+
+            <i class="nav-icon fa fa-ship icons"></i>
+            <p> &nbsp; Sea Trans.</p>
+          </a>
+        </li>
+
+
+
+      </ul>
+    </li>
 
   
   
   
   ';
+
+  $label_vaccination = '  
+  <label id="label1" style="font-size:18px; ">
+      &nbsp;
+      <i class="nav-icon fas fa-briefcase-medical icons "></i>
+      &nbsp;
+      VACCINATION
+  </label>';
+
+
+  $vaccine_dashboard = '
+  <li class="nav-item">
+    <a href="vaccine_dashboard" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-laptop-medical icons "></i>
+    
+      <p> Vaccine Dashboard </p>
+    </a>
+  </li> ';
+
+
+  $list_vaccine = '
+  <li class="nav-item">
+    <a href="list_vaccine_profile" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Registration </p>
+    </a>
+  </li> ';
 
   $single_break = '<br> ';
   $break = '<br><br><br><br>';
@@ -525,68 +558,68 @@ if ($_SESSION['user_type'] == 3) {
   
   
   <div>
-  <label id="label1" style="font-size:18px; ">
-    &nbsp;
-    <i class="nav-icon fa fa-address-book icons "></i>
-    &nbsp;
-    ENTITIES
-  </label>
-
-
-  <li class="nav-item">
-    <a href="list_individual" class="nav-link sidebar-link">
+    <label id="label1" style="font-size:18px; ">
       &nbsp;
-      <i class="nav-icon fa fa-user icons"></i>
-      <p> &nbsp; Individual</p>
-    </a>
-  </li>
-
-
-
-  <li class="nav-item">
-    <a href="list_juridical" class="nav-link sidebar-link">
+      <i class="nav-icon fa fa-address-book icons "></i>
       &nbsp;
-      <i class="nav-icon fa fa-building icons"></i>
-      <p> &nbsp; Juridical</p>
-    </a>
-  </li>
+      ENTITIES
+    </label>
+
+
+    <li class="nav-item">
+      <a href="list_individual" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fa fa-user icons"></i>
+        <p> &nbsp; Individual</p>
+      </a>
+    </li>
 
 
 
-  <li class="nav-item has-treeview">
-    <a href="#" class="nav-link sidebar-link">
-      &nbsp;
-      <i class="nav-icon fa fa-car icons "></i>
-      <p> &nbsp; Transportation</p>
-    </a>
-
-
-    <ul class="nav nav-treeview ">
-
-
-      <li class="nav-item">
-        <a href="list_land_trans" id="lightgreen" class="nav-link ">
-          &nbsp; &nbsp; &nbsp;
-
-          <i class=" nav-icon fa fa-motorcycle icons"></i>
-          <p> &nbsp; Land Trans.</p>
-        </a>
-      </li>
-
-      <li class=" nav-item">
-        <a href="list_sea_trans" id="lightgreen" class="nav-link ">
-          &nbsp; &nbsp; &nbsp;
-
-          <i class="nav-icon fa fa-ship icons"></i>
-          <p> &nbsp; Sea Trans.</p>
-        </a>
-      </li>
+    <li class="nav-item">
+      <a href="list_juridical" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fa fa-building icons"></i>
+        <p> &nbsp; Juridical</p>
+      </a>
+    </li>
 
 
 
-    </ul>
-  </li>
-</div>
+    <li class="nav-item has-treeview">
+      <a href="#" class="nav-link sidebar-link">
+        &nbsp;
+        <i class="nav-icon fa fa-car icons "></i>
+        <p> &nbsp; Transportation</p>
+      </a>
+
+
+      <ul class="nav nav-treeview ">
+
+
+        <li class="nav-item">
+          <a href="list_land_trans" id="lightgreen" class="nav-link ">
+            &nbsp; &nbsp; &nbsp;
+
+            <i class=" nav-icon fa fa-motorcycle icons"></i>
+            <p> &nbsp; Land Trans.</p>
+          </a>
+        </li>
+
+        <li class=" nav-item">
+          <a href="list_sea_trans" id="lightgreen" class="nav-link ">
+            &nbsp; &nbsp; &nbsp;
+
+            <i class="nav-icon fa fa-ship icons"></i>
+            <p> &nbsp; Sea Trans.</p>
+          </a>
+        </li>
+
+
+
+      </ul>
+    </li>
+  </div>
   
   
   
@@ -750,48 +783,48 @@ if ($_SESSION['user_type'] == 4) {
     </li> ';
 
   $list_assessment = '
-  <li class="nav-item">
-    <a href="list_assessment" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-hands-helping icons"></i>
+    <li class="nav-item">
+      <a href="list_assessment" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-hands-helping icons"></i>
 
-    <p> Assessment </p>
-    </a>
-  </li> ';
+      <p> Assessment </p>
+      </a>
+    </li> ';
 
   $list_categorylist = '<li class="nav-item">
-<a href="list_categorylist" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Vaccine Masterlist </p>
-</a>
-</li> ';
+    <a href="list_categorylist" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Vaccine Masterlist </p>
+    </a>
+    </li> ';
 
 
   $list_schedule = '<li class="nav-item">
-<a href="list_schedule" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="fas fa-calendar-plus nav-icon "></i>
-  <p> Schedule </p>
-</a>
-</li> ';
+    <a href="list_schedule" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="fas fa-calendar-plus nav-icon "></i>
+      <p> Schedule </p>
+    </a>
+    </li> ';
 
 
   $list_bakuna_center = '<li class="nav-item">
-<a href="list_bakuna_center" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-hospital-o"></i>
-  <p> Bakuna Center </p>
-</a>
-</li> ';
+    <a href="list_bakuna_center" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-hospital-o"></i>
+      <p> Bakuna Center </p>
+    </a>
+    </li> ';
 
   $list_vaccinators = '<li class="nav-item">
-<a href="list_vaccinators" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-user-md"></i>
-  <p> Vaccinator </p>
-</a>
-</li> ';
+    <a href="list_vaccinators" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-user-md"></i>
+      <p> Vaccinator </p>
+    </a>
+    </li> ';
 
 
   // end of masterlist vaccination
@@ -802,20 +835,20 @@ if ($_SESSION['user_type'] == 4) {
 
   // start of vaccine report
   $list_vaccine_report = '<li class="nav-item">
-  <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-syringe icons"></i>
-    <p> Eligible Population </p>
-  </a>
-  </li> ';
+    <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> Eligible Population </p>
+    </a>
+    </li> ';
 
   $list_vaccine_report_no = '<li class="nav-item">
-  <a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-syringe icons"></i>
-    <p> All Population </p>
-  </a>
-  </li> ';
+    <a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-syringe icons"></i>
+      <p> All Population </p>
+    </a>
+    </li> ';
   // end of report
 
   $single_break = '<br> ';
@@ -855,13 +888,13 @@ if ($_SESSION['user_type'] == 5) {
   </li> ';
 
   $list_assessment = '<li class="nav-item">
-  <a href="list_assessment" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-hands-helping icons"></i>
+    <a href="list_assessment" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-hands-helping icons"></i>
 
-    <p> Assessment </p>
-  </a>
-  </li> ';
+      <p> Assessment </p>
+    </a>
+    </li> ';
 
   $list_categorylist = '<li class="nav-item">
   <a href="list_categorylist" class="nav-link sidebar-link">
@@ -1132,63 +1165,63 @@ if ($_SESSION['user_type'] == 6) {
 
   // report for vaccine
   $list_vaccine_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Eligible Population </p>
-</a>
-</li> ';
+  <a href="../plugins/jasperreport/populationreport.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Eligible Population </p>
+  </a>
+  </li> ';
 
   $list_vaccine_report_no = '<li class="nav-item">
-<a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> All Population </p>
-</a>
-</li> ';
+  <a href="../plugins/jasperreport/populationreport_no.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> All Population </p>
+  </a>
+  </li> ';
 
   $list_eligible_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/eligible_population.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Eligible Population per Priority Group </p>
-</a>
-</li> ';
+  <a href="../plugins/jasperreport/eligible_population.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Eligible Population per Priority Group </p>
+  </a>
+  </li> ';
 
   $list_vaccine_linelist = '<li class="nav-item">
-<a href="../plugins/jasperreport/vaccine_linelist.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> Sinovac Linelist </p>
-</a>
-</li> ';
+  <a href="../plugins/jasperreport/vaccine_linelist.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> Sinovac Linelist </p>
+  </a>
+  </li> ';
 
   $list_deped_report = '<li class="nav-item">
-<a href="../plugins/jasperreport/vaccine_deped.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> DEPED Linelist</p>
-</a>
-</li> ';
+  <a href="../plugins/jasperreport/vaccine_deped.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> DEPED Linelist</p>
+  </a>
+  </li> ';
 
   $vaccine_sandoc = '<li class="nav-item">
-<a href="../plugins/jasperreport/vaccine_sandoc.php?"" class="nav-link sidebar-link">
-  &nbsp;
-  <i class="nav-icon fas fa-syringe icons"></i>
-  <p> SanDoc Linelist </p>
-</a>
-</li> ';
+  <a href="../plugins/jasperreport/vaccine_sandoc.php?"" class="nav-link sidebar-link">
+    &nbsp;
+    <i class="nav-icon fas fa-syringe icons"></i>
+    <p> SanDoc Linelist </p>
+  </a>
+  </li> ';
 
 
 
   $daily_report = '
-<li class="nav-item">
-  <a href="daily_vaccine_report" class="nav-link sidebar-link">
-    &nbsp;
-    <i class="nav-icon fas fa-id-card-alt icons"></i>
-    <p> Daily Count </p>
-  </a>
-</li>';
+  <li class="nav-item">
+    <a href="daily_vaccine_report" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-id-card-alt icons"></i>
+      <p> Daily Count </p>
+    </a>
+  </li>';
 
 
   // end report for vaccine 
