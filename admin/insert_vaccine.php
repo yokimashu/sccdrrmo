@@ -222,6 +222,8 @@ if (isset($_POST['insert_vaccine'])) {
     $barangay       = strtoupper($_POST['barangay']);
     $sinovac        = $_POST['sinovac'];
     $astrazeneca    = $_POST['astrazeneca'];
+    $pfizer         = $_POST['pfizer'];
+    $janssen         = $_POST['janssen'];
 
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
@@ -476,6 +478,8 @@ if (isset($_POST['insert_vaccine'])) {
             sinovac                 = :sinovacs,
             astrazeneca             = :astravas,
             username                = :user,
+            pfizer                  = :pfizer,
+            johnsons                = :johnsons,
             status                  = :statuss
         ";
 
@@ -550,6 +554,8 @@ if (isset($_POST['insert_vaccine'])) {
         ':consent'          => $consent,
         ':sinovacs'         => $sinovac,
         ':astravas'         => $astrazeneca,
+        ':pfizer'           => $pfizer,
+        ':johnsons'         => $janssen,
         ':user'             => $tracer_fullname,
         ':statuss'          => 'NEW'
 

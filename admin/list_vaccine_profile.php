@@ -2,8 +2,12 @@
 
 include('../config/db_config.php');
 include('sql_queries.php');
-include('update_vas.php');
+include('update_vas_test.php');
 include('update_void_vaccine.php');
+
+
+
+// include('get_vaccination_profile_two.php');
 
 
 
@@ -21,7 +25,19 @@ $time = date('H:i:s');
 
 
 
-$symptoms = $patient = $person_status = '';
+$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+$user_data = $con->prepare($get_user_sql);
+$user_data->execute([':id' => $user_id]);
+while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+  $vas_username = $result['fullname'];
+}
+
+
+
+
+$symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrno = '';
 
 //fetch user from database
 // $vas_entity_no = ' ';
@@ -40,6 +56,36 @@ $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
 // $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
 $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
 $get_all_vaccine_data->execute();
+
+
+
+
+$get_all_center_sql = "SELECT * FROM tbl_bakuna_center ";
+
+// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
+$get_all_center_data = $con->prepare($get_all_center_sql);
+$get_all_center_data->execute();
+
+
+
+
+// if (isset($_GET['entity_no'])) {
+
+//   $entity_no = $_GET['entity_no'];
+
+// $get_data_sql = "SELECT * FROM tbl_assessment t inner join tbl_vaccine r on r.entity_no = t.entity_no where r.entity_no = :id";
+// $get_data_data = $con->prepare($get_data_sql);
+// $get_data_data->execute([':id' => $entity_no]);
+
+// while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+//   $get_1stDose      = $result['1stDose'];
+//   $get_2ndDose       = $result['2ndDose'];
+
+// }
+// }
+
+
+// $entity_no = $_GET['entity_no'];
 
 
 
@@ -71,6 +117,7 @@ $get_all_vaccine_data->execute();
       <div class="content-header"></div>
       <div class="float-topright">
         <?php echo $alert_msg; ?>
+
       </div>
       <section class="content">
         <div class="card card-info">
@@ -127,19 +174,18 @@ $get_all_vaccine_data->execute();
                     <table id="users" name="user" class="table table-bordered table-striped">
                       <thead align="center">
 
-                      <th> OBJID </th>
+                        <th> OBJID </th>
                         <th> Entity_no </th>
                         <th> Category</th>
                         <th width="300px"> Full Name </th>
-                        <th> Gender </th>
-                        <th> Date of Birth </th>
-                        <th> Address </th>
-                        <!-- <th> Barangay </th> -->
-                        <!-- <th> Municipality </th>
-                        <th> Province </th>
-                        <th> Region </th>
-                        <th> Employed </th>
-                        <th> Covid History </th> -->
+                        <th> Birthdate </th>
+                        <th> Address</th>
+                        <!-- <th style="background-color:#EDCD15"> Consent </th>
+                        <th style="background-color:#157DEC"> Sinovac </th>
+                        <th style="background-color:#ED157E"> Astrazeneca </th>
+                        <th style="background-color:#7FFF00"> Pfizer </th>
+
+                        <th style="background-color:#FF0000"> Johnsons </th> -->
                         <th>Options</th>
 
 
@@ -172,34 +218,119 @@ $get_all_vaccine_data->execute();
 
 
   <div class="modal fade" id="modalupdate" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">FORWARD TO VAS LIST</h4>
+        <div class="modal-header bg-success">
+          <h4 class="modal-title ">FORWARD TO VAS LIST</h4>
         </div>
 
 
 
         <form method="POST" action="">
           <div class="modal-body">
-            <div class="box-body-lg-50">
+            <div class="box-body-lg">
               <div class="form-group">
-                <label>VAMOS ID: </label>
-                <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
-                <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
 
-                <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo $now->format('Y-m-d'); ?>" required>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label>Date: </label>
+                    <div class="input-group date" data-provide="datepicker">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input readonly type="text" class="form-control pull-right" id="datepicker" name="date_register" placeholder="Date Process" value="<?php echo $now->format('Y-m-d'); ?>">
 
-                <!-- <label>Time Registered:
-                <input readonly="true" readonly type="text" name="time_registered" id="time_registered" class = "form-control" pull-right value="<?php echo date("H:i") ?>" required>
-                </label>  -->
-                <label>Remarks: </label>
-                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>VAS Username: </label>
+                    <input readonly="true" type="text" name="vas_username" id="vas_username" class="form-control" pull-right value="<?php echo $vas_username; ?>" required>
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label>VAMOS ID: </label>
+                    <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+                  </div>
+                  <div class="col-sm-8">
+                    <label>FULL NAME: </label>
+                    <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
+                  </div>
+
+                </div><br>
 
 
-              </div>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <label>Bakuna Center</label>
+                    <div class="col-sm-1"></div>
 
-              <!-- <div class="col-md-5">
+                    <select class="form-control " id="center" style="width: 100%;" name="center" value="<?php echo $center; ?>" required>
+                      <option value=" " selected>SELECT BAKUNA CENTER</option>
+                      <?php while ($get_center = $get_all_center_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <option value="<?php echo $get_center['bc_name']; ?>"><?php echo $get_center['bc_name']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Bakuna Center No</label>
+                    <div class="col-sm-1"></div>
+                    <input readonly="true" type="text" name="cbrno" id="cbrno" class="form-control" pull-right value="<?php echo $final_cbrno ?>" required>
+
+                  </div>
+
+                </div><br>
+
+
+                <div class="row">
+
+
+                  <?php
+
+                  $get_vaccination_sql = "SELECT * FROM tbl_assessment where entity_no = :id and status = 'VACCINATED'";
+                  $get_vaccination_data = $con->prepare($get_vaccination_sql);
+                  $get_vaccination_data->execute([':id' => $entity_no]);
+
+                  $count = $get_vaccination_data->rowCount();
+
+                  while ($result = $get_vaccination_data->fetch(PDO::FETCH_ASSOC)) {
+                    $get_vaccine       = $result['VaccineManufacturer'];
+                  }
+
+
+
+
+
+
+                  ?>
+
+                  <div class="col-sm-3">
+                    <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo $now->format('Y-m-d'); ?>" required>
+                    <label>Remarks: </label>
+                    <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-right value="VALIDATED">
+                    <br>
+                  </div>
+
+                  <!-- <div class="col-sm-4">
+                    <input hidden readonly="true" readonly TYPE="text" NAME="date_registered" id="date_registered" class="form-control" pull-RIGHT VALUE="<?php echo $now->format('Y-m-d'); ?>" required>
+                    <label>Vaccination STATUS: </label>
+
+                    <?php if ($count == 1) { ?>
+                      <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-RIGHT value="<?php echo $get_vaccine . $count ?>">
+                    <?php } else if ($count == 2) { ?>
+                      <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-RIGHT value="<?php echo $get_vaccine . $count ?>">
+                    <?php } else { ?>
+                      <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-RIGHT value="NOT YET VACCINATED">
+                    <?php } ?>
+                    <br>
+                  </div> -->
+
+
+
+                </div><br>
+
+                <!-- <div class="col-md-5">
                 <label for="">STATUS:</label>
                 <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
                   <option selected>Please select</option>
@@ -208,34 +339,35 @@ $get_all_vaccine_data->execute();
                   <option value="PENDING">PENDING</option>
                 </select>
               </div> -->
-              <!-- <label for="">MOVE TO VAST LIST:</label>
+                <!-- <label for="">MOVE TO VAST LIST:</label>
               <br> -->
 
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                  <input type="submit" name="update_vas_test" class="btn btn-danger" value="SAVE">
+
+                  <!-- <input type="submit" id="btnSubmit" name="update_vas_test" class="btn btn-danger" value="SAVE"> -->
+
+
+
+
+                </div>
+              </div>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-              <input type="submit" name="update_vas" class="btn btn-danger" value="SAVE">
-
-              <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
-                                                <i class="fa fa-check fa-fw"> </i> </button> -->
-            </div>
-
-
-
-          </div>
         </form>
+
+
       </div>
 
     </div>
-
   </div>
-
 
   <!-- /.modal-dialog -->
 
 
-  <div class="modal fade" id="modalvoid" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal fade" id="modal1" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
@@ -249,12 +381,12 @@ $get_all_vaccine_data->execute();
             <div class="box-body-lg-50">
               <div class="form-group">
                 <label>ID:</label>
-                <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+                <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
                 <input readonly="true" type="text" name="fullname" id="fullname1" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
               </div>
 
               <label>Remarks: </label>
-                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
+              <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
 
 
             </div>
@@ -279,69 +411,8 @@ $get_all_vaccine_data->execute();
 
 
 
-  <div class="modal fade" id="delete_recordmodal" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Confirm Delete</h4>
-        </div>
-        <form method="POST" action="">
-          <div class="modal-body">
-            <div class="box-body">
-              <div class="form-group">
-                <label>Delete Record?</label>
 
-                <input readonly="true" type="text" name="objid_closecontact" id="objid_closecontact" class="form-control">
-              </div>
-
-
-
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-            <input type="submit" name="delete_closecontact" class="btn btn-danger" value="Yes">
-          </div>
-        </form>
-
-
-      </div>
-    </div> <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-
-
-
-
-
-
-  <!-- jQuery -->
-  <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- datepicker -->
-  <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-  <!-- Bootstrap WYSIHTML5 -->
-  <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-  <!-- Slimscroll -->
-  <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <!-- FastClick -->
-  <script src="../plugins/fastclick/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="../dist/js/pages/dashboard.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
-  <!-- DataTables -->
-  <script src="../plugins/datatables/jquery.dataTables.js"></script>
-  <!-- DataTables Bootstrap -->
-  <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-
-  <script src="../plugins/sweetalert/sweetalert.min.js"></script>
-
-  <!-- Select2 -->
-  <script src="../plugins/select2/select2.full.min.js"></script>
+  <?php include('pluginscript.php') ?>
 
   <?php
 
@@ -363,6 +434,11 @@ $get_all_vaccine_data->execute();
   ?>
 
   <script>
+    $('.select2').select2({
+      dropdownParent: $('#modalupdate')
+    });
+
+    // $('.select2').select2();
     // $('#users').DataTable({
     //   'paging': true,
     //   'lengthChange': true,
@@ -384,7 +460,7 @@ $get_all_vaccine_data->execute();
       scrollX: false,
 
       ajax: {
-        url: "search_vaccine.php",
+        url: "search_vaccine_test.php",
         type: "post",
         error: function(xhr, b, c) {
           console.log(
@@ -402,7 +478,7 @@ $get_all_vaccine_data->execute();
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
-            '<a class="btn btn-warning btn-sm modalupdate" style="margin-right:10px;" id="modal" data-placement="top" title="FORWARD TO VAS">VAS' + 
+            '<a class="btn btn-warning btn-sm " style="margin-right:10px;" id="modal"  data-placement="top" title="FORWARD TO VAS">VAS' +
             '<a class="btn btn-danger" style="margin-right:10px;" id="modal1" data-placement="top" title="VOID">x',
           // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
         },
@@ -426,29 +502,65 @@ $get_all_vaccine_data->execute();
       var currow = $(this).closest("tr");
 
       var entity_no = currow.find("td:eq(1)").text();
+
       var fullname = currow.find("td:eq(3)").text();
+      var consent = currow.find("td:eq(4)").text();
+      var sinovac = currow.find("td:eq(5)").text();
+      var astrazeneca = currow.find("td:eq(6)").text();
+      var pfizer = currow.find("td:eq(7)").text();
 
 
-
-
-      console.log("test");
       $('#modalupdate').modal('show');
       $('#entity_no').val(entity_no);
+
       $('#fullname').val(fullname);
+      $('#consent').val(consent).trigger('change');
+      $('#sinovac').val(sinovac).trigger('change');
+      $('#astrazeneca').val(astrazeneca).trigger('change');
+      $('#pfizer').val(pfizer).trigger('change');
 
 
 
-    });
-
-    $("#users tbody").on("click", ".printlink", function() {
-      // event.preventDefault();
-      var currow = $(this).closest("tr");
-      var entity = currow.find("td:eq(0)").text();
-      $('.printlink').attr("href", "../plugins/jasperreport/vaccineform.php?entity_no=" + entity, '_parent');
-      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
 
     });
 
+
+    $('#center').on('change', function() {
+      var cbr_no = $(this).val();
+
+      //  $('#doc_no').val(type);
+
+
+      $.ajax({
+        type: 'POST',
+        data: {
+          cbr_no: cbr_no
+        },
+        url: 'generate_cbrno.php',
+        success: function(data) {
+          $('#cbrno').val(data);
+
+        }
+
+      });
+
+    });
+
+
+    // $('#center').change(function() {
+    //   if ($('#cbrno').val() == '') {
+    //     $.ajax({
+    //       type: 'POST',
+    //       data: {},
+    //       url: 'generate_cbrno.php',
+    //       success: function(data) {
+    //         //$('#entity_no').val(data);
+    //         document.getElementById("cbrno").value = data;
+    //         console.log(data);
+    //       }
+    //     });
+    //   }
+    // });
 
 
 
@@ -471,7 +583,9 @@ $get_all_vaccine_data->execute();
 
     });
 
-
+    $(function blink() {
+      $('.blink_me').fadeOut(500).fadeIn(500, blink);
+    })();
 
     $(function() {
       $(document).on('click', '.delete', function(e) {
@@ -488,7 +602,6 @@ $get_all_vaccine_data->execute();
 
 
 
-    $('.select2').select2();
 
 
     $(function() {
@@ -505,6 +618,42 @@ $get_all_vaccine_data->execute();
 
       $('#user_id').val(user_id);
       $('#delete_PUMl').modal('toggle');
+
+    });
+  </script>
+
+
+
+  <script>
+    $("#btnSubmit").click(function() {
+
+      var center = $('#center :selected').text();
+      var consent = $('#consent :selected').text();
+      var sinovac = $('#sinovac :selected').text();
+      var astrazeneca = $('#astrazeneca :selected').text();
+
+
+
+      //  alert (category);
+      if (center == 'SELECT BAKUNA CENTER') {
+        alert("*** Please fill-out BAKUNA CENTER ***");
+        $('#center').focus();
+        return false;
+
+      } else if (consent == 'PLEASE SELECT') {
+        alert("*** Please fill-out CONSENT ***");
+        $('#consent').focus();
+        return false;
+
+      } else if (sinovac == 'PLEASE SELECT') {
+        alert("*** Please fill-out SINOVAC ***");
+        $('#sinovac').focus();
+        return false;
+      } else if (astrazeneca == 'PLEASE SELECT') {
+        alert("*** Please fill-out ASTRAZENECA ***");
+        $('#astrazeneca').focus();
+        return false;
+      } else return;
 
     });
   </script>

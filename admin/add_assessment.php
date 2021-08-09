@@ -3,7 +3,7 @@
 
 include('../config/db_config.php');
 // include('update_assessment.php');
-// include('update_assessment.php');
+// include('update_resbakuna_card.php');
 
 
 session_start();
@@ -246,7 +246,7 @@ $get_all_manufacturer_sql = $con->prepare($get_all_manufacturer_sql);
 $get_all_manufacturer_sql->execute();
 
 
-$get_all_vaccinator_sql = "SELECT * FROM tbl_vaccinators where n_facility = :cbcr";
+$get_all_vaccinator_sql = "SELECT * FROM tbl_vaccinators";
 $get_all_vaccinator_sql = $con->prepare($get_all_vaccinator_sql);
 $get_all_vaccinator_sql->execute([':cbcr' => $cbcr]);
 
@@ -508,25 +508,29 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                         <hr>
 
-                                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card.php">
 
 
 
-                                        <?php if ($vaccine_card == '1') { ?>
 
-                                            <strong><i class="fa fa-pencil mr-1"></i> <button disabled id="vaccinecard" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </button> </strong>
-                                        <?php } else { ?>
-                                            <strong><i class="fa fa-pencil mr-1"></i> <button name="update_resbakuna_card" id="vaccinecard" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </button> </strong>
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a id="vaccinecard" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </a> </strong>
 
-                                        <?php } ?>
+                                    <p class="text-muted">
+
+                                        <hr>
+
+
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a id="vaccinecard" href="../plugins/jasperreport/vaccination_card_photo.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD NO PHOTO</a> </strong>
+
+
+
 
 
                                         <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
-                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <!-- <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
                                         <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
-                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">  -->
 
-                                    </form>
+                                        </form>
 
                                     <p class="text-muted">
 
@@ -1103,8 +1107,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                     <option value="">Select Vaccinator</option>
                                                                                     <?php while ($get_vaccinator = $get_all_vaccinator_sql->fetch(PDO::FETCH_ASSOC)) { ?>
 
-                                                                                        <?php $selected = ($get_vaccinator_name == $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']) ? 'selected' : ''; ?>
-                                                                                        <option <?= $selected; ?> value="<?php echo $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']; ?>"><?php echo $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name'] . ' ' . $get_vaccinator['l_name']; ?></option>
+                                                                                        <?php $selected = ($get_vaccinator_name == $get_vaccinator['l_name'] . ', ' . $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name']) ? 'selected' : ''; ?>
+                                                                                        <option <?= $selected; ?> value="<?php echo $get_vaccinator['l_name'] . ', ' . $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name']; ?>"><?php echo $get_vaccinator['l_name'] . ', ' . $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name']; ?></option>
                                                                                     <?php } ?>
                                                                                 </select>
                                                                             </div>
@@ -1119,7 +1123,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <label>1st Dose</label>
-                                                                                <select name="first_dose" id="first_dose" style="width:100%" class="form-control " value="<?php echo $dose_1st; ?>">
+                                                                                <select name="first_dose" id="first_dose" style="width:100%" class="form-control select2 " value="<?php echo $dose_1st; ?>">
                                                                                     <option>Please select</option>
                                                                                     <option <?php if ($dose_1st == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                                     <option <?php if ($dose_1st == '02_No') echo 'selected'; ?> value="02_No">No</option>
@@ -1127,7 +1131,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                             </div>
                                                                             <div class="col-sm-6">
                                                                                 <label>2nd Dose</label>
-                                                                                <select name="second_dose" id="second_dose" style="width:100%" class="form-control " value="<?php echo $dose_2nd; ?>">
+                                                                                <select name="second_dose" id="second_dose" style="width:100%" class="form-control select2" value="<?php echo $dose_2nd; ?>">
                                                                                     <option>Please select</option>
                                                                                     <option <?php if ($dose_2nd == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                                     <option <?php if ($dose_2nd == '02_No') echo 'selected'; ?> value="02_No">No</option>

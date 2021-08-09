@@ -16,7 +16,7 @@ $password = "";
 // $host = "127.0.0.1";
 // $db_name = "sccdrrmo";
 // $username = "root";
-// $password = "0Fd8xWc1anuE";
+// $password = "I0nvNUWNXoYI";
 
 try {
     //database connection

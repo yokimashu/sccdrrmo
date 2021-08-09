@@ -1171,15 +1171,53 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             </div>
                                                         </div><br>
 
-                                                        <div class="col-sm-6">
-                                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="astrazeneca" id="astrazeneca">
-                                                                <option value="01_Yes">Yes</option>
-                                                                <option selected value="02_No">No</option>
-                                                                <option value="03_Unknown">Unknown</option>
-                                                            </select>
-                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                    <option value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with PFIZER? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="pfizer" id="pfizer">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                    <option value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
+
+                                                        <div class="row">
+
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with JANSSEN? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="janssen" id="janssen">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                    <option value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with PFIZER? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="pfizer" id="pfizer">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                    <option value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div> -->
+                                                        </div><br>
+
                                                     </div><br>
+
+
+
+
                                                 </div>
                                                 <!-- end sa choices sa form sa consent -->
 
@@ -1458,7 +1496,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                         document.getElementById("entity_no").value = data;
                         console.log(data);
                     }
-                });
+                }); 
             }
         });
 
