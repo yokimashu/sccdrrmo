@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vaccineform" language="javascript" pageWidth="612" pageHeight="792" columnWidth="552" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="72c6d922-0a13-4903-bd5e-588e4760374e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vaccineform" language="javascript" pageWidth="612" pageHeight="820" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="72c6d922-0a13-4903-bd5e-588e4760374e">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="1020"/>
@@ -303,6 +303,8 @@
 		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="johnsons" class="java.lang.String"/>
+	<field name="pfizer" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -334,7 +336,7 @@
 				<reportElement key="ellipse-126" x="47" y="51" width="8" height="8" uuid="41f77717-53c9-4181-a16d-f973e463e663"/>
 			</ellipse>
 			<rectangle radius="4">
-				<reportElement key="rectangle-23" x="314" y="523" width="282" height="149" uuid="5e0c9bd2-0250-4e3e-b277-b461f550a63b"/>
+				<reportElement key="rectangle-23" x="313" y="558" width="282" height="149" uuid="5e0c9bd2-0250-4e3e-b277-b461f550a63b"/>
 			</rectangle>
 			<rectangle>
 				<reportElement key="rectangle-17" x="119" y="290" width="177" height="15" uuid="5dd2674e-d2a1-464c-9d71-4a94241e0998"/>
@@ -585,7 +587,7 @@
 				<textFieldExpression><![CDATA[$F{Full_address}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="staticText-28" x="322" y="35" width="262" height="16" uuid="80a09336-e6ad-4523-aded-104a4fdd75e7"/>
+				<reportElement key="staticText-28" x="308" y="36" width="262" height="16" uuid="80a09336-e6ad-4523-aded-104a4fdd75e7"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
@@ -693,224 +695,224 @@
 				<textFieldExpression><![CDATA[$F{Birthdate_}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="staticText-45" x="34" y="370" width="85" height="16" uuid="2b78cb23-3726-417f-97cd-b78e59a70b04"/>
+				<reportElement key="staticText-45" x="34" y="383" width="85" height="16" uuid="2b78cb23-3726-417f-97cd-b78e59a70b04"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[9. Civil Status*]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-46" x="79" y="406" width="75" height="13" uuid="d7de8bf7-63c8-48a5-9e53-76c6d74d5616"/>
+				<reportElement key="staticText-46" x="79" y="419" width="75" height="13" uuid="d7de8bf7-63c8-48a5-9e53-76c6d74d5616"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[03-Widow/Widower]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-47" x="79" y="396" width="65" height="13" uuid="9d9aebfb-61f3-4c43-8ab2-02ae128d4e02"/>
+				<reportElement key="staticText-47" x="79" y="409" width="65" height="13" uuid="9d9aebfb-61f3-4c43-8ab2-02ae128d4e02"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Married]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-48" x="79" y="386" width="65" height="13" uuid="5bb96d0d-2066-4c00-89a8-cdfe7d191a34"/>
+				<reportElement key="staticText-48" x="79" y="399" width="65" height="13" uuid="5bb96d0d-2066-4c00-89a8-cdfe7d191a34"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Single]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-49" x="165" y="395" width="105" height="13" uuid="425223ef-a15d-4083-86de-c66e8fa96454"/>
+				<reportElement key="staticText-49" x="165" y="408" width="105" height="13" uuid="425223ef-a15d-4083-86de-c66e8fa96454"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[05-Living with Partner]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-50" x="165" y="385" width="122" height="13" uuid="903a2752-f11f-4774-981a-347201e5d638"/>
+				<reportElement key="staticText-50" x="165" y="398" width="122" height="13" uuid="903a2752-f11f-4774-981a-347201e5d638"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[04-Separeted/Annuled]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-51" x="32" y="418" width="155" height="16" uuid="316619a0-fea4-4736-a4c5-7f4b5d88d2c7"/>
+				<reportElement key="staticText-51" x="31" y="440" width="155" height="16" uuid="316619a0-fea4-4736-a4c5-7f4b5d88d2c7"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[10. Employment Status*]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-52" x="62" y="452" width="75" height="13" uuid="3ca9b0b1-9860-4fda-ba2b-e545cf356c52"/>
+				<reportElement key="staticText-52" x="61" y="474" width="75" height="13" uuid="3ca9b0b1-9860-4fda-ba2b-e545cf356c52"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[03-Self-employed]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-53" x="62" y="441" width="88" height="13" uuid="e7fda4e2-a67b-4917-97b2-b9c1991667b4"/>
+				<reportElement key="staticText-53" x="61" y="463" width="88" height="13" uuid="e7fda4e2-a67b-4917-97b2-b9c1991667b4"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Private Employed]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-54" x="62" y="431" width="89" height="13" uuid="82c884b2-ead5-40bf-b36f-f5b29760bc61"/>
+				<reportElement key="staticText-54" x="61" y="453" width="89" height="13" uuid="82c884b2-ead5-40bf-b36f-f5b29760bc61"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Government Employed]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-55" x="165" y="442" width="105" height="13" uuid="ec07ccf2-de38-4039-abc5-f9c4c22f1c80"/>
+				<reportElement key="staticText-55" x="164" y="464" width="105" height="13" uuid="ec07ccf2-de38-4039-abc5-f9c4c22f1c80"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[05-Others]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-56" x="165" y="431" width="122" height="13" uuid="dfe66a87-ee8f-470a-9f7c-281eaecb40c3"/>
+				<reportElement key="staticText-56" x="164" y="453" width="122" height="13" uuid="dfe66a87-ee8f-470a-9f7c-281eaecb40c3"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[04-Private Practioner]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-57" x="32" y="462" width="155" height="16" uuid="07fec61d-b25f-4266-8e9e-c8b01786a22a"/>
+				<reportElement key="staticText-57" x="32" y="493" width="155" height="16" uuid="07fec61d-b25f-4266-8e9e-c8b01786a22a"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[11. Profession*]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-58" x="63" y="494" width="75" height="13" uuid="05f17922-0b6b-4cdb-88f7-c92bd793bc09"/>
+				<reportElement key="staticText-58" x="63" y="525" width="75" height="13" uuid="05f17922-0b6b-4cdb-88f7-c92bd793bc09"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[03-Dentist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-59" x="63" y="484" width="103" height="13" uuid="b0bc1c56-92aa-4577-a581-a69e40227ac6"/>
+				<reportElement key="staticText-59" x="63" y="515" width="103" height="13" uuid="b0bc1c56-92aa-4577-a581-a69e40227ac6"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Dental Technologist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-60" x="63" y="474" width="103" height="13" uuid="862c274e-fd3b-44e4-b9f1-4f55f83eeab0"/>
+				<reportElement key="staticText-60" x="63" y="505" width="103" height="13" uuid="862c274e-fd3b-44e4-b9f1-4f55f83eeab0"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Dental Hygienist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-61" x="177" y="484" width="105" height="13" uuid="f1feba3e-fe8a-4092-a8f0-9118eb74b7d3"/>
+				<reportElement key="staticText-61" x="177" y="515" width="105" height="13" uuid="f1feba3e-fe8a-4092-a8f0-9118eb74b7d3"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[12-Physician]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-62" x="177" y="474" width="122" height="13" uuid="e295d72e-673b-4fed-9650-33a0c1143e5d"/>
+				<reportElement key="staticText-62" x="177" y="505" width="122" height="13" uuid="e295d72e-673b-4fed-9650-33a0c1143e5d"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[11-Physical Therapist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-63" x="63" y="524" width="75" height="13" uuid="16ac9b06-c565-4208-8b25-9e3bfceb4c26"/>
+				<reportElement key="staticText-63" x="63" y="555" width="75" height="13" uuid="16ac9b06-c565-4208-8b25-9e3bfceb4c26"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[06-Nurse]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-64" x="63" y="514" width="103" height="13" uuid="167fe334-0a0a-4ceb-bddf-71a3af8b9417"/>
+				<reportElement key="staticText-64" x="63" y="545" width="103" height="13" uuid="167fe334-0a0a-4ceb-bddf-71a3af8b9417"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[05-Midwife]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-65" x="63" y="504" width="103" height="13" uuid="0b5c17f5-e254-45ef-bce8-0e7c12b85c91"/>
+				<reportElement key="staticText-65" x="63" y="535" width="103" height="13" uuid="0b5c17f5-e254-45ef-bce8-0e7c12b85c91"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[04-Medical Technologist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-66" x="63" y="554" width="75" height="13" uuid="4164a319-9f95-4d72-b0d4-4790cda7a47c"/>
+				<reportElement key="staticText-66" x="63" y="585" width="75" height="13" uuid="4164a319-9f95-4d72-b0d4-4790cda7a47c"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[09-Optometrist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-67" x="63" y="544" width="103" height="13" uuid="03c91417-7985-4f41-93f2-90e76258d993"/>
+				<reportElement key="staticText-67" x="63" y="575" width="103" height="13" uuid="03c91417-7985-4f41-93f2-90e76258d993"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[08-Occupational Therapist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-68" x="63" y="534" width="103" height="13" uuid="85609969-c7ab-463e-a5ed-f89613ad3871"/>
+				<reportElement key="staticText-68" x="63" y="565" width="103" height="13" uuid="85609969-c7ab-463e-a5ed-f89613ad3871"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[07-Nutritionist-Dietician]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-71" x="63" y="564" width="103" height="13" uuid="bbae8832-7dac-4e15-a434-513340a375a2"/>
+				<reportElement key="staticText-71" x="63" y="595" width="103" height="13" uuid="bbae8832-7dac-4e15-a434-513340a375a2"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[10-Pharmacist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-72" x="177" y="504" width="105" height="13" uuid="e3095a31-03bf-4837-92f9-54709a7645e6"/>
+				<reportElement key="staticText-72" x="177" y="535" width="105" height="13" uuid="e3095a31-03bf-4837-92f9-54709a7645e6"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[14-Respiratory Therapist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-73" x="177" y="494" width="122" height="13" uuid="d967e8b7-4786-41f3-b1d4-b381874cc5e1"/>
+				<reportElement key="staticText-73" x="177" y="525" width="122" height="13" uuid="d967e8b7-4786-41f3-b1d4-b381874cc5e1"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[13-Radiologic Technologist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-74" x="177" y="524" width="105" height="13" uuid="fdcdf93c-190a-4069-9eee-83da0ffc6735"/>
+				<reportElement key="staticText-74" x="177" y="555" width="105" height="13" uuid="fdcdf93c-190a-4069-9eee-83da0ffc6735"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[16-Barangay Health Worker]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-75" x="177" y="514" width="122" height="13" uuid="33bff909-29b2-4a55-9e3d-37ab3b602c98"/>
+				<reportElement key="staticText-75" x="177" y="545" width="122" height="13" uuid="33bff909-29b2-4a55-9e3d-37ab3b602c98"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[15-X-ray Technologist]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-76" x="177" y="544" width="105" height="13" uuid="4015d337-da4e-462a-a8b5-cb28bfbb0e22"/>
+				<reportElement key="staticText-76" x="177" y="575" width="105" height="13" uuid="4015d337-da4e-462a-a8b5-cb28bfbb0e22"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[18-Administrative Staff]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-77" x="177" y="534" width="122" height="13" uuid="0405d78c-39c5-44fa-996b-c3c93fa1a384"/>
+				<reportElement key="staticText-77" x="177" y="565" width="122" height="13" uuid="0405d78c-39c5-44fa-996b-c3c93fa1a384"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[17-Maintenance Staff]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-78" x="177" y="554" width="105" height="13" uuid="6131330a-0d4f-4dac-ae39-82bdf74171d8"/>
+				<reportElement key="staticText-78" x="177" y="585" width="105" height="13" uuid="6131330a-0d4f-4dac-ae39-82bdf74171d8"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -959,254 +961,251 @@
 				<reportElement key="ellipse-64" x="67" y="340" width="8" height="8" uuid="d3ca5eb9-6467-41ce-b99d-f0fc1738e005"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-65" x="69" y="386" width="8" height="8" uuid="a23af389-ebd1-46f9-9613-67d4dc594f35"/>
+				<reportElement key="ellipse-65" x="69" y="399" width="8" height="8" uuid="a23af389-ebd1-46f9-9613-67d4dc594f35"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-66" x="69" y="396" width="8" height="8" uuid="f6083808-9593-4f88-b3e5-f8872b8dc640"/>
+				<reportElement key="ellipse-66" x="69" y="409" width="8" height="8" uuid="f6083808-9593-4f88-b3e5-f8872b8dc640"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-67" x="69" y="406" width="8" height="8" uuid="79fd8468-837c-4971-8595-c9f014ec8aec"/>
+				<reportElement key="ellipse-67" x="69" y="419" width="8" height="8" uuid="79fd8468-837c-4971-8595-c9f014ec8aec"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-68" x="155" y="385" width="8" height="8" uuid="91d38a40-0d1e-480b-a1dc-58ba85db6351"/>
+				<reportElement key="ellipse-68" x="155" y="398" width="8" height="8" uuid="91d38a40-0d1e-480b-a1dc-58ba85db6351"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-69" x="155" y="395" width="8" height="8" uuid="cadf7db4-6ed8-4909-94be-21611f080a7e"/>
+				<reportElement key="ellipse-69" x="155" y="408" width="8" height="8" uuid="cadf7db4-6ed8-4909-94be-21611f080a7e"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-70" x="53" y="432" width="8" height="8" uuid="2cf4755e-6840-4a35-ae5d-f551b892c1a5"/>
+				<reportElement key="ellipse-70" x="52" y="454" width="8" height="8" uuid="2cf4755e-6840-4a35-ae5d-f551b892c1a5"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-71" x="53" y="442" width="8" height="8" uuid="d0e5377b-f78d-4c22-8dcf-3ac58301a8be"/>
+				<reportElement key="ellipse-71" x="52" y="464" width="8" height="8" uuid="d0e5377b-f78d-4c22-8dcf-3ac58301a8be"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-72" x="53" y="452" width="8" height="8" uuid="560fa0e5-2457-429c-aba0-f7a8d641497f"/>
+				<reportElement key="ellipse-72" x="52" y="474" width="8" height="8" uuid="560fa0e5-2457-429c-aba0-f7a8d641497f"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-73" x="155" y="432" width="8" height="8" uuid="95e43def-d480-471c-a1a7-a0fe97dfe037"/>
+				<reportElement key="ellipse-73" x="154" y="454" width="8" height="8" uuid="95e43def-d480-471c-a1a7-a0fe97dfe037"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-74" x="155" y="442" width="8" height="8" uuid="43b09096-9292-4ab9-969c-1b6c64d326df"/>
+				<reportElement key="ellipse-74" x="154" y="464" width="8" height="8" uuid="43b09096-9292-4ab9-969c-1b6c64d326df"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-75" x="53" y="475" width="8" height="8" uuid="ca579c18-bdd7-4703-83e7-d5ebba93bf9c"/>
+				<reportElement key="ellipse-75" x="53" y="506" width="8" height="8" uuid="ca579c18-bdd7-4703-83e7-d5ebba93bf9c"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-76" x="53" y="485" width="8" height="8" uuid="1c635562-7840-4765-b08f-9e8da74bf4c9"/>
+				<reportElement key="ellipse-76" x="53" y="516" width="8" height="8" uuid="1c635562-7840-4765-b08f-9e8da74bf4c9"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-77" x="53" y="495" width="8" height="8" uuid="fe4062a8-ebf4-440d-8210-f271c1462604"/>
+				<reportElement key="ellipse-77" x="53" y="526" width="8" height="8" uuid="fe4062a8-ebf4-440d-8210-f271c1462604"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-78" x="53" y="505" width="8" height="8" uuid="120a81f1-9fe0-4c73-aafa-f00952714ea5"/>
+				<reportElement key="ellipse-78" x="53" y="536" width="8" height="8" uuid="120a81f1-9fe0-4c73-aafa-f00952714ea5"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-79" x="53" y="515" width="8" height="8" uuid="9f93d73e-e90b-4c59-9cfe-b54b445ba5e8"/>
+				<reportElement key="ellipse-79" x="53" y="546" width="8" height="8" uuid="9f93d73e-e90b-4c59-9cfe-b54b445ba5e8"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-80" x="53" y="525" width="8" height="8" uuid="7f50a215-4bc5-460a-b248-642c7e224379"/>
+				<reportElement key="ellipse-80" x="53" y="556" width="8" height="8" uuid="7f50a215-4bc5-460a-b248-642c7e224379"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-81" x="53" y="535" width="8" height="8" uuid="1c81dd5c-fee8-4e75-a320-484d947f3457"/>
+				<reportElement key="ellipse-81" x="53" y="566" width="8" height="8" uuid="1c81dd5c-fee8-4e75-a320-484d947f3457"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-82" x="53" y="545" width="8" height="8" uuid="3b8ef963-d1fd-48c4-bc15-9aafc49aa9e4"/>
+				<reportElement key="ellipse-82" x="53" y="576" width="8" height="8" uuid="3b8ef963-d1fd-48c4-bc15-9aafc49aa9e4"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-83" x="53" y="555" width="8" height="8" uuid="1452188b-373c-42f6-b42c-db1d3fca89e2"/>
+				<reportElement key="ellipse-83" x="53" y="586" width="8" height="8" uuid="1452188b-373c-42f6-b42c-db1d3fca89e2"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-84" x="53" y="565" width="8" height="8" uuid="112c037b-14fb-4a78-bb18-4887da425141"/>
+				<reportElement key="ellipse-84" x="53" y="596" width="8" height="8" uuid="112c037b-14fb-4a78-bb18-4887da425141"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-85" x="168" y="475" width="8" height="8" uuid="708f76a2-a93b-40bc-b2dc-2eabf374eb76"/>
+				<reportElement key="ellipse-85" x="168" y="506" width="8" height="8" uuid="708f76a2-a93b-40bc-b2dc-2eabf374eb76"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-86" x="168" y="485" width="8" height="8" uuid="5d2af1e7-6e88-421c-a323-e1cba4c9e9a9"/>
+				<reportElement key="ellipse-86" x="168" y="516" width="8" height="8" uuid="5d2af1e7-6e88-421c-a323-e1cba4c9e9a9"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-87" x="168" y="495" width="8" height="8" uuid="3ecca854-236f-4717-8368-7ae304e209e7"/>
+				<reportElement key="ellipse-87" x="168" y="526" width="8" height="8" uuid="3ecca854-236f-4717-8368-7ae304e209e7"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-88" x="168" y="505" width="8" height="8" uuid="c44eb902-2059-469f-985b-1e49b20f7b16"/>
+				<reportElement key="ellipse-88" x="168" y="536" width="8" height="8" uuid="c44eb902-2059-469f-985b-1e49b20f7b16"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-89" x="168" y="515" width="8" height="8" uuid="dad29c7c-9dd4-4b8d-82b5-aa335fe02cb7"/>
+				<reportElement key="ellipse-89" x="168" y="546" width="8" height="8" uuid="dad29c7c-9dd4-4b8d-82b5-aa335fe02cb7"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-90" x="168" y="525" width="8" height="8" uuid="2009950a-f017-478d-aa6b-1b9beefa3d1d"/>
+				<reportElement key="ellipse-90" x="168" y="556" width="8" height="8" uuid="2009950a-f017-478d-aa6b-1b9beefa3d1d"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-91" x="168" y="535" width="8" height="8" uuid="60be1925-dd6f-4594-812a-db54838317de"/>
+				<reportElement key="ellipse-91" x="168" y="566" width="8" height="8" uuid="60be1925-dd6f-4594-812a-db54838317de"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-92" x="168" y="545" width="8" height="8" uuid="2eccf09d-4719-4d3d-9400-09aa47323ad2"/>
+				<reportElement key="ellipse-92" x="168" y="576" width="8" height="8" uuid="2eccf09d-4719-4d3d-9400-09aa47323ad2"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-93" x="168" y="555" width="8" height="8" uuid="125c2489-5f78-4e5b-a68c-22c6de499aa1"/>
+				<reportElement key="ellipse-93" x="168" y="586" width="8" height="8" uuid="125c2489-5f78-4e5b-a68c-22c6de499aa1"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-79" x="32" y="576" width="124" height="16" uuid="019bfb3a-3cd2-4b0a-8013-47a5df8ff836"/>
+				<reportElement key="staticText-79" x="30" y="610" width="124" height="16" uuid="019bfb3a-3cd2-4b0a-8013-47a5df8ff836"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[12. Name of Employer*]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-80" x="47" y="599" width="116" height="16" uuid="43703d1b-7174-4fe7-b93c-453695e9978e"/>
+				<reportElement key="staticText-80" x="45" y="633" width="116" height="16" uuid="43703d1b-7174-4fe7-b93c-453695e9978e"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Address of Employer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-81" x="47" y="621" width="115" height="16" uuid="eac931c4-d7df-4dba-9567-de685f89a18e"/>
+				<reportElement key="staticText-81" x="45" y="655" width="115" height="16" uuid="eac931c4-d7df-4dba-9567-de685f89a18e"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Contact No. of Employer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-82" x="32" y="635" width="170" height="16" uuid="fdaf4718-91a9-4305-9e19-0f9aab68f3ad"/>
+				<reportElement key="staticText-82" x="30" y="669" width="170" height="16" uuid="fdaf4718-91a9-4305-9e19-0f9aab68f3ad"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[13. If female, pregnancy status]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-94" x="61" y="651" width="8" height="8" uuid="49797a32-1637-4a79-baf4-80e1a1653980"/>
+				<reportElement key="ellipse-94" x="59" y="685" width="8" height="8" uuid="49797a32-1637-4a79-baf4-80e1a1653980"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-95" x="61" y="661" width="8" height="8" uuid="e03135ac-1924-47ba-804f-6c420f5eb04d"/>
+				<reportElement key="ellipse-95" x="59" y="695" width="8" height="8" uuid="e03135ac-1924-47ba-804f-6c420f5eb04d"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-83" x="73" y="650" width="75" height="13" uuid="b349ae0c-729b-4ad8-9c3b-e2d665304cfc"/>
+				<reportElement key="staticText-83" x="71" y="684" width="75" height="13" uuid="b349ae0c-729b-4ad8-9c3b-e2d665304cfc"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Pregnant]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-84" x="73" y="661" width="72" height="13" uuid="34cb5369-378c-432a-95f2-d305a210b2b7"/>
+				<reportElement key="staticText-84" x="71" y="695" width="72" height="13" uuid="34cb5369-378c-432a-95f2-d305a210b2b7"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Not Pregnant]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement key="rectangle-18" x="163" y="622" width="136" height="14" uuid="4957d47e-669e-4976-a14d-5eeeaf0571db"/>
+				<reportElement key="rectangle-18" x="161" y="656" width="136" height="14" uuid="4957d47e-669e-4976-a14d-5eeeaf0571db"/>
 			</rectangle>
 			<rectangle>
-				<reportElement key="rectangle-19" x="163" y="595" width="136" height="25" uuid="88fdabe3-ddc4-49c2-89bf-24d994427445"/>
+				<reportElement key="rectangle-19" x="161" y="629" width="136" height="25" uuid="88fdabe3-ddc4-49c2-89bf-24d994427445"/>
 			</rectangle>
 			<rectangle>
-				<reportElement key="rectangle-20" x="163" y="576" width="136" height="18" uuid="31c88585-0a88-48f2-99c0-f0acdf3c88e7">
+				<reportElement key="rectangle-20" x="161" y="610" width="136" height="18" uuid="31c88585-0a88-48f2-99c0-f0acdf3c88e7">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</rectangle>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
-				<reportElement key="textField-12" x="165" y="575" width="134" height="20" isPrintWhenDetailOverflows="true" uuid="82fd033e-3f1f-4fc0-b62f-824dfed818bc"/>
+				<reportElement key="textField-12" x="163" y="609" width="134" height="20" isPrintWhenDetailOverflows="true" uuid="82fd033e-3f1f-4fc0-b62f-824dfed818bc"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Employer_name}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
-				<reportElement key="textField-13" stretchType="RelativeToBandHeight" x="165" y="596" width="134" height="25" isPrintWhenDetailOverflows="true" uuid="fbfa8ce3-5293-4c42-a1de-0fd8a76f227c"/>
+				<reportElement key="textField-13" stretchType="RelativeToBandHeight" x="163" y="630" width="134" height="25" isPrintWhenDetailOverflows="true" uuid="fbfa8ce3-5293-4c42-a1de-0fd8a76f227c"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Employer_address}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-14" x="165" y="623" width="134" height="14" uuid="144f9c93-d13b-4b73-ac05-7f0806b1481c"/>
+				<reportElement key="textField-14" x="163" y="657" width="134" height="14" uuid="144f9c93-d13b-4b73-ac05-7f0806b1481c"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Employer_contact_no}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement key="rectangle-21" x="0" y="676" width="613" height="33" backcolor="#000000" uuid="19c111bc-c603-4e8c-a7f0-9a907f17d403"/>
-			</rectangle>
 			<staticText>
-				<reportElement key="staticText-87" x="338" y="73" width="262" height="16" uuid="a16ff056-e607-4887-90a4-d9fed960965c"/>
+				<reportElement key="staticText-87" x="324" y="74" width="262" height="16" uuid="a16ff056-e607-4887-90a4-d9fed960965c"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Name of Alergy?]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-88" x="378" y="86" width="82" height="13" uuid="5dbd5c00-0469-4b1a-bd92-794d8819e621"/>
+				<reportElement key="staticText-88" x="364" y="87" width="82" height="13" uuid="5dbd5c00-0469-4b1a-bd92-794d8819e621"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Drug]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-89" x="472" y="87" width="93" height="13" uuid="e35cb0b5-95a3-4a38-9104-7b740453552d"/>
+				<reportElement key="staticText-89" x="458" y="88" width="93" height="13" uuid="e35cb0b5-95a3-4a38-9104-7b740453552d"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[05-Mold]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-90" x="378" y="96" width="82" height="13" uuid="189ae091-87af-43f8-a6d5-94196cf29801"/>
+				<reportElement key="staticText-90" x="364" y="97" width="82" height="13" uuid="189ae091-87af-43f8-a6d5-94196cf29801"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Food]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-91" x="378" y="106" width="82" height="13" uuid="588fd707-7043-430c-8c13-4926aa5fa2c1"/>
+				<reportElement key="staticText-91" x="364" y="107" width="82" height="13" uuid="588fd707-7043-430c-8c13-4926aa5fa2c1"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[03-Insect]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-92" x="472" y="97" width="93" height="13" uuid="c32a84c1-6fcb-463f-9dca-b819c7736283"/>
+				<reportElement key="staticText-92" x="458" y="98" width="93" height="13" uuid="c32a84c1-6fcb-463f-9dca-b819c7736283"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[06-Pet]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-93" x="472" y="107" width="93" height="13" uuid="da741946-dfed-4772-bf57-43e6a947659f"/>
+				<reportElement key="staticText-93" x="458" y="108" width="93" height="13" uuid="da741946-dfed-4772-bf57-43e6a947659f"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[07-Pollen]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-98" x="345" y="50" width="8" height="8" uuid="d645530a-f46e-47ab-b87a-a1e64b51af9a"/>
+				<reportElement key="ellipse-98" x="331" y="51" width="8" height="8" uuid="d645530a-f46e-47ab-b87a-a1e64b51af9a"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-99" x="367" y="97" width="8" height="8" uuid="08ec2e94-fd7c-4e74-9129-59b8f435ce3d"/>
+				<reportElement key="ellipse-99" x="353" y="98" width="8" height="8" uuid="08ec2e94-fd7c-4e74-9129-59b8f435ce3d"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-100" x="367" y="107" width="8" height="8" uuid="032ad41d-102b-4103-8626-ef8b2aae1f8e"/>
+				<reportElement key="ellipse-100" x="353" y="108" width="8" height="8" uuid="032ad41d-102b-4103-8626-ef8b2aae1f8e"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-101" x="462" y="87" width="8" height="8" uuid="c21c06b8-195d-43d9-bb99-d094d0ed6694"/>
+				<reportElement key="ellipse-101" x="448" y="88" width="8" height="8" uuid="c21c06b8-195d-43d9-bb99-d094d0ed6694"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-102" x="462" y="97" width="8" height="8" uuid="55415055-3772-48b7-b415-16a1548b71c6"/>
+				<reportElement key="ellipse-102" x="448" y="98" width="8" height="8" uuid="55415055-3772-48b7-b415-16a1548b71c6"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-103" x="462" y="107" width="8" height="8" uuid="e1b27651-1735-46e6-bf96-31da8cb41280"/>
+				<reportElement key="ellipse-103" x="448" y="108" width="8" height="8" uuid="e1b27651-1735-46e6-bf96-31da8cb41280"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-94" x="378" y="116" width="82" height="13" uuid="58917f73-41ad-4d95-a61d-6aaace45a93f"/>
+				<reportElement key="staticText-94" x="364" y="117" width="82" height="13" uuid="58917f73-41ad-4d95-a61d-6aaace45a93f"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[04-Latex]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-104" x="367" y="117" width="8" height="8" uuid="4df03fe4-d60d-4302-b513-f081d3357a39"/>
+				<reportElement key="ellipse-104" x="353" y="118" width="8" height="8" uuid="4df03fe4-d60d-4302-b513-f081d3357a39"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-96" x="321" y="130" width="262" height="16" uuid="6cba03b6-fd26-411c-ae22-822522f94e06"/>
+				<reportElement key="staticText-96" x="307" y="131" width="262" height="16" uuid="6cba03b6-fd26-411c-ae22-822522f94e06"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
@@ -1214,34 +1213,34 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-97" x="357" y="144" width="77" height="9" uuid="e10d9dd7-c2cb-45b0-9abc-d101f2dd8712"/>
+				<reportElement key="staticText-97" x="343" y="145" width="77" height="9" uuid="e10d9dd7-c2cb-45b0-9abc-d101f2dd8712"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Yes]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-106" x="346" y="145" width="8" height="8" uuid="fc20629c-eb91-4179-914f-69b50192dd35"/>
+				<reportElement key="ellipse-106" x="332" y="146" width="8" height="8" uuid="fc20629c-eb91-4179-914f-69b50192dd35"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-98" x="357" y="154" width="77" height="13" uuid="303e904d-0224-4fe1-b109-76c2fa12dab6"/>
+				<reportElement key="staticText-98" x="343" y="155" width="77" height="13" uuid="303e904d-0224-4fe1-b109-76c2fa12dab6"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-None]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-107" x="346" y="155" width="8" height="8" uuid="1f9cbf45-3f4d-4cf4-b8ee-c8b2ddac0878"/>
+				<reportElement key="ellipse-107" x="332" y="156" width="8" height="8" uuid="1f9cbf45-3f4d-4cf4-b8ee-c8b2ddac0878"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-99" x="339" y="164" width="262" height="16" uuid="73692f5d-0527-4eec-b0f0-4ddda8f2c943"/>
+				<reportElement key="staticText-99" x="325" y="165" width="262" height="16" uuid="73692f5d-0527-4eec-b0f0-4ddda8f2c943"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Comorbidity]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-100" x="378" y="178" width="82" height="13" uuid="43932bf0-6914-447f-9d93-74ea4ba61768"/>
+				<reportElement key="staticText-100" x="364" y="179" width="82" height="13" uuid="43932bf0-6914-447f-9d93-74ea4ba61768"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1249,21 +1248,21 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-101" x="472" y="178" width="93" height="10" uuid="251d910c-c7b0-4f21-9234-8fcc93486101"/>
+				<reportElement key="staticText-101" x="458" y="179" width="93" height="10" uuid="251d910c-c7b0-4f21-9234-8fcc93486101"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[05-Bronchial Asthma]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-102" x="378" y="188" width="82" height="13" uuid="5c2cbe9b-6613-40ac-a4f7-90b24b18076c"/>
+				<reportElement key="staticText-102" x="364" y="189" width="82" height="13" uuid="5c2cbe9b-6613-40ac-a4f7-90b24b18076c"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Heart Disease]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-103" x="378" y="198" width="82" height="13" uuid="2cde19aa-e96a-4dd6-9b86-07284b2f9667"/>
+				<reportElement key="staticText-103" x="364" y="199" width="82" height="13" uuid="2cde19aa-e96a-4dd6-9b86-07284b2f9667"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1271,14 +1270,14 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-104" x="472" y="188" width="93" height="10" uuid="487a3a95-460a-4473-b721-319dec3b813c"/>
+				<reportElement key="staticText-104" x="458" y="189" width="93" height="10" uuid="487a3a95-460a-4473-b721-319dec3b813c"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[06-Immunodeficiency State]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-105" x="472" y="198" width="93" height="13" uuid="c0838f70-e792-4761-afce-b16c186e4be1"/>
+				<reportElement key="staticText-105" x="458" y="199" width="93" height="13" uuid="c0838f70-e792-4761-afce-b16c186e4be1"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1286,45 +1285,45 @@
 ]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-108" x="367" y="179" width="8" height="8" uuid="1102f837-b2be-476d-870c-208a3964ea38"/>
+				<reportElement key="ellipse-108" x="353" y="180" width="8" height="8" uuid="1102f837-b2be-476d-870c-208a3964ea38"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-109" x="367" y="189" width="8" height="8" uuid="292a5b58-cd32-4181-a5b2-7577a232677c"/>
+				<reportElement key="ellipse-109" x="353" y="190" width="8" height="8" uuid="292a5b58-cd32-4181-a5b2-7577a232677c"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-110" x="367" y="199" width="8" height="8" uuid="f37f4fbd-3026-474c-b3e3-83c43ac24c68"/>
+				<reportElement key="ellipse-110" x="353" y="200" width="8" height="8" uuid="f37f4fbd-3026-474c-b3e3-83c43ac24c68"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-111" x="462" y="179" width="8" height="8" uuid="96986dd5-48a3-4ced-bd6c-07add702b931"/>
+				<reportElement key="ellipse-111" x="448" y="180" width="8" height="8" uuid="96986dd5-48a3-4ced-bd6c-07add702b931"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-112" x="462" y="189" width="8" height="8" uuid="0f7d68ee-94f1-4c5f-92d2-7b6866c036ce"/>
+				<reportElement key="ellipse-112" x="448" y="190" width="8" height="8" uuid="0f7d68ee-94f1-4c5f-92d2-7b6866c036ce"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-113" x="462" y="199" width="8" height="8" uuid="579762ca-8d04-4868-b7eb-a9504dcef6a1"/>
+				<reportElement key="ellipse-113" x="448" y="200" width="8" height="8" uuid="579762ca-8d04-4868-b7eb-a9504dcef6a1"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-106" x="378" y="208" width="82" height="13" uuid="cc8dffaf-deaa-4139-bf5f-9f290194e2e7"/>
+				<reportElement key="staticText-106" x="364" y="209" width="82" height="13" uuid="cc8dffaf-deaa-4139-bf5f-9f290194e2e7"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[04-Diabetes mellitus]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-114" x="367" y="209" width="8" height="8" uuid="c3ff565f-5268-4099-b8ad-88704855b66a"/>
+				<reportElement key="ellipse-114" x="353" y="210" width="8" height="8" uuid="c3ff565f-5268-4099-b8ad-88704855b66a"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-107" x="472" y="208" width="93" height="13" uuid="b61ed759-aabd-4949-824b-499ad971f440"/>
+				<reportElement key="staticText-107" x="458" y="209" width="93" height="13" uuid="b61ed759-aabd-4949-824b-499ad971f440"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[08-Others]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-115" x="462" y="209" width="8" height="8" uuid="90746ab4-80f6-48ac-8b9c-9215c2b8d3dc"/>
+				<reportElement key="ellipse-115" x="448" y="210" width="8" height="8" uuid="90746ab4-80f6-48ac-8b9c-9215c2b8d3dc"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-108" x="322" y="220" width="262" height="16" uuid="70658965-f56a-463e-84e7-300834f64462"/>
+				<reportElement key="staticText-108" x="308" y="221" width="262" height="16" uuid="70658965-f56a-463e-84e7-300834f64462"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
@@ -1332,58 +1331,58 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-109" x="357" y="236" width="77" height="9" uuid="8f43b1de-e422-440b-b404-505a1a309817"/>
+				<reportElement key="staticText-109" x="343" y="237" width="77" height="9" uuid="8f43b1de-e422-440b-b404-505a1a309817"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Yes]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-116" x="346" y="236" width="8" height="8" uuid="03048c2f-3706-4b01-8af2-5989350d7a3b"/>
+				<reportElement key="ellipse-116" x="332" y="237" width="8" height="8" uuid="03048c2f-3706-4b01-8af2-5989350d7a3b"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-110" x="357" y="246" width="77" height="13" uuid="d278abfb-d158-428e-b6b9-4eab72dcad70"/>
+				<reportElement key="staticText-110" x="343" y="247" width="77" height="13" uuid="d278abfb-d158-428e-b6b9-4eab72dcad70"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-None]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-117" x="346" y="246" width="8" height="8" uuid="a0d77d55-9ad9-4703-af17-fd7eb61e4ed1"/>
+				<reportElement key="ellipse-117" x="332" y="247" width="8" height="8" uuid="a0d77d55-9ad9-4703-af17-fd7eb61e4ed1"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-111" x="338" y="257" width="262" height="16" uuid="44ca47cf-bf80-4d94-9c92-30f7fd3fcafe"/>
+				<reportElement key="staticText-111" x="324" y="258" width="262" height="16" uuid="44ca47cf-bf80-4d94-9c92-30f7fd3fcafe"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Date of first positive result / specimen collection]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement key="rectangle-22" x="339" y="271" width="208" height="16" uuid="1c2e8ef5-111b-4911-8bf5-5ce0b5003006"/>
+				<reportElement key="rectangle-22" x="325" y="272" width="208" height="16" uuid="1c2e8ef5-111b-4911-8bf5-5ce0b5003006"/>
 			</rectangle>
 			<staticText>
-				<reportElement key="staticText-112" x="339" y="280" width="208" height="13" uuid="9ba6fc94-492c-4517-b3b4-13719d9a58e2"/>
+				<reportElement key="staticText-112" x="325" y="281" width="208" height="13" uuid="9ba6fc94-492c-4517-b3b4-13719d9a58e2"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="6"/>
 				</textElement>
 				<text><![CDATA[MM/DD/YYYY]]></text>
 			</staticText>
 			<textField pattern="yyyy-mm-dd" isBlankWhenNull="false">
-				<reportElement key="textField-15" x="338" y="272" width="209" height="14" uuid="6612a837-4bb5-4072-b05f-ba0e52d70dab"/>
+				<reportElement key="textField-15" x="324" y="273" width="209" height="14" uuid="6612a837-4bb5-4072-b05f-ba0e52d70dab"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{covid_date}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="staticText-113" x="338" y="292" width="262" height="16" uuid="2a573bf2-6fe9-4398-9516-904e3f492def"/>
+				<reportElement key="staticText-113" x="324" y="293" width="262" height="16" uuid="2a573bf2-6fe9-4398-9516-904e3f492def"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Classification of Infection]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-114" x="358" y="308" width="82" height="13" uuid="c7c11fda-7afc-4dd0-9878-117f975af342"/>
+				<reportElement key="staticText-114" x="344" y="309" width="82" height="13" uuid="c7c11fda-7afc-4dd0-9878-117f975af342"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1391,14 +1390,14 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-115" x="358" y="318" width="82" height="13" uuid="f5a8d850-afd3-4b88-b70b-18186211b0bf"/>
+				<reportElement key="staticText-115" x="344" y="319" width="82" height="13" uuid="f5a8d850-afd3-4b88-b70b-18186211b0bf"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-Mild]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-116" x="358" y="328" width="82" height="13" uuid="f9bf67be-cace-4355-924c-5a320048cab5"/>
+				<reportElement key="staticText-116" x="344" y="329" width="82" height="13" uuid="f9bf67be-cace-4355-924c-5a320048cab5"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1406,36 +1405,36 @@
 ]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-118" x="347" y="308" width="8" height="8" uuid="4acadf08-2607-42ff-abc6-ae45757a40ae"/>
+				<reportElement key="ellipse-118" x="333" y="309" width="8" height="8" uuid="4acadf08-2607-42ff-abc6-ae45757a40ae"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-119" x="347" y="318" width="8" height="8" uuid="ea5e93f4-8578-491b-b3dd-6509b52d1f0a"/>
+				<reportElement key="ellipse-119" x="333" y="319" width="8" height="8" uuid="ea5e93f4-8578-491b-b3dd-6509b52d1f0a"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-120" x="347" y="328" width="8" height="8" uuid="c393cae1-a596-4a39-8653-bef36719407a"/>
+				<reportElement key="ellipse-120" x="333" y="329" width="8" height="8" uuid="c393cae1-a596-4a39-8653-bef36719407a"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-121" x="347" y="338" width="8" height="8" uuid="6e105060-8cdc-41dd-b7b5-e9ab7dc73aa5"/>
+				<reportElement key="ellipse-121" x="435" y="309" width="8" height="8" uuid="6e105060-8cdc-41dd-b7b5-e9ab7dc73aa5"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-117" x="358" y="338" width="82" height="13" uuid="4f366df0-2a18-4778-b014-23ac30477275"/>
+				<reportElement key="staticText-117" x="446" y="309" width="82" height="13" uuid="4f366df0-2a18-4778-b014-23ac30477275"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[04-Severe]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-122" x="347" y="348" width="8" height="8" uuid="d77fe1e3-b9d3-447d-83be-2c2fd5632ab5"/>
+				<reportElement key="ellipse-122" x="435" y="319" width="8" height="8" uuid="d77fe1e3-b9d3-447d-83be-2c2fd5632ab5"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-118" x="358" y="347" width="82" height="13" uuid="60cf6409-7b20-460d-a162-3fa0b5601e78"/>
+				<reportElement key="staticText-118" x="446" y="318" width="82" height="13" uuid="60cf6409-7b20-460d-a162-3fa0b5601e78"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[05-Critical]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-119" x="321" y="359" width="262" height="16" uuid="190094a8-cf8f-4e48-ba40-6b038a5625ae"/>
+				<reportElement key="staticText-119" x="309" y="344" width="262" height="16" uuid="190094a8-cf8f-4e48-ba40-6b038a5625ae"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
@@ -1443,21 +1442,21 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-120" x="358" y="375" width="82" height="13" uuid="4abd8d24-95ae-456e-9283-4f8cbef039f5"/>
+				<reportElement key="staticText-120" x="343" y="360" width="82" height="13" uuid="4abd8d24-95ae-456e-9283-4f8cbef039f5"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Yes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-121" x="358" y="385" width="82" height="13" uuid="7707d369-2fa7-4a72-a916-6bb235c3eea1"/>
+				<reportElement key="staticText-121" x="343" y="370" width="82" height="13" uuid="7707d369-2fa7-4a72-a916-6bb235c3eea1"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-122" x="358" y="395" width="82" height="13" uuid="894f4bca-1550-4108-a829-9d56f06a9b31"/>
+				<reportElement key="staticText-122" x="446" y="359" width="82" height="13" uuid="894f4bca-1550-4108-a829-9d56f06a9b31"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1465,42 +1464,42 @@
 ]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-123" x="347" y="375" width="8" height="8" uuid="dd8ca0a7-a30e-408e-8ae1-e1fea8c3d6ac"/>
+				<reportElement key="ellipse-123" x="332" y="360" width="8" height="8" uuid="dd8ca0a7-a30e-408e-8ae1-e1fea8c3d6ac"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-124" x="347" y="385" width="8" height="8" uuid="f4d5535f-bb3d-4dde-a564-977f3aedf046"/>
+				<reportElement key="ellipse-124" x="332" y="370" width="8" height="8" uuid="f4d5535f-bb3d-4dde-a564-977f3aedf046"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-125" x="347" y="395" width="8" height="8" uuid="b4e41769-0ff2-4d36-8d2e-fb2a7f6c1666"/>
+				<reportElement key="ellipse-125" x="435" y="360" width="8" height="8" uuid="b4e41769-0ff2-4d36-8d2e-fb2a7f6c1666"/>
 			</ellipse>
 			<staticText>
-				<reportElement key="staticText-123" x="314" y="529" width="282" height="17" uuid="e6138f29-d4d5-4f86-b819-f6141a1dba94"/>
+				<reportElement key="staticText-123" x="313" y="564" width="282" height="17" uuid="e6138f29-d4d5-4f86-b819-f6141a1dba94"/>
 				<textElement textAlignment="Center">
 					<font fontName="Bell MT" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[CERTIFICATION / AUTHORIZATION]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-1" x="394" y="548" width="111" height="1" uuid="16a00964-b2fc-48e9-9b0c-4f55ebc08796"/>
+				<reportElement key="line-1" x="393" y="583" width="111" height="1" uuid="16a00964-b2fc-48e9-9b0c-4f55ebc08796"/>
 			</line>
 			<staticText>
-				<reportElement key="staticText-124" x="319" y="554" width="272" height="54" uuid="55c41399-c680-4eb3-b259-13ac76a6082b"/>
+				<reportElement key="staticText-124" x="318" y="589" width="272" height="54" uuid="55c41399-c680-4eb3-b259-13ac76a6082b"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[I hereby certify to the veracity of all information stipulated
 herein. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-125" x="314" y="581" width="281" height="54" uuid="9d16d45e-5f13-47a7-8962-a744a3402d11"/>
+				<reportElement key="staticText-125" x="313" y="616" width="281" height="54" uuid="9d16d45e-5f13-47a7-8962-a744a3402d11"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Furthermore, I hereby authorized the CITY OF SAN CARLOS
 to use all pertinent information for the Vaccination Program
 against COVID-19.]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-2" x="331" y="646" width="246" height="1" uuid="52e26445-2146-4762-8644-d84f494288f0"/>
+				<reportElement key="line-2" x="330" y="681" width="246" height="1" uuid="52e26445-2146-4762-8644-d84f494288f0"/>
 			</line>
 			<staticText>
-				<reportElement key="staticText-126" x="331" y="646" width="246" height="16" uuid="9141ffc1-70c0-4cf3-b73b-299fbc447e03"/>
+				<reportElement key="staticText-126" x="330" y="681" width="246" height="16" uuid="9141ffc1-70c0-4cf3-b73b-299fbc447e03"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[FULLNAME AND SIGNATURE]]></text>
 			</staticText>
@@ -1535,137 +1534,137 @@ against COVID-19.]]></text>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="69" y="386" width="8" height="8" backcolor="#000000" uuid="8f693339-59b2-4a10-a2d0-f93bfdcfcf1e">
+				<reportElement key="rectangle-24" x="69" y="399" width="8" height="8" backcolor="#000000" uuid="8f693339-59b2-4a10-a2d0-f93bfdcfcf1e">
 					<printWhenExpression><![CDATA[$F{Civilstatus} == "01_Single"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="61" y="651" width="8" height="8" backcolor="#000000" uuid="978ea112-9f5b-4085-868c-5bd1c06634de">
+				<reportElement key="rectangle-24" x="59" y="685" width="8" height="8" backcolor="#000000" uuid="978ea112-9f5b-4085-868c-5bd1c06634de">
 					<printWhenExpression><![CDATA[$F{Preg_status} == "01_Pregnant"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="61" y="661" width="8" height="8" backcolor="#000000" uuid="a0304cd9-cf9c-42a4-bf27-b70d271d4c4b">
+				<reportElement key="rectangle-24" x="59" y="695" width="8" height="8" backcolor="#000000" uuid="a0304cd9-cf9c-42a4-bf27-b70d271d4c4b">
 					<printWhenExpression><![CDATA[$F{Preg_status} == "02_Not_Pregnant"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="345" y="50" width="8" height="8" backcolor="#000000" uuid="dea0adb7-b7c1-4192-b57c-eb2feccdc5bd">
+				<reportElement key="rectangle-24" x="331" y="51" width="8" height="8" backcolor="#000000" uuid="dea0adb7-b7c1-4192-b57c-eb2feccdc5bd">
 					<printWhenExpression><![CDATA[$F{W_allergy} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="97" width="8" height="8" backcolor="#000000" uuid="f56e130c-7239-4bc4-a7f6-9b89fee4fea6">
+				<reportElement key="rectangle-24" x="353" y="98" width="8" height="8" backcolor="#000000" uuid="f56e130c-7239-4bc4-a7f6-9b89fee4fea6">
 					<printWhenExpression><![CDATA[$F{Allergy_02} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="107" width="8" height="8" backcolor="#000000" uuid="97a05090-2303-49a5-95b4-6c241a28f27a">
+				<reportElement key="rectangle-24" x="353" y="108" width="8" height="8" backcolor="#000000" uuid="97a05090-2303-49a5-95b4-6c241a28f27a">
 					<printWhenExpression><![CDATA[$F{Allergy_03} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="117" width="8" height="8" backcolor="#000000" uuid="14ead971-84a9-4dfe-b2f6-b2bfb1540c9a">
+				<reportElement key="rectangle-24" x="353" y="118" width="8" height="8" backcolor="#000000" uuid="14ead971-84a9-4dfe-b2f6-b2bfb1540c9a">
 					<printWhenExpression><![CDATA[$F{Allergy_04} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="346" y="145" width="8" height="8" backcolor="#000000" uuid="b72f7514-9b91-413b-aa64-95337aa9c8d1">
+				<reportElement key="rectangle-24" x="332" y="146" width="8" height="8" backcolor="#000000" uuid="b72f7514-9b91-413b-aa64-95337aa9c8d1">
 					<printWhenExpression><![CDATA[$F{W_comorbidities} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="346" y="155" width="8" height="8" backcolor="#000000" uuid="9c474526-9c57-4f2d-afbb-a0291f6c02f5">
+				<reportElement key="rectangle-24" x="332" y="156" width="8" height="8" backcolor="#000000" uuid="9c474526-9c57-4f2d-afbb-a0291f6c02f5">
 					<printWhenExpression><![CDATA[$F{W_comorbidities} == "02_No"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="179" width="8" height="8" backcolor="#000000" uuid="d4b734a6-a85a-41ae-b1a5-d782ac241791">
+				<reportElement key="rectangle-24" x="353" y="180" width="8" height="8" backcolor="#000000" uuid="d4b734a6-a85a-41ae-b1a5-d782ac241791">
 					<printWhenExpression><![CDATA[$F{Comorbidity_01} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="189" width="8" height="8" backcolor="#000000" uuid="ee6f0524-7299-4781-8e42-60b3aa0d776a">
+				<reportElement key="rectangle-24" x="353" y="190" width="8" height="8" backcolor="#000000" uuid="ee6f0524-7299-4781-8e42-60b3aa0d776a">
 					<printWhenExpression><![CDATA[$F{Comorbidity_02} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="199" width="8" height="8" backcolor="#000000" uuid="253a0263-aa82-42c8-ad53-33fbc402ca97">
+				<reportElement key="rectangle-24" x="353" y="200" width="8" height="8" backcolor="#000000" uuid="253a0263-aa82-42c8-ad53-33fbc402ca97">
 					<printWhenExpression><![CDATA[$F{Comorbidity_03} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="367" y="209" width="8" height="8" backcolor="#000000" uuid="ab27bdee-f1e9-4bea-88fa-4555a7fd3088">
+				<reportElement key="rectangle-24" x="353" y="210" width="8" height="8" backcolor="#000000" uuid="ab27bdee-f1e9-4bea-88fa-4555a7fd3088">
 					<printWhenExpression><![CDATA[$F{Comorbidity_04} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="179" width="8" height="8" backcolor="#000000" uuid="1706876c-bce6-403c-95cf-787dc5bdeacf">
+				<reportElement key="rectangle-24" x="448" y="180" width="8" height="8" backcolor="#000000" uuid="1706876c-bce6-403c-95cf-787dc5bdeacf">
 					<printWhenExpression><![CDATA[$F{Comorbidity_05} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="189" width="8" height="8" backcolor="#000000" uuid="277a9a68-a9ae-4e57-a9fe-061b0894dcb9">
+				<reportElement key="rectangle-24" x="448" y="190" width="8" height="8" backcolor="#000000" uuid="277a9a68-a9ae-4e57-a9fe-061b0894dcb9">
 					<printWhenExpression><![CDATA[$F{Comorbidity_06} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="199" width="8" height="8" backcolor="#000000" uuid="c0819bbe-cd6e-4abd-a25e-57b2c63936b9">
+				<reportElement key="rectangle-24" x="448" y="200" width="8" height="8" backcolor="#000000" uuid="c0819bbe-cd6e-4abd-a25e-57b2c63936b9">
 					<printWhenExpression><![CDATA[$F{Comorbidity_07} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="209" width="8" height="8" backcolor="#000000" uuid="0ca065ba-beb9-40d8-bc59-37c034d8dc35">
+				<reportElement key="rectangle-24" x="448" y="210" width="8" height="8" backcolor="#000000" uuid="0ca065ba-beb9-40d8-bc59-37c034d8dc35">
 					<printWhenExpression><![CDATA[$F{Comorbidity_08} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="346" y="236" width="8" height="8" backcolor="#000000" uuid="5b4ad1c5-637f-4a10-99cc-1b28f4869984">
+				<reportElement key="rectangle-24" x="332" y="237" width="8" height="8" backcolor="#000000" uuid="5b4ad1c5-637f-4a10-99cc-1b28f4869984">
 					<printWhenExpression><![CDATA[$F{covid_history} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="346" y="246" width="8" height="8" backcolor="#000000" uuid="08e34ac4-5215-44af-9abe-24a19feda169">
+				<reportElement key="rectangle-24" x="332" y="247" width="8" height="8" backcolor="#000000" uuid="08e34ac4-5215-44af-9abe-24a19feda169">
 					<printWhenExpression><![CDATA[$F{covid_history} == "02_No"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="308" width="8" height="8" backcolor="#000000" uuid="fd06565b-7b4d-4a37-9cb9-60caef98b6c8">
+				<reportElement key="rectangle-24" x="333" y="309" width="8" height="8" backcolor="#000000" uuid="fd06565b-7b4d-4a37-9cb9-60caef98b6c8">
 					<printWhenExpression><![CDATA[$F{covid_classification} == "01_Asymtomatic"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="318" width="8" height="8" backcolor="#000000" uuid="ccf7b6f5-8635-4804-b2c9-0c6e4c3c623d">
+				<reportElement key="rectangle-24" x="333" y="319" width="8" height="8" backcolor="#000000" uuid="ccf7b6f5-8635-4804-b2c9-0c6e4c3c623d">
 					<printWhenExpression><![CDATA[$F{covid_classification} == "02_Mild"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="328" width="8" height="8" backcolor="#000000" uuid="05c81474-29a5-4203-a6a8-9dc5e4e9eb82">
+				<reportElement key="rectangle-24" x="333" y="329" width="8" height="8" backcolor="#000000" uuid="05c81474-29a5-4203-a6a8-9dc5e4e9eb82">
 					<printWhenExpression><![CDATA[$F{covid_classification} == "03_Moderate"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="338" width="8" height="8" backcolor="#000000" uuid="5ca19ee4-bea6-4573-8718-4dbae0296531">
+				<reportElement key="rectangle-24" x="435" y="309" width="8" height="8" backcolor="#000000" uuid="5ca19ee4-bea6-4573-8718-4dbae0296531">
 					<printWhenExpression><![CDATA[$F{covid_classification} == "04_Severe"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="348" width="8" height="8" backcolor="#000000" uuid="ae0a02af-7670-4f60-a0b8-6da64ab8b682">
+				<reportElement key="rectangle-24" x="435" y="319" width="8" height="8" backcolor="#000000" uuid="ae0a02af-7670-4f60-a0b8-6da64ab8b682">
 					<printWhenExpression><![CDATA[$F{covid_classification} == "05_Critical"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="375" width="8" height="8" backcolor="#000000" uuid="aedc8931-4cdf-4f6a-8fe8-c2ca99acbf2e">
+				<reportElement key="rectangle-24" x="332" y="360" width="8" height="8" backcolor="#000000" uuid="aedc8931-4cdf-4f6a-8fe8-c2ca99acbf2e">
 					<printWhenExpression><![CDATA[$F{Consent} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="385" width="8" height="8" backcolor="#000000" uuid="e69efb35-2c68-40e3-bb4e-358cfae40bdf">
+				<reportElement key="rectangle-24" x="332" y="370" width="8" height="8" backcolor="#000000" uuid="e69efb35-2c68-40e3-bb4e-358cfae40bdf">
 					<printWhenExpression><![CDATA[$F{Consent} == "02_No"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="395" width="8" height="8" backcolor="#000000" uuid="00b12b6d-a30d-45dd-8315-05f6b413cc35">
+				<reportElement key="rectangle-24" x="435" y="360" width="8" height="8" backcolor="#000000" uuid="00b12b6d-a30d-45dd-8315-05f6b413cc35">
 					<printWhenExpression><![CDATA[$F{Consent} == "03_Unknown"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -1715,157 +1714,157 @@ against COVID-19.]]></text>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="69" y="396" width="8" height="8" backcolor="#000000" uuid="c3293934-f057-4f42-8ad2-7fb9fe286732">
+				<reportElement key="rectangle-24" x="69" y="409" width="8" height="8" backcolor="#000000" uuid="c3293934-f057-4f42-8ad2-7fb9fe286732">
 					<printWhenExpression><![CDATA[$F{Civilstatus} == "02_Married"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="69" y="406" width="8" height="8" backcolor="#000000" uuid="8850473e-766f-4234-978f-771af80231a5">
+				<reportElement key="rectangle-24" x="69" y="419" width="8" height="8" backcolor="#000000" uuid="8850473e-766f-4234-978f-771af80231a5">
 					<printWhenExpression><![CDATA[$F{Civilstatus} == "03_Widow/Widower"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="155" y="385" width="8" height="8" backcolor="#000000" uuid="2460618c-6a73-4235-ac0f-8cf31b3be143">
+				<reportElement key="rectangle-24" x="155" y="398" width="8" height="8" backcolor="#000000" uuid="2460618c-6a73-4235-ac0f-8cf31b3be143">
 					<printWhenExpression><![CDATA[$F{Civilstatus} == "04_Seperated/Annulled"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="155" y="395" width="8" height="8" backcolor="#000000" uuid="8c1e0e32-e44d-4c9d-83d7-da2eed96bf04">
+				<reportElement key="rectangle-24" x="155" y="408" width="8" height="8" backcolor="#000000" uuid="8c1e0e32-e44d-4c9d-83d7-da2eed96bf04">
 					<printWhenExpression><![CDATA[$F{Civilstatus} == "05_Living_with_Partner"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="432" width="8" height="8" backcolor="#000000" uuid="abdfe8c6-cde0-4807-8e95-d732ccc5b5e6">
+				<reportElement key="rectangle-24" x="52" y="454" width="8" height="8" backcolor="#000000" uuid="abdfe8c6-cde0-4807-8e95-d732ccc5b5e6">
 					<printWhenExpression><![CDATA[$F{Employed} == "01_Government_Employed"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="442" width="8" height="8" backcolor="#000000" uuid="36bc51fa-cc16-49e3-a945-ad0854394901">
+				<reportElement key="rectangle-24" x="52" y="464" width="8" height="8" backcolor="#000000" uuid="36bc51fa-cc16-49e3-a945-ad0854394901">
 					<printWhenExpression><![CDATA[$F{Employed} == "02_Private_Employed"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="452" width="8" height="8" backcolor="#000000" uuid="f47dd77d-d71d-48c7-b20b-852a383530f1">
+				<reportElement key="rectangle-24" x="52" y="474" width="8" height="8" backcolor="#000000" uuid="f47dd77d-d71d-48c7-b20b-852a383530f1">
 					<printWhenExpression><![CDATA[$F{Employed} == "03_Self_employed"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="155" y="432" width="8" height="8" backcolor="#000000" uuid="e6262e86-4a7d-4f26-9429-e2a37f0cb911">
+				<reportElement key="rectangle-24" x="154" y="454" width="8" height="8" backcolor="#000000" uuid="e6262e86-4a7d-4f26-9429-e2a37f0cb911">
 					<printWhenExpression><![CDATA[$F{Employed} == "04_Private_practitioner"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="155" y="442" width="8" height="8" backcolor="#000000" uuid="0935cb04-9fc2-45d4-81ab-914d633876cd">
+				<reportElement key="rectangle-24" x="154" y="464" width="8" height="8" backcolor="#000000" uuid="0935cb04-9fc2-45d4-81ab-914d633876cd">
 					<printWhenExpression><![CDATA[$F{Employed} == "05_Others"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="475" width="8" height="8" backcolor="#000000" uuid="179559db-0437-4a31-bfed-1157db8f2c9a">
+				<reportElement key="rectangle-24" x="53" y="506" width="8" height="8" backcolor="#000000" uuid="179559db-0437-4a31-bfed-1157db8f2c9a">
 					<printWhenExpression><![CDATA[$F{Profession} == "01_Dental_Hygienist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="485" width="8" height="8" backcolor="#000000" uuid="bb9e5709-e7aa-4aca-bbc8-526aed65985b">
+				<reportElement key="rectangle-24" x="53" y="516" width="8" height="8" backcolor="#000000" uuid="bb9e5709-e7aa-4aca-bbc8-526aed65985b">
 					<printWhenExpression><![CDATA[$F{Profession} == "02_Dental_Technologist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="495" width="8" height="8" backcolor="#000000" uuid="87e31743-ace3-495a-9f46-11132f388e2d">
+				<reportElement key="rectangle-24" x="53" y="526" width="8" height="8" backcolor="#000000" uuid="87e31743-ace3-495a-9f46-11132f388e2d">
 					<printWhenExpression><![CDATA[$F{Profession} == "03_Dentist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="505" width="8" height="8" backcolor="#000000" uuid="0cce722d-b30d-4c43-97be-1b948fcb76c4">
+				<reportElement key="rectangle-24" x="53" y="536" width="8" height="8" backcolor="#000000" uuid="0cce722d-b30d-4c43-97be-1b948fcb76c4">
 					<printWhenExpression><![CDATA[$F{Profession} == "04_Medical_Technologist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="515" width="8" height="8" backcolor="#000000" uuid="5f72ce51-2f27-4d81-96c9-214a1a835ae7">
+				<reportElement key="rectangle-24" x="53" y="546" width="8" height="8" backcolor="#000000" uuid="5f72ce51-2f27-4d81-96c9-214a1a835ae7">
 					<printWhenExpression><![CDATA[$F{Profession} == "05_Midwife"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="525" width="8" height="8" backcolor="#000000" uuid="8ff53640-4586-495f-8798-4e07366c8051">
+				<reportElement key="rectangle-24" x="53" y="556" width="8" height="8" backcolor="#000000" uuid="8ff53640-4586-495f-8798-4e07366c8051">
 					<printWhenExpression><![CDATA[$F{Profession} == "06_Nurse"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="535" width="8" height="8" backcolor="#000000" uuid="93003cdb-8a25-4a80-8cf1-60d03371cfa9">
+				<reportElement key="rectangle-24" x="53" y="566" width="8" height="8" backcolor="#000000" uuid="93003cdb-8a25-4a80-8cf1-60d03371cfa9">
 					<printWhenExpression><![CDATA[$F{Profession} == "07_Nutritionist_Dietician"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="545" width="8" height="8" backcolor="#000000" uuid="c2f703d5-4254-4b35-896e-46687526e3ab">
+				<reportElement key="rectangle-24" x="53" y="576" width="8" height="8" backcolor="#000000" uuid="c2f703d5-4254-4b35-896e-46687526e3ab">
 					<printWhenExpression><![CDATA[$F{Profession} == "08_Occupational_Therapist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="555" width="8" height="8" backcolor="#000000" uuid="3b25f88f-3d52-4899-b43f-8597b14470a3">
+				<reportElement key="rectangle-24" x="53" y="586" width="8" height="8" backcolor="#000000" uuid="3b25f88f-3d52-4899-b43f-8597b14470a3">
 					<printWhenExpression><![CDATA[$F{Profession} == "09_Optometrist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="53" y="565" width="8" height="8" backcolor="#000000" uuid="be3b1ae6-8b8f-43aa-bce3-0583324e7c91">
+				<reportElement key="rectangle-24" x="53" y="596" width="8" height="8" backcolor="#000000" uuid="be3b1ae6-8b8f-43aa-bce3-0583324e7c91">
 					<printWhenExpression><![CDATA[$F{Profession} == "10_Pharmacist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="475" width="8" height="8" backcolor="#000000" uuid="495db67f-3db1-4be3-ac87-27cc3fb4f17d">
+				<reportElement key="rectangle-24" x="168" y="506" width="8" height="8" backcolor="#000000" uuid="495db67f-3db1-4be3-ac87-27cc3fb4f17d">
 					<printWhenExpression><![CDATA[$F{Profession} == "11_Physical_Therapist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="485" width="8" height="8" backcolor="#000000" uuid="e5bbc86f-00bc-4aef-8215-2a9afe9a9b4b">
+				<reportElement key="rectangle-24" x="168" y="516" width="8" height="8" backcolor="#000000" uuid="e5bbc86f-00bc-4aef-8215-2a9afe9a9b4b">
 					<printWhenExpression><![CDATA[$F{Profession} == "12_Physician"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="495" width="8" height="8" backcolor="#000000" uuid="7d71f773-c00c-4d78-baab-3d1fcb64ecaa">
+				<reportElement key="rectangle-24" x="168" y="526" width="8" height="8" backcolor="#000000" uuid="7d71f773-c00c-4d78-baab-3d1fcb64ecaa">
 					<printWhenExpression><![CDATA[$F{Profession} == "13_Radiologic_Technologist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="505" width="8" height="8" backcolor="#000000" uuid="def55d56-2534-45bf-bb74-ff0610cfcf42">
+				<reportElement key="rectangle-24" x="168" y="536" width="8" height="8" backcolor="#000000" uuid="def55d56-2534-45bf-bb74-ff0610cfcf42">
 					<printWhenExpression><![CDATA[$F{Profession} == "14_Respiratory_Therapist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="515" width="8" height="8" backcolor="#000000" uuid="37ee7ce9-e887-4559-994d-cadad762f7c2">
+				<reportElement key="rectangle-24" x="168" y="546" width="8" height="8" backcolor="#000000" uuid="37ee7ce9-e887-4559-994d-cadad762f7c2">
 					<printWhenExpression><![CDATA[$F{Profession} == "15_X_ray_Technologist"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="525" width="8" height="8" backcolor="#000000" uuid="bc25e5fc-a364-43d4-898b-32fa3e3955af">
+				<reportElement key="rectangle-24" x="168" y="556" width="8" height="8" backcolor="#000000" uuid="bc25e5fc-a364-43d4-898b-32fa3e3955af">
 					<printWhenExpression><![CDATA[$F{Profession} == "16_Barangay_Health_Worker"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="535" width="8" height="8" backcolor="#000000" uuid="9670a1f0-62c1-42a3-952f-1a4a4de9109d">
+				<reportElement key="rectangle-24" x="168" y="566" width="8" height="8" backcolor="#000000" uuid="9670a1f0-62c1-42a3-952f-1a4a4de9109d">
 					<printWhenExpression><![CDATA[$F{Profession} == "17_Maintenance_Staff"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="545" width="8" height="8" backcolor="#000000" uuid="12e4283f-1f57-4745-9f46-0c1b2ab677a5">
+				<reportElement key="rectangle-24" x="168" y="576" width="8" height="8" backcolor="#000000" uuid="12e4283f-1f57-4745-9f46-0c1b2ab677a5">
 					<printWhenExpression><![CDATA[$F{Profession} == "18_Administrative_Staff"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="168" y="555" width="8" height="8" backcolor="#000000" uuid="2fa78dfe-40a7-4959-a464-5d6b5469de4b">
+				<reportElement key="rectangle-24" x="168" y="586" width="8" height="8" backcolor="#000000" uuid="2fa78dfe-40a7-4959-a464-5d6b5469de4b">
 					<printWhenExpression><![CDATA[$F{Profession} == "19_Other"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="87" width="8" height="8" backcolor="#000000" uuid="05cfd7e6-9b84-42f1-9564-d3cd834b7a68">
+				<reportElement key="rectangle-24" x="448" y="88" width="8" height="8" backcolor="#000000" uuid="05cfd7e6-9b84-42f1-9564-d3cd834b7a68">
 					<printWhenExpression><![CDATA[$F{Allergy_05} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="97" width="8" height="8" backcolor="#000000" uuid="55551cea-3c31-4562-a544-da73e121d4d3">
+				<reportElement key="rectangle-24" x="448" y="98" width="8" height="8" backcolor="#000000" uuid="55551cea-3c31-4562-a544-da73e121d4d3">
 					<printWhenExpression><![CDATA[$F{Allergy_06} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="462" y="107" width="8" height="8" backcolor="#000000" uuid="f27bbcb6-29e5-473b-a3db-fcc40d9a5bfc">
+				<reportElement key="rectangle-24" x="448" y="108" width="8" height="8" backcolor="#000000" uuid="f27bbcb6-29e5-473b-a3db-fcc40d9a5bfc">
 					<printWhenExpression><![CDATA[$F{Allergy_07} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -1877,30 +1876,30 @@ against COVID-19.]]></text>
 				<text><![CDATA[Phase 1]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-127" x="345" y="60" width="8" height="8" uuid="2060071f-a6a8-4c09-bae5-46f08aa3ad97"/>
+				<reportElement key="ellipse-127" x="331" y="61" width="8" height="8" uuid="2060071f-a6a8-4c09-bae5-46f08aa3ad97"/>
 			</ellipse>
 			<rectangle radius="4">
-				<reportElement key="rectangle-25" x="345" y="60" width="8" height="8" backcolor="#000000" uuid="a687510a-faa5-4018-8029-7d3defc4e22c">
+				<reportElement key="rectangle-25" x="331" y="61" width="8" height="8" backcolor="#000000" uuid="a687510a-faa5-4018-8029-7d3defc4e22c">
 					<printWhenExpression><![CDATA[$F{W_allergy} == "02_No"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<ellipse>
-				<reportElement key="ellipse-128" x="367" y="87" width="8" height="8" uuid="a80241fb-08ec-4c62-ad1e-b64f7fd88fb9"/>
+				<reportElement key="ellipse-128" x="353" y="88" width="8" height="8" uuid="a80241fb-08ec-4c62-ad1e-b64f7fd88fb9"/>
 			</ellipse>
 			<rectangle radius="4">
-				<reportElement key="rectangle-26" x="367" y="87" width="8" height="8" backcolor="#000000" uuid="2b81b88b-e087-4ec3-ac42-95fa5c99782d">
+				<reportElement key="rectangle-26" x="353" y="88" width="8" height="8" backcolor="#000000" uuid="2b81b88b-e087-4ec3-ac42-95fa5c99782d">
 					<printWhenExpression><![CDATA[$F{Allergy_01} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<staticText>
-				<reportElement key="staticText-88" x="356" y="49" width="82" height="13" uuid="6723c0c6-81ac-4d34-9151-2a71d63b3229"/>
+				<reportElement key="staticText-88" x="342" y="50" width="82" height="13" uuid="6723c0c6-81ac-4d34-9151-2a71d63b3229"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Yes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-88" x="356" y="59" width="82" height="13" uuid="c07e3e11-3d7f-41b2-8019-7edebd0821bb"/>
+				<reportElement key="staticText-88" x="342" y="60" width="82" height="13" uuid="c07e3e11-3d7f-41b2-8019-7edebd0821bb"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1944,28 +1943,28 @@ against COVID-19.]]></text>
 				</reportElement>
 			</rectangle>
 			<staticText>
-				<reportElement key="staticText-119" x="321" y="414" width="262" height="16" uuid="0621f9a4-b418-4b45-929f-40657e18f2f7"/>
+				<reportElement key="staticText-119" x="309" y="382" width="262" height="16" uuid="0621f9a4-b418-4b45-929f-40657e18f2f7"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[18. Are you willing to be vaccinated with SINOVAC?]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-120" x="358" y="430" width="82" height="13" uuid="7ddc9593-9286-49e6-81fd-d8b06f9a718c"/>
+				<reportElement key="staticText-120" x="345" y="398" width="82" height="13" uuid="7ddc9593-9286-49e6-81fd-d8b06f9a718c"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Yes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-121" x="358" y="440" width="82" height="13" uuid="1b7cbfbe-858f-4c5d-a91f-709722dea1ea"/>
+				<reportElement key="staticText-121" x="345" y="408" width="82" height="13" uuid="1b7cbfbe-858f-4c5d-a91f-709722dea1ea"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-122" x="358" y="450" width="82" height="13" uuid="78f6aea0-e441-40d9-818c-2df3fba951dc"/>
+				<reportElement key="staticText-122" x="446" y="398" width="82" height="13" uuid="78f6aea0-e441-40d9-818c-2df3fba951dc"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -1973,52 +1972,52 @@ against COVID-19.]]></text>
 ]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-123" x="347" y="430" width="8" height="8" uuid="32cf3c63-68d9-4adf-bda0-219188f7c4ba"/>
+				<reportElement key="ellipse-123" x="334" y="398" width="8" height="8" uuid="32cf3c63-68d9-4adf-bda0-219188f7c4ba"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-124" x="347" y="440" width="8" height="8" uuid="06d28325-312c-4fa3-a3c7-a8216d589767"/>
+				<reportElement key="ellipse-124" x="334" y="408" width="8" height="8" uuid="06d28325-312c-4fa3-a3c7-a8216d589767"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-125" x="347" y="450" width="8" height="8" uuid="06ecfa2d-0542-4295-a854-cdbbe16e4eb7"/>
+				<reportElement key="ellipse-125" x="435" y="398" width="8" height="8" uuid="06ecfa2d-0542-4295-a854-cdbbe16e4eb7"/>
 			</ellipse>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="431" width="8" height="8" backcolor="#000000" uuid="8349558f-2ee6-43ed-93d8-47d44ae49cef">
+				<reportElement key="rectangle-24" x="334" y="399" width="8" height="8" backcolor="#000000" uuid="8349558f-2ee6-43ed-93d8-47d44ae49cef">
 					<printWhenExpression><![CDATA[$F{sinovac} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="441" width="8" height="8" backcolor="#000000" uuid="20a6e97b-1d05-409c-8e04-f0395390bd5e">
+				<reportElement key="rectangle-24" x="334" y="409" width="8" height="8" backcolor="#000000" uuid="20a6e97b-1d05-409c-8e04-f0395390bd5e">
 					<printWhenExpression><![CDATA[$F{sinovac} == "02_No"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="347" y="451" width="8" height="8" backcolor="#000000" uuid="154430b3-2a21-434f-9ced-74680a75ae09">
+				<reportElement key="rectangle-24" x="435" y="399" width="8" height="8" backcolor="#000000" uuid="154430b3-2a21-434f-9ced-74680a75ae09">
 					<printWhenExpression><![CDATA[$F{sinovac} == "03_Unknown"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<staticText>
-				<reportElement key="staticText-119" x="323" y="463" width="262" height="16" uuid="e1e31a6b-c58e-4329-9c3c-1d7a50bccf14"/>
+				<reportElement key="staticText-119" x="310" y="421" width="262" height="16" uuid="e1e31a6b-c58e-4329-9c3c-1d7a50bccf14"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[19. For 60 years old  and up, are you willing to be]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-120" x="360" y="489" width="82" height="13" uuid="5bcc6983-539a-45a1-a98b-8c7c42bb3bf0"/>
+				<reportElement key="staticText-120" x="346" y="447" width="82" height="13" uuid="5bcc6983-539a-45a1-a98b-8c7c42bb3bf0"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[01-Yes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-121" x="360" y="499" width="82" height="13" uuid="09ad8da8-59dd-4262-ad65-71be58b1c9e6"/>
+				<reportElement key="staticText-121" x="346" y="457" width="82" height="13" uuid="09ad8da8-59dd-4262-ad65-71be58b1c9e6"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[02-No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-122" x="360" y="509" width="82" height="13" uuid="25b09214-a946-4a76-bb0f-fe6b73f1dae2"/>
+				<reportElement key="staticText-122" x="446" y="447" width="82" height="13" uuid="25b09214-a946-4a76-bb0f-fe6b73f1dae2"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -2026,31 +2025,31 @@ against COVID-19.]]></text>
 ]]></text>
 			</staticText>
 			<ellipse>
-				<reportElement key="ellipse-123" x="349" y="489" width="8" height="8" uuid="095f1a67-f666-439d-9e01-040491fe1525"/>
+				<reportElement key="ellipse-123" x="335" y="447" width="8" height="8" uuid="095f1a67-f666-439d-9e01-040491fe1525"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-124" x="349" y="499" width="8" height="8" uuid="8de28e77-e965-4419-a548-2c26fd2b3c9d"/>
+				<reportElement key="ellipse-124" x="335" y="457" width="8" height="8" uuid="8de28e77-e965-4419-a548-2c26fd2b3c9d"/>
 			</ellipse>
 			<ellipse>
-				<reportElement key="ellipse-125" x="349" y="509" width="8" height="8" uuid="e90725b7-dddc-4cbd-9886-5cae8259fc67"/>
+				<reportElement key="ellipse-125" x="435" y="447" width="8" height="8" uuid="e90725b7-dddc-4cbd-9886-5cae8259fc67"/>
 			</ellipse>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="349" y="490" width="8" height="8" backcolor="#000000" uuid="44779002-7440-4bd5-a10f-11f7830994b6">
+				<reportElement key="rectangle-24" x="335" y="448" width="8" height="8" backcolor="#000000" uuid="44779002-7440-4bd5-a10f-11f7830994b6">
 					<printWhenExpression><![CDATA[$F{astrazeneca} == "01_Yes"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="349" y="500" width="8" height="8" backcolor="#000000" uuid="45fa9b3e-ee83-4b24-9df2-0095343739f7">
+				<reportElement key="rectangle-24" x="335" y="458" width="8" height="8" backcolor="#000000" uuid="45fa9b3e-ee83-4b24-9df2-0095343739f7">
 					<printWhenExpression><![CDATA[$F{astrazeneca} == "02_No"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle radius="4">
-				<reportElement key="rectangle-24" x="349" y="510" width="8" height="8" backcolor="#000000" uuid="e8764ae8-f4d2-41bf-9128-ade9a89f970a">
+				<reportElement key="rectangle-24" x="435" y="448" width="8" height="8" backcolor="#000000" uuid="e8764ae8-f4d2-41bf-9128-ade9a89f970a">
 					<printWhenExpression><![CDATA[$F{astrazeneca} == "03_Unknown"]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<staticText>
-				<reportElement key="staticText-119" x="339" y="474" width="252" height="16" uuid="adbd497d-6578-4365-b0d3-3df383b13e27"/>
+				<reportElement key="staticText-119" x="325" y="432" width="252" height="16" uuid="adbd497d-6578-4365-b0d3-3df383b13e27"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
@@ -2071,10 +2070,120 @@ against COVID-19.]]></text>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement key="staticText-119" x="310" y="469" width="262" height="16" uuid="717b66b0-cde1-4826-a872-4e74596f7fce"/>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[20. Are you willing to be vaccinated with PFIZER?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-120" x="345" y="488" width="82" height="13" uuid="db7d1351-6791-4283-98c8-5ed924d21f3e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-121" x="345" y="498" width="82" height="13" uuid="f1d28890-936f-44c9-b4a5-8ec7885a2a9d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-122" x="445" y="488" width="82" height="13" uuid="c6235def-cc69-465a-91c6-b4b151f27f30"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Unknown
+]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-123" x="334" y="488" width="8" height="8" uuid="f0dc79ee-979f-42b8-9fa6-632f1dc462a5"/>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-124" x="334" y="498" width="8" height="8" uuid="a62908e2-010b-4ab4-a633-4b5724d2be87"/>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-125" x="434" y="488" width="8" height="8" uuid="8ad5ecb3-7aff-4e39-b5f4-7e385dc2114b"/>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="334" y="489" width="8" height="8" backcolor="#000000" uuid="7123efac-fee9-46e5-b12c-d8abe6599218">
+					<printWhenExpression><![CDATA[$F{pfizer} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="334" y="499" width="8" height="8" backcolor="#000000" uuid="30c35236-dada-4c79-a655-b1f8c94de158">
+					<printWhenExpression><![CDATA[$F{pfizer} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="434" y="489" width="8" height="8" backcolor="#000000" uuid="d3c3e1fa-3933-453a-9fad-85317ed4eb82">
+					<printWhenExpression><![CDATA[$F{pfizer} == "03_Unknown"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-119" x="310" y="511" width="291" height="16" uuid="353fb484-62db-4cb2-8a56-54a76c792192"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[21. Are you willing to be vaccinated with JOHNSONS & JOHNSONS?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-120" x="345" y="528" width="82" height="13" uuid="80a3ebbd-3bd5-44f7-aed1-d59878165323"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-121" x="345" y="538" width="82" height="13" uuid="d98ca2e6-1d82-403d-a8e8-32a3c50c00ad"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-122" x="445" y="528" width="82" height="13" uuid="46b1aa0a-193a-4543-b8df-31f0be28f164"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Unknown
+]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-123" x="334" y="528" width="8" height="8" uuid="da5e60a6-a21e-4f6c-8172-c84ef8ef51af"/>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-124" x="334" y="538" width="8" height="8" uuid="2125becb-0ced-41b2-91c2-d4410d84194d"/>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-125" x="434" y="528" width="8" height="8" uuid="d8beedcd-8319-4e8d-abca-6bc98205fd58"/>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="334" y="529" width="8" height="8" backcolor="#000000" uuid="a49a8b3d-c705-40d5-8521-b9e1cb9dfc91">
+					<printWhenExpression><![CDATA[$F{johnsons} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="334" y="539" width="8" height="8" backcolor="#000000" uuid="49610fb5-4a0a-412b-bb9e-e274eb6bc976">
+					<printWhenExpression><![CDATA[$F{johnsons} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="434" y="529" width="8" height="8" backcolor="#000000" uuid="9301120c-ba53-45a5-9a64-596194932224">
+					<printWhenExpression><![CDATA[$F{johnsons} == "03_Unknown"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="9" splitType="Stretch"/>
+		<band height="37" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-21" x="0" y="3" width="613" height="33" backcolor="#000000" uuid="19c111bc-c603-4e8c-a7f0-9a907f17d403"/>
+			</rectangle>
+		</band>
 	</columnHeader>
 	<detail>
 		<band splitType="Stretch"/>
