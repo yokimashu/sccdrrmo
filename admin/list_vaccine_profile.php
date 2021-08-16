@@ -11,7 +11,7 @@ include('update_void_vaccine.php');
 
 
 
-// session_start();
+// session_start(); 
 
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
@@ -32,6 +32,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
   $vas_username = $result['fullname'];
+  $void_username = $result['fullname'];
 }
 
 
@@ -356,6 +357,7 @@ $get_all_center_data->execute();
                 </div>
               </div>
             </div>
+          </div>
         </form>
 
 
@@ -365,49 +367,94 @@ $get_all_center_data->execute();
   </div>
 
   <!-- /.modal-dialog -->
-
-
-  <div class="modal fade" id="modal1" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-md">
+  <div class="modal fade" id="modalvoid" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">VOID</h4>
+        <div class="modal-header bg-danger">
+          <h4 class="modal-title ">VOID</h4>
         </div>
 
 
 
         <form method="POST" action="">
           <div class="modal-body">
-            <div class="box-body-lg-50">
+            <div class="box-body-lg">
               <div class="form-group">
-                <label>ID:</label>
-                <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
-                <input readonly="true" type="text" name="fullname" id="fullname1" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
+
+
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label>VAMOS ID: </label>
+                    <input readonly="true" type="text" name="void_entity_no" id="void_entity_no" class="form-control" pull-right value="" required>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>VOID USERNAME: </label>
+                    <input readonly="true" type="text" name="void_username" id="void_username" class="form-control" pull-right value="<?php echo $void_username ?>" required>
+
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-8">
+                    <label>FULL NAME: </label>
+                    <input readonly="true" type="text" name="void_fullname" id="void_fullname" class="form-control" pull-right value="" required>
+                  </div>
+                </div><br>
+
+                <!-- <div class="row">
+                  <div class="col-sm-8">
+                    <label>REMARKS: </label>
+                    <input type="text" name="void_remarks" id="void_remarks" class="form-control" pull-right value="" required>
+                  </div>
+
+                </div><br> -->
+
+
+
+
+
+
+
+
+                <!-- <div class="col-md-5">
+                <label for="">STATUS:</label>
+                <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
+                  <option selected>Please select</option>
+                  <option value="POSITIVE">POSITIVE</option>
+                  <option value="NEGATIVE">NEGATIVE</option>
+                  <option value="PENDING">PENDING</option>
+                </select>
+              </div> -->
+                <!-- <label for="">MOVE TO VAST LIST:</label>
+              <br> -->
+
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                  <input type="submit" name="update_void_vaccine" class="btn btn-danger" value="SAVE">
+
+                  <!-- <input type="submit" id="btnSubmit" name="update_vas_test" class="btn btn-danger" value="SAVE"> -->
+
+
+
+
+                </div>
               </div>
-
-              <label>Remarks: </label>
-              <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
-
-
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-              <input type="submit" name="update_void_vaccine" class="btn btn-danger" value="SAVE">
-
-              <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
-                                                <i class="fa fa-check fa-fw"> </i> </button> -->
-            </div>
-
-
-
           </div>
         </form>
+
+
       </div>
 
     </div>
-
   </div>
+
+
+
+
 
 
 
@@ -478,8 +525,9 @@ $get_all_center_data->execute();
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
-            '<a class="btn btn-warning btn-sm " style="margin-right:10px;" id="modal"  data-placement="top" title="FORWARD TO VAS">VAS' +
-            '<a class="btn btn-danger" style="margin-right:10px;" id="modal1" data-placement="top" title="VOID">x',
+            '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal"  data-placement="top" title="FORWARD TO VAS">VAS</a>' +
+            // '<a class="btn btn-danger btn-sm" style="margin-right:10px;" id="deletevoid" data-placement="top" title="VOID">x</a>'+
+            '<a class="btn btn-danger btn-sm void" style="margin-right:10px;"  data-placement="top" title="VOID"><i class="far fa-trash-alt"></i></a>',
           // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
         },
 
@@ -502,7 +550,6 @@ $get_all_center_data->execute();
       var currow = $(this).closest("tr");
 
       var entity_no = currow.find("td:eq(1)").text();
-
       var fullname = currow.find("td:eq(3)").text();
       var consent = currow.find("td:eq(4)").text();
       var sinovac = currow.find("td:eq(5)").text();
@@ -518,12 +565,75 @@ $get_all_center_data->execute();
       $('#sinovac').val(sinovac).trigger('change');
       $('#astrazeneca').val(astrazeneca).trigger('change');
       $('#pfizer').val(pfizer).trigger('change');
+    });
 
+
+    $("#users tbody").on("click", ".void", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+
+      var entity_no = currow.find("td:eq(1)").text();
+      var fullname = currow.find("td:eq(3)").text();
+
+      $('#modalvoid').modal('show');
+      $('#void_entity_no').val(entity_no);
+      $('#void_fullname').val(fullname);
 
 
 
     });
 
+
+
+
+
+    // $("#users tbody").on("click", "#deletevoid", function() {
+    //   event.preventDefault();
+    //   var currow = $(this).closest("tr");
+    //   var objid = currow.find("td:eq(0)").text();
+    //   var fullname = currow.find("td:eq(3)").text();
+
+    //   // console.log("test");
+    //   $('#modal1').modal('show');
+    //   // $('#objid').val(objid);
+    //   // $('#fullname1').val(fullname);
+
+
+    // });
+
+    // $("#users tbody").on("click", "#modal", function() {
+    //   event.preventDefault();
+    //   var currow = $(this).closest("tr");
+
+    //   var objid = currow.find("td:eq(1)").text();
+    //   var fullname = currow.find("td:eq(3)").text();
+
+
+
+
+    //   console.log("test");
+    //   $('#modalvoid').modal('show');
+    //   $('#objid').val(objid);
+    //   $('#fullname').val(fullname);
+
+
+
+    // });
+
+    // $('#center').change(function() {
+    //   if ($('#cbrno').val() == '') {
+    //     $.ajax({
+    //       type: 'POST',
+    //       data: {},
+    //       url: 'generate_cbrno.php',
+    //       success: function(data) {
+    //         //$('#entity_no').val(data);
+    //         document.getElementById("cbrno").value = data;
+    //         console.log(data);
+    //       }
+    //     });
+    //   }
+    // });
 
     $('#center').on('change', function() {
       var cbr_no = $(this).val();
@@ -547,58 +657,9 @@ $get_all_center_data->execute();
     });
 
 
-    // $('#center').change(function() {
-    //   if ($('#cbrno').val() == '') {
-    //     $.ajax({
-    //       type: 'POST',
-    //       data: {},
-    //       url: 'generate_cbrno.php',
-    //       success: function(data) {
-    //         //$('#entity_no').val(data);
-    //         document.getElementById("cbrno").value = data;
-    //         console.log(data);
-    //       }
-    //     });
-    //   }
-    // });
-
-
-
-    $("#users tbody").on("click", "#modal1", function() {
-      event.preventDefault();
-      var currow = $(this).closest("tr");
-
-      var objid = currow.find("td:eq(0)").text();
-      var fullname = currow.find("td:eq(3)").text();
-
-
-
-
-      console.log("test");
-      $('#modalvoid').modal('show');
-      $('#objid').val(objid);
-      $('#fullname1').val(fullname);
-
-
-
-    });
-
     $(function blink() {
       $('.blink_me').fadeOut(500).fadeIn(500, blink);
     })();
-
-    $(function() {
-      $(document).on('click', '.delete', function(e) {
-        e.preventDefault();
-
-        var currow = $(this).closest("tr");
-        var objid5 = currow.find("td:eq(0)").text();
-
-        $('#delete_recordmodal').modal('show');
-        $('#objid_closecontact').val(objid5);
-
-      });
-    });
 
 
 
@@ -609,16 +670,6 @@ $get_all_center_data->execute();
         autoHide: true,
         zIndex: 2048,
       });
-    });
-
-    $(document).on('click', 'button[data-role=confirm_delete]', function(event) {
-      event.preventDefault();
-
-      var user_id = ($(this).data('id'));
-
-      $('#user_id').val(user_id);
-      $('#delete_PUMl').modal('toggle');
-
     });
   </script>
 
