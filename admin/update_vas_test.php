@@ -50,7 +50,7 @@ if (isset($_POST['update_vas_test'])) {
     // $sinovac             = $_POST['sinovac'];
     // $astrazeneca             = $_POST['astrazeneca'];
     // $pfizer             = $_POST['pfizer'];
-    $vas_username       = $_POST['vas_username'];
+    $vas_username       = strtoupper($_POST['vas_username']);
 
 
 
