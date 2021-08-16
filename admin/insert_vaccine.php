@@ -224,6 +224,7 @@ if (isset($_POST['insert_vaccine'])) {
     $astrazeneca    = $_POST['astrazeneca'];
     $pfizer         = $_POST['pfizer'];
     $janssen         = $_POST['janssen'];
+    $moderna        =  $_POST['moderna'];
 
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
@@ -480,6 +481,7 @@ if (isset($_POST['insert_vaccine'])) {
             username                = :user,
             pfizer                  = :pfizer,
             johnsons                = :johnsons,
+            moderna                 = :moderna,
             status                  = :statuss
         ";
 
@@ -556,6 +558,7 @@ if (isset($_POST['insert_vaccine'])) {
         ':astravas'         => $astrazeneca,
         ':pfizer'           => $pfizer,
         ':johnsons'         => $janssen,
+        ':moderna'          => $moderna,
         ':user'             => $tracer_fullname,
         ':statuss'          => 'NEW'
 
