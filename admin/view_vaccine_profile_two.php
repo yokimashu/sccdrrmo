@@ -18,6 +18,7 @@ $btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_baranga
     $get_mname = $get_lname = $get_entityno =   $get_datecreated = $get_timereg = $get_category = $get_categoryid =
     $get_categnumber = $get_philhealth = $get_sufiix = $get_civil_status = $get_employed = $get_profession =
     $get_department = $get_directcovid = $get_employername = $get_employeraddress = $get_employercontact = $get_pregstatus =
+    $get_moderna = $get_pfizer = $get_janssen =
     $get_wallergy = $get_allergy01 = $get_allergy02 = $get_allergy03 = $get_allergy04 =
     $get_allergy05 = $get_allergy06 = $get_allergy07 = $get_allergy08 =
     $get_wcomorbidities = $get_comorbidity01 = $get_comorbidity02 = $get_comorbidity03 = $get_comorbidity04 =
@@ -208,6 +209,9 @@ if (isset($_GET['id'])) {
         $get_consent        = $result['Consent'];
         $get_sinovac        = $result['sinovac'];
         $get_astrazeneca    = $result['astrazeneca'];
+        $get_pfizer         = $result['pfizer'];
+        $get_janssen        = $result['johnsons'];
+        $get_moderna        = $result['moderna'];
     }
 
     $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
@@ -1686,21 +1690,55 @@ if (isset($_GET['id'])) {
                                                                 </select>
                                                             </div>
                                                         </div><br>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="astrazeneca" id="astrazeneca">
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with PFIZER? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="pfizer" id="pfizer">
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($get_pfizer == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($get_pfizer == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <option <?php if ($get_pfizer == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br>
 
-                                                        <div class="col-sm-6">
-                                                            <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
-                                                            <select class="form-control select2" name="astrazeneca" id="astrazeneca">
-                                                                <option>Please select</option>
-                                                                <option <?php if ($get_astrazeneca == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                <option <?php if ($get_astrazeneca == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
-                                                            </select>
-                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with JANSSEN? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="janssen" id="janssen">
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($get_janssen == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($get_janssen == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <option <?php if ($get_janssen == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with MODERNA? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="moderna" id="moderna">
+                                                                    <option>Please select</option>
+                                                                    <option <?php if ($get_moderna == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                    <option <?php if ($get_moderna == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                    <option <?php if ($get_moderna == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div><br>
+
+
                                                     </div><br>
                                                 </div>
                                                 <!-- end consent -->
 
-
+ 
                                                 <div class="box-footer" align="center">
                                                     <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
                                                         <!-- <i class="fa fa-check fa-fw"> </i> -->

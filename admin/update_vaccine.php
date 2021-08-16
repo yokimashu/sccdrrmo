@@ -181,6 +181,25 @@ if (isset($_POST['update_vaccine'])) {
         $astrazeneca        = '03_Unknown';
     }
 
+    if ($_POST['pfizer'] != 'Please select') {
+        $pfizer        = $_POST['pfizer'];
+    } else {
+        $pfizer        = '03_Unknown';
+    }
+
+    if ($_POST['janssen'] != 'Please select') {
+        $janssen        = $_POST['janssen'];
+    } else {
+        $janssen        = '03_Unknown';
+    }
+
+    if ($_POST['moderna'] != 'Please select') {
+        $moderna        = $_POST['moderna'];
+    } else {
+        $moderna        = '03_Unknown';
+    }
+
+
 
     //covid history
     if ($_POST['patient_diagnose'] != 'Please select') {
@@ -339,6 +358,9 @@ if (isset($_POST['update_vaccine'])) {
             Consent                 = :consent,
             sinovac                 = :sinovacs,
             astrazeneca             = :astravas,
+            pfizer                  = :pfizer,
+            johnsons                = :janssen,
+            moderna                 = :moderna,
             status                  = :statuss
             WHERE entity_no         = :entityno
     
@@ -415,6 +437,9 @@ if (isset($_POST['update_vaccine'])) {
         ':consent'          => $consent,
         ':sinovacs'         => $sinovac,
         ':astravas'         => $astrazeneca,
+        ':pfizer'           => $pfizer,
+        ':janssen'          => $janssen,
+        ':moderna'          => $moderna,
         ':statuss'          => 'VALIDATED'
 
 
