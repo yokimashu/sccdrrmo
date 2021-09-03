@@ -243,7 +243,7 @@ $get_all_center_data->execute();
 
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-8">
                     <label>VAS Username: </label>
                     <input readonly="true" type="text" name="vas_username" id="vas_username" class="form-control" pull-right value="<?php echo $vas_username; ?>" required>
                   </div>
@@ -306,10 +306,10 @@ $get_all_center_data->execute();
 
                   ?>
 
-                  <div class="col-sm-3">
+                  <div class="col-sm-3" readonly>
                     <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo $now->format('Y-m-d'); ?>" required>
                     <label>Remarks: </label>
-                    <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-right value="VALIDATED">
+                    <input type="text" style="color:red; font-weight: 900;" readonly name="remarks" id="remarks" class="blink_me form-control" placeholder="VACCINATED" pull-right value="VALIDATED">
                     <br>
                   </div>
 
@@ -329,7 +329,7 @@ $get_all_center_data->execute();
 
 
 
-                </div><br>
+                </div><br><br>
 
                 <!-- <div class="col-md-5">
                 <label for="">STATUS:</label>
@@ -346,8 +346,8 @@ $get_all_center_data->execute();
 
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-                  <input type="submit" name="update_vas_test" class="btn btn-danger" value="SAVE">
+                  <button type="button" class="btn btn-danger pull-left bg-olive" data-dismiss="modal">NO</button>
+                  <input type="submit" name="update_vas_test" class="btn btn-success" value="SAVE">
 
                   <!-- <input type="submit" id="btnSubmit" name="update_vas_test" class="btn btn-danger" value="SAVE"> -->
 
@@ -381,26 +381,25 @@ $get_all_center_data->execute();
             <div class="box-body-lg">
               <div class="form-group">
 
-
+                <div class="row">
+                  <div class="col-sm-7">
+                    <label>VOID USERNAME: </label>
+                    <input readonly="true" type="text" name="void_username" id="void_username" class="form-control" pull-right value="<?php echo $void_username ?>" required>
+                  </div>
+                </div><br>
 
                 <div class="row">
                   <div class="col-sm-3">
                     <label>VAMOS ID: </label>
                     <input readonly="true" type="text" name="void_entity_no" id="void_entity_no" class="form-control" pull-right value="" required>
                   </div>
-                  <div class="col-sm-3">
-                    <label>VOID USERNAME: </label>
-                    <input readonly="true" type="text" name="void_username" id="void_username" class="form-control" pull-right value="<?php echo $void_username ?>" required>
-
-                  </div>
-                </div><br>
-
-                <div class="row">
                   <div class="col-sm-8">
                     <label>FULL NAME: </label>
                     <input readonly="true" type="text" name="void_fullname" id="void_fullname" class="form-control" pull-right value="" required>
                   </div>
-                </div><br>
+                </div><br><br><br>
+
+
 
                 <!-- <div class="row">
                   <div class="col-sm-8">
@@ -432,7 +431,8 @@ $get_all_center_data->execute();
 
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">NO</button>
+
                   <input type="submit" name="update_void_vaccine" class="btn btn-danger" value="SAVE">
 
                   <!-- <input type="submit" id="btnSubmit" name="update_vas_test" class="btn btn-danger" value="SAVE"> -->

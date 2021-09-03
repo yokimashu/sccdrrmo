@@ -7,9 +7,11 @@ if (isset($_POST['update_void'])) {
 
 
     // $get_date_register          = date('Y-m-d', strtotime($_POST['date_register']));
-    $get_objid             = $_POST['objid'];
-    $get_remarks             = $_POST['remarks'];
-    $get_status             = "VOID";
+    $get_objid              = $_POST['objid'];
+    $get_remarks            = 'DOUBLE ENTRY';
+    $get_status             = 'VOID';
+    $void_username          = $_POST['void_username'];
+
 
 
     $alert_msg = '';
@@ -22,31 +24,31 @@ if (isset($_POST['update_void'])) {
         
        
            status            = :status,
-           remarks            = :remarks
-      WHERE objid =  $get_objid ";
+           remarks            = :remarks,
+           void_username      =:name
+            WHERE objid =  $get_objid ";
 
     $add_status_data = $con->prepare($insert_status_sql);
     $add_status_data->execute([
+
         ':status'                 => $get_status,
+        ':name'                 => $void_username,
         ':remarks'                 => $get_remarks
 
 
     ]);
 
 
+    if ($add_status_data) {
 
+        $_SESSION['status'] = "Void Succesfully!";
+        $_SESSION['status_code'] = "success";
 
+        header('location: list_assessment.php');
+    } else {
+        $_SESSION['status'] = "Not successfully registered!";
+        $_SESSION['status_code'] = "error";
 
-
-
-
-
-
-    $alert_msg .= ' 
-    <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <i class="fa fa-check"></i>
-        <strong> Success ! </strong> Data Inserted.
-</div>    
-    ';
+        header('location: list_assessment.php');
+    }
 }

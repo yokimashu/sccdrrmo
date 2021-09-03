@@ -15,7 +15,7 @@ date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-$symptoms = $patient = $person_status = '';
+$symptoms = $patient = $person_status =    $void_username = '';
 
 //fetch user from database
 // $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
@@ -26,6 +26,17 @@ $symptoms = $patient = $person_status = '';
 
 //   $db_fullname = $result['fullname'];
 // }
+
+
+$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+$user_data = $con->prepare($get_user_sql);
+$user_data->execute([':id' => $user_id]);
+while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+  $void_username = $result['fullname'];
+}
+
 
 $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
 $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
@@ -225,7 +236,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
                           <th> 2nd Dose </th>
                           <th> Status </th>
                           <th> Bakuna Center Name</th>
-                          <th >Options</th>
+                          <th>Options</th>
 
 
                         </thead>
@@ -259,10 +270,13 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
 
 
+
+
+
   <div class="modal fade" id="modalvoid" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-danger">
           <h4 class="modal-title">VOID</h4>
         </div>
 
@@ -272,26 +286,41 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
           <div class="modal-body">
             <div class="box-body-lg-50">
               <div class="form-group">
-                <label>ID:</label>
-                <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
-                <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
+
+                <div class="row">
+                  <div class="col-sm-7">
+                    <label>VOID USERNAME: </label>
+                    <input readonly="true" type="text" name="void_username" id="void_username" class="form-control" pull-right value="<?php echo $void_username ?>" required>
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label> VAMOS ID:</label>
+                    <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+                  </div>
+                  <div class="col-sm-7">
+                    <label> FULL NAME:</label>
+                    <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
+                  </div>
+
+                </div><br>
+
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">NO</button>
+                  <input type="submit" name="update_void" class="btn btn-danger" value="SAVE">
+
+                  <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
+                                                <i class="fa fa-check fa-fw"> </i> </button> -->
+                </div>
+
               </div>
 
-              <label>Remarks: </label>
-                <input type="text" name="remarks" id="remarks" class="form-control" pull-right value="">
 
 
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
-              <input type="submit" name="update_void" class="btn btn-danger" value="SAVE">
-
-              <!-- <button type="submit" <?php echo $btnSave; ?> name="insert_dailypayment" id="btnSubmit" class="btn btn-success">
-                                                <i class="fa fa-check fa-fw"> </i> </button> -->
-            </div>
-
-
 
           </div>
         </form>
@@ -325,7 +354,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">NO</button>
             <input type="submit" name="delete_closecontact" class="btn btn-danger" value="Yes">
           </div>
         </form>
@@ -428,7 +457,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink" style="margin-right:10px;" data-placement="top" title="UPDATE RECORD"> <i class="fa fa-edit"></i></a>' +
-          '<a class="btn btn-danger" style="margin-right:10px;" id="modal" data-placement="top" title="VOID">x',
+            '<a class="btn btn-danger btn-sm" style="margin-right:10px;" id="modal" data-placement="top" title="VOID"><i class="fas fa-trash-alt"></i></a>',
 
         },
 
