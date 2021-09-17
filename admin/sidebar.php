@@ -272,6 +272,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $overallcount; ?>
      
           <?php echo $daily_report; ?>
+          <?php echo $test_list; ?>
 
 
 
@@ -354,7 +355,7 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
           <?php echo $settings; ?>
           <?php echo $mobile_alert; ?>
           <?php echo $registration_list; ?>
-          <?php echo $post_announce_last; ?>
+          <?php echo $post_announcepost_announce; ?>
           <?php echo $incident_report ?>
         </div><br>
 

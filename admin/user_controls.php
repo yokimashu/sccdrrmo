@@ -38,6 +38,9 @@ $vaccine_sandoc = ' ';
 $list_eligible_report = ' ';
 $list_deped_report = ' ';
 
+$test_list = ' ';
+
+
 $daily_report = ' ';
 $list_categorylist = ' ';
 $list_vaccinated = ' ';
@@ -369,6 +372,17 @@ if ($_SESSION['user_type'] == 1) {
       </a>
     </li>';
 
+
+
+  $test_list = '
+  <li class="nav-item">
+    <a href="list_vaccine_profile_test" class="nav-link sidebar-link">
+      &nbsp;
+      <i class="nav-icon fas fa-id-card-alt icons"></i>
+      <p> TEST PAGE <DO NOT USE> </p>
+    </a>
+  </li>';
+
   // end report for vaccine 
 
 
@@ -422,22 +436,23 @@ if ($_SESSION['user_type'] == 1) {
                                 &nbsp; 
                                 <i class="nav-icon fa fa-bullhorn icons"></i>
                   
-                                <span class="badge badge-danger navbar-badge">  ';
-
-  $post_last = '</span> 
+                                <span class="badge badge-danger navbar-badge"> 
+                                </span> 
                                 
                 <p>&nbsp; Post Announcement </p>
                 </a>
-                </li>';
+                </li> ';
+
+  $post_last = '';
 
 
 
 
   $single_break = '<br> ';
 
-  if ($numberofdraft > 0) {
-    $post_announce_last = $post_announce . " " . $numberofdraft . " " . $post_last;
-  }
+  // if ($numberofdraft > 0) {
+  //   $post_announce_last = $post_announce . " " . $numberofdraft . " " . $post_last;
+  // }
 
 
 
@@ -1182,4 +1197,3 @@ if ($_SESSION['user_type'] == 5) {
 
   $break = '<br><br><br><br>';
 }
-
