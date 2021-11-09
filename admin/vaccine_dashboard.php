@@ -322,7 +322,40 @@ $title = 'VAMOS | Dashboard';
                         </div>
                       </div>
 
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="generate2nddose.php" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-download icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Generate 2nd Dose Sinovac</span>
+                          
+                           
+                          </div>
+                        </div>
+                      </div>
 
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="generate2nddose_astra.php" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-download icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Generate 2nd Dose Aztraseneca</span>
+                          
+                           
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-6 col-md-4">
+                        <div class="info-box mb-3">
+                          <a href="generate2nddose_moderna.php" class="info-box-icon bg-warning elevation-1"><span> <i class="nav-icon  fa fa-download icons"></i></span></a>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Generate 2nd Dose Moderna</span>
+                          
+                           
+                          </div>
+                        </div>
+                      </div>
+
+                  
 
 
 
@@ -455,12 +488,62 @@ $title = 'VAMOS | Dashboard';
                     </div>
                   </div>
                 </div>
-              </div><br>
+              </div>
+              </div>
+              <br>
             </div>
+                      <div class="content ">
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                SECOND DOSE SCHEDULE FOR MODERNA
+              </h4>
+            </div>
+
+            <div class="card-body">
+
+
+              <!-- registered individual by barangay -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                    <div class="table-responsive">
+                    <!-- <div class="row">
+                      <div class="col-md-3" id="combo"></div>
+                    </div>
+                    <br> -->
+
+
+                    <table style="overflow-x: auto;" id="moderna" name="moderna" class="table table-bordered table-striped">
+                      <thead align="center">
+
+                        <th> Entity No </th>
+                        <th> Full Name </th>
+                        <th> Contact No. </th>
+                        <th> City </th>
+                        <th> Schedule of Second Dose</th>
+
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <br>
+            </div>
+            
           </div>
 
 
         </div>
+
+        
 
 
 
@@ -636,6 +719,29 @@ serverSide: true,
 scrollX: false,
 ajax: {
   url: "search_2nddose_astra.php",
+  type: "post",
+  error: function(xhr, b, c) {
+    console.log(
+      "xhr=" +
+      xhr.responseText +
+      " b=" +
+      b.responseText +
+      " c=" +
+      c.responseText
+    );
+  }
+} }
+);
+
+var dataTable = $('#moderna').DataTable({
+
+page: true,
+stateSave: true,
+processing: true,
+serverSide: true,
+scrollX: false,
+ajax: {
+  url: "search_2nddose_moderna.php",
   type: "post",
   error: function(xhr, b, c) {
     console.log(

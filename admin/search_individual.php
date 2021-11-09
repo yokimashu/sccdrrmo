@@ -62,7 +62,7 @@ $getAllIndividual = "SELECT e.entity_no,
         $getAllIndividual.=" OR telephone_no LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR email LIKE '%".$requestData['search']['value']."%' ";
         $getAllIndividual.=" OR username LIKE '%".$requestData['search']['value']."%') ";
-        $getAllIndividual.=" ORDER BY date_register DESC LIMIT ".$requestData['start'].",".$requestData['length']." ";
+        $getAllIndividual.=" ORDER BY date_register DESC LIMIT 50 ";
         $getIndividualData = $con->prepare($getAllIndividual);
         $getIndividualData->execute(); 
 

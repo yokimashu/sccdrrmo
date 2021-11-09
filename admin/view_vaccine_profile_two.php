@@ -18,16 +18,14 @@ $btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_baranga
     $get_mname = $get_lname = $get_entityno =   $get_datecreated = $get_timereg = $get_category = $get_categoryid =
     $get_categnumber = $get_philhealth = $get_sufiix = $get_civil_status = $get_employed = $get_profession =
     $get_department = $get_directcovid = $get_employername = $get_employeraddress = $get_employercontact = $get_pregstatus =
-    $get_moderna = $get_pfizer = $get_janssen =
     $get_wallergy = $get_allergy01 = $get_allergy02 = $get_allergy03 = $get_allergy04 =
     $get_allergy05 = $get_allergy06 = $get_allergy07 = $get_allergy08 =
     $get_wcomorbidities = $get_comorbidity01 = $get_comorbidity02 = $get_comorbidity03 = $get_comorbidity04 =
     $get_comorbidity05 = $get_comorbidity06 = $get_comorbidity07 = $get_comorbidity08 = $get_comorbidity09 = $get_comorbidity10 =
     $get_comorbidity11 = $get_comorbidity12 = $get_comorbidity13 = $get_comorbidity14 = $get_comorbidity15 = $get_comorbidity16 =
-    $get_comorbidity17 = $get_comorbidity18 = $get_sub_priority = $get_frontline_sub =
-
-
+    $get_comorbidity17 = $get_comorbidity18 = $get_sub_priority = $get_frontline_sub = $get_janssen = $get_moderna =
     $get_covidhistory = $get_coviddate = $get_covidclass = $get_consent = '';
+
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $time = date('H:i:s');
@@ -464,10 +462,11 @@ if (isset($_GET['id'])) {
 
                                     <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/entity_id.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vamos ID"> Print Vamos ID </a> </strong>
 
+                             
                                     <p class="text-muted">
 
                                         <hr>
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
+                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform_newform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination NEW Form </a> </strong>
 
 
                                     <p class="text-muted">
@@ -1690,6 +1689,7 @@ if (isset($_GET['id'])) {
                                                                 </select>
                                                             </div>
                                                         </div><br>
+
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
@@ -1700,6 +1700,7 @@ if (isset($_GET['id'])) {
                                                                     <option <?php if ($get_astrazeneca == '03_Unknown') echo 'selected'; ?> value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
+
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with PFIZER? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="pfizer" id="pfizer">
@@ -1710,7 +1711,6 @@ if (isset($_GET['id'])) {
                                                                 </select>
                                                             </div>
                                                         </div><br>
-
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with JANSSEN? &nbsp;&nbsp; <span id="required">*</span> </label>
@@ -1731,14 +1731,12 @@ if (isset($_GET['id'])) {
                                                                 </select>
                                                             </div>
 
-                                                        </div><br>
-
-
+                                                        </div>
                                                     </div><br>
                                                 </div>
                                                 <!-- end consent -->
 
- 
+
                                                 <div class="box-footer" align="center">
                                                     <button type="submit" id="btnSubmit" name="update_vaccine" class="btn btn-success">
                                                         <!-- <i class="fa fa-check fa-fw"> </i> -->

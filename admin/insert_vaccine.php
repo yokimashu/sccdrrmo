@@ -223,8 +223,8 @@ if (isset($_POST['insert_vaccine'])) {
     $sinovac        = $_POST['sinovac'];
     $astrazeneca    = $_POST['astrazeneca'];
     $pfizer         = $_POST['pfizer'];
-    $janssen         = $_POST['janssen'];
-    $moderna        =  $_POST['moderna'];
+    $janssen        = $_POST['janssen'];
+    $moderna        = $_POST['moderna'];
 
     //for bararangay 
     if ($barangay == 'BARANGAY I') {

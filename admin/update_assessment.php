@@ -19,9 +19,12 @@ if (isset($_POST['update_assessment'])) {
     $objid          = $_POST['objid'];
     $date_reg       = date('Y-m-d', strtotime($_POST['date_reg']));
     $time           = date("H:i:s");
+    $bakuna_center  = $_POST['bakuna_center'];
+    $cbcr           = $_POST['cbcr_no'];
 
     //basic information
     $entityno        = $_POST['entity_number'];
+    $assessment_username   = $_POST['username'];
 
     //medical conditions
 
@@ -42,13 +45,13 @@ if (isset($_POST['update_assessment'])) {
     } else {
         $allergy_peg = '01_Yes';
     }
-  
+
     if ($_POST['food_allergy'] != 'Please select') {
         $food_allergy        = $_POST['food_allergy'];
     } else {
         $food_allergy = '01_Yes';
     }
-    
+
 
     if ($_POST['monitor_patient'] != 'Please select') {
         $monitor_patient     = $_POST['monitor_patient'];
@@ -58,7 +61,6 @@ if (isset($_POST['update_assessment'])) {
 
     if ($_POST['allergic_reaction'] != 'Please select') {
         $allergic_reaction   = $_POST['allergic_reaction'];
- 
     } else {
         $allergic_reaction = '01_Yes';
     }
@@ -68,7 +70,7 @@ if (isset($_POST['update_assessment'])) {
     } else {
         $covid_exposure = '01_Yes';
     }
-  
+
 
     if ($_POST['covid_treated'] != 'Please select') {
         $covid_treated       = $_POST['covid_treated'];
@@ -172,19 +174,19 @@ if (isset($_POST['update_assessment'])) {
     } else {
         $manufacturer = 'N/A';
     }
-   
+
     if (!empty($_POST['batch_number'])) {
         $batch_number        = $_POST['batch_number'];
     } else {
         $batch_number = 'N/A';
     }
-   
+
     if (!empty($_POST['lot_number'])) {
         $lot_number          = $_POST['lot_number'];
     } else {
         $lot_number = 'N/A';
     }
-  
+
     if ($_POST['vaccinator'] != '') {
         $vaccinator = $_POST['vaccinator'];
     } else {
@@ -196,7 +198,7 @@ if (isset($_POST['update_assessment'])) {
     } else {
         $profession = 'N/A';
     }
-   
+
     if ($_POST['first_dose'] != 'Please select') {
         $first_dose = $_POST['first_dose'];
     } else {
@@ -208,7 +210,7 @@ if (isset($_POST['update_assessment'])) {
     } else {
         $second_dose = '02_No';
     }
-   
+
     $insert_assessment_sql = "UPDATE tbl_assessment SET 
         
             date_reg                = :date_reg,
@@ -242,6 +244,9 @@ if (isset($_POST['update_assessment'])) {
             VaccinatorProfession    = :vaccinator_profession,
             1stDose                 = :first_dose,
             2ndDose                 = :second_dose,
+            assessment_username     = :username,
+            bakuna_center           = :bakuna_center,
+            bakuna_center_no        = :cbcr_no,
             status                  = :status
             where entity_no         = :entityno
             and objid               = :objid
@@ -283,6 +288,9 @@ if (isset($_POST['update_assessment'])) {
         ':vaccinator_profession'        => $profession,
         ':first_dose'                   => $first_dose,
         ':second_dose'                  => $second_dose,
+        ':username'                     => $assessment_username,
+        ':bakuna_center'                => $bakuna_center,
+        ':cbcr_no'                      => $cbcr,
         ':status'                       => $status
 
 

@@ -187,17 +187,20 @@ if (isset($_POST['update_vaccine'])) {
         $pfizer        = '03_Unknown';
     }
 
+    
     if ($_POST['janssen'] != 'Please select') {
-        $janssen        = $_POST['janssen'];
+        $janssen       = $_POST['janssen'];
     } else {
-        $janssen        = '03_Unknown';
+        $janssen       = '03_Unknown';
     }
 
     if ($_POST['moderna'] != 'Please select') {
-        $moderna        = $_POST['moderna'];
+        $moderna     = $_POST['moderna'];
     } else {
-        $moderna        = '03_Unknown';
+        $moderna      = '03_Unknown';
     }
+
+
 
 
 
@@ -359,7 +362,7 @@ if (isset($_POST['update_vaccine'])) {
             sinovac                 = :sinovacs,
             astrazeneca             = :astravas,
             pfizer                  = :pfizer,
-            johnsons                = :janssen,
+            johnsons                = :johnsons,
             moderna                 = :moderna,
             status                  = :statuss
             WHERE entity_no         = :entityno
@@ -420,17 +423,17 @@ if (isset($_POST['update_vaccine'])) {
         ':com5'             => $asthma,
         ':com6'             => $immuno,
         ':com7'             => $cancer,
-        ':com8'             => $other,
-        ':com9'             => $respiratory,
-        ':com10'            => $cardiovascular,
-        ':com11'            => $chronic_kindey,
-        ':com12'            => $cerebrovascular,
-        ':com13'            => $neurologic,
-        ':com14'            => $liver,
-        ':com15'            => $tract_infection,
-        ':com16'            => $obesity,
-        ':com17'            => $tuberculosis,
-        ':com18'            => $malignancy,
+        ':com8'             => $respiratory,
+        ':com9'             => $cardiovascular,
+        ':com10'            => $chronic_kindey,
+        ':com11'            => $cerebrovascular,
+        ':com12'            => $neurologic,
+        ':com13'            => $liver,
+        ':com14'            => $tract_infection,
+        ':com15'            => $obesity,
+        ':com16'            => $tuberculosis,
+        ':com17'            => $malignancy,
+        ':com18'            => $other,  
         ':history'          => $patient_diagnose,
         ':date_history'     => $date_positive,
         ':infection'        => $name_infection,
@@ -438,7 +441,7 @@ if (isset($_POST['update_vaccine'])) {
         ':sinovacs'         => $sinovac,
         ':astravas'         => $astrazeneca,
         ':pfizer'           => $pfizer,
-        ':janssen'          => $janssen,
+        ':johnsons'         => $janssen,
         ':moderna'          => $moderna,
         ':statuss'          => 'VALIDATED'
 

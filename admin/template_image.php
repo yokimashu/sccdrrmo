@@ -24,7 +24,7 @@ $img = '';
         <video id="webcam" autoplay playsinline width="600" height="530" align="center" hidden class="photo  img-thumbnail"></video>
         <canvas id="canvas" class="d-none" hidden width="600" height="530" align="center" onClick="setup()" class="photo  img-thumbnail"></canvas>
         <!-- <audio id="snapSound"  src="audio/snap.wav"  preload="auto"></audio> -->
-        <img src="../flutter/images/<?php echo $get_photo; ?>" id="photo" style="height: 300px; width:300px;margin:auto;" class="photo img-thumbnail">
+        <img src="../flutter/images/<?php echo $get_photo ?>" id="photo" style="height: 300px; width:300px;margin:auto;" class="photo img-thumbnail">
 
     </div>
 
@@ -34,13 +34,13 @@ $img = '';
 
 
 
-    </div><br>
+    </div>
 
     <div class="row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-5 ">
                                                     <!-- <label>Street: </label> -->
-                                                    <input type="text" readonly class="form-control" style=" text-transform: uppercase; font-weight: bold; color: red; text-align: center;" name="province" placeholder="Province" value="<?php echo $get_status; ?>">
+                                                    <input type="text" readonly class="form-control" style=" text-transform: uppercase; font-weight: bold; color: red; text-align: center;" name="entity_no" placeholderentity_no value="<?php echo $get_entity_no; ?>">
                                                 </div>
                                             </div><br>
                                 
@@ -53,10 +53,7 @@ $img = '';
     <div class="col-md-8" style="margin:auto;margin-top:30px;margin-bottom:30px">
         <span class="align-baseline">
             <input type="hidden" name="image" class="image-tag" value=<?php echo $img; ?>>
-            <!-- <input type="button" class="btn btn-primary" value="&#9654" onClick="setup()">  -->
-            <!-- <button type="button" id="opencamera" class="btn btn-warning " value="CAPTURE"><i class="fa fa-camera"></i></button> -->
-            <!-- <button type="button" id="capture" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="take_snapshot()"><i class="fa fa-check"></i></button> -->
-            <!--                                                        <button type="button"  id="crop" class="btn btn-primary toastsDefaultSuccess" value="CAPTURE" onClick="">CROP</button>-->
+
             <br>
             <style>
                 input[type="file"] {
@@ -71,12 +68,6 @@ $img = '';
                     cursor: pointer;
                 }
             </style>
-
-
-            <label for="fileToUpload" class="custom-file-upload">
-                <i class="fa fa-cloud-upload"></i> Import Image
-            </label>
-            <input type="file" id="fileToUpload" name="myFile" class="btn btn-danger custom-file-upload ">
 
         </span>
     </div>

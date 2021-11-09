@@ -9,7 +9,6 @@ include('insert_contactcase.php');
 
 $now = new DateTime();
 $time = date(' H:i');
-
 $patient_no = '';
 $entity_no = $date_register = $user_name = $firstname = $middlename = $lastname = $birthdate = $age = $gender = $barangay = $street =
     $city = $province = $mobile_no = $gender = $telephone_no = $email = $individual = $individual2 =  $fullname = $entity_no1 = $fullname1 = $photo = '';

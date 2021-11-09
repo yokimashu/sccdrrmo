@@ -10,17 +10,10 @@ session_start();
 
 $cbcr = $_SESSION['cbcr'];
 date_default_timezone_set('Asia/Manila');
-// 
-// date_default_timezone_set("America/New_York");
-// echo "The time is " . date("h:i:sa");
+
 $now = new DateTime();
 $time = date('H:i:s');
 
-// $time = date('H:i');
-
-// $time = date("h:i:sa");
-
-$entity_no = ' ';
 
 $btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $get_photo =
     $get_firstname = $get_middlename = $get_lastname = $get_suffix = $pregstatus = $wallergy =
@@ -28,7 +21,7 @@ $btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $ge
     $refusal = $age_16 = $allergy_PEG = $allergic_reaction = $no_food_allergy = $monitor_patient = $bleeding_history = $yes_bleeding_history =
     $manifest_symptoms = $specify_symptoms = $no_exposure = $no_treated = $no_received_vaccine = $no_received_antibodies = $pregnant_semester =
     $no_illness = $specify_illness = $medical_clearance = $deferral = $vaccination_date = $vaccine_manufacturer = $batch_number = $lot_number =
-    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $objid = $vaccine_card = '';
+    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $objid = $vaccine_card = $get_dateprinted = $get_printedby = '';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $img = '';
@@ -47,6 +40,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 
     $tracer_fullname = $result['fullname'];
+    $tracer_cbcr = $result['cbcr'];
 }
 
 if (isset($_GET['id'])) {
@@ -124,32 +118,34 @@ if (isset($_GET['id'])) {
 
 
         //table assessment
-        $consent            = $result['consent'];
-        $age_16             = $result['MoreThan16yo'];
-        $allergy_PEG        = $result['PegPolysorbate'];
-        $wallergy           = $result['AllergyToFood'];
-        $monitor_patient    = $result['MonitorAllergy'];
-        $allergic_reaction  = $result['Severe_Reaction'];
-        $no_exposure        = $result['CovidHistory'];
-        $no_treated         = $result['CovidTreated'];
+        $consent                = $result['consent'];
+        $age_16                 = $result['MoreThan16yo'];
+        $allergy_PEG            = $result['PegPolysorbate'];
+        $wallergy               = $result['AllergyToFood'];
+        $monitor_patient        = $result['MonitorAllergy'];
+        $allergic_reaction      = $result['Severe_Reaction'];
+        $no_exposure            = $result['CovidHistory'];
+        $no_treated             = $result['CovidTreated'];
         $no_received_antibodies = $result['AntibodiesCovid'];
-        $bleeding_history   = $result['BleedingHistory'];
-        $yes_bleeding        = $result['BleedingDisorders'];
-        $no_received_vaccine = $result['ReceivedVaccine'];
-        $symptoms           = $result['ManifestSymptoms'];
-        $illness            = $result['Illness'];
-        $clearance          = $result['MedicalClearance'];
-        $semester           = $result['PregnantSemester'];
-        $deferral           = $result['Deferral'];
-        $vaccine_manufacturer = $result['VaccineManufacturer'];
-        $batch_number       = $result['BatchNumber'];
-        $lot_number         = $result['LotNumber'];
-        $get_vaccinator_name     = $result['VaccinatorName'];
-        $profession_vaccinator   = $result['VaccinatorProfession'];
-        $vaccination_date = $result['DateVaccination'];
-        $dose_1st         = $result['1stDose'];
-        $dose_2nd         = $result['2ndDose'];
-        $vaccine_card         = $result['actions'];
+        $bleeding_history       = $result['BleedingHistory'];
+        $yes_bleeding           = $result['BleedingDisorders'];
+        $no_received_vaccine    = $result['ReceivedVaccine'];
+        $symptoms               = $result['ManifestSymptoms'];
+        $illness                = $result['Illness'];
+        $clearance              = $result['MedicalClearance'];
+        $semester               = $result['PregnantSemester'];
+        $deferral               = $result['Deferral'];
+        $vaccine_manufacturer   = $result['VaccineManufacturer'];
+        $batch_number           = $result['BatchNumber'];
+        $lot_number             = $result['LotNumber'];
+        $get_vaccinator_name    = $result['VaccinatorName'];
+        $profession_vaccinator  = $result['VaccinatorProfession'];
+        $vaccination_date       = $result['DateVaccination'];
+        $dose_1st               = $result['1stDose'];
+        $dose_2nd               = $result['2ndDose'];
+        $vaccine_card           = $result['actions'];
+        $bakuna_center          = $result['bakuna_center'];
+        $bakuna_center_no       = $result['bakuna_center_no'];
     }
 
 
@@ -160,24 +156,45 @@ if (isset($_GET['id'])) {
 
     //     $vaccine_card         = $result['actions'];
     // }
+    $bk_center = "SELECT bc_code,bc_name from tbl_bakuna_center";
+    $bk_stmt = $con->prepare($bk_center);
+    $bk_stmt->execute();
 
-    $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no where oh.entity_no = :id";
-    $get_data_data = $con->prepare($get_data_sql);
-    $get_data_data->execute([':id' => $entity_no]);
+    if (isset($_GET['id'])) {
 
-    while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+        $entity_no = $_GET['id'];
+        $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no inner join tbl_assessment t on t.entity_no = en.entity_no where t.objid = :id";
+        $get_data_data = $con->prepare($get_data_sql);
+        $get_data_data->execute([':id' => $entity_no]);
+
+        while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
 
 
-        $get_age = $result['age'];
+            $get_age = $result['age'];
 
-        $get_email = $result['email'];
-        $get_photo = $result['photo'];
-        $get_status = $result['status'];
+            $get_email = $result['email'];
+            $get_photo = $result['photo'];
+            $get_status = $result['status'];
+        }
+    }
+
+    if (isset($_GET['id'])) {
+
+        $entity_no = $_GET['id'];
+        $get_data_sql = "SELECT * FROM  tbl_assessment t inner join tbl_tnxhistory r on r.entity_no = t.entity_no where t.objid = :id";
+        $get_data_data = $con->prepare($get_data_sql);
+        $get_data_data->execute([':id' => $entity_no]);
+
+        while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+
+            $get_dateprinted = $result['date'];
+            $get_printedby = $result['username'];
+        }
     }
 }
-
-
 
 // include('verify_admin.php');
 
@@ -417,17 +434,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                             <!-- Profile Image -->
 
-                            <?php if ($get_photo == '') {
-                                $get_photo = 'user.jpg';
-                            } ?>
 
 
                             <div class="card card-success card-outline">
                                 <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../flutter/images/<?php echo $get_photo ?>" id="tphoto">
-                                    </div>
 
+                                    <?php include('template_photo.php'); ?>
                                     <h2 class="profile-username text-center"><?php echo $get_firstname . ' ' . $get_middlename[0] . '.' . ' ' . $get_lastname . ' ' . $get_suffix; ?></h2>
 
                                     <p class="text-muted text-center"><?php echo $get_entity_no; ?></p>
@@ -489,49 +501,102 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                             <div class="card card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">Actions</h3>
+                                    <h3 class="card-title">Print</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <strong><i class="fa fa-pencil mr-1"></i> <a> Print Vamos ID </a> </strong>
 
                                     <p class="text-muted">
 
                                         <hr>
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
-
-
-
+                                        <strong><i class="fa fa-file mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
 
                                     <p class="text-muted">
 
                                         <hr>
 
+                                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card.php">
+
+                                        <?php if ($vaccine_card == '1') {
+                                            $disablecard = "disabled";
+                                        } else {
+
+                                            $disablecard = "enabled";
+                                        } ?>
+                                        <strong><i class="fa fa-id-card mr-1"></i> <button id="vaccinecard" <?php echo $disablecard; ?> name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </button> </strong>
+
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                        <p class="text-muted">
+
+                                            <hr>
 
 
 
-
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a id="vaccinecard" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD </a> </strong>
-
-                                    <p class="text-muted">
-
-                                        <hr>
+                                    </form>
 
 
-                                        <strong><i class="fa fa-pencil mr-1"></i> <a id="vaccinecard" href="../plugins/jasperreport/vaccination_card_photo.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card"> Print VAMOS RESBAKUNA CARD NO PHOTO</a> </strong>
+                                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card1.php">
+
+                                        <?php if ($vaccine_card == '1') {
+
+                                            $disablecard2 = "disabled";
+                                        } else {
+
+                                            $disablecard2 = "enabled";
+                                        } ?>
+                                        <strong><i class="fa fa-id-card mr-1"></i> <button <?php echo $disablecard2; ?> id="vaccinecard1" name="update_resbakuna_card1" href="../plugins/jasperreport/vaccination_card_photo.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card">RESBAKUNA CARD NO PHOTO </button> </strong>
 
 
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                        <p class="text-muted">
+
+
+
+                                    </form>
+
+
+                                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card2.php">
+
+                                        <?php if ($vaccine_card == '1') {
+
+                                            $disablecard3 = "disabled";
+                                        } else {
+
+                                            $disablecard3 = "enabled";
+                                        } ?>
+
+
+                                        <strong><i class="fa fa-id-card mr-1"></i> <button <?php echo $disablecard3; ?> id="vaccinecard2" name="update_resbakuna_card2" href="../plugins/jasperreport/vaccination_card_longtext.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card">RESBAKUNA CARD LONG NAME </button> </strong>
 
 
 
                                         <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
-                                        <!-- <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
                                         <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
-                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">  -->
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
 
-                                        </form>
 
+                                        <p class="text-muted">
+
+
+
+                                    </form>
+
+
+
+
+                                    <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
                                     <p class="text-muted">
 
                                     </p>
@@ -541,13 +606,20 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     <hr>
 
 
-                                    <!-- <strong><i class="fa fa-pencil mr-1"></i> <a href="update_assessment.php?entity_no=<?php echo $entity_no; ?> "> View VAS </a> </strong>
 
+
+                                    <strong><i class="fa fa-calendar"></i> Date Printed</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_dateprinted; ?></p>
+                                    <hr>
+
+                                    <strong><i class="fa fa-envelope"></i> Printed By</strong>
 
                                     <p class="text-muted">
+                                        <?php echo $get_printedby; ?></p>
+                                    <hr>
 
-                                    </p>
-                                    <hr> -->
+
 
                                 </div>
 
@@ -1076,7 +1148,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                             <div class=" col-md-6">
                                                                                 <label for="">Vaccine Manufacturer: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                                 <select class="form-control select2" id="vaccine_manufacturer" style="width: 100%;" name="vaccine_manufacturer" placeholder="" value="">
-                                                                                    <option selected value="">Select Manufacturer</option>
+                                                                                    <option selected>Select Manufacturer</option>
                                                                                     <?php while ($get_manufacturer = $get_all_manufacturer_sql->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                                         <?php $selected = ($vaccine_manufacturer == $get_manufacturer['manufacturer']) ? 'selected' : ''; ?>
                                                                                         <option <?= $selected; ?> value="<?php echo $get_manufacturer['manufacturer']; ?>"><?php echo $get_manufacturer['manufacturer']; ?></option>
@@ -1101,10 +1173,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                                         <div class="row">
                                                                             <div class="col-md-6">
-                                                                                <label for="">Vaccinator Name: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <label readonly for="">Vaccinator Name: &nbsp;&nbsp; <span id="required">*</span></label>
 
-                                                                                <select class="form-control select2" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="">
-                                                                                    <option value="">Select Vaccinator</option>
+                                                                                <select class="form-control select2 vaccinator" id="vaccinator1" style="width: 100%;" name="vaccinator" placeholder="" value="">
+                                                                                    <option selected>Select Vaccinator</option>
                                                                                     <?php while ($get_vaccinator = $get_all_vaccinator_sql->fetch(PDO::FETCH_ASSOC)) { ?>
 
                                                                                         <?php $selected = ($get_vaccinator_name == $get_vaccinator['l_name'] . ', ' . $get_vaccinator['f_name'] . ' ' . $get_vaccinator['m_name']) ? 'selected' : ''; ?>
@@ -1123,24 +1195,43 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <label>1st Dose</label>
-                                                                                <select name="first_dose" id="first_dose" style="width:100%" class="form-control select2 " value="<?php echo $dose_1st; ?>">
-                                                                                    <option>Please select</option>
+                                                                                <select name="first_dose" id="first_dose" style="width:100%" class="form-control " value="<?php echo $dose_1st; ?>">
+                                                                                    <option selected>Please select</option>
                                                                                     <option <?php if ($dose_1st == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                                     <option <?php if ($dose_1st == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-sm-6">
                                                                                 <label>2nd Dose</label>
-                                                                                <select name="second_dose" id="second_dose" style="width:100%" class="form-control select2" value="<?php echo $dose_2nd; ?>">
-                                                                                    <option>Please select</option>
+                                                                                <select name="second_dose" id="second_dose" style="width:100%" class="form-control " value="<?php echo $dose_2nd; ?>">
+                                                                                    <option selected>Please select</option>
                                                                                     <option <?php if ($dose_2nd == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
                                                                                     <option <?php if ($dose_2nd == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                                 </select>
                                                                             </div>
+                                                                        </div><br>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <label>Bakuna Center</label>
+                                                                                <select name="bakuna_center" id="bakuna_center" style="width:100%" class="form-control select2 baks" value="">
+                                                                                    <option selected>Select Bakuna Center</option>
+                                                                                    <?php while ($get_center = $bk_stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                                        <?php $selected = ($bakuna_center_no == $get_center['bc_code']) ? 'selected' : ''; ?>
+                                                                                        <option <?= $selected; ?> value="<?php echo $get_center['bc_name']; ?>"><?php echo $get_center['bc_name']; ?></option>
+                                                                                    <?php } ?>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <label readonly for="">CBCR No: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                                <input type="text" class="form-control" name="cbcr_no" id="cbcr_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="CBCR No." value="<?php echo $bakuna_center_no; ?>">
+
+                                                                            </div>
+
                                                                         </div>
 
                                                                     </div>
-                                                                    </div>
+
 
 
                                                                     <!-- end vaccine information -->
@@ -1153,6 +1244,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                         </button>
 
                                                                     </div>
+                                                                    <br>
                                             </form>
                                         </div>
 
@@ -1259,7 +1351,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 });
 
             });
+            $('#bakuna_center').change(function() {
+                var code = $('#bakuna_center').val();
+                $('#bccode').val(code);
 
+
+            })
         });
 
         $(function() {
@@ -1409,7 +1506,26 @@ $title = 'VAMOS | COVID-19 Patient Form';
         // });
 
 
+        $('.baks').on('change', function() {
+            var cbr_no = $(this).val();
 
+            //  $('#doc_no').val(type);
+
+
+            $.ajax({
+                type: 'POST',
+                data: {
+                    cbr_no: cbr_no
+                },
+                url: 'generate_cbrno.php',
+                success: function(data) {
+                    $('#cbcr_no').val(data);
+
+                }
+
+            });
+
+        });
 
         $('#allergy_PEG').change(function() {
             var option = $('#allergy_PEG').val();
@@ -1586,6 +1702,40 @@ $title = 'VAMOS | COVID-19 Patient Form';
             }
 
             console.log("test");
+        });
+
+        $("#btnSubmit").click(function() {
+            var manufacturer = $('#vaccine_manufacturer').val();
+
+            var vaccinator = $('.vaccinator').val();
+            var first_dose = $('#first_dose').val();
+            var second_dose = $('#second_dose').val();
+            var bakuna_center = $('#bakuna_center').val();
+
+
+
+            if (manufacturer == 'Select Manufacturer') {
+                alert("Please select Manufacturer!");
+                $('#vaccine_manufacturer').focus();
+                return false;
+            } else if (vaccinator == 'Select Vaccinator') {
+                alert("Please select Vaccinator!");
+                $('.vaccinator').focus();
+                return false;
+            } else if (first_dose == 'Please select') {
+                alert("Please select 1st dose!");
+                $('#first_dose').focus();
+                return false;
+            } else if (second_dose == 'Please select') {
+                alert("Please select 2nd dose!");
+                $('#second_dose').focus();
+                return false;
+            } else if (bakuna_center == 'Select Bakuna Center') {
+                alert("Please select Bakuna Center!");
+                $('#bakuna_center').focus();
+                return false;
+            }
+
         });
     </script>
 
