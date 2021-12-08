@@ -399,36 +399,66 @@ $get_all_center_data->execute();
                   </div>
                 </div><br><br><br>
 
+     <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">NO</button>
+
+                  <input type="submit" name="update_void_vaccine" class="btn btn-danger" value="SAVE">
+
+                  <!-- <input type="submit" id="btnSubmit" name="update_vas_test" class="btn btn-danger" value="SAVE"> -->
 
 
-                <!-- <div class="row">
-                  <div class="col-sm-8">
-                    <label>REMARKS: </label>
-                    <input type="text" name="void_remarks" id="void_remarks" class="form-control" pull-right value="" required>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+   <!-- /.modal-dialog -->
+   <div class="modal fade" id="modalform" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h4 class="modal-title ">PRINT VACCINE FORM</h4>
+        </div>
+
+
+
+        <form method="POST" action="">
+          <div class="modal-body">
+            <div class="box-body-lg">
+              <div class="form-group">
+
+                <div class="row">
+                  <div class="col-sm-7">
+                    <label>USERNAME: </label>
+                    <input readonly="true" type="text" name="void_username" id="void_username" class="form-control" pull-right value="<?php echo $void_username ?>" required>
                   </div>
+                </div><br>
 
-                </div><br> -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label>VAMOS ID: </label>
+                    <input readonly="true" type="text" name="form_entity_no" id="form_entity_no" class="form-control" pull-right value="" required>
+                  </div>
+                  <div class="col-sm-8">
+                    <label>FULL NAME: </label>
+                    <input readonly="true" type="text" name="form_fullname" id="form_fullname" class="form-control" pull-right value="" required>
+                  </div>
+                </div><br><br><br>
 
-
-
-
-
-
-
-
-                <!-- <div class="col-md-5">
-                <label for="">STATUS:</label>
-                <select class="form-control select2" style="width: 100%;" id="result" name="result" value="">
-                  <option selected>Please select</option>
-                  <option value="POSITIVE">POSITIVE</option>
-                  <option value="NEGATIVE">NEGATIVE</option>
-                  <option value="PENDING">PENDING</option>
-                </select>
-              </div> -->
-                <!-- <label for="">MOVE TO VAST LIST:</label>
-              <br> -->
-
-
+                <button class="btn btn-warning btn-sm " style="margin-right:10px;" id="printform" data-placement="top" title="PRINT FORM"> <i class="fa fa-edit"></i></button>
+                <!-- <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform_newform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong> -->
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left bg-olive" data-dismiss="modal">NO</button>
@@ -451,7 +481,6 @@ $get_all_center_data->execute();
 
     </div>
   </div>
-
 
 
 
@@ -525,7 +554,15 @@ $get_all_center_data->execute();
           targets: -1,
           data: null,
           defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
+            
+          // '<a class="btn btn-warning btn-sm printlink5"  style = "margin-right:10px;" id="printlink5" href ="../plugins/jasperreport/vaccineform_newform.php?entity_no=" data-placement="top" target="_blank" title="Print ADULT">  <i class="nav-icon fa fa-print"> ADULT</i></a> '+
+  
+            // '<a class="btn btn-warning btn-sm printlink3" style="margin-right:10px;" data-placement="top" title="PRINT FORM PEDIATRIC">PRINT PEDIATRIC</a>'+
+
             '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal"  data-placement="top" title="FORWARD TO VAS">VAS</a>' +
+
+            '<a class="btn btn-primary btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform_pediatric.php?entity_no=" data-placement="top" target="_blank" title="Print FORM">  <i class="nav-icon fa fa-print"> </i></a> '+
+            // '<a class="btn btn-warning btn-sm modalform"  style="margin-right:10px;"    data-placement="top" title="PRINT">PRINT</a>' +
             // '<a class="btn btn-danger btn-sm" style="margin-right:10px;" id="deletevoid" data-placement="top" title="VOID">x</a>'+
             '<a class="btn btn-danger btn-sm void" style="margin-right:10px;"  data-placement="top" title="VOID"><i class="far fa-trash-alt"></i></a>',
           // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
@@ -533,6 +570,27 @@ $get_all_center_data->execute();
 
       ],
     });
+
+
+
+    $("#users tbody").on("click", ".printlink", function() {
+      // event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity = currow.find("td:eq(1)").text();
+      $('.printlink').attr("href", "../plugins/jasperreport/vaccineform_pediatric.php?entity_no=" + entity, '_parent');
+      // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+
+    });
+
+    // $("#users tbody").on("click", ".printlink5", function() {
+    //   // event.preventDefault();
+    //   var currow = $(this).closest("tr");
+    //   var entity = currow.find("td:eq(1)").text();
+    //   $('.printlink5').attr("href", "../plugins/jasperreport/vaccineform_newform.php?entity_no=" + entity, '_parent');
+    //   // window.open("../plugins/jasperreport/entity_id.php?entity_no=" + entity, '_parent');
+
+    // });
+
 
 
     $("#users tbody").on("click", ".printlink1", function() {
@@ -544,6 +602,38 @@ $get_all_center_data->execute();
 
 
     });
+
+    // $("#users tbody").on("click", ".printlink2", function() {
+    //   // event.preventDefault();
+    //   var currow = $(this).closest("tr");
+    //   var entity_no = currow.find("td:eq(1)").text();
+
+    //   $('.printlink2').attr("href", "../plugins/jasperreport/vaccineform_newform.php?entity_no=" + entity_no, '_parent');
+
+
+    // });
+
+    $("#users tbody").on("click", ".printlink3", function() {
+      // event.preventDefault();
+      var currow = $(this).closest("tr");
+      var entity_no = currow.find("td:eq(1)").text();
+      window.open("../plugins/jasperreport/vaccineform_newform.php?entity_no=" + entity_no, '_parent');
+      // window.open($('.printlink3').attr("href", "../plugins/jasperreport/vaccineform_pediatric.php?entity_no=" + entity_no, '_parent'));
+
+
+    });
+
+
+
+    // $("#printform").on("click", "#printform", function() {
+    //   // event.preventDefault();
+    //   var currow = $(this).closest("tr");
+    //   var entity_no = currow.find("td:eq(1)").text();
+
+    //   $('#printform').attr("href", "vaccineform_newform.php??entity_no=" + entity_no, '_parent');
+
+
+    // });
 
     $("#users tbody").on("click", "#modal", function() {
       event.preventDefault();
@@ -583,57 +673,28 @@ $get_all_center_data->execute();
 
     });
 
+    
+    $("#users tbody").on("click", ".modalform", function() {
+      event.preventDefault();
+      var currow = $(this).closest("tr");
+
+      var entity_no = currow.find("td:eq(1)").text();
+      var fullname = currow.find("td:eq(3)").text();
+
+      $('#modalform').modal('show');
+      $('#form_entity_no').val(entity_no);
+      $('#form_fullname').val(fullname);
+
+
+
+    });
 
 
 
 
-    // $("#users tbody").on("click", "#deletevoid", function() {
-    //   event.preventDefault();
-    //   var currow = $(this).closest("tr");
-    //   var objid = currow.find("td:eq(0)").text();
-    //   var fullname = currow.find("td:eq(3)").text();
 
-    //   // console.log("test");
-    //   $('#modal1').modal('show');
-    //   // $('#objid').val(objid);
-    //   // $('#fullname1').val(fullname);
+ 
 
-
-    // });
-
-    // $("#users tbody").on("click", "#modal", function() {
-    //   event.preventDefault();
-    //   var currow = $(this).closest("tr");
-
-    //   var objid = currow.find("td:eq(1)").text();
-    //   var fullname = currow.find("td:eq(3)").text();
-
-
-
-
-    //   console.log("test");
-    //   $('#modalvoid').modal('show');
-    //   $('#objid').val(objid);
-    //   $('#fullname').val(fullname);
-
-
-
-    // });
-
-    // $('#center').change(function() {
-    //   if ($('#cbrno').val() == '') {
-    //     $.ajax({
-    //       type: 'POST',
-    //       data: {},
-    //       url: 'generate_cbrno.php',
-    //       success: function(data) {
-    //         //$('#entity_no').val(data);
-    //         document.getElementById("cbrno").value = data;
-    //         console.log(data);
-    //       }
-    //     });
-    //   }
-    // });
 
     $('#center').on('change', function() {
       var cbr_no = $(this).val();

@@ -21,16 +21,16 @@ include('../config/db_config.php');
 $requestData= $_REQUEST;
 
 
-$getAllIndividual = "SELECT DATE_ADD(a.`DateVaccination`, INTERVAL 10 WEEK)  AS 2ndDoseSchedule, a.entity_no, category, SubPriority,CONCAT(Firstname,' ',Middlename,' ',Lastname) AS fullname, suffix, contact_no, region, province, muncity, 
+$getAllIndividual = "SELECT DATE_ADD(a.`DateVaccination`, INTERVAL 12 WEEK)  AS 2ndDoseSchedule, a.entity_no, category, SubPriority,CONCAT(Firstname,' ',Middlename,' ',Lastname) AS fullname, suffix, contact_no, region, province, muncity, 
 barangay, sex, birthdate_, profession, allergy_08, W_comorbidities,1stDose, 2ndDose 
 FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no  WHERE a.entity_no NOT IN
-(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') AND a.status = 'VACCINATED' AND a.`VaccineManufacturer` = 'Astrazeneca' ORDER BY 2ndDoseSchedule ASC LIMIT ".$requestData['start']." ,".$requestData['length']." ";
+(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') AND a.status = 'VACCINATED' AND a.`VaccineManufacturer` = 'Moderna' ORDER BY 2ndDoseSchedule ASC LIMIT ".$requestData['start']." ,".$requestData['length']." ";
 
 $getIndividualData = $con->prepare($getAllIndividual);
 $getIndividualData->execute();                   
 
 $countNoFilter = "SELECT COUNT(entity_no) as id from tbl_assessment a WHERE a.entity_no NOT IN
-(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') AND a.status = 'VACCINATED' AND a.`VaccineManufacturer` = 'Astrazeneca'";
+(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') AND a.status = 'VACCINATED' AND a.`VaccineManufacturer` = 'Moderna'";
 $getrecordstmt = $con->prepare($countNoFilter);
 $getrecordstmt->execute() or die("search_2nddose_astra.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
@@ -40,10 +40,10 @@ $totalFiltered = $totalData;
 // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$getAllIndividual = "SELECT DATE_ADD(a.`DateVaccination`, INTERVAL 10 WEEK)  AS 2ndDoseSchedule, a.entity_no, category, SubPriority,CONCAT(Firstname,' ',Middlename,' ',Lastname) AS fullname, suffix, contact_no, region, province, muncity, 
+$getAllIndividual = "SELECT DATE_ADD(a.`DateVaccination`, INTERVAL 12 WEEK)  AS 2ndDoseSchedule, a.entity_no, category, SubPriority,CONCAT(Firstname,' ',Middlename,' ',Lastname) AS fullname, suffix, contact_no, region, province, muncity, 
 barangay, sex, birthdate_, profession, allergy_08, W_comorbidities,1stDose, 2ndDose 
 FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no  WHERE a.entity_no NOT IN
-(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') AND a.status = 'VACCINATED' AND a.`VaccineManufacturer` = 'Astrazeneca'  
+(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') AND a.status = 'VACCINATED' AND a.VaccineManufacturer = 'Moderna'  
 ";
              
      if( !empty($requestData['search']['value']) ) {

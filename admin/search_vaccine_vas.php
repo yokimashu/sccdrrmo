@@ -1,4 +1,4 @@
- <?php
+<?php
 /* Database connection start */
 // $servername = "localhost";
 // $username = "root";
@@ -47,6 +47,8 @@ $sql = "SELECT * FROM tbl_vaccine v inner join tbl_assessment t on t.entity_no =
 
 if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql .= "  (v.entity_no LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql.=" OR CONCAT(v.Firstname,' ',v.Middlename,' ',v.Lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql.=" OR CONCAT(v.Firstname,' ',v.Lastname) LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Category LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Firstname LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Middlename LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -55,6 +57,8 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	$sql .= " OR v.Birthdate_ LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR t.bakuna_center LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR t.status LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR t.DateVaccination LIKE '%" . $requestData['search']['value'] . "%' ";
+	$sql .= " OR t.VaccinatorName LIKE '%" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR v.Full_address LIKE '%" . $requestData['search']['value'] . "%' ) "; 
 	// $sql .= " OR Barangay LIKE '%" . $requestData['search']['value'] . "%' ) ";
 	// $sql .= " OR MunCity LIKE '%" . $requestData['search']['value'] . "%' ";
@@ -67,7 +71,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 
 
 	// $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-	$sql .= "AND t.status !='VOID' ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . " ";
+	$sql .= "AND t.status !='VOID' ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT 30";
 	$get_user_data = $con->prepare($sql);
 	$get_user_data->execute();
 	// $totalData = $get_user_data->fetch(PDOStatement::rowCount);
@@ -108,9 +112,11 @@ while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 	$nestedData[] = $row["Category"];
 	$nestedData[] = strtoupper($row["Firstname"] . ' ' . $row["Middlename"] . ' ' . $row["Lastname"]);
 	// $nestedData[] = $row["Sex"];
+	$nestedData[] = $row["DateVaccination"];
 
 	$nestedData[] = $row["1stDose"];
 	$nestedData[] = $row["2ndDose"];
+	$nestedData[] = $row["VaccinatorName"];
 	$nestedData[] = $row['status'];
 	$nestedData[] = $row["bakuna_center"];
 	// $nestedData[] = strtoupper($row["Full_address"]);

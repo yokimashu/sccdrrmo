@@ -26,7 +26,7 @@ if (isset($_POST['update_resbakuna_card'])) {
     $alert_msg1 = '';
 
 
- 
+
 
 
     $insert_status_sql = "UPDATE tbl_assessment SET 
@@ -55,20 +55,47 @@ if (isset($_POST['update_resbakuna_card'])) {
   ";
 
 
-  $bakuna_tnxhistory_data = $con->prepare($insert_tnxhistory_sql);
-  $bakuna_tnxhistory_data->execute([
+    $bakuna_tnxhistory_data = $con->prepare($insert_tnxhistory_sql);
+    $bakuna_tnxhistory_data->execute([
 
-      ':ref'            =>"tbl_assessment:" . $get_objid,
-      ':date'            => $date_reg,
-      ':entity_no'            => $entity_no,
-      ':actions'            => $get_actions,
-      ':username'            => $username,
-      ':activity'            => $activity
+        ':ref'            => "tbl_assessment:" . $get_objid,
+        ':date'            => $date_reg,
+        ':entity_no'            => $entity_no,
+        ':actions'            => $get_actions,
+        ':username'            => $username,
+        ':activity'            => $activity
 
 
 
-  ]);
-    
+    ]);
+
+    $timenow = date('H:i:s');
+    $title = 'VAMOS Resbakuna Card';
+    $message = "Good day! Your VAMOS Resbakuna Card is now being processed. Thank you!";
+
+    $insert_notif_sql = "INSERT INTO tbl_notification SET 
+
+            entity_no           = :entity_no,
+            message             = :message,
+            date                = now(),
+            time                = :time,
+            title               = :title,
+            status              = 'UNREAD'";
+
+    $notif_data = $con->prepare($insert_notif_sql);
+    $notif_data->execute([
+
+            ':entity_no'         => $entity_no,
+            ':message'           => $message,
+            ':time'              => $timenow,
+            ':title'             => $title
+    ]);
+
+
+
+
+
+
 
     if ($assessment_data) {
 

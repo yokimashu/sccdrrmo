@@ -232,8 +232,10 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
                           <th> Date Register </th>
                           <th> Category </th>
                           <th> Full Name </th>
+                          <th> Date Vaccinated </th>
                           <th> 1st Dose </th>
                           <th> 2nd Dose </th>
+                          <th> Vaccinator Name </th>
                           <th> Status </th>
                           <th> Bakuna Center Name</th>
                           <th>Options</th>

@@ -522,6 +522,18 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                 <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Contact Number">
                                                             </div>
                                                         </div><br>
+
+                                                        <div class="row" id="guardian" hidden>
+                                                            <div class="col-sm-3">
+                                                                <label>Guardian Name: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                <input type="text" class="form-control guardian_name" id="guardian_name" name="guardian_name" placeholder="Guardian Name">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <label>Parent/Guardian's Relationship: &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                <input type="text" class="form-control guardian_relation" id="guardian_relation" name="guardian_relation" placeholder="Parent/Guardian Relationhip">
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!-- </fieldset><br> -->
@@ -1155,9 +1167,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Provided Electronic Informed Consent &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="electronic_consent" id="electronic_consent">
-                                                                    <option>Please select</option>
                                                                     <option value="01_Yes">Yes</option>
-                                                                    <option value="02_No">No</option>
+                                                                    <option selected value="02_No">No</option>
                                                                     <option value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
@@ -1165,9 +1176,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with SINOVAC? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="sinovac" id="sinovac">
-                                                                    <option>Please select</option>
                                                                     <option value="01_Yes">Yes</option>
-                                                                    <option value="02_No">No</option>
+                                                                    <option selected value="02_No">No</option>
                                                                     <option value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
@@ -1178,9 +1188,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with ASTRAZENECA? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="astrazeneca" id="astrazeneca">
-                                                                    <option>Please select</option>
                                                                     <option value="01_Yes">Yes</option>
-                                                                    <option value="02_No">No</option>
+                                                                    <option selected value="02_No">No</option>
                                                                     <option value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
@@ -1188,9 +1197,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with PFIZER? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="pfizer" id="pfizer">
-                                                                    <option>Please select</option>
                                                                     <option value="01_Yes">Yes</option>
-                                                                    <option value="02_No">No</option>
+                                                                    <option selected value="02_No">No</option>
                                                                     <option value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
@@ -1201,9 +1209,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with JANSSEN? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="janssen" id="janssen">
-                                                                    <option>Please select</option>
                                                                     <option value="01_Yes">Yes</option>
-                                                                    <option value="02_No">No</option>
+                                                                    <option selected value="02_No">No</option>
                                                                     <option value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
@@ -1211,12 +1218,20 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                             <div class="col-sm-6">
                                                                 <label>Willing to be vaccinated with MODERNA? &nbsp;&nbsp; <span id="required">*</span> </label>
                                                                 <select class="form-control select2" name="moderna" id="moderna">
-                                                                    <option>Please select</option>
                                                                     <option value="01_Yes">Yes</option>
-                                                                    <option value="02_No">No</option>
+                                                                    <option selected value="02_No">No</option>
                                                                     <option value="03_Unknown">Unknown</option>
                                                                 </select>
                                                             </div>
+
+                                                            <!-- <div class="col-sm-6">
+                                                                <label>Willing to be vaccinated with PFIZER? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                <select class="form-control select2" name="pfizer" id="pfizer">
+                                                                    <option value="01_Yes">Yes</option>
+                                                                    <option selected value="02_No">No</option>
+                                                                    <option value="03_Unknown">Unknown</option>
+                                                                </select>
+                                                            </div> -->
                                                         </div><br>
 
                                                     </div><br>
@@ -1517,28 +1532,49 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 $('#healthworker').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
             }
+
             //if 05_A5: Poor Population is Selected
             else if (option == "05_A5: Poor Population") {
                 $('#healthworker').prop("hidden", true);
                 $('#indigent1').prop("hidden", false);
                 $('#frontline_subprio').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
             }
             //if Senior_Citizen is Selected
             else if (option == "02_A2: Senior Citizens") {
                 $('#indigent1').prop("hidden", false);
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
+            }
+            //if PEDIATRIC A3 with comorbidity
+            else if (option == "Pediatric A3") {
+                $('#guardian').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+
+            }
+            //if ROPP
+            else if (option == "ROPP") {
+                $('#guardian').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+
             }
             //if 04_A4: Frontline Personnel in Essential Sector is Selected
             else if (option == "04_A4: Frontline Personnel in Essential Sector") {
                 $('#frontline_subprio').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
             } else {
                 $('#frontline_subprio').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
-
                 $('#indigent1').prop("hidden", true);
             }
             console.log("test");
@@ -1653,6 +1689,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
         $("#btnSubmit").click(function() {
             var middlename = $('#middlename').val();
             var countmname = middlename.length;
+
+            var guardianname = $('#guardian_name').val();
+            var guardiancount = guardianname.length;
+            var guardianrelation = $('#guardian_relation').val();
+            var relatecount = guardianrelation.length;
+
             var gender = $('#gender :selected').text();
             var department = $('#department :selected').text();
             var civilstatus = $('#civil_status :selected').text();
@@ -1666,12 +1708,8 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var pregnancy = $('#preg_status :selected').text();
             var profession = $('#profession :selected').text();
             var indicate = $('#indicate_profession :selected').text();
-            var consent = $('#electronic_consent :selected').text();
             var sinovac = $('#sinovac :selected').text();
             var astrazeneca = $('#astrazeneca :selected').text();
-            var pfizer = $('#pfizer :selected').text();
-            var janssen = $('#janssen :selected').text();
-            var moderna = $('#moderna :selected').text();
 
             //  alert (category);
             if (countmname == 1) {
@@ -1682,13 +1720,29 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Please select Gender!");
                 $('#gender').focus();
                 return false;
-            } else if ((employment == 'Government Employed') && (department == 'Select Department')) {
-                alert("Please department!");
-                $('#department').focus();
-                return false;
             } else if (civilstatus == 'Select Civil Status') {
                 alert("Please select civil status!");
                 $('#civil_status').focus();
+                return false;
+            } else if ((category == 'Pediatric A3 with comorbidity') && (guardiancount == 0)) {
+                alert("Please enter guardian name!");
+                $('#guardian_name').focus();
+                return false;
+            } else if ((category == 'Pediatric A3 with comorbidity') && (relatecount == 0)) {
+                alert("Please enter parent/guardian relationship!");
+                $('#guardian_relation').focus();
+                return false;
+            }  else if ((category == 'Rest of Pediatric Population') && (guardiancount == 0)) {
+                alert("Please enter guardian name!");
+                $('#guardian_name').focus();
+                return false;
+            } else if ((category == 'Rest of Pediatric Population') && (relatecount == 0)) {
+                alert("Please enter parent/guardian relationship!");
+                $('#guardian_relation').focus();
+                return false;
+            }else if ((employment == 'Government Employed') && (department == 'Select Department')) {
+                alert("Please department!");
+                $('#department').focus();
                 return false;
             } else if ((category == 'Health Care Worker') && (subprio == 'Select Sub Priority')) {
                 alert("Please select sub priority!");
@@ -1730,50 +1784,9 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Please select pregnancy status!");
                 $('#preg_status').focus();
                 return false;
-
-            } else if (consent == 'Please select') {
-                alert("Are you willing to be vaccinated?");
-                $('#electronic_consent').focus();
-                return false;
-                // } else if (astrazeneca == 'Please select') {
-                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
-                //   $('#astrazeneca').focus();
-                //   return false;
             } else if (sinovac == 'Please select') {
                 alert("Are you willing to be vaccinated with Sinovac?");
                 $('#sinovac').focus();
-                return false;
-                // } else if (astrazeneca == 'Please select') {
-                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
-                //   $('#astrazeneca').focus();
-                //   return false;
-            } else if (astrazeneca == 'Please select') {
-                alert("Are you willing to be vaccinated with Astrazeneca?");
-                $('#astrazeneca').focus();
-                return false;
-                // } else if (astrazeneca == 'Please select') {
-                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
-                //   $('#astrazeneca').focus();
-                //   return false;
-            } else if (pfizer == 'Please select') {
-                alert("Are you willing to be vaccinated with Pfizer?");
-                $('#pfizer').focus();
-                return false;
-                // } else if (astrazeneca == 'Please select') {
-                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
-                //   $('#astrazeneca').focus();
-                //   return false;
-            } else if (janssen == 'Please select') {
-                alert("Are you willing to be vaccinated with Janssen?");
-                $('#janssen').focus();
-                return false;
-                // } else if (astrazeneca == 'Please select') {
-                //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");
-                //   $('#astrazeneca').focus();
-                //   return false;
-            } else if (moderna == 'Please select') {
-                alert("Are you willing to be vaccinated with Moderna?");
-                $('#moderna').focus();
                 return false;
                 // } else if (astrazeneca == 'Please select') {
                 //   alert("If 65 years old and above, are you willing to be vaccinated with Astrazeneca?");

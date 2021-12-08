@@ -7,16 +7,16 @@ if (isset($_POST['send'])) {
 
 $token = array();
 
-$get_token_sql = "SELECT token FROM tbl_users";
-$get_token_data = $con->prepare($get_token_sql);
-$get_token_data->execute();
-while ($result = $get_token_data->fetch(PDO::FETCH_ASSOC)) {
-    $token[]=$result['token'];
-}
+// $get_token_sql = "SELECT DISTINCT(token) FROM tbl_entity WHERE token IS NOT NULL";
+// $get_token_data = $con->prepare($get_token_sql);
+// $get_token_data->execute();
+// while ($result = $get_token_data->fetch(PDO::FETCH_ASSOC)) {
+//     $token[]=$result['token'];
+// }
 
     $url = "https://fcm.googleapis.com/fcm/send";
-    //$token              = "your device token";
-    $serverKey          = 'AAAAuF1uNFM:APA91bGXH4SXapwXpI6qxaapsX_Me9M5573saXnFxFpW4tZD_M3xV_pg4tYAxvHzovPkqDr0u5pnlZPHvZLPdlsZoCKp6wnUXpWEW5EhG7xM4byW8PTAxfsCedSWvXFy-lEQvonU-FVN';
+    $token              = "cgb8oECoTHqgRtoHP5ROTh:APA91bHEzDntT_hqzplRtn9r_1t0nbLE49G9shx7E5-txo0_1M49Ylwyp7RAWF5OFbvrhvpCdFCRpdajDMrX3KpECzYbY2ii6-duFHUM3V-mUBSrDwmfuHkPKYOYTsSifR39zk3GIBDw";
+    $serverKey          = 'AAAAaPnV-84:APA91bEy_yoIL7aaD8Pq6npOFJbTuAr0zoEiOuxs3_W8_2aggA5FiLI5bLMJrVECiVW7G4idgXxHiXvxVMfDk9u2KIRnH62h9Uvy3W41qlGyoFTMr75dTw0tuk3dpv_C9f4SxoTtcT9C';
     $message            = $_POST['message'];
     $title              = $_POST['title'];
     $notification       = array('title' =>$title , 'body' => $message, 'sound' => 'default', 'badge' => '1');

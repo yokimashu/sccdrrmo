@@ -365,8 +365,9 @@ $title = 'VAMOS | Dashboard';
 
 
     </div>
-
-    <?php include('footer.php') ?>
+    
+    <?php include('footer.php'); ?>
+    <?php include('bakuna_center_modal.php');?>
   </div>
 
 
@@ -395,6 +396,8 @@ $title = 'VAMOS | Dashboard';
   <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
+
+$('#myModal').modal('toggle');
     load_update();
 
     function load_update() {
@@ -422,7 +425,7 @@ $title = 'VAMOS | Dashboard';
     })
 
     $(document).ready(function() {
-
+     
       // google.charts.load('current', {
       //   'packages': ['corechart']
       // });

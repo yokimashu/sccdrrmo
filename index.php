@@ -127,7 +127,7 @@ jvectormap -->
 
 
 			<!-- <h1 id="vamos"><b>VAMOS</b></h1>
-<h6><b>VIRUS ASSESSMENT <br>AND MONITORING SYSTEM</b></h6> -->
+<			h6><b>VIRUS ASSESSMENT <br>AND MONITORING SYSTEM</b></h6> -->
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">

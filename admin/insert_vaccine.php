@@ -186,6 +186,8 @@ if (isset($_POST['insert_vaccine'])) {
     $suffix         = strtoupper($_POST['suffix']);
     $fullname       = strtoupper($_POST['firstname'] . ' ' . $_POST['middlename'] . ' ' . $_POST['lastname']);
     $age            = $_POST['agess'];
+    $guardianname   = strtoupper($_POST['guardian_name']);
+    $guardianrelation   = strtoupper($_POST['guardian_relation']);
 
     $gender         = $_POST['gender'];
 
@@ -223,8 +225,8 @@ if (isset($_POST['insert_vaccine'])) {
     $sinovac        = $_POST['sinovac'];
     $astrazeneca    = $_POST['astrazeneca'];
     $pfizer         = $_POST['pfizer'];
-    $janssen         = $_POST['janssen'];
-    $moderna        =  $_POST['moderna'];
+    $janssen        = $_POST['janssen'];
+    $moderna        = $_POST['moderna'];
 
     //for bararangay 
     if ($barangay == 'BARANGAY I') {
@@ -482,6 +484,8 @@ if (isset($_POST['insert_vaccine'])) {
             pfizer                  = :pfizer,
             johnsons                = :johnsons,
             moderna                 = :moderna,
+            guardian_name           = :guardian,
+            guardian_relation       = :relation,
             status                  = :statuss
         ";
 
@@ -560,6 +564,8 @@ if (isset($_POST['insert_vaccine'])) {
         ':johnsons'         => $janssen,
         ':moderna'          => $moderna,
         ':user'             => $tracer_fullname,
+        ':relation'         => $guardianrelation,
+        ':guardian'         => $guardianname,
         ':statuss'          => 'NEW'
 
 
