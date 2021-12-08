@@ -24,7 +24,7 @@ if (isset($_POST['update_assessment'])) {
 
     //basic information
     $entityno        = $_POST['entity_number'];
-    $assessment_username   = $_POST['assessment_username'];
+    $assessment_username   = $_POST['username'];
 
     //medical conditions
 
