@@ -24,7 +24,7 @@ $btnSave = $btnEdit = $get_suffix = $get_contact_no = $get_street = $get_baranga
     $get_comorbidity05 = $get_comorbidity06 = $get_comorbidity07 = $get_comorbidity08 = $get_comorbidity09 = $get_comorbidity10 =
     $get_comorbidity11 = $get_comorbidity12 = $get_comorbidity13 = $get_comorbidity14 = $get_comorbidity15 = $get_comorbidity16 =
     $get_comorbidity17 = $get_comorbidity18 = $get_sub_priority = $get_frontline_sub = $get_janssen = $get_moderna =
-    $get_covidhistory = $get_coviddate = $get_covidclass = $get_consent = '';
+    $get_covidhistory = $get_coviddate = $get_covidclass = $get_consent = $guardianname = $guardianrelation = '';
 
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
@@ -464,11 +464,12 @@ if (isset($_GET['id'])) {
                                 <div class="card-body">
 
 
-                             
-                                    <p class="text-muted">
+
+                                    <!-- <p class="text-muted">
 
                                         <hr>
                                         <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform_newform.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination NEW Form </a> </strong>
+ -->
 
                                     <p class="text-muted">
 

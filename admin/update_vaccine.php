@@ -447,6 +447,8 @@ if (isset($_POST['update_vaccine'])) {
         ':astravas'         => $astrazeneca,
         ':pfizer'           => $pfizer,
         ':johnsons'         => $janssen,
+        ':relation'         => $guardianrelation,
+        ':guardian'         => $guardianname,
         ':moderna'          => $moderna,
         ':statuss'          => 'VALIDATED'
 
