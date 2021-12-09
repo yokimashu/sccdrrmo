@@ -211,12 +211,6 @@ if (isset($_POST['update_assessment'])) {
         $second_dose = '02_No';
     }
 
-    if ($_POST['third_dose'] != 'Please select') {
-        $third_dose = $_POST['third_dose'];
-    } else {
-        $third_dose = '02_No';
-    }
-
     $insert_assessment_sql = "UPDATE tbl_assessment SET 
         
             date_reg                = :date_reg,
@@ -250,7 +244,6 @@ if (isset($_POST['update_assessment'])) {
             VaccinatorProfession    = :vaccinator_profession,
             1stDose                 = :first_dose,
             2ndDose                 = :second_dose,
-            3rdDose                 = :third_dose,
             assessment_username     = :username,
             bakuna_center           = :bakuna_center,
             bakuna_center_no        = :cbcr_no,
@@ -295,7 +288,6 @@ if (isset($_POST['update_assessment'])) {
         ':vaccinator_profession'        => $profession,
         ':first_dose'                   => $first_dose,
         ':second_dose'                  => $second_dose,
-        ':third_dose'                   => $third_dose,
         ':username'                     => $assessment_username,
         ':bakuna_center'                => $bakuna_center,
         ':cbcr_no'                      => $cbcr,

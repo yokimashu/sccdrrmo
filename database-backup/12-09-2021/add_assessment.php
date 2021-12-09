@@ -22,8 +22,7 @@ $btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $ge
     $refusal = $age_16 = $allergy_PEG = $allergic_reaction = $no_food_allergy = $monitor_patient = $bleeding_history = $yes_bleeding_history =
     $manifest_symptoms = $specify_symptoms = $no_exposure = $no_treated = $no_received_vaccine = $no_received_antibodies = $pregnant_semester =
     $no_illness = $specify_illness = $medical_clearance = $deferral = $vaccination_date = $vaccine_manufacturer = $batch_number = $lot_number =
-    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $dose_3rd = $objid = $vaccine_card = $get_dateprinted = $get_printedby =
-    $print = $tracer_fullname2 = '';
+    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $objid = $vaccine_card = $get_dateprinted = $get_printedby = $print = $tracer_fullname2 ='';
 $btnNew = 'hidden';
 $btn_enabled = 'enabled';
 $img = '';
@@ -45,6 +44,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
     $tracer_fullname2 = $result['fullname'];
     $tracer_cbcr = $result['cbcr'];
     $print = $result['print'];
+
 }
 
 if (isset($_GET['id'])) {
@@ -147,10 +147,11 @@ if (isset($_GET['id'])) {
         $vaccination_date       = $result['DateVaccination'];
         $dose_1st               = $result['1stDose'];
         $dose_2nd               = $result['2ndDose'];
-        $dose_3rd               = $result['3rdDose'];
         $vaccine_card           = $result['actions'];
         $bakuna_center          = $result['bakuna_center'];
         $bakuna_center_no       = $result['bakuna_center_no'];
+
+        
     }
 
 
@@ -194,6 +195,7 @@ if (isset($_GET['id'])) {
 
             $get_dateprinted = $result['date'];
             $get_printedby = $result['username'];
+
         }
     }
 }
@@ -473,7 +475,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     <strong><i class="fa fa-calendar"></i> Age</strong>
                                     <p class="text-muted">
                                         <?php echo $get_age; ?></p>
-                                    .
+                                      .
                                     <hr>
 
                                     <strong><i class="fa fa-calendar"></i> Civil Status</strong>
@@ -497,7 +499,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                     <p class="text-muted">
                                         <?php echo $get_status; ?></p>
                                     </p>
-
+                                    
                                     <hr>
 
                                 </div>
@@ -1196,11 +1198,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                             <!-- <input type="date" class="form-control pull-right" style="width: 90%;" id="datepicker" name="vaccination_date" placeholder="Date of Vaccination" value="<?php echo $vaccination_date; ?>"> -->
                                                                                         <?php } ?>
 
-
+                                                                                     
 
                                                                                     </div>
                                                                                     <input hidden type="text" class="form-control" name="assessment_username" id="assessment_username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="assessment_username" value="<?php echo $tracer_fullname2; ?>">
-
+                                                                                    
                                                                                     <div class=" col-md-6">
                                                                                         <label for="">Vaccine Manufacturer: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                                         <select class="form-control select2" id="vaccine_manufacturer" style="width: 100%;" name="vaccine_manufacturer" placeholder="" value="">
@@ -1249,7 +1251,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                 </div><br>
 
                                                                                 <div class="row">
-                                                                                    <div class="col-sm-4">
+                                                                                    <div class="col-sm-6">
                                                                                         <label>1st Dose</label>
                                                                                         <select name="first_dose" id="first_dose" style="width:100%" class="form-control " value="<?php echo $dose_1st; ?>">
                                                                                             <option selected>Please select</option>
@@ -1257,7 +1259,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                             <option <?php if ($dose_1st == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-4">
+                                                                                    <div class="col-sm-6">
                                                                                         <label>2nd Dose</label>
                                                                                         <select name="second_dose" id="second_dose" style="width:100%" class="form-control " value="<?php echo $dose_2nd; ?>">
                                                                                             <option selected>Please select</option>
@@ -1265,15 +1267,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                                                             <option <?php if ($dose_2nd == '02_No') echo 'selected'; ?> value="02_No">No</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <label>3rd Dose</label>
-                                                                                        <select name="third_dose" id="third_dose" style="width:100%" class="form-control " value="<?php echo $dose_3rd; ?>">
-                                                                                            <option selected>Please select</option>
-                                                                                            <option <?php if ($dose_3rd == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
-                                                                                            <option <?php if ($dose_3rd == '02_No') echo 'selected'; ?> value="02_No">No</option>
-                                                                                        </select>
-                                                                                    </div>
-
                                                                                 </div><br>
                                                                                 <div class="row">
                                                                                     <div class="col-sm-6">
@@ -1784,7 +1777,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var vaccinator = $('.vaccinator').val();
             var first_dose = $('#first_dose').val();
             var second_dose = $('#second_dose').val();
-            var third_dose = $('#third_dose').val();
             var bakuna_center = $('#bakuna_center').val();
 
 
@@ -1804,10 +1796,6 @@ $title = 'VAMOS | COVID-19 Patient Form';
             } else if (second_dose == 'Please select') {
                 alert("Please select 2nd dose!");
                 $('#second_dose').focus();
-                return false;
-            } else if (third_dose == 'Please select') {
-                alert("Please select 3rd dose!");
-                $('#third_dose').focus();
                 return false;
             } else if (bakuna_center == 'Select Bakuna Center') {
                 alert("Please select Bakuna Center!");
