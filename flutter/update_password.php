@@ -25,5 +25,3 @@ $sql_data->execute([
 ]);
 
 echo json_encode('Success');
-
-?>

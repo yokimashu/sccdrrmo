@@ -32,7 +32,7 @@ $photo = $_FILES["photo"]["name"];
     $sql_data = $con->prepare($insert_entity_sql);
     $sql_data->execute([
 
-        ':entity_no'    => $entity_no,  
+        ':entity_no'    => $entity_no,
         ':photo'        => $newfilename,
         ':status'       => $status
 
