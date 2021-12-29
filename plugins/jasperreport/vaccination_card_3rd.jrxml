@@ -17,7 +17,7 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="253"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="735"/>
 	<queryString>
-		<![CDATA[SELECT v.entity_no,age,fullname,v.lastname, v.firstname, v.middlename, suffix,gender,SUBSTRING(civilstatus, 4) AS civilstatus,t.barangay, full_address,city,t.province, contact_no, birthdate_, PhilHealthID, category,photo,email, 
+		<![CDATA[SELECT v.entity_no,age,fullname,v.lastname, v.firstname, v.middlename, suffix,gender,SUBSTRING(civilstatus, 4) AS civilstatus,t.barangay, full_address,city,t.province, contact_no, birthdate_, PhilHealthID, category,photo,email,g.1st_dose_signature,g.2nd_dose_signature, 
 (SELECT username FROM tbl_entity WHERE entity_no = '". $entity_no ."') AS username,
 (SELECT DateVaccination FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '02_No') AND entity_no = 'ABKQSR5365') AS datevaccination1, 
 (SELECT VaccineManufacturer FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '02_No') AND entity_no = 'ABKQSR5365') AS VaccineManufacturer1,
@@ -31,7 +31,7 @@
 (SELECT VaccinatorName FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '01_Yes') AND entity_no = 'ABKQSR5365') AS VaccinatorName2,
 (SELECT DISTINCT(bakuna_center) FROM tbl_assessment WHERE entity_no = 'ABKQSR5365') AS bakunacenter,
 (SELECT DISTINCT(bakuna_center_no) FROM tbl_assessment WHERE entity_no = 'ABKQSR5365') AS bakunacenter_no
-FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
+FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no inner join tbl_assessment g on g.entity_no = v.entity_no]]>
 	</queryString>
 	<field name="entity_no" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="entity_no"/>
@@ -147,6 +147,18 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_individual"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="1st_dose_signature" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="1st_dose_signature"/>
+		<property name="com.jaspersoft.studio.field.label" value="1st_dose_signature"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="2nd_dose_signature" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="2nd_dose_signature"/>
+		<property name="com.jaspersoft.studio.field.label" value="2nd_dose_signature"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="username" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="username"/>
 		<property name="com.jaspersoft.studio.field.label" value="username"/>
@@ -259,7 +271,7 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
 				<textElement textAlignment="Left">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{firstname}+" "+$F{middlename}+" "+$F{lastname}+" "+$F{suffix}+" "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="69" y="189" width="61" height="16" forecolor="#FFFFFF" uuid="ecc4ad1e-70b4-4cbb-8c8e-11600841294b"/>
@@ -374,7 +386,7 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
 				<textFieldExpression><![CDATA[$F{LotNumber1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="M/d/yy">
-				<reportElement x="100" y="279" width="111" height="12" uuid="eeb23dcb-648f-42b6-bf76-0d6d7351e65c"/>
+				<reportElement x="100" y="278" width="111" height="12" uuid="eeb23dcb-648f-42b6-bf76-0d6d7351e65c"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="UpsideDown">
 					<font size="7"/>
 				</textElement>
@@ -402,7 +414,7 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
 				<textFieldExpression><![CDATA[$F{LotNumber2}]]></textFieldExpression>
 			</textField>
 			<textField pattern="M/d/yy">
-				<reportElement x="100" y="255" width="111" height="12" uuid="42107343-c434-4063-801d-8a6f47e53509"/>
+				<reportElement x="100" y="254" width="111" height="12" uuid="42107343-c434-4063-801d-8a6f47e53509"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="UpsideDown">
 					<font size="7"/>
 				</textElement>
@@ -456,7 +468,7 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
 				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/frame2.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="165" y="189" width="61" height="16" forecolor="#FFFFFF" uuid="48462d4f-87ad-4b5f-852b-ae4ade7bc4b2"/>
+				<reportElement x="165" y="188" width="61" height="16" forecolor="#FFFFFF" uuid="48462d4f-87ad-4b5f-852b-ae4ade7bc4b2"/>
 				<textElement textAlignment="Left">
 					<font size="6" isBold="true"/>
 				</textElement>
@@ -469,6 +481,27 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no]]>
 				</textElement>
 				<text><![CDATA[Negros Occidental]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="21" y="371" width="61" height="12" uuid="ab7a1927-c6bc-4d75-9b99-be092e94cc2a"/>
+				<textElement textAlignment="Left" rotation="UpsideDown">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" rotation="UpsideDown" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="30" y="249" width="48" height="21" uuid="a4f65e54-72a2-40b6-aa28-ed3c6f7b76a3"/>
+				<box>
+					<pen lineColor="#CFCFCF"/>
+				</box>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/signature/"+$F{2nd_dose_signature}+""]]></imageExpression>
+			</image>
+			<image scaleImage="RetainShape" rotation="UpsideDown" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="30" y="275" width="48" height="21" uuid="3c04ba7c-3bd5-4caf-8e31-b1f82c1f4d91"/>
+				<box>
+					<pen lineColor="#CFCFCF"/>
+				</box>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/signature/"+$F{1st_dose_signature}+""]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 </jasperReport>

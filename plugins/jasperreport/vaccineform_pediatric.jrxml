@@ -1,0 +1,3662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vaccineform_2021" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f77d052-4ac9-4740-a7f0-447c45c1d1bc">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sccdrrmo"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select * from tbl_vaccine]]>
+	</queryString>
+	<field name="idno" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idno"/>
+		<property name="com.jaspersoft.studio.field.label" value="idno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="entity_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="entity_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="entity_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datecreate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="datecreate"/>
+		<property name="com.jaspersoft.studio.field.label" value="datecreate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="time_reg" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="time_reg"/>
+		<property name="com.jaspersoft.studio.field.label" value="time_reg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Category"/>
+		<property name="com.jaspersoft.studio.field.label" value="Category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CategoryID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CategoryID"/>
+		<property name="com.jaspersoft.studio.field.label" value="CategoryID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CategoryIDnumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CategoryIDnumber"/>
+		<property name="com.jaspersoft.studio.field.label" value="CategoryIDnumber"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SubPriority" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SubPriority"/>
+		<property name="com.jaspersoft.studio.field.label" value="SubPriority"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FrontlineSubPriority" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FrontlineSubPriority"/>
+		<property name="com.jaspersoft.studio.field.label" value="FrontlineSubPriority"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PhilHealthID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PhilHealthID"/>
+		<property name="com.jaspersoft.studio.field.label" value="PhilHealthID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="HealthWorker" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="HealthWorker"/>
+		<property name="com.jaspersoft.studio.field.label" value="HealthWorker"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Indigent" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Indigent"/>
+		<property name="com.jaspersoft.studio.field.label" value="Indigent"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PWD_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PWD_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="PWD_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Lastname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Lastname"/>
+		<property name="com.jaspersoft.studio.field.label" value="Lastname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Firstname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Firstname"/>
+		<property name="com.jaspersoft.studio.field.label" value="Firstname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Middlename" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Middlename"/>
+		<property name="com.jaspersoft.studio.field.label" value="Middlename"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Suffix" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Suffix"/>
+		<property name="com.jaspersoft.studio.field.label" value="Suffix"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Contact_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Contact_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="Contact_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Full_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Full_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="Full_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Region" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Region"/>
+		<property name="com.jaspersoft.studio.field.label" value="Region"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Province" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Province"/>
+		<property name="com.jaspersoft.studio.field.label" value="Province"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MunCity" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MunCity"/>
+		<property name="com.jaspersoft.studio.field.label" value="MunCity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Barangay" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Barangay"/>
+		<property name="com.jaspersoft.studio.field.label" value="Barangay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Sex" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Sex"/>
+		<property name="com.jaspersoft.studio.field.label" value="Sex"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Birthdate_" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Birthdate_"/>
+		<property name="com.jaspersoft.studio.field.label" value="Birthdate_"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Civilstatus" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Civilstatus"/>
+		<property name="com.jaspersoft.studio.field.label" value="Civilstatus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Employed" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employed"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employed"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Direct_covid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Direct_covid"/>
+		<property name="com.jaspersoft.studio.field.label" value="Direct_covid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Profession" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Profession"/>
+		<property name="com.jaspersoft.studio.field.label" value="Profession"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="indicate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="indicate"/>
+		<property name="com.jaspersoft.studio.field.label" value="indicate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Employer_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employer_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employer_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Department" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Department"/>
+		<property name="com.jaspersoft.studio.field.label" value="Department"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Employer_LGU" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employer_LGU"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employer_LGU"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Employer_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employer_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employer_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Employer_contact_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employer_contact_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employer_contact_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Preg_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Preg_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="Preg_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="W_allergy" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="W_allergy"/>
+		<property name="com.jaspersoft.studio.field.label" value="W_allergy"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_01" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_01"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_01"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_02" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_02"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_02"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_03" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_03"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_03"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_04" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_04"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_04"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_05" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_05"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_05"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_06" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_06"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_06"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_07" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_07"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_07"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Allergy_08" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Allergy_08"/>
+		<property name="com.jaspersoft.studio.field.label" value="Allergy_08"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="W_comorbidities" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="W_comorbidities"/>
+		<property name="com.jaspersoft.studio.field.label" value="W_comorbidities"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_01" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_01"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_01"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_02" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_02"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_02"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_03" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_03"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_03"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_04" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_04"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_04"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_05" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_05"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_05"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_06" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_06"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_06"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_07" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_07"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_07"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_08" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_08"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_08"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_09" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_09"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_09"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_10"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_11"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_12"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_13"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_14"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_15"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_16"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_17"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Comorbidity_18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Comorbidity_18"/>
+		<property name="com.jaspersoft.studio.field.label" value="Comorbidity_18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="covid_history" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="covid_history"/>
+		<property name="com.jaspersoft.studio.field.label" value="covid_history"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="covid_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="covid_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="covid_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="covid_classification" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="covid_classification"/>
+		<property name="com.jaspersoft.studio.field.label" value="covid_classification"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Consent" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Consent"/>
+		<property name="com.jaspersoft.studio.field.label" value="Consent"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sinovac" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sinovac"/>
+		<property name="com.jaspersoft.studio.field.label" value="sinovac"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="astrazeneca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="astrazeneca"/>
+		<property name="com.jaspersoft.studio.field.label" value="astrazeneca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pfizer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pfizer"/>
+		<property name="com.jaspersoft.studio.field.label" value="pfizer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="johnsons" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="johnsons"/>
+		<property name="com.jaspersoft.studio.field.label" value="johnsons"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moderna" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="moderna"/>
+		<property name="com.jaspersoft.studio.field.label" value="moderna"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="username" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="username"/>
+		<property name="com.jaspersoft.studio.field.label" value="username"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="void_username" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="void_username"/>
+		<property name="com.jaspersoft.studio.field.label" value="void_username"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="guardian_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="guardian_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="guardian_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="guardian_relation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="guardian_relation"/>
+		<property name="com.jaspersoft.studio.field.label" value="guardian_relation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="968" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-3" x="-20" y="-16" width="612" height="47" backcolor="#000000" uuid="ce63dea3-3828-4e6b-9f18-128f1b1313fa"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-19" x="14" y="-16" width="578" height="48" forecolor="#FFFFFF" uuid="15a25101-517c-4f3a-9b5c-d8f48e6be6f1"/>
+				<textElement textAlignment="Center">
+					<font size="25" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Vaccine Registration Form]]></text>
+			</staticText>
+			<image>
+				<reportElement key="image-1" x="-5" y="-13" width="51" height="45" uuid="3d3f7841-1f09-49bb-9a72-46c8af9bfb14"/>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/DOH-LOGO.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement key="image-2" x="524" y="-14" width="51" height="45" uuid="63610f83-34b2-4e88-a734-1b2cadee07e2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/LOGO-png.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText-20" x="-20" y="14" width="613" height="19" forecolor="#FFFFFF" uuid="afd9990c-08df-45c6-9361-426312de5d29"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Phase 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-3" y="39" width="60" height="20" uuid="9b24f507-583d-4da9-a226-bfd3ad780886"/>
+				<text><![CDATA[Entity No.]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-2" x="46" y="39" width="147" height="20" uuid="c4710945-ae98-40c4-90e0-26d53f426ee8"/>
+			</rectangle>
+			<textField>
+				<reportElement x="46" y="37" width="146" height="22" uuid="8a43214b-8825-4e50-973b-056db9ee7388"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-4" x="401" y="41" width="37" height="19" uuid="d58c34c2-2bab-4a0f-a875-0c9104d1784a"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-2" x="428" y="40" width="147" height="20" uuid="7ce76714-be2a-4191-999a-172c784af2bb"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-5" x="428" y="53" width="147" height="7" uuid="2b9f3bee-8fe4-419e-a9ce-7e8bbec5ab5d"/>
+				<textElement textAlignment="Center">
+					<font size="4"/>
+				</textElement>
+				<text><![CDATA[MM/DD/YYYY]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="false">
+				<reportElement key="textField" x="428" y="42" width="147" height="13" uuid="33ca4939-9db0-495f-91ec-da1dd54c0b88"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datecreate}]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="90" width="7" height="7" uuid="9ccf31c6-95a5-4e82-9bdb-597f79131dc3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-1" x="0" y="70" width="307" height="12" uuid="e9543101-274f-4571-907c-52a079a6d444"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. Category of the Target Eligible Population* (Priority Groups)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="88" width="131" height="9" uuid="bb702363-9a26-4c9c-ae68-60595b9aeb72"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Health Care Worker]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-45" x="285" y="70" width="82" height="16" uuid="068eecc2-80e0-437e-a6c9-0c1d4976379d"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9. Civil Status*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-46" x="312" y="108" width="75" height="13" uuid="fb3aafd8-981b-4fcb-b1d0-406b01f0dd11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Widow/Widower]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-47" x="312" y="97" width="65" height="13" uuid="94aef9e9-a8fe-476e-84db-9bcd7bc1bde4"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Married]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-48" x="312" y="86" width="65" height="13" uuid="c5a80a57-dfa3-4489-8cba-21a075cb7ec0"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Single]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-49" x="413" y="97" width="98" height="13" uuid="a1c2bf56-02fd-4956-b24a-2d6d2028a88f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[05-Living with Partner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-50" x="413" y="86" width="98" height="15" uuid="f53d03ca-b523-4eb6-9914-abd6f1b43ac6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[04-Separeted/Annuled]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-51" x="283" y="123" width="264" height="23" uuid="752b46cc-5540-46b5-8333-7871d726c635"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[10. Employment Status*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-52" x="312" y="159" width="75" height="13" uuid="f16659a9-27bb-4fda-ab5b-589d748e77cc"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Self-employed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-53" x="312" y="148" width="88" height="13" uuid="3c520efe-ebcf-4498-bbe9-999deeb6004b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Private Employed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-54" x="312" y="138" width="89" height="13" uuid="bebe2f80-75f2-4bd8-ae19-7a20344913ed"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Government Employed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-55" x="413" y="149" width="91" height="13" uuid="b84c7509-3da7-4d7a-8136-eae723aee694"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[05-Others]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-56" x="413" y="138" width="91" height="13" uuid="c8ba485d-c0d8-4794-9c9f-3eca34d6fe81"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[04-Private Practioner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-57" x="283" y="181" width="170" height="19" uuid="2385963d-dd7c-435a-b49e-aaa6ca7fe15f"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11. Profession*]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-65" x="301" y="88" width="7" height="7" uuid="77f179da-38a1-4987-bed0-da5f16b04b8c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-66" x="301" y="99" width="7" height="7" uuid="e9f9638b-af05-4a03-a1fd-2a866bb1ecc1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-67" x="301" y="110" width="7" height="7" uuid="1ac0fdfd-4346-4b8c-8227-da7d574c16f1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-68" x="402" y="88" width="7" height="7" uuid="03312ae8-9f45-4e2a-9bfc-a8a592cdae34">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-69" x="402" y="99" width="7" height="7" uuid="e574e549-5f67-4ed6-b9bb-07c1974a23ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-70" x="301" y="140" width="7" height="7" uuid="c9f21020-1df5-443a-b37d-7f4442053fd7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-71" x="301" y="150" width="7" height="7" uuid="5b007d7e-7e1e-46e9-b9f9-f93e81ec20ea">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-72" x="301" y="160" width="7" height="7" uuid="6606927b-9bfc-4091-a4b3-82ed9a76801f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-73" x="402" y="140" width="7" height="7" uuid="c3ca1d7a-6a20-4969-af7d-ab46a442e64e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-74" x="402" y="150" width="7" height="7" uuid="f2695db1-db05-435f-af04-e11701bcbc53">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="90" width="7" height="7" backcolor="#000000" uuid="b01421e9-ce64-4f58-ac1a-a665599d26ff">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A1"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="301" y="88" width="7" height="7" backcolor="#000000" uuid="cf1b2125-6fa3-4396-845f-a014f3aeb6b1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Civilstatus} == "01_Single"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="301" y="99" width="7" height="7" backcolor="#000000" uuid="302afe7b-b240-4d76-a1c8-eef4b6e3a559">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Civilstatus} == "02_Married"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="301" y="110" width="7" height="7" backcolor="#000000" uuid="4cac02ff-be21-4af6-b00b-b2fd0f8f355a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Civilstatus} == "03_Widow/Widower"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="402" y="88" width="7" height="7" backcolor="#000000" uuid="845d2171-50fd-4afe-9ef0-8085e362cb14">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Civilstatus} == "04_Seperated/Annulled"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="402" y="99" width="7" height="7" backcolor="#000000" uuid="4422d8e4-3fd6-48d7-9a18-01e66865e1e6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Civilstatus} == "05_Living_with_Partner"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="301" y="140" width="7" height="7" backcolor="#000000" uuid="aa7a8e8c-78d0-4607-87fb-adee21063ec7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Employed} == "01_Government_Employed"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="301" y="150" width="7" height="7" backcolor="#000000" uuid="61c2d266-07e0-41db-9fa5-26c2977b5fa3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Employed} == "02_Private_Employed"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="301" y="160" width="7" height="7" backcolor="#000000" uuid="66023f8e-685b-4dec-b9e3-e56ff8be75c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Employed} == "03_Self_employed"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="402" y="140" width="7" height="7" backcolor="#000000" uuid="af5ed286-5a77-478b-9de4-932283efe403">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Employed} == "04_Private_practitioner"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="402" y="150" width="7" height="7" backcolor="#000000" uuid="c45195fa-736f-4b13-87ae-90ff03d6d16d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Employed} == "05_Others"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="102" width="7" height="7" uuid="5341872c-f73b-4cb7-97ee-aa5d25bfa769">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="100" width="131" height="12" uuid="e48291b1-c390-42b2-be83-09bcb191804a"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[OFW living within 4 months]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="114" width="7" height="7" uuid="97c1954e-c60f-4820-9e16-8c2163d01d8f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="112" width="131" height="19" uuid="70b4cf70-29a5-4da4-8bb2-5d6f8997f66b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Family members of A1.1 to A1.3, newly hired priority A1]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="135" width="7" height="7" uuid="7fb0760d-5fe2-48c4-9ca8-8d4d555f7dab">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="133" width="134" height="21" uuid="8ab8d65b-d465-4bec-b5fb-58a52cf2f079"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[All adult population eligible to be categorized as Priority Group A1]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="157" width="7" height="7" uuid="723f3006-cee7-4134-99e8-c8c98c50cefc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="155" width="132" height="9" uuid="147b4d56-508e-4b47-b036-52e728832d66"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[All Senior Citizens
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="167" width="131" height="22" uuid="faa0f5b0-8642-4314-bf84-fa4dcb58119c"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[HIV; 3rd Dose to be considered fully vaccinated]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="169" width="7" height="7" uuid="e256be11-b4b1-49e0-aa42-293f22843607">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-126" x="14" y="192" width="7" height="7" uuid="36fcccd7-2391-4848-a45a-d1dd85d5b4ab">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="23" y="190" width="114" height="25" uuid="a4f6fc1b-5f86-49dd-8fa2-095107f803b8"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Asthma; if approved, will be considered a booster]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="192" width="7" height="7" backcolor="#000000" uuid="bea9b215-3e37-4f56-8dc5-a700f162191e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A3"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="154" y="90" width="7" height="7" uuid="fb7601f0-b922-4acc-935d-cc1fab886330">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="163" y="88" width="114" height="9" uuid="e70288da-096e-4a06-bd5a-25a8a52221ae"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Pregnant with Co-morbidity]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="154" y="103" width="7" height="7" uuid="53583e83-36a0-4676-9a65-b6d194220204">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="163" y="101" width="114" height="9" uuid="528e8721-99f5-45ea-8676-f0d02207165d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[12-17year old with co-morbidity
+]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="154" y="114" width="7" height="7" uuid="4fca5f20-1e95-4428-b809-a08ac597a44d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="163" y="112" width="114" height="30" uuid="cdbc161b-783a-4e77-81f1-bba042fcaf84"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Frontline personnel in essential sectors, including uniformed personnel]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="154" y="145" width="7" height="7" uuid="af6f3a21-8704-4de0-b301-fe7df1032933">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="163" y="143" width="114" height="9" uuid="90084756-8b7f-4faf-bd8e-8347cabf9490"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Indigent Population
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="163" y="154" width="114" height="9" uuid="f33550bc-9d96-440f-bb44-027507f56abe"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Rest of Adult Population]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="154" y="156" width="7" height="7" uuid="63e33a9d-3ccb-4a23-a205-d91382378fc7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="102" width="7" height="7" backcolor="#000000" uuid="350457ce-1958-4dcf-b27e-a88285daccbf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A1.8"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="114" width="7" height="7" backcolor="#000000" uuid="671b3dcb-1ae9-4a57-b869-7d539fe9e265">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A1.9"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="135" width="7" height="7" backcolor="#000000" uuid="9c2a5793-312e-4bed-a485-1d22086c0699">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "Additional A1"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="157" width="7" height="7" backcolor="#000000" uuid="f745d308-f984-4aef-a7f9-b26524f19432">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A2"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="169" width="7" height="7" backcolor="#000000" uuid="f70300bc-4abf-4576-8781-66af2413e288">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A3 - Immunocompromised"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="154" y="90" width="7" height="7" backcolor="#000000" uuid="2f754bfd-f9db-480b-a49e-8f5fd9747e60">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "Expanded A3"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="154" y="103" width="7" height="7" backcolor="#000000" uuid="272d223d-d2ac-4822-ad0a-3666f185ad5e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "Pediatric A3"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="154" y="114" width="7" height="7" backcolor="#000000" uuid="6070613b-294a-4de6-b989-371fb8f92cc3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="154" y="145" width="7" height="7" backcolor="#000000" uuid="a13a789f-6224-44c8-96a8-dc9b8856c557">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A5"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="154" y="156" width="7" height="7" backcolor="#000000" uuid="abbae11c-b8a6-479e-ab96-ed2d76bd1b70">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "ROAP"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-6" x="163" y="166" width="114" height="9" uuid="e836b786-cfbe-4d51-a70c-62875546d371"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Rest of the Pediatric Population]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="154" y="168" width="7" height="7" uuid="a5e92e14-2e40-434c-8331-6357741544e5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="154" y="168" width="7" height="7" backcolor="#000000" uuid="23590806-c7fa-4b90-8ce0-497e29a04d3b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "ROPP"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-58" x="312" y="217" width="77" height="13" uuid="9f92aed2-e387-4dc2-8fc0-6e300defe861"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Dentist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-59" x="312" y="207" width="105" height="13" uuid="99dcdb37-5eae-43eb-ae8e-cc5b16d8e6a8"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Dental Technologist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-60" x="312" y="197" width="105" height="13" uuid="e5c4fbee-316c-4a90-97be-acbb4364fb4f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Dental Hygienist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-61" x="427" y="207" width="105" height="13" uuid="1b9ca731-9002-49a2-81ec-a47b26a89f8a"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[12-Physician]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-62" x="427" y="197" width="122" height="13" uuid="f6d5d168-cd83-4cba-a677-a779875b6ea5"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[11-Physical Therapist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-63" x="312" y="247" width="77" height="13" uuid="6e494e0d-5a67-468d-a72a-bd6e040bee9b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[06-Nurse]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-64" x="312" y="237" width="105" height="13" uuid="f6ecdde6-17d8-4491-912d-86f94f9484fe"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[05-Midwife]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-65" x="312" y="227" width="105" height="13" uuid="76a9d149-e5a3-424b-849f-6ff2814fa3b2"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[04-Medical Technologist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-66" x="312" y="277" width="105" height="13" uuid="26443e99-4178-41fd-8912-0259dc5444a6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[09-Optometrist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-67" x="312" y="267" width="105" height="13" uuid="d403f7fe-8d77-42b5-8d04-114b3f09e15f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[08-Occupational Therapist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-68" x="312" y="257" width="105" height="13" uuid="8d4f4b35-f97c-41de-afd6-9c2381deda29"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[07-Nutritionist-Dietician]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-71" x="312" y="287" width="105" height="13" uuid="8a229098-0950-4342-af4b-09f8ca917172"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[10-Pharmacist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-72" x="427" y="227" width="105" height="13" uuid="1693aa6d-7568-4337-9605-a83aad225f1f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[14-Respiratory Therapist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-73" x="427" y="217" width="122" height="13" uuid="22b10c2c-f81b-4caa-bce6-73fc33cd3ba9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[13-Radiologic Technologist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-74" x="427" y="247" width="105" height="13" uuid="7d1f6f11-1b66-4c86-8b86-85c49e996b41"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[16-Barangay Health Worker]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-75" x="427" y="237" width="122" height="13" uuid="5e28bc98-5b75-4057-828c-331f99b0bcf0"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[15-X-ray Technologist]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-76" x="427" y="267" width="105" height="13" uuid="2a42277f-4967-4834-bfc7-78e2b3041abf"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[18-Administrative Staff]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-77" x="427" y="257" width="122" height="13" uuid="af247f4d-b1d8-4022-b9de-16ba41115908"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[17-Maintenance Staff]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-78" x="427" y="277" width="105" height="13" uuid="0e56f252-35f1-44a8-bd8f-841f986cd312"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[19-Other]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-75" x="302" y="199" width="7" height="7" uuid="4b55bf47-1172-4efc-80c3-d56fe90c0087">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-76" x="302" y="209" width="7" height="7" uuid="a86b6df5-2a79-4e11-b293-9b1fcfaf690b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-77" x="302" y="219" width="7" height="7" uuid="7555a288-4d6f-4ea8-abde-a6f946af3094">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-78" x="302" y="229" width="7" height="7" uuid="6e77c5f3-4586-470c-9b65-fd9533fb7fe8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-79" x="302" y="239" width="7" height="7" uuid="c501bfda-23d6-44a1-83d5-fbca85ff2cb9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-80" x="302" y="249" width="7" height="7" uuid="de457139-1403-4f90-b0cd-e98c854111f4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-81" x="302" y="259" width="7" height="7" uuid="a1d9bf32-b34e-41ef-b14c-56cb7a38443a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-82" x="302" y="269" width="7" height="7" uuid="694093e6-5966-4b7b-bf09-ab0ec795fa9b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-83" x="302" y="279" width="7" height="7" uuid="cbdb81b8-0c54-491d-8a49-0d89c26efc76">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-84" x="302" y="289" width="6" height="6" uuid="300473fe-9d9b-4778-b306-4cc5e617b0c3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-85" x="417" y="199" width="7" height="7" uuid="e8f4f994-2843-42a7-952e-7c756cfb6d07">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-86" x="417" y="209" width="7" height="7" uuid="86c71b04-2aa6-45ec-82ac-d28f8a608911">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-87" x="417" y="219" width="7" height="7" uuid="5a6e706a-0e1f-4c6c-a78b-b275ebf38549">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-88" x="417" y="229" width="7" height="7" uuid="9b0572ba-cbaa-44aa-b774-644664a669f5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-89" x="417" y="239" width="7" height="7" uuid="b580c27b-658e-4a19-aaea-1c67c5ad9ae1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-90" x="417" y="249" width="7" height="7" uuid="f584bcdd-a119-4a33-b2cc-a8982b2e98cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-91" x="417" y="259" width="7" height="7" uuid="c6cdad6f-4b97-4028-9cd0-ec2f203bf2cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-92" x="417" y="269" width="7" height="7" uuid="c40bd751-ce2c-4264-90ec-8514180d9dd0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-93" x="417" y="279" width="7" height="7" uuid="98b606b9-3125-4bcd-847a-10ff3c98a17c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="199" width="7" height="7" backcolor="#000000" uuid="e668f55f-5af9-4024-a1ad-1464d1a99b60">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "01_Dental_Hygienist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="209" width="7" height="7" backcolor="#000000" uuid="9576b6e7-c5a5-4f36-9fe1-e98c0e9a180a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "02_Dental_Technologist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="219" width="7" height="7" backcolor="#000000" uuid="394440a5-c346-474b-ba2e-1c8a0fa3baba">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "03_Dentist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="229" width="7" height="7" backcolor="#000000" uuid="6dfa474e-1edc-4db8-8f41-ef7ba76ad40d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "04_Medical_Technologist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="239" width="7" height="7" backcolor="#000000" uuid="44615ad1-aaf0-495b-8186-00933949bce3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "05_Midwife"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="249" width="7" height="7" backcolor="#000000" uuid="d3337e4d-7d8f-4a97-87cf-fb3bd0770bd1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "06_Nurse"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="259" width="7" height="7" backcolor="#000000" uuid="e61688da-4249-4ea4-8b20-1cd8a4402dac">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "07_Nutritionist_Dietician"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="269" width="7" height="7" backcolor="#000000" uuid="304860fe-23da-49b3-97a0-f940d2e5cf3d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "08_Occupational_Therapist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="279" width="7" height="7" backcolor="#000000" uuid="a121063c-ce03-470f-962a-5245ae032af2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "09_Optometrist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="302" y="289" width="7" height="7" backcolor="#000000" uuid="26ac338a-a125-4189-8df8-6b2390d64a08">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "10_Pharmacist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="199" width="7" height="7" backcolor="#000000" uuid="104f0acb-ad1b-48a7-a528-2e21c5cdb480">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "11_Physical_Therapist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="209" width="7" height="7" backcolor="#000000" uuid="77864578-26db-4d54-9a33-14a27c7fa777">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "12_Physician"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="219" width="7" height="7" backcolor="#000000" uuid="f455a042-5a78-4b05-bd24-0e3b7c222f70">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "13_Radiologic_Technologist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="229" width="7" height="7" backcolor="#000000" uuid="f8b1df97-3eae-4ce2-975f-91b26743dee3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "14_Respiratory_Therapist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="239" width="7" height="7" backcolor="#000000" uuid="2389d377-b818-4cd9-93dd-f91e691ec6e2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "15_X_ray_Technologist"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="249" width="7" height="7" backcolor="#000000" uuid="e0e0b73f-b4a2-49b0-b2a5-9a7cc11573b9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "16_Barangay_Health_Worker"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="259" width="7" height="7" backcolor="#000000" uuid="2f5d8aee-d130-4283-ad9b-65012b2776a5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "17_Maintenance_Staff"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="269" width="7" height="7" backcolor="#000000" uuid="38281977-97bd-4ae0-bde8-34a8273e9a2b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "18_Administrative_Staff"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="417" y="279" width="7" height="7" backcolor="#000000" uuid="26be6ce0-2e93-4068-915b-99abe4316c56">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Profession} == "19_Other"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-1" x="0" y="214" width="280" height="12" uuid="e250ffa9-19dd-4651-b001-209ed3be6698"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Are you a health care worker? Please select sub-priority group.]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="229" width="7" height="7" uuid="53ec3216-96c3-4186-ad11-4acbee34b3cf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="227" width="128" height="9" uuid="8052edbb-264f-4808-aca1-9d34c744aff1"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Covid-19 Referral Hospitals]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="229" width="7" height="7" backcolor="#000000" uuid="68be71f1-1277-4b50-a660-24417c6ae1fb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "01_A1.1: COVID-19 Referral Hospitals"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="240" width="7" height="7" uuid="8dac1c63-8878-4ebe-b234-87ea884759c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="238" width="128" height="9" uuid="5b15ee4e-5034-4ceb-88b1-2f57fed2e026"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Hospitals Catering to C19 Cases]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="251" width="7" height="7" uuid="12efa217-22fa-47ae-a5be-77bdff6ccdcb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="249" width="128" height="9" uuid="bb337794-7ed9-4375-9b3e-3da2ee51ec2d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Quarantine Isolation Facilities]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="262" width="7" height="7" uuid="fb5d1d52-9aae-4a1e-8826-dc2d3fbfd93a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="260" width="128" height="9" uuid="255d9e9b-4cd4-46da-8565-a11e3c65ef81"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Remaining Hospitals]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="273" width="7" height="7" uuid="15938452-a75b-4d29-b156-faa3b3007ec3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="271" width="128" height="9" uuid="731b5091-136d-4d50-9daf-af348950938b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Government Owned Community]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="273" width="7" height="7" backcolor="#000000" uuid="91332ae9-9c55-4ac2-a0b1-86a8b392824e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "05_A1.5: Government Owned Community Based Primary "]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="153" y="228" width="7" height="7" uuid="c0d528ba-a0d9-4098-aa98-de3116468114">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="162" y="227" width="119" height="9" uuid="d6649417-60b8-4df0-a650-5e1284492950"/>
+				<textElement>
+					<font size="6.5"/>
+				</textElement>
+				<text><![CDATA[Stand-alone Clinics and Diagnostics]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="153" y="239" width="7" height="7" uuid="8a0cb74f-1fb7-4645-8e8f-e9a3883ccae1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="162" y="237" width="119" height="9" uuid="486b4f67-5efc-4324-a184-c9272f945283"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Closed Settings and Institutions]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="153" y="250" width="7" height="7" uuid="4a014e88-4a1b-4ea4-8818-477704d7acce">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="162" y="248" width="119" height="9" uuid="a03dc0d5-214b-4260-bc34-0e470fa2d323"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Overseas Filipino Worker]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-1" x="0" y="293" width="279" height="22" uuid="9c1c8bbd-4cc3-4856-bb5f-d29ffd0b2e58"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Are you a frontline personnel in Essential Sector, please select sub-priority group?]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="240" width="7" height="7" backcolor="#000000" uuid="6876b195-50ce-4093-89a2-f9dbd8cc98e2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "02_A1.2: Hospitals Catering to C19 Cases"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="251" width="7" height="7" backcolor="#000000" uuid="13763530-99c4-406b-889c-3680c36f04c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "03_A1.3: Quarantine Isolation Facilities"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="262" width="7" height="7" backcolor="#000000" uuid="3b3b7be0-fcf7-4e95-8253-75cabcd7fb6e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "04_A1.4: Remaining Hospitals"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="153" y="228" width="7" height="7" backcolor="#000000" uuid="e5d2a197-5dba-403b-a950-ad9b59589d28">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "06_A1.6: Stand alone Clinics and Diagnostics"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="153" y="239" width="7" height="7" backcolor="#000000" uuid="012bb8c3-6ba1-47b3-82bc-cc5955bc19d3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "07_A1.7: Closed Settings and Institutions"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="153" y="250" width="7" height="7" backcolor="#000000" uuid="f47b4c46-7990-4da4-9ee0-09e8e5f1138f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "08_A1.8: Overseas Filipino Workers (OFW)"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="279" width="128" height="9" uuid="5955fb78-548f-466d-938c-05f45e4a217c"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Based Primary Care Facilities]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="153" y="261" width="7" height="7" uuid="b8adc5bd-4bb3-46ee-9972-69d296aeb679">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="162" y="260" width="119" height="9" uuid="d6fd7ed7-8861-4b33-a129-3b4d63a83b46"/>
+				<textElement>
+					<font size="6.5"/>
+				</textElement>
+				<text><![CDATA[Family Member / Household Member]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="153" y="261" width="7" height="7" backcolor="#000000" uuid="d53c84a7-8933-4f78-9a5e-48e0ce1497dd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "09_A1.9: Family Members/Household Members"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-28" x="286" y="393" width="262" height="16" uuid="2e543cd4-17da-46b7-a376-ce8cb0779f35"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[14. With Alergy?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-79" x="283" y="306" width="98" height="16" uuid="795d9a6a-4067-47e2-a9e5-0d0a6bbc7beb"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[12. Name of Employer*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-80" x="295" y="318" width="86" height="16" uuid="23c9178c-911b-4a35-91bf-7aad5dd1f47c"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Address of Employer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-81" x="294" y="328" width="87" height="16" uuid="40cf2715-1a94-4243-a2c5-44963f8e3e11"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Contact No. of Employer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-82" x="283" y="353" width="170" height="16" uuid="424a8022-c0d3-4dc9-9698-2df2c18260d8"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[13. If female, pregnancy status]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-94" x="307" y="367" width="6" height="6" uuid="a98cec83-ed31-4ae2-a582-b7936097316f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-95" x="307" y="376" width="6" height="6" uuid="247f1203-602c-4ba9-920a-32340d829f51">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-83" x="319" y="366" width="75" height="13" uuid="d9841ad7-8f75-484f-9c3b-0137689b6014"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Pregnant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-84" x="319" y="376" width="72" height="13" uuid="a522ca74-b86d-4d7e-9668-8d4c5bde3c21"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Not Pregnant]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle-18" x="381" y="328" width="188" height="14" uuid="35b4e999-67dc-44f8-bb14-35d7349d604c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-19" x="381" y="317" width="188" height="12" uuid="ee8252eb-2388-4d45-8abf-96b6089b9548">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-20" x="381" y="305" width="188" height="12" uuid="5be82140-2f60-4aa0-99b0-115d8be5f7d0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+				<reportElement key="textField-12" x="383" y="305" width="186" height="12" isPrintWhenDetailOverflows="true" uuid="94648e11-443f-40a0-a2c4-a2cf59d50cba"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Employer_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+				<reportElement key="textField-13" stretchType="RelativeToBandHeight" x="383" y="318" width="186" height="12" isPrintWhenDetailOverflows="true" uuid="c55b543d-37f2-4b77-8d3b-7a7ee710dbb4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Employer_address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-14" x="383" y="330" width="186" height="14" uuid="61a1ded9-fff0-450f-a7cd-f322049b6ad1"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Employer_contact_no}]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement key="ellipse-98" x="309" y="406" width="6" height="6" uuid="7a52f0ea-aa33-44ec-97f6-baf2290a5127">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="307" y="367" width="6" height="6" backcolor="#000000" uuid="c395d3de-96a0-4a4d-9813-c2a145ebd8b2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Preg_status} == "01_Pregnant"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="307" y="376" width="6" height="6" backcolor="#000000" uuid="594dc82f-44bb-4141-8c46-115a64d2df0e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Preg_status} == "02_Not_Pregnant"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="309" y="406" width="6" height="6" backcolor="#000000" uuid="763c698a-157d-4ee1-b222-452bd6d26c2b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{W_allergy} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-127" x="309" y="416" width="6" height="6" uuid="fdda320c-a39b-4430-979c-5358ac9a6615">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-25" x="309" y="416" width="6" height="6" backcolor="#000000" uuid="25858b6b-0d96-4f22-9d2d-e3e815e10cc1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{W_allergy} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-88" x="317" y="404" width="82" height="13" uuid="1d599dae-056d-48d7-b729-563eb0b5f7b6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-88" x="317" y="414" width="82" height="13" uuid="347dd49f-ccf2-468f-9a98-3aec256bc074"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-None]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="320" width="258" height="12" uuid="8baaa30f-19fb-46ee-a6b4-4b3880d177a9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Commuter Transport (Land, Air And Sea) + Logistics]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="332" width="258" height="18" uuid="553251c8-7f55-4a09-85a6-4b00da29bebd"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Public And Private Wet And Dry Market Vendors; Frontline Workers In Grocery
+Supermarkets. Pharmacies, Delivery Services (Food And Parcel)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="352" width="257" height="23" uuid="302c3925-adca-442e-9009-b37c33bdb1d3"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Workers in Manufacturing for food, beverage, medical and pharmaceutical products]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="374" width="258" height="9" uuid="3b9ae3ce-83ed-4ad6-8b79-1689eb4ad063"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline Workers in Food retail, including food services delivery]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="322" width="7" height="7" uuid="884eea1a-b638-4737-ba52-9ff73b9a62b1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="334" width="7" height="7" uuid="cd09820f-8d7a-4e3f-8694-111f37ff3db7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="354" width="7" height="6" uuid="9f6b3152-c2b7-4e02-84cc-29e1af40d0a1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="375" width="7" height="7" uuid="fc16218c-64bb-49a8-942a-63826388603d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="385" width="259" height="10" uuid="5f30fa02-e2fa-48c0-b5ae-43ae14010b6b"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline workers in Financial Services]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="397" width="258" height="12" uuid="0c1015fb-897c-469b-b285-5a212b001ceb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline workers in hotels and accomodation establishments]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="387" width="7" height="7" uuid="c3ab5975-45c8-4e59-b27a-c3adee4e5e81">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="410" width="275" height="16" uuid="b4ba9bd4-e5df-4644-ad22-310bce28f701"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Priests, Pastor, rabbis, imams such other religious leaders regardless or domination]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="322" width="7" height="7" backcolor="#000000" uuid="dda4d24c-f038-41ab-b420-9a886d6c7ca0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.1: Commuter Transport"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="334" width="7" height="7" backcolor="#000000" uuid="52f2c98c-8db9-469d-8380-0755c73c19c4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.2: Public and Private Wet and Dry Market Vendors"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="354" width="7" height="7" backcolor="#000000" uuid="c40a393b-4bfe-4d59-af2e-67f11a4207f0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.3: Workers In Food and Beverage Manufacturing"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="375" width="7" height="7" backcolor="#000000" uuid="e56c63e1-366f-4541-8470-e740459832dc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.5: Frontline workers in Financial Services"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="387" width="7" height="7" backcolor="#000000" uuid="ba346e21-ca2a-4701-923c-be8cbddeec7a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.5: Frontline workers in Financial Services"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-6" x="22" y="425" width="259" height="18" uuid="f50a6fe2-3d15-4052-809b-b1a44df8e2b1"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Security guards/personnel assigned in the establishment, offices, agencies, organizations identified in the list of priority industry/sectors]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="399" width="7" height="7" uuid="2b0713ff-7e87-4187-95cd-993df9b9cbeb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="399" width="7" height="7" backcolor="#000000" uuid="91eef651-a125-46e8-9e41-063f8dd27388">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.6: Frontline Workers in Hotels and Accomodation Establishments"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="412" width="7" height="7" uuid="17e965e5-4883-4a19-baa7-9343bf1ad82c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="412" width="7" height="7" backcolor="#000000" uuid="f5a45c93-c3d0-43b3-b058-725c4f4db9e2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.7: Frontline Workers in Religious Sector"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="427" width="7" height="7" uuid="8e6cef9f-ab0b-4ed9-a6ce-6c38f86ca436">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="427" width="7" height="7" backcolor="#000000" uuid="5886dffa-0a29-46be-a938-59f82311700d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.8: Frontline Workers In Security Sector"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-87" x="299" y="432" width="262" height="16" uuid="a610a7d4-263c-46b2-ac09-43056459b16b"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name of Alergy?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-88" x="321" y="444" width="82" height="13" uuid="b0ccd3f7-b509-445f-947e-15bc21221383"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Drug]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-89" x="415" y="444" width="93" height="13" uuid="87df7089-ffe1-40dc-ba38-e5261ac0e08d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[05-Mold]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-90" x="321" y="453" width="82" height="13" uuid="8e071f21-97dd-4798-8014-84671ea44498"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Food]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-91" x="321" y="462" width="82" height="13" uuid="ee05d18e-18b7-4f8d-ac40-e137f42ac7a5"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Insect]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-92" x="415" y="453" width="93" height="13" uuid="b50dd0fe-b074-4dc6-9ee9-faf7cff07e54"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[06-Pet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-93" x="415" y="462" width="93" height="13" uuid="51837562-7ada-457c-844c-ad3fe97addbc"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[07-Pollen]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-99" x="310" y="455" width="6" height="6" uuid="898a839c-ff65-429f-8de4-2f3019a4f22d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-100" x="310" y="464" width="6" height="6" uuid="0abf4444-e251-404a-8ae2-18581389c62b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-101" x="405" y="446" width="6" height="6" uuid="99fce63f-a380-4f06-a8bc-e4a980547a28">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-102" x="405" y="455" width="6" height="6" uuid="4963a127-65fb-4a33-9534-c76c6e50f4dc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-103" x="405" y="464" width="6" height="6" uuid="597804c2-d89e-46ba-9bfe-8fb71f396866">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-94" x="321" y="471" width="82" height="13" uuid="0ea84df1-83c4-45b1-a45e-a62a14c94228"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[04-Latex]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-104" x="310" y="473" width="6" height="6" uuid="8a9c35fb-f174-4345-b19a-c9cacc51fef2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-96" x="291" y="494" width="92" height="16" uuid="f73a32af-54b1-48cd-a2fb-16f3d12c9f84"/>
+				<textElement textAlignment="Left">
+					<font size="6.7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[15. With Comorbidities?
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-97" x="391" y="494" width="28" height="9" uuid="886b1749-bf28-4a2e-8d9c-2a7113b50072"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-106" x="382" y="496" width="6" height="6" uuid="1533318d-a419-4248-af2c-d521ba3388bc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-98" x="433" y="494" width="48" height="13" uuid="be79df71-1d9d-4524-aa4c-86e09e276d61"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-None]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-107" x="424" y="496" width="6" height="6" uuid="16c01a32-fa6a-4893-aac9-01da5727a257">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-99" x="296" y="508" width="72" height="16" uuid="3881bfdc-9865-40ea-9675-af841bcd11ed"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comorbidity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-100" x="301" y="520" width="82" height="13" uuid="63862eca-6608-4b96-993a-7025b5b6c44f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Hypertension
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-101" x="301" y="560" width="71" height="10" uuid="5e0b534f-2ca9-430a-8479-7a499ed4c29b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Bronchial Asthma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-102" x="301" y="530" width="82" height="13" uuid="f01a5dc7-3a3d-4480-b853-d4f9f86aa28d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Heart Disease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-103" x="301" y="540" width="82" height="13" uuid="f716db48-3357-486a-ac59-5b0ba1653a29"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Kidney Disease
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-104" x="301" y="570" width="81" height="10" uuid="2f6ab52e-4e0a-4d5f-92ed-0c80745238fe"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Immunodeficiency State]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-105" x="301" y="580" width="80" height="13" uuid="5f3616fd-e254-4b46-813e-e72d545c4461"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cancer
+]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-108" x="291" y="522" width="6" height="6" uuid="de2c5a53-745f-4542-81a5-6a4d47874a7b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-109" x="291" y="532" width="6" height="6" uuid="bf2d625d-db86-4403-ac95-fbe358f1d2d2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-110" x="291" y="542" width="6" height="6" uuid="3ad6dad2-d789-4815-9f25-f1b6ea85fc4f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-111" x="291" y="562" width="6" height="6" uuid="79b689e3-8c59-4b8d-9dc6-4c0ae5049199">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-112" x="291" y="572" width="6" height="6" uuid="2e49c4dc-6a60-41aa-925c-35940da4ef32">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-113" x="291" y="582" width="6" height="6" uuid="f9785a17-015a-4d2b-91f0-8f812040676a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-106" x="301" y="550" width="82" height="13" uuid="66de2ac3-a6c0-4ddc-b379-c92154818035"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Diabetes mellitus]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-114" x="291" y="552" width="6" height="6" uuid="189ea5dd-b659-4092-8812-90ff3765d82e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-108" x="291" y="600" width="262" height="16" uuid="4ec163e4-6620-40c0-ade6-be31385ecac1"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16. Patient diagnosed with COVID-19?
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-109" x="326" y="613" width="77" height="9" uuid="6d7373d9-03eb-4580-b8fe-f7d4c6e978b5"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-116" x="315" y="614" width="6" height="6" uuid="06a70ddd-650e-4844-8c07-830f2d280ef0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-110" x="326" y="621" width="77" height="13" uuid="cea77e1e-1fc2-48d2-aa35-3439e57c68a1"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-None]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-117" x="315" y="622" width="6" height="6" uuid="c7733572-9af4-4766-b2ed-a55482c61f6e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="455" width="6" height="6" backcolor="#000000" uuid="64c7b2a6-331f-49cb-b65b-91e72eea089a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_02} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="464" width="6" height="6" backcolor="#000000" uuid="19712411-923c-4bc5-ac14-d4a6ce21bb10">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_03} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="473" width="6" height="6" backcolor="#000000" uuid="5782a06e-ae1b-465f-855d-2827cce48e75">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_04} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="496" width="6" height="6" backcolor="#000000" uuid="9c47c02a-1282-4c34-83b2-988a1978d354">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{W_comorbidities} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="424" y="496" width="6" height="6" backcolor="#000000" uuid="ce688c15-4b0b-43f8-ac31-a52eb2330b68">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{W_comorbidities} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="522" width="6" height="6" backcolor="#000000" uuid="325b8c7a-a38e-43d4-ab5d-884d01513557">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_01} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="532" width="6" height="6" backcolor="#000000" uuid="eb5dec27-1ed7-455a-adae-aa63226b6eb9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_02} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="542" width="6" height="6" backcolor="#000000" uuid="a311dc50-7ffe-4f21-a7ba-dc00b7d735da">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_03} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="552" width="6" height="6" backcolor="#000000" uuid="a3f56fe2-40a7-4b04-9b1d-f4dd7d7de3e9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_04} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="562" width="6" height="6" backcolor="#000000" uuid="c75f7e28-690c-4728-a581-c69b288fcae6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_05} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="572" width="6" height="6" backcolor="#000000" uuid="efd0db1a-516f-4c21-87f1-0cec73839f0d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_06} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="291" y="582" width="6" height="6" backcolor="#000000" uuid="b4e64fc8-19e3-4dc1-88a0-0cc30adc70aa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_07} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="315" y="614" width="6" height="6" backcolor="#000000" uuid="48a01a18-f162-4414-8e73-08000ec75b10">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_history} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="315" y="622" width="6" height="6" backcolor="#000000" uuid="522554ef-8c8d-40ef-a837-049de4d0009d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_history} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="405" y="446" width="6" height="6" backcolor="#000000" uuid="f914b477-aa47-477c-b384-46442c99ded3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_05} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="405" y="455" width="6" height="6" backcolor="#000000" uuid="c63e611d-2b6d-47a9-a810-a638279318b7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_06} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="405" y="464" width="6" height="6" backcolor="#000000" uuid="0de44b06-8053-48a9-87e9-6efee0b25c0f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_07} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-128" x="310" y="446" width="6" height="6" uuid="7c9922bb-15eb-4742-a9dc-ebd388b8007b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-26" x="310" y="446" width="6" height="6" backcolor="#000000" uuid="cecf3c30-8dfe-4313-acd0-3edb034b0853">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_01} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-93" x="415" y="471" width="143" height="13" uuid="9a01d524-0796-4741-b615-4915bf1514b9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[08-Vaccine and related products]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-103" x="405" y="473" width="6" height="6" uuid="c871ed58-8200-4e44-8ba8-a51d94fbf78e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="405" y="473" width="6" height="6" backcolor="#000000" uuid="b71c6ee6-cac4-46e9-addb-13dfb28e02b2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Allergy_07} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-100" x="390" y="520" width="109" height="13" uuid="4426f518-c570-4444-91d6-fe6c8e413782"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Chronic Respiratory Disease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-101" x="390" y="561" width="93" height="10" uuid="8663c02a-6568-44f9-b379-08e5ee437d29"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Neurologic Disease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-102" x="390" y="530" width="93" height="9" uuid="3cd1cc61-99fc-4c71-aab7-72aca2aec4c4"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cardiovascular Disease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-103" x="390" y="540" width="93" height="13" uuid="968130ca-9b73-42e5-bd21-0dc7e2b647b4"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Chronic Kidney Disease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-104" x="390" y="571" width="93" height="10" uuid="b412b7fd-d4d4-4bea-9fac-d39e40a25623"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Chronic Liver Disease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-105" x="390" y="581" width="126" height="13" uuid="2cf20980-b40f-4cbf-8839-02029a391e10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Chronic Respiratory Trace Infection]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-108" x="382" y="522" width="6" height="6" uuid="bff8ab1d-c27a-463c-951a-1f3b0a61fd01">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-109" x="382" y="532" width="6" height="6" uuid="d14c8823-3dbf-4ec4-9118-e8f599daf758">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-110" x="382" y="542" width="6" height="6" uuid="eda603c7-ca1d-4b0b-8fe4-371a8fc2ef4f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-111" x="382" y="562" width="6" height="6" uuid="e9e93cf6-99d2-450f-a0ab-cb1666c00f90">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-112" x="382" y="572" width="6" height="6" uuid="411fe7da-07e2-4c57-89fe-e22e662359a3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-113" x="382" y="582" width="6" height="6" uuid="fefd561d-241f-4269-b666-0bd1d72f26c1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-106" x="390" y="550" width="93" height="13" uuid="da937717-c878-439b-9b06-59bb9ce5487b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cerebrovascular Accident]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-114" x="382" y="552" width="6" height="6" uuid="926c8915-913a-4b51-ad12-19e5255fdf3c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="522" width="6" height="6" backcolor="#000000" uuid="bf46e7a6-4757-4fa5-9d54-ca6e1cecd56b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_08} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="532" width="6" height="6" backcolor="#000000" uuid="d001ccde-02ac-45f3-a269-637390d31208">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_09} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="542" width="6" height="6" backcolor="#000000" uuid="b755f9c5-288f-41c6-9c94-efea4e5405c7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_10} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="552" width="6" height="6" backcolor="#000000" uuid="b7e30d57-ab72-4479-ac08-b692d1db4965">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_11} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="562" width="6" height="6" backcolor="#000000" uuid="21380498-ed74-4606-ac27-650509dd6a0a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_12} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="572" width="6" height="6" backcolor="#000000" uuid="aa7933d7-8506-43ea-afb9-f53bca9840c6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_13} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="382" y="582" width="6" height="6" backcolor="#000000" uuid="21af4f3d-1c4e-4665-b51d-29b4b76886e0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_14} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-100" x="497" y="520" width="104" height="13" uuid="60fff962-5093-4d4d-8f09-cba3ad97735e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Obesity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-101" x="497" y="551" width="93" height="10" uuid="850beee0-3234-4cac-a0f5-d5859dfef663"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Other _______________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-102" x="497" y="530" width="82" height="13" uuid="79e5d88c-1334-4f77-b24c-985d3565e7c1"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Tuberculosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-103" x="497" y="540" width="82" height="13" uuid="4a62397a-97ab-48a0-8de8-e3bd8f7268fa"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Malignancy]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-108" x="489" y="522" width="6" height="6" uuid="a6629667-a534-4b5c-afb6-b71ee3b39cd5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-109" x="489" y="532" width="6" height="6" uuid="10ad66c4-4f21-489d-a6a5-fde8421ca5f0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-110" x="489" y="542" width="6" height="6" uuid="16a2c81b-4c37-4267-b02d-d37dbf4e1496">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-111" x="489" y="553" width="6" height="6" uuid="1e86ef5b-59cc-4416-9990-79064893f82e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="489" y="522" width="6" height="6" backcolor="#000000" uuid="4c80906a-da5a-49b7-a106-cb1d528cc666">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_15} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="489" y="532" width="6" height="6" backcolor="#000000" uuid="bed54129-e486-4f03-bbca-0d2207e7a87c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_16} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="489" y="542" width="6" height="6" backcolor="#000000" uuid="b0362228-16a8-47ea-a773-4b7af8fc421f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_17} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="489" y="553" width="6" height="6" backcolor="#000000" uuid="eda85729-5059-4b60-999f-e1a7b8483caf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Comorbidity_18} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="447" width="258" height="9" uuid="03c508ec-0ecb-4e17-99a6-c1d66ee9098d"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline Workers in new media, both private and government]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="460" width="258" height="9" uuid="a50a1565-3f2d-4e96-802b-a89ecc7e4893"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Customer-facing personnel of telecoms, cable and internet service providers, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="469" width="258" height="9" uuid="875a6452-a028-430d-8a38-da46d5811154"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[electricity distribution, water distribution utilities]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="480" width="258" height="20" uuid="555e07ce-c30c-44a4-8d82-ea1526b52783"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline personnel in basic education and higher education institutions and agencies]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="500" width="258" height="9" uuid="70b771e6-a89b-4bc4-ba6c-85302173b715"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Overseas Filipino Workers not classified above, and scheduled for deployment ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="509" width="258" height="9" uuid="4f988085-1a1c-4ed2-9d81-281fa8ef5a8d"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[within two months]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="523" width="258" height="12" uuid="1fce0f5c-5222-464e-96a3-c3e082d08cae"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline workers in law/justice, security, and social protection sectors.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="539" width="258" height="22" uuid="5b156e35-f334-4bb8-8831-4e51c8e77023"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline government workers engaged in operations of government transport system,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="558" width="259" height="20" uuid="50e68c67-620d-41b3-8629-0e71f2815496"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[inspection,workers safety inspection and other activities indispendable to the COVID response]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="581" width="259" height="9" uuid="74441c06-0fae-4fdb-943d-9b2ab0f28767"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frontline government workers in charge of tax collection; assessment of]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="591" width="259" height="9" uuid="1a496b07-3e86-4829-bcd8-304ac23ad2d7"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[of businesses for incentives; election; national ID; data collection personnel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="602" width="258" height="18" uuid="0f48c878-b9e4-42fc-9364-6771417aa73a"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Diplomatic Community and Department of Foreign Affairs personnel in consular operations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="21" y="621" width="259" height="9" uuid="6dd937ec-11d4-4e90-9231-9f4d95ecdf76"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Department of Public Works and Highways personnel in charge of monitoring government infrastracture projects]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="449" width="7" height="7" uuid="b1d6a4b4-6cf2-4c58-a3c3-5e5ca31b763b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="449" width="7" height="7" backcolor="#000000" uuid="f946bb23-c382-445a-b758-8947ce7560fc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.9: Frontline Workers In News Media"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="462" width="7" height="7" uuid="a91158f5-a66b-4111-bf96-ba5bd8025252">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="462" width="7" height="7" backcolor="#000000" uuid="6038910c-ad7b-4dc0-9056-ee52665f8e75">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.10: Frontline Workers In Utilities Services"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="482" width="7" height="7" uuid="d5234e9d-604d-4f9d-be70-e79421d5e3a8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="482" width="7" height="7" backcolor="#000000" uuid="33482274-dd05-44b4-b4d4-e3afb7e87038">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.11: Frontline Workers In Department of Education"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="501" width="7" height="7" uuid="21a3433f-9cde-4748-a0db-e499f3447af0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="501" width="7" height="7" backcolor="#000000" uuid="04fca1a8-b89c-4c0d-8381-98512bd78e8e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.12: Frontline Workers In Overseas Filipino Workers"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="524" width="7" height="7" uuid="b145529b-7efc-453b-88ae-4684cd348d28">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="524" width="7" height="7" backcolor="#000000" uuid="148991a6-4e17-4929-acf3-408e03b28c40">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.13: Frontline Workers In Social Protection Sectors"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="540" width="7" height="7" uuid="c769c8b7-3fb3-4395-b93c-ae52f55c026f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="540" width="7" height="7" backcolor="#000000" uuid="9857e3c0-4dc7-46ff-a14f-4800cf70fbf6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.14: Frontline Workers In COVID Response Operations"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="582" width="7" height="7" uuid="406194b7-ce48-4ecb-995f-04003cfeb57d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="582" width="7" height="7" backcolor="#000000" uuid="a9f350a6-f9a8-4c11-aa91-1427e645fe13">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.15: Frontline Workers In Data Collection Personnel"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="603" width="7" height="7" uuid="9a16d4ea-32e9-40b9-8563-6ef4511665ad">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="603" width="7" height="7" backcolor="#000000" uuid="51f1b7af-1349-4482-8034-ca5ee47d8260">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.16: Frontline Workers In Foreign Affair Personnel"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<ellipse>
+				<reportElement key="ellipse-126" x="13" y="622" width="7" height="7" uuid="2b18c10c-a5fe-4c10-8092-b49352233ac6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="13" y="622" width="7" height="7" backcolor="#000000" uuid="7a6dc4c8-c1ba-4e8e-a8bd-8c18cede1abb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Category} == "A4.17: Frontline Workers In Public Works and Highways Personnel"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-15" x="71" y="817" width="205" height="13" uuid="21d0afde-35a9-4fd7-b819-ae5aa1b303fc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-10" x="71" y="798" width="205" height="15" uuid="e4910bac-3327-45f3-a68b-637fe89fb60b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-9" x="71" y="783" width="205" height="12" uuid="1533255b-aed3-4a33-9190-11f78b3c8622">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-8" x="71" y="768" width="205" height="12" uuid="2270e328-2bdf-4728-8f52-f73e21c76c5d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-6" x="71" y="753" width="205" height="12" uuid="d65fef0c-0dd0-4d72-a449-2022eb383044">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-7" x="71" y="738" width="205" height="12" uuid="3e0a3538-2728-4191-bd62-a7b1de17fd85">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-5" x="71" y="723" width="205" height="12" uuid="9289e7b0-3be4-4b4b-be4c-d3e8b459370b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-4" x="71" y="708" width="205" height="12" uuid="97bccf3c-9fc4-40e1-8872-69656e83da6b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-12" x="-1" y="656" width="176" height="13" uuid="d1f0d1d9-686d-4798-a9f2-5244d0c80f25"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. ID number depending on the category type* ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-13" x="24" y="673" width="82" height="13" uuid="28aa3e98-bc8c-4f44-8800-8a3d6c031b37"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[01-PRC Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-14" x="158" y="672" width="53" height="13" uuid="f191510b-9cdd-469d-974a-301277186813"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[04-PWD ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-15" x="24" y="683" width="82" height="12" uuid="412728c0-97f8-44ff-a839-719af2a44175"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[02-OSCA Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-16" x="24" y="693" width="82" height="13" uuid="fdd2a2a2-457e-4b32-ab0f-c3901f3fbc89"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[03-Facility ID Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-17" x="158" y="682" width="53" height="13" uuid="f9436596-00c4-4ae8-92e7-2f6bf82e4062"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[05-Other ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-18" x="158" y="691" width="53" height="13" uuid="c1dc9674-7d88-4bd8-816f-363a317dc9ac"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[06-Other ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-21" x="1" y="710" width="78" height="16" uuid="f07785d1-b376-48e6-9de9-62c481f92bab"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. PhilHealth ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-22" x="1" y="725" width="78" height="16" uuid="a98180d6-908c-46eb-8bfe-f80dd76bff32"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4. Last Name*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-23" x="12" y="740" width="67" height="16" uuid="70646c04-a074-4dc6-b094-46449ece3e60"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[First Name*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-24" x="12" y="755" width="67" height="16" uuid="e29ccc9e-7701-4611-a900-4616a04ba868"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Middlename*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-25" x="12" y="770" width="67" height="16" uuid="96a23d58-f4a8-4e86-89b6-22d0be89f3d4"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Suffix]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-26" x="1" y="785" width="78" height="16" uuid="ae041803-6d1e-4635-b4bc-3d8fbb002b8e"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. Contact No.*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-27" x="1" y="800" width="84" height="16" uuid="32b4a1f1-8dd0-41e6-876e-d8ec0bdf23f1"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. Full Address*]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-1" x="74" y="709" width="202" height="14" forecolor="#000000" uuid="45e8c434-d989-4638-9f25-d56322090a1b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PhilHealthID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="74" y="724" width="201" height="14" uuid="9b3fe9fd-68ed-4818-8e7a-ed9b08b0126b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Lastname}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="74" y="739" width="201" height="14" uuid="ef2ddc39-cf93-485a-9900-8d04de2fe0ed"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Firstname}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-4" x="74" y="754" width="201" height="14" uuid="21a86f21-d2e0-4015-bf09-e1396f102696"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Middlename}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="74" y="769" width="199" height="14" uuid="4d6bf99d-35b9-4a24-8fa6-9c3146cd812d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Suffix}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-6" x="74" y="784" width="189" height="14" uuid="77706f53-576a-4ce6-bf58-eb9ef0d48525"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Contact_no}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-7" x="74" y="798" width="194" height="19" uuid="2f25cee0-0a72-4d6e-948c-37bfc0822ac5"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Full_address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-8" x="74" y="817" width="194" height="15" uuid="8fce0291-d61c-4aca-81ea-963e1960da9a"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Province}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-35" x="71" y="806" width="205" height="13" uuid="117b531b-6f66-4f8f-85b6-d4fbb3cb0580"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Unit/Building/House Number, Street Name, Purok, Zone]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-56" x="14" y="674" width="7" height="7" uuid="07c37096-b54b-4f54-9cec-b3ff7dddbb63">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-57" x="14" y="684" width="7" height="7" uuid="8886f2da-89d3-48df-a0c8-a4b2f1f8ed7f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-58" x="14" y="694" width="7" height="7" uuid="a381e6f7-3872-4dda-a399-96cbe6451838">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-59" x="149" y="673" width="6" height="6" uuid="309f9681-52cd-42ca-bda9-385277fe80ce">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-60" x="149" y="683" width="6" height="6" uuid="f66e9117-d5bb-476a-b3a6-2c95691bad83">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-61" x="149" y="693" width="6" height="6" uuid="b2468b91-83dd-4cba-b578-6e7900b02e1e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-111" x="293" y="643" width="262" height="16" uuid="b193a4bb-77b1-45e7-b2f1-97fed2785a54"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of first positive result / specimen collection]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle-22" x="294" y="653" width="208" height="16" uuid="e05dbc00-ae4a-46e7-b4b1-642b9f127047"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-112" x="294" y="662" width="208" height="13" uuid="4298105f-9b6e-4ca4-b709-8c3bc5a9ab87"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[MM/DD/YYYY]]></text>
+			</staticText>
+			<textField pattern="yyyy-mm-dd" isBlankWhenNull="false">
+				<reportElement key="textField-15" x="293" y="654" width="209" height="14" uuid="ad4b09a0-d7a7-43e0-9717-9543ca39c91d"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{covid_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-113" x="295" y="677" width="262" height="16" uuid="492725fc-05e9-4e02-8c06-bf7705c5a4a2"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Classification of Infection]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-114" x="320" y="688" width="82" height="13" uuid="d5c19a48-0b38-4aec-88dc-f90de9d61528"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Asymptomatic
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-115" x="320" y="696" width="82" height="13" uuid="8fa85448-e9db-477c-b417-24c1836d21b3"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Mild]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-116" x="320" y="704" width="82" height="13" uuid="ef55b11a-0537-4a14-b1af-975b0f40f7d6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Moderate
+]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-118" x="310" y="690" width="6" height="6" uuid="9e4c628d-7d6e-476b-91af-016ab2cf610e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-119" x="310" y="698" width="6" height="6" uuid="2fae185f-9816-49d0-9b5e-a333c97899f5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-120" x="310" y="706" width="6" height="6" uuid="a7319e09-d0d4-4b1a-b3f7-3e738c335b3f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-121" x="310" y="714" width="6" height="6" uuid="a424f437-abde-4b9c-8185-5414805b9a70">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-117" x="320" y="712" width="82" height="13" uuid="ba758169-acd7-438b-8cd2-316f77658de1"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[04-Severe]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-122" x="310" y="722" width="6" height="6" uuid="60e2d841-47d3-446e-a124-539e0a89b84f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-118" x="320" y="719" width="82" height="13" uuid="619593ec-84fb-45e1-88b6-9155c5627bca"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[05-Critical]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-119" x="285" y="740" width="262" height="16" uuid="61b8aca0-7b9e-4813-b47d-516c7648d25b"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[17. Are you willing to be vaccinated?
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-120" x="322" y="751" width="82" height="13" uuid="ba4bcfb4-0688-45c5-b2b3-da7a5a78e8b2"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-121" x="322" y="759" width="82" height="13" uuid="2c690726-64ad-4255-b314-e07bbf7e6033"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-122" x="322" y="767" width="82" height="13" uuid="fcc19b53-abd2-42ef-a089-0f49d744ba0d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Unknown
+]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-123" x="311" y="753" width="6" height="6" uuid="0e3f3475-62a6-4b80-937d-b0fd259cb9bc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-124" x="311" y="761" width="6" height="6" uuid="741ca9a8-ac14-4b48-a987-f8cdfd9aade8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-125" x="311" y="769" width="6" height="6" uuid="182e124c-14ba-449b-bf9f-674115fc8678">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="674" width="7" height="7" backcolor="#000000" uuid="4118f071-ca0d-4c22-b54b-43473adab42e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{CategoryID} == "01_PRC_number"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="690" width="6" height="6" backcolor="#000000" uuid="0aa0bb28-94b6-4c66-a6a4-544f33b55e15">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_classification} == "01_Asymtomatic"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="698" width="6" height="6" backcolor="#000000" uuid="c48c2b8b-5508-47b3-b465-93b288857049">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_classification} == "02_Mild"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="706" width="6" height="6" backcolor="#000000" uuid="bb113bb0-01f5-4535-89c0-bb4d5a07019d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_classification} == "03_Moderate"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="714" width="6" height="6" backcolor="#000000" uuid="01576814-6139-46d3-90a8-28c18a643f87">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_classification} == "04_Severe"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="310" y="722" width="6" height="6" backcolor="#000000" uuid="cf9bd6cb-d6aa-42a5-8560-739140e92b44">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{covid_classification} == "05_Critical"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="753" width="6" height="6" backcolor="#000000" uuid="2438dc44-1105-4a5c-b7cd-7e00c30d6595">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Consent} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="761" width="6" height="6" backcolor="#000000" uuid="0d190348-4d60-4228-a2be-db8ed26f07d1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Consent} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="769" width="6" height="6" backcolor="#000000" uuid="3bfb0e32-d295-40cc-ba7a-03582a4b9304">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Consent} == "03_Unknown"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="684" width="7" height="7" backcolor="#000000" uuid="94a21794-19ab-402d-8b12-fe5766303902">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{CategoryID} == "02_OSCA_number"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="14" y="694" width="7" height="7" backcolor="#000000" uuid="f87c8318-8d4e-4106-ab3a-72b6ccc61bd9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{CategoryID} == "03_Facility_ID_number"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="149" y="673" width="6" height="6" backcolor="#000000" uuid="fba49816-c476-4e80-99d3-c774d18468dd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{CategoryID} == "04_PWD_ID"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="149" y="683" width="6" height="6" backcolor="#000000" uuid="795c7028-c96d-49fb-ac4b-4ca74dc5d039">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{CategoryID} == "04_Other_ID"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="149" y="693" width="6" height="6" backcolor="#000000" uuid="528793be-e5cc-4b39-9b89-9996befbd382">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{CategoryID} == "06_Other_ID"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-1" x="16" y="640" width="130" height="16" uuid="53da86ba-d047-4c61-99fd-7af09204d638"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[If Senior Citizen, are you Indigent?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-10" x="159" y="641" width="26" height="8" uuid="1344a77d-4214-4d3c-a15d-c0bc5ac360df"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[01-Yes]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-54" x="149" y="642" width="7" height="7" uuid="8bf3f9c2-ddbe-47e2-9340-b5cdc5a9b3a7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="149" y="642" width="7" height="7" backcolor="#000000" uuid="ee8100eb-08b7-4634-bf26-a03e612b99a4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Indigent} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-10" x="194" y="641" width="29" height="9" uuid="d38014d3-79f3-4673-adc9-ec9d7fab69b6"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[02-No]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-54" x="184" y="642" width="7" height="7" uuid="2504837e-08e7-4cab-b36b-a08e09acc70c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="184" y="642" width="7" height="7" backcolor="#000000" uuid="414a2ba0-5385-430d-8d54-600af2d4b74f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Indigent} == "02_No"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-119" x="285" y="784" width="262" height="16" uuid="a3d51cf8-6fde-45b0-8f0a-9fc223a551ff"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18. Please Select Preffered Vaccine?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-120" x="322" y="796" width="82" height="13" uuid="7c3c5644-c77d-4cfc-a10e-da9755151428"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Sinovac]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-121" x="322" y="805" width="82" height="13" uuid="a5a0f08c-fa39-4a8a-969c-8bb1efe49997"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Astrazeneca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-122" x="322" y="815" width="82" height="13" uuid="e1286765-53dd-4744-bdc6-1a4c2967bd51"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Pfizer]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-123" x="311" y="797" width="6" height="6" uuid="9f45cd2a-d3b2-4f91-aeae-b88d8f8fe645">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-124" x="311" y="807" width="6" height="6" uuid="362ed4f6-f6b7-4733-a90a-ebdf2438795e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-125" x="311" y="817" width="6" height="6" uuid="90fabd78-deea-48ad-b92c-94ed5d4ad6aa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="798" width="6" height="6" backcolor="#000000" uuid="5e34c61a-18c8-4cee-8979-49ac62e3e18b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{sinovac} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="808" width="6" height="6" backcolor="#000000" uuid="5602ef83-eb80-4e71-b07c-0621f8c3a750">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{astrazeneca} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="817" width="6" height="6" backcolor="#000000" uuid="e49d3f98-3970-4a7d-8238-e290df7cc71e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{pfizer} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-18" x="178" y="657" width="95" height="13" forecolor="#FF0400" uuid="fbcf106b-74b1-4a28-9865-de4b538aa66e"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[Please Indicate ID Number]]></text>
+			</staticText>
+			<line>
+				<reportElement x="74" y="679" width="65" height="1" uuid="557f6bd5-197f-4bb7-ac39-73a334fa1f6a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="77" y="689" width="62" height="1" uuid="05f06b05-3ec5-4ebb-80f9-3ebe39c4cec8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="85" y="699" width="54" height="1" uuid="d0500e2d-73c5-4656-983e-58716cbba06d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="194" y="677" width="77" height="1" uuid="f2dfd57b-8508-4c64-a0f3-4e64dd594905">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="194" y="687" width="77" height="1" uuid="33fb9557-7e00-4f96-81e7-7c6b32fc091d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="194" y="697" width="77" height="1" uuid="66cf996f-8ce9-4598-8791-1cf405c1ae13">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement key="staticText-122" x="322" y="824" width="82" height="13" uuid="1c37c097-52da-4760-be1e-a7d450f722d2"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Janssen]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-125" x="311" y="826" width="6" height="6" uuid="3c588143-3e80-4a69-9f29-acaeb6d81b49">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="826" width="6" height="6" backcolor="#000000" uuid="0a95e9d0-0624-4ea5-9e92-53672612d241">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{johnsons} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-122" x="322" y="834" width="82" height="13" uuid="541715a4-5f1e-4b93-86c9-831809a7b3e9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Moderna]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement key="ellipse-125" x="311" y="836" width="6" height="6" uuid="28f179c8-a699-43dd-8de1-6caf3c9a1c80">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="311" y="836" width="6" height="6" backcolor="#000000" uuid="215f0424-cdba-4c7b-867e-e2787450d885">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{moderna} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-27" x="12" y="819" width="84" height="16" uuid="ce99de4f-59f3-4bb1-94fe-4b2946cbcda0"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Province*]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-23" x="293" y="850" width="282" height="110" uuid="95a1f164-0ec6-4fe0-9948-872e826d74b5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-17" x="72" y="853" width="205" height="13" uuid="128330be-9984-4cd6-8f8d-03e857047c6f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-16" x="72" y="838" width="205" height="12" uuid="191d7381-a4a9-49a3-b8b4-2e8800f63459">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-9" x="75" y="838" width="197" height="17" uuid="413feba4-ff73-46bb-8b75-a779f152778e"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MunCity}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-10" x="75" y="853" width="202" height="13" uuid="bb5f2a09-fb0d-48ed-8398-d261a17df6af"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Barangay}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-39" x="3" y="876" width="47" height="16" uuid="815e0371-3c28-4e81-a822-06238e435279"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. Sex*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-40" x="85" y="877" width="57" height="13" uuid="66db67a3-8371-43fb-b888-78de81df52a6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-41" x="154" y="877" width="54" height="13" uuid="2b72b2f3-5240-41f8-b011-9ab01f3dee48"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[02-Male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-42" x="217" y="877" width="66" height="13" uuid="5a7d9f76-19d6-4988-b860-282442c285df"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[03-Not to disclose]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-43" x="3" y="897" width="85" height="16" uuid="8523b74a-54cd-4f9e-934c-ddcc20942c05"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. Date of Birth*]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle-14" x="73" y="896" width="205" height="13" uuid="fb01400f-3b07-4cf9-a890-5264ce78b33b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-44" x="73" y="910" width="205" height="13" uuid="29fca69e-f35d-4244-a5bc-fbeff8937962"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[MM/DD/YYYY]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-11" x="76" y="897" width="200" height="14" uuid="02972256-b4ec-4b8a-8f14-79b07e31c579"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Birthdate_}]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement key="ellipse-62" x="75" y="878" width="7" height="7" uuid="a3dafb28-b819-4e59-9a44-c7e7a7088076">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-63" x="144" y="878" width="7" height="7" uuid="d12f9e34-21d3-407b-a73d-6904d1450f79">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement key="ellipse-64" x="207" y="878" width="7" height="7" uuid="522acfa7-a221-405f-93b2-1c34dd21612a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement key="staticText-123" x="293" y="853" width="282" height="17" uuid="823c3630-e1cc-4fa6-8901-a706df5b1879"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CERTIFICATION / AUTHORIZATION]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-1" x="373" y="871" width="111" height="1" uuid="1010fe23-fc7f-4a92-b591-7d34eb62dd4f"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-124" x="293" y="877" width="280" height="36" uuid="7ba51c51-0db3-4999-b68c-5607623f99e7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[I hereby certify to the veracity of all information stipulated
+herein. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-125" x="293" y="896" width="281" height="38" uuid="656e2b71-3e71-4bce-984c-4439db3a8ed0"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Furthermore, I hereby authorized the CITY OF SAN CARLOS
+to use all pertinent information for the Vaccination Program
+against COVID-19.]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-2" x="310" y="947" width="246" height="1" uuid="ed7b028a-729d-4dda-ba76-ffcbebb9b575"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-126" x="312" y="947" width="246" height="16" uuid="ac244200-dacd-4212-ac76-dc046dd6fc10"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[FULLNAME AND SIGNATURE]]></text>
+			</staticText>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="75" y="878" width="7" height="7" backcolor="#000000" uuid="679dd38c-62f6-433a-b012-f38070e524dd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Sex} == "01_Female"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="144" y="878" width="7" height="7" backcolor="#000000" uuid="547f0cde-48aa-4b3b-8a66-5559afbb0f49">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Sex} == "02_Male"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement key="rectangle-24" x="207" y="878" width="7" height="7" backcolor="#000000" uuid="a40d9867-42a6-48f3-b380-30a3e6406ebd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$F{Sex} == "03_Not_to_disclose"]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-27" x="13" y="839" width="84" height="16" uuid="b7e0def1-f214-4b60-a938-5d5d7eefb355"/>
+				<textElement textAlignment="Left">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Municipality/City*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-27" x="13" y="854" width="84" height="16" uuid="67c764fe-729f-43f3-919f-7c582cf67e5f"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Barangay*]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle-17" x="74" y="924" width="205" height="13" uuid="5f4a2788-9fea-4978-a35b-2971ff7f134c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-10" x="77" y="924" width="202" height="13" uuid="3511a543-2bf0-4f0f-9a0c-d5328463751c"/>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guardian_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-27" x="10" y="925" width="84" height="16" uuid="6c4b6d96-122b-47f2-874c-4bc9574b6a7d"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Guardian Name*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-18" x="73" y="937" width="95" height="13" forecolor="#FF0400" uuid="d51fae7c-7979-4d1e-b5c0-622da7c10677"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[For Pediatrics only*]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

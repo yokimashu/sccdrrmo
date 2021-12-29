@@ -88,7 +88,7 @@ $phonenumber = $_SESSION['phone'];
         <?php echo $alert_msg; ?>
         <div class="input-group">
     <input type="text" style = "background-color:beige" class="form-control" id="verificationCode" placeholder="Enter verification code">
-    <button type="button"  class="btn" onclick="codeverify();"><i class="fa fa-arrow-right text-muted"></i></button>
+    <button type="submit" name="signin" id="signin" class="btn" onclick="codeverify();"><i class="fa fa-arrow-right text-muted"></i></button>
     <!-- <button type="button" onclick="codeverify();">Verify code</button> -->
     </div>
 </form>
@@ -114,20 +114,6 @@ $phonenumber = $_SESSION['phone'];
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 </script>
-<script>
-function codeverify() {
-  var coderesult = sessionStorage.getItem('coderesult');
-    var code=document.getElementById('verificationCode').value;
-    alert(code);
-    coderesult.confirm(code).then(function (result) {
-      alert(code);
-        window.open("send_code.php",'_parent');   
-        var user=result.user;
-        console.log(user);
-    }).catch(function (error) {
-        alert(error.message);
-    });
-}
-</script>
+<script src="NumberAuthentication.js" type="text/javascript"></script>
 </body>
 </html>
