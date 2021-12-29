@@ -32,6 +32,9 @@ $category = $date_from = $date_to = '';
 
 //fetch user from database
 
+$get_barangay = " SELECT barangay,code from tbl_barangay_code";
+$get_barangay_data = $con->prepare($get_barangay);
+$get_barangay_data->execute();
 
 
 
@@ -98,8 +101,14 @@ $category = $date_from = $date_to = '';
                           <input style="margin-right:5px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" value="<?php echo $date_from; ?>">
                           <label style="padding-right:10px;padding-left: 10px">DATE TO: </label>
                           <input style="margin-right:5px;" type="text" data-provide="datepicker" class="form-control col-3 " style="font-size:13px" autocomplete="off" name="dateto" id="dteto" value="<?php echo $date_to; ?>">
+                          
                         </div>
                         <br>
+
+                        <br>
+
+             
+
 
                         <div class="input-group date" style="padding-right:150px;padding-left: 50px">
                           <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/daily_vaccine_report.php?datefrom=<?php echo $date_from; ?>"> REPORT 1</a>
@@ -126,6 +135,30 @@ $category = $date_from = $date_to = '';
                         </div>
                       </div>
 
+                      &nbsp; &nbsp; &nbsp;
+
+                      <div class="card-body">
+                <div class="box box-primary">
+                <div class="input-group date">
+                        <div class="col-md-5">
+                        <label style="padding-right:10px;padding-left: 10px">BARANGAY: </label>
+                          <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender"> -->
+                          <select class="form-control select2" id="barangay1" name="barangay">
+                            <option selected value=" ">Select Bakuna Center</option>
+                            <?php while ($get_barangay = $get_barangay_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                              <option value="<?php echo $get_barangay['code']; ?>"> <?php echo $get_barangay['code'] ?> </option>
+
+                            <?php } ?>
+                          </select>
+                          &nbsp; &nbsp;
+                          <a class="btn btn-danger btn-md" style="float:right;" target="blank" id="printlink7" class="btn btn-success bg-gradient-success" href="../plugins/jasperreport/vaccine_report_barangay.php?datefrom=<?php echo $date_from; ?>"> PRINT REPORT</a>
+                        </div>
+
+                        
+                        </div>
+                        
+                        </div>
+                        </div>
 
 
 
@@ -185,7 +218,7 @@ $category = $date_from = $date_to = '';
     })
 
 
-//SINOVAC
+    //SINOVAC
     $('#printlink2').click(function() {
       var date_from = $('#dtefrom').val();
       var date_to = $('#dteto').val();
@@ -195,7 +228,7 @@ $category = $date_from = $date_to = '';
       $('#printlink2').attr("href", "../plugins/jasperreport/daily_vaccine_report_sinovac.php?" + param, '_parent');
     })
 
-//ASTRAZENECA
+    //ASTRAZENECA
     $('#printlink3').click(function() {
       var date_from = $('#dtefrom').val();
       var date_to = $('#dteto').val();
@@ -206,8 +239,8 @@ $category = $date_from = $date_to = '';
     })
 
 
-//PFIZER
-$('#printlink4').click(function() {
+    //PFIZER
+    $('#printlink4').click(function() {
       var date_from = $('#dtefrom').val();
       var date_to = $('#dteto').val();
 
@@ -242,6 +275,23 @@ $('#printlink4').click(function() {
       var param = "datefrom=" + date_from + "&dateto=" + date_to + "";
       $('#printlink6').attr("href", "../plugins/jasperreport/vaccine_report.php?" + param, '_parent');
     })
+
+
+    $('#printlink7').click(function() {
+      var date_from = $('#dtefrom').val();
+      var date_to = $('#dteto').val();
+      var barangay = $('#barangay1').val();
+
+
+
+
+      console.log(date_from);
+      var param = "datefrom=" + date_from + "&dateto=" + date_to + "&barangay=" + barangay + "";
+      $('#printlink7').attr("href", "../plugins/jasperreport/vaccine_report_barangay.php?" + param, '_parent');
+    })
+
+
+
   </script>
 </body>
 
