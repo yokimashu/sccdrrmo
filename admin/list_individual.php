@@ -264,6 +264,8 @@ SimpleXLSXGen::fromArray($data)->downloadAs('Individual.xlsx');// or downloadAs(
       processing: true,
       serverSide: true,
       scrollX: false,
+      deferRender: true,
+      scroller: true,
       ajax: {
         url: "search_individual.php",
         type: "post",
