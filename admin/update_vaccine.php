@@ -8,8 +8,12 @@ date_default_timezone_set('Asia/Manila');
 
 $alert_msg = '';
 
-if (isset($_POST['update_vaccine'])) {
+$activity = "UPDATE_ VACCINE FORM";
 
+$user_name = strtoupper($_POST['encoder_fullname1']);
+
+if (isset($_POST['update_vaccine'])) {
+    $user_name = strtoupper($_POST['encoder_fullname1']);
     // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
@@ -497,7 +501,7 @@ if (isset($_POST['update_vaccine'])) {
         ':status'       => 'VERIFIED'
     ]);
 
-
+    include('update_logs.php');
 
     if ($vaccine_data && $update_individual_data && $update_entity_data) {
 

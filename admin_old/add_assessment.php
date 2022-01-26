@@ -1,0 +1,1515 @@
+<?php
+
+
+include('../config/db_config.php');
+// include('update_assessment.php');
+// include('update_resbakuna_card.php');
+
+
+session_start();
+
+
+$cbcr = $_SESSION['cbcr'];
+date_default_timezone_set('Asia/Manila');
+
+$now = new DateTime();
+$time = date('H:i:s');
+
+
+$btnSave = $btnEdit = $get_entity_no = $get_age = $get_status = $get_email = $get_photo =
+    $get_firstname = $get_middlename = $get_lastname = $get_suffix = $pregstatus = $wallergy =
+    $allergy = $wcomorbidities = $comorbidities = $covid_history = $covid_date = $classification = $get_consent =
+    $refusal = $age_16 = $allergy_PEG = $allergic_reaction = $no_food_allergy = $monitor_patient = $bleeding_history = $yes_bleeding_history =
+    $manifest_symptoms = $specify_symptoms = $no_exposure = $no_treated = $no_received_vaccine = $no_received_antibodies = $pregnant_semester =
+    $no_illness = $specify_illness = $medical_clearance = $deferral = $vaccination_date = $vaccine_manufacturer = $batch_number = $lot_number =
+    $vaccinator_name = $profession_vaccinator = $dose_1st = $dose_2nd = $dose_3rd = $objid = $vaccine_card = $get_dateprinted = $get_printedby =
+    $print = $tracer_fullname2 = '';
+$btnNew = 'hidden';
+$btn_enabled = 'enabled';
+$img = '';
+$alert_msg = '';
+
+
+if (!isset($_SESSION['id'])) {
+    header('location:../index.php');
+}
+$user_id = $_SESSION['id'];
+
+$get_user_sql = "SELECT * FROM tbl_users where id = :id ";
+$user_data = $con->prepare($get_user_sql);
+$user_data->execute([':id' => $user_id]);
+while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+    $tracer_fullname = $result['fullname'];
+    $tracer_fullname2 = $result['fullname'];
+    $tracer_cbcr = $result['cbcr'];
+    $print = $result['print'];
+}
+
+if (isset($_GET['id'])) {
+
+    $entity_no = $_GET['id'];
+    $get_photo_individual = '';
+    $get_vaccineProfile_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no  WHERE a.objid = :id";
+    $vaccineprofile_data = $con->prepare($get_vaccineProfile_sql);
+    $vaccineprofile_data->execute([':id' => $entity_no]);
+    while ($result = $vaccineprofile_data->fetch(PDO::FETCH_ASSOC)) {
+        $get_objid       = $result['objid'];
+        $get_entity_no       = $result['entity_no'];
+        $get_datecreated    = $result['datecreate'];
+        $get_timereg        = $result['time_reg'];
+        $get_category       = $result['Category'];
+        $get_categoryid     = $result['CategoryID'];
+        $get_categoryno     = $result['CategoryIDnumber'];
+        $get_healthworker   = $result['HealthWorker'];
+        $get_philhealth     = $result['PhilHealthID'];
+        $get_pwdID          = $result['PWD_ID'];
+        $get_lastname       = $result['Lastname'];
+        $get_firstname      = $result['Firstname'];
+        $get_middlename     = $result['Middlename'];
+        $get_suffix         = $result['Suffix'];
+        $get_mobile_no     = $result['Contact_no'];
+        $get_gender         = $result['Sex'];
+        $get_birthdate      = $result['Birthdate_'];
+        $get_civil_status   = $result['Civilstatus'];
+        $get_employed      = $result['Employed'];
+        $get_profession     = $result['Profession'];
+        $get_barangay       = $result['Barangay'];
+        $get_province       = $result['Province'];
+        $get_region         = $result['Region'];
+        $get_street         = $result['Full_address'];
+        $get_city           = $result['MunCity'];
+
+
+        // $get_directcovid    = $result['Direct_covid'];
+        $get_employername   = $result['Employer_name'];
+        $get_employeraddress = $result['Employer_address'];
+        $get_employercontact = $result['Employer_contact_no'];
+        $get_employerlgu    = $result['Employer_LGU'];
+        $get_pregstatus     = $result['Preg_status'];
+        $get_wallergy       = $result['W_allergy'];
+        $get_wcomorbidities = $result['W_comorbidities'];
+
+        // name of allergies
+        $get_allergy01      = $result['Allergy_01'];
+        $get_allergy02      = $result['Allergy_02'];
+        $get_allergy03      = $result['Allergy_03'];
+        $get_allergy04      = $result['Allergy_04'];
+        $get_allergy05      = $result['Allergy_05'];
+        $get_allergy06      = $result['Allergy_06'];
+        $get_allergy07      = $result['Allergy_07'];
+        $get_allergy08      = $result['Allergy_08'];
+
+        // name of comorbidities
+        $get_comorbidity01  =  $result['Comorbidity_01'];
+        $get_comorbidity02  =  $result['Comorbidity_02'];
+        $get_comorbidity03  =  $result['Comorbidity_03'];
+        $get_comorbidity04  =  $result['Comorbidity_04'];
+        $get_comorbidity05  =  $result['Comorbidity_05'];
+        $get_comorbidity06  =  $result['Comorbidity_06'];
+        $get_comorbidity07  =  $result['Comorbidity_07'];
+        $get_comorbidity08  =  $result['Comorbidity_08'];
+
+
+        $get_covidhistory   = $result['covid_history'];
+        $get_directcovid    = $result['Direct_covid'];
+        $get_coviddate      = $result['covid_date'];
+        $get_covidclass     = $result['covid_classification'];
+        $get_consent        = $result['Consent'];
+        $get_sinovac        = $result['sinovac'];
+        $get_astrazeneca    = $result['astrazeneca'];
+
+
+        //table assessment
+        $consent                = $result['consent'];
+        $age_16                 = $result['MoreThan16yo'];
+        $allergy_PEG            = $result['PegPolysorbate'];
+        $wallergy               = $result['AllergyToFood'];
+        $monitor_patient        = $result['MonitorAllergy'];
+        $allergic_reaction      = $result['Severe_Reaction'];
+        $no_exposure            = $result['CovidHistory'];
+        $no_treated             = $result['CovidTreated'];
+        $no_received_antibodies = $result['AntibodiesCovid'];
+        $bleeding_history       = $result['BleedingHistory'];
+        $yes_bleeding           = $result['BleedingDisorders'];
+        $no_received_vaccine    = $result['ReceivedVaccine'];
+        $symptoms               = $result['ManifestSymptoms'];
+        $illness                = $result['Illness'];
+        $clearance              = $result['MedicalClearance'];
+        $semester               = $result['PregnantSemester'];
+        $deferral               = $result['Deferral'];
+        $vaccine_manufacturer   = $result['VaccineManufacturer'];
+        $batch_number           = $result['BatchNumber'];
+        $lot_number             = $result['LotNumber'];
+        $get_vaccinator_name    = $result['VaccinatorName'];
+        $profession_vaccinator  = $result['VaccinatorProfession'];
+        $vaccination_date       = $result['DateVaccination'];
+        $dose_1st               = $result['1stDose'];
+        $dose_2nd               = $result['2ndDose'];
+        $dose_3rd               = $result['3rdDose'];
+        $vaccine_card           = $result['actions'];
+        $bakuna_center          = $result['bakuna_center'];
+        $bakuna_center_no       = $result['bakuna_center_no'];
+    }
+
+    //     if (isset($_POST['entity_no'])) {
+
+    //         $entity_no = $_GET['entity_no'];
+    //         $get_control_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no inner join tbl_tnxhistory WHERE a.objid = :id";
+    //         $vaccinecontrol_data = $con->prepare($get_control_sql);
+    //         $vaccinecontrol_data->execute([':id' => $entity_no]);
+    //         while ($result = $vaccinecontrol_data->fetch(PDO::FETCH_ASSOC)) {
+
+    //         $vaccine_card         = $result['actions'];
+    //     }
+    // }   
+
+    $bk_center = "SELECT bc_code,bc_name from tbl_bakuna_center";
+    $bk_stmt = $con->prepare($bk_center);
+    $bk_stmt->execute();
+
+    if (isset($_GET['id'])) {
+
+        $entity_no = $_GET['id'];
+        $get_data_sql = "SELECT * FROM  tbl_entity en INNER JOIN tbl_individual oh ON  oh.entity_no = en.entity_no inner join tbl_assessment t on t.entity_no = en.entity_no where t.objid = :id";
+        $get_data_data = $con->prepare($get_data_sql);
+        $get_data_data->execute([':id' => $entity_no]);
+
+        while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+
+            $get_age = $result['age'];
+            $get_email = $result['email'];
+            $get_photo = $result['photo'];
+            $get_status = $result['status'];
+        }
+    }
+
+    if (isset($_GET['id'])) {
+
+        $entity_no = $_GET['id'];
+        $get_data_sql = "SELECT * FROM  tbl_assessment t inner join tbl_tnxhistory r on r.entity_no = t.entity_no where t.objid = :id";
+        $get_data_data = $con->prepare($get_data_sql);
+        $get_data_data->execute([':id' => $entity_no]);
+
+        while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
+
+
+
+            $get_dateprinted = $result['date'];
+            $get_printedby = $result['username'];
+        }
+    }
+}
+
+// include('verify_admin.php');
+
+$get_all_gender_sql = "SELECT * FROM tbl_gender";
+$get_all_gender_data = $con->prepare($get_all_gender_sql);
+$get_all_gender_data->execute();
+
+$get_all_category_sql = "SELECT * FROM tbl_category";
+$get_all_category_data = $con->prepare($get_all_category_sql);
+$get_all_category_data->execute();
+
+$get_all_category_id_sql = "SELECT * FROM tbl_category_id";
+$get_all_category_id_data = $con->prepare($get_all_category_id_sql);
+$get_all_category_id_data->execute();
+
+$get_all_civilstatus_sql = "SELECT * FROM civil_status";
+$get_all_civilstatus_data = $con->prepare($get_all_civilstatus_sql);
+$get_all_civilstatus_data->execute();
+
+$get_all_employment_sql = "SELECT * FROM tbl_employment";
+$get_all_employment_data = $con->prepare($get_all_employment_sql);
+$get_all_employment_data->execute();
+
+$get_all_profession_sql = "SELECT * FROM tbl_profession";
+$get_all_profession_data = $con->prepare($get_all_profession_sql);
+$get_all_profession_data->execute();
+
+$get_all_gender_sql = "SELECT * FROM tbl_gender";
+$get_all_gender_data = $con->prepare($get_all_gender_sql);
+$get_all_gender_data->execute();
+
+$get_all_allergy_sql = "SELECT * FROM tbl_allergy";
+$get_all_allergy_data = $con->prepare($get_all_allergy_sql);
+$get_all_allergy_data->execute();
+
+$get_all_comorbidities_sql = "SELECT * FROM tbl_comorbidity";
+$get_all_comorbidites_data = $con->prepare($get_all_comorbidities_sql);
+$get_all_comorbidites_data->execute();
+
+$get_all_infection_sql = "SELECT * FROM tbl_infection";
+$get_all_infection_data = $con->prepare($get_all_infection_sql);
+$get_all_infection_data->execute();
+
+$get_all_healthworkers_sql = "SELECT * FROM tbl_health_workers";
+$get_all_healthworkers_data = $con->prepare($get_all_healthworkers_sql);
+$get_all_healthworkers_data->execute();
+
+$get_all_complications_sql = "SELECT * FROM tbl_complications";
+$get_all_complications_data = $con->prepare($get_all_complications_sql);
+$get_all_complications_data->execute();
+
+$get_all_symptoms_sql = "SELECT * FROM tbl_symptoms_covid";
+$get_all_symptoms_data = $con->prepare($get_all_symptoms_sql);
+$get_all_symptoms_data->execute();
+
+$get_all_reason_sql = "SELECT * FROM tbl_reason";
+$get_all_reason_data = $con->prepare($get_all_reason_sql);
+$get_all_reason_data->execute();
+
+$get_all_deferral_sql = "SELECT * FROM tbl_deferral";
+$get_all_deferral_sql = $con->prepare($get_all_deferral_sql);
+$get_all_deferral_sql->execute();
+
+$get_all_manufacturer_sql = "SELECT * FROM tbl_manufacturer";
+$get_all_manufacturer_sql = $con->prepare($get_all_manufacturer_sql);
+$get_all_manufacturer_sql->execute();
+
+
+$get_all_vaccinator_sql = "SELECT * FROM tbl_vaccinators";
+$get_all_vaccinator_sql = $con->prepare($get_all_vaccinator_sql);
+$get_all_vaccinator_sql->execute([':cbcr' => $cbcr]);
+
+
+
+$province = 'NEGROS OCCIDENTAL ';
+$city = 'SAN CARLOS CITY';
+$nationality = ' FILIPINO';
+$region = 'WESTERN VISAYAS';
+$lgu = 'SAN CARLOS CITY';
+
+
+$title = 'VAMOS | COVID-19 Patient Form';
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><?php echo $title; ?></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="../plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="../plugins/pixelarity/pixelarity.css">
+    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../plugins/select2/select2.min.css">
+    <script src="https://kit.fontawesome.com/629c6e6cbc.js" crossorigin="anonymous"></script>
+
+    <style>
+        #webcam {
+            width: 350px;
+            height: 350px;
+            border: 1px solid black;
+        }
+
+        #photo {
+            display: block;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .tabs a.active {
+
+            background: lightgreen;
+
+        }
+
+        #header {
+            color: green;
+        }
+
+        .nav-link>.active>a {
+            color: aqua;
+            background-color: chartreuse;
+        }
+
+        .nav-item>a:hover {
+            color: aqua;
+        }
+
+        #required {
+            color: red;
+        }
+
+        #asstdname {
+            font-size: 12px;
+        }
+
+        .field_set {
+            border-color: green;
+            border-style: solid;
+
+        }
+
+        #fieldset {
+            color: #31A231;
+            width: 10%;
+            padding: 5px 10px;
+
+        }
+
+        #fieldset-category {
+            color: #31A231;
+            width: 12%;
+            padding: 5px 15px;
+
+        }
+
+        #fieldset-medical {
+            color: #31A231;
+            width: 23%;
+            padding: 5px 15px;
+
+        }
+
+        #fieldset-comorbidity {
+            color: #31A231;
+            width: 18%;
+            padding: 5px 15px;
+
+        }
+
+        #fieldset-basicinfo {
+            color: #31A231;
+            width: 20%;
+            padding: 5px 15px;
+
+        }
+
+        #fieldset_verify {
+            color: #31A231;
+            width: 15%;
+            padding: 5px 10px;
+
+        }
+
+        #required {
+            color: red;
+        }
+
+        #asstdname {
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <?php include('sidebar.php'); ?>
+
+
+        <div class="content-wrapper">
+            <div class="content-header"></div>
+
+
+
+
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php"> -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+
+
+                            <!-- Profile Image -->
+
+
+
+                            <div class="card card-success card-outline">
+                                <div class="card-body box-profile">
+
+                                    <?php include('template_photo.php'); ?>
+                                    <h2 class="profile-username text-center"><?php echo $get_firstname . ' ' . $get_middlename[0] . '.' . ' ' . $get_lastname . ' ' . $get_suffix; ?></h2>
+
+                                    <p class="text-muted text-center"><?php echo $get_entity_no; ?></p>
+
+
+                                    <a type="button" class="btn btn-block  btn-warning" href="../admin/view_individual.php?id=<?php echo $get_entity_no; ?> " target="_blank" title="VIEW PROFILE" style="color: white;">EDIT PROFILE
+                                    </a>
+                                    <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+                            <!-- About Me Box -->
+
+
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">Basic Information</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+
+                                    <strong><i class="fa fa-calendar"></i> Birthdate</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_birthdate; ?></p>
+                                    <hr>
+
+                                    <strong><i class="fa fa-calendar"></i> Age</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_age; ?></p>
+                                    .
+                                    <hr>
+
+                                    <strong><i class="fa fa-calendar"></i> Civil Status</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_civil_status; ?></p>
+                                    <hr>
+
+                                    <strong><i class="fa fa-calendar"></i> Contact No.</strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_mobile_no; ?></p>
+                                    <hr>
+
+                                    <strong><i class="fa fa-envelope"></i> E-mail Address</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $get_email; ?></p>
+                                    <hr>
+
+
+                                    <strong><i class="fa fa-pencil mr-1"></i> Account Status <span id="required">*</span></strong>
+                                    <p class="text-muted">
+                                        <?php echo $get_status; ?></p>
+                                    </p>
+
+                                    <hr>
+
+                                </div>
+
+                                <!-- /.card-body -->
+                            </div>
+
+                            <?php if ($print == '1') { ?>
+
+                                <div class="card card-success">
+
+                                    <div class="card-header">
+
+                                        <h3 class="card-title">Print VaxCard</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+
+                                        <!-- 
+                                    <p class="text-muted">
+
+                                        <hr>
+                                        <strong><i class="fa fa-file mr-1"></i> <a href="../plugins/jasperreport/vaccineform.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="Vaccine Form"> Print Vaccination Form </a> </strong>
+
+                                    <p class="text-muted">
+
+                                        <hr> -->
+
+
+                                        <?php if ($vaccine_card == '1') {
+                                            $disablecard = "disabled";
+                                        } else {
+
+                                            $disablecard = "enabled";
+                                        } ?>
+                                        <!-- <button type="submit" class="btn btn-block  btn-primary" id="vaccinecard" name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_photo?entity_no=<?php echo $get_entity_no; ?>#toolbar=0" style="color: white;"> PREVIEW VaxCard
+                                            </button> -->
+
+                                        <a href="../plugins/jasperreport/vaccination_card_preview?entity_no=<?php echo $get_entity_no; ?>#toolbar=0" target="blank">
+                                            <input type="button" <?php echo $btnPrint; ?> name="print" class="btn btn-block  btn-primary" value="PREVIEW VaxCard">
+                                        </a>
+
+
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                        <p class="text-muted">
+
+                                            <hr>
+
+
+
+
+
+
+                                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card.php">
+
+                                            <?php if ($vaccine_card == '1') {
+                                                $disablecard = "disabled";
+                                            } else {
+
+                                                $disablecard = "enabled";
+                                            } ?>
+                                            <button type="submit" class="btn btn-block  btn-primary" id="vaccinecard" <?php echo $disablecard; ?> name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " style="color: white;"> WITH PHOTO
+                                            </button>
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $vaccine_card; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no1" id="entity_no1" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                            <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                            <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                            <p class="text-muted">
+
+                                                <hr>
+
+
+
+                                        </form>
+
+
+                                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card1.php">
+
+                                            <?php if ($vaccine_card == '1') {
+
+                                                $disablecard2 = "disabled";
+                                            } else {
+
+                                                $disablecard2 = "enabled";
+                                            } ?>
+                                            <button type="submit" class="btn btn-block btn-success" id="vaccinecard1" <?php echo $disablecard; ?> name="update_resbakuna_card1" href="../plugins/jasperreport/vaccination_card_photo.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card" style="color: white;">NO PHOTO
+                                            </button>
+
+
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                            <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                            <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                            <p class="text-muted">
+
+                                                <hr>
+
+
+
+                                        </form>
+
+
+                                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card2.php">
+
+                                            <?php if ($vaccine_card == '1') {
+
+                                                $disablecard3 = "disabled";
+                                            } else {
+
+                                                $disablecard3 = "enabled";
+                                            } ?>
+
+
+                                            <button type="submit" type="button" class="btn btn-block  btn-warning" id="vaccinecard2" <?php echo $disablecard; ?> name="update_resbakuna_card2" href="../plugins/jasperreport/vaccination_card_longtext.php?entity_no=<?php echo $get_entity_no; ?>" target="_blank" title="New Vaccination Card" style="color: white;">LONG NAME
+                                            </button>
+
+
+
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                            <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                            <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                            <p class="text-muted">
+
+
+
+                                        </form>
+
+
+
+                                        <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card3.php">
+
+                                            <?php if ($vaccine_card == '1') {
+
+                                                $disablecard3 = "disabled";
+                                            } else {
+
+                                                $disablecard3 = "enabled";
+                                            } ?>
+
+
+                                            <button type="submit" type="button" class="btn btn-block btn-primary" id="vaccinecard3" <?php echo $disablecard; ?> name="update_resbakuna_card3" href="../plugins/jasperreport/vaccination_card_3rd_janssen.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="JANSSEN Vaccination Card" style="color: white;">JANSSEN
+                                            </button>
+
+
+
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                            <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                            <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                            <p class="text-muted">
+
+
+
+                                        </form>
+
+
+
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                        <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+
+
+                                        <p class="text-muted">
+
+
+
+
+
+
+
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                        <p class="text-muted">
+
+                                        </p>
+
+
+
+                                        <hr>
+
+
+
+
+                                        <strong><i class="fa fa-calendar"></i> Date Printed</strong>
+                                        <p class="text-muted">
+                                            <?php echo $get_dateprinted; ?></p>
+                                        <hr>
+
+                                        <strong><i class="fa fa-envelope"></i> Printed By</strong>
+
+                                        <p class="text-muted">
+                                            <?php echo $get_printedby; ?></p>
+                                        <hr>
+
+
+
+                                    </div>
+
+                                    <!-- /.card-body -->
+                                <?php } else { ?>
+                                    <div class="card-header" style="visibility: hidden;">
+                                    <?php } ?>
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+
+
+                                <!-- /.col -->
+                                <div class="col-md-9">
+                                    <?php echo $alert_msg; ?>
+
+
+                                    <section class="content">
+                                        <div class="card">
+
+                                            <div class="card-header bg-success text-white">
+                                                <h4>Vaccine Assessment and Screening (VAS)</h4>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <div class="box-body">
+                                                    <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_assessment.php">
+
+                                                        <div class="row" hidden>
+                                                            <div class="col-md-1"></div>
+                                                            <div class="col-md-2">
+                                                                <label>Date Registered: </label>
+                                                                <div class="input-group date" data-provide="datepicker">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-calendar"></i>
+                                                                    </div>
+                                                                    <input type="text" hidden class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_registered" placeholder="Date Process" value="<?php echo date('Y-m-d'); ?>">
+                                                                    <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="date_reg" placeholder="Date Process" value="<?php echo date('Y-m-d'); ?>">
+                                                                    <input type="text" readonly class="form-control pull-right" style="width: 90%;" id="objid" name="objid" placeholder="Objid" value="<?php echo $get_objid; ?>">
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-2">
+                                                                <label> Time Registered:</label>
+                                                                <input readonly type="text" class="form-control" style="text-align:center;" name="time_reg" id="time" placeholder="Time Registered" value="<?php echo $get_timereg; ?>">
+                                                            </div>
+
+                                                            <div class="row">
+
+                                                                <div class="col-sm-5">
+                                                                    <label>Entity Number : &nbsp;&nbsp; <span id="required">*</span></label>
+                                                                    <input type="text" readonly class="form-control" id="entity_number" name="entity_number" onkeyup="this.value = this.value.toUpperCase();" style=" text-transform: uppercase;" placeholder="Entity Number" value="<?php echo $get_entity_no; ?>">
+                                                                </div>
+
+                                                            </div><br>
+
+
+                                                        </div>
+
+
+
+                                                        <?php if ($vaccine_card == '1') { ?>
+                                                        <?php } ?>
+
+                                                        <div class="card card-success card-outline">
+                                                            <div class="card-header">
+
+                                                                <h5 class="m-0">CONSENT</h5>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label>Willing to be vaccinated? &nbsp;&nbsp; <span id="required">*</span> </label>
+                                                                        <select class="form-control select2" name="electronic_consent" id="electronic_consent" value="">
+                                                                            <!-- <option value="01_Yes">Yes</option> -->
+                                                                            <option>Please select</option>
+                                                                            <option <?php if ($get_consent == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                            <option <?php if ($get_consent == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <?php if ($get_consent == '02_No') { ?>
+                                                                        <div id="reason_refusal" class="col-md-6">
+                                                                        <?php } else { ?>
+                                                                            <div hidden id="reason_refusal" class="col-md-6">
+                                                                            <?php } ?>
+
+                                                                            <label for="">Reason for refusal</label>
+                                                                            <select class="form-control select2" id="refusal" style="width: 100%;" name="refusal" placeholder="" value="<?php echo $refusal; ?>">
+                                                                                <option selected value="">Choose here</option>
+                                                                                <?php while ($get_reason = $get_all_reason_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                                    <option value="<?php echo $get_reason['reason']; ?>"><?php echo $get_reason['reason']; ?></option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                            </div>
+
+
+                                                                        </div>
+
+
+
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+
+
+
+                                                        </div>
+
+                                                        <div class="card">
+                                                            <div class="card-header p-2 card-success card-outline">
+                                                                <div class="nav nav-pills" id="nav-tab" role="tablist">
+                                                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-allergy" role="tab" aria-controls="nav-home" aria-selected="true">ALLERGY INFORMATION</a>
+                                                                    <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#nav-other" role="tab" aria-controls="nav-other" aria-selected="false">MEDICAL INFORMATION</a>
+                                                                    <a class="nav-item nav-link" id="nav-covid-tab" data-toggle="tab" href="#nav-covid" role="tab" aria-controls="nav-covid" aria-selected="false">COVID INFORMATION</a>
+                                                                    <a class="nav-item nav-link" id="nav-pregnancy-tab" data-toggle="tab" href="#nav-pregnancy" role="tab" aria-controls="nav-pregnancy" aria-selected="false">PREGNANCY STATUS</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="box-body">
+                                                                    <div class="tab-content" id="nav-tabContent">
+                                                                        <div class="tab-pane fade show active" id="nav-allergy" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                                                                            <div>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-7">
+                                                                                        <label>Has no allergies to PEG or polysorbate?</label>
+                                                                                    </div>
+                                                                                    <div class="col-sm-2"></div>
+                                                                                    <div class="col-sm-3">
+                                                                                        <select class="form-control select2" style="width:100%" name="allergy_PEG" id="allergy_PEG" value="">
+                                                                                            <!-- <option>Do you have comorbidities?</option> -->
+                                                                                            <option>Please select</option>
+                                                                                            <option <?php if ($allergy_PEG == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                            <option <?php if ($allergy_PEG == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div><br>
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-7">
+                                                                                        <label>Has no allergy to food, egg, medicines, and no asthma?</label>
+                                                                                    </div>
+                                                                                    <div class="col-sm-2"></div>
+                                                                                    <div class="col-sm-3">
+                                                                                        <select class="form-control select2" style="width:100%" name="food_allergy" id="food_allergy" value="">
+                                                                                            <!-- <option>Do you have comorbidities?</option> -->
+                                                                                            <option <?php if ($wallergy == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                            <option <?php if ($wallergy == '02_No') echo 'selected'; ?> value="02_No">No </option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div><br>
+
+
+                                                                                <?php if ($wallergy == '02_No') { ?>
+                                                                                    <div hidden class="row" id="allergic">
+                                                                                    <?php } else { ?>
+                                                                                        <div class="row" id="allergic">
+                                                                                        <?php } ?>
+                                                                                        <div class="col-sm-7">
+                                                                                            <label>* If with allergy or asthma, will the vaccinator able to monitor the patient for 30 minutes?</label>
+                                                                                        </div>
+                                                                                        <div class="col-sm-2"></div>
+                                                                                        <div class="col-sm-3">
+                                                                                            <select class="form-control select2" style="width:100%" name="monitor_patient" id="monitor_patient" value="">
+                                                                                                <!-- <option>Do you have comorbidities?</option> -->
+                                                                                                <option>Please select</option>
+                                                                                                <option <?php if ($monitor_patient == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                                <option <?php if ($monitor_patient == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        </div><br>
+                                                                                    </div>
+
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-7">
+                                                                                            <label>Has no severe allergic reaction after the 1st dose of the vaccine?</label>
+                                                                                        </div>
+                                                                                        <div class="col-sm-2"></div>
+                                                                                        <div class="col-sm-3">
+                                                                                            <select class="form-control select2" style="width:100%" name="allergic_reaction" id="allergic_reaction" value="">
+                                                                                                <!-- <option>Do you have comorbidities?</option> -->
+                                                                                                <option>Please select</option>
+                                                                                                <option <?php if ($allergic_reaction == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                                <option <?php if ($allergic_reaction == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                            </div>
+                                                                            <!-- main menuuuuu -->
+
+                                                                            <div class="tab-pane fade" id="nav-covid" role="tabpanel" aria-labelledby="nav-covid-tab">
+                                                                                <div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-7">
+                                                                                            <label style="font-size:14px">Has no history of exposure to a confirmed or suspected COVID-19 case in the past 2 weeks?</label>
+                                                                                        </div>
+                                                                                        <div class="col-sm-2"></div>
+                                                                                        <div class="col-sm-3">
+                                                                                            <select class="form-control select2" style="width:100%" name="covid_exposure" id="covid_exposure" value="">
+                                                                                                <!-- <option>Choose here</option> -->
+                                                                                                <option>Please select</option>
+                                                                                                <option <?php if ($no_exposure == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                                <option <?php if ($no_exposure == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div><br>
+
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-7">
+                                                                                            <label style="font-size:14px">Has not been previously treated for COVID-19 in the past 90 days?</label>
+                                                                                        </div>
+                                                                                        <div class="col-sm-2"></div>
+                                                                                        <div class="col-sm-3">
+                                                                                            <select class="form-control select2" style="width:100%" name="covid_treated" id="covid_treated" value="">
+                                                                                                <!-- <option>Choose here</option> -->
+                                                                                                <option>Please select</option>
+                                                                                                <option <?php if ($no_treated == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                                <option <?php if ($no_treated == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div><br>
+
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-7">
+                                                                                            <label style="font-size:14px">Has not received convalescent plasma or monoclonal antibodies for COVID-19 in the past 90 days?</label>
+                                                                                        </div>
+                                                                                        <div class="col-sm-2"></div>
+                                                                                        <div class="col-sm-3">
+                                                                                            <select class="form-control select2" style="width:100%" name="covid_antibody" id="covid_antibody" value="">
+                                                                                                <!-- <option>Choose here</option> -->
+                                                                                                <option>Please select</option>
+                                                                                                <option <?php if ($no_received_antibodies == '01_Yes') echo 'selected'; ?> value="01_Yes">Yes </option>
+                                                                                                <option <?php if ($no_received_antibodies == '02_No') echo 'selected'; ?> value="02_No">No</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div><br>
+                                                                                </div>
+                                                                            </div>
+
+
+
+
+
+                                                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                </div>
+
+
+
+
+
+
+                                                </form>
+
+
+
+
+                                            </div>
+                                        </div>
+                                </div>
+
+
+            </section>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    </section>
+    <br>
+    </div>
+
+
+    <?php include('footer.php') ?>
+
+    </div>
+
+
+
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- datepicker -->
+    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- CK Editor -->
+    <script src="../plugins/ckeditor/ckeditor.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="../dist/js/adminlte.js"></script>
+    <script src="../dist/js/demo.js"></script>
+    <script src="../plugins/pixelarity/pixelarity-face.js"></script>
+    <script src="../plugins/cameracapture/webcam-easy.min.js"></script>
+
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script src="../plugins/select2/select2.full.min.js"></script>
+    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+
+    <?php
+
+    if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status'] ?>",
+                // text: "You clicked the button!",
+                icon: "<?php echo $_SESSION['status_code'] ?>",
+                button: "OK. Done!",
+            });
+        </script>
+
+    <?php
+        unset($_SESSION['status']);
+    }
+    ?>
+
+
+    <script language="JavaScript">
+        $('.select2').select2();
+
+
+        $("#name_comorbidities").select2({
+            theme: "classic"
+        });
+    </script>
+
+
+    <script>
+        $(function() {
+
+            $('#vaccinator1').on('change', function() {
+                var vaccinator = this.value;
+                // alert(vaccinator);
+                console.log(vaccinator);
+                $.ajax({
+                    type: "POST",
+                    url: 'profile_vaccinator.php',
+                    data: {
+                        vaccinator: vaccinator
+                    },
+                    error: function(xhr, b, c) {
+                        console.log(
+                            "xhr=" +
+                            xhr.responseText +
+                            " b=" +
+                            b.responseText +
+                            " c=" +
+                            c.responseText
+                        );
+                    },
+                    success: function(response) {
+                        var result = jQuery.parseJSON(response);
+                        console.log('response from server', result);
+                        $('#profession_vaccinator').val(result.data1);
+
+                    },
+                });
+
+            });
+            $('#bakuna_center').change(function() {
+                var code = $('#bakuna_center').val();
+                $('#bccode').val(code);
+
+
+            })
+        });
+
+        $(function() {
+
+            // $("#category_id").select2({
+            //     //  minimumInputLength: 3,
+            //     // placeholder: "hello",
+            //     ajax: {
+            //         url: "individual_query_patient", // json datasource
+            //         type: "post",
+            //         dataType: 'json',
+            //         delay: 250,
+            //         data: function(params) {
+            //             return {
+            //                 searchTerm: params.term
+            //             };
+            //         },
+
+            //         processResults: function(response) {
+            //             return {
+            //                 results: response
+
+
+            //             };
+            //         },
+            //         cache: true,
+            //         error: function(xhr, b, c) {
+            //             console.log(
+            //                 "xhr=" +
+            //                 xhr.responseText +
+            //                 " b=" +
+            //                 b.responseText +
+            //                 " c=" +
+            //                 c.responseText
+            //             );
+            //         }
+            //     }
+            // });
+
+        });
+
+        // $('#gender').change(function() {
+        //     var option = $('#gender').val();
+        //     if (option == "Male") {
+        //         $('#pregnant').select2("val", "02_Not_Pregnant")
+
+        //     }
+
+        //     console.log("test");
+        // });
+
+
+
+        $('#category').change(function() {
+            var option = $('#category').val();
+            //if Senior_Citizen is Selected
+            if (option == "02_Senior_Citizen") {
+                $('#indigent').prop("hidden", false);
+                $('#healthworker').prop("hidden", true);
+
+
+            }
+
+            //if Health_Care_Worker is Selected
+            if (option == "01_Health_Care_Worker") {
+                $('#healthworker').prop("hidden", false);
+                $('#indigent').prop("hidden", true);
+
+
+            }
+
+            //if 03_Indigent is Selected
+            if (option == "03_Indigent") {
+                $('#healthworker').prop("hidden", true);
+                $('#indigent').prop("hidden", true);
+
+
+
+            }
+            //if 04_Uniformed_Personnel is Selected
+            if (option == "04_Uniformed_Personnel") {
+                $('#healthworker').prop("hidden", true);
+                $('#indigent').prop("hidden", true);
+
+
+
+            }
+
+            //if 05_Essential_Worker is Selected
+            if (option == "05_Essential_Worker") {
+                $('#healthworker').prop("hidden", true);
+                $('#indigent').prop("hidden", true);
+
+
+
+            }
+
+            //if 06_Other is Selected
+            if (option == "06_Other") {
+                $('#healthworker').prop("hidden", true);
+                $('#indigent').prop("hidden", true);
+
+
+
+            }
+
+
+
+
+
+            console.log("test");
+        });
+
+        // $('#category').change(function() {
+        //     var option = $('#healthworker').val();
+        //     if (option == "01_Health_Care_Worker") {
+        //         $('#healthworker').prop("hidden", false);
+
+
+
+        //     } else {
+
+        //         $('#healthworker').prop("hidden", true);
+        //         $('#indigent').prop("hidden", true);
+
+        //     }
+
+        //     console.log("test");
+        // });
+
+
+
+        // $('#food_allergy').change(function() {
+        //     var option = $('#food_allergy').val();
+        //     if (option == "02_No") {
+        //         $('#allergic').prop("hidden", false);
+
+
+
+        //     } else {
+
+        //         $('#allergic').prop("hidden", true);
+
+        //     }
+
+        //     console.log("test");
+        // });
+
+        $("#view_individual").on("click", "#view_individual", function() {
+            event.preventDefault();
+            var currow = $(this).closest("tr");
+            var entity_no = currow.find("td:eq(0)").text();
+            // $('#viewIndividual').attr("href", "view_individual.php?&id=" + entity, '_parent');
+            window.open("view_individual.php?&id=" + entity, '_parent');
+
+        });
+
+
+        $('.baks').on('change', function() {
+            var cbr_no = $(this).val();
+
+            //  $('#doc_no').val(type);
+
+
+            $.ajax({
+                type: 'POST',
+                data: {
+                    cbr_no: cbr_no
+                },
+                url: 'generate_cbrno.php',
+                success: function(data) {
+                    $('#cbcr_no').val(data);
+
+                }
+
+            });
+
+        });
+
+        $('#allergy_PEG').change(function() {
+            var option = $('#allergy_PEG').val();
+            if (option == "02_No") {
+                $('#allergic').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#allergic').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#food_allergy').change(function() {
+            var option = $('#food_allergy').val();
+            if (option == "02_No") {
+                $('#allergic').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#allergic').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#bleeding_history').change(function() {
+            var option = $('#bleeding_history').val();
+            if (option == "02_No") {
+                $('#bleeding').prop("hidden", false);
+                $('#bleeding1').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#bleeding').prop("hidden", true);
+                $('#bleeding1').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+        $('#manifest_symptoms').change(function() {
+            var option = $('#manifest_symptoms').val();
+            if (option == "02_No") {
+                $('#symptoms').prop("hidden", false);
+                $('#symptoms1').prop("hidden", false);
+                $('#clearance').prop("hidden", false);
+                $('#clearance1').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#symptoms').prop("hidden", true);
+                $('#symptoms1').prop("hidden", true);
+                $('#clearance').prop("hidden", true);
+                $('#clearance1').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#no_illness').change(function() {
+            var option = $('#no_illness').val();
+            if (option == "02_No") {
+                $('#illness').prop("hidden", false);
+                $('#illness1').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#illness').prop("hidden", true);
+                $('#illness1').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+
+
+        $('#electronic_consent').change(function() {
+            var option = $('#electronic_consent').val();
+            if (option == "02_No") {
+                $('#reason_refusal').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#reason_refusal').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+        $('#electronic_consent').change(function() {
+            var option = $('#electronic_consent').val();
+            if (option == "01_Yes") {
+                $('#vaccine_info').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#vaccine_info').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $('#preg_status').change(function() {
+            var option = $('#preg_status').val();
+            if (option == "01_Pregnant") {
+                $('#preg_sem').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#preg_sem').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+        $('#with_commorbidities').change(function() {
+            var option = $('#with_commorbidities').val();
+            if (option == "01_Yes") {
+                $('#yes-comordities').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#yes-comordities').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+
+        $('#patient_diagnose').change(function() {
+            var option = $('#patient_diagnose').val();
+            if (option == "01_Yes") {
+                $('#yes-diagnose').prop("hidden", false);
+
+
+
+            } else {
+
+                $('#yes-diagnose').prop("hidden", true);
+
+            }
+
+            console.log("test");
+        });
+
+        $("#btnSubmit").click(function() {
+            var manufacturer = $('#vaccine_manufacturer').val();
+
+            var vaccinator = $('.vaccinator').val();
+            var first_dose = $('#first_dose').val();
+            var second_dose = $('#second_dose').val();
+            var third_dose = $('#third_dose').val();
+            var bakuna_center = $('#bakuna_center').val();
+
+
+
+            if (manufacturer == 'Select Manufacturer') {
+                alert("Please select Manufacturer!");
+                $('#vaccine_manufacturer').focus();
+                return false;
+            } else if (vaccinator == 'Select Vaccinator') {
+                alert("Please select Vaccinator!");
+                $('.vaccinator').focus();
+                return false;
+            } else if (first_dose == 'Please select') {
+                alert("Please select 1st dose!");
+                $('#first_dose').focus();
+                return false;
+            } else if (second_dose == 'Please select') {
+                alert("Please select 2nd dose!");
+                $('#second_dose').focus();
+                return false;
+            } else if (third_dose == 'Please select') {
+                alert("Please select 3rd dose!");
+                $('#third_dose').focus();
+                return false;
+            } else if (bakuna_center == 'Select Bakuna Center') {
+                alert("Please select Bakuna Center!");
+                $('#bakuna_center').focus();
+                return false;
+            }
+
+        });
+    </script>
+
+
+</body>
+
+</html>

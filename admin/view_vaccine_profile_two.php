@@ -221,7 +221,7 @@ if (isset($_GET['id'])) {
     while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
 
 
-
+        $get_entity_no = $result['entity_no'];
         $get_age = $result['age'];
 
         $get_email = $result['email'];
@@ -390,6 +390,7 @@ if (isset($_GET['id'])) {
             <div class="content-header"></div>
 
 
+          
             <section class="content">
 
                 <!-- <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php"> -->
@@ -536,6 +537,10 @@ if (isset($_GET['id'])) {
                                     <div class="card-body">
                                         <div class="box-body">
                                             <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_vaccine.php">
+                                    
+                                            <input hidden type="text" class="form-control" name="encoder_fullname1" id="encoder_fullname1" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+                                            <input hidden type="text" class="form-control" name="entity_no" id="entity_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $get_entity_no; ?>">
+
 
                                                 <div class="row" hidden>
                                                     <div class="col-md-1"></div>

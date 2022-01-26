@@ -45,7 +45,7 @@ $get_all_vaccine_data->execute();
 
 $get_center = " SELECT bc_code,bc_name from tbl_bakuna_center";
 $get_bakuna_data = $con->prepare($get_center);
-$get_bakuna_data->execute();
+$get_bakuna_data->execute(); 
 
 if (isset($_POST['download'])) {
   $date_download = $_POST['datefrom'];
@@ -147,6 +147,11 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
 
 </head>
+<style>
+  .green {
+    background-color: green !important;
+  }
+</style>
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -228,7 +233,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
                         <thead align="center">
 
                           <th> Objid </th>
-                          <!-- <th> Entity_no </th> -->
+                          <th> Entity_no </th>
                           <th> Date Register </th>
                           <th> Category </th>
                           <th> Full Name </th>
@@ -298,9 +303,18 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
                 <div class="row">
                   <div class="col-sm-4">
-                    <label> VAMOS ID:</label>
+                    <label> ID:</label>
                     <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
                   </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label> ENTITY NO.:</label>
+                    <input readonly="true" type="text" name="entity_no" id="entity_no" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
+                  </div>
+
                   <div class="col-sm-7">
                     <label> FULL NAME:</label>
                     <input readonly="true" type="text" name="fullname" id="fullname" class="form-control" pull-right value="<?php echo $fullname; ?>" required>
@@ -375,11 +389,14 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- datepicker -->
-  <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js">
+    // < /s> <
+    // !--datepicker-- >
+    <
+    // script src = "../plugins/datepicker/bootstrap-datepicker.js" >
+  </script>
   <!-- Bootstrap WYSIHTML5 -->
-  <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+  <!-- <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script> -->
   <!-- Slimscroll -->
   <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <!-- FastClick -->
@@ -389,7 +406,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="../dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
+  <!-- <script src="../dist/js/demo.js"></script> -->
   <!-- DataTables -->
   <script src="../plugins/datatables/jquery.dataTables.js"></script>
   <!-- DataTables Bootstrap -->
@@ -438,11 +455,10 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       stateSave: true,
       processing: true,
       serverSide: true,
-      scrollX: false,
 
       ajax: {
         url: "search_vaccine_vas.php",
-        type: "post",
+        type: "POST",
         error: function(xhr, b, c) {
           console.log(
             "xhr=" +
@@ -452,6 +468,15 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
             " c=" +
             c.responseText
           );
+        }
+      },
+      "createdRow": function(row, data, dataIndex) {
+        var today = new Date();
+        today.setDate(today.getDate() - 90);
+        console.log(data);
+        if (data[5] < today.toISOString() && data[6] == '01_Yes' && data[7] == '01_Yes') {
+          console.log(data);
+          $(row).addClass('green');
         }
       },
       columnDefs: [{
@@ -483,7 +508,8 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       var currow = $(this).closest("tr");
 
       var objid = currow.find("td:eq(0)").text();
-      var fullname = currow.find("td:eq(3)").text();
+      var entity_no = currow.find("td:eq(1)").text();
+      var fullname = currow.find("td:eq(4)").text();
 
 
 
@@ -491,6 +517,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       console.log("test");
       $('#modalvoid').modal('show');
       $('#objid').val(objid);
+      $('#entity_no').val(entity_no);
       $('#fullname').val(fullname);
 
 

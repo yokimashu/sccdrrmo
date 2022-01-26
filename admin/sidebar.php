@@ -95,37 +95,37 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 ?>
 
 <nav class="main-header navbar navbar-expand greenBG navbar-light border-bottom">
-	<!-- Left navbar links -->
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-		</li>
-		<li class="nav-item">
-			<a href="#" class="nav-link">VAMOS | SYSTEM</a>
-		</li>
-		
-		
-		<li class="nav-item">
-			<a href="index" class="nav-link ">HOME PAGE</a>
-		</li>
-		
-		
-		<li class="nav-item">
-			<a href="chatroom.php" class="nav-link ">PRIVATE MESSAGE / CHATROOM 
-			<b id="PMessage" style="font-size:15px;" class="badge badge-danger"></b></a>
-		</li>
-		
-		
-		<!-- <li class="nav-item">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">VAMOS | SYSTEM</a>
+    </li>
+
+
+    <li class="nav-item">
+      <a href="index" class="nav-link ">HOME PAGE</a>
+    </li>
+
+
+    <li class="nav-item">
+      <a href="chatroom.php" class="nav-link ">PRIVATE MESSAGE / CHATROOM
+        <b id="PMessage" style="font-size:15px;" class="badge badge-danger"></b></a>
+    </li>
+
+
+    <!-- <li class="nav-item">
 			<a href="announcement" class="nav-link ">
 			
 			ANNOUNCEMENTS
 			
 			</a>
 		</li> -->
-		
-		
-	</ul>
+
+
+  </ul>
 
   <ul class="navbar-nav ml-auto">
     <!-- <li class="nav-item">
@@ -209,221 +209,81 @@ $numberofnewreport = $get_all_newreport_data->rowCount();
 
 
         <?php
-        echo $entities;
+        //ADMINISTRATOR (ALL ACCESS)
+        if ($_SESSION['user_type'] == 1) { ?>
+          <?php
+          echo $entities;
+          echo $content_covid_case;
+          echo $content_vaccination;
+          echo $content_report;
+          echo $content_about_us;
+          echo $content_settings;
+          echo $user_account;
+          echo $break;
+          ?>
+        <?php }
+        // HELPDESK (PRINT VAXCARD)
+        else if ($_SESSION['user_type'] == 2) { ?>
+          <?php
+          echo $entities;
+          echo $content_vaccination;
+          echo $content_about_us;
+          echo $user_account;
+          echo $break;
+          ?>
+        <?php }
+        //DATA CENTER
+        //VAS ENCODERS
+        else if ($_SESSION['user_type'] == 3) { ?>
+          <?php
+          echo $entities;
+          echo $data_center_vaccination;
+          echo $content_about_us;
+          echo $user_account;
+          echo $break;
 
-        ?>
+          ?>
+        <?php }
+        //BRGY ENCODERS
+        else if ($_SESSION['user_type'] == 4) { ?>
+          <?php
+          echo $entities;
+          echo $brgy_encoders_vaccination;
+          echo $content_about_us;
+          echo $user_account;
+          echo $break;
+          ?>
+        <?php }
+        //CHO
+        else if ($_SESSION['user_type'] == 5) { ?>
+          <?php
+          echo $entities;
+          echo $content_covid_case;
+          echo $content_about_us;
+          echo $user_account;
+          echo $break;
+          ?>
 
+        <?php } ?>
 
-        <?php
-        // masterlist enities
-        // echo $single_break;
-        // end of masterlist entities
 
 
-        // masterlist in symptoms
 
-        // echo $label_masterlist;
-        // echo $masterlist_symptoms;
-        // echo $single_break;
 
 
-        // masterlist for covid-19
-        echo $label_covid_case;
-        echo $list_close_contact;
-        echo $list_positive_case;
-        echo $single_break;
 
 
-        ?>
 
 
 
 
 
-        <?php echo $label_vaccination; ?>
-        <?php echo $vaccine_dashboard; ?>
-        <?php echo $list_vaccine; ?>
-        <?php echo $list_assessment; ?>
-        <?php echo $list_schedule; ?>
-        <?php echo $list_bakuna_center; ?>
-        <?php echo $list_vaccinators; ?>
-        <?php echo $single_break; ?>
-        <!-- end of masterlist of covid-19 -->
 
-        <div>
-          <label id="label1" style="font-size:18px; ">
-            &nbsp;
-            <i class="fas fa-print nav-icon icons"></i>
-            &nbsp;
-            REPORT
-          </label>
 
-          <?php echo $list_categorylist; ?>
-          
-          <?php echo $list_vaccinated; ?>
-          <?php echo $list_vaccine_report; ?>
-          <?php echo $list_vaccine_report_no; ?>
-          <?php echo $list_eligible_report; ?>
-          <?php echo $list_vaccine_linelist; ?>
-         
-          <?php echo $list_astrazeneca; ?>
-          <?php echo $vaccine_sandoc; ?>
-          <?php echo $list_deped_report; ?>
-          <?php echo $overallcount; ?>
-     
-          <?php echo $daily_report; ?>
-          <?php echo $test_list; ?>
 
 
 
 
-          <li class="nav-item">
-            <a href="print_individual" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="fas fa-qrcode icons nav-icon"></i>
-              <p> &nbsp; Multiple QR</p>
-            </a>
-          </li>
-
-        </div><br>
-
-
-        <div>
-
-          <label id="label1" style="font-size:18px; ">
-            &nbsp;
-            <i class="nav-icon fa fa-info-circle icons"></i>
-            &nbsp;
-            ABOUT US
-          </label>
-
-
-          <li class="nav-item">
-            <a href="information" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fa fa-question icons"></i>
-              <p> &nbsp; Information</p>
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a href="download_app" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fa fa-download icons"></i>
-              <p> &nbsp; Download App</p>
-            </a>
-          </li>
-
-
-
-
-
-          <li class="nav-item">
-            <a href="how_to_register" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="far fa-id-badge nav-icon icons"></i>
-              <p> &nbsp; How to Register</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="scan_qrcode" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="fas fa-qrcode icons nav-icon"></i>
-              <p> &nbsp; Scan QR Code</p>
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a href="privacy_terms" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="fas fa-database nav-icon icons"></i>
-              <p> &nbsp; Privacy Policy </p>
-            </a>
-          </li>
-
-
-        </div> <br>
-
-
-
-        <div>
-
-
-          <?php echo $settings; ?>
-          <?php echo $mobile_alert; ?>
-          <?php echo $registration_list; ?>
-          <?php echo $post_announcepost_announce; ?>
-          <?php echo $incident_report ?>
-        </div><br>
-
-        <div>
-
-          <label id="label1" style="font-size:18px; ">
-            &nbsp;
-            <i class="nav-icon fa fa-lock icons"></i>
-            &nbsp;
-            ACCOUNT
-          </label>
-
-
-
-          <li class="nav-item">
-            <a href="edit_profile" class="nav-link sidebar-link">
-              &nbsp;
-              <i class="nav-icon fa fa-pencil-square-o icons"></i>
-              <p> &nbsp; Edit Profile</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="../index" class="nav-link  sidebar-link">
-              &nbsp;
-              <i class="fa fa-sign-out nav-icon icons"></i>
-              <p> &nbsp; Sign Out</p>
-            </a>
-          </li>
-
-
-
-        </div><br>
-
-
-
-
-
-
-
-        <?php echo $break; ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <li class="nav-item has-treeview" style="font-size:16px">
-          <a href="../index" class="nav-link">
-            <i class="fa fa-sign-out nav-icon"></i>
-            <p>SIGN OUT</p>
-          </a>
-
-
-        </li> -->
-
-
-
-
-
-      </ul>
     </nav>
     <!-- /.sidebar-menu -->
   </div>

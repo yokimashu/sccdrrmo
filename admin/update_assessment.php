@@ -8,6 +8,10 @@ date_default_timezone_set('Asia/Manila');
 
 $alert_msg = '';
 
+$activity   = 'ADD VACCINE DETAILS';
+$user_name   = $_POST['assessment_username'];
+
+
 if (isset($_POST['update_assessment'])) {
 
 
@@ -305,7 +309,7 @@ if (isset($_POST['update_assessment'])) {
     ]);
 
 
-
+    include('update_logs.php');
 
     if ($assessment_data) {
 

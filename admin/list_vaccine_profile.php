@@ -1,17 +1,12 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
-include('update_vas_test.php');
-include('update_void_vaccine.php');
+// include('sql_queries.php');
+// include('update_vas_test.php');
+// include('update_void_vaccine.php');
 
 
-
-// include('get_vaccination_profile_two.php');
-
-
-
-// session_start(); 
+session_start(); 
 
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
@@ -40,21 +35,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 $symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrno = '';
 
-//fetch user from database
-// $vas_entity_no = ' ';
-
-// $get_assessment_sql = "SELECT * FROM tbl_assessment where entity_no = :id ";
-// $assestment_data = $con->prepare($get_assessment_sql);
-// $assestment_data->execute([':id' => $vas_entity_no]);
-// while ($result = $assestment_data->fetch(PDO::FETCH_ASSOC)) {
-
-
-//   $vas_entity_no = $result['entity_no'];
-// }
-
 $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
-
-// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
 $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
 $get_all_vaccine_data->execute();
 
@@ -62,35 +43,8 @@ $get_all_vaccine_data->execute();
 
 
 $get_all_center_sql = "SELECT * FROM tbl_bakuna_center ";
-
-// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
 $get_all_center_data = $con->prepare($get_all_center_sql);
 $get_all_center_data->execute();
-
-
-
-
-// if (isset($_GET['entity_no'])) {
-
-//   $entity_no = $_GET['entity_no'];
-
-// $get_data_sql = "SELECT * FROM tbl_assessment t inner join tbl_vaccine r on r.entity_no = t.entity_no where r.entity_no = :id";
-// $get_data_data = $con->prepare($get_data_sql);
-// $get_data_data->execute([':id' => $entity_no]);
-
-// while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
-//   $get_1stDose      = $result['1stDose'];
-//   $get_2ndDose       = $result['2ndDose'];
-
-// }
-// }
-
-
-// $entity_no = $_GET['entity_no'];
-
-
-
-
 
 ?>
 
@@ -117,7 +71,7 @@ $get_all_center_data->execute();
     <div class="content-wrapper">
       <div class="content-header"></div>
       <div class="float-topright">
-        <?php echo $alert_msg; ?>
+    
 
       </div>
       <section class="content">
@@ -179,6 +133,7 @@ $get_all_center_data->execute();
                         <th> Entity_no </th>
                         <th> Category</th>
                         <th width="300px"> Full Name </th>
+                        <th> Sex </th>
                         <th> Birthdate </th>
                         <th> Address</th>
                         <!-- <th style="background-color:#EDCD15"> Consent </th>
@@ -207,9 +162,6 @@ $get_all_center_data->execute();
 
       </section>
       <br>
-
-
-
     </div>
     <!-- /.content-wrapper -->
     <?php include('footer.php') ?>
@@ -536,7 +488,7 @@ $get_all_center_data->execute();
       scrollX: false,
 
       ajax: {
-        url: "search_vaccine_test.php",
+        url: "search_vaccine.php",
         type: "post",
         error: function(xhr, b, c) {
           console.log(
@@ -721,9 +673,6 @@ $get_all_center_data->execute();
     $(function blink() {
       $('.blink_me').fadeOut(500).fadeIn(500, blink);
     })();
-
-
-
 
 
     $(function() {

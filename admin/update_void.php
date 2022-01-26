@@ -2,11 +2,14 @@
 
 $alert_msg = '';
 include('../config/db_config.php');
+
+$activity = "ASSESSMENT VOID";
+
+
 if (isset($_POST['update_void'])) {
 
-
-
-    // $get_date_register          = date('Y-m-d', strtotime($_POST['date_register']));
+    $user_name = $_POST['void_username'];
+    
     $get_objid              = $_POST['objid'];
     $get_remarks            = 'DOUBLE ENTRY';
     $get_status             = 'VOID';
@@ -38,6 +41,7 @@ if (isset($_POST['update_void'])) {
 
     ]);
 
+    include('update_logs.php');
 
     if ($add_status_data) {
 

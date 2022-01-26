@@ -12,6 +12,7 @@ $alert_msg = '';
 
 if (isset($_POST['update_resbakuna_card3'])) {
 
+    $entity_no             = $_POST['entity_no'];
     $get_objid             = $_POST['card'];
     $date_reg               = $_POST['tnx_date'];
     $entity_no             = $_POST['entity_no'];
@@ -28,21 +29,24 @@ if (isset($_POST['update_resbakuna_card3'])) {
 
  
 
-
     $insert_status_sql = "UPDATE tbl_assessment SET 
-        
-        actions            = :actions
+       
+    actions            = :actions
 
-      WHERE objid =     $get_objid   ";
+    where entity_no         = :entityno
+  
+";
 
-    $add_status_data = $con->prepare($insert_status_sql);
-    $add_status_data->execute([
+$add_status_data = $con->prepare($insert_status_sql);
+$add_status_data->execute([
+   
+    ':actions'                 => $get_actions,
+    ':entityno'                     => $entity_no
 
-        ':actions'                 => $get_actions
 
 
 
-    ]);
+]);
 
     $insert_tnxhistory_sql = "INSERT INTO tbl_tnxhistory SET 
     ref        = :ref ,

@@ -8,6 +8,10 @@ date_default_timezone_set('Asia/Manila');
 
 $alert_msg = '';
 
+$activity = "VACCINE FORM REGISTRATION";
+
+$user_name = strtoupper($_POST['encoder_fullname']);
+
 if (isset($_POST['insert_vaccine'])) {
 
 
@@ -728,7 +732,7 @@ if (isset($_POST['insert_vaccine'])) {
 
     ]);
 
-
+    include('update_logs.php');
 
     if ($vaccine_data && $get_data_data) {
 
