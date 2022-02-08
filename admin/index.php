@@ -379,7 +379,31 @@ $title = 'VAMOS | Dashboard';
                 <div class="card-body">
                   <div class="box box-primary ">
                     <div class="box-body">
+                      
                       <div id="piechart" style="padding-left:10px; width: 200; height: 700px"> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                Piechart x donut
+              </h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                      <? include('..sccdrrmo/admin/datacenter/datacenter.php');?>
+                      <div id="" style="padding-left:10px; width: 200; height: 700px"> </div>
                     </div>
                   </div>
                 </div>
