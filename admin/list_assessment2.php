@@ -38,9 +38,9 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
-// $get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
-// $get_all_vaccine_data->execute();
+$get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
+$get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
+$get_all_vaccine_data->execute();
 
 
 $get_center = " SELECT bc_code,bc_name from tbl_bakuna_center";
@@ -147,7 +147,12 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
 
 </head>
+<style>
 
+.green {
+  background-color: green !important;
+}
+</style>
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
 
@@ -299,7 +304,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
                 <div class="row">
                   <div class="col-sm-4">
                     <label> ID:</label>
-                    <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $get_objid; ?>" required>
+                    <input readonly="true" type="text" name="objid" id="objid" class="form-control" pull-right value="<?php echo $entity_no; ?>" required>
                   </div>
                   </div>
                   <br>
@@ -384,11 +389,11 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></s>
   <!-- datepicker -->
   <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
   <!-- Bootstrap WYSIHTML5 -->
-  <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+  <!-- <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script> -->
   <!-- Slimscroll -->
   <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <!-- FastClick -->
@@ -398,13 +403,13 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="../dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
+  <!-- <script src="../dist/js/demo.js"></script> -->
   <!-- DataTables -->
   <script src="../plugins/datatables/jquery.dataTables.js"></script>
   <!-- DataTables Bootstrap -->
   <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 
-  <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+  <!-- <script src="../plugins/sweetalert/sweetalert.min.js"></script> -->
 
   <!-- Select2 -->
   <script src="../plugins/select2/select2.full.min.js"></script>
@@ -447,11 +452,10 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       stateSave: true,
       processing: true,
       serverSide: true,
-      scrollX: false,
 
       ajax: {
         url: "search_vaccine_vas.php",
-        type: "post",
+        type: "POST",
         error: function(xhr, b, c) {
           console.log(
             "xhr=" +
@@ -463,6 +467,15 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
           );
         }
       },
+      "createdRow": function( row, data, dataIndex){
+var today = new Date(); 
+today.setDate(today.getDate() - 90);
+console.log(data);
+                if( data[5] < today.toISOString() && data[6] == '01_Yes'  && data[7] == '01_Yes'){
+                  console.log(data);
+                    $(row).addClass('green');
+                }
+            },
       columnDefs: [{
           width: "100px",
           targets: -1,
@@ -526,7 +539,7 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
 
 
     $('.select2').select2();
-  
+
 
     $(function() {
       $('[data-toggle="datepicker"]').datepicker({
@@ -535,6 +548,15 @@ WHERE a.`bakuna_center_no` = :center  AND a.date_reg = :datedownload  ORDER BY a
       });
     });
 
+    $(document).on('click', 'button[data-role=confirm_delete]', function(event) {
+      event.preventDefault();
+
+      var user_id = ($(this).data('id'));
+
+      $('#user_id').val(user_id);
+      $('#delete_PUMl').modal('toggle');
+
+    });
   </script>
 
 

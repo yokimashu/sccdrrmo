@@ -42,7 +42,8 @@ $columns = array(
 
 // getting total number records without any search
 
-$sql = "SELECT * FROM tbl_vaccine where status !='VOID' ORDER BY idno DESC LIMIT " . $requestData['start'] . "," . $requestData['length'] . "";
+$sql = "SELECT * FROM tbl_vaccine where status !='VOID' ORDER BY idno DESC LIMIT 
+" . $requestData['start'] . "," . $requestData['length'] . "";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute() or die("search_vaccine_test.php");
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -104,14 +105,17 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 	// $countfilter .= " OR Region LIKE '%" . $requestData['search']['value'] . "%' ";
 	// $countfilter .= " OR Employed LIKE '%" . $requestData['search']['value'] . "%' ";
 	// $countfilter .= " OR covid_history LIKE '%" . $requestData['search']['value'] . "%' )";
-
 	$countfilter .= " order by idno LIMIT ". $requestData['length'] . " "; //count all rows w/ filter
+	
+	
 	$getrecordstmt = $con->prepare($countfilter);
 	$getrecordstmt->execute() or die("search_vaccine_test.php");
 	$getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
 	$totalData = $getrecord['id'];
 	$totalFiltered = $totalData;
+
 }
+
 $data = array();
 // while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {

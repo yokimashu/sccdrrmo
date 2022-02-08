@@ -3,7 +3,7 @@
 $alert_msg = '';
 include('../config/db_config.php');
 
-$activity = "ASSESSMENT VOID";
+
 
 
 if (isset($_POST['update_void'])) {
@@ -41,7 +41,7 @@ if (isset($_POST['update_void'])) {
 
     ]);
 
-    include('update_logs.php');
+
 
     if ($add_status_data) {
 

@@ -79,18 +79,32 @@ SUM(Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity
 SUM(Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 12_ROPP_1st_TOTAL_Sinovac,
 
 
-SUM(Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 01_A1_2nd_TOTAL_Sinovac,
-SUM(Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 02_A1_8_2nd_TOTAL_Sinovac,
-SUM(Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 03_A1_9_2nd_TOTAL_Sinovac,
-SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 04_2nd_ADDITIONAL_A1_TOTAL_Sinovac,
-SUM(Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 05_A2_2nd_TOTAL_Sinovac,
-SUM(Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 06_A3_2nd_TOTAL_Sinovac,
-SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 07_EXPANDED_A3_2nd_TOTAL_Sinovac,
-SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 08_PEDIATRIC_A3_2nd_TOTAL_Sinovac,
-SUM(Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 09_A4_2nd_TOTAL_Sinovac,
-SUM(Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 10_A5_2nd_TOTAL_Sinovac,
-SUM(Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 11_ROAP_2nd_TOTAL_Sinovac,
-SUM(Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 12_ROPP_2nd_TOTAL_Sinovac,
+SUM(Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 01_A1_2nd_TOTAL_Sinovac,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 02_A1_8_2nd_TOTAL_Sinovac,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 03_A1_9_2nd_TOTAL_Sinovac,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 04_2nd_ADDITIONAL_A1_TOTAL_Sinovac,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 05_A2_2nd_TOTAL_Sinovac,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 06_A3_2nd_TOTAL_Sinovac,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 07_EXPANDED_A3_2nd_TOTAL_Sinovac,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 08_PEDIATRIC_A3_2nd_TOTAL_Sinovac,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 09_A4_2nd_TOTAL_Sinovac,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 10_A5_2nd_TOTAL_Sinovac,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 11_ROAP_2nd_TOTAL_Sinovac,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose = '02_No') AS 12_ROPP_2nd_TOTAL_Sinovac,
+
+
+SUM(Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 01_A1_3rd_TOTAL_Sinovac,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 02_A1_8_3rd_TOTAL_Sinovac,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 03_A1_9_3rd_TOTAL_Sinovac,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 04_3rd_ADDITIONAL_A1_TOTAL_Sinovac,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 05_A2_3rd_TOTAL_Sinovac,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 06_A3_3rd_TOTAL_Sinovac,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 07_EXPANDED_A3_3rd_TOTAL_Sinovac,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 08_PEDIATRIC_A3_3rd_TOTAL_Sinovac,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 09_A4_3rd_TOTAL_Sinovac,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 10_A5_3rd_TOTAL_Sinovac,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 11_ROAP_3rd_TOTAL_Sinovac,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND 3rdDose = '01_Yes') AS 12_ROPP_3rd_TOTAL_Sinovac,
 
 
 SUM(Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 01_A1_1st_TOTAL_Astra,
@@ -107,32 +121,60 @@ SUM(Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.en
 SUM(Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 12_ROPP_1st_TOTAL_Astra,
 
 
-SUM(Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 01_A1_2nd_TOTAL_Astra,
-SUM(Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 02_A1_8_2nd_TOTAL_Astra,
-SUM(Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 03_A1_9_2nd_TOTAL_Astra,
-SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 04_ADDITIONAL_A1_2nd_TOTAL_Astra,
-SUM(Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 05_A2_2nd_TOTAL_Astra,
-SUM(Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 06_A3_2nd_TOTAL_Astra,
-SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 07_EXPANDED_A3_2nd_TOTAL_Astra,
-SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 08_PEDIATRIC_A3_2nd_TOTAL_Astra,
-SUM(Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 09_A4_2nd_TOTAL_Astra,
-SUM(Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 10_A5_2nd_TOTAL_Astra,
-SUM(Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 11_ROAP_2nd_TOTAL_Astra,
-SUM(Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 12_ROPP_2nd_TOTAL_Astra,
+SUM(Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 01_A1_2nd_TOTAL_Astra,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 02_A1_8_2nd_TOTAL_Astra,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 03_A1_9_2nd_TOTAL_Astra,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 04_ADDITIONAL_A1_2nd_TOTAL_Astra,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 05_A2_2nd_TOTAL_Astra,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 06_A3_2nd_TOTAL_Astra,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 07_EXPANDED_A3_2nd_TOTAL_Astra,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 08_PEDIATRIC_A3_2nd_TOTAL_Astra,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 09_A4_2nd_TOTAL_Astra,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 10_A5_2nd_TOTAL_Astra,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 11_ROAP_2nd_TOTAL_Astra,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose ='02_No') AS 12_ROPP_2nd_TOTAL_Astra,
 
 
-SUM(Category = 'A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 01_A1_1st_TOTAL_Janssen,
-SUM(Category = 'A1.8' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 02_A1_8_1st_TOTAL_Janssen,
-SUM(Category = 'A1.9' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 03_A1_9_1st_TOTAL_Janssen,
-SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 04_ADDITIONAL_A1_TOTAL_Janssen,
-SUM(Category = 'A2' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 05_A2_1st_TOTAL_Janssen,
-SUM(Category = 'A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 06_A3_1st_TOTAL_Janssen,
-SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 07_EXPANDED_A3_1st_TOTAL_Janssen,
-SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 08_PEDIATRIC_A3_1st_TOTAL_Janssen,
-SUM(Category = 'A4' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 09_A4_1st_TOTAL_Janssen,
-SUM(Category = 'A5' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 10_A5_1st_TOTAL_Janssen,
-SUM(Category = 'ROAP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 11_ROAP_1st_TOTAL_Janssen,
-SUM(Category = 'ROPP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 12_ROPP_1st_TOTAL_Janssen,
+SUM(Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 01_A1_3rd_TOTAL_Astra,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 02_A1_8_3rd_TOTAL_Astra,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 03_A1_9_3rd_TOTAL_Astra,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 04_ADDITIONAL_A1_3rd_TOTAL_Astra,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 05_A2_3rd_TOTAL_Astra,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 06_A3_3rd_TOTAL_Astra,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 07_EXPANDED_A3_3rd_TOTAL_Astra,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 08_PEDIATRIC_A3_3rd_TOTAL_Astra,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 09_A4_3rd_TOTAL_Astra,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 10_A5_3rd_TOTAL_Astra,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 11_ROAP_3rd_TOTAL_Astra,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND  3rdDose ='01_Yes') AS 12_ROPP_3rd_TOTAL_Astra,
+
+
+SUM(Category = 'A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 01_A1_1st_TOTAL_Janssen,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 02_A1_8_1st_TOTAL_Janssen,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 03_A1_9_1st_TOTAL_Janssen,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 04_ADDITIONAL_A1_TOTAL_Janssen,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 05_A2_1st_TOTAL_Janssen,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 06_A3_1st_TOTAL_Janssen,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 07_EXPANDED_A3_1st_TOTAL_Janssen,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 08_PEDIATRIC_A3_1st_TOTAL_Janssen,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 09_A4_1st_TOTAL_Janssen,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 10_A5_1st_TOTAL_Janssen,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 11_ROAP_1st_TOTAL_Janssen,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 12_ROPP_1st_TOTAL_Janssen,
+
+
+SUM(Category = 'A1' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 01_A1_3rd_TOTAL_Janssen,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 02_A1_8_3rd_TOTAL_Janssen,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 03_A1_9_3rd_TOTAL_Janssen,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 04_ADDITIONAL_A1_3rd_TOTAL_Janssen,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 05_A2_3rd_TOTAL_Janssen,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 06_A3_3rd_TOTAL_Janssen,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 07_EXPANDED_A3_3rd_TOTAL_Janssen,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 08_PEDIATRIC_A3_3rd_TOTAL_Janssen,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 09_A4_3rd_TOTAL_Janssen,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 10_A5_3rd_TOTAL_Janssen,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 11_ROAP_3rd_TOTAL_Janssen,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Janssen' AND 3rdDose='01_Yes') AS 12_ROPP_3rd_TOTAL_Janssen,
 
 
 SUM(Category = 'A1' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 01_A1_1st_TOTAL_Moderna,
@@ -149,18 +191,32 @@ SUM(Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity
 SUM(Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 12_ROPP_1st_TOTAL_Moderna,
 
 
-SUM(Category = 'A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 01_A1_2nd_TOTAL_Moderna,
-SUM(Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 02_A1_8_2nd_TOTAL_Moderna,
-SUM(Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 03_A1_9_2nd_TOTAL_Moderna,
-SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 04_ADDITIONAL_A1_2nd_TOTAL_Moderna,
-SUM(Category = 'A2' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 05_A2_2nd_TOTAL_Moderna,
-SUM(Category = 'A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 06_A3_2nd_TOTAL_Moderna,
-SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 07_EXPANDED_A3_2nd_TOTAL_Moderna,
-SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 08_PEDIATRIC_A3_2nd_TOTAL_Moderna,
-SUM(Category = 'A4' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 09_A4_2nd_TOTAL_Moderna,
-SUM(Category = 'A5' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 10_A5_2nd_TOTAL_Moderna,
-SUM(Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 11_ROAP_2nd_TOTAL_Moderna,
-SUM(Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 12_ROPP_2nd_TOTAL_Moderna,
+SUM(Category = 'A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 01_A1_2nd_TOTAL_Moderna,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 02_A1_8_2nd_TOTAL_Moderna,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 03_A1_9_2nd_TOTAL_Moderna,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 04_ADDITIONAL_A1_2nd_TOTAL_Moderna,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 05_A2_2nd_TOTAL_Moderna,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 06_A3_2nd_TOTAL_Moderna,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 07_EXPANDED_A3_2nd_TOTAL_Moderna,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 08_PEDIATRIC_A3_2nd_TOTAL_Moderna,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 09_A4_2nd_TOTAL_Moderna,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 10_A5_2nd_TOTAL_Moderna,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 11_ROAP_2nd_TOTAL_Moderna,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose ='02_No') AS 12_ROPP_2nd_TOTAL_Moderna,
+
+
+SUM(Category = 'A1' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 01_A1_3rd_TOTAL_Moderna,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 02_A1_8_3rd_TOTAL_Moderna,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 03_A1_9_3rd_TOTAL_Moderna,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 04_ADDITIONAL_A1_3rd_TOTAL_Moderna,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 05_A2_3rd_TOTAL_Moderna,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 06_A3_3rd_TOTAL_Moderna,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 07_EXPANDED_A3_3rd_TOTAL_Moderna,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 08_PEDIATRIC_A3_3rd_TOTAL_Moderna,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 09_A4_3rd_TOTAL_Moderna,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 10_A5_3rd_TOTAL_Moderna,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 11_ROAP_3rd_TOTAL_Moderna,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND  3rdDose ='01_Yes') AS 12_ROPP_3rd_TOTAL_Moderna,
 
 
 SUM(Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 01_A1_1st_TOTAL_Pfizer,
@@ -177,305 +233,177 @@ SUM(Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_
 SUM(Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END) AS 12_ROPP_1st_TOTAL_Pfizer,
 
 
-SUM(Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 01_A1_2nd_TOTAL_Pfizer,
-SUM(Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 02_A1_8_2nd_TOTAL_Pfizer,
-SUM(Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 03_A1_9_2nd_TOTAL_Pfizer,
-SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 04_ADDITIONAL_A1_2nd_TOTAL_Pfizer,
-SUM(Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 05_A2_2nd_TOTAL_Pfizer,
-SUM(Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 06_A3_2nd_TOTAL_Pfizer,
-SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 07_EXPANDED_A3_2nd_TOTAL_Pfizer,
-SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 08_PEDIATRIC_A3_2nd_TOTAL_Pfizer,
-SUM(Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 09_A4_2nd_TOTAL_Pfizer,
-SUM(Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 10_A5_2nd_TOTAL_Pfizer,
-SUM(Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 11_ROAP_2nd_TOTAL_Pfizer,
-SUM(Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes') AS 12_ROPP_2nd_TOTAL_Pfizer,
+SUM(Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 01_A1_2nd_TOTAL_Pfizer,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 02_A1_8_2nd_TOTAL_Pfizer,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 03_A1_9_2nd_TOTAL_Pfizer,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 04_ADDITIONAL_A1_2nd_TOTAL_Pfizer,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 05_A2_2nd_TOTAL_Pfizer,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 06_A3_2nd_TOTAL_Pfizer,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 07_EXPANDED_A3_2nd_TOTAL_Pfizer,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 08_PEDIATRIC_A3_2nd_TOTAL_Pfizer,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 09_A4_2nd_TOTAL_Pfizer,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 10_A5_2nd_TOTAL_Pfizer,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 11_ROAP_2nd_TOTAL_Pfizer,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' and 3rdDose='02_No') AS 12_ROPP_2nd_TOTAL_Pfizer,
 
 
+SUM(Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 01_A1_3rd_TOTAL_Pfizer,
+SUM(Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 02_A1_8_3rd_TOTAL_Pfizer,
+SUM(Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 03_A1_9_3rd_TOTAL_Pfizer,
+SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 04_ADDITIONAL_A1_3rd_TOTAL_Pfizer,
+SUM(Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 05_A2_3rd_TOTAL_Pfizer,
+SUM(Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 06_A3_3rd_TOTAL_Pfizer,
+SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 07_EXPANDED_A3_3rd_TOTAL_Pfizer,
+SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 08_PEDIATRIC_A3_3rd_TOTAL_Pfizer,
+SUM(Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 09_A4_3rd_TOTAL_Pfizer,
+SUM(Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 10_A5_3rd_TOTAL_Pfizer,
+SUM(Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 11_ROAP_3rd_TOTAL_Pfizer,
+SUM(Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND 3rdDose='01_Yes') AS 12_ROPP_3rd_TOTAL_Pfizer,
 
 
 (SELECT SUM(Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A1_TOTAL,
 
 (SELECT SUM(Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.8' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A1.8' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A2_TOTAL,
 
 (SELECT SUM(Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.9' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A1.9' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A3_TOTAL,
 
 (SELECT SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'Additional A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A4_TOTAL,
 
 (SELECT SUM(Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A2' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A2' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A2' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A2' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A2' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A5_TOTAL,
 
 (SELECT SUM(Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A3' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A6_TOTAL,
 
 (SELECT SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'Expanded A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A7_TOTAL,
 
 (SELECT SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A8_TOTAL,
 
 (SELECT SUM(Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A4' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A4' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A4' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A4' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A4' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A9_TOTAL,
 
 (SELECT SUM(Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A5' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'A5' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A5' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A5' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A5' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A10_TOTAL,
 
 (SELECT SUM(Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROAP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'ROAP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
 AS A11_TOTAL,
 
 (SELECT SUM(Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROPP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
+OR Category = 'ROPP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 OR Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
+OR Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes' AND 3rdDose = '02_No'
 ))
-AS A12_TOTAL,
-
-((SELECT SUM(Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-))/(SELECT SUM(Category = 'A1') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A1_PERCENTAGE,
-
-
-
-
-((SELECT SUM(Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A1.8' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.8' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.8' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.8' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.8' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'A1.8') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A2_PERCENTAGE,
-
-((SELECT SUM(Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A1.9' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.9' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.9' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.9' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A1.9' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'A1.9') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A3_PERCENTAGE,
-
-((SELECT SUM(Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Additional A1' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'Additional A1') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A4_PERCENTAGE,
-
-((SELECT SUM(Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A2' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A2' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A2' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A2' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A2' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A2' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'A2') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A5_PERCENTAGE,
-
-((SELECT SUM(Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A3' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'A3') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A6_PERCENTAGE,
-
-((SELECT SUM(Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Expanded A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'Expanded A3') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A7_PERCENTAGE,
-
-((SELECT SUM(Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'Pediatric A3' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'Pediatric A3') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A8_PERCENTAGE,
-
-((SELECT SUM(Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A4' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A4' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A4' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A4' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A4' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A4' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'A4') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A9_PERCENTAGE,
-
-((SELECT SUM(Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'A5' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A5' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A5' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A5' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A5' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'A5' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'A5') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A10_PERCENTAGE,
-
-((SELECT SUM(Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'ROAP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROAP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROAP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROAP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROAP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'ROAP') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A11_PERCENTAGE,
-
-((SELECT SUM(Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END 
-OR Category = 'ROPP' AND VaccineManufacturer = 'Sinovac' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROPP' AND VaccineManufacturer = 'Astrazeneca' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROPP' AND VaccineManufacturer = 'Janssen' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROPP' AND VaccineManufacturer = 'Moderna' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-OR Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND CASE WHEN a.entity_no NOT IN(SELECT entity_no FROM tbl_assessment WHERE 1stDose = '01_Yes' AND 2ndDose = '01_Yes') THEN 1 ELSE 0 END
-OR Category = 'ROPP' AND VaccineManufacturer = 'Pfizer' AND 1stDose ='01_Yes' AND 2ndDose = '01_Yes'
-)) / (SELECT SUM(Category = 'ROPP') FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."' AND v.Barangay = '". $barangay ."' and v.Consent = '01_Yes')) * 100 AS A12_PERCENTAGE
-
-
-
-
-
+AS A12_TOTAL
 
 FROM tbl_assessment a INNER JOIN tbl_vaccine v ON v.entity_no = a.entity_no WHERE v.Barangay = '". $barangay ."' and v.Consent = '01_Yes' and (a.status = 'VACCINATED') AND a.DateVaccination  between '". $date_from ."' and '". $date_to ."';";
 

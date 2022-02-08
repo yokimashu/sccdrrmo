@@ -243,9 +243,9 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no inne
 				<textFieldExpression><![CDATA[$F{civilstatus}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
-				<reportElement stretchType="RelativeToBandHeight" x="37" y="172" width="194" height="30" forecolor="#FFFFFF" uuid="401bc749-b409-4db3-bf93-28237631b092"/>
+				<reportElement stretchType="RelativeToBandHeight" x="37" y="174" width="194" height="30" forecolor="#FFFFFF" uuid="401bc749-b409-4db3-bf93-28237631b092"/>
 				<textElement textAlignment="Left">
-					<font size="10" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+$F{firstname}+" "+$F{middlename}+" "+$F{lastname}+" "+$F{suffix}+" "]]></textFieldExpression>
 			</textField>

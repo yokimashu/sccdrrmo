@@ -1,13 +1,13 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
-include('update_vas.php');
-include('update_void_vaccine.php');
+// include('sql_queries.php');
+// include('update_vas.php');
+// include('update_void_vaccine.php');
 
 
 
-// session_start();
+session_start();
 
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {

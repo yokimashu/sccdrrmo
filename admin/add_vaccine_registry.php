@@ -524,11 +524,12 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                                         </div><br>
 
                                                         <div class="row" id="guardian" hidden>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-5">
                                                                 <label>Guardian Name: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="text" class="form-control guardian_name" id="guardian_name" name="guardian_name" placeholder="Guardian Name">
+                                                                <span id="required" style="font-style:italic; font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp; Lastname, Firstname, Middlename</span>
                                                             </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-5">
                                                                 <label>Parent/Guardian's Relationship: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                 <input type="text" class="form-control guardian_relation" id="guardian_relation" name="guardian_relation" placeholder="Parent/Guardian Relationhip">
                                                             </div>
@@ -1528,7 +1529,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
             var option = $('#category').val();
 
             //if Health_Care_Worker is Selected
-            if (option == "01_A1: Health Care Workers") {
+            if (option == "A1") {
                 $('#healthworker').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
@@ -1536,29 +1537,45 @@ $title = 'VAMOS | COVID-19 Patient Form';
             }
 
             //if 05_A5: Poor Population is Selected
-            else if (option == "05_A5: Poor Population") {
+            else if (option == "A5") {
                 $('#healthworker').prop("hidden", true);
                 $('#indigent1').prop("hidden", false);
                 $('#frontline_subprio').prop("hidden", true);
                 $('#guardian').prop("hidden", true);
             }
             //if Senior_Citizen is Selected
-            else if (option == "02_A2: Senior Citizens") {
+            else if (option == "A2") {
                 $('#indigent1').prop("hidden", false);
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
                 $('#guardian').prop("hidden", true);
             }
-            //if PEDIATRIC A3 with comorbidity
-            else if (option == "Pediatric A3") {
+            //if PEDIATRIC A3 (12-17 years old) with comorbidity
+            else if (option == "Pediatric A3 (12-17 years old)") {
                 $('#guardian').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
 
             }
-            //if ROPP
-            else if (option == "ROPP") {
+            //if Pediatric A3 (5-11 years old) with comorbidity
+            else if (option == "Pediatric A3 (5-11 years old)") {
+                $('#guardian').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+
+            }
+            //if ROPP (12-17 years old)
+            else if (option == "ROPP (12-17 years old)") {
+                $('#guardian').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+
+            }
+            //if ROPP (5-11 years old)
+            else if (option == "ROPP (5-11 years old)") {
                 $('#guardian').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
@@ -1566,7 +1583,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
             }
             //if 04_A4: Frontline Personnel in Essential Sector is Selected
-            else if (option == "04_A4: Frontline Personnel in Essential Sector") {
+            else if (option == "A4") {
                 $('#frontline_subprio').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
@@ -1724,27 +1741,27 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Please select civil status!");
                 $('#civil_status').focus();
                 return false;
-            } else if ((category == 'Pediatric A3 with comorbidity') && (guardiancount == 0)) {
+            } else if ((category == 'Pediatric A3 (12-17 years old with co-morbidity)') && (guardiancount == 0)) {
                 alert("Please enter guardian name!");
                 $('#guardian_name').focus();
                 return false;
-            } else if ((category == 'Pediatric A3 with comorbidity') && (relatecount == 0)) {
+            } else if ((category == 'Pediatric A3 (5 - 11 years old with co-morbidity)') && (relatecount == 0)) {
                 alert("Please enter parent/guardian relationship!");
                 $('#guardian_relation').focus();
                 return false;
-            }  else if ((category == 'Rest of Pediatric Population') && (guardiancount == 0)) {
+            } else if ((category == 'Rest of Pediatric Population (12-17 years old)') && (guardiancount == 0)) {
                 alert("Please enter guardian name!");
                 $('#guardian_name').focus();
                 return false;
-            } else if ((category == 'Rest of Pediatric Population') && (relatecount == 0)) {
+            } else if ((category == 'Rest of Pediatric Population (5-11 years old)') && (relatecount == 0)) {
                 alert("Please enter parent/guardian relationship!");
                 $('#guardian_relation').focus();
                 return false;
-            }else if ((employment == 'Government Employed') && (department == 'Select Department')) {
+            } else if ((employment == 'Government Employed') && (department == 'Select Department')) {
                 alert("Please department!");
                 $('#department').focus();
                 return false;
-            } else if ((category == 'Health Care Worker') && (subprio == 'Select Sub Priority')) {
+            } else if ((category == 'A1:Workers in Frontline Health Services') && (subprio == 'Select Sub Priority')) {
                 alert("Please select sub priority!");
                 $('#subprio').focus();
                 return false;
@@ -1756,11 +1773,11 @@ $title = 'VAMOS | COVID-19 Patient Form';
                 alert("Please select category!");
                 $('#category').focus();
                 return false;
-            } else if ((category == 'Health Care Worker') && (healthworker == 'Select Health Worker')) {
+            } else if ((category == 'A1:Workers in Frontline Health Services') && (healthworker == 'Select Health Worker')) {
                 alert("Please select type of health worker!");
                 $('#health_worker').focus();
                 return false;
-            } else if ((category == 'Senior Citizen') && (indigent == 'Select status')) {
+            } else if ((category == 'A2:All Senior Citizens') && (indigent == 'Select status')) {
                 alert("Please select if indigent or not!");
                 $('#indigent').focus();
                 return false;

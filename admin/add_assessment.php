@@ -153,17 +153,17 @@ if (isset($_GET['id'])) {
         $bakuna_center_no       = $result['bakuna_center_no'];
     }
 
-    //     if (isset($_POST['entity_no'])) {
+//     if (isset($_POST['entity_no'])) {
 
-    //         $entity_no = $_GET['entity_no'];
-    //         $get_control_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no inner join tbl_tnxhistory WHERE a.objid = :id";
-    //         $vaccinecontrol_data = $con->prepare($get_control_sql);
-    //         $vaccinecontrol_data->execute([':id' => $entity_no]);
-    //         while ($result = $vaccinecontrol_data->fetch(PDO::FETCH_ASSOC)) {
+//         $entity_no = $_GET['entity_no'];
+//         $get_control_sql = "SELECT * FROM tbl_assessment a inner join tbl_vaccine v on v.entity_no = a.entity_no inner join tbl_tnxhistory WHERE a.objid = :id";
+//         $vaccinecontrol_data = $con->prepare($get_control_sql);
+//         $vaccinecontrol_data->execute([':id' => $entity_no]);
+//         while ($result = $vaccinecontrol_data->fetch(PDO::FETCH_ASSOC)) {
 
-    //         $vaccine_card         = $result['actions'];
-    //     }
-    // }   
+//         $vaccine_card         = $result['actions'];
+//     }
+// }   
 
     $bk_center = "SELECT bc_code,bc_name from tbl_bakuna_center";
     $bk_stmt = $con->prepare($bk_center);
@@ -530,34 +530,34 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                         <hr> -->
 
+      
+                                            <?php if ($vaccine_card == '1') {
+                                                $disablecard = "disabled";
+                                            } else {
 
-                                        <?php if ($vaccine_card == '1') {
-                                            $disablecard = "disabled";
-                                        } else {
-
-                                            $disablecard = "enabled";
-                                        } ?>
-                                        <!-- <button type="submit" class="btn btn-block  btn-primary" id="vaccinecard" name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_photo?entity_no=<?php echo $get_entity_no; ?>#toolbar=0" style="color: white;"> PREVIEW VaxCard
+                                                $disablecard = "enabled";
+                                            } ?>
+                                            <!-- <button type="submit" class="btn btn-block  btn-primary" id="vaccinecard" name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_photo?entity_no=<?php echo $get_entity_no; ?>#toolbar=0" style="color: white;"> PREVIEW VaxCard
                                             </button> -->
 
-                                        <a href="../plugins/jasperreport/vaccination_card_preview?entity_no=<?php echo $get_entity_no; ?>#toolbar=0" target="blank">
-                                            <input type="button" <?php echo $btnPrint; ?> name="print" class="btn btn-block  btn-primary" value="PREVIEW VaxCard">
-                                        </a>
+                                            <a href="../plugins/jasperreport/vaccination_card_preview?entity_no=<?php echo $get_entity_no;?>#toolbar=0" target="blank">
+                  <input type="button" <?php echo $btnPrint; ?> name="print" class="btn btn-block  btn-primary" value="PREVIEW VaxCard">       
+                </a>
+
+                
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
+                                            <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
+                                            <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
 
 
-                                        <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
-                                        <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
-                                        <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
-                                        <input hidden type="text" class="form-control" name="username" id="username" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+                                            <p class="text-muted">
 
-
-                                        <p class="text-muted">
-
-                                            <hr>
+                                                <hr>
 
 
 
-
+                                       
 
 
                                         <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_resbakuna_card.php">
@@ -568,10 +568,10 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                 $disablecard = "enabled";
                                             } ?>
-                                            <button type="submit" class="btn btn-block  btn-primary" id="vaccinecard" <?php echo $disablecard; ?> name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " style="color: white;"> WITH PHOTO
+                                            <button type="submit" class="btn btn-block  btn-primary" id="vaccinecard" <?php echo $disablecard;?> name="update_resbakuna_card" href="../plugins/jasperreport/vaccination_card_3rd.php?entity_no=<?php echo $get_entity_no; ?> " style="color: white;"> WITH PHOTO
                                             </button>
                                             <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $vaccine_card; ?>">
-                                            <input hidden type="text" class="form-control" style="text-align:center;" name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
+                                            <input hidden type="text" class="form-control" style="text-align:center;"  name="card" id="card" placeholder="objid" value="<?php echo $get_objid; ?>">
                                             <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no" id="entity_no" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
                                             <input hidden type="text" class="form-control" style="text-align:center;" name="entity_no1" id="entity_no1" placeholder="entity_no" value="<?php echo $get_entity_no; ?>">
                                             <input hidden type="text" readonly class="form-control pull-right" style="width: 90%;" id="datepicker" name="tnx_date" placeholder="Date Process" value="<?php echo date('Y-m-d h:i:sa'); ?>">
@@ -596,7 +596,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
 
                                                 $disablecard2 = "enabled";
                                             } ?>
-                                            <button type="submit" class="btn btn-block btn-success" id="vaccinecard1" <?php echo $disablecard; ?> name="update_resbakuna_card1" href="../plugins/jasperreport/vaccination_card_photo.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card" style="color: white;">NO PHOTO
+                                            <button type="submit" class="btn btn-block btn-success" id="vaccinecard1" <?php echo $disablecard;?> name="update_resbakuna_card1" href="../plugins/jasperreport/vaccination_card_photo.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="New Vaccination Card" style="color: white;">NO PHOTO
                                             </button>
 
 
@@ -626,7 +626,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             } ?>
 
 
-                                            <button type="submit" type="button" class="btn btn-block  btn-warning" id="vaccinecard2" <?php echo $disablecard; ?> name="update_resbakuna_card2" href="../plugins/jasperreport/vaccination_card_longtext.php?entity_no=<?php echo $get_entity_no; ?>" target="_blank" title="New Vaccination Card" style="color: white;">LONG NAME
+                                            <button type="submit" type="button" class="btn btn-block  btn-warning" id="vaccinecard2" <?php echo $disablecard;?> name="update_resbakuna_card2" href="../plugins/jasperreport/vaccination_card_longtext.php?entity_no=<?php echo $get_entity_no;?>" target="_blank"  title="New Vaccination Card" style="color: white;">LONG NAME
                                             </button>
 
 
@@ -656,7 +656,7 @@ $title = 'VAMOS | COVID-19 Patient Form';
                                             } ?>
 
 
-                                            <button type="submit" type="button" class="btn btn-block btn-primary" id="vaccinecard3" <?php echo $disablecard; ?> name="update_resbakuna_card3" href="../plugins/jasperreport/vaccination_card_3rd_janssen.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="JANSSEN Vaccination Card" style="color: white;">JANSSEN
+                                            <button type="submit" type="button" class="btn btn-block btn-primary" id="vaccinecard3" <?php echo $disablecard;?> name="update_resbakuna_card3" href="../plugins/jasperreport/vaccination_card_3rd_janssen.php?entity_no=<?php echo $get_entity_no; ?> " target="_blank" title="JANSSEN Vaccination Card" style="color: white;">JANSSEN
                                             </button>
 
 

@@ -71,7 +71,7 @@ if (!empty($requestData['search']['value'])) {   // if there is a search paramet
 
 
 	// $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-	$sql .= "AND t.status !='VOID' ORDER BY t.date_reg DESC, t.time_reg DESC LIMIT 30";
+	$sql .= "AND t.status !='VOID' ORDER BY t.date_reg DESC";
 	$get_user_data = $con->prepare($sql);
 	$get_user_data->execute();
 	// $totalData = $get_user_data->fetch(PDOStatement::rowCount);
@@ -107,7 +107,7 @@ $data = array();
 while ($row = $get_user_data->fetch(PDO::FETCH_ASSOC)) {
 	$nestedData = array();
 	$nestedData[] = $row["objid"];
-	// $nestedData[] = $row["entity_no"];
+	$nestedData[] = $row["entity_no"];
 	$nestedData[] = $row["date_reg"];
 	$nestedData[] = $row["Category"];
 	$nestedData[] = strtoupper($row["Firstname"] . ' ' . $row["Middlename"] . ' ' . $row["Lastname"]);

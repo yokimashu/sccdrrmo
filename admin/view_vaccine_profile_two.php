@@ -390,7 +390,7 @@ if (isset($_GET['id'])) {
             <div class="content-header"></div>
 
 
-          
+
             <section class="content">
 
                 <!-- <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="insert_vaccine.php"> -->
@@ -409,9 +409,9 @@ if (isset($_GET['id'])) {
                             <div class="card card-success card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                    <div class="col-md-20">
-                                        <img class="profile-user-img" src="../flutter/images/<?php echo $get_photo ?>" id="tphoto" style="height: 250px; width:250px;margin:auto;">
-                                    </div>
+                                        <div class="col-md-20">
+                                            <img class="profile-user-img" src="../flutter/images/<?php echo $get_photo ?>" id="tphoto" style="height: 250px; width:250px;margin:auto;">
+                                        </div>
                                     </div>
                                     <h3 class="profile-username text-center"><?php echo $get_firstname . ' ' . $get_middlename[0] . '.' . ' ' . $get_lastname; ?></h3>
 
@@ -450,7 +450,7 @@ if (isset($_GET['id'])) {
                                     <p class="text-muted">
                                         <?php echo $get_status; ?></p>
                                     </p>
-                             
+
 
                                 </div>
 
@@ -474,7 +474,7 @@ if (isset($_GET['id'])) {
 
                                     <p class="text-muted">
 
-                                   
+
                                         <strong><i class="fa fa-pencil mr-1"></i> <a href="../plugins/jasperreport/vaccineform_pediatric.php?entity_no=<?php echo $entity_no; ?> " target="_blank" title="PRINT VACCINE FORM"> Print Vaccine Form</a> </strong>
 
                                     <p class="text-muted">
@@ -537,9 +537,9 @@ if (isset($_GET['id'])) {
                                     <div class="card-body">
                                         <div class="box-body">
                                             <form role="form" enctype="multipart/form-data" method="post" id="input-form" action="update_vaccine.php">
-                                    
-                                            <input hidden type="text" class="form-control" name="encoder_fullname1" id="encoder_fullname1" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
-                                            <input hidden type="text" class="form-control" name="entity_no" id="entity_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $get_entity_no; ?>">
+
+                                                <input hidden type="text" class="form-control" name="encoder_fullname1" id="encoder_fullname1" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $tracer_fullname; ?>">
+                                                <input hidden type="text" class="form-control" name="entity_no" id="entity_no" style=" text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();" placeholder="username" value="<?php echo $get_entity_no; ?>">
 
 
                                                 <div class="row" hidden>
@@ -635,14 +635,15 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                         </div><br>
 
-                                                        <?php if ($get_category == 'Pediatric A3' || $get_category == 'ROPP') { ?>
+                                                        <?php if ($get_category == 'Pediatric A3 (12-17 years old)' || $get_category == 'Pediatric A3 (5-11 years old)' || $get_category == 'ROPP (12-17 years old)'  || $get_category == 'ROPP (5-11 years old)') { ?>
 
                                                             <div class="row" id="guardian">
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-5">
                                                                     <label>Guardian Name: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                     <input type="text" class="form-control guardian_name" id="guardian_name" name="guardian_name" placeholder="Guardian Name" value=<?php echo $guardianname; ?>>
+                                                                    <span id="required" style="font-style:italic; font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp; Lastname, Firstname, Middlename</span>
                                                                 </div>
-                                                                <div class="col-sm-4">
+                                                                <div class="col-sm-5">
                                                                     <label>Parent/Guardian's Relationship: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                     <input type="text" class="form-control guardian_relation" id="guardian_relation" name="guardian_relation" placeholder="Parent/Guardian Relationhip" value=<?php echo $guardianrelation; ?>>
                                                                 </div>
@@ -651,11 +652,12 @@ if (isset($_GET['id'])) {
 
                                                         <?php } else { ?>
                                                             <div class="row" id="guardian" hidden>
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-5">
                                                                     <label>Guardian Name: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                     <input type="text" class="form-control guardian_name" id="guardian_name" name="guardian_name" placeholder="Guardian Name" value=<?php echo $guardianname; ?>>
+                                                                    <span id="required" style="font-style:italic; font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp; Lastname, Firstname, Middlename</span>
                                                                 </div>
-                                                                <div class="col-sm-4">
+                                                                <div class="col-sm-5">
                                                                     <label>Parent/Guardian's Relationship: &nbsp;&nbsp; <span id="required">*</span></label>
                                                                     <input type="text" class="form-control guardian_relation" id="guardian_relation" name="guardian_relation" placeholder="Parent/Guardian Relationhip" value=<?php echo $guardianrelation; ?>>
                                                                 </div>
@@ -2007,32 +2009,53 @@ if (isset($_GET['id'])) {
             var option = $('#category').val();
 
             //if Health_Care_Worker is Selected
-            if (option == "01_A1: Health Care Workers") {
+            if (option == "A1") {
                 $('#healthworker').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
             }
+
             //if 05_A5: Poor Population is Selected
-            else if (option == "05_A5: Poor Population") {
+            else if (option == "A5") {
                 $('#healthworker').prop("hidden", true);
                 $('#indigent1').prop("hidden", false);
                 $('#frontline_subprio').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
             }
             //if Senior_Citizen is Selected
-            else if (option == "02_A2: Senior Citizens") {
+            else if (option == "A2") {
                 $('#indigent1').prop("hidden", false);
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
-            } //if PEDIATRIC A3 with comorbidity
-            else if (option == "Pediatric A3") {
+                $('#guardian').prop("hidden", true);
+            }
+            //if PEDIATRIC A3 (12-17 years old) with comorbidity
+            else if (option == "Pediatric A3 (12-17 years old)") {
                 $('#guardian').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
 
             }
-            //if ROPP
-            else if (option == "ROPP") {
+            //if Pediatric A3 (5-11 years old) with comorbidity
+            else if (option == "Pediatric A3 (5-11 years old)") {
+                $('#guardian').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+
+            }
+            //if ROPP (12-17 years old)
+            else if (option == "ROPP (12-17 years old)") {
+                $('#guardian').prop("hidden", false);
+                $('#indigent1').prop("hidden", true);
+                $('#frontline_subprio').prop("hidden", true);
+                $('#healthworker').prop("hidden", true);
+
+            }
+            //if ROPP (5-11 years old)
+            else if (option == "ROPP (5-11 years old)") {
                 $('#guardian').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#frontline_subprio').prop("hidden", true);
@@ -2040,12 +2063,14 @@ if (isset($_GET['id'])) {
 
             }
             //if 04_A4: Frontline Personnel in Essential Sector is Selected
-            else if (option == "04_A4: Frontline Personnel in Essential Sector") {
+            else if (option == "A4") {
                 $('#frontline_subprio').prop("hidden", false);
                 $('#indigent1').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
             } else {
                 $('#frontline_subprio').prop("hidden", true);
+                $('#guardian').prop("hidden", true);
                 $('#healthworker').prop("hidden", true);
                 $('#indigent1').prop("hidden", true);
             }

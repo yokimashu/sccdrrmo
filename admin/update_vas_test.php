@@ -8,7 +8,7 @@ include('../config/db_config.php');
 date_default_timezone_set('Asia/Manila');
 
 
-$activity = "FORWARD TO VAS";
+
 
 
 if (isset($_POST['update_vas_test'])) {
@@ -56,7 +56,7 @@ if (isset($_POST['update_vas_test'])) {
 
     ]);
 
-    // include('update_logs.php');
+
 
 
     

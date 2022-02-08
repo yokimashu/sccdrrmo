@@ -445,11 +445,11 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no inne
 				</jr:QRCode>
 			</componentElement>
 			<image scaleImage="RetainShape" rotation="None" hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement x="5" y="20" width="101" height="117" uuid="aa4e24d0-0c1e-4aca-8b55-e94d42ccb4d0"/>
+				<reportElement x="17" y="48" width="75" height="83" uuid="aa4e24d0-0c1e-4aca-8b55-e94d42ccb4d0"/>
 				<box>
 					<pen lineColor="#CFCFCF"/>
 				</box>
-				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/images/"+$F{photo}+""]]></imageExpression>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/avatar1.jpg"]]></imageExpression>
 			</image>
 			<textField textAdjust="StretchHeight">
 				<reportElement stretchType="RelativeToBandHeight" x="112" y="150" width="74" height="23" isPrintWhenDetailOverflows="true" forecolor="#014B05" uuid="c4570e3b-62b5-4710-986f-3580c0465cea">
@@ -460,13 +460,6 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no inne
 				</textElement>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="-3" y="0" width="117" height="145" uuid="4588bab4-427a-48a9-897e-79894b9501fc">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/frame2.png"]]></imageExpression>
-			</image>
 			<textField>
 				<reportElement x="165" y="188" width="61" height="16" forecolor="#FFFFFF" uuid="48462d4f-87ad-4b5f-852b-ae4ade7bc4b2"/>
 				<textElement textAlignment="Left">
@@ -482,25 +475,29 @@ FROM tbl_vaccine v inner join tbl_individual t on t.entity_no = v.entity_no inne
 				<text><![CDATA[Negros Occidental]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="21" y="371" width="61" height="12" uuid="ab7a1927-c6bc-4d75-9b99-be092e94cc2a"/>
-				<textElement textAlignment="Left" rotation="UpsideDown">
+				<reportElement x="10" y="372" width="72" height="10" uuid="65aa8938-00ce-4ef4-9f39-ba95d89dfdb1"/>
+				<textElement rotation="UpsideDown">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{entity_no}]]></textFieldExpression>
 			</textField>
 			<image scaleImage="RetainShape" rotation="UpsideDown" hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement x="30" y="249" width="48" height="21" uuid="a4f65e54-72a2-40b6-aa28-ed3c6f7b76a3"/>
+				<reportElement x="30" y="249" width="48" height="21" uuid="b63d7304-64b7-4325-9ab1-1474b1b3f7de"/>
 				<box>
 					<pen lineColor="#CFCFCF"/>
 				</box>
 				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/signature/"+$F{2nd_dose_signature}+""]]></imageExpression>
 			</image>
 			<image scaleImage="RetainShape" rotation="UpsideDown" hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement x="30" y="275" width="48" height="21" uuid="3c04ba7c-3bd5-4caf-8e31-b1f82c1f4d91"/>
+				<reportElement x="30" y="275" width="48" height="21" uuid="b10395f1-d109-4e9d-8103-4a728a45ab37"/>
 				<box>
 					<pen lineColor="#CFCFCF"/>
 				</box>
 				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/flutter/signature/"+$F{1st_dose_signature}+""]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="-16" y="81" width="320" height="249" uuid="d75439fc-0416-4a7e-9765-58464be433c6"/>
+				<imageExpression><![CDATA["/opt/bitnami/apache2/htdocs/sccdrrmo/plugins/jasperreport/PREVIEW.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>

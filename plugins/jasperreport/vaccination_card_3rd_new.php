@@ -45,7 +45,7 @@ $PHPJasperXML->sql = "SELECT v.entity_no,age, SUBSTRING(civilstatus, 4) AS civil
 (SELECT BatchNumber FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '01_Yes') AND entity_no = '". $entity_no ."') AS BatchNumber2,
 (SELECT LotNumber FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '01_Yes') AND entity_no = '". $entity_no ."') AS LotNumber2,
 (SELECT VaccinatorName FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '01_Yes') AND entity_no = '". $entity_no ."') AS VaccinatorName2,
-(SELECT DISTINCT(bakuna_center) FROM tbl_assessment WHERE entity_no = '". $entity_no ."') AS bakunacenter,
+(SELECT IFNULL((SELECT bakuna_center FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '01_Yes') AND entity_no = '". $entity_no ."'),'')) AS bakunacenter,
 (SELECT DISTINCT(bakuna_center_no) FROM tbl_assessment WHERE entity_no = '". $entity_no ."') AS bakunacenter_no,
 (SELECT IFNULL((SELECT DISTINCT(signature) FROM tbl_vaccinators WHERE CONCAT(l_name, ', ', f_name, ' ', m_name) = (SELECT VaccinatorName FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '02_No') AND entity_no = '". $entity_no ."')),'blank.png')) AS 1st_dose_signature,
 (SELECT DISTINCT(signature) FROM tbl_vaccinators WHERE CONCAT(l_name, ', ', f_name, ' ', m_name) = (SELECT VaccinatorName FROM tbl_assessment WHERE (1stDose = '01_Yes' AND 2nddose = '01_Yes') AND entity_no = '". $entity_no ."')) AS 2nd_dose_signature

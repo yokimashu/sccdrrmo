@@ -112,12 +112,12 @@ $title = 'VAMOS | Dashboard';
                 VACCINE DASHBOARD
               </h4>
             </div>
-            <div class="card-body">
+            <!-- <div class="card-body">
 
             <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzY1YzE2YWEtMDVkNi00ZWRiLWIyNmYtNDExZTI0NjY1NjU3IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection3161605be07cb4a88351" width="100%" height="800" style="border:1px solid black;" title="W3Schools Free Online Web Tutorials">
 </iframe>
 
-</div>
+</div> -->
 </div>
 </div>
 

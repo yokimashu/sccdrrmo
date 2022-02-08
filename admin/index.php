@@ -10,6 +10,13 @@ include('../config/db_config.php');
 // }
 
 //select all pum
+
+
+
+
+
+
+
 $get_all_individual_sql = "SELECT * FROM tbl_individual";
 $get_all_individual_data = $con->prepare($get_all_individual_sql);
 $get_all_individual_data->execute();
@@ -62,7 +69,13 @@ $title = 'VAMOS | Dashboard';
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <?php include('heading.php'); ?>
 
   <style>
@@ -353,6 +366,92 @@ $title = 'VAMOS | Dashboard';
 
             </div>
           </div>
+
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>
+                PIECHART
+              </h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card">
+                <div class="card-body">
+                  <div class="box box-primary ">
+                    <div class="box-body">
+                      <div id="piechart" style="padding-left:10px; width: 200; height: 700px"> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <!-- DONUT CHART -->
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">Donut Chart</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="card-body">
+
+             
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                  google.charts.load("current", {
+                    packages: ["corechart"]
+                  });
+                  google.charts.setOnLoadCallback(drawChart);
+
+                  function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                      ['ScannerName', 'Hours per Day'],
+                      <?php
+                      $sql = "SELECT
+                      tbl_juridical.entity_no,
+                      tbl_juridical.contact_name,
+                      COUNT(tbl_tracehistory.`objid`) AS daily_count
+                      FROM
+                      tbl_juridical 
+                      JOIN tbl_tracehistory ON tbl_juridical.entity_no = tbl_tracehistory.`entity_no` WHERE DATE=CURDATE() AND scanner = 1
+                      GROUP BY tbl_juridical.entity_no,tbl_juridical.contact_name ;
+                      ";
+
+                      $result = $con->prepare($sql);
+                      $result->execute();
+                      while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                        $type =  $row['entity_no'];
+                        $count = $row['contact_name'];
+                        $total = $row['daily_count'];
+                        echo "['" . $count . "'," . $total . "],";
+                      }
+                      ?>
+                    ]);
+
+                    var options = {
+                      title: 'Scanner Daily Activity',
+                      pieHole: 0.5,
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                    chart.draw(data, options);
+                  }
+                </script>
+
+                <div id="donutchart" style="padding-left:10px; width: 300; height: 800px"></div>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
         </div>
 
       </section>
@@ -365,9 +464,9 @@ $title = 'VAMOS | Dashboard';
 
 
     </div>
-    
+
     <?php include('footer.php'); ?>
-    <?php include('bakuna_center_modal.php');?>
+    <?php include('bakuna_center_modal.php'); ?>
   </div>
 
 
@@ -396,8 +495,7 @@ $title = 'VAMOS | Dashboard';
   <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-
-$('#myModal').modal('toggle');
+    $('#myModal').modal('toggle');
     load_update();
 
     function load_update() {
@@ -425,7 +523,7 @@ $('#myModal').modal('toggle');
     })
 
     $(document).ready(function() {
-     
+
       // google.charts.load('current', {
       //   'packages': ['corechart']
       // });
@@ -715,74 +813,145 @@ $('#myModal').modal('toggle');
         materialChart.draw(data, materialOptions);
       }
 
-      // google.charts.load('current', {
-      //   'packages': ['corechart']
-      // });
-      // google.charts.setOnLoadCallback(drawPie);
 
 
 
+      google.charts.load('current', {
+        'packages': ['corechart']
+      });
+      google.charts.setOnLoadCallback(drawPie);
 
 
 
-      // function drawPie() {
+      function drawPie() {
 
-      //   var data = google.visualization.arrayToDataTable([
-      //     ['Person', 'Entity'],
-      //     <?php
-              //     $incident = "SELECT barangay, COUNT(entity_no) AS registered,(SELECT COUNT(entity_no) FROM tbl_individual) AS total FROM tbl_individual GROUP BY barangay; 
-              //     ";
-              //     $prepare = $con->prepare($incident);
-              //     $prepare->execute();
-              //     while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
-              //       $type =  $incident_result['barangay'];
-              //       $count = $incident_result['registered'];
-              //       $total = $incident_result['total'];
-              //       echo "['" . $type . "'," . $count . "],";
-              //     }
-              //     
-              ?>
+        var data = google.visualization.arrayToDataTable([
+          ['Person', 'Entity'],
+          <?php
+          $incident = "SELECT barangay, COUNT(entity_no) AS registered,(SELECT COUNT(entity_no) FROM tbl_individual) AS total FROM tbl_individual GROUP BY barangay; 
+                   ";
+          $prepare = $con->prepare($incident);
+          $prepare->execute();
+          while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
+            $type =  $incident_result['barangay'];
+            $count = $incident_result['registered'];
+            $total = $incident_result['total'];
+            echo "['" . $type . "'," . $count . "],";
+          }
 
-      //   ]);
+          ?>
+
+        ]);
+
+        var options = {
+          title: 'Total Registered Entity: <?php echo $total ?>'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+
+
+      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+      var pieChart = new Chart(pieChartCanvas)
+      var PieData = [{
+          value: 700,
+          color: '#f56954',
+          highlight: '#f56954',
+          label: 'Chrome'
+        },
+        {
+          value: 500,
+          color: '#00a65a',
+          highlight: '#00a65a',
+          label: 'IE'
+        },
+        {
+          value: 400,
+          color: '#f39c12',
+          highlight: '#f39c12',
+          label: 'FireFox'
+        },
+        {
+          value: 600,
+          color: '#00c0ef',
+          highlight: '#00c0ef',
+          label: 'Safari'
+        },
+        {
+          value: 300,
+          color: '#3c8dbc',
+          highlight: '#3c8dbc',
+          label: 'Opera'
+        },
+        {
+          value: 100,
+          color: '#d2d6de',
+          highlight: '#d2d6de',
+          label: 'Navigator'
+        }
+      ]
+      var pieOptions = {
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: '#fff',
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 2,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Number - Amount of animation steps
+        animationSteps: 100,
+        //String - Animation easing effect
+        animationEasing: 'easeOutBounce',
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+        //Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: true,
+        //String - A legend template
+        legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+      }
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      pieChart.Doughnut(PieData, pieOptions)
+
+
+
+      //          function drawPie() {
+
+      //  var data = google.visualization.arrayToDataTable([
+      //   ['Person', 'Entity'],
+      //   <?php
+            //          $incident = "SELECT barangay, COUNT(barangay) AS positive,(SELECT COUNT(barangay) FROM tbl_positive) AS total FROM tbl_positive GROUP BY barangay; 
+            //            ";
+            //            $prepare = $con->prepare($incident);
+            //            $prepare->execute();
+            //            while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
+            //              $type =  $incident_result['barangay'];
+            //              $count = $incident_result['positive'];
+            //              $total = $incident_result['total'];
+            //              echo "['" . $type . "'," . $count . "],";
+            //            }
+
+            //         
+            ?>
+
+      //    ]);
 
       //   var options = {
-      //     title: 'Total Registered Entity: <?php echo $total ?>'
+      //     title: 'Total Positive Cases: <?php echo $total ?>'
       //   };
 
       //   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
       //   chart.draw(data, options);
-      // }
-
-
-      //       function drawPie() {
-
-      // var data = google.visualization.arrayToDataTable([
-      //   ['Person', 'Entity'],
-      //   <?php
-            //   $incident = "SELECT barangay, COUNT(barangay) AS positive,(SELECT COUNT(barangay) FROM tbl_positive) AS total FROM tbl_positive GROUP BY barangay; 
-            //   ";
-            //   $prepare = $con->prepare($incident);
-            //   $prepare->execute();
-            //   while ($incident_result = $prepare->fetch(PDO::FETCH_ASSOC)) {
-            //     $type =  $incident_result['barangay'];
-            //     $count = $incident_result['positive'];
-            //     $total = $incident_result['total'];
-            //     echo "['" . $type . "'," . $count . "],";
-            //   }
-            //   
-            ?>
-
-      // ]);
-
-      // var options = {
-      //   title: 'Total Positive Cases: <?php echo $total ?>'
-      // };
-
-      // var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-      // chart.draw(data, options);
-      // }
+      //   }
 
 
 

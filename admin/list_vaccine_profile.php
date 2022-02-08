@@ -1,12 +1,12 @@
 <?php
 
 include('../config/db_config.php');
-// include('sql_queries.php');
-// include('update_vas_test.php');
-// include('update_void_vaccine.php');
+include('sql_queries.php');
+include('update_vas_test.php');
+include('update_void_vaccine.php');
 
 
-session_start(); 
+// session_start(); 
 
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
@@ -35,14 +35,10 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
 $symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrno = '';
 
-$get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
-$get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
-$get_all_vaccine_data->execute();
-
-
-
 
 $get_all_center_sql = "SELECT * FROM tbl_bakuna_center ";
+
+// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
 $get_all_center_data = $con->prepare($get_all_center_sql);
 $get_all_center_data->execute();
 
@@ -71,7 +67,7 @@ $get_all_center_data->execute();
     <div class="content-wrapper">
       <div class="content-header"></div>
       <div class="float-topright">
-    
+        <?php echo $alert_msg; ?>
 
       </div>
       <section class="content">
@@ -133,7 +129,6 @@ $get_all_center_data->execute();
                         <th> Entity_no </th>
                         <th> Category</th>
                         <th width="300px"> Full Name </th>
-                        <th> Sex </th>
                         <th> Birthdate </th>
                         <th> Address</th>
                         <!-- <th style="background-color:#EDCD15"> Consent </th>
@@ -162,6 +157,9 @@ $get_all_center_data->execute();
 
       </section>
       <br>
+
+
+
     </div>
     <!-- /.content-wrapper -->
     <?php include('footer.php') ?>
@@ -239,24 +237,7 @@ $get_all_center_data->execute();
                 <div class="row">
 
 
-                  <?php
-
-                  $get_vaccination_sql = "SELECT * FROM tbl_assessment where entity_no = :id and status = 'VACCINATED'";
-                  $get_vaccination_data = $con->prepare($get_vaccination_sql);
-                  $get_vaccination_data->execute([':id' => $entity_no]);
-
-                  $count = $get_vaccination_data->rowCount();
-
-                  while ($result = $get_vaccination_data->fetch(PDO::FETCH_ASSOC)) {
-                    $get_vaccine       = $result['VaccineManufacturer'];
-                  }
-
-
-
-
-
-
-                  ?>
+        
 
                   <div class="col-sm-3" readonly>
                     <input hidden readonly="true" readonly type="text" name="date_registered" id="date_registered" class="form-control" pull-right value="<?php echo $now->format('Y-m-d'); ?>" required>
@@ -265,22 +246,7 @@ $get_all_center_data->execute();
                     <br>
                   </div>
 
-                  <!-- <div class="col-sm-4">
-                    <input hidden readonly="true" readonly TYPE="text" NAME="date_registered" id="date_registered" class="form-control" pull-RIGHT VALUE="<?php echo $now->format('Y-m-d'); ?>" required>
-                    <label>Vaccination STATUS: </label>
-
-                    <?php if ($count == 1) { ?>
-                      <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-RIGHT value="<?php echo $get_vaccine . $count ?>">
-                    <?php } else if ($count == 2) { ?>
-                      <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-RIGHT value="<?php echo $get_vaccine . $count ?>">
-                    <?php } else { ?>
-                      <input type="text" style="color:red; font-weight: 900;" name="remarks" id="remarks" class="blink_me" placeholder="VACCINATED" pull-RIGHT value="NOT YET VACCINATED">
-                    <?php } ?>
-                    <br>
-                  </div> -->
-
-
-
+              
                 </div><br><br>
 
                 <!-- <div class="col-md-5">
@@ -488,7 +454,7 @@ $get_all_center_data->execute();
       scrollX: false,
 
       ajax: {
-        url: "search_vaccine.php",
+        url: "search_vaccine_test.php",
         type: "post",
         error: function(xhr, b, c) {
           console.log(
@@ -673,6 +639,9 @@ $get_all_center_data->execute();
     $(function blink() {
       $('.blink_me').fadeOut(500).fadeIn(500, blink);
     })();
+
+
+
 
 
     $(function() {

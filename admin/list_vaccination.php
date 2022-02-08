@@ -1,17 +1,8 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
-include('update_vas_test.php');
-include('update_void_vaccine.php');
 
-
-
-// include('get_vaccination_profile_two.php');
-
-
-
-// session_start(); 
+session_start(); 
 
 $user_id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
@@ -23,80 +14,32 @@ $now = new DateTime();
 // $date = date('Y-m-d');
 $time = date('H:i:s');
 
-
-
 $get_user_sql = "SELECT * FROM tbl_users where id = :id ";
 $user_data = $con->prepare($get_user_sql);
 $user_data->execute([':id' => $user_id]);
 while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
 
-
   $vas_username = $result['fullname'];
   $void_username = $result['fullname'];
 }
 
-// $page = $_SERVER['PHP_SELF'];
-// $sec = "2";
-// header("Refresh: $sec; url=$page");
-// echo "Watch the page reload itself in 10 second!";
-
-
+$symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrno = '';
 $symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrno = '';
 
-//fetch user from database
-// $vas_entity_no = ' ';
 
-// $get_assessment_sql = "SELECT * FROM tbl_assessment where entity_no = :id ";
-// $assestment_data = $con->prepare($get_assessment_sql);
-// $assestment_data->execute([':id' => $vas_entity_no]);
-// while ($result = $assestment_data->fetch(PDO::FETCH_ASSOC)) {
-
-
-//   $vas_entity_no = $result['entity_no'];
-// }
-
-$get_all_center_sql = "SELECT * FROM tbl_bakuna_center ";
-
-// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
+$get_all_center_sql = "SELECT * FROM tbl_bakuna_center";
 $get_all_center_data = $con->prepare($get_all_center_sql);
 $get_all_center_data->execute();
 
 
-
-
-// if (isset($_GET['entity_no'])) {
-
-//   $entity_no = $_GET['entity_no'];
-
-// $get_data_sql = "SELECT * FROM tbl_assessment t inner join tbl_vaccine r on r.entity_no = t.entity_no where r.entity_no = :id";
-// $get_data_data = $con->prepare($get_data_sql);
-// $get_data_data->execute([':id' => $entity_no]);
-
-// while ($result = $get_data_data->fetch(PDO::FETCH_ASSOC)) {
-//   $get_1stDose      = $result['1stDose'];
-//   $get_2ndDose       = $result['2ndDose'];
-
-// }
-// }
-
-
-// $entity_no = $_GET['entity_no'];
-
-
-
-
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Audit Trail </title>
+  <title>VAMOS | Vaccine Registration Profile </title>
   <?php include('heading.php'); ?>
 
 
@@ -117,7 +60,7 @@ $get_all_center_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Audit Trail
+            <h4> Vaccine Masterlists
               <a href="add_vaccine_registry" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
 
@@ -170,13 +113,17 @@ $get_all_center_data->execute();
                       <thead align="center">
 
                         <th> OBJID </th>
-                        <th> REF </th>
-                        <th> DATE </th>
-                        <th> ENTITY NO</th>
-                    
-                        <th width="300px"> USERNAME </th>
-                        <th> ACTIVITY </th>
-                  
+                        <th> Entity_no </th>
+                        <th> Category</th>
+                        <th width="300px"> Full Name </th>
+                        <th> Birthdate </th>
+                        <th> Address</th>
+                        <!-- <th style="background-color:#EDCD15"> Consent </th>
+                        <th style="background-color:#157DEC"> Sinovac </th>
+                        <th style="background-color:#ED157E"> Astrazeneca </th>
+                        <th style="background-color:#7FFF00"> Pfizer </th>
+
+                        <th style="background-color:#FF0000"> Johnsons </th> -->
                         <th>Options</th>
 
 
@@ -197,16 +144,13 @@ $get_all_center_data->execute();
 
       </section>
       <br>
-
-
-
     </div>
     <!-- /.content-wrapper -->
     <?php include('footer.php') ?>
 
   </div>
 
-
+  
 
   <div class="modal fade" id="modalupdate" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
@@ -477,28 +421,7 @@ $get_all_center_data->execute();
 
 
 
-
   <?php include('pluginscript.php') ?>
-
-  <?php
-
-  if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
-
-  ?>
-    <script>
-      swal({
-        title: "<?php echo $_SESSION['status'] ?>",
-        // text: "You clicked the button!",
-        icon: "<?php echo $_SESSION['status_code'] ?>",
-        button: "OK. Done!",
-      });
-    </script>
-
-  <?php
-    unset($_SESSION['status']);
-  }
-  ?>
-
   <script>
     $('.select2').select2({
       dropdownParent: $('#modalupdate')
@@ -526,7 +449,7 @@ $get_all_center_data->execute();
       scrollX: false,
 
       ajax: {
-        url: "search_logs.php",
+        url: "search_vaccine_test.php",
         type: "post",
         error: function(xhr, b, c) {
           console.log(
@@ -543,17 +466,23 @@ $get_all_center_data->execute();
           width: "100px",
           targets: -1,
           data: null,
-          defaultContent: 
-          '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>',
-              },
+          defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
+            
+          // '<a class="btn btn-warning btn-sm printlink5"  style = "margin-right:10px;" id="printlink5" href ="../plugins/jasperreport/vaccineform_newform.php?entity_no=" data-placement="top" target="_blank" title="Print ADULT">  <i class="nav-icon fa fa-print"> ADULT</i></a> '+
+  
+            // '<a class="btn btn-warning btn-sm printlink3" style="margin-right:10px;" data-placement="top" title="PRINT FORM PEDIATRIC">PRINT PEDIATRIC</a>'+
+
+            '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal"  data-placement="top" title="FORWARD TO VAS">VAS</a>' +
+
+            '<a class="btn btn-primary btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform_pediatric.php?entity_no=" data-placement="top" target="_blank" title="Print FORM">  <i class="nav-icon fa fa-print"> </i></a> '+
+            // '<a class="btn btn-warning btn-sm modalform"  style="margin-right:10px;"    data-placement="top" title="PRINT">PRINT</a>' +
+            // '<a class="btn btn-danger btn-sm" style="margin-right:10px;" id="deletevoid" data-placement="top" title="VOID">x</a>'+
+            '<a class="btn btn-danger btn-sm void" style="margin-right:10px;"  data-placement="top" title="VOID"><i class="far fa-trash-alt"></i></a>',
+          // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
+        },
 
       ],
     });
-
-
-
-
-
 
     $("#users tbody").on("click", ".printlink", function() {
       // event.preventDefault();
@@ -673,8 +602,6 @@ $get_all_center_data->execute();
 
 
 
-
-
  
 
 
@@ -702,10 +629,7 @@ $get_all_center_data->execute();
 
     $(function blink() {
       $('.blink_me').fadeOut(500).fadeIn(500, blink);
-    })();
-
-
-
+    });
 
 
     $(function() {
@@ -751,13 +675,7 @@ $get_all_center_data->execute();
 
     });
   </script>
-
   
-
-
-
-
-
 </body>
 
 </html>

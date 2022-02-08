@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="new_report_barangay" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="51ae96db-bd70-4eca-b553-14384f051515">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sccdrrmo"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT r.Lastname,r.Firstname,r.Middlename,r.Barangay,t.objid,t.1stDose,t.2ndDose,t.3rdDose,t.DateVaccination,t.VaccineManufacturer,
+
+(SELECT SUM(barangay = '_64524017_PUNAO')FROM tbl_vaccine WHERE barangay = '_64524017_PUNAO') AS TOTAL_POPULATION
+
+ FROM tbl_assessment t INNER JOIN tbl_vaccine r ON r.entity_no = t.entity_no WHERE r.barangay = '_64524017_PUNAO' ORDER BY lastname]]>
+	</queryString>
+	<field name="Lastname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Lastname"/>
+		<property name="com.jaspersoft.studio.field.label" value="Lastname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Firstname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Firstname"/>
+		<property name="com.jaspersoft.studio.field.label" value="Firstname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Middlename" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Middlename"/>
+		<property name="com.jaspersoft.studio.field.label" value="Middlename"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Barangay" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Barangay"/>
+		<property name="com.jaspersoft.studio.field.label" value="Barangay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_vaccine"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="objid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="objid"/>
+		<property name="com.jaspersoft.studio.field.label" value="objid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="1stDose" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="1stDose"/>
+		<property name="com.jaspersoft.studio.field.label" value="1stDose"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="2ndDose" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="2ndDose"/>
+		<property name="com.jaspersoft.studio.field.label" value="2ndDose"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="3rdDose" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="3rdDose"/>
+		<property name="com.jaspersoft.studio.field.label" value="3rdDose"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DateVaccination" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DateVaccination"/>
+		<property name="com.jaspersoft.studio.field.label" value="DateVaccination"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VaccineManufacturer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VaccineManufacturer"/>
+		<property name="com.jaspersoft.studio.field.label" value="VaccineManufacturer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_assessment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTAL_POPULATION" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="TOTAL_POPULATION"/>
+		<property name="com.jaspersoft.studio.field.label" value="TOTAL_POPULATION"/>
+	</field>
+	<variable name="no" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{objid}]]></variableExpression>
+	</variable>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="322" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="970" height="31" forecolor="#FFFFFF" backcolor="#EDBE00" uuid="0434fa87-e785-492d-bbb1-3027791be14a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="970" height="30" uuid="bfc92c3d-4ff5-4cc7-b207-77b8e324230e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BARANGAY MONTHLY INVENTORY OF VACCINATED POPULATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="120" height="15" uuid="06e29607-43bf-45b7-9052-cc0fbe7b2a43">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REGION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="55" width="120" height="15" uuid="6d699ddc-462b-4dac-a115-2e0b1f85d1b3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PROVINCE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="120" height="15" uuid="333be3eb-f676-4e08-9ea0-ba94844f7ca6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CITY/MUNICIPALITY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="85" width="120" height="15" uuid="f6f8062c-3fd3-42a8-93bc-dbfec4e18ee4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BARANGAY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="270" height="15" uuid="64994ddf-70a4-4b38-ad48-495d2a14f35b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A. TOTAL NO. OF POPULATION AS OF (2020):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="115" width="270" height="15" uuid="6a904e2e-6c7b-4888-8955-d05fab21d14f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[B. TOTAL NO. OF UNVACCINATED INDIVIDUALS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="130" width="270" height="15" uuid="98d68cd6-ee8a-456a-9993-2e1f1fa549cd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C. PERCENTAGE OF UNVACCINATED INDIVIDUALS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="270" height="15" uuid="937e015c-0be5-4eef-986b-55256f9681f4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[D. TOTAL NO. OF PARTIALLY VACCINATED INDIVIDUALS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="270" height="15" uuid="2a519f0d-d246-4e93-9580-b35bab01419c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[E. PERCENTAGE OF PARTIALLY VACCINATED INDIVIDUALS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="175" width="270" height="15" uuid="80197da9-1750-45ac-8113-20b5f8857d26">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[F. TOTAL NO. OF FULLY VACCINATED OF INDIVIDUALS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="190" width="270" height="15" uuid="2da6c9c3-242d-4ca9-b86d-8e5caf37846e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[G. PERCENTAGE OF FULLY VACCINATED INDIVIDUALS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="205" width="270" height="15" uuid="f140233e-2eba-4dfe-b40e-2c93a5045739">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[H. TOTAL NO. OF INDIVIDUALS WITH BOOSTER SHOT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="220" width="270" height="15" uuid="76c58c70-f015-451a-be79-edd2bc9435f1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[I. PERCENTAGE OF INDIVIDUALS WITH BOOSTER SHOT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="235" width="270" height="15" uuid="a06c321f-4796-48b9-8c34-04a589ef56a2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[AS OF (Insert date):________]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="280" y="100" width="161" height="15" uuid="ba399c79-b039-4422-8bb4-de0b9b1fabc7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="115" width="161" height="15" uuid="a74ef5b4-5633-40ce-856a-9bf0adc4c649">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="130" width="161" height="15" uuid="077bdfbe-cbca-45d0-a1f7-0880e5f95839">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="145" width="161" height="15" uuid="be74f9fd-0cb6-4ff3-8296-d5dbdd22304d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="160" width="161" height="15" uuid="0148f3d6-c082-4fc9-a276-28be1cfa8c7c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="175" width="161" height="15" uuid="28dbb96b-d4a6-4eb7-8679-022179712729">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="190" width="161" height="15" uuid="a58c485f-b894-4943-900f-0d8934fd23ce">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="205" width="161" height="15" uuid="f0b6c9c2-7eb8-4b5e-9a86-f3da03325985">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="220" width="161" height="15" uuid="a32666c6-282a-49db-9392-fb19747c6851">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="280" y="235" width="161" height="15" uuid="b43fa95c-b9d5-49ef-9a19-b0f91b96c228">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="270" width="270" height="15" uuid="c01eee9b-1620-4b46-a7b3-b977b1588e46">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Prepared by:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="31" y="303" width="260" height="1" uuid="ba886fa4-0256-46ca-9e55-d2c575bbdadd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="30" y="303" width="270" height="15" uuid="3609b362-334d-4c4d-9ad8-fe87de9d4f41">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Name and Signature of Barangay Secretary/Health Worker]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="270" width="270" height="15" uuid="f3ea5e9d-8bee-4ccf-a324-f945cc8c1e26">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Approved by:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="351" y="303" width="260" height="1" uuid="ba4f10c4-77fe-46e3-98fb-89920465e0ac">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="350" y="303" width="270" height="15" uuid="ee5d6df6-5305-4a1a-a135-fc395d9007a0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Name and Signature of Punong Barangay]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="100" width="160" height="14" uuid="1b4620ec-d428-4306-a94c-52c946798116"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TOTAL_POPULATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="80" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="80" uuid="fa7afd54-672e-4e7e-adba-282feeec529b"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="230" height="80" uuid="31341b0e-b76d-441c-b1da-4045ef142919"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Full Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="280" y="0" width="209" height="40" uuid="e61d2088-0d21-4807-804a-1e15dfb5e31f"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PRIMARY SERIES OF COVID-19 VACCINE (Note: 1. If brand is "Janssen, put NA in the column for "2nd Dose"; Put "None" if unvaccinated)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="280" y="40" width="140" height="20" uuid="69ed398d-85e6-4050-a576-79806653de82"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Date of Vaccination]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="420" y="40" width="69" height="40" uuid="a18ddf8f-2099-461a-b422-2475c5040644">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Brand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="280" y="60" width="71" height="20" uuid="1eea5513-b92d-41a3-9200-8a9c259c436f"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[1st Dose]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="351" y="60" width="69" height="20" uuid="dcc95d04-fe7d-4972-ae12-57bb00aa9f49"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[2nd Dose]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="489" y="0" width="80" height="80" uuid="4e4479bf-85c3-41f5-a792-c7abc7e69f16"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Unvaccinated?(Put 1 if Yes or 0 if No)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="569" y="0" width="71" height="80" uuid="156eb5b8-582f-40a3-a81e-efc3fe19c8f9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Partially vaccinated?(Put 1 if Yes or 0 if No)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="640" y="0" width="71" height="80" uuid="ef9d7ad7-891b-4a02-bafb-c5fec747727f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fully Vaccinated?(Put 1 if Yes or 0 if No)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="711" y="0" width="257" height="40" uuid="5759b701-a95c-465d-a32c-30e54bde9bfa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[BOOSTER DOSE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="711" y="40" width="89" height="40" uuid="777b63f3-2a67-41da-b2b3-c452e035c785">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[With Booster Shot? (Put 1 if Yes or 0 if No)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="800" y="40" width="90" height="40" uuid="e02157ea-08dc-4017-b81f-f7129bcaa942">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Date of vaccination]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="890" y="40" width="78" height="40" uuid="f0afe77f-a1c5-43eb-abd0-2d5d47818818">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Brand]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="50" y="0" width="230" height="20" uuid="99f2cc2f-57b2-481f-890f-4c204b9bf16b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2a1bbd-481b-4c03-babf-21491229c6b7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" "+$F{Firstname}+" "+$F{Middlename}+" "+$F{Lastname}+" "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="71" height="20" uuid="932c7fd0-79fc-4296-8b42-d558ad363cc1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2a1bbd-481b-4c03-babf-21491229c6b7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DateVaccination}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="0" width="69" height="20" uuid="79c070f5-2236-42cf-a937-92e014ae4562">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2a1bbd-481b-4c03-babf-21491229c6b7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DateVaccination}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="69" height="20" uuid="dc63b6b7-fdd4-4674-b01e-1595b1622fbc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2a1bbd-481b-4c03-babf-21491229c6b7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VaccineManufacturer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="f9cd83ac-1f29-4efc-8748-c1da5d9ccbcf"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="90" height="20" uuid="63898be3-4e17-490c-9b42-714318b3cfaf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2a1bbd-481b-4c03-babf-21491229c6b7"/>
+					<printWhenExpression><![CDATA[$F{3rdDose} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DateVaccination}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="0" width="71" height="20" uuid="e0810ca2-8dc8-4473-aa9f-4d025153cc2e">
+					<printWhenExpression><![CDATA[$F{2ndDose} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[1]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="0" width="71" height="20" uuid="8834030d-72be-49e2-ae86-f08af2920cec">
+					<printWhenExpression><![CDATA[$F{2ndDose} == "02_No"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="569" y="0" width="71" height="20" uuid="ef48a1d5-776a-4d27-b55f-4ab6836e5833">
+					<printWhenExpression><![CDATA[$F{2ndDose} == "02_No"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[1]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="0" width="80" height="20" uuid="11afc84e-db69-4ffc-b137-55fbced3b712">
+					<printWhenExpression><![CDATA[$F{1stDose} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="711" y="0" width="89" height="20" uuid="6a59c84e-4777-44d7-b03b-243830082124">
+					<printWhenExpression><![CDATA[$F{3rdDose} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[1]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="711" y="0" width="89" height="20" uuid="724f628c-5c9d-4f62-8661-5f1fb7c61fc0">
+					<printWhenExpression><![CDATA[$F{3rdDose} == "02_No"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="890" y="0" width="78" height="20" uuid="cbe1b968-45d5-4a0f-983e-27674ef164d1">
+					<printWhenExpression><![CDATA[$F{3rdDose} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VaccineManufacturer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="890" y="0" width="78" height="20" uuid="961a2dcb-57bf-407a-9a50-8e517641991a">
+					<printWhenExpression><![CDATA[$F{3rdDose} == "02_No"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="0" width="80" height="20" uuid="38629db9-1514-4f4b-bb7d-bc1c1ecf84b7">
+					<printWhenExpression><![CDATA[$F{1stDose} == "02_No"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[1]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="0" width="80" height="20" uuid="8a9d007e-8bf6-4533-935c-ff5c71c86d67">
+					<printWhenExpression><![CDATA[$F{1stDose} == ""]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[1]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="569" y="0" width="71" height="20" uuid="051c4689-b07a-4fb2-aebb-427be3faddf4">
+					<printWhenExpression><![CDATA[$F{2ndDose} == "01_Yes"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="90" height="20" uuid="48f44338-6949-49f4-9d07-52a71a4cc662">
+					<printWhenExpression><![CDATA[$F{3rdDose} == "02_No"]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[0]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

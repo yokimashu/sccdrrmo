@@ -1,7 +1,7 @@
 <?php
 
 include('../config/db_config.php');
-include('sql_queries.php');
+// include('sql_queries.php');
 include('update_vas_test.php');
 include('update_void_vaccine.php');
 
@@ -35,10 +35,7 @@ while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
   $void_username = $result['fullname'];
 }
 
-// $page = $_SERVER['PHP_SELF'];
-// $sec = "2";
-// header("Refresh: $sec; url=$page");
-// echo "Watch the page reload itself in 10 second!";
+
 
 
 $symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrno = '';
@@ -54,6 +51,15 @@ $symptoms = $patient = $person_status = $get_consent =  $entity_no = $final_cbrn
 
 //   $vas_entity_no = $result['entity_no'];
 // }
+
+$get_all_vaccine_sql = "SELECT * FROM tbl_vaccine ORDER BY idno DESC";
+
+// $get_all_vaccine_sql = "SELECT * FROM tbl_vaccine";
+$get_all_vaccine_data = $con->prepare($get_all_vaccine_sql);
+$get_all_vaccine_data->execute();
+
+
+
 
 $get_all_center_sql = "SELECT * FROM tbl_bakuna_center ";
 
@@ -96,7 +102,7 @@ $get_all_center_data->execute();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VAMOS | Audit Trail </title>
+  <title>VAMOS | Vaccine Registration Profile </title>
   <?php include('heading.php'); ?>
 
 
@@ -117,7 +123,7 @@ $get_all_center_data->execute();
       <section class="content">
         <div class="card card-info">
           <div class="card-header  text-white bg-success">
-            <h4> Audit Trail
+            <h4> Vaccine Masterlists
               <a href="add_vaccine_registry" style="float:right;" type="button" class="btn btn-success bg-gradient-success">
                 <i class="nav-icon fa fa-plus-square"></i></a>
 
@@ -170,13 +176,17 @@ $get_all_center_data->execute();
                       <thead align="center">
 
                         <th> OBJID </th>
-                        <th> REF </th>
-                        <th> DATE </th>
-                        <th> ENTITY NO</th>
-                    
-                        <th width="300px"> USERNAME </th>
-                        <th> ACTIVITY </th>
-                  
+                        <th> Entity_no </th>
+                        <th> Category</th>
+                        <th width="300px"> Full Name </th>
+                        <th> Birthdate </th>
+                        <th> Address</th>
+                        <!-- <th style="background-color:#EDCD15"> Consent </th>
+                        <th style="background-color:#157DEC"> Sinovac </th>
+                        <th style="background-color:#ED157E"> Astrazeneca </th>
+                        <th style="background-color:#7FFF00"> Pfizer </th>
+
+                        <th style="background-color:#FF0000"> Johnsons </th> -->
                         <th>Options</th>
 
 
@@ -526,7 +536,7 @@ $get_all_center_data->execute();
       scrollX: false,
 
       ajax: {
-        url: "search_logs.php",
+        url: "search_vaccine_test.php",
         type: "post",
         error: function(xhr, b, c) {
           console.log(
@@ -543,15 +553,23 @@ $get_all_center_data->execute();
           width: "100px",
           targets: -1,
           data: null,
-          defaultContent: 
-          '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>',
-              },
+          defaultContent: '<a class="btn btn-warning btn-sm printlink1" style="margin-right:10px;" data-placement="top" title="UPDATE STATUS"> <i class="fa fa-edit"></i></a>' +
+            
+          // '<a class="btn btn-warning btn-sm printlink5"  style = "margin-right:10px;" id="printlink5" href ="../plugins/jasperreport/vaccineform_newform.php?entity_no=" data-placement="top" target="_blank" title="Print ADULT">  <i class="nav-icon fa fa-print"> ADULT</i></a> '+
+  
+            // '<a class="btn btn-warning btn-sm printlink3" style="margin-right:10px;" data-placement="top" title="PRINT FORM PEDIATRIC">PRINT PEDIATRIC</a>'+
+
+            '<a class="btn btn-warning btn-sm" style="margin-right:10px;" id="modal"  data-placement="top" title="FORWARD TO VAS">VAS</a>' +
+
+            '<a class="btn btn-primary btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform_pediatric.php?entity_no=" data-placement="top" target="_blank" title="Print FORM">  <i class="nav-icon fa fa-print"> </i></a> '+
+            // '<a class="btn btn-warning btn-sm modalform"  style="margin-right:10px;"    data-placement="top" title="PRINT">PRINT</a>' +
+            // '<a class="btn btn-danger btn-sm" style="margin-right:10px;" id="deletevoid" data-placement="top" title="VOID">x</a>'+
+            '<a class="btn btn-danger btn-sm void" style="margin-right:10px;"  data-placement="top" title="VOID"><i class="far fa-trash-alt"></i></a>',
+          // '<a class="btn btn-outline-success btn-sm printlink"  style = "margin-right:10px;" id="printlink" href ="../plugins/jasperreport/vaccineform.php?entity_no=" data-placement="top" target="_blank" title="Print Form">  <i class="nav-icon fa fa-print"></i></a> ',
+        },
 
       ],
     });
-
-
-
 
 
 
@@ -751,11 +769,6 @@ $get_all_center_data->execute();
 
     });
   </script>
-
-  
-
-
-
 
 
 </body>
